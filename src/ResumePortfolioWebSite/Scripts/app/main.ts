@@ -9,7 +9,7 @@ module Main {
 
     $(window).load(() => {
         $('#status').fadeOut();
-        $('#preloader').delay(1000).fadeOut('slow');
+        $('#preloader').delay(500).fadeOut('slow');
     });
 
     $(document).ready(() => {

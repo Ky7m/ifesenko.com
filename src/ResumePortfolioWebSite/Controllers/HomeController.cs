@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using ResumePortfolioWebSite.Models;
 
 namespace ResumePortfolioWebSite.Controllers
 {
@@ -6,7 +7,7 @@ namespace ResumePortfolioWebSite.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View(new HomeModel());
 		}
 	}
 }

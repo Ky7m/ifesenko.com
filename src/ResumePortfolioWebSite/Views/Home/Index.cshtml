@@ -1,9 +1,10 @@
-﻿<div class="wrapper">
+﻿@model ResumePortfolioWebSite.Models.HomeModel
+<div class="wrapper">
     <!-- Preloader -->
     <div id="preloader">
         <div id="status">
             <div class="status-mes">
-                <h4>Almost done</h4>
+				Loading...
             </div>
         </div>
     </div>
@@ -12,7 +13,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -21,7 +22,7 @@
                 <a class="navbar-brand" href="#">Igor Fesenko</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#intro">Home</a></li>
                     <li><a href="#profile">Profile</a></li>
@@ -172,7 +173,7 @@
                 <div class="col-md-6 col-sm-12 wow bounceInRight">
                     <h3>Profesional Profile</h3>
                     <p>I'm specializing in scalable and secure web application and services architecture, cloud-enabled applications and operations, and identity & access management.</p>
-                    <p>I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, user experience, security, operations, automated lifecycle management, and more.</p>
+                    <p>I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.</p>
                 </div>
             </div><!-- .row -->
         </div><!-- .container -->
@@ -180,46 +181,29 @@
     <!-- Profile section end -->
     <!-- Callout section start -->
     <section id="stats" class="callout">
-
         <div class="container">
-
             <div class="row">
-
-                <div class="col-md-3 col-sm-12 hidden-xs wow bounceInLeft">
+                <div class="col-md-4 col-sm-12 hidden-xs wow bounceInLeft">
                     <h3>My Stats</h3>
                 </div>
-
-                <div class="col-md-3 col-sm-4 wow bounceInDown">
+                <div class="col-md-4 col-sm-4 wow bounceInDown">
                     <div class="stat">
                         <div class="stat-icon">
-                            <h2><i class="fa fa-coffee hidden-xs"></i><span class="timer" data-to="32"></span></h2>
+                            <h2><i class="fa fa-coffee hidden-xs"></i><span class="timer" data-to="@Model.CupOfCoffee"></span></h2>
                         </div>
                         <h3>Cup of coffee</h3>
                     </div>
                 </div>
-
-                <div class="col-md-3 col-sm-4 wow bounceInUp">
+                <div class="col-md-4 col-sm-4 wow bounceInUp">
                     <div class="stat">
                         <div class="stat-icon">
-                            <h2><i class="fa fa-code hidden-xs"></i><span class="timer" data-to="999"></span></h2>
+                            <h2><i class="fa fa-code hidden-xs"></i><span class="timer" data-to="@Model.LineOfCode"></span></h2>
                         </div>
                         <h3>Line of code</h3>
                     </div>
                 </div>
-
-                <div class="col-md-3 col-sm-4 wow bounceInRight">
-                    <div class="stat">
-                        <div class="stat-icon">
-                            <h2><i class="fa fa-child hidden-xs"></i><span class="timer" data-to="300"></span>+</h2>
-                        </div>
-                        <h3>Happy customers</h3>
-                    </div>
-                </div>
-
             </div><!-- .row -->
-
         </div><!-- .container -->
-
     </section>
     <!-- Callout section end -->
     <!-- Services section start -->
