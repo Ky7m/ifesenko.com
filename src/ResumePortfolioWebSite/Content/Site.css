@@ -1,8 +1,4 @@
 ﻿/**
- * Support: web-master72@yandex.ru;
- * Author: web-master72
- * 
- *
 /* ---------------------------------------------- /*
  * General styles
 /* ---------------------------------------------- */
@@ -716,7 +712,7 @@ h3 > .fa {
 }
 
 #status, .status-mes {
-	background-image: url(../images/488.GIF);
+	background-image: url(../Content/images/preloader.gif);
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 200px;

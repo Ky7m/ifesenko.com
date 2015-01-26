@@ -6,7 +6,7 @@ var Main;
     /* ---------------------------------------------- */
     $(window).load(function () {
         $('#status').fadeOut();
-        $('#preloader').delay(350).fadeOut('slow');
+        $('#preloader').delay(1000).fadeOut('slow');
     });
     $(document).ready(function () {
         console.log('loaded');
@@ -15,7 +15,7 @@ var Main;
             offset: 50
         });
         $(document).on('click', '.navbar-collapse.in', function (e) {
-            if ($(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle') {
+            if ($(e.target).is('a') && $(e.target).attr('class') !== 'dropdown-toggle') {
                 $(this).collapse('hide');
             }
         });
@@ -29,7 +29,7 @@ var Main;
         /* ---------------------------------------------- /*
          * Background image
         /* ---------------------------------------------- */
-        $('#intro').backstretch(['assets/images/bg4.jpg']);
+        $('#intro').backstretch(['content/images/bg1.png']);
         /* ---------------------------------------------- /*
          * Navbar
         /* ---------------------------------------------- */
@@ -64,7 +64,7 @@ var Main;
                     from: 0,
                     to: counter,
                     speed: 3000,
-                    refreshInterval: 50,
+                    refreshInterval: 50
                 });
             });
         }, { offset: '70%', triggerOnce: true });
@@ -105,7 +105,7 @@ var Main;
             },
             image: {
                 titleSrc: 'title',
-                tError: 'The image could not be loaded.',
+                tError: 'The image could not be loaded.'
             }
         });
         $('.video-pop-up').magnificPopup({
@@ -120,11 +120,11 @@ var Main;
         /* ---------------------------------------------- */
         $("#contact-form").submit(function (e) {
             e.preventDefault();
-            var c_name = $("#c_name").val();
-            var c_email = $("#c_email").val();
-            var c_message = $("#c_message ").val();
+            var name = $("#c_name").val();
+            var email = $("#c_email").val();
+            var message = $("#c_message ").val();
             var responseMessage = $('.ajax-response');
-            if ((c_name == "" || c_email == "" || c_message == "")) {
+            if ((name === "" || email === "" || message === "")) {
                 responseMessage.fadeIn(500);
                 responseMessage.html('<i class="fa fa-warning"></i> Check all fields.');
             }
@@ -134,16 +134,16 @@ var Main;
                     url: "assets/php/contactForm.php",
                     dataType: 'json',
                     data: {
-                        c_email: c_email,
-                        c_name: c_name,
-                        c_message: c_message
+                        c_email: email,
+                        c_name: name,
+                        c_message: message
                     },
                     beforeSend: function (result) {
                         $('#contact-form button').empty();
                         $('#contact-form button').append('<i class="fa fa-cog fa-spin"></i> Wait...');
                     },
                     success: function (result) {
-                        if (result.sendstatus == 1) {
+                        if (result.sendstatus === 1) {
                             responseMessage.html(result.message);
                             responseMessage.fadeIn(500);
                             $('#contact-form').fadeOut(500);
