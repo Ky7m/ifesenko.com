@@ -608,7 +608,7 @@ h3 > .fa {
 }
 
 /* ---------------------------------------------- /*
- * Clients
+ * Certifications
 /* ---------------------------------------------- */
 
 .owl-theme .owl-item {
@@ -690,12 +690,12 @@ h3 > .fa {
 
 #footer {
     background: #141414;
-    padding: 20px 0;
+    padding: 5px 0;
     color: #FFF;
 }
 
 #footer .copy {
-    font-size: 12px;
+    font-size: 6px;
     margin: 5px 0;
 }
 

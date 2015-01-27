@@ -2,20 +2,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Igor Fesenko - Personal Site" />
-	<title>Igor Fesenko</title>
-	@Styles.Render("~/Content/css")
-	@AnalyticsHelper.GetGoogleAnalyticsScript()
-	@AnalyticsHelper.GetYandexMetricsScript()
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Igor Fesenko - Personal Site" />
+    <title>Igor Fesenko</title>
+    @Styles.Render("~/Content/css")
+    @AnalyticsHelper.GetGoogleAnalyticsScript()
+    @AnalyticsHelper.GetYandexMetricsScript()
 </head>
 <body>
-	@RenderBody()
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/plugins")
-	@Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/app")
-	@RenderSection("scripts", required: false)
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/plugins")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/app")
+    @RenderSection("scripts", required: false)
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <p class="copy pull-right">
+                    Design by Mark Stone.
+                </p>
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </footer>
 </body>
 </html>

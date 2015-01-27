@@ -1,9 +1,7 @@
 /// <reference path="../typings/jquery/jquery.d.ts" />
 var Main;
 (function (Main) {
-    /* ---------------------------------------------- /*
-     * Preloader
-    /* ---------------------------------------------- */
+    // Preloader
     $(window).load(function () {
         $('#status').fadeOut();
         $('#preloader').delay(500).fadeOut('slow');
@@ -25,13 +23,9 @@ var Main;
             }, 1000);
             e.preventDefault();
         });
-        /* ---------------------------------------------- /*
-         * Background image
-        /* ---------------------------------------------- */
+        // Background image
         $('#intro').backstretch(['../Content/images/bg1.png']);
-        /* ---------------------------------------------- /*
-         * Navbar
-        /* ---------------------------------------------- */
+        // Navbar
         var navbar = $('.navbar');
         var navHeight = navbar.height();
         $(window).scroll(function () {
@@ -53,9 +47,7 @@ var Main;
                 navbar.removeClass('custom-collapse');
             }
         });
-        /* ---------------------------------------------- /*
-         * Count to
-        /* ---------------------------------------------- */
+        // Count to
         $('#stats').waypoint(function () {
             $('.timer').each(function () {
                 var counter = $(this).attr('data-count');
@@ -67,96 +59,23 @@ var Main;
                 });
             });
         }, { offset: '70%', triggerOnce: true });
-        /* ---------------------------------------------- /*
-         * WOW Animation When You Scroll
-        /* ---------------------------------------------- */
+        // WOW Animation When You Scroll
         var wow = new WOW({
             mobile: false
         });
         wow.init();
-        /* ---------------------------------------------- /*
-         * Owl slider
-        /* ---------------------------------------------- */
-        $("#owl-clients").owlCarousel({
+        // Owl slider
+        $("#owl-certifications").owlCarousel({
             items: 4,
             slideSpeed: 300,
             paginationSpeed: 400,
             autoPlay: 5000
         });
-        /* ---------------------------------------------- /*
-         * Rotate
-        /* ---------------------------------------------- */
+        // Rotate
         $(".rotate").textrotator({
             animation: "dissolve",
             separator: "|",
             speed: 3000
-        });
-        /* ---------------------------------------------- /*
-         * Portfolio pop up
-        /* ---------------------------------------------- */
-        $('#portfolio').magnificPopup({
-            delegate: 'a.pop-up',
-            type: 'image',
-            gallery: {
-                enabled: true,
-                navigateByImgClick: true,
-                preload: [0, 1]
-            },
-            image: {
-                titleSrc: 'title',
-                tError: 'The image could not be loaded.'
-            }
-        });
-        $('.video-pop-up').magnificPopup({
-            type: 'iframe'
-        });
-        /* ---------------------------------------------- /*
-         * A jQuery plugin for fluid width video embeds
-        /* ---------------------------------------------- */
-        $(".video").fitVids();
-        /* ---------------------------------------------- /*
-         * Contact form ajax
-        /* ---------------------------------------------- */
-        $("#contact-form").submit(function (e) {
-            e.preventDefault();
-            var name = $("#c_name").val();
-            var email = $("#c_email").val();
-            var message = $("#c_message ").val();
-            var responseMessage = $('.ajax-response');
-            if ((name === "" || email === "" || message === "")) {
-                responseMessage.fadeIn(500);
-                responseMessage.html('<i class="fa fa-warning"></i> Check all fields.');
-            }
-            else {
-                $.ajax({
-                    type: "POST",
-                    url: "assets/php/contactForm.php",
-                    dataType: 'json',
-                    data: {
-                        c_email: email,
-                        c_name: name,
-                        c_message: message
-                    },
-                    beforeSend: function (result) {
-                        $('#contact-form button').empty();
-                        $('#contact-form button').append('<i class="fa fa-cog fa-spin"></i> Wait...');
-                    },
-                    success: function (result) {
-                        if (result.sendstatus === 1) {
-                            responseMessage.html(result.message);
-                            responseMessage.fadeIn(500);
-                            $('#contact-form').fadeOut(500);
-                        }
-                        else {
-                            $('#contact-form button').empty();
-                            $('#contact-form button').append('<i class="fa fa-retweet"></i> Try again.');
-                            responseMessage.html(result.message);
-                            responseMessage.fadeIn(1000);
-                        }
-                    }
-                });
-            }
-            return false;
         });
     });
 })(Main || (Main = {}));

@@ -132,6 +132,10 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\bg1.png" />
+    <Content Include="Content\images\MCP_2013.png" />
+    <Content Include="Content\images\MCSD_2013.png" />
+    <Content Include="Content\images\MS_2013_CSharp.png" />
+    <Content Include="Content\images\MS_2013_JS_CSS_HTML.png" />
     <Content Include="Content\images\personal_photo.png" />
     <Content Include="Content\images\preloader.gif" />
     <Content Include="Content\magnific-popup.css" />
