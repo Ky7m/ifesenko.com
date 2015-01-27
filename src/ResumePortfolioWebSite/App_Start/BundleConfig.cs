@@ -25,7 +25,7 @@ namespace ResumePortfolioWebSite
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/app/*.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/sitecss").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/animate.css",
                       "~/Content/css/font-awesome.css",
