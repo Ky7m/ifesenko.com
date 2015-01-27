@@ -16,14 +16,12 @@ namespace ResumePortfolioWebSite
 
             bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
                       "~/Scripts/jquery.countTo.js",
-                      "~/Scripts/jquery.fitvids.js",
-                      "~/Scripts/jquery.magnific-popup.min.js",
-                      "~/Scripts/jquery.simple-text-rotator.min.js",
+                      "~/Scripts/jquery.simple-text-rotator.js",
                       "~/Scripts/jquery.waypoints.js",
-                      "~/Scripts/owl.carousel.min.js",
-                      "~/Scripts/smoothscroll.js",
-                      "~/Scripts/wow.min.js",
-                      "~/Scripts/jquery.backstretch.min.js"));
+                      "~/Scripts/owl.carousel.js",
+                      "~/Scripts/jquery.smooth.scroll-{version}.js",
+                      "~/Scripts/wow.js",
+                      "~/Scripts/jquery.backstretch.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include("~/Scripts/app/*.js"));
 
@@ -31,9 +29,9 @@ namespace ResumePortfolioWebSite
                       "~/Content/bootstrap.css",
                       "~/Content/animate.css",
                       "~/Content/css/font-awesome.css",
-                      "~/Content/magnific-popup.css",
-                      "~/Content/owl.carousel.css",
-                      "~/Content/owl.theme.css",
+                      "~/Content/OwlCarousel/owl.carousel.css",
+                      "~/Content/OwlCarousel/owl.theme.css",
+                      "~/Content/OwlCarousel/owl.transitions.css",
                       "~/Content/simpletextrotator.css",
                       "~/Content/site.css"));
         }

@@ -124,12 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery.smooth.scroll.css" />
+    <Content Include="Content\css\jquery.smooth.scroll.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\bg1.png" />
     <Content Include="Content\images\MCP_2013.png" />
@@ -138,9 +141,12 @@
     <Content Include="Content\images\MS_2013_JS_CSS_HTML.png" />
     <Content Include="Content\images\personal_photo.png" />
     <Content Include="Content\images\preloader.gif" />
-    <Content Include="Content\magnific-popup.css" />
-    <Content Include="Content\owl.carousel.css" />
-    <Content Include="Content\owl.theme.css" />
+    <Content Include="Content\images\smooth_scroll_arrow.png" />
+    <Content Include="Content\OwlCarousel\AjaxLoader.gif" />
+    <Content Include="Content\OwlCarousel\grabbing.png" />
+    <Content Include="Content\OwlCarousel\owl.carousel.css" />
+    <Content Include="Content\OwlCarousel\owl.theme.css" />
+    <Content Include="Content\OwlCarousel\owl.transitions.css" />
     <Content Include="Content\simpletextrotator.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -161,26 +167,29 @@
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\less\jquery.smooth.scroll.less" />
+    <Content Include="Content\css\jquery.smooth.scroll.css.map" />
     <None Include="Scripts\jquery-2.1.3-vsdoc.js" />
+    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.js" />
+    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.min.js" />
+    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.min.js.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.backstretch.min.js" />
+    <Content Include="Scripts\jquery.backstretch.js" />
     <Content Include="Scripts\jquery.countTo.js" />
-    <Content Include="Scripts\jquery.fitvids.js" />
-    <Content Include="Scripts\jquery.magnific-popup.min.js" />
-    <Content Include="Scripts\jquery.simple-text-rotator.min.js" />
+    <Content Include="Scripts\jquery.simple-text-rotator.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.waypoints.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\owl.carousel.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\smoothscroll.js" />
-    <Content Include="Scripts\wow.min.js" />
+    <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
