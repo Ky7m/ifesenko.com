@@ -30,7 +30,7 @@ namespace ResumePortfolioWebSite
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/animate.css",
-                      "~/Content/fontawesome/font-awesome.css",
+                      "~/Content/css/font-awesome.css",
                       "~/Content/magnific-popup.css",
                       "~/Content/owl.carousel.css",
                       "~/Content/owl.theme.css",

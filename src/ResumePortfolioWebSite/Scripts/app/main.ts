@@ -13,7 +13,6 @@ module Main {
     });
 
     $(document).ready(() => {
-        console.log('loaded');
         $('body').scrollspy({
             target: '.navbar-custom',
             offset: 50
@@ -37,7 +36,7 @@ module Main {
          * Background image
         /* ---------------------------------------------- */
 
-        $('#intro').backstretch(['content/images/bg1.png']);
+        $('#intro').backstretch(['../Content/images/bg1.png']);
 
         /* ---------------------------------------------- /*
          * Navbar

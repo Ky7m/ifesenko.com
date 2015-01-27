@@ -9,7 +9,6 @@ var Main;
         $('#preloader').delay(500).fadeOut('slow');
     });
     $(document).ready(function () {
-        console.log('loaded');
         $('body').scrollspy({
             target: '.navbar-custom',
             offset: 50
@@ -29,7 +28,7 @@ var Main;
         /* ---------------------------------------------- /*
          * Background image
         /* ---------------------------------------------- */
-        $('#intro').backstretch(['content/images/bg1.png']);
+        $('#intro').backstretch(['../Content/images/bg1.png']);
         /* ---------------------------------------------- /*
          * Navbar
         /* ---------------------------------------------- */
