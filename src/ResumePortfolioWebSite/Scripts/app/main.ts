@@ -31,7 +31,7 @@ module Main {
         });
 
         // Background image
-        $('#intro').backstretch(['../Content/images/bg1.png']);
+        $('#intro').backstretch(['../Content/images/bg1.jpg']);
 
         // Navbar
         var navbar = $('.navbar');

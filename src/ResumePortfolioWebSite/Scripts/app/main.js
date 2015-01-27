@@ -24,7 +24,7 @@ var Main;
             e.preventDefault();
         });
         // Background image
-        $('#intro').backstretch(['../Content/images/bg1.png']);
+        $('#intro').backstretch(['../Content/images/bg1.jpg']);
         // Navbar
         var navbar = $('.navbar');
         var navHeight = navbar.height();
