@@ -4,7 +4,7 @@ var Main;
     // Preloader
     $(window).load(function () {
         $('#status').fadeOut();
-        $('#preloader').delay(250).fadeOut('slow');
+        $('#preloader').delay(150).fadeOut('slow');
     });
     $(document).ready(function () {
         $('body').scrollspy({
