@@ -2,48 +2,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Igor Fesenko - Personal Site" />
-    <link rel="shortcut icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
-    <link rel="icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
-    <title>Igor Fesenko</title>
-
-	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,700" rel="stylesheet" type="text/css">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Igor Fesenko - Personal Site" />
+	<link rel="shortcut icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
+	<link rel="icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
+	<title>Igor Fesenko</title>
 
 	@Styles.Render("~/bundles/bootstrapCss")
-    @Styles.Render("~/bundles/font-awesome")
-    @Styles.Render("~/bundles/css")
+	@Styles.Render("~/bundles/font-awesome")
+	@Styles.Render("~/bundles/css")
 
-    @AnalyticsHelper.GetGoogleAnalyticsScript()
-    @AnalyticsHelper.GetYandexMetricsScript()
+	@AnalyticsHelper.GetGoogleAnalyticsScript()
+	@AnalyticsHelper.GetYandexMetricsScript()
 </head>
 <body>
-    @RenderBody()
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrapJs")
-    <!--[if lt IE 9]>
-    @Scripts.Render("~/bundles/html5shiv")
-    @Scripts.Render("~/bundles/respondJs")
-    <![endif]-->
-    @Scripts.Render("~/bundles/js")
-    @RenderSection("scripts", required: false)
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <p class="copy pull-left">
-                    Powered by Azure.
-                </p>
-                <p class="copy pull-right">
-                    Design by Mark Stone.
-                </p>
-                <p class="copy text-center">
-                    @System.Reflection.Assembly.GetAssembly(typeof(ResumePortfolioWebSite.Controllers.HomeController)).GetName().Version.ToString()
-                </p>
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </footer>
+	@RenderBody()
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrapJs")
+	<!--[if lt IE 9]>
+	@Scripts.Render("~/bundles/html5shiv")
+	@Scripts.Render("~/bundles/respondJs")
+	<![endif]-->
+	@Scripts.Render("~/bundles/js")
+	@RenderSection("scripts", required: false)
+	<footer id="footer">
+		<div class="container">
+			<div class="row">
+				<p class="copy pull-left">
+					Powered by Azure.
+				</p>
+				<p class="copy pull-right">
+					Design by Mark Stone.
+				</p>
+				<p class="copy text-center">
+					@System.Reflection.Assembly.GetAssembly(typeof(ResumePortfolioWebSite.Controllers.HomeController)).GetName().Version.ToString()
+				</p>
+			</div><!-- .row -->
+		</div><!-- .container -->
+	</footer>
 
 </body>
 </html>
