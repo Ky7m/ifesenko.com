@@ -20,7 +20,13 @@
     @RenderBody()
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrapJs")
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    @Scripts.Render("~/bundles/html5shiv")
     @Scripts.Render("~/bundles/respondJs")
+    <![endif]-->
     @Scripts.RenderFormat(@"<script src="" {0}"" async></script>", "~/bundles/js")
     @RenderSection("scripts", required: false)
     <footer id="footer">

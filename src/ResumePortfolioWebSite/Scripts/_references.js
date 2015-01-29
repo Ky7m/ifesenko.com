@@ -15,3 +15,5 @@
 /// <reference path="wow.js" />
 /// <reference path="jquery.simple-text-rotator.js" />
 /// <reference path="jquery.smooth.scroll-1.0.1.min.js" />
+/// <reference path="html5shiv-printshiv.min.js" />
+/// <reference path="html5shiv.min.js" />

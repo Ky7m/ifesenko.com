@@ -10,23 +10,25 @@ namespace ResumePortfolioWebSite
             bundles.UseCdn = true;
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
-            var jquery = new ScriptBundle("~/bundles/jquery",
-                "//code.jquery.com/jquery-2.1.3.min.js")
-                .Include("~/Scripts/jquery-{version}.js");
-            jquery.CdnFallbackExpression = "window.jQuery";
-            bundles.Add(jquery);
+            bundles.Add(
+                new ScriptBundle("~/bundles/jquery",
+                "//code.jquery.com/jquery-2.1.3.min.js") { CdnFallbackExpression = "window.jQuery" }
+                .Include("~/Scripts/jquery-{version}.js"));
 
-            var bootstrapJs = new ScriptBundle("~/bundles/bootstrapJs",
-                "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js")
-                .Include("~/Scripts/bootstrap.min.js");
-            bootstrapJs.CdnFallbackExpression = "window.jQuery.fn.modal";
-            bundles.Add(bootstrapJs);
+            bundles.Add(
+                new ScriptBundle("~/bundles/bootstrapJs",
+                "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js") { CdnFallbackExpression = "window.jQuery.fn.modal" }
+                .Include("~/Scripts/bootstrap.min.js"));
 
-            var respondJs = new ScriptBundle("~/bundles/respondJs",
-                "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js")
-                .Include("~/Scripts/respond.min.js");
-            respondJs.CdnFallbackExpression = "window.respond";
-            bundles.Add(respondJs);
+            bundles.Add(
+                new ScriptBundle("~/bundles/html5shiv",
+                "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") {CdnFallbackExpression = "window.html5"}
+                .Include("~/Scripts/html5shiv.min.js"));
+
+            bundles.Add(
+                new ScriptBundle("~/bundles/respondJs",
+                "//oss.maxcdn.com/respond/1.4.2/respond.min.js") {CdnFallbackExpression = "window.respond"}
+                .Include("~/Scripts/respond.min.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/js").Include(
