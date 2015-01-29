@@ -29,9 +29,13 @@ module Main {
             }, 1000);
             e.preventDefault();
         });
-
+        
         // Background image
-        $('#intro').backstretch(['../Content/images/bg1.jpg']);
+        var $intro = $('#intro');
+        if ($intro) {
+            $intro.backstretch([$intro.attr("data-backstretch-image")]);
+        } 
+        
 
         // Navbar
         var navbar = $('.navbar');

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using System.Web.UI;
 using ResumePortfolioWebSite.Extensions.IframeOptions;
 using ResumePortfolioWebSite.Models;
 using WebMarkupMin.Mvc.ActionFilters;
@@ -9,7 +10,7 @@ namespace ResumePortfolioWebSite.Controllers
     {
         [CompressContent]
         [MinifyHtml]
-        [OutputCache(Duration = 600)]
+        [OutputCache(VaryByParam = "*", Duration = 600, Location = OutputCacheLocation.Downstream)]
         [NoIFrame]
         public ActionResult Index()
         {

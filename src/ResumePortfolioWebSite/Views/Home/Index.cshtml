@@ -1,4 +1,5 @@
-﻿@model ResumePortfolioWebSite.Models.HomeModel
+﻿@using ResumePortfolioWebSite.Extensions
+@model ResumePortfolioWebSite.Models.HomeModel
 <div class="wrapper">
     <!-- Preloader -->
     <div id="preloader">
@@ -34,7 +35,7 @@
     </nav>
     <!-- Navigation end -->
     <!-- Intro section start -->
-    <section id="intro" class="section">
+    <section id="intro" class="section" data-backstretch-image="@FingerPrintUrl.Create("Content/images/backstretch_image.jpg")">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -97,7 +98,7 @@
                     </p>
                 </div>
                 <div class="col-md-3 col-sm-6 hidden-xs wow bounceInLeft">
-                    <img class="avatar" src="~/Content/images/personal_photo.jpg" alt="">
+                    <img class="avatar" src="@FingerPrintUrl.Create("Content/images/personal_photo.jpg")" alt="Personal photo">
                     <div class="profile-widget">
                         <ul class="widget-social">
                             <li><a href="https://github.com/Ky7m"><i class="fa fa-github-alt"></i></a></li>
@@ -467,16 +468,16 @@
                 <div class="col-md-9 wow bounceInRight">
                     <div id="owl-certifications" class="owl-carousel">
                         <div class="owl-item">
-                            <img src="~/Content/images/MCP_2013.png" alt="MCPS: Microsoft Certified Professional">
+                            <img src="@FingerPrintUrl.Create("Content/images/MCP_2013.png")" alt="MCPS: Microsoft Certified Professional">
                         </div>
                         <div class="owl-item">
-                            <img src="~/Content/images/MCSD_2013.png" alt="MCSD: Web Applications">
+                            <img src="@FingerPrintUrl.Create("Content/images/MCSD_2013.png")" alt="MCSD: Web Applications">
                         </div>
                         <div class="owl-item">
-                            <img src="~/Content/images/MS_2013_CSharp.png" alt="MS: Programming in C# Specialist">
+                            <img src="@FingerPrintUrl.Create("Content/images/MS_2013_CSharp.png")" alt="MS: Programming in C# Specialist">
                         </div>
                         <div class="owl-item">
-                            <img src="~/Content/images/MS_2013_JS_CSS_HTML.png" alt="MS: Programming in HTML5 with JavaScript and CSS3 Specialist">
+                            <img src="@FingerPrintUrl.Create("Content/images/MS_2013_JS_CSS_HTML.png")" alt="MS: Programming in HTML5 with JavaScript and CSS3 Specialist">
                         </div>
                     </div>
                 </div><!-- .col-md-9 -->

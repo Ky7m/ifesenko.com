@@ -126,6 +126,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\AnalyticsHelper.cs" />
+    <Compile Include="Extensions\FingerPrintUrl.cs" />
     <Compile Include="Extensions\IframeOptions\HttpHeaderAttribute.cs" />
     <Compile Include="Extensions\IframeOptions\IFrameAttribute.cs" />
     <Compile Include="Extensions\IframeOptions\NoIFrameAttribute.cs" />
@@ -149,14 +150,13 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\jquery.smooth.scroll.css" />
     <Content Include="Content\jquery.smooth.scroll.min.css" />
-    <Content Include="Content\images\bg1.jpg" />
+    <Content Include="Content\images\backstretch_image.jpg" />
     <Content Include="Content\images\personal_photo.jpg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\MCP_2013.png" />
     <Content Include="Content\images\MCSD_2013.png" />
     <Content Include="Content\images\MS_2013_CSharp.png" />
     <Content Include="Content\images\MS_2013_JS_CSS_HTML.png" />
-    <Content Include="Content\images\preloader.gif" />
     <Content Include="Content\images\smooth_scroll_arrow.png" />
     <Content Include="Content\OwlCarousel\AjaxLoader.gif" />
     <Content Include="Content\OwlCarousel\grabbing.png" />
