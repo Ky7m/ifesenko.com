@@ -27,14 +27,7 @@ var Main;
         var $intro = $('#intro');
         if ($intro) {
             var imgUrl = $intro.attr("data-backstretch-image");
-            $.ajax({
-                url: imgUrl,
-                type: "HEAD"
-            }).fail(function () {
-                imgUrl = $intro.attr("data-fallback-image");
-            }).always(function () {
-                $intro.backstretch([imgUrl]);
-            });
+            $intro.backstretch([imgUrl]);
         }
         // Navbar
         var navbar = $('.navbar');

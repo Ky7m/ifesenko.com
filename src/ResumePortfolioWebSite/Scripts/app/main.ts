@@ -34,14 +34,15 @@ module Main {
         var $intro = $('#intro');
         if ($intro) {
             var imgUrl = $intro.attr("data-backstretch-image");
-            $.ajax({
+            $intro.backstretch([imgUrl]);
+           /* $.ajax({
                 url: imgUrl,
                 type: "HEAD"
             }).fail(() => {
                 imgUrl = $intro.attr("data-fallback-image");
             }).always(() => {
                  $intro.backstretch([imgUrl]);
-            });
+            });*/
         } 
         
         // Navbar
