@@ -156,7 +156,7 @@
     <Content Include="Content\images\MCP_2013.png" />
     <Content Include="Content\images\MCSD_2013.png" />
     <Content Include="Content\images\MS_2013_CSharp.png" />
-    <Content Include="Content\images\MS_2013_JS_CSS_HTML.png" />
+    <Content Include="Content\images\MS_2013_Web.png" />
     <Content Include="Content\images\smooth_scroll_arrow.png" />
     <Content Include="Content\OwlCarousel\AjaxLoader.gif" />
     <Content Include="Content\OwlCarousel\grabbing.png" />
