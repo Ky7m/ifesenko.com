@@ -126,7 +126,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\AnalyticsHelper.cs" />
-    <Compile Include="Extensions\FingerPrintUrl.cs" />
+    <Compile Include="Extensions\CdnUrl.cs" />
     <Compile Include="Extensions\IframeOptions\HttpHeaderAttribute.cs" />
     <Compile Include="Extensions\IframeOptions\IFrameAttribute.cs" />
     <Compile Include="Extensions\IframeOptions\NoIFrameAttribute.cs" />

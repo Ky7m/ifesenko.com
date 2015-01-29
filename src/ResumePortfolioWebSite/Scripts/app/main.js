@@ -26,7 +26,15 @@ var Main;
         // Background image
         var $intro = $('#intro');
         if ($intro) {
-            $intro.backstretch([$intro.attr("data-backstretch-image")]);
+            var imgUrl = $intro.attr("data-backstretch-image");
+            $.ajax({
+                url: imgUrl,
+                type: "HEAD"
+            }).fail(function () {
+                imgUrl = $intro.attr("data-fallback-image");
+            }).always(function () {
+                $intro.backstretch([imgUrl]);
+            });
         }
         // Navbar
         var navbar = $('.navbar');

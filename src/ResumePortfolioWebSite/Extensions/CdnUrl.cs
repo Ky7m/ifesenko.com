@@ -8,16 +8,16 @@ using System.Web.Optimization;
 
 namespace ResumePortfolioWebSite.Extensions
 {
-    public class FingerPrintUrl
+    public class CdnUrl
     {
-        public static string Create(string url)
+        public static string Content(string url)
         {
             if (String.IsNullOrWhiteSpace(url))
             {
                 return String.Empty;
             }
 
-            string absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url));
+            string absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url).Replace(@"\", @"/"));
             if (!BundleTable.EnableOptimizations)
             {
                 return absolutepath;
@@ -32,7 +32,7 @@ namespace ResumePortfolioWebSite.Extensions
                 }
 
                 var date = File.GetLastWriteTime(physicalPath);
-                var result = ConfigurationManager.AppSettings.Get("CdnUrl") + "/" + url + "?v=" + date.Ticks;
+                var result = Path.Combine(ConfigurationManager.AppSettings.Get("CdnUrl"), url).Replace(@"\",@"/");// + "?v=" + date.Ticks;
 
                 HttpRuntime.Cache.Insert(url, result, new CacheDependency(physicalPath));
             }
