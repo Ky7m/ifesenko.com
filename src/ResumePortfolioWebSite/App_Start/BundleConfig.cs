@@ -11,7 +11,7 @@ namespace ResumePortfolioWebSite
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
             var jquery = new ScriptBundle("~/bundles/jquery",
-                "//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js")
+                "//code.jquery.com/jquery-2.1.3.min.js")
                 .Include("~/Scripts/jquery-{version}.js");
             jquery.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jquery);
