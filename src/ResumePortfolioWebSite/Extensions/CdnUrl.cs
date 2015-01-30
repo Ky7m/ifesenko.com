@@ -17,6 +17,8 @@ namespace ResumePortfolioWebSite.Extensions
                 return String.Empty;
             }
 
+	        url = url.ToLowerInvariant();
+
             string absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url).Replace(@"\", @"/"));
             if (!BundleTable.EnableOptimizations)
             {
@@ -33,6 +35,8 @@ namespace ResumePortfolioWebSite.Extensions
 
                 var date = File.GetLastWriteTime(physicalPath);
 	            var result = Path.Combine(ConfigurationManager.AppSettings.Get("CdnUrl"), url).Replace(@"\", @"/") + "?v=" + date.Ticks;
+
+	            result = result.ToLowerInvariant(); // azure cdn is case sensitive
 
                 HttpRuntime.Cache.Insert(url, result, new CacheDependency(physicalPath));
             }
