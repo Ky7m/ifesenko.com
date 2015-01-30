@@ -7,7 +7,7 @@ module Main {
     // Preloader
     $(window).load(() => {
         $('#status').fadeOut();
-        $('#preloader').delay(150).fadeOut('slow');
+        $('#preloader').fadeOut('slow');
     });
 
     $(document).ready(() => {
