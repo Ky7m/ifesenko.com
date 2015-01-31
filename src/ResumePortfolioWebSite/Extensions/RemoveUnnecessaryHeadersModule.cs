@@ -1,4 +1,5 @@
 ﻿using System.Web;
+using WebGrease.Css.Extensions;
 
 namespace ResumePortfolioWebSite.Extensions
 {
@@ -13,7 +14,11 @@ namespace ResumePortfolioWebSite.Extensions
                 var app = sender as HttpApplication;
                 if (app != null && app.Context != null)
                 {
-                    app.Context.Response.Headers.Remove("Server");
+                    new[]
+                    {
+                        "Server",
+                        "X-HTML-Minification-Powered-By"
+                    }.ForEach(app.Context.Response.Headers.Remove);
                 }
             };
         }
