@@ -8,7 +8,7 @@ using System.Web.Optimization;
 
 namespace ResumePortfolioWebSite.Extensions
 {
-    public class CdnUrl
+    public static class CdnUrl
     {
         public static string Content(string url)
         {
@@ -17,7 +17,7 @@ namespace ResumePortfolioWebSite.Extensions
                 return String.Empty;
             }
 
-	        url = url.ToLowerInvariant();
+            url = url.ToLowerInvariant().Replace("~",string.Empty);
 
             string absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url).Replace(@"\", @"/"));
             if (!BundleTable.EnableOptimizations)
@@ -34,9 +34,9 @@ namespace ResumePortfolioWebSite.Extensions
                 }
 
                 var date = File.GetLastWriteTime(physicalPath);
-	            var result = Path.Combine(ConfigurationManager.AppSettings.Get("CdnUrl"), url).Replace(@"\", @"/") + "?v=" + date.Ticks;
+                var result = Path.Combine(ConfigurationManager.AppSettings.Get("CdnUrl"), url).Replace(@"\", @"/") + "?v=" + date.Ticks;
 
-	            result = result.ToLowerInvariant(); // azure cdn is case sensitive
+                result = result.ToLowerInvariant(); // azure cdn is case sensitive
 
                 HttpRuntime.Cache.Insert(url, result, new CacheDependency(physicalPath));
             }
