@@ -1,4 +1,6 @@
-/// <reference path="../typings/jquery/jquery.d.ts" />
+/// <reference path="../typings/knockout/knockout.d.ts" />
+/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
+/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
 var MainModule;
 (function (MainModule) {
     // Preloader
@@ -7,10 +9,6 @@ var MainModule;
         $("#preloader").fadeOut("slow");
     });
     $(function () {
-        $("body").scrollspy({
-            target: ".navbar-custom",
-            offset: 50
-        });
         $(document).on("click", ".navbar-collapse.in", function (e) {
             if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
                 $(this).collapse("hide");
@@ -23,12 +21,6 @@ var MainModule;
             }, 1000);
             e.preventDefault();
         });
-        // Background image
-        var $intro = $("#intro");
-        if ($intro) {
-            var imgUrl = $intro.attr("data-backstretch-image");
-            $intro.backstretch([imgUrl]);
-        }
         // Navbar
         var navbar = $(".navbar");
         var navHeight = navbar.height();
@@ -52,35 +44,27 @@ var MainModule;
             }
         });
         // Count to
-        $("#stats").waypoint(function () {
-            $(".timer").each(function () {
-                var counter = $(this).attr("data-count");
-                $(this).delay(6000).countTo({
-                    from: 0,
-                    to: counter,
-                    speed: 3000,
-                    refreshInterval: 50
+        var waypoint = new Waypoint({
+            element: document.getElementById('stats'),
+            handler: function (direction) {
+                $(".timer").each(function () {
+                    var counter = $(this).attr("data-count");
+                    $(this).delay(6000).countTo({
+                        from: 0,
+                        to: counter,
+                        speed: 3000,
+                        refreshInterval: 50
+                    });
                 });
-            });
-        }, { offset: "70%", triggerOnce: true });
+            },
+            offset: '70%',
+            triggerOnce: true
+        });
         // WOW Animation When You Scroll
-        var wow = new WOW({
+        new WOW({
             mobile: false
-        });
-        wow.init();
-        // Owl slider
-        $("#owl-certifications").owlCarousel({
-            items: 4,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            autoPlay: 5000
-        });
-        // Rotate
-        $(".rotate").textrotator({
-            animation: "dissolve",
-            separator: "|",
-            speed: 3000
-        });
+        }).init();
+        ko.applyBindings();
     });
 })(MainModule || (MainModule = {}));
 //# sourceMappingURL=main.js.map

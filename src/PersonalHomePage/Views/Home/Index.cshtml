@@ -1,6 +1,5 @@
 ﻿@model HomeModel
 <div class="wrapper">
-    <!-- Preloader -->
     <div id="preloader">
         <div id="status">
             <div class="status-mes">
@@ -34,15 +33,14 @@
     </nav>
     <!-- Navigation end -->
     <section id="intro" class="section"
-             data-backstretch-image="@CdnUrl.Content("content/images/background.jpg")"
-             data-fallback-image="@Url.Content("~/content/images/background.jpg")">
+             data-bind="backstretch: ['@CdnUrl.Content("content/images/background.jpg")']">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="hello wow bounceInDown">
                         <h1>Hi, I'm Igor Fesenko</h1>
                         <h3>
-                            <span class="rotate">Software Design Engineer. | Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
+                            <span class="remove-shadow" data-bind="textrotator: {animation:'dissolve', separator:'|', speed:3000}">Software Design Engineer. | Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
                         </h3>
                     </div>
                     <a href="#profile">

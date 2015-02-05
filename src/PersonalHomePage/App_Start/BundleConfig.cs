@@ -55,6 +55,9 @@ namespace PersonalHomePage
                         "~/Scripts/jquery.smooth.scroll-{version}.js",
                         "~/Scripts/wow.js",
                         "~/Scripts/jquery.backstretch.js",
+                        "~/Scripts/knockout-{version}.js",
+
+                        "~/Scripts/bindingHandlers/*.js",
 
                         "~/Scripts/app/*.js"));
 
