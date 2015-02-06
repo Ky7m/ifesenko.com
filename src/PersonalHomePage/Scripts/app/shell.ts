@@ -1,16 +1,16 @@
 ﻿/// <reference path="../typings/knockout/knockout.d.ts" />
 /// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
 /// <reference path="../typings/bootstrap/bootstrap.d.ts" />
+module PersonalHomePage.Shell {
+    import SkillItem = Models.SkillItem;
+    import Certification = Models.Certification;
+    import HomeViewModel = ViewModels.HomeViewModel;
+    import Preloader = Helpers.Preloader;
 
-module MainModule {
     declare var WOW: any;
     declare var Waypoint: any;
-    
-    // Preloader
-    $(window).load(() => {
-        $("#status").fadeOut();
-        $("#preloader").fadeOut("slow");
-    });
+
+    new Preloader("#status", "#preloader").attach(window);
 
     $(() => {
         $(document).on("click", ".navbar-collapse.in", function (e) {
