@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,4 +16,7 @@
     @AnalyticsHelper.GetGoogleAnalyticsScript()
     @AnalyticsHelper.GetAppInsightsScript()
     @AnalyticsHelper.GetYandexMetricsScript()
+    <script async type="text/javascript">
+        window.options={cdnUrl:'@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant()};
+    </script>
 </head>

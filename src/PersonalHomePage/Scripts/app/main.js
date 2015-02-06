@@ -57,14 +57,29 @@ var MainModule;
                     });
                 });
             },
-            offset: '70%',
+            offset: "70%",
             triggerOnce: true
         });
         // WOW Animation When You Scroll
         new WOW({
             mobile: false
         }).init();
-        ko.applyBindings();
+        var skillItems = [];
+        skillItems.push(new SkillItem("Web Applications and Sites", 4));
+        skillItems.push(new SkillItem("Web Services and SOA", 4));
+        skillItems.push(new SkillItem("Security and Identity", 4));
+        skillItems.push(new SkillItem("Data Access, Integration, and Databases", 3));
+        skillItems.push(new SkillItem("Desktop Applications", 3));
+        skillItems.push(new SkillItem("Cloud Computing", 3));
+        skillItems.push(new SkillItem("Mobile Client Applications", 3));
+        skillItems.push(new SkillItem("Big Data", 2));
+        var certifications = [];
+        certifications.push(new Certification("content/images/mcp.png", "MCPS: Microsoft Certified Professional"));
+        certifications.push(new Certification("content/images/mcsd.png", "MCSD: Web Applications"));
+        certifications.push(new Certification("content/images/ms_csharp.png", "MS: Programming in C# Specialist"));
+        certifications.push(new Certification("content/images/ms_web.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
+        var homeViewModel = new HomeViewModel(certifications, skillItems);
+        ko.applyBindings(homeViewModel);
     });
 })(MainModule || (MainModule = {}));
 //# sourceMappingURL=main.js.map

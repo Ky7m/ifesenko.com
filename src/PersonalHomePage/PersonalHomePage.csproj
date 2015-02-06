@@ -281,7 +281,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\certification.ts" />
+    <TypeScriptCompile Include="Scripts\app\baseContentItem.ts" />
+    <TypeScriptCompile Include="Scripts\app\homeViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\main.ts" />
+    <TypeScriptCompile Include="Scripts\app\skillItem.ts" />
+    <TypeScriptCompile Include="Scripts\app\skillRate.ts" />
     <TypeScriptCompile Include="Scripts\bindingHandlers\ko.backstretch.ts" />
     <TypeScriptCompile Include="Scripts\bindingHandlers\ko.owlCarousel.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />

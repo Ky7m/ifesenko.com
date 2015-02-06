@@ -4,28 +4,11 @@
             <h3>Certifications</h3>
         </div>
         <div class="col-md-9 wow bounceInRight">
-            <div data-bind="owlCarousel: {items: 4, slideSpeed: 300, paginationSpeed: 400, autoPlay: 5000}" class="owl-carousel">
+            <div data-bind="foreach: certifications, owlCarousel: {items: certifications.length, slideSpeed: 300, paginationSpeed: 400, autoPlay: 5000}" class="owl-carousel">
                 <div class="owl-item">
-                    <img src="@CdnUrl.Content("content/images/mcp.png")"
-                         alt="MCPS: Microsoft Certified Professional"
-                         onerror="this.onerror = null; this.src = '@Url.Content("~/content/images/mcp.png")';">
-                </div>
-                <div class="owl-item">
-                    <img src="@CdnUrl.Content("content/images/mcsd.png")"
-                         alt="MCSD: Web Applications"
-                         onerror="this.onerror = null; this.src = '@Url.Content("~/content/images/mcsd.png")';">
-                </div>
-                <div class="owl-item">
-                    <img src="@CdnUrl.Content("content/images/ms_csharp.png")"
-                         alt="MS: Programming in C# Specialist"
-                         onerror="this.onerror = null; this.src = '@Url.Content("~/content/images/ms_csharp.png")';">
-                </div>
-                <div class="owl-item">
-                    <img src="@CdnUrl.Content("Content/images/ms_web.png")"
-                         alt="MS: Programming in HTML5 with JavaScript and CSS3 Specialist"
-                         onerror="this.onerror = null; this.src = '@Url.Content("~/Content/images/ms_web.png")';">
+                    <img data-bind="attr: { src: logoSource, title: description, alt: description }, event:{ error: onError}">
                 </div>
             </div>
-        </div><!-- .col-md-9 -->
-    </div><!-- .row -->
-</div><!-- .container -->
+        </div>
+    </div>
+</div>
