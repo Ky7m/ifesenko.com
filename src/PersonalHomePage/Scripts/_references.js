@@ -18,3 +18,4 @@
 /// <reference path="html5shiv-printshiv.min.js" />
 /// <reference path="html5shiv.min.js" />
 /// <reference path="knockout-3.2.0.js" />
+/// <reference path="jquery.lazyloadxt.js" />
