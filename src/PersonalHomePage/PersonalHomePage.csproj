@@ -223,8 +223,6 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
-    <Content Include="Scripts\jquery.lazyloadxt.js" />
-    <Content Include="Scripts\jquery.lazyloadxt.min.js" />
     <Content Include="Scripts\knockout-3.2.0.debug.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
     <Content Include="yandex_54eed4dda67262be.txt" />

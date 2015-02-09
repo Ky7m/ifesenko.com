@@ -6,7 +6,7 @@
         <div class="col-md-9 wow bounceInRight">
             <div data-bind="foreach: certifications, owlCarousel: {items: certifications.length, slideSpeed: 300, paginationSpeed: 400, autoPlay: 5000}" class="owl-carousel">
                 <div class="owl-item">
-                    <img data-bind="attr: { 'data-src': logoSource, src:'', title: description, alt: description }, event:{ error: onError}">
+                    <img data-bind="attr: { 'src': logoSource, title: description, alt: description }, event:{ error: onError}">
                 </div>
             </div>
         </div>

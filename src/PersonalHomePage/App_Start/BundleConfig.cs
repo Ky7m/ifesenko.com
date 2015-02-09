@@ -56,7 +56,6 @@ namespace PersonalHomePage
                         "~/Scripts/wow.js",
                         "~/Scripts/jquery.backstretch.js",
                         "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/jquery.lazyloadxt.js",
 
                         "~/Scripts/bindingHandlers/*.js",
 
