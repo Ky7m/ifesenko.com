@@ -237,6 +237,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.2.0.debug.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="sitemap.xml" />
     <Content Include="yandex_54eed4dda67262be.txt" />
     <Content Include="ApplicationInsights.config" />
     <None Include="Scripts\jquery-2.1.3-vsdoc.js" />
