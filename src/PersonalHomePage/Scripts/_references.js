@@ -18,3 +18,4 @@
 /// <reference path="jquery.validate.unobtrusive.min.js" />
 /// <reference path="npm.js" />
 /// <reference path="bootstrap.min.js" />
+/// <reference path="webfontloader.js" />

@@ -8,9 +8,17 @@ module PersonalHomePage.Shell {
     import Preloader = Helpers.Preloader;
 
     declare var WOW: any;
+    declare var WebFont: any;
     declare var Waypoint: any;
 
     new Preloader("#status", "#preloader").attach(window);
+
+	WebFont.load({
+		google: {
+			families: ["Montserrat:400,700", "Raleway:300,400,700"]
+		},
+		timeout: 3000
+	});
 
     $(() => {
         $(document).on("click", ".navbar-collapse.in", function (e) {
