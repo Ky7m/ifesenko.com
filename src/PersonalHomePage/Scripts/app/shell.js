@@ -54,7 +54,7 @@ var PersonalHomePage;
             // Count to
             new Waypoint({
                 element: document.getElementById('stats'),
-                handler: function () {
+                handler: function (direction) {
                     $(".timer").each(function () {
                         var counter = $(this).attr("data-count");
                         $(this).delay(6000).countTo({

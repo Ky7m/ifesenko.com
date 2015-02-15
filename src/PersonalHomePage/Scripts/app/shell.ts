@@ -64,7 +64,7 @@ module PersonalHomePage.Shell {
         // Count to
         new Waypoint({
             element: document.getElementById('stats'),
-            handler: () => {
+            handler: direction => {
                 $(".timer").each(function() {
                     var counter = $(this).attr("data-count");
                     $(this).delay(6000).countTo({
