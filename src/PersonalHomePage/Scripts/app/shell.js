@@ -10,12 +10,6 @@ var PersonalHomePage;
         var HomeViewModel = PersonalHomePage.ViewModels.HomeViewModel;
         var Preloader = PersonalHomePage.Helpers.Preloader;
         new Preloader("#status", "#preloader").attach(window);
-        WebFont.load({
-            google: {
-                families: ["Montserrat:400,700", "Raleway:300,400,700"]
-            },
-            timeout: 3000
-        });
         $(function () {
             $(document).on("click", ".navbar-collapse.in", function (e) {
                 if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
@@ -28,6 +22,12 @@ var PersonalHomePage;
                     scrollTop: $(anchor.attr("href")).offset().top
                 }, 1000);
                 e.preventDefault();
+            });
+            WebFont.load({
+                google: {
+                    families: ["Montserrat:400,700", "Raleway:300,400,700"]
+                },
+                timeout: 3000
             });
             // Navbar
             var navbar = $(".navbar");

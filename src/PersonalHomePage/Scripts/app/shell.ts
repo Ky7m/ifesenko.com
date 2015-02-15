@@ -13,13 +13,6 @@ module PersonalHomePage.Shell {
 
     new Preloader("#status", "#preloader").attach(window);
 
-	WebFont.load({
-		google: {
-			families: ["Montserrat:400,700", "Raleway:300,400,700"]
-		},
-		timeout: 3000
-	});
-
     $(() => {
         $(document).on("click", ".navbar-collapse.in", function (e) {
             if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
@@ -35,6 +28,13 @@ module PersonalHomePage.Shell {
             e.preventDefault();
         });
                
+		WebFont.load({
+			google: {
+				families: ["Montserrat:400,700", "Raleway:300,400,700"]
+			},
+			timeout: 3000
+		});
+
         // Navbar
         var navbar = $(".navbar");
         var navHeight = navbar.height();
