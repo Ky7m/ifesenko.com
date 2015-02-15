@@ -66,7 +66,7 @@ namespace PersonalHomePage
                         "~/Scripts/app/models/*.js",
                         "~/Scripts/app/viewModels/*.js",
 
-                        "~/Scripts/app/*.js"));
+                        "~/Scripts/app/shell.js"));
 
 
             bundles.Add(

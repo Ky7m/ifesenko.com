@@ -52,9 +52,9 @@ var PersonalHomePage;
                 }
             });
             // Count to
-            var waypoint = new Waypoint({
+            new Waypoint({
                 element: document.getElementById('stats'),
-                handler: function (direction) {
+                handler: function () {
                     $(".timer").each(function () {
                         var counter = $(this).attr("data-count");
                         $(this).delay(6000).countTo({
