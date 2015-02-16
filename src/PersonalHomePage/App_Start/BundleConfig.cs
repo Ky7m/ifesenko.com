@@ -48,6 +48,10 @@ namespace PersonalHomePage
                         "~/Scripts/app/shell.js"));
 
 
+            bundles.Add(new StyleBundle("~/bundles/font-awesome",
+              "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+              .IncludeFallback("~/Content/font-awesome.min.css", "fa", "font-family", "FontAwesome"));
+
             bundles.Add(
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
