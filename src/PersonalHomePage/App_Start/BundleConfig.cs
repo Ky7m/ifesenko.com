@@ -56,7 +56,6 @@ namespace PersonalHomePage
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
                         "~/Content/bootstrap.min.css",
-                        "~/Content/font-awesome.min.css",
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",
