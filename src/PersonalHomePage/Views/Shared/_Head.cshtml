@@ -19,7 +19,7 @@
     @AnalyticsHelper.GetGoogleAnalyticsScript()
     @AnalyticsHelper.GetAppInsightsScript()
     @AnalyticsHelper.GetYandexMetricsScript()
-    <script async type="text/javascript">
+    <script type="text/javascript">
         window.options={cdnUrl:'@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant()};
     </script>
 </head>
