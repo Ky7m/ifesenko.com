@@ -82,7 +82,6 @@ var PersonalHomePage;
             skillItems.push(new SkillItem("Mobile Client Applications", 3));
             skillItems.push(new SkillItem("Big Data", 2));
             var certifications = [];
-            certifications.push(new Certification("content/images/mcp.png", "MCPS: Microsoft Certified Professional"));
             certifications.push(new Certification("content/images/mcsd.png", "MCSD: Web Applications"));
             certifications.push(new Certification("content/images/ms_csharp.png", "MS: Programming in C# Specialist"));
             certifications.push(new Certification("content/images/ms_web.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
