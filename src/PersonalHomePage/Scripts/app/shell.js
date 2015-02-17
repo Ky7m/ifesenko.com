@@ -32,24 +32,16 @@ var PersonalHomePage;
             // Navbar
             var navbar = $(".navbar");
             var navHeight = navbar.height();
-            $(window).scroll(function () {
-                if ($(this).scrollTop() >= navHeight) {
-                    navbar.addClass("navbar-color");
-                }
-                else {
-                    navbar.removeClass("navbar-color");
-                }
-            });
             if ($(window).width() <= 767) {
                 navbar.addClass("custom-collapse");
             }
+            $(window).scroll(function () {
+                var state = $(this).scrollTop() >= navHeight;
+                navbar.toggleClass("navbar-color", state);
+            });
             $(window).resize(function () {
-                if ($(this).width() <= 767) {
-                    navbar.addClass("custom-collapse");
-                }
-                else {
-                    navbar.removeClass("custom-collapse");
-                }
+                var state = $(this).width() <= 767;
+                navbar.toggleClass("custom-collapse", state);
             });
             // Count to
             new Waypoint({
