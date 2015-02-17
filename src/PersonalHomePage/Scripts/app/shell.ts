@@ -97,9 +97,9 @@ module PersonalHomePage.Shell {
         skillItems.push(new SkillItem("Big Data", 2));
 
         var certifications: Array<Certification> = [];
-        certifications.push(new Certification("content/images/mcsd.png", "MCSD: Web Applications"));
-        certifications.push(new Certification("content/images/ms_csharp.png", "MS: Programming in C# Specialist"));
-        certifications.push(new Certification("content/images/ms_web.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
+        certifications.push(new Certification("content/images/mcsd_webapp.png", "MCSD: Web Applications"));
+        certifications.push(new Certification("content/images/special_prog_csharp.png", "MS: Programming in C# Specialist"));
+        certifications.push(new Certification("content/images/special_prog_html5.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
 
         var homeViewModel = new HomeViewModel(certifications, skillItems);
 
