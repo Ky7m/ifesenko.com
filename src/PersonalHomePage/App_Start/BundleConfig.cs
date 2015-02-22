@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
+using ChameleonForms;
+using ChameleonForms.Templates.TwitterBootstrap3;
 using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
@@ -9,6 +11,11 @@ namespace PersonalHomePage
         public static void RegisterBundles(BundleCollection bundles)
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
+
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/chameleon-bootstrapcss").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/chameleonforms-twitterbootstrap.css"
+            ));
 
             bundles.UseCdn = true;
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
@@ -26,7 +33,8 @@ namespace PersonalHomePage
                 new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) { CdnFallbackExpression = "window.jQuery" }
                     .Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/jquery.validate.unobtrusive.twitterbootstrap.js",
                         "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
                         "~/Scripts/jquery.waypoints.js",
@@ -55,7 +63,8 @@ namespace PersonalHomePage
             bundles.Add(
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
-                        "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap.css",
+                        "~/Content/chameleonforms-twitterbootstrap.css",
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",
