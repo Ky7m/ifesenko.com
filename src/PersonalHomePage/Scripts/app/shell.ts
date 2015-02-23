@@ -1,7 +1,4 @@
-﻿/// <reference path="../typings/knockout/knockout.d.ts" />
-/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
-/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
-module PersonalHomePage.Shell {
+﻿module PersonalHomePage.Shell {
     import SkillItem = Models.SkillItem;
     import Certification = Models.Certification;
     import SocialProfile = Models.SocialProfile;
@@ -99,14 +96,6 @@ module PersonalHomePage.Shell {
         ];
 
         var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
-
-
-        WebFont.load({
-            google: {
-                families: ["Montserrat:400,700", "Raleway:300,400,700"]
-            },
-            timeout: 3000
-        });
 
         ko.applyBindings(homeViewModel);
     });

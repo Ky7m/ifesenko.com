@@ -1,6 +1,3 @@
-/// <reference path="../typings/knockout/knockout.d.ts" />
-/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
-/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var Shell;
@@ -82,12 +79,6 @@ var PersonalHomePage;
                 new SocialProfile("https://tech.pro/igorfesenko", "fa-user-md")
             ];
             var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
-            WebFont.load({
-                google: {
-                    families: ["Montserrat:400,700", "Raleway:300,400,700"]
-                },
-                timeout: 3000
-            });
             ko.applyBindings(homeViewModel);
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
