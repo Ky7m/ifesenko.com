@@ -20,3 +20,4 @@
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery.validate.unobtrusive.twitterbootstrap.js" />
 /// <reference path="jquery.validate.unobtrusive.chameleon.js" />
+/// <reference path="toastr.min.js" />

@@ -31,6 +31,9 @@ namespace PersonalHomePage
                 new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) { CdnFallbackExpression = "window.jQuery" }
                     .Include(
                         "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.validate.unobtrusive.chameleon.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/jquery.validate.unobtrusive.twitterbootstrap.js",                        
                         "~/Scripts/jquery.countTo.js",
@@ -41,6 +44,7 @@ namespace PersonalHomePage
                         "~/Scripts/wow.js",
                         "~/Scripts/jquery.backstretch.js",
                         "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/toastr.js",
 
                         "~/Scripts/bindingHandlers/*.js",
 
@@ -68,6 +72,7 @@ namespace PersonalHomePage
                         "~/Content/OwlCarousel/owl.theme.css",
                         "~/Content/OwlCarousel/owl.transitions.css",
                         "~/Content/simpletextrotator.css",
+                        "~/Content/toastr.css",
                         "~/Content/site.css"));
         }
     }
