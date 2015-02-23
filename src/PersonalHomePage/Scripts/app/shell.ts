@@ -1,12 +1,11 @@
-﻿/// <reference path="../typings/knockout/knockout.d.ts" />
-/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
-/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
-module PersonalHomePage.Shell {
+﻿module PersonalHomePage.Shell {
     import SkillItem = Models.SkillItem;
     import Certification = Models.Certification;
+    import SocialProfile = Models.SocialProfile;
+
     import HomeViewModel = ViewModels.HomeViewModel;
     import Preloader = Helpers.Preloader;
-
+    
     declare var WOW: any;
     declare var WebFont: any;
     declare var Waypoint: any;
@@ -27,31 +26,24 @@ module PersonalHomePage.Shell {
             }, 1000);
             e.preventDefault();
         });
-               
-		WebFont.load({
-			google: {
-				families: ["Montserrat:400,700", "Raleway:300,400,700"]
-			},
-			timeout: 3000
-		});
 
         // Navbar
         var navbar = $(".navbar");
         var navHeight = navbar.height();
 
-		if ($(window).width() <= 767) {
+        if ($(window).width() <= 767) {
             navbar.addClass("custom-collapse");
         }
 
         $(window).scroll(function () {
-			var state = $(this).scrollTop() >= navHeight;
-			navbar.toggleClass("navbar-color",state);
+            var state = $(this).scrollTop() >= navHeight;
+            navbar.toggleClass("navbar-color",state);
         });
 
-	    $(window).resize(function() {
-		    var state = $(this).width() <= 767;
-		    navbar.toggleClass("custom-collapse", state);
-	    });
+        $(window).resize(function() {
+            var state = $(this).width() <= 767;
+            navbar.toggleClass("custom-collapse", state);
+        });
 
         // Count to
         new Waypoint({
@@ -78,22 +70,32 @@ module PersonalHomePage.Shell {
         }).init();
 
 
-        var skillItems: Array<SkillItem> = [];
-        skillItems.push(new SkillItem("Web Applications and Sites", 4));
-        skillItems.push(new SkillItem("Web Services and SOA", 4));
-        skillItems.push(new SkillItem("Security and Identity", 4));
-        skillItems.push(new SkillItem("Data Access, Integration, and Databases", 3));
-        skillItems.push(new SkillItem("Desktop Applications", 3));
-        skillItems.push(new SkillItem("Cloud Computing", 3));
-        skillItems.push(new SkillItem("Mobile Client Applications", 3));
-        skillItems.push(new SkillItem("Big Data", 2));
+        var skillItems: Array<SkillItem> = [
+            new SkillItem("Web Applications and Sites", 4),
+            new SkillItem("Web Services and SOA", 4),
+            new SkillItem("Security and Identity", 4),
+            new SkillItem("Data Access, Integration, and Databases", 3),
+            new SkillItem("Desktop Applications", 3),
+            new SkillItem("Cloud Computing", 3),
+            new SkillItem("Mobile Client Applications", 3),
+            new SkillItem("Big Data", 2)
+        ];
 
-        var certifications: Array<Certification> = [];
-        certifications.push(new Certification("content/images/mcsd_webapp.png", "MCSD: Web Applications"));
-        certifications.push(new Certification("content/images/special_prog_csharp.png", "MS: Programming in C# Specialist"));
-        certifications.push(new Certification("content/images/special_prog_html5.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
+        var certifications: Array<Certification> = [
+            new Certification("content/images/mcsd_webapp.png", "MCSD: Web Applications"),
+            new Certification("content/images/special_prog_csharp.png", "MS: Programming in C# Specialist"),
+            new Certification("content/images/special_prog_html5.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist")
+        ];
 
-        var homeViewModel = new HomeViewModel(certifications, skillItems);
+        var socialProfiles: Array<SocialProfile> = [
+            new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
+            new SocialProfile("https://bitbucket.org/Ky7m", "fa-bitbucket"),
+            new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
+            new SocialProfile("https://twitter.com/ky7m", "fa-twitter"),
+            new SocialProfile("https://tech.pro/igorfesenko", "fa-user-md")
+        ];
+
+        var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
 
         ko.applyBindings(homeViewModel);
     });

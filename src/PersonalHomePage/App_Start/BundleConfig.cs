@@ -1,7 +1,5 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
-using ChameleonForms;
-using ChameleonForms.Templates.TwitterBootstrap3;
 using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
@@ -34,7 +32,7 @@ namespace PersonalHomePage
                     .Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/jquery.validate.unobtrusive.twitterbootstrap.js",
+                        "~/Scripts/jquery.validate.unobtrusive.twitterbootstrap.js",                        
                         "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
                         "~/Scripts/jquery.waypoints.js",
@@ -43,7 +41,6 @@ namespace PersonalHomePage
                         "~/Scripts/wow.js",
                         "~/Scripts/jquery.backstretch.js",
                         "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/webfontloader.js",
 
                         "~/Scripts/bindingHandlers/*.js",
 
@@ -64,7 +61,7 @@ namespace PersonalHomePage
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
                         "~/Content/bootstrap.css",
-                        "~/Content/chameleonforms-twitterbootstrap.css",
+                        "~/Content/chameleonforms-twitterbootstrap.css",                        
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",
