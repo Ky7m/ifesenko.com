@@ -29,13 +29,6 @@ module PersonalHomePage.Shell {
             }, 1000);
             e.preventDefault();
         });
-               
-        WebFont.load({
-            google: {
-                families: ["Montserrat:400,700", "Raleway:300,400,700"]
-            },
-            timeout: 3000
-        });
 
         // Navbar
         var navbar = $(".navbar");
@@ -106,6 +99,14 @@ module PersonalHomePage.Shell {
         ];
 
         var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
+
+
+        WebFont.load({
+            google: {
+                families: ["Montserrat:400,700", "Raleway:300,400,700"]
+            },
+            timeout: 3000
+        });
 
         ko.applyBindings(homeViewModel);
     });
