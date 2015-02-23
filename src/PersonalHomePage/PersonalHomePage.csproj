@@ -299,6 +299,7 @@
     <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
     <TypeScriptCompile Include="Scripts\app\models\certification.ts" />
     <TypeScriptCompile Include="Scripts\app\base\baseContentItem.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\socialProfile.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\homeViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
     <TypeScriptCompile Include="Scripts\app\models\skillItem.ts" />

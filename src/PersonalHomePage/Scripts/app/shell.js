@@ -7,6 +7,7 @@ var PersonalHomePage;
     (function (Shell) {
         var SkillItem = PersonalHomePage.Models.SkillItem;
         var Certification = PersonalHomePage.Models.Certification;
+        var SocialProfile = PersonalHomePage.Models.SocialProfile;
         var HomeViewModel = PersonalHomePage.ViewModels.HomeViewModel;
         var Preloader = PersonalHomePage.Helpers.Preloader;
         new Preloader("#status", "#preloader").attach(window);
@@ -64,20 +65,29 @@ var PersonalHomePage;
             new WOW({
                 mobile: false
             }).init();
-            var skillItems = [];
-            skillItems.push(new SkillItem("Web Applications and Sites", 4));
-            skillItems.push(new SkillItem("Web Services and SOA", 4));
-            skillItems.push(new SkillItem("Security and Identity", 4));
-            skillItems.push(new SkillItem("Data Access, Integration, and Databases", 3));
-            skillItems.push(new SkillItem("Desktop Applications", 3));
-            skillItems.push(new SkillItem("Cloud Computing", 3));
-            skillItems.push(new SkillItem("Mobile Client Applications", 3));
-            skillItems.push(new SkillItem("Big Data", 2));
-            var certifications = [];
-            certifications.push(new Certification("content/images/mcsd_webapp.png", "MCSD: Web Applications"));
-            certifications.push(new Certification("content/images/special_prog_csharp.png", "MS: Programming in C# Specialist"));
-            certifications.push(new Certification("content/images/special_prog_html5.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist"));
-            var homeViewModel = new HomeViewModel(certifications, skillItems);
+            var skillItems = [
+                new SkillItem("Web Applications and Sites", 4),
+                new SkillItem("Web Services and SOA", 4),
+                new SkillItem("Security and Identity", 4),
+                new SkillItem("Data Access, Integration, and Databases", 3),
+                new SkillItem("Desktop Applications", 3),
+                new SkillItem("Cloud Computing", 3),
+                new SkillItem("Mobile Client Applications", 3),
+                new SkillItem("Big Data", 2)
+            ];
+            var certifications = [
+                new Certification("content/images/mcsd_webapp.png", "MCSD: Web Applications"),
+                new Certification("content/images/special_prog_csharp.png", "MS: Programming in C# Specialist"),
+                new Certification("content/images/special_prog_html5.png", "MS: Programming in HTML5 with JavaScript and CSS3 Specialist")
+            ];
+            var socialProfiles = [
+                new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
+                new SocialProfile("https://bitbucket.org/Ky7m", "fa-bitbucket"),
+                new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
+                new SocialProfile("https://twitter.com/ky7m", "fa-twitter"),
+                new SocialProfile("https://tech.pro/igorfesenko", "fa-user-md")
+            ];
+            var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
             ko.applyBindings(homeViewModel);
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
