@@ -14,11 +14,11 @@ namespace PersonalHomePage.Services
         {
             var myMessage = new SendGridMessage();
 
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new MailAddress("noreply@ifesenko.com", "No reply service");
-            myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
+            myMessage.AddTo("igor.aka.ky7m@gmail.com");
+            myMessage.From = new MailAddress(message.Email);
+            myMessage.Subject = "Contact from personal site";
+            myMessage.Text = message.YourMessage;
+            myMessage.Html = message.YourMessage;
 
             var credentials = new NetworkCredential(ConfigurationManager.AppSettings["emailService:Account"],
                                                     ConfigurationManager.AppSettings["emailService:Password"]);
@@ -26,7 +26,6 @@ namespace PersonalHomePage.Services
             // Create a Web transport for sending email.
             var transportWeb = new Web(credentials);
             await transportWeb.DeliverAsync(myMessage);
-
         }
     }
 }

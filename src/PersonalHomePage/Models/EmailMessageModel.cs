@@ -1,9 +1,16 @@
-﻿namespace PersonalHomePage.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PersonalHomePage.Models
 {
     public class EmailMessageModel
     {
-        public string Destination { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
+        [Required]
+        public string Name { get; set; }
+
+        [Required, DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
+
+        [Required]
+        public string YourMessage { get; set; }
     }
 }

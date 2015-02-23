@@ -70,4 +70,7 @@
     <section id="certifications" class="callout">
         @{Html.RenderPartial("Sections/Certifications");}
     </section>
+    <section id="contact" class="section">
+        @{Html.RenderPartial("Sections/Contact", new EmailMessageModel());}
+    </section>
 </div>

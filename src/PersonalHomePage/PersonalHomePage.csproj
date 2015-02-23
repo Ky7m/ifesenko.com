@@ -236,7 +236,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="humans.txt" />
     <Content Include="loaderio-652773ddab0fe23402da19db423d9acf.txt" />
     <Content Include="robots.txt" />
@@ -317,6 +317,7 @@
     <Content Include="Views\Home\Sections\Services.cshtml" />
     <Content Include="Views\Home\Sections\Resume.cshtml" />
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
+    <Content Include="Views\Home\Sections\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

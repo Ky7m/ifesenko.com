@@ -74,8 +74,9 @@ namespace PersonalHomePage
         private static void RegisterChameleonFormsComponents()
         {
             FormTemplate.Default = new TwitterBootstrapFormTemplate();
-            ModelBinders.Binders.Add(typeof (DateTime), new DateTimeModelBinder());
-            ModelBinders.Binders.Add(typeof (DateTime?), new DateTimeModelBinder());
+            HumanizedLabels.Register();
+            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
+            ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
         }
     }
 }

@@ -664,25 +664,8 @@ h3 > .fa {
 }
 
 /* ---------------------------------------------- /*
- * Contact
+ * Footer
 /* ---------------------------------------------- */
-
-#contact {
-    background: #18191a;
-    color: #FFF;
-}
-
-#contact h1, #contact h2, #contact h3, #contact h4, #contact h5, #contact h6 {
-    color: #FFF;
-}
-
-#contact .form-control {
-    border: 0;
-}
-
-.ajax-response {
-    margin-top: 15px;
-}
 
 #footer {
     background: #141414;
@@ -739,7 +722,6 @@ h3 > .fa {
 /* ---------------------------------------------- */
 
 @media (max-width: 767px) {
-
     .wrapper {
         text-align: center;
     }
@@ -751,5 +733,4 @@ h3 > .fa {
     #stats .stat {
         margin: 0 0 20px;
     }
-
 }
