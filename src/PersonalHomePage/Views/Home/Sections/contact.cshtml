@@ -31,20 +31,6 @@
                     <i class="fa fa-bullhorn icon-before"></i> Send it
                 </button>
             </form>
-
-            @using (var f = Html.BeginChameleonForm())
-            {
-                using (var s = f.BeginSection())
-                {
-                    @s.FieldFor(m => m.Name)
-                    @s.FieldFor(m => m.Email)
-                    @s.FieldFor(m => m.YourMessage)
-                }
-                using (var n = f.BeginNavigation())
-                {
-                    @n.Submit("Send it")
-                }
-            }
         </div>
     </div>
 </div>

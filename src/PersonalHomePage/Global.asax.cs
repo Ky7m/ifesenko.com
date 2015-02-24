@@ -5,9 +5,6 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using ChameleonForms;
-using ChameleonForms.ModelBinders;
-using ChameleonForms.Templates.TwitterBootstrap3;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using PersonalHomePage.Extensions;
@@ -22,7 +19,6 @@ namespace PersonalHomePage
         {
             ConfigureViewEngines();
             ConfigureAntiForgeryTokens();
-            RegisterChameleonFormsComponents();
 
             TelemetryConfiguration.Active.ContextInitializers.Add(new TelemetryBuildVersionContextInitializer());
 
@@ -69,14 +65,6 @@ namespace PersonalHomePage
         private void WriteExceptionToApplicationInsights(Exception exception)
         {
             _telemetryClient.Value.TrackException(exception);
-        }
-
-        private static void RegisterChameleonFormsComponents()
-        {
-            FormTemplate.Default = new TwitterBootstrapFormTemplate();
-            HumanizedLabels.Register();
-            ModelBinders.Binders.Add(typeof(DateTime), new DateTimeModelBinder());
-            ModelBinders.Binders.Add(typeof(DateTime?), new DateTimeModelBinder());
         }
     }
 }

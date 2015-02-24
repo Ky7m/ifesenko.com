@@ -33,9 +33,7 @@ namespace PersonalHomePage
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery.validate.unobtrusive.js",
-                        "~/Scripts/jquery.validate.unobtrusive.chameleon.js",
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/jquery.validate.unobtrusive.twitterbootstrap.js",                        
+                        "~/Scripts/bootstrap.js",                       
                         "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
                         "~/Scripts/jquery.waypoints.js",
@@ -64,8 +62,7 @@ namespace PersonalHomePage
             bundles.Add(
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
-                        "~/Content/bootstrap.css",
-                        "~/Content/chameleonforms-twitterbootstrap.css",                        
+                        "~/Content/bootstrap.css",                       
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",

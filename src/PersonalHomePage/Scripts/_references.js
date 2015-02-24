@@ -18,6 +18,4 @@
 /// <reference path="jquery.validate.unobtrusive.min.js" />
 /// <reference path="npm.js" />
 /// <reference path="bootstrap.min.js" />
-/// <reference path="jquery.validate.unobtrusive.twitterbootstrap.js" />
-/// <reference path="jquery.validate.unobtrusive.chameleon.js" />
 /// <reference path="toastr.min.js" />
