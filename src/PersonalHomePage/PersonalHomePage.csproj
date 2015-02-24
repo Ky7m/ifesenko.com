@@ -249,6 +249,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-3.2.0.debug.js" />
     <Content Include="Scripts\knockout-3.2.0.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
@@ -306,6 +308,7 @@
     <Content Include="Views\Home\Sections\Resume.cshtml" />
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
+    <Content Include="Scripts\knockout.validation.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,10 +319,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
     <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
     <TypeScriptCompile Include="Scripts\app\models\certification.ts" />
     <TypeScriptCompile Include="Scripts\app\base\baseContentItem.ts" />
     <TypeScriptCompile Include="Scripts\app\models\socialProfile.ts" />
+    <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\homeViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
     <TypeScriptCompile Include="Scripts\app\models\skillItem.ts" />
@@ -329,6 +334,7 @@
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jqueryPluginsRegister.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\bindingHandlersRegister.d.ts" />
     <TypeScriptCompile Include="Scripts\bindingHandlers\ko.textrotator.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />

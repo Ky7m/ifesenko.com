@@ -19,3 +19,4 @@
 /// <reference path="npm.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="toastr.min.js" />
+/// <reference path="knockout.validation.min.js" />

@@ -1,5 +1,4 @@
-﻿@model EmailMessageModel
-<div class="container">
+﻿<div class="container">
     <div class="row">
         <div class="col-md-12 headline wow bounceInLeft">
             <h2>Contact Me</h2>
@@ -8,26 +7,28 @@
         <div class="col-md-6 wow bounceInUp">
             <p>I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.</p>
             <ul class="icon-list">
-                <li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine</li>
+                <li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine(UTC+02:00)</li>
                 <li><i class="fa fa-fw fa-phone"></i>(+380)<!-- >@@. --><!-- >@@. -->-50<!-- >@@. --><!-- >@@. -->-715<!-- >@@. -->-12<!-- >@@. --><!-- >@@. -->-91</li>
                 <li><i class="fa fa-fw fa-envelope-o"></i>igor<!-- >@@. --><!-- >@@. -->.aka<!-- >@@. -->.<!-- >@@. -->ky7m@@<!-- >@@. -->gmail<!-- >@@. -->.<!-- >@@. -->com</li>
                 <li><i class="fa fa-fw fa-globe"></i><a href="#">http://ifesenko.com</a></li>
             </ul>
         </div>
-        <div class="col-md-6 wow bounceInRight">
-            <form id="contact-form" role="form">
-                <div class="form-group">
-                    <label class="sr-only" for="c_name">Name</label>
-                    <input type="text" id="c_name" class="form-control" name="c_name" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label class="sr-only" for="c_email">Email address</label>
-                    <input type="email" id="c_email" class="form-control" name="c_email" placeholder="E-mail">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" id="c_message" name="c_message" rows="7" placeholder="Your message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-custom-1">
+        <div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
+            <form id="contact-form" role="form" data-bind="submit: submit">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <input type="text" required="required" id="name" class="form-control" name="name" placeholder="Name" data-bind="value:name, valueUpdate:'afterkeydown'">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input type="email" required="required" id="email" class="form-control" name="email" placeholder="E-mail" data-bind="value:email,valueUpdate:'afterkeydown'">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" required="required" id="message" name="message" rows="7" placeholder="Your message" data-bind="value:message,valueUpdate:'afterkeydown'"></textarea>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-custom-1" >
                     <i class="fa fa-bullhorn icon-before"></i> Send it
                 </button>
             </form>
