@@ -1,4 +1,5 @@
-﻿module PersonalHomePage.ViewModels {
+﻿/// <reference path="../../typings/nprogress/nprogress.d.ts" />
+module PersonalHomePage.ViewModels {
     export class ContactViewModel extends Base.ValidatableObject {
         name: KnockoutObservable<string>;
         email: KnockoutObservable<string>;
@@ -15,11 +16,13 @@
             return this.isValid;
         }
         submit(form) {
+            
             // Stop form from submitting normally
             event.preventDefault();
             toastr.clear();
             if (this.validate()) {
                 var $form = $(form);
+                NProgress.start();
                 $.post($form.attr("action"), $form.serialize()).done(data => {
                     toastr.info(JSON.stringify(data));
                     if (data.status === "success") {
@@ -31,6 +34,8 @@
                     }
                 }).fail(() => {
                     toastr.error("Internal error. Please try again.");
+                }).always(() => {
+                    NProgress.done();
                 });
             } else {
                 toastr.warning("Please check your data and re-submit the form.");

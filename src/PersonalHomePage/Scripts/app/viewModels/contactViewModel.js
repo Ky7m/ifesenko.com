@@ -4,6 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+/// <reference path="../../typings/nprogress/nprogress.d.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var ViewModels;
@@ -27,6 +28,7 @@ var PersonalHomePage;
                 toastr.clear();
                 if (this.validate()) {
                     var $form = $(form);
+                    NProgress.start();
                     $.post($form.attr("action"), $form.serialize()).done(function (data) {
                         toastr.info(JSON.stringify(data));
                         if (data.status === "success") {
@@ -37,6 +39,8 @@ var PersonalHomePage;
                         }
                     }).fail(function () {
                         toastr.error("Internal error. Please try again.");
+                    }).always(function () {
+                        NProgress.done();
                     });
                 }
                 else {

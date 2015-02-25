@@ -42,6 +42,7 @@ namespace PersonalHomePage
                         "~/Scripts/knockout-{version}.js",
                         "~/Scripts/knockout.validation.js",
                         "~/Scripts/toastr.js",
+                        "~/Scripts/nprogress.js",
 
                         "~/Scripts/bindingHandlers/*.js",
 
@@ -69,6 +70,7 @@ namespace PersonalHomePage
                         "~/Content/OwlCarousel/owl.transitions.css",
                         "~/Content/simpletextrotator.css",
                         "~/Content/toastr.css",
+                        "~/Content/nprogress.css",
                         "~/Content/site.css"));
         }
     }
