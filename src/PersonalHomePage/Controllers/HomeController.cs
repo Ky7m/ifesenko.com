@@ -7,10 +7,20 @@ namespace PersonalHomePage.Controllers
 {
     public class HomeController : Controller
     {
-        [CompressContent,MinifyHtml,OutputCache(CacheProfile = "HomePage"),NoIFrame]
+        [CompressContent,
+         MinifyHtml,
+         OutputCache(CacheProfile = "HomePage"),
+         NoIFrame]
         public ActionResult Index()
         {
             return View(new HomeModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult SendEmailMessage(EmailMessageModel emailMessage)
+        {
+            return new JsonResult {Data = true};
         }
     }
 }

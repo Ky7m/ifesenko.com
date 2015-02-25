@@ -11,6 +11,6 @@ namespace PersonalHomePage.Models
         public string Email { get; set; }
 
         [Required]
-        public string YourMessage { get; set; }
+        public string Message { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace PersonalHomePage.Services
             myMessage.AddTo("igor.aka.ky7m@gmail.com");
             myMessage.From = new MailAddress(message.Email);
             myMessage.Subject = "Contact from personal site";
-            myMessage.Text = message.YourMessage;
-            myMessage.Html = message.YourMessage;
+            myMessage.Text = message.Message;
+            myMessage.Html = message.Message;
 
             var credentials = new NetworkCredential(ConfigurationManager.AppSettings["emailService:Account"],
                                                     ConfigurationManager.AppSettings["emailService:Password"]);

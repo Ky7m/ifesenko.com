@@ -118,7 +118,6 @@
         });
 
         // setup toastr options
-        toastr.options.preventDuplicates = true;
         toastr.options.closeButton = true;
         toastr.options.newestOnTop = true;
         toastr.options.progressBar = true;

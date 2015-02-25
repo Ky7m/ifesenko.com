@@ -3,7 +3,6 @@
         name: KnockoutObservable<string>;
         email: KnockoutObservable<string>;
         message: KnockoutObservable<string>;
-        private toastrOptions : ToastrOptions;
         constructor() {
             super();
             this.name = ko.observable("").extend({ required: true, minLength: 3 });
@@ -15,13 +14,29 @@
             this.isValid = this.errors().length === 0;
             return this.isValid;
         }
-        submit() {
+        submit(form) {
+            // Stop form from submitting normally
+            event.preventDefault();
+            toastr.clear();
             if (this.validate()) {
-                
+                var $form = $(form);
+                $.post($form.attr("action"), $form.serialize()).done(data => {
+                    toastr.info(JSON.stringify(data));
+                    if (data.status === "success") {
+
+                    } else {
+                        if (data.errors) {
+                            // display errors
+                        }
+                    }
+                }).fail(() => {
+                    toastr.error("Internal error. Please try again.");
+                });
             } else {
-                
                 toastr.warning("Please check your data and re-submit the form.");
             }
+
+            return false;
         }
     }
 }

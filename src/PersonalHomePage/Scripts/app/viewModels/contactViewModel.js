@@ -21,12 +21,28 @@ var PersonalHomePage;
                 this.isValid = this.errors().length === 0;
                 return this.isValid;
             };
-            ContactViewModel.prototype.submit = function () {
+            ContactViewModel.prototype.submit = function (form) {
+                // Stop form from submitting normally
+                event.preventDefault();
+                toastr.clear();
                 if (this.validate()) {
+                    var $form = $(form);
+                    $.post($form.attr("action"), $form.serialize()).done(function (data) {
+                        toastr.info(JSON.stringify(data));
+                        if (data.status === "success") {
+                        }
+                        else {
+                            if (data.errors) {
+                            }
+                        }
+                    }).fail(function () {
+                        toastr.error("Internal error. Please try again.");
+                    });
                 }
                 else {
                     toastr.warning("Please check your data and re-submit the form.");
                 }
+                return false;
             };
             return ContactViewModel;
         })(PersonalHomePage.Base.ValidatableObject);
