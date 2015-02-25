@@ -29,14 +29,9 @@ var PersonalHomePage;
                 if (this.validate()) {
                     var $form = $(form);
                     NProgress.start();
-                    $.post($form.attr("action"), $form.serialize()).done(function (data) {
-                        toastr.info(JSON.stringify(data));
-                        if (data.status === "success") {
-                        }
-                        else {
-                            if (data.errors) {
-                            }
-                        }
+                    $.post($form.attr("action"), $form.serialize()).done(function (response) {
+                        var show = response.isSuccess ? toastr.success : toastr.error;
+                        show(response.message);
                     }).fail(function () {
                         toastr.error("Internal error. Please try again.");
                     }).always(function () {

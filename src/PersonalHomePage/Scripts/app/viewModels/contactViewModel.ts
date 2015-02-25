@@ -16,22 +16,15 @@ module PersonalHomePage.ViewModels {
             return this.isValid;
         }
         submit(form) {
-            
             // Stop form from submitting normally
             event.preventDefault();
             toastr.clear();
             if (this.validate()) {
                 var $form = $(form);
                 NProgress.start();
-                $.post($form.attr("action"), $form.serialize()).done(data => {
-                    toastr.info(JSON.stringify(data));
-                    if (data.status === "success") {
-
-                    } else {
-                        if (data.errors) {
-                            // display errors
-                        }
-                    }
+                $.post($form.attr("action"), $form.serialize()).done(response => {
+                    var show = response.isSuccess ? toastr.success : toastr.error;
+                    show(response.message);
                 }).fail(() => {
                     toastr.error("Internal error. Please try again.");
                 }).always(() => {
