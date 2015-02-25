@@ -179,7 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Extensions\JsonResponseBuilder.cs" />
+    <Compile Include="Extensions\JsonResultBuilder.cs" />
     <Compile Include="Extensions\AnalyticsHelper.cs" />
     <Compile Include="Extensions\CdnUrl.cs" />
     <Compile Include="Extensions\TelemetryBuildVersionContextInitializer.cs" />

@@ -30,8 +30,11 @@ var PersonalHomePage;
                     var $form = $(form);
                     NProgress.start();
                     $.post($form.attr("action"), $form.serialize()).done(function (response) {
-                        var show = response.isSuccess ? toastr.success : toastr.error;
-                        show(response.message);
+                        var show = response.IsSuccess ? toastr.success : toastr.error;
+                        show(response.Message);
+                        if (response.IsSuccess) {
+                            $form.get(0).reset();
+                        }
                     }).fail(function () {
                         toastr.error("Internal error. Please try again.");
                     }).always(function () {

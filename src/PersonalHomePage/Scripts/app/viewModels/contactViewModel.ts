@@ -23,8 +23,12 @@ module PersonalHomePage.ViewModels {
                 var $form = $(form);
                 NProgress.start();
                 $.post($form.attr("action"), $form.serialize()).done(response => {
-                    var show = response.isSuccess ? toastr.success : toastr.error;
-                    show(response.message);
+                    var show = response.IsSuccess ? toastr.success : toastr.error;
+                    show(response.Message);
+
+					if (response.IsSuccess) {
+						(<HTMLFormElement> $form.get(0)).reset();
+					}
                 }).fail(() => {
                     toastr.error("Internal error. Please try again.");
                 }).always(() => {
