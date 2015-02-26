@@ -29,7 +29,7 @@
                         <textarea class="form-control" type="text" required="required" id="message" name="message" rows="7" placeholder="Your message" data-bind="value:message"></textarea>
                     </div>
                 </fieldset>
-                <button type="submit" class="btn btn-custom-1">
+                <button type="submit" class="btn btn-custom-1" data-bind="enabled: isReady">
                     <i class="fa fa-bullhorn icon-before"></i> Send it
                 </button>
             </form>

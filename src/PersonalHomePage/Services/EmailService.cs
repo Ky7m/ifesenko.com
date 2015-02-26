@@ -2,23 +2,27 @@
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.Security.Application;
 using PersonalHomePage.Models;
 using SendGrid;
 
 namespace PersonalHomePage.Services
 {
-    public class EmailService
+    public sealed class EmailService
     {
-        // Use NuGet to install SendGrid (Basic C# client lib) 
-        private async Task SendEmailAsync(EmailMessageModel message)
+        public static async Task SendEmailAsync(EmailMessageModel message)
         {
             var myMessage = new SendGridMessage();
+            myMessage.AddTo(ConfigurationManager.AppSettings["emailService:EmailTo"]);
 
-            myMessage.AddTo("igor.aka.ky7m@gmail.com");
-            myMessage.From = new MailAddress(message.Email);
-            myMessage.Subject = "Contact from personal site";
-            myMessage.Text = message.Message;
-            myMessage.Html = message.Message;
+            var emailFrom = Sanitizer.GetSafeHtmlFragment(message.Email);
+            var body = Sanitizer.GetSafeHtmlFragment(message.Message);
+
+            myMessage.From = new MailAddress(emailFrom);
+            myMessage.Subject = "Email from personal site";
+            
+            myMessage.Text = body;
+            myMessage.Html = body;
 
             var credentials = new NetworkCredential(ConfigurationManager.AppSettings["emailService:Account"],
                                                     ConfigurationManager.AppSettings["emailService:Password"]);

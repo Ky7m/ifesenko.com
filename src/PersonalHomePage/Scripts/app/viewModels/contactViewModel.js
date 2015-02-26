@@ -13,6 +13,7 @@ var PersonalHomePage;
             __extends(ContactViewModel, _super);
             function ContactViewModel() {
                 _super.call(this);
+                this.isReady = true;
                 this.name = ko.observable("").extend({ required: true, minLength: 3 });
                 this.email = ko.observable("").extend({ required: true, email: true });
                 this.message = ko.observable("").extend({ required: true, minLength: 5 });
@@ -23,10 +24,16 @@ var PersonalHomePage;
                 return this.isValid;
             };
             ContactViewModel.prototype.submit = function (form) {
+                var _this = this;
                 // Stop form from submitting normally
                 event.preventDefault();
+                // prevent multiply submit
+                if (!this.isReady) {
+                    return false;
+                }
                 toastr.clear();
                 if (this.validate()) {
+                    this.isReady = false;
                     var $form = $(form);
                     NProgress.start();
                     $.post($form.attr("action"), $form.serialize()).done(function (response) {
@@ -39,6 +46,7 @@ var PersonalHomePage;
                         toastr.error("Internal error. Please try again.");
                     }).always(function () {
                         NProgress.done();
+                        _this.isReady = true;
                     });
                 }
                 else {

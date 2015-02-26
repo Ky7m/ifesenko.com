@@ -2,7 +2,7 @@
 
 namespace PersonalHomePage.Models
 {
-    public class EmailMessageModel
+    public sealed class EmailMessageModel
     {
         [Required]
         public string Name { get; set; }

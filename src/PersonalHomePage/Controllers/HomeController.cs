@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Microsoft.ApplicationInsights;
 using PersonalHomePage.Extensions;
 using PersonalHomePage.Extensions.IframeOptions;
 using PersonalHomePage.Models;
+using PersonalHomePage.Services;
 using WebMarkupMin.Mvc.ActionFilters;
 
 namespace PersonalHomePage.Controllers
@@ -21,28 +24,27 @@ namespace PersonalHomePage.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult SendEmailMessage(EmailMessageModel emailMessage)
+        public async Task<JsonResult> SendEmailMessage(EmailMessageModel emailMessage)
         {
-			if (ModelState.IsValid)
-			{
-				// Attempt to send email
-				try
-				{
-				
-					return Json(new { success = true });
-				}
-				catch (Exception exception)
-				{
-					return JsonResultBuilder.ErrorResponse(exception.Message);
-				}
-			}
-			return Json(new
-			{
-				success = false,
-				errors = ModelState.Keys.SelectMany(k => ModelState[k].Errors)
-								.Select(m => m.ErrorMessage).ToArray()
-			});
-			return JsonResultBuilder.SuccessResponse("Thank you very much for your email.");
+            const string internalErrorPleaseTryAgain = "Internal error. Please try again.";
+            if (ModelState.IsValid)
+            {
+                // Attempt to send email
+                try
+                {
+                    await EmailService.SendEmailAsync(emailMessage);
+                    return await Task.FromResult(JsonResultBuilder.SuccessResponse("Thank you very much for your email."));
+                }
+                catch (Exception exception)
+                {
+                    var telemetryClient = new TelemetryClient();
+                    telemetryClient.TrackException(exception);
+                }
+                return await Task.FromResult(JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain));
+            }
+            return await Task.FromResult(JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain,
+                ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                    .Select(m => m.ErrorMessage).ToArray()));
         }
     }
 }
