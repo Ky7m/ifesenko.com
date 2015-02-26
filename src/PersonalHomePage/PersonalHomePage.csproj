@@ -207,13 +207,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\images\mcsd_webapp.png" />
-    <Content Include="Content\images\special_prog_csharp.png" />
-    <Content Include="Content\images\special_prog_html5.png" />
     <Content Include="Content\jquery.smooth.scroll.css" />
     <Content Include="Content\jquery.smooth.scroll.min.css" />
-    <Content Include="Content\images\background.jpg" />
-    <Content Include="Content\images\avatar.jpg" />
     <Content Include="Content\nprogress.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
