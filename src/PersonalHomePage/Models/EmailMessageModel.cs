@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace PersonalHomePage.Models
 {
@@ -7,10 +8,10 @@ namespace PersonalHomePage.Models
         [Required]
         public string Name { get; set; }
 
-        [Required, DataType(DataType.EmailAddress)]
+        [Required, DataType(DataType.EmailAddress), EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required, AllowHtml]
         public string Message { get; set; }
     }
 }
