@@ -328,7 +328,6 @@
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
     <TypeScriptCompile Include="Scripts\app\models\skillItem.ts" />
     <TypeScriptCompile Include="Scripts\app\models\skillRate.ts" />
-    <TypeScriptCompile Include="Scripts\bindingHandlers\ko.backstretch.ts" />
     <TypeScriptCompile Include="Scripts\bindingHandlers\ko.owlCarousel.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
