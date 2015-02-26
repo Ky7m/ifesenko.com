@@ -10,14 +10,14 @@ namespace PersonalHomePage
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
-            BundleTable.Bundles.Add(new StyleBundle("~/bundles/chameleon-bootstrapcss").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/chameleonforms-twitterbootstrap.css"
-            ));
+            if (BundleTable.EnableOptimizations)
+            {
+                 Scripts.DefaultTagFormat = @"<script src=""{0}"" async></script>";
+            }
 
             bundles.UseCdn = true;
-            var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
-            var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
+            //var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
+            var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl");// + "/{0}?v=" + version;
 
             bundles.Add(
                 new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
