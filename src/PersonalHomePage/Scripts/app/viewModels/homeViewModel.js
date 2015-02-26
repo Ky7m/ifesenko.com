@@ -3,10 +3,11 @@ var PersonalHomePage;
     var ViewModels;
     (function (ViewModels) {
         var HomeViewModel = (function () {
-            function HomeViewModel(certifications, skillItems, socialProfiles) {
+            function HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel) {
                 this.certifications = certifications;
                 this.skillItems = skillItems;
                 this.socialProfiles = socialProfiles;
+                this.contactViewModel = contactViewModel;
             }
             return HomeViewModel;
         })();

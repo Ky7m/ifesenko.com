@@ -4,7 +4,7 @@ using PersonalHomePage.Controllers;
 
 namespace PersonalHomePage.Extensions
 {
-    public class TelemetryBuildVersionContextInitializer : IContextInitializer
+    public sealed class TelemetryBuildVersionContextInitializer : IContextInitializer
     {
         public void Initialize(TelemetryContext context)
         {

@@ -27,6 +27,7 @@
                         <li><a href="#profile">Profile</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#resume">Resume</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +54,7 @@
         </div><!-- .container -->
     </section>
     <section id="profile-contact">
-        @{Html.RenderPartial("Sections/ContactInformation");}
+        @{Html.RenderPartial("Sections/QuickInformation");}
     </section>
     <section id="profile" class="section">
         @{Html.RenderPartial("Sections/Profile");}
@@ -69,5 +70,8 @@
     </section>
     <section id="certifications" class="callout">
         @{Html.RenderPartial("Sections/Certifications");}
+    </section>
+    <section id="contact" class="section">
+        @{Html.RenderPartial("Sections/Contact");}
     </section>
 </div>

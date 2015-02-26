@@ -18,3 +18,6 @@
 /// <reference path="jquery.validate.unobtrusive.min.js" />
 /// <reference path="npm.js" />
 /// <reference path="bootstrap.min.js" />
+/// <reference path="toastr.min.js" />
+/// <reference path="knockout.validation.min.js" />
+/// <reference path="nprogress.min.js" />

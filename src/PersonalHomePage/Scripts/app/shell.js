@@ -7,6 +7,7 @@ var PersonalHomePage;
         var SocialProfile = PersonalHomePage.Models.SocialProfile;
         var HomeViewModel = PersonalHomePage.ViewModels.HomeViewModel;
         var Preloader = PersonalHomePage.Helpers.Preloader;
+        var ContactViewModel = PersonalHomePage.ViewModels.ContactViewModel;
         new Preloader("#status", "#preloader").attach(window);
         $(function () {
             $(document).on("click", ".navbar-collapse.in", function (e) {
@@ -78,7 +79,31 @@ var PersonalHomePage;
                 new SocialProfile("https://twitter.com/ky7m", "fa-twitter"),
                 new SocialProfile("https://tech.pro/igorfesenko", "fa-user-md")
             ];
-            var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles);
+            var contactViewModel = new ContactViewModel();
+            var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel);
+            ko.validation.init({
+                /*
+                parseInputAttributes is required for html5 attributes to work
+                */
+                parseInputAttributes: true,
+                /*
+                decorateElement: true allows knockout.validation to add
+                or remove errorElementClass from input elements. This is
+                also required for validationElement binding to work.
+                ValidationElement binding is required for decorating
+                Bootstrap's control-groups with 'error' class.
+                */
+                decorateElement: true,
+                /*
+                Bootstrap uses 'error' class annotate invalid fields.
+                */
+                errorElementClass: 'has-error'
+            });
+            // setup toastr options
+            toastr.options.closeButton = true;
+            toastr.options.newestOnTop = true;
+            toastr.options.progressBar = true;
+            toastr.options.positionClass = "toast-top-center";
             ko.applyBindings(homeViewModel);
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
