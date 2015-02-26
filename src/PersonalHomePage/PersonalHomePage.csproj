@@ -306,7 +306,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Home\Sections\Stats.cshtml" />
-    <Content Include="Views\Home\Sections\ContactInformation.cshtml" />
+    <Content Include="Views\Home\Sections\QuickInformation.cshtml" />
     <Content Include="Views\Home\Sections\Profile.cshtml" />
     <Content Include="Views\Home\Sections\Services.cshtml" />
     <Content Include="Views\Home\Sections\Resume.cshtml" />
