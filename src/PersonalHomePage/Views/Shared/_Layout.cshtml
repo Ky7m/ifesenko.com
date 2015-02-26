@@ -17,6 +17,7 @@
     @Styles.Render("~/bundles/css")
 
     @AnalyticsHelper.GetAppInsightsScript()
+    @AnalyticsHelper.GetYandexMetricsScript()
     <script type="text/javascript">
         window.options={cdnUrl:'@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant()};
     </script>
