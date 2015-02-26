@@ -20,15 +20,15 @@ namespace PersonalHomePage
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";//?v=" + version;
 
             bundles.Add(
-                new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
+                new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") //{ CdnFallbackExpression = "window.html5" }
                     .Include("~/Scripts/html5shiv.min.js"));
 
             bundles.Add(
-                new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") { CdnFallbackExpression = "window.respond" }
+                new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") //{ CdnFallbackExpression = "window.respond" }
                     .Include("~/Scripts/respond.min.js"));
 
             bundles.Add(
-                new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) { CdnFallbackExpression = "window.jQuery" }
+                new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) //{ CdnFallbackExpression = "window.jQuery" }
                     .Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
@@ -60,7 +60,7 @@ namespace PersonalHomePage
               .IncludeFallback("~/Content/font-awesome.min.css", "fa", "font-family", "FontAwesome"));
 
             bundles.Add(
-                new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
+                new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css"))//.IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
                         "~/Content/bootstrap.css",                       
                         "~/Content/animate.css",
