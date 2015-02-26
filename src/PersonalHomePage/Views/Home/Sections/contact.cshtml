@@ -1,0 +1,38 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 headline wow bounceInLeft">
+            <h2>Contact Me</h2>
+            <p>Drop me a line or give me a ring. I love to hear you.</p>
+        </div>
+        <div class="col-md-6 wow bounceInUp">
+            <p>I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.</p>
+            <ul class="icon-list">
+                <li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine (UTC+02:00)</li>
+                <li><i class="fa fa-fw fa-phone"></i>(+380)<!-- >@@. --><!-- >@@. -->-50<!-- >@@. --><!-- >@@. -->-715<!-- >@@. -->-12<!-- >@@. --><!-- >@@. -->-91</li>
+                <li><i class="fa fa-fw fa-envelope-o"></i>igor<!-- >@@. --><!-- >@@. -->.aka<!-- >@@. -->.<!-- >@@. -->ky7m@@<!-- >@@. -->gmail<!-- >@@. -->.<!-- >@@. -->com</li>
+                <li><i class="fa fa-fw fa-globe"></i><a href="#">http://ifesenko.com</a></li>
+            </ul>
+        </div>
+        <div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
+            <form id="contact-form" role="form" action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <div class="form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <input type="text" required="required" id="name" class="form-control" name="name" placeholder="Name" data-bind="value:name">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <input type="email" required="required" id="email" class="form-control" name="email" placeholder="E-mail" data-bind="value:email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" required="required" id="message" name="message" rows="7" placeholder="Your message" data-bind="value:message"></textarea>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-custom-1" data-bind="enabled: isReady">
+                    <i class="fa fa-bullhorn icon-before"></i> Send it
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

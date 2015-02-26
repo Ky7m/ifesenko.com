@@ -10,6 +10,11 @@ namespace PersonalHomePage
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
+            BundleTable.Bundles.Add(new StyleBundle("~/bundles/chameleon-bootstrapcss").Include(
+                "~/Content/bootstrap.css",
+                "~/Content/chameleonforms-twitterbootstrap.css"
+            ));
+
             bundles.UseCdn = true;
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
@@ -26,7 +31,7 @@ namespace PersonalHomePage
                 new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) { CdnFallbackExpression = "window.jQuery" }
                     .Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/bootstrap.js",
                         "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
                         "~/Scripts/jquery.waypoints.js",
@@ -35,7 +40,9 @@ namespace PersonalHomePage
                         "~/Scripts/wow.js",
                         "~/Scripts/jquery.backstretch.js",
                         "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/webfontloader.js",
+                        "~/Scripts/knockout.validation.js",
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/nprogress.js",
 
                         "~/Scripts/bindingHandlers/*.js",
 
@@ -55,13 +62,15 @@ namespace PersonalHomePage
             bundles.Add(
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
-                        "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap.css",                       
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",
                         "~/Content/OwlCarousel/owl.theme.css",
                         "~/Content/OwlCarousel/owl.transitions.css",
                         "~/Content/simpletextrotator.css",
+                        "~/Content/toastr.css",
+                        "~/Content/nprogress.css",
                         "~/Content/site.css"));
         }
     }

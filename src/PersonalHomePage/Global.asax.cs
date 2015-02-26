@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Web;
 using System.Web.Helpers;
@@ -29,8 +28,6 @@ namespace PersonalHomePage
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-
 
         protected void Application_Error(object sender, EventArgs e)
         {
