@@ -2,22 +2,22 @@ var PersonalHomePage;
 (function (PersonalHomePage) {
     var Base;
     (function (Base) {
-        var BaseContentItem = (function () {
-            function BaseContentItem(relativePath) {
+        var ContentItem = (function () {
+            function ContentItem(relativePath) {
                 var options = window["options"];
                 var cdnUrl = options.cdnUrl;
                 var enableOptimizations = options.enableOptimizations;
                 var host = window.location.host;
-                this.CdnPath = cdnUrl + "/" + relativePath;
-                this.LocalPath = "//" + host + "/" + relativePath;
+                this.Url = cdnUrl + "/" + relativePath;
+                var localPath = "//" + host + "/" + relativePath;
                 //if debug mode
                 if (!enableOptimizations) {
-                    this.CdnPath = this.LocalPath;
+                    this.Url = localPath;
                 }
             }
-            return BaseContentItem;
+            return ContentItem;
         })();
-        Base.BaseContentItem = BaseContentItem;
+        Base.ContentItem = ContentItem;
     })(Base = PersonalHomePage.Base || (PersonalHomePage.Base = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=baseContentItem.js.map
+//# sourceMappingURL=contentItem.js.map

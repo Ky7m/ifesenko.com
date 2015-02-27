@@ -9,15 +9,9 @@ namespace PersonalHomePage
         public static void RegisterBundles(BundleCollection bundles)
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
-
-            BundleTable.Bundles.Add(new StyleBundle("~/bundles/chameleon-bootstrapcss").Include(
-                "~/Content/bootstrap.css",
-                "~/Content/chameleonforms-twitterbootstrap.css"
-            ));
-
             bundles.UseCdn = true;
-            var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
-            var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
+            //var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
+            var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";//?v=" + version;
 
             bundles.Add(
                 new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
@@ -28,7 +22,7 @@ namespace PersonalHomePage
                     .Include("~/Scripts/respond.min.js"));
 
             bundles.Add(
-                new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) { CdnFallbackExpression = "window.jQuery" }
+                new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) //{ CdnFallbackExpression = "window.jQuery" }
                     .Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
@@ -60,7 +54,7 @@ namespace PersonalHomePage
               .IncludeFallback("~/Content/font-awesome.min.css", "fa", "font-family", "FontAwesome"));
 
             bundles.Add(
-                new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css")).IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
+                new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css"))//.IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
                         "~/Content/bootstrap.css",                       
                         "~/Content/animate.css",
