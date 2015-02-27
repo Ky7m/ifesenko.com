@@ -9,12 +9,6 @@ namespace PersonalHomePage
         public static void RegisterBundles(BundleCollection bundles)
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
-
-            if (BundleTable.EnableOptimizations)
-            {
-                 Scripts.DefaultTagFormat = @"<script src=""{0}"" async></script>";
-            }
-
             bundles.UseCdn = true;
             //var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";//?v=" + version;
