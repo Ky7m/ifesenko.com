@@ -1,7 +1,6 @@
 ﻿module PersonalHomePage.Base {
-    export class BaseContentItem {
-        protected CdnPath: string;
-        protected LocalPath: string;
+    export class ContentItem {
+        public Url: string;
 
         constructor(relativePath: string) {
             var options = window["options"];
@@ -9,13 +8,13 @@
             var enableOptimizations = options.enableOptimizations;
             var host = window.location.host;
 
-            this.CdnPath = cdnUrl + "/" + relativePath;
-            this.LocalPath = "//" + host + "/" + relativePath;
+            this.Url = cdnUrl + "/" + relativePath;
+            var localPath = "//" + host + "/" + relativePath;
 
             //if debug mode
             if (!enableOptimizations) {
-                this.CdnPath = this.LocalPath;
+                this.Url = localPath;
             }
         }
-    } 
+    }
 }

@@ -20,11 +20,11 @@ namespace PersonalHomePage
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";//?v=" + version;
 
             bundles.Add(
-                new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") //{ CdnFallbackExpression = "window.html5" }
+                new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
                     .Include("~/Scripts/html5shiv.min.js"));
 
             bundles.Add(
-                new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") //{ CdnFallbackExpression = "window.respond" }
+                new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") { CdnFallbackExpression = "window.respond" }
                     .Include("~/Scripts/respond.min.js"));
 
             bundles.Add(
