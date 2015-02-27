@@ -36,7 +36,7 @@ var PersonalHomePage;
                     this.isReady = false;
                     var $form = $(form);
                     NProgress.start();
-                    $.post($form.attr("action"), $form.serialize()).done(function (response) {
+                    $.post($form.attr("data-action"), $form.serialize()).done(function (response) {
                         var show = response.IsSuccess ? toastr.success : toastr.error;
                         show(response.Message);
                         if (response.IsSuccess) {
