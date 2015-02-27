@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
-            <form id="contact-form" role="form" action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
+            <form id="contact-form" role="form" method="POST" data-action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
                 @Html.AntiForgeryToken()
                 <fieldset>
                     <div class="form-group">
