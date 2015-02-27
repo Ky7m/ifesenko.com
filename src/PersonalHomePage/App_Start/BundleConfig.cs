@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
+using PersonalHomePage.Constants;
 using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
@@ -13,10 +14,23 @@ namespace PersonalHomePage
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
 
+
+            bundles.Add(
+                new ScriptBundle("~/bundles/jquery", ContentDeliveryNetwork.Google.JQueryUrl) { CdnFallbackExpression = "window.jQuery" }
+                .Include("~/Scripts/jquery-{version}.js"));
+
+            bundles.Add(
+                new ScriptBundle("~/bundles/bootstrap-js", ContentDeliveryNetwork.MaxCdn.BootstrapJsUrl) { CdnFallbackExpression = "$.fn.modal" }
+                .Include("~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(
+                new StyleBundle("~/bundles/bootstrap-css", ContentDeliveryNetwork.MaxCdn.BootstrapCssUrl)
+             .IncludeFallback("~/Content/bootstrap.min.css", "sr-only", "width", "1px"));
+
+
             bundles.Add(
                 new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
                     .Include("~/Scripts/html5shiv.min.js"));
-
             bundles.Add(
                 new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") { CdnFallbackExpression = "window.respond" }
                     .Include("~/Scripts/respond.min.js"));
@@ -24,8 +38,6 @@ namespace PersonalHomePage
             bundles.Add(
                 new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) //{ CdnFallbackExpression = "window.jQuery" }
                     .Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/bootstrap.js",
                         "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
                         "~/Scripts/jquery.waypoints.js",
@@ -56,7 +68,6 @@ namespace PersonalHomePage
             bundles.Add(
                 new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css"))//.IncludeFallback("~/bundles/css", "skill-bar", "height", "4px")
                     .Include(
-                        "~/Content/bootstrap.css",                       
                         "~/Content/animate.css",
                         "~/Content/jquery.smooth.scroll.css",
                         "~/Content/OwlCarousel/owl.carousel.css",

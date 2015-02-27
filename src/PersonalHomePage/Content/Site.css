@@ -21,8 +21,11 @@ a:hover {
 }
 
 .validationMessage {
-        color: Red;
-    }
+    color: Red;
+}
+textarea {
+    resize: vertical;
+}
 /* ---------------------------------------------- /*
  * Typography
 /* ---------------------------------------------- */
