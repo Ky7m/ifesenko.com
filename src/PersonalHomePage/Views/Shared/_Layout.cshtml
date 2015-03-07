@@ -16,7 +16,6 @@
 	@Styles.Render("~/bundles/font-awesome")
 	@Styles.Render("~/bundles/bootstrap-css")
 	@Styles.Render("~/bundles/css")
-	
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
 	@RenderBody()
@@ -35,19 +34,15 @@
 			</div>
 		</div>
 	</footer>
-	@section scripts{
-		<script type="text/javascript">
-			window.options={cdnUrl:'@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant()};
-		</script>
-	}
-
+	<script type="text/javascript">
+		window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant() };
+	</script>
 	@AnalyticsHelper.GetAppInsightsScript()
 	@AnalyticsHelper.GetYandexMetricsScript()
 	<!--[if lt IE 9]>
 	@Scripts.Render("~/bundles/html5shiv")
 	@Scripts.Render("~/bundles/respondJs")
 	<![endif]-->
-	@RenderSection("scripts", required: false)
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap-js")
 	@Scripts.Render("~/bundles/js")
