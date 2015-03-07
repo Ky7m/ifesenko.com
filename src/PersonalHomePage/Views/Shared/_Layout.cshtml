@@ -47,11 +47,9 @@
 	@Scripts.Render("~/bundles/html5shiv")
 	@Scripts.Render("~/bundles/respondJs")
 	<![endif]-->
+	@RenderSection("scripts", required: false)
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap-js")
 	@Scripts.Render("~/bundles/js")
-	@RenderSection("scripts", required: false)
 </body>
-
-
 </html>
