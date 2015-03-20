@@ -20,10 +20,12 @@ a {
         color: #C4C4C4;
     }
 
-.validationMessage {
-    color: Red;
+.input-group .validationMessage {
     display: table-caption;
     caption-side: bottom;
+}
+.validationMessage {
+    color: Red;
 }
 
 textarea {
