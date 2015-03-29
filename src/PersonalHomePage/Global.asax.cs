@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
 using System.Web;
 using System.Web.Helpers;
@@ -6,21 +7,24 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
-using PersonalHomePage.Extensions;
+using PersonalHomePage.Controllers;
 
 namespace PersonalHomePage
 {
     public class MvcApplication : HttpApplication
     {
-        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient(), LazyThreadSafetyMode.ExecutionAndPublication);
+        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(
+            () =>
+            {
+                var telemetryClient = new TelemetryClient();
+                telemetryClient.Properties["BuildVersion"] = Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString();
+                return telemetryClient;
+            }, LazyThreadSafetyMode.ExecutionAndPublication);
 
         protected void Application_Start()
         {
             ConfigureViewEngines();
             ConfigureAntiForgeryTokens();
-
-            TelemetryConfiguration.Active.ContextInitializers.Add(new TelemetryBuildVersionContextInitializer());
 
             MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
