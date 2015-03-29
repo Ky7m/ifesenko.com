@@ -11,8 +11,8 @@
         public static class MaxCdn
         {
             private const string Domain = "//maxcdn.bootstrapcdn.com/";
-            public const string BootstrapJsUrl = Domain + "bootstrap/3.3.2/js/bootstrap.min.js";
-            public const string BootstrapCssUrl = Domain + "bootstrap/3.3.2/css/bootstrap.min.css";
+            public const string BootstrapJsUrl = Domain + "bootstrap/3.3.4/js/bootstrap.min.js";
+            public const string BootstrapCssUrl = Domain + "bootstrap/3.3.4/css/bootstrap.min.css";
         }
     }
 }
