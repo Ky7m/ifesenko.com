@@ -17,7 +17,7 @@ namespace PersonalHomePage
             () =>
             {
                 var telemetryClient = new TelemetryClient();
-                telemetryClient.Properties["BuildVersion"] = Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString();
+                telemetryClient.Context.Properties["BuildVersion"] = Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString();
                 return telemetryClient;
             }, LazyThreadSafetyMode.ExecutionAndPublication);
 
