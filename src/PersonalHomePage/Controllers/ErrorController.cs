@@ -1,11 +1,9 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using PersonalHomePage.Extensions.IframeOptions;
 using WebMarkupMin.Mvc.ActionFilters;
 
 namespace PersonalHomePage.Controllers
 {
-    [NoIFrame]
     public class ErrorController : Controller
     {
         [CompressContent, MinifyHtml, OutputCache(CacheProfile = "InternalServerError")]
