@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
 using PersonalHomePage.Extensions;
-using PersonalHomePage.Extensions.IframeOptions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
 using WebMarkupMin.Mvc.ActionFilters;
@@ -15,8 +14,7 @@ namespace PersonalHomePage.Controllers
     {
         [CompressContent,
          MinifyHtml,
-         OutputCache(CacheProfile = "HomePage"),
-         NoIFrame]
+         OutputCache(CacheProfile = "HomePage")]
         public ActionResult Index()
         {
             return View(new HomeModel());
