@@ -168,9 +168,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="WebMarkupMin.Core, Version=0.9.11.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\WebMarkupMin.Core.0.9.11\lib\net40\WebMarkupMin.Core.dll</HintPath>
+    <Reference Include="WebMarkupMin.Core, Version=0.9.12.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebMarkupMin.Core.0.9.12\lib\net40\WebMarkupMin.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebMarkupMin.Mvc">
       <HintPath>..\..\packages\WebMarkupMin.Mvc.0.9.2\lib\net40\WebMarkupMin.Mvc.dll</HintPath>
