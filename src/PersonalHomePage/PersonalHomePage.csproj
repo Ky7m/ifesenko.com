@@ -244,6 +244,8 @@
     <Content Include="Icon.png" />
     <Content Include="loaderio-652773ddab0fe23402da19db423d9acf.txt" />
     <Content Include="robots.txt" />
+    <Content Include="Scripts\ai.0.15.0-build12287.js" />
+    <Content Include="Scripts\ai.0.15.0-build12287.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />

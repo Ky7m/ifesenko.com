@@ -21,3 +21,4 @@
 /// <reference path="toastr.min.js" />
 /// <reference path="npm.js" />
 /// <reference path="bootstrap.min.js" />
+/// <reference path="ai.0.15.0-build12287.min.js" />
