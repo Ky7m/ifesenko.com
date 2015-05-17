@@ -19,7 +19,7 @@ namespace PersonalHomePage
         /// Note: All of these filters can be applied to individual controllers and actions and indeed
         /// some of them only make sense when applied to a controller or action instead of globally here.
         /// </summary>
-        private static void AddSecurityFilters(GlobalFilterCollection filters)
+        static void AddSecurityFilters(GlobalFilterCollection filters)
         {
             // Require HTTPS to be used accross the whole site. System.Web.Mvc.RequireHttpsAttribute performs a 302 Temporary redirect 
             // from a HTTP URL to a HTTPS URL. This filter gives you the option to perform a 301 Permanent redirect or a 302 temporary redirect.
