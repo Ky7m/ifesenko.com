@@ -13,7 +13,7 @@ namespace PersonalHomePage
 {
     public class MvcApplication : HttpApplication
     {
-        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(
+        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(
             () =>
             {
                 var telemetryClient = new TelemetryClient();
@@ -44,7 +44,7 @@ namespace PersonalHomePage
         /// Razor (RazorViewEngine) view engines. You can remove view engines you are not using here for better
         /// performance.
         /// </summary>
-        private static void ConfigureViewEngines()
+        static void ConfigureViewEngines()
         {
             // Only use the RazorViewEngine.
             ViewEngines.Engines.Clear();
@@ -54,7 +54,7 @@ namespace PersonalHomePage
         /// <summary>
         /// Configures the anti-forgery tokens.
         /// </summary>
-        private static void ConfigureAntiForgeryTokens()
+        static void ConfigureAntiForgeryTokens()
         {
             // Rename the Anti-Forgery cookie from "__RequestVerificationToken" to "f". 
             // This adds a little security through obscurity and also saves sending a 
@@ -66,7 +66,7 @@ namespace PersonalHomePage
             // AntiForgeryConfig.RequireSsl = true;
         }
 
-        private void WriteExceptionToApplicationInsights(Exception exception)
+        void WriteExceptionToApplicationInsights(Exception exception)
         {
             _telemetryClient.Value.TrackException(exception);
         }

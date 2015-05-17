@@ -41,7 +41,7 @@ namespace PersonalHomePage.Extensions
             return bundle;
         }
 
-        private static StyleBundle CdnFallbackExpress(this StyleBundle bundle, string fallback,
+        static StyleBundle CdnFallbackExpress(this StyleBundle bundle, string fallback,
             string className = null, string ruleName = null, string ruleValue = null)
         {
             bundle.Include(fallback);
