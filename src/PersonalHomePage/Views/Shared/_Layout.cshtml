@@ -23,7 +23,7 @@
 		<div class="container">
 			<div class="row">
 				<p class="copy text-center">
-					@System.Reflection.Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString()
+					@System.Reflection.Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString().TrimEnd('0').Trim('.')
 				</p>
 			</div>
 		</div>
