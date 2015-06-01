@@ -23,7 +23,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
-    <NuGetPackageImportStamp>3c62d258</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>562dfdf7</NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/a5c647da-3f97-440c-9ba1-21fd71438a9a/resourcegroups/IFesenkoWebSiteGroup/providers/microsoft.insights/components/ifesenko</ApplicationInsightsResourceId>
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
@@ -385,11 +385,11 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets'))" />
     <Error Condition="!Exists('..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Nerdbank.GitVersioning.1.0.15136-beta\build\NerdBank.GitVersioning.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Nerdbank.GitVersioning.1.0.15136-beta\build\NerdBank.GitVersioning.targets'))" />
   </Target>
-  <Import Project="..\..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets" Condition="Exists('..\..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets')" />
   <Import Project="..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets" Condition="Exists('..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\build\Microsoft.ApplicationInsights.Agent.Intercept.targets')" />
+  <Import Project="..\..\packages\Nerdbank.GitVersioning.1.0.15136-beta\build\NerdBank.GitVersioning.targets" Condition="Exists('..\..\packages\Nerdbank.GitVersioning.1.0.15136-beta\build\NerdBank.GitVersioning.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
