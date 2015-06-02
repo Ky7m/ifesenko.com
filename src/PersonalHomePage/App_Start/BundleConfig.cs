@@ -38,9 +38,7 @@ namespace PersonalHomePage
             bundles.Add(
                 new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js")) //{ CdnFallbackExpression = "window.jQuery" }
                     .Include(
-                        "~/Scripts/jquery.countTo.js",
                         "~/Scripts/jquery.simple-text-rotator.js",
-                        "~/Scripts/jquery.waypoints.js",
                         "~/Scripts/owl.carousel.js",
                         "~/Scripts/jquery.smooth.scroll-{version}.js",
                         "~/Scripts/wow.js",

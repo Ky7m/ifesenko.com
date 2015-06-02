@@ -7,8 +7,6 @@
     import ContactViewModel = ViewModels.ContactViewModel;
     import ContentItem = Base.ContentItem;
     declare var WOW: any;
-    declare var WebFont: any;
-    declare var Waypoint: any;
 
     new Preloader("#status", "#preloader").attach(window);
     var bgContentItem = new ContentItem("content/images/bg.jpg");
@@ -47,25 +45,6 @@
             var state = $(this).width() <= 767;
             navbar.toggleClass("custom-collapse", state);
         });
-
-        // Count to
-        new Waypoint({
-            element: document.getElementById('stats'),
-            handler: direction => {
-                $(".timer").each(function () {
-                    var counter = $(this).attr("data-count");
-                    $(this).delay(6000).countTo({
-                        from: 0,
-                        to: counter,
-                        speed: 3000, // Stats Counter Speed
-                        refreshInterval: 50
-                    });
-                });
-            },
-            offset: "70%",
-            triggerOnce: true
-        });
-
 
         // WOW Animation When You Scroll
         new WOW({
