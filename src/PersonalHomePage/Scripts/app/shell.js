@@ -39,23 +39,6 @@ var PersonalHomePage;
                 var state = $(this).width() <= 767;
                 navbar.toggleClass("custom-collapse", state);
             });
-            // Count to
-            new Waypoint({
-                element: document.getElementById('stats'),
-                handler: function (direction) {
-                    $(".timer").each(function () {
-                        var counter = $(this).attr("data-count");
-                        $(this).delay(6000).countTo({
-                            from: 0,
-                            to: counter,
-                            speed: 3000,
-                            refreshInterval: 50
-                        });
-                    });
-                },
-                offset: "70%",
-                triggerOnce: true
-            });
             // WOW Animation When You Scroll
             new WOW({
                 mobile: false
