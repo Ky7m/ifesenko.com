@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
-using PersonalHomePage.Constants;
 using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
@@ -16,23 +15,23 @@ namespace PersonalHomePage
 
 
             bundles.Add(
-                new ScriptBundle("~/bundles/jquery", ContentDeliveryNetwork.Google.JQueryUrl) { CdnFallbackExpression = "window.jQuery" }
+                new ScriptBundle("~/bundles/jquery", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js") { CdnFallbackExpression = "window.jQuery" }
                 .Include("~/Scripts/jquery-{version}.js"));
 
             bundles.Add(
-                new ScriptBundle("~/bundles/bootstrap-js", ContentDeliveryNetwork.MaxCdn.BootstrapJsUrl) { CdnFallbackExpression = "$.fn.modal" }
+                new ScriptBundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js") { CdnFallbackExpression = "$.fn.modal" }
                 .Include("~/Scripts/bootstrap.min.js"));
 
             bundles.Add(
-                new StyleBundle("~/bundles/bootstrap-css", ContentDeliveryNetwork.MaxCdn.BootstrapCssUrl)
+                new StyleBundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css")
              .IncludeFallback("~/Content/bootstrap.min.css", "sr-only", "width", "1px"));
 
 
             bundles.Add(
-                new ScriptBundle("~/bundles/html5shiv", "//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
+                new ScriptBundle("~/bundles/html5shiv", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js") { CdnFallbackExpression = "window.html5" }
                     .Include("~/Scripts/html5shiv.min.js"));
             bundles.Add(
-                new ScriptBundle("~/bundles/respondJs", "//oss.maxcdn.com/respond/1.4.2/respond.min.js") { CdnFallbackExpression = "window.respond" }
+                new ScriptBundle("~/bundles/respondJs", "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js") { CdnFallbackExpression = "window.respond" }
                     .Include("~/Scripts/respond.min.js"));
 
             bundles.Add(
@@ -60,7 +59,7 @@ namespace PersonalHomePage
 
 
             bundles.Add(new StyleBundle("~/bundles/font-awesome",
-              "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+              "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css")
               .IncludeFallback("~/Content/font-awesome.min.css", "fa", "font-family", "FontAwesome"));
 
             bundles.Add(
