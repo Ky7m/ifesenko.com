@@ -15,7 +15,7 @@ namespace PersonalHomePage
         public static void RegisterBundles(BundleCollection bundles)
         {
             BundleTable.EnableOptimizations = true; //force optimization while debugging
-            bundles.UseCdn = true;
+           // bundles.UseCdn = true;
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
 
@@ -132,29 +132,18 @@ namespace PersonalHomePage
                 "~/Scripts/wow.js",
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
-                "~/Scripts/nprogress.js"/*,
-
-                "~/Scripts/bindingHandlers/*.ts",
-
-                "~/Scripts/app/helpers/*.ts",
-
-                "~/Scripts/app/base/*.ts",
-                "~/Scripts/app/models/*.ts",
-                "~/Scripts/app/viewModels/*.ts",
-
-                "~/Scripts/app/shell.ts"*/
+                "~/Scripts/nprogress.js"
                 );
-
-
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
             commonScriptsBundle.Orderer = nullOrderer;
             bundles.Add(commonScriptsBundle);
 
-            var tsBundle = new Bundle("~/bundles/ts");
+            var tsBundle = new Bundle("~/bundles/ts", string.Format(cdnUrl, "bundles/ts"));
             tsBundle.IncludeDirectory("~/Scripts/", "*.ts", true);
             tsBundle.Builder = nullBuilder;
             tsBundle.Transforms.Add(new ScriptTransformer(new[] { "*.d.ts" }));
+            tsBundle.Transforms.Add(scriptTransformer);
             tsBundle.Orderer = new ScriptDependencyOrderer();
             bundles.Add(tsBundle);
         }
