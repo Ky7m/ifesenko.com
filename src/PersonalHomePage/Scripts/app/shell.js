@@ -60,10 +60,8 @@ var PersonalHomePage;
             ];
             var socialProfiles = [
                 new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
-                new SocialProfile("https://bitbucket.org/Ky7m", "fa-bitbucket"),
                 new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
-                new SocialProfile("https://twitter.com/ky7m", "fa-twitter"),
-                new SocialProfile("https://tech.pro/igorfesenko", "fa-user-md")
+                new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
             ];
             var contactViewModel = new ContactViewModel();
             var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel);
