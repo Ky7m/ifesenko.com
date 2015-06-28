@@ -1,4 +1,8 @@
-﻿module PersonalHomePage.ViewModels {
+﻿/// <reference path="../models/certification.ts" />
+/// <reference path="../models/skillitem.ts" />
+/// <reference path="contactviewmodel.ts" />
+/// <reference path="../models/socialprofile.ts" />
+module PersonalHomePage.ViewModels {
     export class HomeViewModel {
         constructor(
             public certifications: Array<Models.Certification>,

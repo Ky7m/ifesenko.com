@@ -4,6 +4,8 @@ using BundleTransformer.Core.Builders;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Resolvers;
 using BundleTransformer.Core.Transformers;
+using BundleTransformer.Yui.Configuration;
+using BundleTransformer.Yui.Minifiers;
 
 namespace PersonalHomePage
 {
@@ -18,8 +20,14 @@ namespace PersonalHomePage
 
 
             var nullBuilder = new NullBuilder();
-            var styleTransformer = new StyleTransformer();
-            var scriptTransformer = new ScriptTransformer();
+            var styleTransformer = new StyleTransformer(new YuiCssMinifier(new YuiSettings
+            {
+                CssMinifier = {RemoveComments = true}
+            }));
+            var scriptTransformer = new ScriptTransformer(new YuiJsMinifier(new YuiSettings
+            {
+                JsMinifier = { ObfuscateJavascript = true}
+            }));
             var nullOrderer = new NullOrderer();
 
             // Replace a default bundle resolver in order to the debugging HTTP-handler
@@ -130,22 +138,22 @@ namespace PersonalHomePage
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
                 "~/Scripts/nprogress.js",
+                "~/Scripts/bindingHandlers/*.ts",
 
-                "~/Scripts/bindingHandlers/*.js",
+                "~/Scripts/app/helpers/*.ts",
 
-                "~/Scripts/app/helpers/*.js",
+                "~/Scripts/app/base/*.ts",
+                "~/Scripts/app/models/*.ts",
+                "~/Scripts/app/viewModels/*.ts",
 
-                "~/Scripts/app/base/*.js",
-                "~/Scripts/app/models/*.js",
-                "~/Scripts/app/viewModels/*.js",
-
-                "~/Scripts/app/shell.js");
-
-
+                "~/Scripts/app/shell.ts"
+                );
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
             commonScriptsBundle.Orderer = nullOrderer;
             bundles.Add(commonScriptsBundle);
+
+            
         }
     }
 }

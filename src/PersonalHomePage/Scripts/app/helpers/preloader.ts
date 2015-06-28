@@ -1,4 +1,5 @@
-﻿module PersonalHomePage.Helpers {
+﻿/// <reference path="../../typings/jquery/jquery.d.ts" />
+module PersonalHomePage.Helpers {
     export class Preloader {
         private imageElementSelector:string;
         private statusElementSelector:string;
