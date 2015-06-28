@@ -28,12 +28,14 @@ namespace PersonalHomePage
             BundleResolver.Current = new CustomBundleResolver();
 
             var fontAwesomeBundle = new Bundle("~/bundles/font-awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
+            fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             fontAwesomeBundle.Builder = nullBuilder;
             fontAwesomeBundle.Transforms.Add(styleTransformer);
             fontAwesomeBundle.Orderer = nullOrderer;
             bundles.Add(fontAwesomeBundle);
 
             var bootstrapCssBundle = new Bundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css");
+            bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bootstrapCssBundle.Builder = nullBuilder;
             bootstrapCssBundle.Transforms.Add(styleTransformer);
             bootstrapCssBundle.Orderer = nullOrderer;
@@ -66,7 +68,7 @@ namespace PersonalHomePage
             bundles.Add(jQueryBundle);
 
             var bootstrapJsBundle = new Bundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js");
-            bootstrapJsBundle.Include("~/Scripts/bootstrap.min.js");
+            bootstrapJsBundle.Include("~/Scripts/bootstrap.js");
             bootstrapJsBundle.Builder = nullBuilder;
             bootstrapJsBundle.Transforms.Add(scriptTransformer);
             bootstrapJsBundle.Orderer = nullOrderer;
@@ -74,7 +76,7 @@ namespace PersonalHomePage
             bundles.Add(bootstrapJsBundle);
 
             var html5shivBundle = new Bundle("~/bundles/html5shiv", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js");
-            html5shivBundle.Include("~/Scripts/html5shiv.min.js");
+            html5shivBundle.Include("~/Scripts/html5shiv.js");
             html5shivBundle.Builder = nullBuilder;
             html5shivBundle.Transforms.Add(scriptTransformer);
             html5shivBundle.Orderer = nullOrderer;
@@ -82,7 +84,7 @@ namespace PersonalHomePage
             bundles.Add(html5shivBundle);
 
             var respondJsBundle = new Bundle("~/bundles/respondJs", "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js");
-            respondJsBundle.Include("~/Scripts/respond.min.js");
+            respondJsBundle.Include("~/Scripts/respond.js");
             respondJsBundle.Builder = nullBuilder;
             respondJsBundle.Transforms.Add(scriptTransformer);
             respondJsBundle.Orderer = nullOrderer;
