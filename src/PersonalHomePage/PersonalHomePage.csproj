@@ -53,24 +53,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Arraybracket.Bundling, Version=1.0.4.0, Culture=neutral, PublicKeyToken=71b4a5d2689c599e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Arraybracket.Bundling.1.0.4\lib\net40\Arraybracket.Bundling.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="BundleTransformer.CleanCss, Version=1.9.68.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BundleTransformer.CleanCss.1.9.68\lib\net40\BundleTransformer.CleanCss.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="BundleTransformer.Core, Version=1.9.52.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <HintPath>..\..\packages\BundleTransformer.Core.1.9.52\lib\net40\BundleTransformer.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="BundleTransformer.Packer, Version=1.9.52.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\BundleTransformer.Packer.1.9.52\lib\net40\BundleTransformer.Packer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="BundleTransformer.TypeScript, Version=1.9.61.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <HintPath>..\..\packages\BundleTransformer.TypeScript.1.9.61\lib\net40\BundleTransformer.TypeScript.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BundleTransformer.Yui, Version=1.9.52.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BundleTransformer.Yui.1.9.52\lib\net40\BundleTransformer.Yui.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EcmaScript.NET, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EcmaScript.Net.1.0.1.0\lib\net20\EcmaScript.NET.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="HtmlSanitizationLibrary">
@@ -211,6 +207,10 @@
     <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="Yahoo.Yui.Compressor, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\YUICompressor.NET.2.7.0.0\lib\NET20\Yahoo.Yui.Compressor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

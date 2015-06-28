@@ -1,12 +1,11 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
-using Arraybracket.Bundling;
-using BundleTransformer.CleanCss.Minifiers;
 using BundleTransformer.Core.Builders;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Resolvers;
 using BundleTransformer.Core.Transformers;
-using BundleTransformer.Packer.Minifiers;
+using BundleTransformer.Yui.Configuration;
+using BundleTransformer.Yui.Minifiers;
 
 namespace PersonalHomePage
 {
@@ -14,15 +13,21 @@ namespace PersonalHomePage
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            BundleTable.EnableOptimizations = true; //force optimization while debugging
-           // bundles.UseCdn = true;
+            //BundleTable.EnableOptimizations = true; //force optimization while debugging
+            bundles.UseCdn = true;
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
 
 
             var nullBuilder = new NullBuilder();
-            var styleTransformer = new StyleTransformer(new CleanCssMinifier());
-            var scriptTransformer = new ScriptTransformer(new EdwardsJsMinifier());
+            var styleTransformer = new StyleTransformer(new YuiCssMinifier(new YuiSettings
+            {
+                CssMinifier = {RemoveComments = true}
+            }));
+            var scriptTransformer = new ScriptTransformer(new YuiJsMinifier(new YuiSettings
+            {
+                JsMinifier = { ObfuscateJavascript = true}
+            }));
             var nullOrderer = new NullOrderer();
 
             // Replace a default bundle resolver in order to the debugging HTTP-handler
@@ -132,20 +137,23 @@ namespace PersonalHomePage
                 "~/Scripts/wow.js",
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
-                "~/Scripts/nprogress.js"
+                "~/Scripts/nprogress.js",
+                "~/Scripts/bindingHandlers/*.ts",
+
+                "~/Scripts/app/helpers/*.ts",
+
+                "~/Scripts/app/base/*.ts",
+                "~/Scripts/app/models/*.ts",
+                "~/Scripts/app/viewModels/*.ts",
+
+                "~/Scripts/app/shell.ts"
                 );
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
             commonScriptsBundle.Orderer = nullOrderer;
             bundles.Add(commonScriptsBundle);
 
-            var tsBundle = new Bundle("~/bundles/ts", string.Format(cdnUrl, "bundles/ts"));
-            tsBundle.IncludeDirectory("~/Scripts/", "*.ts", true);
-            tsBundle.Builder = nullBuilder;
-            tsBundle.Transforms.Add(new ScriptTransformer(new[] { "*.d.ts" }));
-            tsBundle.Transforms.Add(scriptTransformer);
-            tsBundle.Orderer = new ScriptDependencyOrderer();
-            bundles.Add(tsBundle);
+            
         }
     }
 }
