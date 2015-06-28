@@ -1,3 +1,12 @@
+/// <reference path="models/skillitem.ts" />
+/// <reference path="models/certification.ts" />
+/// <reference path="models/socialprofile.ts" />
+/// <reference path="base/contentitem.ts" />
+/// <reference path="viewmodels/contactviewmodel.ts" />
+/// <reference path="viewmodels/homeviewmodel.ts" />
+/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
+/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
+/// <reference path="helpers/preloader.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var Shell;

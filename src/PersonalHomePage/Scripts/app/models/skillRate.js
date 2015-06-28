@@ -1,3 +1,4 @@
+/// <reference path="../../typings/knockout/knockout.d.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var Models;
@@ -13,4 +14,4 @@ var PersonalHomePage;
         Models.SkillRate = SkillRate;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=skillRate.js.map
+//# sourceMappingURL=skillrate.js.map

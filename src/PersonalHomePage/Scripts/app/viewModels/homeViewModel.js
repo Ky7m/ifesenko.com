@@ -1,3 +1,7 @@
+/// <reference path="../models/certification.ts" />
+/// <reference path="../models/skillitem.ts" />
+/// <reference path="contactviewmodel.ts" />
+/// <reference path="../models/socialprofile.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var ViewModels;

@@ -1,4 +1,6 @@
-﻿/// <reference path="../../typings/nprogress/nprogress.d.ts" />
+﻿/// <reference path="../../typings/toastr/toastr.d.ts" />
+/// <reference path="../../typings/nprogress/nprogress.d.ts" />
+/// <reference path="../base/validatableobject.ts" />
 module PersonalHomePage.ViewModels {
     export class ContactViewModel extends Base.ValidatableObject {
         name: KnockoutObservable<string>;
