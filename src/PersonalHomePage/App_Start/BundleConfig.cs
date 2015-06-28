@@ -4,7 +4,6 @@ using BundleTransformer.Core.Builders;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Resolvers;
 using BundleTransformer.Core.Transformers;
-using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
 {
@@ -41,17 +40,26 @@ namespace PersonalHomePage
             bootstrapCssBundle.Orderer = nullOrderer;
             bundles.Add(bootstrapCssBundle);
 
+            var animateCssBundle = new Bundle("~/bundles/animate-css", "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css");
+            animateCssBundle.Include("~/Content/animate.css");
+            animateCssBundle.Builder = nullBuilder;
+            animateCssBundle.Transforms.Add(styleTransformer);
+            animateCssBundle.Orderer = nullOrderer;
+            bundles.Add(animateCssBundle);
+
+            var toastrCssBundle = new Bundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.css");
+            toastrCssBundle.Include("~/Content/toastr.css");
+            toastrCssBundle.Builder = nullBuilder;
+            toastrCssBundle.Transforms.Add(styleTransformer);
+            toastrCssBundle.Orderer = nullOrderer;
+            bundles.Add(toastrCssBundle);
+
             var commonStylesBundle = new Bundle("~/bundles/css", string.Format(cdnUrl, "bundles/css"));
             commonStylesBundle.Include(
-                "~/Content/animate.css",
-                        "~/Content/jquery.smooth.scroll.css",
-                        "~/Content/OwlCarousel/owl.carousel.css",
-                        "~/Content/OwlCarousel/owl.theme.css",
-                        "~/Content/OwlCarousel/owl.transitions.css",
-                        "~/Content/simpletextrotator.css",
-                        "~/Content/toastr.css",
-                        "~/Content/nprogress.css",
-                        "~/Content/site.css");
+                "~/Content/jquery.smooth.scroll.css",
+                "~/Content/simpletextrotator.css",
+                "~/Content/nprogress.css",
+                "~/Content/site.css");
             commonStylesBundle.Builder = nullBuilder;
             commonStylesBundle.Transforms.Add(styleTransformer);
             commonStylesBundle.Orderer = nullOrderer;
@@ -64,7 +72,7 @@ namespace PersonalHomePage
             jQueryBundle.Builder = nullBuilder;
             jQueryBundle.Transforms.Add(scriptTransformer);
             jQueryBundle.Orderer = nullOrderer;
-            jQueryBundle.CdnFallbackExpression = "window.jquery";
+            jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
 
             var bootstrapJsBundle = new Bundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js");
@@ -91,27 +99,41 @@ namespace PersonalHomePage
             respondJsBundle.CdnFallbackExpression = "window.respond";
             bundles.Add(respondJsBundle);
 
+            var knockoutJsBundle = new Bundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js");
+            knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
+            knockoutJsBundle.Builder = nullBuilder;
+            knockoutJsBundle.Transforms.Add(scriptTransformer);
+            knockoutJsBundle.Orderer = nullOrderer;
+            knockoutJsBundle.CdnFallbackExpression = "window.ko";
+            bundles.Add(knockoutJsBundle);
+
+            var toastrJsBundle = new Bundle("~/bundles/toastr-js", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.js");
+            toastrJsBundle.Include("~/Scripts/toastr.js");
+            toastrJsBundle.Builder = nullBuilder;
+            toastrJsBundle.Transforms.Add(scriptTransformer);
+            toastrJsBundle.Orderer = nullOrderer;
+            bundles.Add(toastrJsBundle);
+
             var commonScriptsBundle = new Bundle("~/bundles/js", string.Format(cdnUrl, "bundles/js"));
             commonScriptsBundle.Include(
-               "~/Scripts/jquery.simple-text-rotator.js",
-                        "~/Scripts/owl.carousel.js",
-                        "~/Scripts/jquery.smooth.scroll-{version}.js",
-                        "~/Scripts/wow.js",
-                        "~/Scripts/jquery.backstretch.js",
-                        "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/knockout.validation.js",
-                        "~/Scripts/toastr.js",
-                        "~/Scripts/nprogress.js",
+                "~/Scripts/jquery.simple-text-rotator.js",
+                "~/Scripts/jquery.smooth.scroll-{version}.js",
+                "~/Scripts/wow.js",
+                "~/Scripts/jquery.backstretch.js",
+                "~/Scripts/knockout.validation.js",
+                "~/Scripts/nprogress.js",
 
-                        "~/Scripts/bindingHandlers/*.js",
+                "~/Scripts/bindingHandlers/*.js",
 
-                        "~/Scripts/app/helpers/*.js",
+                "~/Scripts/app/helpers/*.js",
 
-                        "~/Scripts/app/base/*.js",
-                        "~/Scripts/app/models/*.js",
-                        "~/Scripts/app/viewModels/*.js",
+                "~/Scripts/app/base/*.js",
+                "~/Scripts/app/models/*.js",
+                "~/Scripts/app/viewModels/*.js",
 
-                        "~/Scripts/app/shell.js");
+                "~/Scripts/app/shell.js");
+
+
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
             commonScriptsBundle.Orderer = nullOrderer;
