@@ -67,6 +67,14 @@ namespace PersonalHomePage
 
             //
 
+            var aiBundle = new Bundle("~/bundles/ai", string.Format(cdnUrl, "bundles/ai"));
+            aiBundle.Include("~/Scripts/ai.0.15.0-build28683.js");
+            aiBundle.Builder = nullBuilder;
+            aiBundle.Transforms.Add(scriptTransformer);
+            aiBundle.Orderer = nullOrderer;
+            aiBundle.CdnFallbackExpression = "window.ApplicationInsights";
+            bundles.Add(aiBundle);
+
             var jQueryBundle = new Bundle("~/bundles/jquery", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.Builder = nullBuilder;
