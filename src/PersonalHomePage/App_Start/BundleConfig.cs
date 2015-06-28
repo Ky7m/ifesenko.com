@@ -1,9 +1,12 @@
 ﻿using System.Configuration;
 using System.Web.Optimization;
+using Arraybracket.Bundling;
+using BundleTransformer.CleanCss.Minifiers;
 using BundleTransformer.Core.Builders;
 using BundleTransformer.Core.Orderers;
 using BundleTransformer.Core.Resolvers;
 using BundleTransformer.Core.Transformers;
+using BundleTransformer.Packer.Minifiers;
 
 namespace PersonalHomePage
 {
@@ -11,15 +14,15 @@ namespace PersonalHomePage
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            //BundleTable.EnableOptimizations = true; //force optimization while debugging
+            BundleTable.EnableOptimizations = true; //force optimization while debugging
             bundles.UseCdn = true;
             var version = System.Reflection.Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
 
 
             var nullBuilder = new NullBuilder();
-            var styleTransformer = new StyleTransformer();
-            var scriptTransformer = new ScriptTransformer();
+            var styleTransformer = new StyleTransformer(new CleanCssMinifier());
+            var scriptTransformer = new ScriptTransformer(new EdwardsJsMinifier());
             var nullOrderer = new NullOrderer();
 
             // Replace a default bundle resolver in order to the debugging HTTP-handler
@@ -129,23 +132,31 @@ namespace PersonalHomePage
                 "~/Scripts/wow.js",
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
-                "~/Scripts/nprogress.js",
+                "~/Scripts/nprogress.js"/*,
 
-                "~/Scripts/bindingHandlers/*.js",
+                "~/Scripts/bindingHandlers/*.ts",
 
-                "~/Scripts/app/helpers/*.js",
+                "~/Scripts/app/helpers/*.ts",
 
-                "~/Scripts/app/base/*.js",
-                "~/Scripts/app/models/*.js",
-                "~/Scripts/app/viewModels/*.js",
+                "~/Scripts/app/base/*.ts",
+                "~/Scripts/app/models/*.ts",
+                "~/Scripts/app/viewModels/*.ts",
 
-                "~/Scripts/app/shell.js");
+                "~/Scripts/app/shell.ts"*/
+                );
 
 
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
             commonScriptsBundle.Orderer = nullOrderer;
             bundles.Add(commonScriptsBundle);
+
+            var tsBundle = new Bundle("~/bundles/ts");
+            tsBundle.IncludeDirectory("~/Scripts/", "*.ts", true);
+            tsBundle.Builder = nullBuilder;
+            tsBundle.Transforms.Add(new ScriptTransformer(new[] { "*.d.ts" }));
+            tsBundle.Orderer = new ScriptDependencyOrderer();
+            bundles.Add(tsBundle);
         }
     }
 }
