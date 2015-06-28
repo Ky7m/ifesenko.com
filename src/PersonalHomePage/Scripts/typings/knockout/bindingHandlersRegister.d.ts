@@ -2,6 +2,5 @@
 
 interface KnockoutBindingHandlers {
     textrotator: KnockoutBindingHandler;
-    owlCarousel: KnockoutBindingHandler;
     backstretch: KnockoutBindingHandler;
 }

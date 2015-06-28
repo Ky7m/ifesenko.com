@@ -3,9 +3,8 @@ var PersonalHomePage;
     var Models;
     (function (Models) {
         var Certification = (function () {
-            function Certification(image, description) {
-                this.image = image;
-                this.description = description;
+            function Certification(title) {
+                this.title = title;
             }
             return Certification;
         })();
