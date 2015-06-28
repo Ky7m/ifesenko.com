@@ -8,8 +8,8 @@ namespace PersonalHomePage
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            BundleTable.EnableOptimizations = true; //force optimization while debugging
-            //bundles.UseCdn = true;
+            //BundleTable.EnableOptimizations = true; //force optimization while debugging
+            bundles.UseCdn = true;
             var version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
 
