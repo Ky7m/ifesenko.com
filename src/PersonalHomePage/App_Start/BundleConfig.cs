@@ -138,15 +138,16 @@ namespace PersonalHomePage
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
                 "~/Scripts/nprogress.js",
-                "~/Scripts/bindingHandlers/*.ts",
 
-                "~/Scripts/app/helpers/*.ts",
+                "~/Scripts/bindingHandlers/*.js",
 
-                "~/Scripts/app/base/*.ts",
-                "~/Scripts/app/models/*.ts",
-                "~/Scripts/app/viewModels/*.ts",
+                "~/Scripts/app/helpers/*.js",
 
-                "~/Scripts/app/shell.ts"
+                "~/Scripts/app/base/*.js",
+                "~/Scripts/app/models/*.js",
+                "~/Scripts/app/viewModels/*.js",
+
+                "~/Scripts/app/shell.js"
                 );
             commonStylesBundle.Builder = nullBuilder;
             commonScriptsBundle.Transforms.Add(scriptTransformer);
