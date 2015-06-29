@@ -19,8 +19,8 @@ var PersonalHomePage;
         var ContactViewModel = PersonalHomePage.ViewModels.ContactViewModel;
         var ContentItem = PersonalHomePage.Base.ContentItem;
         new Preloader("#status", "#preloader").attach(window);
-        var bgContentItem = new ContentItem("content/images/bg.jpg");
-        $("#intro").backstretch([bgContentItem.Url]);
+        var bgContentItem = new ContentItem("content/images/background.jpg");
+        $("#intro").backstretch([bgContentItem.Uri]);
         $(function () {
             $(document).on("click", ".navbar-collapse.in", function (e) {
                 if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
@@ -73,7 +73,8 @@ var PersonalHomePage;
                 new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
             ];
             var contactViewModel = new ContactViewModel();
-            var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel);
+            var profileContentItem = new ContentItem("content/images/profile.jpg");
+            var homeViewModel = new HomeViewModel(profileContentItem.Uri, certifications, skillItems, socialProfiles, contactViewModel);
             ko.validation.init({
                 /*
                 parseInputAttributes is required for html5 attributes to work

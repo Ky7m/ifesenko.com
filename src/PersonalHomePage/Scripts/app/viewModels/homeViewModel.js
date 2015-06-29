@@ -7,7 +7,8 @@ var PersonalHomePage;
     var ViewModels;
     (function (ViewModels) {
         var HomeViewModel = (function () {
-            function HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel) {
+            function HomeViewModel(personalPhotoUri, certifications, skillItems, socialProfiles, contactViewModel) {
+                this.personalPhotoUri = personalPhotoUri;
                 this.certifications = certifications;
                 this.skillItems = skillItems;
                 this.socialProfiles = socialProfiles;

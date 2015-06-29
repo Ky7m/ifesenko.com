@@ -13,14 +13,15 @@
     <link rel="apple-touch-icon" href="@CdnUrl.Content("apple-touch-icon.png")">
     <title>Igor Fesenko - You're welcome!</title>
 
-    @Scripts.Render("~/bundles/ai")
+    @Scripts.Render("~/bundles/ai-js")
 
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400,700&subset=latin" rel="stylesheet" />
-    @Styles.Render("~/bundles/font-awesome")
+    @Styles.Render("~/bundles/font-awesome-css")
     @Styles.Render("~/bundles/bootstrap-css")
     @Styles.Render("~/bundles/animate-css")
     @Styles.Render("~/bundles/toastr-css")
-    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/simpletextrotator-css")
+    @Styles.Render("~/bundles/nprogress-css")
+    @Styles.Render("~/bundles/site-css")
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
     @RenderBody()
@@ -34,17 +35,22 @@
         </div>
     </footer>
     <script type="text/javascript">
-        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant() };
+        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
     </script>
     <!--[if lt IE 9]>
-    @Scripts.Render("~/bundles/html5shiv")
-    @Scripts.Render("~/bundles/respondJs")
+    @Scripts.Render("~/bundles/html5shiv-js")
+    @Scripts.Render("~/bundles/respond-js")
     <![endif]-->
-    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-js")
     @Scripts.Render("~/bundles/bootstrap-js")
-    @Scripts.Render("~/bundles/toastr-js")
     @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/js")
+    @Scripts.Render("~/bundles/toastr-js")
+    @Scripts.Render("~/bundles/simpletextrotator-js")
+    @Scripts.Render("~/bundles/wow-js")
+    @Scripts.Render("~/bundles/backstretch-js")
+    @Scripts.Render("~/bundles/knockout-validation-js")
+    @Scripts.Render("~/bundles/nprogress-js")
+    @Scripts.Render("~/bundles/site-js")
 
 </body>
 </html>
