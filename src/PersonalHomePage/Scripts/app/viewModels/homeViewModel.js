@@ -19,4 +19,4 @@ var PersonalHomePage;
         ViewModels.HomeViewModel = HomeViewModel;
     })(ViewModels = PersonalHomePage.ViewModels || (PersonalHomePage.ViewModels = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=homeviewmodel.js.map
+//# sourceMappingURL=homeViewModel.js.map
