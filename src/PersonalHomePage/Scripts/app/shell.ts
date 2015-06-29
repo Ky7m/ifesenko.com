@@ -19,7 +19,7 @@ module PersonalHomePage.Shell {
 
     new Preloader("#status", "#preloader").attach(window);
     var bgContentItem = new ContentItem("content/images/background.jpg");
-    $("#intro").backstretch([bgContentItem.Url]);
+    $("#intro").backstretch([bgContentItem.Uri]);
 
     $(() => {
 
@@ -85,7 +85,7 @@ module PersonalHomePage.Shell {
         ];
         var contactViewModel = new ContactViewModel();
         var profileContentItem = new ContentItem("content/images/profile.jpg");
-        var homeViewModel = new HomeViewModel(profileContentItem.Url, certifications, skillItems, socialProfiles, contactViewModel);
+        var homeViewModel = new HomeViewModel(profileContentItem.Uri, certifications, skillItems, socialProfiles, contactViewModel);
 
         ko.validation.init({
             /*

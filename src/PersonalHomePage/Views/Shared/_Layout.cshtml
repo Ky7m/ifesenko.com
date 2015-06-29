@@ -33,7 +33,7 @@
         </div>
     </footer>
     <script type="text/javascript">
-        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', enableOptimizations: @BundleTable.EnableOptimizations.ToString().ToLowerInvariant() };
+        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
     </script>
     <!--[if lt IE 9]>
     @Scripts.Render("~/bundles/html5shiv")

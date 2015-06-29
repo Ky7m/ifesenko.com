@@ -6,13 +6,13 @@ var PersonalHomePage;
             function ContentItem(relativePath) {
                 var options = window["options"];
                 var cdnUrl = options.cdnUrl;
-                var enableOptimizations = options.enableOptimizations;
+                var useCdn = options.useCdn;
                 var host = window.location.host;
-                this.Url = cdnUrl + "/" + relativePath;
+                this.Uri = cdnUrl + "/" + relativePath;
                 var localPath = "//" + host + "/" + relativePath;
                 //if debug mode
-                if (!enableOptimizations) {
-                    this.Url = localPath;
+                if (!useCdn) {
+                    this.Uri = localPath;
                 }
             }
             return ContentItem;

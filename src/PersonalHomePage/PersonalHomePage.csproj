@@ -209,7 +209,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
-    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\profile.jpg" />
     <Content Include="Content\jquery.smooth.scroll.css" />
@@ -217,7 +217,6 @@
     <Content Include="Content\nprogress.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
-    <Content Include="Content\images\smooth_scroll_arrow.png" />
     <Content Include="Content\simpletextrotator.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -235,11 +234,11 @@
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -271,9 +270,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.js" />
-    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.min.js" />
-    <Content Include="Scripts\jquery.smooth.scroll-1.0.1.min.js.map" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.backstretch.js" />

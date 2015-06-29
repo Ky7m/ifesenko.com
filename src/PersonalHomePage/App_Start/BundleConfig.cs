@@ -12,6 +12,7 @@ namespace PersonalHomePage
             bundles.UseCdn = true;
             var version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
             var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
+            var cdnUrlWithoutVersion = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
 
             var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
@@ -31,7 +32,6 @@ namespace PersonalHomePage
 
             var commonStylesBundle = new StyleBundle("~/bundles/css", string.Format(cdnUrl, "bundles/css"));
             commonStylesBundle.Include(
-                "~/Content/jquery.smooth.scroll.css",
                 "~/Content/simpletextrotator.css",
                 "~/Content/nprogress.css",
                 "~/Content/site.css");
@@ -39,7 +39,7 @@ namespace PersonalHomePage
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai", string.Format(cdnUrl, "Scripts/ai.0.15.0-build28683.min.js"));
+            var aiBundle = new ScriptBundle("~/bundles/ai", string.Format(cdnUrlWithoutVersion, "Scripts/ai.0.15.0-build28683.min.js"));
             aiBundle.Include("~/Scripts/ai.0.15.0-build28683.min.js");
             bundles.Add(aiBundle);
 
@@ -75,7 +75,6 @@ namespace PersonalHomePage
             var commonScriptsBundle = new ScriptBundle("~/bundles/js", string.Format(cdnUrl, "bundles/js"));
             commonScriptsBundle.Include(
                 "~/Scripts/jquery.simple-text-rotator.js",
-                "~/Scripts/jquery.smooth.scroll-{version}.js",
                 "~/Scripts/wow.js",
                 "~/Scripts/jquery.backstretch.js",
                 "~/Scripts/knockout.validation.js",
