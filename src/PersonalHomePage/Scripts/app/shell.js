@@ -19,7 +19,7 @@ var PersonalHomePage;
         var ContactViewModel = PersonalHomePage.ViewModels.ContactViewModel;
         var ContentItem = PersonalHomePage.Base.ContentItem;
         new Preloader("#status", "#preloader").attach(window);
-        var bgContentItem = new ContentItem("content/images/bg.jpg");
+        var bgContentItem = new ContentItem("content/images/background.jpg");
         $("#intro").backstretch([bgContentItem.Url]);
         $(function () {
             $(document).on("click", ".navbar-collapse.in", function (e) {
@@ -73,7 +73,8 @@ var PersonalHomePage;
                 new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
             ];
             var contactViewModel = new ContactViewModel();
-            var homeViewModel = new HomeViewModel(certifications, skillItems, socialProfiles, contactViewModel);
+            var profileContentItem = new ContentItem("content/images/profile.jpg");
+            var homeViewModel = new HomeViewModel(profileContentItem.Url, certifications, skillItems, socialProfiles, contactViewModel);
             ko.validation.init({
                 /*
                 parseInputAttributes is required for html5 attributes to work
