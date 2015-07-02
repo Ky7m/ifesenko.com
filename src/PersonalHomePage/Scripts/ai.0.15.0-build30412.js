@@ -11,32 +11,24 @@ var Microsoft;
             function _InternalLogging() {
             }
             _InternalLogging.throwInternalNonUserActionable = function (severity, message) {
-                if (_InternalLogging.enableDebugExceptions()) {
+                if (this.enableDebugExceptions()) {
                     throw message;
                 }
                 else {
-                    _InternalLogging.warn(message);
-                    if (_InternalLogging.verboseLogging() || severity === 0 /* CRITICAL */) {
-                        if (this.queue.length < this.MAX_QUEUE_SIZE) {
-                            this.queue.push(_InternalLogging.AiNonUserActionable + message);
-                        }
-                    }
+                    this.warnToConsole(message);
+                    this.logInternalMessage(severity, this.AiNonUserActionablePrefix + message);
                 }
             };
             _InternalLogging.throwInternalUserActionable = function (severity, message) {
-                if (_InternalLogging.enableDebugExceptions()) {
+                if (this.enableDebugExceptions()) {
                     throw message;
                 }
                 else {
-                    _InternalLogging.warn(message);
-                    if (_InternalLogging.verboseLogging() || severity === 0 /* CRITICAL */) {
-                        if (this.queue.length < this.MAX_QUEUE_SIZE) {
-                            this.queue.push(_InternalLogging.AiUserActionablePrefix + message);
-                        }
-                    }
+                    this.warnToConsole(message);
+                    this.logInternalMessage(severity, this.AiUserActionablePrefix + message);
                 }
             };
-            _InternalLogging.warn = function (message) {
+            _InternalLogging.warnToConsole = function (message) {
                 if (typeof console !== "undefined" && !!console) {
                     if (typeof console.warn === "function") {
                         console.warn(message);
@@ -46,12 +38,39 @@ var Microsoft;
                     }
                 }
             };
+            _InternalLogging.resetInternalMessageCount = function () {
+                this._messageCount = 0;
+            };
+            _InternalLogging.setMaxInternalMessageLimit = function (limit) {
+                if (!limit) {
+                    throw new Error('limit cannot be undefined.');
+                }
+                this.MAX_INTERNAL_MESSAGE_LIMIT = limit;
+            };
+            _InternalLogging.logInternalMessage = function (severity, message) {
+                if (this._areInternalMessagesThrottled()) {
+                    return;
+                }
+                if (this.verboseLogging() || severity === 0 /* CRITICAL */) {
+                    this.queue.push(message);
+                    this._messageCount++;
+                }
+                if (this._messageCount == this.MAX_INTERNAL_MESSAGE_LIMIT) {
+                    var throttleLimitMessage = this.AiNonUserActionablePrefix + "Internal events throttle limit per PageView reached for this app.";
+                    this.queue.push(throttleLimitMessage);
+                    this.warnToConsole(throttleLimitMessage);
+                }
+            };
+            _InternalLogging._areInternalMessagesThrottled = function () {
+                return this._messageCount >= this.MAX_INTERNAL_MESSAGE_LIMIT;
+            };
             _InternalLogging.AiUserActionablePrefix = "AI: ";
-            _InternalLogging.AiNonUserActionable = "AI (Internal): ";
-            _InternalLogging.MAX_QUEUE_SIZE = 100;
+            _InternalLogging.AiNonUserActionablePrefix = "AI (Internal): ";
             _InternalLogging.enableDebugExceptions = function () { return false; };
             _InternalLogging.verboseLogging = function () { return false; };
             _InternalLogging.queue = [];
+            _InternalLogging.MAX_INTERNAL_MESSAGE_LIMIT = 25;
+            _InternalLogging._messageCount = 0;
             return _InternalLogging;
         })();
         ApplicationInsights._InternalLogging = _InternalLogging;
@@ -1535,6 +1554,9 @@ var Microsoft;
                     ApplicationInsights._InternalLogging.throwInternalUserActionable(0 /* CRITICAL */, "cannot call .track() with a null or undefined argument");
                 }
                 else {
+                    if (envelope.name === ApplicationInsights.Telemetry.PageView.envelopeType) {
+                        ApplicationInsights._InternalLogging.resetInternalMessageCount();
+                    }
                     if (this.session) {
                         if (typeof this.session.id !== "string") {
                             this._sessionManager.update();
@@ -1749,7 +1771,7 @@ var Microsoft;
     var ApplicationInsights;
     (function (ApplicationInsights) {
         "use strict";
-        ApplicationInsights.Version = "0.15.20150624.1";
+        ApplicationInsights.Version = "0.15.20150630.5";
         var AppInsights = (function () {
             function AppInsights(config) {
                 var _this = this;
@@ -1929,7 +1951,7 @@ var Microsoft;
                     this.context.track(envelope);
                 }
                 catch (e) {
-                    ApplicationInsights._InternalLogging.warn("trackTrace failed, trace will not be collected: " + JSON.stringify(e));
+                    ApplicationInsights._InternalLogging.warnToConsole("trackTrace failed, trace will not be collected: " + JSON.stringify(e));
                 }
             };
             AppInsights.prototype.flush = function () {
@@ -2142,7 +2164,7 @@ var Microsoft;
             };
             Initialization.prototype.pollInteralLogs = function (appInsightsInstance) {
                 return setInterval(function () {
-                    var queue = Microsoft.ApplicationInsights._InternalLogging["queue"];
+                    var queue = Microsoft.ApplicationInsights._InternalLogging.queue;
                     var length = queue.length;
                     for (var i = 0; i < length; i++) {
                         appInsightsInstance.trackTrace(queue[i]);
