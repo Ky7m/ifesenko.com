@@ -1,1 +1,28 @@
-﻿<h2>Server Error</h2>
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>An error occurred</title>
+    <style>
+        .errorPage {
+            padding: 0;
+            background: #552d91;
+            text-align: center;
+            color: #eee;
+            font-family: "Segoe UI", Tahoma, Geneva, sans-serif;
+        }
+
+        img {
+            max-height: 400px;
+            width: 20%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body class="errorPage">
+    <img src="@CdnUrl.Content("robot.png")" alt="An error occurred!" />
+    <h1>An error occurred!</h1>
+    <h3>I am sorry, something bad has happened. Please wait a moment and try again.</h3>
+</body>
+</html>
