@@ -20,8 +20,8 @@ namespace PersonalHomePage
             Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
             var bundleVersion = Version.Replace(".", "-");
             
-            SiteCssBundleName = string.Format("~/bundles/site-{0}-css", bundleVersion);
-            SiteJsBundleName = string.Format("~/bundles/site-{0}-js", bundleVersion);
+            SiteCssBundleName = string.Format("bundles/site-{0}-css", bundleVersion);
+            SiteJsBundleName = string.Format("bundles/site-{0}-js", bundleVersion);
         }
 
         public static void RegisterBundles(BundleCollection bundles)
