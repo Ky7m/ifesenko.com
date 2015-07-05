@@ -18,10 +18,9 @@ namespace PersonalHomePage
             CdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
 
             Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
-            var bundleVersion = Version.Replace(".", "-");
             
-            SiteCssBundleName = string.Format("~/bundles/site-{0}-css", bundleVersion);
-            SiteJsBundleName = string.Format("~/bundles/site-{0}-js", bundleVersion);
+            SiteCssBundleName = string.Format("~/bundles/site-css/?v={0}", Version);
+            SiteJsBundleName = string.Format("~/bundles/site-js/?v={0}", Version);
         }
 
         public static void RegisterBundles(BundleCollection bundles)
@@ -52,7 +51,7 @@ namespace PersonalHomePage
             nprogressCssBundle.Include("~/Content/nprogress.css");
             bundles.Add(nprogressCssBundle);
 
-            var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName));
+            var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
 
@@ -111,7 +110,7 @@ namespace PersonalHomePage
             nprogressJsBundle.Include("~/Scripts/nprogress.js");
             bundles.Add(nprogressJsBundle);
 
-            var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName));
+            var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName.TrimStart("~/".ToCharArray())));
             siteJsBundle.Include(
                 "~/Scripts/bindingHandlers/*.js",
 
