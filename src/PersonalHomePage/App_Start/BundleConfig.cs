@@ -18,9 +18,9 @@ namespace PersonalHomePage
             CdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
 
             Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
-            
-            SiteCssBundleName = string.Format("~/bundles/site-css/?v={0}", Version);
-            SiteJsBundleName = string.Format("~/bundles/site-js/?v={0}", Version);
+            var bundleVersion = Version.Replace(".", "-");
+            SiteCssBundleName = string.Format("~/bundles/site-css-{0}", bundleVersion);
+            SiteJsBundleName = string.Format("~/bundles/site-js-{0}", bundleVersion);
         }
 
         public static void RegisterBundles(BundleCollection bundles)
