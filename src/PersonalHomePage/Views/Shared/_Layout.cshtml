@@ -36,7 +36,7 @@
     @Scripts.Render("~/bundles/ai-js")
 
     <script type="text/javascript">
-        window.options = { cdnUrl: '@BundleConfig.CdnUrl', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
+        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
     </script>
 
     <!--[if lt IE 9]>
