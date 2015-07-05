@@ -4,15 +4,29 @@ using System.Web.Optimization;
 
 namespace PersonalHomePage
 {
-    public class BundleConfig
+    public static class BundleConfig
     {
-        public static void RegisterBundles(BundleCollection bundles)
+        public static string CdnUrl { get;  private set; }
+        public static string Version { get;  private set; }
+        public static string SiteJsBundleName { get; private set; }
+        public static string SiteCssBundleName { get; private set; }
+
+        static BundleConfig()
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
+
+            CdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
+
+            Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
+            var bundleVersion = Version.Replace(".", "-");
+            
+            SiteCssBundleName = string.Format("~/bundles/site-{0}-css", bundleVersion);
+            SiteJsBundleName = string.Format("~/bundles/site-{0}-js", bundleVersion);
+        }
+
+        public static void RegisterBundles(BundleCollection bundles)
+        {
             bundles.UseCdn = true;
-            var version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString();
-            var cdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}?v=" + version;
-            var cdnUrlWithoutVersion = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
 
             var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
@@ -38,13 +52,13 @@ namespace PersonalHomePage
             nprogressCssBundle.Include("~/Content/nprogress.css");
             bundles.Add(nprogressCssBundle);
 
-            var siteCssBundle = new StyleBundle("~/bundles/site-css", string.Format(cdnUrl, "bundles/site-css"));
+            var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(cdnUrlWithoutVersion, "Scripts/ai.0.15.0-build30412.min.js"));
+            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build30412.min.js"));
             aiBundle.Include("~/Scripts/ai.0.15.0-build30412.min.js");
             bundles.Add(aiBundle);
 
@@ -97,7 +111,7 @@ namespace PersonalHomePage
             nprogressJsBundle.Include("~/Scripts/nprogress.js");
             bundles.Add(nprogressJsBundle);
 
-            var siteJsBundle = new ScriptBundle("~/bundles/site-js", string.Format(cdnUrl, "bundles/site-js"));
+            var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName));
             siteJsBundle.Include(
                 "~/Scripts/bindingHandlers/*.js",
 

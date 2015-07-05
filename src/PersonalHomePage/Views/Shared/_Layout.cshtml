@@ -13,15 +13,13 @@
     <link rel="apple-touch-icon" href="@CdnUrl.Content("apple-touch-icon.png")">
     <title>Igor Fesenko - You're welcome!</title>
 
-    @Scripts.Render("~/bundles/ai-js")
-
     @Styles.Render("~/bundles/font-awesome-css")
     @Styles.Render("~/bundles/bootstrap-css")
     @Styles.Render("~/bundles/animate-css")
     @Styles.Render("~/bundles/toastr-css")
     @Styles.Render("~/bundles/simpletextrotator-css")
     @Styles.Render("~/bundles/nprogress-css")
-    @Styles.Render("~/bundles/site-css")
+    @Styles.Render(BundleConfig.SiteCssBundleName)
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
     @RenderBody()
@@ -29,14 +27,18 @@
         <div class="container">
             <div class="row">
                 <p class="copy text-center">
-                    @System.Reflection.Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString().TrimEnd('0').Trim('.')
+                    @BundleConfig.Version
                 </p>
             </div>
         </div>
     </footer>
+
+    @Scripts.Render("~/bundles/ai-js")
+
     <script type="text/javascript">
-        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
+        window.options = { cdnUrl: '@BundleConfig.CdnUrl', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
     </script>
+
     <!--[if lt IE 9]>
     @Scripts.Render("~/bundles/html5shiv-js")
     @Scripts.Render("~/bundles/respond-js")
@@ -50,7 +52,7 @@
     @Scripts.Render("~/bundles/backstretch-js")
     @Scripts.Render("~/bundles/knockout-validation-js")
     @Scripts.Render("~/bundles/nprogress-js")
-    @Scripts.Render("~/bundles/site-js")
+    @Scripts.Render(BundleConfig.SiteJsBundleName)
 
 </body>
 </html>
