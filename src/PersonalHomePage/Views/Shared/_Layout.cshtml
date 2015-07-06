@@ -32,8 +32,9 @@
             </div>
         </div>
     </footer>
-    @AnalyticsHelper.GetAppInsightsScript()
+   
     @Scripts.Render("~/bundles/ai-js")
+    @AnalyticsHelper.GetAppInsightsScript()
 
     <script type="text/javascript">
         window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
