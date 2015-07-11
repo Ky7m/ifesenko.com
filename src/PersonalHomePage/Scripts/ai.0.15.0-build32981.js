@@ -171,6 +171,22 @@ var Microsoft;
                 var propertyValueDump = JSON.stringify(object);
                 return objectTypeDump + propertyValueDump;
             };
+            Util.addEventHandler = function (eventName, callback) {
+                if (!window || typeof eventName !== 'string' || typeof callback !== 'function') {
+                    return false;
+                }
+                var verbEventName = 'on' + eventName;
+                if (window.addEventListener) {
+                    window.addEventListener(eventName, callback, false);
+                }
+                else if (window.attachEvent) {
+                    window.attachEvent(verbEventName, callback);
+                }
+                else {
+                    return false;
+                }
+                return true;
+            };
             Util.document = typeof document !== "undefined" ? document : {};
             Util.NotSpecified = "not_specified";
             return Util;
@@ -764,12 +780,16 @@ var Microsoft;
                 }
                 return size;
             };
-            Sender.prototype.triggerSend = function () {
+            Sender.prototype.triggerSend = function (async) {
+                var isAsync = true;
+                if (typeof async === 'boolean') {
+                    isAsync = async;
+                }
                 try {
                     if (!this._config.disableTelemetry()) {
                         if (this._buffer.length) {
                             var batch = this._config.emitLineDelimitedJson() ? this._buffer.join("\n") : "[" + this._buffer.join(",") + "]";
-                            this._sender(batch);
+                            this._sender(batch, isAsync);
                         }
                         this._lastSend = +new Date;
                     }
@@ -781,15 +801,15 @@ var Microsoft;
                     ApplicationInsights._InternalLogging.throwInternalNonUserActionable(0 /* CRITICAL */, "trackPageView failed: " + JSON.stringify(e));
                 }
             };
-            Sender.prototype._xhrSender = function (payload) {
+            Sender.prototype._xhrSender = function (payload, isAsync) {
                 var xhr = new XMLHttpRequest();
-                xhr.open("POST", this._config.endpointUrl(), true);
+                xhr.open("POST", this._config.endpointUrl(), isAsync);
                 xhr.setRequestHeader("Content-type", "application/json");
                 xhr.onreadystatechange = function () { return Sender._xhrReadyStateChange(xhr, payload); };
                 xhr.onerror = function (event) { return Sender._onError(payload, xhr.responseText || xhr.response || "", event); };
                 xhr.send(payload);
             };
-            Sender.prototype._xdrSender = function (payload) {
+            Sender.prototype._xdrSender = function (payload, isAsync) {
                 var xdr = new XDomainRequest();
                 xdr.onload = function () { return Sender._xdrOnLoad(xdr, payload); };
                 xdr.onerror = function (event) { return Sender._onError(payload, xdr.responseText || "", event); };
@@ -1771,7 +1791,7 @@ var Microsoft;
     var ApplicationInsights;
     (function (ApplicationInsights) {
         "use strict";
-        ApplicationInsights.Version = "0.15.20150630.5";
+        ApplicationInsights.Version = "0.15.20150709.2";
         var AppInsights = (function () {
             function AppInsights(config) {
                 var _this = this;
@@ -2172,6 +2192,17 @@ var Microsoft;
                     queue.length = 0;
                 }, this.config.diagnosticLogInterval);
             };
+            Initialization.prototype.addFlushBeforeUnload = function (appInsightsInstance) {
+                if ('onbeforeunload' in window) {
+                    var flushAllEvents = function () {
+                        appInsightsInstance.trackEvent('AI (Internal): Flushing all events onbeforeunload');
+                        appInsightsInstance.context._sender.triggerSend();
+                    };
+                    if (!Microsoft.ApplicationInsights.Util.addEventHandler('beforeunload', flushAllEvents)) {
+                        Microsoft.ApplicationInsights._InternalLogging.throwInternalNonUserActionable(0 /* CRITICAL */, 'Could not add handler for beforeunload');
+                    }
+                }
+            };
             Initialization.getDefaultConfig = function (config) {
                 if (!config) {
                     config = {};
@@ -2211,6 +2242,7 @@ function initializeAppInsights() {
             }
             init.emptyQueue();
             init.pollInteralLogs(appInsightsLocal);
+            init.addFlushBeforeUnload(appInsightsLocal);
         }
     }
 }
