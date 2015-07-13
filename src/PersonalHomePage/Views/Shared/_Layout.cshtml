@@ -32,14 +32,11 @@
             </div>
         </div>
     </footer>
-   
     @Scripts.Render("~/bundles/ai-js")
     @AnalyticsHelper.GetAppInsightsScript()
-
     <script type="text/javascript">
         window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
     </script>
-
     <!--[if lt IE 9]>
     @Scripts.Render("~/bundles/html5shiv-js")
     @Scripts.Render("~/bundles/respond-js")
@@ -54,6 +51,5 @@
     @Scripts.Render("~/bundles/knockout-validation-js")
     @Scripts.Render("~/bundles/nprogress-js")
     @Scripts.Render(BundleConfig.SiteJsBundleName)
-
 </body>
 </html>
