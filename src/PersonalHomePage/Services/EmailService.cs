@@ -8,7 +8,7 @@ using SendGrid;
 
 namespace PersonalHomePage.Services
 {
-    public sealed class EmailService
+    public static class EmailService
     {
         public static async Task SendEmailAsync(EmailMessageModel message)
         {
