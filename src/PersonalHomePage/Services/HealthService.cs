@@ -30,6 +30,12 @@ namespace PersonalHomePage.Services
             var accessToken = ConfigurationManager.AppSettings["healthService:AccessToken"];
             var refreshToken = ConfigurationManager.AppSettings["healthService:RefreshToken"];
             _credentials = new LiveIdCredentials(accessToken, refreshToken);
+
+            // await this.MakeRequestAsync("Profile");
+            // await this.MakeRequestAsync("Devices");
+            // await GetActivity("Sleep");
+            // await GetActivity("FreePlay");
+            // await GetActivity("GuidedWorkout");
         }
 
         public Uri GetAuthorizationRequestUri()
@@ -49,32 +55,7 @@ namespace PersonalHomePage.Services
             return uri.Uri;
         }
 
-        public Uri CreateOAuthTokenRequestUri(string code, string refreshToken = "")
-        {
-            UriBuilder uri = new UriBuilder("https://login.live.com/oauth20_token.srf");
-            var query = new StringBuilder();
-
-            query.AppendFormat("redirect_uri={0}", Uri.EscapeUriString(RedirectUri));
-            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(_clientId));
-            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(_clientSecret));
-
-            string grant = "authorization_code";
-            if (!string.IsNullOrEmpty(refreshToken))
-            {
-                grant = "refresh_token";
-                query.AppendFormat("&refresh_token={0}", Uri.EscapeUriString(refreshToken));
-            }
-            else
-            {
-                query.AppendFormat("&code={0}", Uri.EscapeUriString(code));
-            }
-
-            query.Append(string.Format("&grant_type={0}", grant));
-            uri.Query = query.ToString();
-            return uri.Uri;
-        }
-
-        private async Task<string> GetToken(string code, bool isRefresh)
+        public Uri CreateOAuthTokenRequestUri(string code, bool isRefresh)
         {
             UriBuilder uri = new UriBuilder("https://login.live.com/oauth20_token.srf");
             var query = new StringBuilder();
@@ -95,8 +76,12 @@ namespace PersonalHomePage.Services
             }
 
             uri.Query = query.ToString();
+            return uri.Uri;
+        }
 
-            var request = WebRequest.Create(uri.Uri);
+        private async Task<string> GetRefreshToken(string code, bool isRefresh)
+        {
+            var request = WebRequest.Create(CreateOAuthTokenRequestUri(code,isRefresh));
 
             try
             {
@@ -141,7 +126,7 @@ namespace PersonalHomePage.Services
 
             if (resp.StatusCode == HttpStatusCode.Unauthorized)
             {
-                await GetToken(_credentials.RefreshToken, true);
+                await GetRefreshToken(_credentials.RefreshToken, true);
 
                 // Re-issue the same request (will use new auth token now)
                 return await MakeRequestAsync(path, query);
@@ -154,95 +139,44 @@ namespace PersonalHomePage.Services
             return resStr;
         }
 
-      /*
 
-       
-
-        private async void profile_Click(object sender, RoutedEventArgs e)
+        private async Task GetDailySummary()
         {
-            var res = await MakeRequestAsync("me/profile");
-            // Format the JSON string
-            var obj = JsonConvert.DeserializeObject(res);
-            res = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            TextDisplay.Text = res;
+            string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
+            string endtime = DateTime.UtcNow.ToString("O");
+
+            await this.MakeRequestAsync(
+                "Summaries/Daily",
+                string.Format("startTime={0}&endTime={1}", startTime, endtime));
         }
 
-        private async void devices_Click(object sender, RoutedEventArgs e)
+        private async void GetHourlySummary()
         {
-            var res = await MakeRequestAsync("me/devices");
-            // Format the JSON string
-            var obj = JsonConvert.DeserializeObject(res);
-            res = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            TextDisplay.Text = res;
+            string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
+            string endTime = DateTime.UtcNow.ToString("O");
+
+            await this.MakeRequestAsync(
+                "Summaries/Hourly",
+                string.Format("startTime={0}&endTime={1}", startTime, endTime));
         }
 
-        private async void summaries_Click(object sender, RoutedEventArgs e)
+        private async void GetActivitiesSummary()
         {
-            var res = await MakeRequestAsync("me/summaries/Daily",
-                string.Format("startTime={0}", DateTime.Now.AddYears(-1).ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")));
+            string startTime = DateTime.UtcNow.AddDays(-29).ToString("O");
+            string endtime = DateTime.UtcNow.ToString("O");
 
-            // Format the JSON string
-            var obj = JsonConvert.DeserializeObject(res);
-            res = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            TextDisplay.Text = res;
+            await this.MakeRequestAsync(
+                "Activities",
+                string.Format("startTime={0}&endTime={1}", startTime, endtime));
         }
-
-        private async Task<string> GetActivity(string activity)
+        private async void GetActivitySummary(string activity)
         {
-            var res = await MakeRequestAsync("me/Activities/",
-                string.Format("startTime={0}&endTime={1}&activityTypes={2}",
-                DateTime.Now.AddYears(-1).ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"),
-                DateTime.Now.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"),
-                activity));
+            string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
+            string endtime = DateTime.UtcNow.ToString("O");
 
-            await Task.Run(() =>
-            {
-                // Format the JSON string
-                var obj = JsonConvert.DeserializeObject(res);
-                res = JsonConvert.SerializeObject(obj, Formatting.Indented);
-            });
-
-            return res;
+            await this.MakeRequestAsync(
+                "Activities",
+                string.Format("startTime={0}&endTime={1}&activityTypes={2}", startTime, endtime, activity));
         }
-
-        private async void SleepActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("Sleep");
-        }
-
-        private async void FreePlayActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("FreePlay");
-        }
-
-        private async void GuidedWorkoutActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("GuidedWorkout");
-        }
-
-        private async void BikeActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("Bike");
-        }
-
-        private async void GolfActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("Golf");
-        }
-
-        private async void RunActivityClick(object sender, RoutedEventArgs e)
-        {
-            TextDisplay.Text = await GetActivity("Run");
-        }
-
-        private void ClientSecretChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void ClientIdChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }*/
     }
 }
