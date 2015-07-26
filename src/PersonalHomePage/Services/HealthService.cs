@@ -109,9 +109,9 @@ namespace PersonalHomePage.Services
             }
         }
 
-        
 
-        public async Task<string> MakeRequestAsync(string path, string query = "")
+
+        private async Task<string> MakeRequestAsync(string path, string query = "")
         {
             var http = new HttpClient();
             http.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), string.Format("bearer {0}", _credentials.AccessToken));
@@ -140,41 +140,41 @@ namespace PersonalHomePage.Services
         }
 
 
-        private async Task GetDailySummary()
+        public async Task<string> GetDailySummary()
         {
             string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
             string endtime = DateTime.UtcNow.ToString("O");
 
-            await this.MakeRequestAsync(
+            return await this.MakeRequestAsync(
                 "Summaries/Daily",
                 string.Format("startTime={0}&endTime={1}", startTime, endtime));
         }
 
-        private async void GetHourlySummary()
+        public async Task<string> GetHourlySummary()
         {
             string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
             string endTime = DateTime.UtcNow.ToString("O");
 
-            await this.MakeRequestAsync(
+            return await this.MakeRequestAsync(
                 "Summaries/Hourly",
                 string.Format("startTime={0}&endTime={1}", startTime, endTime));
         }
 
-        private async void GetActivitiesSummary()
+        public async Task<string> GetActivitiesSummary()
         {
             string startTime = DateTime.UtcNow.AddDays(-29).ToString("O");
             string endtime = DateTime.UtcNow.ToString("O");
 
-            await this.MakeRequestAsync(
+            return await this.MakeRequestAsync(
                 "Activities",
                 string.Format("startTime={0}&endTime={1}", startTime, endtime));
         }
-        private async void GetActivitySummary(string activity)
+        public async Task<string> GetActivitySummary(string activity)
         {
             string startTime = DateTime.UtcNow.AddDays(-1).ToString("O");
             string endtime = DateTime.UtcNow.ToString("O");
 
-            await this.MakeRequestAsync(
+            return await this.MakeRequestAsync(
                 "Activities",
                 string.Format("startTime={0}&endTime={1}&activityTypes={2}", startTime, endtime, activity));
         }

@@ -28,7 +28,7 @@ namespace PersonalHomePage.Tests
         [Fact]
         public void CheckProfile()
         {
-            Assert.NotEmpty(_healthService.MakeRequestAsync("Profile").Result);
+            Assert.NotEmpty(_healthService.GetActivitySummary("Sleep").Result);
         }
     }
 }
