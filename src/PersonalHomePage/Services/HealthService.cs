@@ -1,52 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Configuration;
+using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace PersonalHomePage.Services
 {
     public sealed class HealthService
     {
-        const string Scopes = "mshealth.ReadDevices mshealth.ReadActivityHistory mshealth.ReadActivityLocation mshealth.ReadDevices mshealth.ReadProfile offline_access";
         const string RedirectUri = "https://login.live.com/oauth20_desktop.srf";
 
-        static string ClientId = string.Empty;
-        static string ClientSecret = string.Empty;
+        private string _apiUri;
+        private string _clientId;
+        private string _clientSecret;
+        private string _scope;
 
-        const string ClientAppResourceName = "MSHealthClientId";
-        const string ResourceName = "MSHealthOauthToken";
-        const string RefreshResourceName = "MSHealthOauthTokenRefresh";
-        const string UserName = "User";
+        private LiveIdCredentials _credentials;
 
-        const string ApiVersion = "v1";
-        /*
+        public HealthService()
+        {
+            _apiUri = ConfigurationManager.AppSettings["healthService:ApiUri"];
+            _clientId = ConfigurationManager.AppSettings["healthService:ClientId"];
+            _clientSecret = ConfigurationManager.AppSettings["healthService:ClientSecret"];
+            _scope = ConfigurationManager.AppSettings["healthService:Scope"];
 
-        private static Uri CreateOAuthCodeRequestUri()
+            var accessToken = ConfigurationManager.AppSettings["healthService:AccessToken"];
+            var refreshToken = ConfigurationManager.AppSettings["healthService:RefreshToken"];
+            _credentials = new LiveIdCredentials(accessToken, refreshToken);
+        }
+
+        public Uri GetAuthorizationRequestUri()
         {
             UriBuilder uri = new UriBuilder("https://login.live.com/oauth20_authorize.srf");
             var query = new StringBuilder();
 
             query.AppendFormat("redirect_uri={0}", Uri.EscapeUriString(RedirectUri));
 
-            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(ClientId));
-            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(ClientSecret));
+            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(_clientId));
+            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(_clientSecret));
 
-            query.AppendFormat("&scope={0}", Uri.EscapeUriString(Scopes));
+            query.AppendFormat("&scope={0}", Uri.EscapeUriString(_scope));
             query.Append("&response_type=code");
 
             uri.Query = query.ToString();
             return uri.Uri;
         }
 
-        private static Uri CreateOAuthTokenRequestUri(string code, string refreshToken = "")
+        public Uri CreateOAuthTokenRequestUri(string code, string refreshToken = "")
         {
             UriBuilder uri = new UriBuilder("https://login.live.com/oauth20_token.srf");
             var query = new StringBuilder();
 
             query.AppendFormat("redirect_uri={0}", Uri.EscapeUriString(RedirectUri));
-            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(ClientId));
-            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(ClientSecret));
+            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(_clientId));
+            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(_clientSecret));
 
             string grant = "authorization_code";
             if (!string.IsNullOrEmpty(refreshToken))
@@ -64,39 +74,65 @@ namespace PersonalHomePage.Services
             return uri.Uri;
         }
 
-        private async void OnLoaded(object sender)
+        private async Task<string> GetToken(string code, bool isRefresh)
         {
-            // try to get Client Id And Client Secret from the Password Vault - if no 
-            // entry found put up a dialog box to request..
-            var appCredentials = GetTokenFromVault2(ClientAppResourceName);
-            if (string.IsNullOrEmpty(appCredentials.Item1))
-            {
-                // Put up a UI prompting for the app IDs...
-                var cdr = await ClientCredentialsDlg.ShowAsync();
-                if (cdr == ContentDialogResult.Primary)
-                {
-                    ClientId = ClientIdInput.Text;
-                    ClientSecret = ClientSecretInput.Text;
+            UriBuilder uri = new UriBuilder("https://login.live.com/oauth20_token.srf");
+            var query = new StringBuilder();
 
-                    AddTokenToVault2(ClientAppResourceName, ClientId, ClientSecret);
-                }
+            query.AppendFormat("redirect_uri={0}", Uri.EscapeUriString(RedirectUri));
+            query.AppendFormat("&client_id={0}", Uri.EscapeUriString(_clientId));
+            query.AppendFormat("&client_secret={0}", Uri.EscapeUriString(_clientSecret));
+
+            if (isRefresh)
+            {
+                query.AppendFormat("&refresh_token={0}", Uri.EscapeUriString(code));
+                query.Append("&grant_type=refresh_token");
             }
             else
             {
-                ClientId = appCredentials.Item1;
-                ClientSecret = appCredentials.Item2;
+                query.AppendFormat("&code={0}", Uri.EscapeUriString(code));
+                query.Append("&grant_type=authorization_code");
+            }
+
+            uri.Query = query.ToString();
+
+            var request = WebRequest.Create(uri.Uri);
+
+            try
+            {
+                using (var response = await request.GetResponseAsync())
+                {
+                    using (var stream = response.GetResponseStream())
+                    {
+                        using (var streamReader = new StreamReader(stream))
+                        {
+                            var responseString = streamReader.ReadToEnd();
+                            var jsonResponse = JObject.Parse(responseString);
+                            _credentials.AccessToken = (string)jsonResponse["access_token"];
+                            _credentials.ExpiresIn = (long)jsonResponse["expires_in"];
+                            _credentials.RefreshToken = (string)jsonResponse["refresh_token"];
+                            string error = (string)jsonResponse["error"];
+
+                            return error;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
             }
         }
 
-        private async Task<string> MakeRequestAsync(string path, string query = "")
+        
+
+        public async Task<string> MakeRequestAsync(string path, string query = "")
         {
-            var token = await GetTokenAsync();
             var http = new HttpClient();
-            http.DefaultRequestHeaders.Authorization = new HttpCredentialsHeaderValue("Bearer", token);
+            http.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), string.Format("bearer {0}", _credentials.AccessToken));
 
-            var ub = new UriBuilder("https://api.microsofthealth.net");
-
-            ub.Path = ApiVersion + "/" + path;
+            var ub = new UriBuilder(_apiUri);
+            ub.Path += path;
             ub.Query = query;
 
             string resStr = string.Empty;
@@ -105,11 +141,7 @@ namespace PersonalHomePage.Services
 
             if (resp.StatusCode == HttpStatusCode.Unauthorized)
             {
-                // If we are unauthorized here assume that our token may have expired and use the 
-                // refresh token to get a new one and then try the request again..
-                var currentToken = GetTokenFromVault2(RefreshResourceName);
-                string rt = currentToken.Item2.Trim('"');
-                var newToken = await GetAndSecurelyStoreAuthTokensFromRefreshToken(rt);
+                await GetToken(_credentials.RefreshToken, true);
 
                 // Re-issue the same request (will use new auth token now)
                 return await MakeRequestAsync(path, query);
@@ -122,119 +154,9 @@ namespace PersonalHomePage.Services
             return resStr;
         }
 
-        private void AddTokenToVault(string resName, string token, string refresh)
-        {
-            var vault = new PasswordVault();
-            var credential = new PasswordCredential(resName, refresh, token);
-            vault.Add(credential);
-        }
+      /*
 
-        private void AddTokenToVault2(string resName, string userName, string token)
-        {
-            var vault = new PasswordVault();
-            var credential = new PasswordCredential(resName, userName, token);
-            vault.Add(credential);
-        }
-
-        private Tuple<string, string> GetTokenFromVault2(string resName)
-        {
-            string userName = string.Empty;
-            string password = string.Empty;
-
-            var vault = new PasswordVault();
-            try
-            {
-                var credential = vault.FindAllByResource(resName).FirstOrDefault();
-                if (credential != null)
-                {
-                    userName = credential.UserName;
-                    password = vault.Retrieve(resName, userName).Password;
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return new Tuple<string, string>(userName, password);
-        }
-
-        private Tuple<string, string> GetTokenFromVault(string resName)
-        {
-            string token = string.Empty;
-            string refresh_token = string.Empty;
-
-            var vault = new PasswordVault();
-            try
-            {
-                var credential = vault.FindAllByResource(resName).FirstOrDefault();
-                if (credential != null)
-                {
-                    refresh_token = credential.UserName;
-                    token = vault.Retrieve(resName, refresh_token).Password;
-                }
-            }
-            catch (Exception)
-            {
-            }
-            return new Tuple<string, string>(token, refresh_token);
-        }
-
-        private async Task<string> GetTokenAsync()
-        {
-            var token = GetTokenFromVault2(ResourceName);
-            if (!string.IsNullOrEmpty(token.Item2))
-                return token.Item2;
-
-            // want to get SSO behaviour here but if I use the app callback URI it uses SSO but WAB never
-            // returns
-            var ar = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None,
-                CreateOAuthCodeRequestUri(),
-                new Uri("https://login.live.com/oauth20_desktop.srf"));
-
-            var rs = ar.ResponseStatus;
-            var ed = ar.ResponseErrorDetail;
-            var rd = ar.ResponseData;
-            var respUri = new Uri(rd);
-            var code = respUri.Query.Split('=')[1];
-
-            var authToken = await GetAndSecurelyStoreAuthTokensFromAuthCode(code);
-            return authToken;
-        }
-
-        private async Task<string> GetAndSecurelyStoreAuthTokensFromAuthCode(string code)
-        {
-            var tokenUri = CreateOAuthTokenRequestUri(code);
-
-            var http = new HttpClient();
-            var resp = await http.GetAsync(tokenUri);
-            var result = await resp.Content.ReadAsStringAsync();
-
-            var value = JsonValue.Parse(result).GetObject();
-            var authToken = value.GetNamedValue("access_token").ToString();
-            var refreshToken = value.GetNamedValue("refresh_token").ToString();
-
-            AddTokenToVault2(ResourceName, UserName, authToken);
-            AddTokenToVault2(RefreshResourceName, UserName, refreshToken);
-
-            return authToken;
-        }
-
-        private async Task<string> GetAndSecurelyStoreAuthTokensFromRefreshToken(string refreshToken)
-        {
-            var tokenUri = CreateOAuthTokenRequestUri(string.Empty, refreshToken);
-
-            var http = new HttpClient();
-            var resp = await http.GetAsync(tokenUri);
-            var result = await resp.Content.ReadAsStringAsync();
-
-            var value = JsonValue.Parse(result).GetObject();
-            var authToken = value.GetNamedValue("access_token").ToString();
-            refreshToken = value.GetNamedValue("refresh_token").ToString();
-
-            AddTokenToVault2(ResourceName, UserName, authToken);
-            AddTokenToVault2(RefreshResourceName, UserName, refreshToken);
-
-            return authToken;
-        }
+       
 
         private async void profile_Click(object sender, RoutedEventArgs e)
         {
