@@ -19,15 +19,15 @@ namespace PersonalHomePage
 
             Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
             var bundleVersion = Version.Replace(".", "-");
-            SiteCssBundleName = string.Format("~/bundles/site-css-{0}", bundleVersion);
-            SiteJsBundleName = string.Format("~/bundles/site-js-{0}", bundleVersion);
+            SiteCssBundleName = $"~/bundles/site-css-{bundleVersion}";
+            SiteJsBundleName = $"~/bundles/site-js-{bundleVersion}";
         }
 
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.UseCdn = true;
 
-            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css");
+            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
@@ -57,8 +57,8 @@ namespace PersonalHomePage
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build32981.min.js"));
-            aiBundle.Include("~/Scripts/ai.0.15.0-build32981.min.js");
+            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build41087.min.js"));
+            aiBundle.Include("~/Scripts/ai.0.15.0-build41087.min.js");
             bundles.Add(aiBundle);
 
             var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");

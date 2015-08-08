@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.22823.1
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHomePage", "src\PersonalHomePage\PersonalHomePage.csproj", "{90D87FC8-7E98-48FF-801B-63E0193F0E20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHomePage.Tests", "tests\PersonalHomePage.Tests\PersonalHomePage.Tests.csproj", "{D31D7701-1A61-45E5-A608-80BD83C4ACAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{90D87FC8-7E98-48FF-801B-63E0193F0E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90D87FC8-7E98-48FF-801B-63E0193F0E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90D87FC8-7E98-48FF-801B-63E0193F0E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31D7701-1A61-45E5-A608-80BD83C4ACAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31D7701-1A61-45E5-A608-80BD83C4ACAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31D7701-1A61-45E5-A608-80BD83C4ACAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31D7701-1A61-45E5-A608-80BD83C4ACAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
