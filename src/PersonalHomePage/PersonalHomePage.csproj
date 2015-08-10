@@ -326,7 +326,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.0.15.0-build32981.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.0.15.0-build41087.d.ts" />
     <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
     <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
     <TypeScriptCompile Include="Scripts\app\models\certification.ts" />
