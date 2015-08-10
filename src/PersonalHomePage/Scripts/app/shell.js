@@ -65,7 +65,8 @@ var PersonalHomePage;
             var certifications = [
                 new Certification("MCSD: Web Applications"),
                 new Certification("MS: Programming in C# Specialist"),
-                new Certification("MS: Programming in HTML5 with JavaScript and CSS3 Specialist")
+                new Certification("MS: Programming in HTML5 with JavaScript and CSS3 Specialist"),
+                new Certification("MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management")
             ];
             var socialProfiles = [
                 new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
