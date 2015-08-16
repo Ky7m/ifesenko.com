@@ -24,9 +24,15 @@ declare module Microsoft.ApplicationInsights {
     class Util {
         private static document;
         static NotSpecified: string;
+        private static _getStorageObject();
+        static canUseLocalStorage(): boolean;
+        static getStorage(name: string): string;
+        static setStorage(name: string, data: string): boolean;
+        static removeStorage(name: string): boolean;
         static setCookie(name: any, value: any): void;
         static stringToBoolOrDefault(str: any): boolean;
         static getCookie(name: any): string;
+        static deleteCookie(name: string): void;
         static trim(str: any): string;
         static newGuid(): string;
         static isArray(obj: any): boolean;
@@ -91,12 +97,14 @@ declare module AI {
     class ContextTagKeys {
         applicationVersion: string;
         applicationBuild: string;
+        applicationTypeId: string;
         deviceId: string;
         deviceIp: string;
         deviceLanguage: string;
         deviceLocale: string;
         deviceModel: string;
         deviceNetwork: string;
+        deviceNetworkName: string;
         deviceOEMName: string;
         deviceOS: string;
         deviceOSVersion: string;
@@ -105,6 +113,7 @@ declare module AI {
         deviceScreenResolution: string;
         deviceType: string;
         deviceMachineName: string;
+        deviceVMName: string;
         locationIp: string;
         operationId: string;
         operationName: string;
@@ -120,9 +129,25 @@ declare module AI {
         userAgent: string;
         userId: string;
         userStoreRegion: string;
+        userAuthUserId: string;
+        userAnonymousUserAcquisitionDate: string;
+        userAuthenticatedUserAcquisitionDate: string;
         sampleRate: string;
         internalSdkVersion: string;
         internalAgentVersion: string;
+        internalDataCollectorReceivedTime: string;
+        internalProfileId: string;
+        internalProfileClassId: string;
+        internalAccountId: string;
+        internalApplicationName: string;
+        internalInstrumentationKey: string;
+        internalTelemetryItemId: string;
+        internalApplicationType: string;
+        internalRequestSource: string;
+        internalFlowType: string;
+        internalIsAudit: string;
+        internalTrackingSourceId: string;
+        internalTrackingType: string;
         constructor();
     }
 }
@@ -200,19 +225,29 @@ declare module Microsoft.ApplicationInsights.Context {
         _sessionHandler: (sessionState: AI.SessionState, timestamp: number) => void;
         constructor(config: ISessionConfig, sessionHandler: (sessionState: AI.SessionState, timestamp: number) => void);
         update(): void;
+        backup(): void;
         private initializeAutomaticSession();
+        private initializeAutomaticSessionWithData(sessionData);
         private renew();
         private setCookie(guid, acq, renewal);
+        private setStorage(guid, acq, renewal);
     }
 }
 declare module Microsoft.ApplicationInsights.Context {
     class User {
+        static cookieSeparator: string;
+        static userCookieName: string;
+        static authUserCookieName: string;
         id: string;
+        authenticatedId: string;
         accountId: string;
         accountAcquisitionDate: string;
         agent: string;
         storeRegion: string;
+        setAuthenticatedUserContext(authenticatedUserId: string, accountId?: string): void;
+        clearAuthenticatedUserContext(): void;
         constructor(accountId: string);
+        private validateUserInput(id);
     }
 }
 declare module Microsoft.ApplicationInsights {
@@ -426,6 +461,8 @@ declare module AI {
         url: string;
         name: string;
         duration: string;
+        referrer: string;
+        referrerData: string;
         properties: any;
         measurements: any;
         constructor();
@@ -454,7 +491,9 @@ declare module AI {
         name: string;
         duration: string;
         networkConnect: string;
+        referrer: string;
         sentRequest: string;
+        referrerData: string;
         receivedResponse: string;
         domProcessing: string;
         properties: any;
@@ -482,7 +521,8 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         isValid: boolean;
         constructor(name: string, url: string, durationMs: number, properties?: any, measurements?: any);
         static getPerformanceTiming(): PerformanceTiming;
-        static checkPageLoad(): any;
+        static isPerformanceTimingSupported(): PerformanceTiming;
+        static isPerformanceTimingDataReady(): boolean;
         static getDuration(start: any, end: any): number;
     }
 }
@@ -578,9 +618,11 @@ declare module Microsoft.ApplicationInsights {
         context: TelemetryContext;
         static defaultConfig: IConfig;
         constructor(config: IConfig);
+        private sendPageViewInternal(name?, url?, duration?, properties?, measurements?);
         startTrackPage(name?: string): void;
         stopTrackPage(name?: string, url?: string, properties?: Object, measurements?: Object): void;
         trackPageView(name?: string, url?: string, properties?: Object, measurements?: Object): void;
+        private trackPageViewInternal(name?, url?, properties?, measurements?);
         startTrackEvent(name: string): void;
         stopTrackEvent(name: string, properties?: Object, measurements?: Object): void;
         trackEvent(name: string, properties?: Object, measurements?: Object): void;
@@ -588,7 +630,9 @@ declare module Microsoft.ApplicationInsights {
         trackMetric(name: string, average: number, sampleCount?: number, min?: number, max?: number): void;
         trackTrace(message: string, properties?: Object): void;
         flush(): void;
-        private SendCORSException();
+        setAuthenticatedUserContext(authenticatedUserId: string, accountId?: string): void;
+        clearAuthenticatedUserContext(): void;
+        private SendCORSException(properties);
         _onerror(message: string, url: string, lineNumber: number, columnNumber: number, error: Error): void;
     }
 }
@@ -600,7 +644,9 @@ declare module AI {
         name: string;
         duration: string;
         requestSize: number;
+        referrer: string;
         responseSize: number;
+        referrerData: string;
         timeToFirstByte: string;
         timeToLastByte: string;
         callbackDuration: string;
@@ -673,7 +719,7 @@ declare module Microsoft.ApplicationInsights {
         loadAppInsights(): AppInsights;
         emptyQueue(): void;
         pollInteralLogs(appInsightsInstance: AppInsights): number;
-        addFlushBeforeUnload(appInsightsInstance: AppInsights): void;
+        addHousekeepingBeforeUnload(appInsightsInstance: AppInsights): void;
         static getDefaultConfig(config?: IConfig): IConfig;
     }
 }

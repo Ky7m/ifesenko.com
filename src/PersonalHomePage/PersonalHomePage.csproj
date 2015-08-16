@@ -326,7 +326,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.0.15.0-build32981.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.0.15.0-build41087.d.ts" />
     <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
     <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
     <TypeScriptCompile Include="Scripts\app\models\certification.ts" />
@@ -379,13 +379,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Nerdbank.GitVersioning.1.0.15178-beta\build\NerdBank.GitVersioning.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Nerdbank.GitVersioning.1.0.15178-beta\build\NerdBank.GitVersioning.targets'))" />
-  </Target>
-  <Import Project="..\..\packages\Nerdbank.GitVersioning.1.0.15178-beta\build\NerdBank.GitVersioning.targets" Condition="Exists('..\..\packages\Nerdbank.GitVersioning.1.0.15178-beta\build\NerdBank.GitVersioning.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

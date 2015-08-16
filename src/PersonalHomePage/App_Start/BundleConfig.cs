@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Reflection;
 using System.Web.Optimization;
 
@@ -15,9 +16,9 @@ namespace PersonalHomePage
         {
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
+            var version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version;
+            Version = string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
             CdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
-
-            Version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version.ToString().TrimEnd('0').Trim('.');
             var bundleVersion = Version.Replace(".", "-");
             SiteCssBundleName = string.Format("~/bundles/site-css-{0}", bundleVersion);
             SiteJsBundleName = string.Format("~/bundles/site-js-{0}", bundleVersion);

@@ -75,7 +75,8 @@ module PersonalHomePage.Shell {
         var certifications: Array<Certification> = [
             new Certification("MCSD: Web Applications"),
             new Certification("MS: Programming in C# Specialist"),
-            new Certification("MS: Programming in HTML5 with JavaScript and CSS3 Specialist")
+            new Certification("MS: Programming in HTML5 with JavaScript and CSS3 Specialist"),
+            new Certification("MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management")
         ];
 
         var socialProfiles: Array<SocialProfile> = [
