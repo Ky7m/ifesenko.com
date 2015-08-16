@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHomePage", "src\Per
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalHomePage.Tests", "tests\PersonalHomePage.Tests\PersonalHomePage.Tests.csproj", "{D31D7701-1A61-45E5-A608-80BD83C4ACAB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9F0DD7E9-6BE3-496A-A268-B7763C015658}"
+	ProjectSection(SolutionItems) = preProject
+		GitVersionConfig.yaml = GitVersionConfig.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
