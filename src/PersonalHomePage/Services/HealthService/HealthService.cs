@@ -106,7 +106,6 @@ namespace PersonalHomePage.Services.HealthService
             }
 
             var path = $"Summaries/{period}";
-            //var path = string.Format("Summaries/{0}", period);
 
             return await GetResponse<SummariesResponse>(path, postData);
         }
@@ -117,7 +116,6 @@ namespace PersonalHomePage.Services.HealthService
             uri.Path += path;
 
             var queryParams = string.Join("&", postData.Select(x => $"{x.Key}={x.Value}"));
-            //var queryParams = string.Join("&", postData.Select(x => string.Format("{0}={1}", x.Key, x.Value)));
             uri.Query = queryParams;
 
             var response = await _httpClient.GetAsync(uri.Uri);
@@ -152,8 +150,6 @@ namespace PersonalHomePage.Services.HealthService
             _credentials = credentials;
             _httpClient.DefaultRequestHeaders.Remove(HttpRequestHeader.Authorization.ToString());
             _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), $"bearer {_credentials.AccessToken}");
-            //_httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(),
-               // string.Format("bearer {0}", _credentials.AccessToken));
         }
 
         private async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false)
