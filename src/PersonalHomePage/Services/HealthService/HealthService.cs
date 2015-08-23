@@ -33,8 +33,13 @@ namespace PersonalHomePage.Services.HealthService
 
         private LiveIdCredentials _credentials;
 
+        private SettingsService _settingsService;
+
         public HealthService()
         {
+            _settingsService = new SettingsService();
+            var settings = _settingsService.RetrieveAllSettingsValuesForService("HealthService");
+
             _apiUri = ConfigurationManager.AppSettings["healthService:ApiUri"];
             _clientId = ConfigurationManager.AppSettings["healthService:ClientId"];
             _clientSecret = ConfigurationManager.AppSettings["healthService:ClientSecret"];

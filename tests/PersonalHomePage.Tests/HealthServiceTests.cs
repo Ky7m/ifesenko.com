@@ -5,16 +5,17 @@ namespace PersonalHomePage.Tests
 {
     public class HealthServiceTests
     {
-        readonly HealthService _healthServiceOld;
+        readonly HealthService _healthService;
         public HealthServiceTests()
         {
-            _healthServiceOld = new HealthService();
+            _healthService = new HealthService();
         }
 
-        //[Fact]
+        [Fact]
         public void CheckProfile()
         {
-            Assert.NotNull(_healthServiceOld.GetTodaysSummaryAsync().Result);
+            var t = _healthService;
+            //Assert.NotNull(_healthService.GetTodaysSummaryAsync().Result);
         }
     }
 }
