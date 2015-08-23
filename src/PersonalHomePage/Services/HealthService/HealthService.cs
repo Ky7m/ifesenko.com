@@ -40,12 +40,12 @@ namespace PersonalHomePage.Services.HealthService
             _settingsService = new SettingsService();
             var settings = _settingsService.RetrieveAllSettingsValuesForService("HealthService");
 
-            _apiUri = ConfigurationManager.AppSettings["healthService:ApiUri"];
-            _clientId = ConfigurationManager.AppSettings["healthService:ClientId"];
-            _clientSecret = ConfigurationManager.AppSettings["healthService:ClientSecret"];
+            _apiUri = settings["ApiUri"];
+            _clientId = settings["ClientId"];
+            _clientSecret = settings["ClientSecret"];
 
-            var accessToken = ConfigurationManager.AppSettings["healthService:AccessToken"];
-            var refreshToken = ConfigurationManager.AppSettings["healthService:RefreshToken"];
+            var accessToken = settings["AccessToken"];
+            var refreshToken = settings["RefreshToken"];
 
             _credentials = new LiveIdCredentials { AccessToken = accessToken, RefreshToken = refreshToken };
 
@@ -93,6 +93,11 @@ namespace PersonalHomePage.Services.HealthService
 
             var response = await GetResponse<LiveIdCredentials>("", postData, cancellationToken, TokenUrl);
             SetCredentials(response);
+            if (isTokenRefresh)
+            {
+                _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", response.AccessToken);
+                _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", response.RefreshToken);
+            }
 
             return response;
         }

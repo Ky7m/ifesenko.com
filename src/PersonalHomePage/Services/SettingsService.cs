@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using PersonalHomePage.Services.CloudStorageService.Model;
 
 namespace PersonalHomePage.Services
 {
@@ -22,6 +23,15 @@ namespace PersonalHomePage.Services
             }
 
             return settingsValues;
+        }
+        public void ReplaceSettingValueForService(string serviceName, string settingName, string settingValue)
+        {
+            var updateSettingTableEntity = new SettingTableEntity(serviceName, settingName)
+            {
+                Value = settingValue
+            };
+
+            _storageService.ReplaceSettingValueForService(updateSettingTableEntity);
         } 
     }
 }

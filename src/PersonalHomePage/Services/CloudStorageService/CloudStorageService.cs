@@ -8,25 +8,44 @@ namespace PersonalHomePage.Services.CloudStorageService
 {
     public sealed class CloudStorageService
     {
-        private readonly CloudStorageAccount _cloudStorageAccount;
-
+        private readonly CloudTableClient _cloudTableClient;
         public CloudStorageService()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString;
-            _cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
+            var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
+            _cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
         }
 
 
         public SettingTableEntity[] RetrieveAllSettingsForService(string serviceName)
         {
-            var tableClient = _cloudStorageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference("Settings");
+            var table = _cloudTableClient.GetTableReference("Settings");
 
             var query =
                 new TableQuery<SettingTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
                     QueryComparisons.Equal, serviceName));
 
             return table.ExecuteQuery(query).ToArray();
+        }
+
+        public void ReplaceSettingValueForService(SettingTableEntity updateSettingTableEntity)
+        {
+            var table = _cloudTableClient.GetTableReference("Settings");
+
+            var retrieveOperation =
+                TableOperation.Retrieve<SettingTableEntity>(updateSettingTableEntity.PartitionKey,
+                    updateSettingTableEntity.RowKey);
+
+            var retrievedResult = table.Execute(retrieveOperation);
+
+            var updateEntity = (SettingTableEntity)retrievedResult.Result;
+
+            if (updateEntity != null)
+            {
+                updateEntity.Value = updateSettingTableEntity.Value;
+                var updateOperation = TableOperation.Replace(updateEntity);
+                table.Execute(updateOperation);
+            }
         }
     }
 }
