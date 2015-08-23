@@ -11,10 +11,11 @@ namespace PersonalHomePage.Tests
             _healthService = new HealthService();
         }
 
-        //[Fact]
+       // [Fact]
         public void CheckProfile()
         {
-            Assert.NotNull(_healthService.GetTodaysSummaryAsync().Result);
+            //Assert.NotNull(_healthService.GetDeviceAsync("0A84209A-941A-5D79-A5C1-25E706865EF8").Result);
+            Assert.NotNull(_healthService.GetProfileAsync().Result);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -33,7 +32,7 @@ namespace PersonalHomePage.Services.HealthService
 
         private LiveIdCredentials _credentials;
 
-        private SettingsService _settingsService;
+        private readonly SettingsService _settingsService;
 
         public HealthService()
         {
@@ -56,50 +55,6 @@ namespace PersonalHomePage.Services.HealthService
 
             _httpClient = new HttpClient(messageHandler);
             SetCredentials(_credentials);
-        }
-
-        private void SetCredentials(LiveIdCredentials credentials)
-        {
-            _credentials = credentials;
-            _httpClient.DefaultRequestHeaders.Remove(HttpRequestHeader.Authorization.ToString());
-            _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), $"bearer {_credentials.AccessToken}");
-        }
-
-
-        public async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (string.IsNullOrEmpty(code))
-            {
-                throw new ArgumentNullException(nameof(code), "code cannot be null or empty");
-            }
-
-            var postData = new Dictionary<string, string>
-            {
-                {"redirect_uri", Uri.EscapeUriString(RedirectUri)},
-                {"client_id", Uri.EscapeUriString(_clientId)},
-                {"client_secret", Uri.EscapeUriString(_clientSecret)}
-            };
-
-            if (isTokenRefresh)
-            {
-                postData.Add("refresh_token", Uri.EscapeUriString(code));
-                postData.Add("grant_type", "refresh_token");
-            }
-            else
-            {
-                postData.Add("code", Uri.EscapeUriString(code));
-                postData.Add("grant_type", "authorization_code");
-            }
-
-            var response = await GetResponse<LiveIdCredentials>("", postData, cancellationToken, TokenUrl);
-            SetCredentials(response);
-            if (isTokenRefresh)
-            {
-                _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", response.AccessToken);
-                _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", response.RefreshToken);
-            }
-
-            return response;
         }
 
         public Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null, CancellationToken cancellationToken = default(CancellationToken))
@@ -133,32 +88,7 @@ namespace PersonalHomePage.Services.HealthService
 
             return response;
         }
-
-
-        public async Task<IEnumerable<Device>> GetDevicesAsync(CancellationToken cancellationToken = default(CancellationToken))
-        {
-            await ValidateCredentials();
-
-            var response = await GetResponse<DevicesResponse>("Devices", new Dictionary<string, string>(), cancellationToken);
-
-            return response != null ? response.Devices : new List<Device>();
-        }
-
-
-        public async Task<Device> GetDeviceAsync(string deviceId, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (string.IsNullOrEmpty(deviceId))
-            {
-                throw new ArgumentNullException(nameof(deviceId), "Device ID cannot be null or empty");
-            }
-
-            await ValidateCredentials();
-
-            var path = $"Devices/{deviceId}";
-            var response = await GetResponse<Device>(path, new Dictionary<string, string>(), cancellationToken);
-
-            return response;
-        }
+       
 
         public async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null, CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -227,6 +157,49 @@ namespace PersonalHomePage.Services.HealthService
             }
 
             return Task.FromResult(true);
+        }
+
+        private void SetCredentials(LiveIdCredentials credentials)
+        {
+            _credentials = credentials;
+            _httpClient.DefaultRequestHeaders.Remove(HttpRequestHeader.Authorization.ToString());
+            _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), $"bearer {_credentials.AccessToken}");
+        }
+
+        private async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (string.IsNullOrEmpty(code))
+            {
+                throw new ArgumentNullException(nameof(code), "code cannot be null or empty");
+            }
+
+            var postData = new Dictionary<string, string>
+            {
+                {"redirect_uri", Uri.EscapeUriString(RedirectUri)},
+                {"client_id", Uri.EscapeUriString(_clientId)},
+                {"client_secret", Uri.EscapeUriString(_clientSecret)}
+            };
+
+            if (isTokenRefresh)
+            {
+                postData.Add("refresh_token", Uri.EscapeUriString(code));
+                postData.Add("grant_type", "refresh_token");
+            }
+            else
+            {
+                postData.Add("code", Uri.EscapeUriString(code));
+                postData.Add("grant_type", "authorization_code");
+            }
+
+            var response = await GetResponse<LiveIdCredentials>("", postData, cancellationToken, TokenUrl);
+            SetCredentials(response);
+            if (isTokenRefresh)
+            {
+                _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", response.AccessToken);
+                _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", response.RefreshToken);
+            }
+
+            return response;
         }
     }
 }

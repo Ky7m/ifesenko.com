@@ -17,7 +17,11 @@ namespace PersonalHomePage.Controllers
          OutputCache(CacheProfile = "HomePage")]
         public ActionResult Index()
         {
-            return View(new HomeModel());
+            var homeModel = new HomeModel();
+
+
+
+            return View(homeModel);
         }
 
         [HttpPost]
