@@ -4,15 +4,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
-using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PersonalHomePage.Extensions;
 using PersonalHomePage.Services.HealthService.Model;
 using PersonalHomePage.Services.HealthService.Model.Requests;
 using PersonalHomePage.Services.HealthService.Model.Responses;
 
-// await this.MakeRequestAsync("Profile");
-// await this.MakeRequestAsync("Devices");
 // await GetActivity("Sleep");
 // await GetActivity("FreePlay");
 // await GetActivity("GuidedWorkout");
@@ -49,70 +47,58 @@ namespace PersonalHomePage.Services.HealthService
             _credentials = new LiveIdCredentials { AccessToken = accessToken, RefreshToken = refreshToken };
 
             var messageHandler = new HttpClientHandler
-                                 {
-                                     AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
-                                 };
+            {
+                AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
+            };
 
             _httpClient = new HttpClient(messageHandler);
             SetCredentials(_credentials);
         }
 
-        public Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null, CancellationToken cancellationToken = default(CancellationToken))
+        public Task<SummariesResponse> GetTodaysSummaryAsync()
         {
-            return GetSummaryInfo(startTime, endTime, "Daily", maxItemsToReturn, cancellationToken);
+            var now = DateTime.UtcNow;
+            return GetDailySummaryAsync(now.StartOfDay(), now.EndOfDay());
         }
 
-
-        public Task<SummariesResponse> GetTodaysSummaryAsync(int? maxItemsToReturn = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return GetDailySummaryAsync(DateTime.UtcNow.AddDays(-1), DateTime.UtcNow, maxItemsToReturn, cancellationToken);
-        }
-
-
-        public Task<SummariesResponse> GetHourlySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return GetSummaryInfo(startTime, endTime, "Hourly", maxItemsToReturn, cancellationToken);
-        }
-
-        public Task<SummariesResponse> GetTodaysHourlySummaryAsync(int? maxItemsToReturn = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            return GetHourlySummaryAsync(DateTime.UtcNow.AddDays(-1), DateTime.UtcNow, maxItemsToReturn, cancellationToken);
-        }
-
-
-        public async Task<Profile> GetProfileAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<Profile> GetProfileAsync()
         {
             await ValidateCredentials();
 
-            var response = await GetResponse<Profile>("Profile", new Dictionary<string, string>(), cancellationToken);
+            var response = await GetResponse<Profile>("Profile", new Dictionary<string, string>());
 
             return response;
         }
-       
 
-        public async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null)
         {
             await ValidateCredentials();
 
             var postData = request != null ? request.ToDictionary() : new Dictionary<string, string>();
 
-            var response = await GetResponse<ActivitiesResponse>("Activities", postData, cancellationToken);
+            var response = await GetResponse<ActivitiesResponse>("Activities", postData);
 
             return response;
         }
 
-        private async Task<SummariesResponse> GetSummaryInfo(DateTime startTime, DateTime endTime, string period, int? maxItemsToReturn, CancellationToken cancellationToken)
+        #region Private
+
+        private Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null)
+        {
+            return GetSummaryInfo(startTime, endTime, "Daily", maxItemsToReturn);
+        }
+
+        private async Task<SummariesResponse> GetSummaryInfo(DateTime startTime, DateTime endTime, string period, int? maxItemsToReturn)
         {
             await ValidateCredentials();
+
+            var postData = new Dictionary<string, string>();
 
             var startTimeString = startTime.ToString("O");
             var endtimeString = endTime.ToString("O");
 
-            var postData = new Dictionary<string, string>
-            {
-                { "startTime", startTimeString },
-                { "endTime", endtimeString }
-            };
+            postData.Add("startTime", startTimeString);
+            postData.Add("endTime", endtimeString);
 
             if (maxItemsToReturn.HasValue)
             {
@@ -121,27 +107,27 @@ namespace PersonalHomePage.Services.HealthService
 
             var path = $"Summaries/{period}";
 
-            return await GetResponse<SummariesResponse>(path, postData, cancellationToken);
+            return await GetResponse<SummariesResponse>(path, postData);
         }
 
-        private async Task<TReturnType> GetResponse<TReturnType>(string path, Dictionary<string, string> postData, CancellationToken cancellationToken = default(CancellationToken), string altBaseUrl = null)
+        private async Task<TReturnType> GetResponse<TReturnType>(string path, Dictionary<string, string> postData, string baseUri = null)
         {
-            var uri = new UriBuilder(altBaseUrl ?? _apiUri);
+            var uri = new UriBuilder(baseUri ?? _apiUri);
             uri.Path += path;
 
             var queryParams = string.Join("&", postData.Select(x => $"{x.Key}={x.Value}"));
             uri.Query = queryParams;
 
-            var response = await _httpClient.GetAsync(uri.Uri, cancellationToken);
+            var response = await _httpClient.GetAsync(uri.Uri);
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                await ExchangeCodeAsync(_credentials.RefreshToken, true, cancellationToken);
+                await ExchangeCodeAsync(_credentials.RefreshToken, true);
 
                 // Re-issue the same request (will use new auth token now)
-                return await GetResponse<TReturnType>(path, postData, cancellationToken, altBaseUrl);
+                return await GetResponse<TReturnType>(path, postData, baseUri);
             }
-            
+
             response.EnsureSuccessStatusCode();
 
             var responseString = await response.Content.ReadAsStringAsync();
@@ -166,7 +152,7 @@ namespace PersonalHomePage.Services.HealthService
             _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), $"bearer {_credentials.AccessToken}");
         }
 
-        private async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false, CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false)
         {
             if (string.IsNullOrEmpty(code))
             {
@@ -191,7 +177,7 @@ namespace PersonalHomePage.Services.HealthService
                 postData.Add("grant_type", "authorization_code");
             }
 
-            var response = await GetResponse<LiveIdCredentials>("", postData, cancellationToken, TokenUrl);
+            var response = await GetResponse<LiveIdCredentials>(string.Empty, postData, TokenUrl);
             SetCredentials(response);
             if (isTokenRefresh)
             {
@@ -201,5 +187,7 @@ namespace PersonalHomePage.Services.HealthService
 
             return response;
         }
+
+        #endregion Private
     }
 }

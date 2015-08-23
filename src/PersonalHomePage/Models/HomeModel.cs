@@ -16,5 +16,7 @@ namespace PersonalHomePage.Models
         public Int64 LineOfCode { get; set; }
 
         public DateTime? LastUpdateTimeUtc { get; set; }
+        public int? StepsTaken { get; set; }
+        public int? CaloriesBurned { get; set; }
     }
 }
