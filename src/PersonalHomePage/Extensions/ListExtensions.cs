@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace PersonalHomePage.Services.HealthService.Extensions
+namespace PersonalHomePage.Extensions
 {
     internal static class ListExtensions
     {

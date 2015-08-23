@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using PersonalHomePage.Services.HealthService.Extensions;
+using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage.Services.HealthService.Model.Requests
 {

@@ -261,6 +261,9 @@
     <Compile Include="Services\HealthService\Model\SleepActivity.cs" />
     <Compile Include="Services\HealthService\Model\Summary.cs" />
     <Compile Include="Services\HealthService\LiveIdCredentials.cs" />
+    <Compile Include="Services\SettingsService.cs" />
+    <Compile Include="Services\CloudStorageService\Model\SettingTableEntity.cs" />
+    <Compile Include="Services\CloudStorageService\CloudStorageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon.png" />
