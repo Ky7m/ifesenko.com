@@ -2,7 +2,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-12 hidden-xs wow bounceInLeft">
-            <h3>Today's Activities</h3>
+            <h3>
+                <span>Today's Activities</span>
+                <i class="fa fa-info" data-toggle="tooltip" data-placement="top" title="Information is based on data gathered from the the fitness device (Microsoft Band)"></i>
+            </h3>
         </div>
         <div class="col-md-4 col-sm-4 wow bounceInDown">
             <div class="stat">
@@ -10,6 +13,26 @@
                     <h2><i class="fa fa-street-view hidden-xs"></i><span>@Model.StepsTaken</span></h2>
                 </div>
                 <h3>Steps taken</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4 wow bounceInUp">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-arrows-h hidden-xs"></i><span>@Model.TotalDistanceOnFoot</span></h2>
+                </div>
+                <h3>Distance (km)</h3>
+            </div>
+        </div>
+       
+    </div><!-- .row -->
+    <div class="row">
+        <div class="col-md-4 col-sm-12 hidden-xs"></div>
+        <div class="col-md-4 col-sm-4 wow bounceInDown">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-heartbeat hidden-xs"></i><span>@Model.AverageHeartRate</span></h2>
+                </div>
+                <h3>Average heart rate</h3>
             </div>
         </div>
         <div class="col-md-4 col-sm-4 wow bounceInUp">
