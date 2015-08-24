@@ -99,6 +99,8 @@ var PersonalHomePage;
             toastr.options.newestOnTop = true;
             toastr.options.progressBar = true;
             toastr.options.positionClass = "toast-top-center";
+            // tooltips
+            $("[data-toggle='tooltip']").tooltip();
             ko.applyBindings(homeViewModel);
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));

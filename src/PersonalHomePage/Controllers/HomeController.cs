@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
 using PersonalHomePage.Extensions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
@@ -48,11 +47,19 @@ namespace PersonalHomePage.Controllers
                 var summary = todaysSummary.Summaries.FirstOrDefault();
                 homeModel.StepsTaken = summary?.StepsTaken;
                 homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
+                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
+                if (homeModel.TotalDistanceOnFoot.HasValue)
+                {
+                    homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
+                }
+                homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
                 sw.Stop();
                 _telemetryClient.TrackEvent("GetTodaysSummaryAsync", new Dictionary<string, string>(2)
                 {
                     {"StepsTaken", homeModel.StepsTaken?.ToString() },
                     {"CaloriesBurned", homeModel.CaloriesBurned?.ToString() },
+                    {"TotalDistanceOnFoot", homeModel.TotalDistanceOnFoot?.ToString() },
+                    {"AverageHeartRate", homeModel.AverageHeartRate },
                     {"TimeTaken", sw.Elapsed.ToString() }
                 });
             }

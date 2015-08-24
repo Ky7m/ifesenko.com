@@ -114,6 +114,9 @@ module PersonalHomePage.Shell {
         toastr.options.progressBar = true;
         toastr.options.positionClass = "toast-top-center";
 
+        // tooltips
+        $("[data-toggle='tooltip']").tooltip();
+
         ko.applyBindings(homeViewModel);
     });
 }
