@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Linq;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
@@ -8,18 +9,16 @@ namespace PersonalHomePage.Services.CloudStorageService
 {
     public sealed class CloudStorageService
     {
-        private readonly CloudTableClient _cloudTableClient;
-        public CloudStorageService()
+        private readonly Lazy<CloudTableClient> _cloudTableClient = new Lazy<CloudTableClient>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString;
             var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
-            _cloudTableClient = cloudStorageAccount.CreateCloudTableClient();
-        }
-
+            return cloudStorageAccount.CreateCloudTableClient();
+        });
 
         public SettingTableEntity[] RetrieveAllSettingsForService(string serviceName)
         {
-            var table = _cloudTableClient.GetTableReference("Settings");
+            var table = _cloudTableClient.Value.GetTableReference("Settings");
 
             var query =
                 new TableQuery<SettingTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
@@ -30,7 +29,7 @@ namespace PersonalHomePage.Services.CloudStorageService
 
         public void ReplaceSettingValueForService(SettingTableEntity updateSettingTableEntity)
         {
-            var table = _cloudTableClient.GetTableReference("Settings");
+            var table = _cloudTableClient.Value.GetTableReference("Settings");
 
             var retrieveOperation =
                 TableOperation.Retrieve<SettingTableEntity>(updateSettingTableEntity.PartitionKey,

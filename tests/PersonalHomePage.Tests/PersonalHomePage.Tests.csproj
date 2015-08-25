@@ -57,7 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HealthServiceTests.cs" />
+    <Compile Include="RedisCacheServiceIntegrationTests.cs" />
+    <Compile Include="HealthServiceIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,20 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PersonalHomePage.Services.CloudStorageService.Model;
 
 namespace PersonalHomePage.Services
 {
     public sealed class SettingsService
     {
-        private readonly CloudStorageService.CloudStorageService _storageService;
-
-        public SettingsService()
-        {
-            _storageService = new CloudStorageService.CloudStorageService();
-        }
+        private readonly Lazy<CloudStorageService.CloudStorageService> _storageService 
+            = new Lazy<CloudStorageService.CloudStorageService>(() => new CloudStorageService.CloudStorageService());
 
         public Dictionary<string, string> RetrieveAllSettingsValuesForService(string serviceName)
         {
-            var settings = _storageService.RetrieveAllSettingsForService(serviceName);
+            var settings = _storageService.Value.RetrieveAllSettingsForService(serviceName);
             var settingsValues = new Dictionary<string,string>(settings.Length);
 
             foreach (var settingTableEntity in settings)
@@ -31,7 +28,7 @@ namespace PersonalHomePage.Services
                 Value = settingValue
             };
 
-            _storageService.ReplaceSettingValueForService(updateSettingTableEntity);
+            _storageService.Value.ReplaceSettingValueForService(updateSettingTableEntity);
         } 
     }
 }

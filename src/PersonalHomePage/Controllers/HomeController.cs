@@ -9,20 +9,17 @@ using PersonalHomePage.Extensions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
 using PersonalHomePage.Services.HealthService;
+using PersonalHomePage.Services.HealthService.Model;
 using WebMarkupMin.Mvc.ActionFilters;
 
 namespace PersonalHomePage.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly HealthService _healthService;
-        private readonly TelemetryClient _telemetryClient;
+        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
-        public HomeController()
-        {
-            _telemetryClient = new TelemetryClient();
-            _healthService = new HealthService();
-        }
+        private readonly Lazy<HealthService> _healthService = new Lazy<HealthService>(() => new HealthService());
+        private readonly Lazy<RedisCacheService> _redisCacheService = new Lazy<RedisCacheService>(() => new RedisCacheService());
 
         [CompressContent,
          MinifyHtml,
@@ -33,18 +30,15 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                var sw = Stopwatch.StartNew();
-               /* var profile = await _healthService.GetProfileAsync();
+                var getProfileTask = GetProfileAsync();
+                var getTodaysSummaryTask = GetTodaysSummaryAsync();
+
+                await Task.WhenAll(getProfileTask, getTodaysSummaryTask);
+
+                var profile = getProfileTask.Result;
                 homeModel.LastUpdateTimeUtc = profile?.LastUpdateTime;
-                sw.Stop();
-                _telemetryClient.TrackEvent("GetProfileAsync", new Dictionary<string,string>(2)
-                {
-                    {"LastUpdateTimeUtc", homeModel.LastUpdateTimeUtc?.ToString() },
-                    {"TimeTaken", sw.Elapsed.ToString() }
-                });
-                sw.Restart();*/
-                var todaysSummary = await _healthService.GetTodaysSummaryAsync();
-                var summary = todaysSummary.Summaries.FirstOrDefault();
+
+                var summary = getTodaysSummaryTask.Result;
                 homeModel.StepsTaken = summary?.StepsTaken;
                 homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
                 homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
@@ -53,19 +47,10 @@ namespace PersonalHomePage.Controllers
                     homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
                 }
                 homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
-                sw.Stop();
-                _telemetryClient.TrackEvent("GetTodaysSummaryAsync", new Dictionary<string, string>(2)
-                {
-                    {"StepsTaken", homeModel.StepsTaken?.ToString() },
-                    {"CaloriesBurned", homeModel.CaloriesBurned?.ToString() },
-                    {"TotalDistanceOnFoot", homeModel.TotalDistanceOnFoot?.ToString() },
-                    {"AverageHeartRate", homeModel.AverageHeartRate },
-                    {"TimeTaken", sw.Elapsed.ToString() }
-                });
             }
             catch (Exception exception)
             {
-                _telemetryClient.TrackException(exception);
+                _telemetryClient.Value.TrackException(exception);
             }
 
             return View(homeModel);
@@ -86,13 +71,44 @@ namespace PersonalHomePage.Controllers
                 }
                 catch (Exception exception)
                 {
-                    _telemetryClient.TrackException(exception);
+                    _telemetryClient.Value.TrackException(exception);
                 }
                 return await Task.FromResult(JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain));
             }
             return await Task.FromResult(JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain,
                 ModelState.Keys.SelectMany(k => ModelState[k].Errors)
                     .Select(m => m.ErrorMessage).ToArray()));
+        }
+
+        private async Task<Profile> GetProfileAsync()
+        {
+            var cacheKey = "HealthService.GetProfileAsync";
+            var profile = await _redisCacheService.Value.GetAsync<Profile>(cacheKey);
+            if (profile != null)
+            {
+                return profile;
+            }
+
+            profile = await _healthService.Value.GetProfileAsync();
+            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(4.0));
+
+            return profile;
+        }
+
+        private async Task<Summary> GetTodaysSummaryAsync()
+        {
+            var cacheKey = "HealthService.GetTodaysSummaryAsync";
+            var todaysSummary = await _redisCacheService.Value.GetAsync<Summary>(cacheKey);
+            if (todaysSummary != null)
+            {
+                return todaysSummary;
+            }
+
+            var summaries = await _healthService.Value.GetTodaysSummaryAsync();
+            todaysSummary = summaries.Summaries.FirstOrDefault();
+            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(4.0));
+
+            return todaysSummary;
         }
     }
 }
