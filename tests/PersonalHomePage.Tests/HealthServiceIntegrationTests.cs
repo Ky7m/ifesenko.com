@@ -3,18 +3,23 @@ using Xunit;
 
 namespace PersonalHomePage.Tests
 {
-    public class HealthServiceTests
+    public class HealthServiceIntegrationTests
     {
         readonly HealthService _healthService;
-        public HealthServiceTests()
+        public HealthServiceIntegrationTests()
         {
             _healthService = new HealthService();
         }
 
-        //[Fact]
-        public void CheckProfile()
+        [Fact]
+        public void CheckThatProfileIsNotNull()
         {
-            //Assert.NotNull(_healthService.GetDeviceAsync("0A84209A-941A-5D79-A5C1-25E706865EF8").Result);
+            Assert.NotNull(_healthService.GetProfileAsync().Result);
+        }
+
+        [Fact]
+        public void CheckThatTodaysSummaryIsNotNull()
+        {
             Assert.NotNull(_healthService.GetTodaysSummaryAsync().Result);
         }
     }
