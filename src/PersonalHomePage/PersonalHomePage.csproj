@@ -234,6 +234,7 @@
     <Compile Include="Models\EmailMessageModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\RedisCacheService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\HealthService\HealthService.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
