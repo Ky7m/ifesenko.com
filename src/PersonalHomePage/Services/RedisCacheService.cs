@@ -9,21 +9,23 @@ namespace PersonalHomePage.Services
 {
     public sealed class RedisCacheService
     {
-        private readonly Lazy<ConnectionMultiplexer> _connectionMultiplexer = new Lazy<ConnectionMultiplexer>(() =>
+        private readonly Lazy<IDatabase> _cacheDatabase = new Lazy<IDatabase>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["RedisCacheConnectionString"].ConnectionString;
-            return ConnectionMultiplexer.Connect(connectionString);
+            return ConnectionMultiplexer.Connect(connectionString).GetDatabase();
         });
 
         public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
             var serializedValue = Serialize(value);
-            return await _connectionMultiplexer.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry);
+            var result = await _cacheDatabase.Value.StringSetAsync(key, serializedValue);
+            await _cacheDatabase.Value.KeyExpireAsync(key, expiry, CommandFlags.FireAndForget);
+            return result;
         }
 
         public async Task<T> GetAsync<T>(string key)
         {
-            var serializedValue = await _connectionMultiplexer.Value.GetDatabase().StringGetAsync(key);
+            var serializedValue = await _cacheDatabase.Value.StringGetAsync(key);
             if (string.IsNullOrEmpty(serializedValue))
             {
                 return default(T);
@@ -32,7 +34,7 @@ namespace PersonalHomePage.Services
         }
         public async Task<bool> DeleteAsync(string key)
         {
-            return await _connectionMultiplexer.Value.GetDatabase().KeyDeleteAsync(key);
+            return await _cacheDatabase.Value.KeyDeleteAsync(key, CommandFlags.FireAndForget);
         }
 
         private static byte[] Serialize<T>(T value)

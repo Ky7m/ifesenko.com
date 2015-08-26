@@ -27,11 +27,12 @@ namespace PersonalHomePage.Tests
             if (profile == null)
             {
                 profile = await _healthService.GetProfileAsync();
-                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromMinutes(1.0));
+                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromSeconds(30));
             }
             var expected = await _redisCacheService.GetAsync<Profile>(cacheKey);
             Assert.NotNull(expected);
         }
+
         [Fact]
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
@@ -42,7 +43,7 @@ namespace PersonalHomePage.Tests
             {
                 var summaries = await _healthService.GetTodaysSummaryAsync();
                 summary = summaries.Summaries.FirstOrDefault();
-                await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromMinutes(1.0));
+                await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromSeconds(60));
             }
             var expected = await _redisCacheService.GetAsync<Summary>(cacheKey);
             Assert.NotNull(expected);
