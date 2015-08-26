@@ -78,7 +78,7 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                profile = await _redisCacheService.Value.GetAsync<Profile>(cacheKey);
+                profile = _redisCacheService.Value.Get<Profile>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -91,7 +91,7 @@ namespace PersonalHomePage.Controllers
             }
 
             profile = await _healthService.Value.GetProfileAsync();
-            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(2.0));
+            _redisCacheService.Value.Store(cacheKey, profile, TimeSpan.FromHours(2.0));
 
             return profile;
         }
@@ -103,7 +103,7 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                todaysSummary = await _redisCacheService.Value.GetAsync<Summary>(cacheKey);
+                todaysSummary = _redisCacheService.Value.Get<Summary>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -117,7 +117,7 @@ namespace PersonalHomePage.Controllers
 
             var summaries = await _healthService.Value.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
+            _redisCacheService.Value.Store(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
 
             return todaysSummary;
         }

@@ -22,14 +22,14 @@ namespace PersonalHomePage.Tests
         public async Task CheckThatProfileIsNotNull()
         {
             var cacheKey = "Test.HealthService.GetProfileAsync";
-            await _redisCacheService.DeleteAsync(cacheKey);
-            var profile = await _redisCacheService.GetAsync<Profile>(cacheKey);
+            _redisCacheService.Delete(cacheKey);
+            var profile = _redisCacheService.Get<Profile>(cacheKey);
             if (profile == null)
             {
                 profile = await _healthService.GetProfileAsync();
-                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromSeconds(30));
+                _redisCacheService.Store(cacheKey, profile, TimeSpan.FromSeconds(30));
             }
-            var expected = await _redisCacheService.GetAsync<Profile>(cacheKey);
+            var expected = _redisCacheService.Get<Profile>(cacheKey);
             Assert.NotNull(expected);
         }
 
@@ -37,15 +37,15 @@ namespace PersonalHomePage.Tests
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
             var cacheKey = "Test.HealthService.GetTodaysSummaryAsync";
-            await _redisCacheService.DeleteAsync(cacheKey);
-            var summary = await _redisCacheService.GetAsync<Summary>(cacheKey);
+            _redisCacheService.Delete(cacheKey);
+            var summary = _redisCacheService.Get<Summary>(cacheKey);
             if (summary == null)
             {
                 var summaries = await _healthService.GetTodaysSummaryAsync();
                 summary = summaries.Summaries.FirstOrDefault();
-                await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromSeconds(60));
+                _redisCacheService.Store(cacheKey, summary, TimeSpan.FromSeconds(60));
             }
-            var expected = await _redisCacheService.GetAsync<Summary>(cacheKey);
+            var expected = _redisCacheService.Get<Summary>(cacheKey);
             Assert.NotNull(expected);
         }
 
