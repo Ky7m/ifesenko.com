@@ -22,8 +22,8 @@ namespace PersonalHomePage.Controllers
         private readonly Lazy<RedisCacheService> _redisCacheService = new Lazy<RedisCacheService>(() => new RedisCacheService());
 
         [CompressContent,
-         MinifyHtml/*,
-         OutputCache(CacheProfile = "HomePage")*/]
+         MinifyHtml,
+         OutputCache(CacheProfile = "HomePage")]
         public async Task<ActionResult> Index()
         {
             var homeModel = new HomeModel();
@@ -100,7 +100,7 @@ namespace PersonalHomePage.Controllers
             }
 
             profile = await _healthService.Value.GetProfileAsync();
-            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(3.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(6.0));
 
             return profile;
         }
@@ -126,7 +126,7 @@ namespace PersonalHomePage.Controllers
 
             var summaries = await _healthService.Value.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(3.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(6.0));
 
             return todaysSummary;
         }
