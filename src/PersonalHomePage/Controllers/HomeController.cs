@@ -22,8 +22,8 @@ namespace PersonalHomePage.Controllers
         private readonly Lazy<RedisCacheService> _redisCacheService = new Lazy<RedisCacheService>(() => new RedisCacheService());
 
         [CompressContent,
-         MinifyHtml,
-         OutputCache(CacheProfile = "HomePage")]
+         MinifyHtml/*,
+         OutputCache(CacheProfile = "HomePage")*/]
         public async Task<ActionResult> Index()
         {
             var homeModel = new HomeModel();
