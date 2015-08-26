@@ -21,7 +21,7 @@ namespace PersonalHomePage.Tests
         [Fact]
         public async Task CheckThatProfileIsNotNull()
         {
-            var cacheKey = "HealthService.GetProfileAsync";
+            var cacheKey = "Test.HealthService.GetProfileAsync";
             await _redisCacheService.DeleteAsync(cacheKey);
             var profile = await _redisCacheService.GetAsync<Profile>(cacheKey);
             if (profile == null)
@@ -35,7 +35,7 @@ namespace PersonalHomePage.Tests
         [Fact]
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
-            var cacheKey = "HealthService.GetTodaysSummaryAsync";
+            var cacheKey = "Test.HealthService.GetTodaysSummaryAsync";
             await _redisCacheService.DeleteAsync(cacheKey);
             var summary = await _redisCacheService.GetAsync<Summary>(cacheKey);
             if (summary == null)

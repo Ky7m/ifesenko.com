@@ -30,15 +30,8 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                var getProfileTask = GetProfileAsync();
-                var getTodaysSummaryTask = GetTodaysSummaryAsync();
+                var summary = await GetTodaysSummaryAsync();
 
-                await Task.WhenAll(getProfileTask, getTodaysSummaryTask);
-
-                var profile = getProfileTask.Result;
-                homeModel.LastUpdateTimeUtc = profile?.LastUpdateTime;
-
-                var summary = getTodaysSummaryTask.Result;
                 homeModel.StepsTaken = summary?.StepsTaken;
                 homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
                 homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
