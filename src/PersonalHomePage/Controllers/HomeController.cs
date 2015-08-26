@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -93,7 +91,7 @@ namespace PersonalHomePage.Controllers
             }
 
             profile = await _healthService.Value.GetProfileAsync();
-            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(6.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(2.0));
 
             return profile;
         }
@@ -119,7 +117,7 @@ namespace PersonalHomePage.Controllers
 
             var summaries = await _healthService.Value.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(6.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
 
             return todaysSummary;
         }
