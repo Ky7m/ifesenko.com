@@ -21,26 +21,30 @@ namespace PersonalHomePage.Tests
         [Fact]
         public async Task CheckThatProfileIsNotNull()
         {
-            var profile = await _redisCacheService.GetAsync<Profile>("HealthService.GetProfileAsync");
+            var cacheKey = "HealthService.GetProfileAsync";
+            await _redisCacheService.DeleteAsync(cacheKey);
+            var profile = await _redisCacheService.GetAsync<Profile>(cacheKey);
             if (profile == null)
             {
                 profile = await _healthService.GetProfileAsync();
-                await _redisCacheService.StoreAsync("HealthService.GetProfileAsync", profile, TimeSpan.FromMinutes(1.0));
+                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromMinutes(1.0));
             }
-            var expected = await _redisCacheService.GetAsync<Profile>("HealthService.GetProfileAsync");
+            var expected = await _redisCacheService.GetAsync<Profile>(cacheKey);
             Assert.NotNull(expected);
         }
         [Fact]
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
-            var summary = await _redisCacheService.GetAsync<Summary>("HealthService.GetTodaysSummaryAsync");
+            var cacheKey = "HealthService.GetTodaysSummaryAsync";
+            await _redisCacheService.DeleteAsync(cacheKey);
+            var summary = await _redisCacheService.GetAsync<Summary>(cacheKey);
             if (summary == null)
             {
                 var summaries = await _healthService.GetTodaysSummaryAsync();
                 summary = summaries.Summaries.FirstOrDefault();
-                await _redisCacheService.StoreAsync("HealthService.GetTodaysSummaryAsync", summary, TimeSpan.FromMinutes(1.0));
+                await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromMinutes(1.0));
             }
-            var expected = await _redisCacheService.GetAsync<Summary>("HealthService.GetTodaysSummaryAsync");
+            var expected = await _redisCacheService.GetAsync<Summary>(cacheKey);
             Assert.NotNull(expected);
         }
 

@@ -29,5 +29,9 @@ namespace PersonalHomePage.Services
             }
             return JsonConvert.DeserializeObject<T>(serializedValue);
         }
+        public async Task<bool> DeleteAsync(string key)
+        {
+            return await _connectionMultiplexer.Value.GetDatabase().KeyDeleteAsync(key);
+        }
     }
 }
