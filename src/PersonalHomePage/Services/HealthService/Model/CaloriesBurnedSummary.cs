@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.HealthService.Model
 {
+    [Serializable]
     public class CaloriesBurnedSummary
     {
         [JsonProperty("period")]

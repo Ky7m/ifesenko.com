@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.HealthService.Model
 {
+    [Serializable]
     public class Profile
     {
         [JsonProperty("firstName")]
