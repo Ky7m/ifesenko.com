@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using PersonalHomePage.Services;
 using PersonalHomePage.Services.HealthService;
@@ -27,6 +28,19 @@ namespace PersonalHomePage.Tests
                 await _redisCacheService.StoreAsync("HealthService.GetProfileAsync", profile, TimeSpan.FromMinutes(1.0));
             }
             var expected = await _redisCacheService.GetAsync<Profile>("HealthService.GetProfileAsync");
+            Assert.NotNull(expected);
+        }
+        [Fact]
+        public async Task CheckThatTodaysSummaryIsNotNull()
+        {
+            var summary = await _redisCacheService.GetAsync<Summary>("HealthService.GetTodaysSummaryAsync");
+            if (summary == null)
+            {
+                var summaries = await _healthService.GetTodaysSummaryAsync();
+                summary = summaries.Summaries.FirstOrDefault();
+                await _redisCacheService.StoreAsync("HealthService.GetTodaysSummaryAsync", summary, TimeSpan.FromMinutes(1.0));
+            }
+            var expected = await _redisCacheService.GetAsync<Summary>("HealthService.GetTodaysSummaryAsync");
             Assert.NotNull(expected);
         }
 
