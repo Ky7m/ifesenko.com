@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 using StackExchange.Redis;
 
 namespace PersonalHomePage.Services
@@ -15,26 +14,28 @@ namespace PersonalHomePage.Services
             return ConnectionMultiplexer.Connect(connectionString).GetDatabase();
         });
 
-        public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null)
+        public bool Store<T>(string key, T value, TimeSpan? expiry = null)
         {
             var serializedValue = Serialize(value);
-            var result = await _cacheDatabase.Value.StringSetAsync(key, serializedValue);
-            await _cacheDatabase.Value.KeyExpireAsync(key, expiry, CommandFlags.FireAndForget);
-            return result;
+            return _cacheDatabase.Value.StringSet(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
         }
 
-        public async Task<T> GetAsync<T>(string key)
+        public T Get<T>(string key)
         {
-            var serializedValue = await _cacheDatabase.Value.StringGetAsync(key);
-            if (string.IsNullOrEmpty(serializedValue))
+            if (!_cacheDatabase.Value.KeyExists(key))
             {
                 return default(T);
             }
-            return Deserialize<T>(serializedValue);
+            var serializedValue = _cacheDatabase.Value.StringGet(key);
+            if (!string.IsNullOrEmpty(serializedValue))
+            {
+                return Deserialize<T>(serializedValue);
+            }
+            return default(T);
         }
-        public async Task<bool> DeleteAsync(string key)
+        public bool Delete(string key)
         {
-            return await _cacheDatabase.Value.KeyDeleteAsync(key, CommandFlags.FireAndForget);
+            return _cacheDatabase.Value.KeyDelete(key, CommandFlags.FireAndForget);
         }
 
         private static byte[] Serialize<T>(T value)
