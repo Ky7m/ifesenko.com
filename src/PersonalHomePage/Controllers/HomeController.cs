@@ -83,14 +83,24 @@ namespace PersonalHomePage.Controllers
         private async Task<Profile> GetProfileAsync()
         {
             var cacheKey = "HealthService.GetProfileAsync";
-            var profile = await _redisCacheService.Value.GetAsync<Profile>(cacheKey);
+            Profile profile = null;
+
+            try
+            {
+                profile = await _redisCacheService.Value.GetAsync<Profile>(cacheKey);
+            }
+            catch (Exception exception)
+            {
+                _telemetryClient.Value.TrackException(exception);
+            }
+
             if (profile != null)
             {
                 return profile;
             }
 
             profile = await _healthService.Value.GetProfileAsync();
-            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(4.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, profile, TimeSpan.FromHours(3.0));
 
             return profile;
         }
@@ -98,7 +108,17 @@ namespace PersonalHomePage.Controllers
         private async Task<Summary> GetTodaysSummaryAsync()
         {
             var cacheKey = "HealthService.GetTodaysSummaryAsync";
-            var todaysSummary = await _redisCacheService.Value.GetAsync<Summary>(cacheKey);
+            Summary todaysSummary = null;
+
+            try
+            {
+                todaysSummary = await _redisCacheService.Value.GetAsync<Summary>(cacheKey);
+            }
+            catch (Exception exception)
+            {
+                _telemetryClient.Value.TrackException(exception);
+            }
+
             if (todaysSummary != null)
             {
                 return todaysSummary;
@@ -106,7 +126,7 @@ namespace PersonalHomePage.Controllers
 
             var summaries = await _healthService.Value.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(4.0));
+            await _redisCacheService.Value.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(3.0));
 
             return todaysSummary;
         }
