@@ -71,6 +71,12 @@ namespace PersonalHomePage.Controllers
                     .Select(m => m.ErrorMessage).ToArray()));
         }
 
+        public ActionResult RedirectToLong(string shortUrl)
+        {
+            return Redirect("https://www.google.com.ua/search?q=" + shortUrl);
+        }
+
+
         private async Task<Profile> GetProfileAsync()
         {
             var cacheKey = "HealthService.GetProfileAsync";

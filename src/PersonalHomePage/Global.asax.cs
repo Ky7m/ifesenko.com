@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Reflection;
-using System.Threading;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
@@ -8,20 +6,13 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
-using PersonalHomePage.Controllers;
 using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
 {
     public class MvcApplication : HttpApplication
     {
-        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(
-            () =>
-            {
-                var telemetryClient = new TelemetryClient();
-                telemetryClient.Context.Properties["BuildVersion"] = Assembly.GetAssembly(typeof(HomeController)).GetName().Version.ToString();
-                return telemetryClient;
-            }, LazyThreadSafetyMode.ExecutionAndPublication);
+        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
         protected void Application_Start()
         {

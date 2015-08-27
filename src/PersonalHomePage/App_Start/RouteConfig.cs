@@ -21,10 +21,23 @@ namespace PersonalHomePage
             // Ignore the humans.txt file.
             routes.IgnoreRoute("humans.txt");
 
-             routes.MapRoute(
-                 name: "Default",
-                 url: "{controller}/{action}/{id}",
-                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            routes.MapRoute(
+                name: "Default",
+                url: "",
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional}
+                );
+
+            routes.MapRoute(
+                name: "ShortUrls",
+                url: "go/{shortUrl}",
+                defaults: new { controller = "Home", action = "RedirectToLong", shortUrl = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Basic",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", id = UrlParameter.Optional }
+            );
         }
     }
 }
