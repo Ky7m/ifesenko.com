@@ -1,4 +1,6 @@
 ﻿using PersonalHomePage.Services.HealthService;
+using PersonalHomePage.Services.HealthService.Model;
+using PersonalHomePage.Services.HealthService.Model.Responses;
 using Xunit;
 
 namespace PersonalHomePage.Tests
@@ -14,13 +16,15 @@ namespace PersonalHomePage.Tests
         [Fact]
         public void CheckThatProfileIsNotNull()
         {
-            Assert.NotNull(_healthService.GetProfileAsync().Result);
+            var profile = _healthService.GetProfileAsync().Result;
+            Assert.NotNull(profile);
         }
 
         [Fact]
         public void CheckThatTodaysSummaryIsNotNull()
         {
-            Assert.NotNull(_healthService.GetTodaysSummaryAsync().Result);
+            var summariesResponse = _healthService.GetTodaysSummaryAsync().Result;
+            Assert.NotNull(summariesResponse);
         }
     }
 }
