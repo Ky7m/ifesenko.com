@@ -7,7 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 using PersonalHomePage.Controllers;
+using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage
 {
@@ -25,6 +27,9 @@ namespace PersonalHomePage
         {
             ConfigureViewEngines();
             ConfigureAntiForgeryTokens();
+
+            // Set context properties using custom telemetry initializers
+            TelemetryConfiguration.Active.ContextInitializers.Add(new ApplicationInsightsConfigInitializer());
 
             MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
