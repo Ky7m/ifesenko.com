@@ -198,15 +198,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
-    <Reference Include="WebMarkupMin.Core, Version=0.9.12.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WebMarkupMin.Core.0.9.12\lib\net40\WebMarkupMin.Core.dll</HintPath>
+    <Reference Include="WebMarkupMin.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebMarkupMin.Core.1.0.0\lib\net40\WebMarkupMin.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebMarkupMin.Mvc">
-      <HintPath>..\..\packages\WebMarkupMin.Mvc.0.9.2\lib\net40\WebMarkupMin.Mvc.dll</HintPath>
+    <Reference Include="WebMarkupMin.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebMarkupMin.Mvc.1.0.0\lib\net40\WebMarkupMin.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="WebMarkupMin.Web">
-      <HintPath>..\..\packages\WebMarkupMin.Web.0.9.2\lib\net40\WebMarkupMin.Web.dll</HintPath>
+    <Reference Include="WebMarkupMin.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=99472178d266584b, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WebMarkupMin.Web.1.0.0\lib\net40\WebMarkupMin.Web.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -299,8 +301,8 @@
     <Content Include="humans.txt" />
     <Content Include="loaderio-652773ddab0fe23402da19db423d9acf.txt" />
     <Content Include="robots.txt" />
-    <Content Include="Scripts\ai.0.15.0-build41087.js" />
-    <Content Include="Scripts\ai.0.15.0-build41087.min.js" />
+    <Content Include="Scripts\ai.0.15.0-build46802.js" />
+    <Content Include="Scripts\ai.0.15.0-build46802.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
@@ -388,7 +390,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.0.15.0-build41087.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.0.15.0-build46802.d.ts" />
     <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
     <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
     <TypeScriptCompile Include="Scripts\app\models\certification.ts" />

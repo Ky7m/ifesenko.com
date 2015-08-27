@@ -29,6 +29,11 @@ declare module Microsoft.ApplicationInsights {
         static getStorage(name: string): string;
         static setStorage(name: string, data: string): boolean;
         static removeStorage(name: string): boolean;
+        private static _getSessionStorageObject();
+        static canUseSessionStorage(): boolean;
+        static getSessionStorage(name: string): string;
+        static setSessionStorage(name: string, data: string): boolean;
+        static removeSessionStorage(name: string): boolean;
         static setCookie(name: any, value: any): void;
         static stringToBoolOrDefault(str: any): boolean;
         static getCookie(name: any): string;
@@ -452,7 +457,7 @@ declare module Microsoft.ApplicationInsights.Telemetry {
             metrics: boolean;
             properties: boolean;
         };
-        constructor(name: string, value: number, count?: number, min?: number, max?: number);
+        constructor(name: string, value: number, count?: number, min?: number, max?: number, properties?: Object);
     }
 }
 declare module AI {
@@ -478,7 +483,7 @@ declare module Microsoft.ApplicationInsights.Telemetry {
             url: boolean;
             duration: boolean;
             properties: boolean;
-            measurement: boolean;
+            measurements: boolean;
         };
         constructor(name?: string, url?: string, durationMs?: number, properties?: any, measurements?: any);
     }
@@ -516,7 +521,7 @@ declare module Microsoft.ApplicationInsights.Telemetry {
             receivedResponse: boolean;
             domProcessing: boolean;
             properties: boolean;
-            measurement: boolean;
+            measurements: boolean;
         };
         isValid: boolean;
         constructor(name: string, url: string, durationMs: number, properties?: any, measurements?: any);
@@ -562,8 +567,10 @@ declare module Microsoft.ApplicationInsights {
         sample: Context.Sample;
         user: Context.User;
         session: Context.Session;
+        private telemetryInitializers;
         _sessionManager: Microsoft.ApplicationInsights.Context._SessionManager;
         constructor(config: ITelemetryConfig);
+        addTelemetryInitializer(telemetryInitializer: (envelope: Telemetry.Common.Envelope) => void): void;
         track(envelope: Telemetry.Common.Envelope): Telemetry.Common.Envelope;
         private _track(envelope);
         private static _sessionHandler(tc, sessionState, timestamp);
@@ -593,6 +600,24 @@ declare module Microsoft.ApplicationInsights.Telemetry.Common {
         constructor(type: string, data: TDomain);
     }
 }
+declare module Microsoft.ApplicationInsights.Telemetry {
+    class PageVisitTimeManager {
+        private prevPageVisitDataKeyName;
+        private pageVisitTimeTrackingHandler;
+        constructor(pageVisitTimeTrackingHandler: (pageName: string, pageUrl: string, pageVisitTime: number) => void);
+        trackPreviousPageVisit(currentPageName: string, currentPageUrl: string): void;
+        restartPageVisitTimer(pageName: string, pageUrl: string): PageVisitData;
+        startPageVisitTimer(pageName: string, pageUrl: string): void;
+        stopPageVisitTimer(): PageVisitData;
+    }
+    class PageVisitData {
+        pageName: string;
+        pageUrl: string;
+        pageVisitStartTime: number;
+        pageVisitTime: number;
+        constructor(pageName: any, pageUrl: any);
+    }
+}
 declare module Microsoft.ApplicationInsights {
     var Version: string;
     interface IConfig {
@@ -610,10 +635,12 @@ declare module Microsoft.ApplicationInsights {
         disableTelemetry: boolean;
         verboseLogging: boolean;
         diagnosticLogInterval: number;
+        autoTrackPageVisitTime: boolean;
     }
     class AppInsights {
         private _eventTracking;
         private _pageTracking;
+        private _pageVisitTimeManager;
         config: IConfig;
         context: TelemetryContext;
         static defaultConfig: IConfig;
@@ -627,8 +654,9 @@ declare module Microsoft.ApplicationInsights {
         stopTrackEvent(name: string, properties?: Object, measurements?: Object): void;
         trackEvent(name: string, properties?: Object, measurements?: Object): void;
         trackException(exception: Error, handledAt?: string, properties?: Object, measurements?: Object): void;
-        trackMetric(name: string, average: number, sampleCount?: number, min?: number, max?: number): void;
+        trackMetric(name: string, average: number, sampleCount?: number, min?: number, max?: number, properties?: Object): void;
         trackTrace(message: string, properties?: Object): void;
+        private trackPageVisitTime(pageName, pageUrl, pageVisitTime);
         flush(): void;
         setAuthenticatedUserContext(authenticatedUserId: string, accountId?: string): void;
         clearAuthenticatedUserContext(): void;
