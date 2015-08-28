@@ -10,7 +10,7 @@
         <div class="col-md-4 col-sm-4 wow bounceInDown">
             <div class="stat">
                 <div class="stat-icon">
-                    <h2><i class="fa fa-street-view hidden-xs"></i><span>@Model.StepsTaken</span></h2>
+                    <h2><i class="fa fa-street-view hidden-xs"></i><span>@Model.StepsTaken.GetValueOrDefault()</span></h2>
                 </div>
                 <h3>Steps taken</h3>
             </div>
@@ -18,7 +18,7 @@
         <div class="col-md-4 col-sm-4 wow bounceInUp">
             <div class="stat">
                 <div class="stat-icon">
-                    <h2><i class="fa fa-arrows-h hidden-xs"></i><span>@Model.TotalDistanceOnFoot</span></h2>
+                    <h2><i class="fa fa-arrows-h hidden-xs"></i><span>@Model.TotalDistanceOnFoot.GetValueOrDefault()</span></h2>
                 </div>
                 <h3>Distance (km)</h3>
             </div>
@@ -38,7 +38,7 @@
         <div class="col-md-4 col-sm-4 wow bounceInUp">
             <div class="stat">
                 <div class="stat-icon">
-                    <h2><i class="fa fa-fire hidden-xs"></i><span>@Model.CaloriesBurned</span></h2>
+                    <h2><i class="fa fa-fire hidden-xs"></i><span>@Model.CaloriesBurned.GetValueOrDefault()</span></h2>
                 </div>
                 <h3>Calories burned</h3>
             </div>
