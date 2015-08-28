@@ -9,16 +9,16 @@ namespace PersonalHomePage.Services.CloudStorageService
 {
     public sealed class CloudStorageService
     {
-        private readonly Lazy<CloudTableClient> _cloudTableClient = new Lazy<CloudTableClient>(() =>
+        private readonly Lazy<CloudStorageAccount> _cloudTableClient = new Lazy<CloudStorageAccount>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString;
-            var cloudStorageAccount = CloudStorageAccount.Parse(connectionString);
-            return cloudStorageAccount.CreateCloudTableClient();
+            return CloudStorageAccount.Parse(connectionString);
         });
 
         public SettingTableEntity[] RetrieveAllSettingsForService(string serviceName)
         {
-            var table = _cloudTableClient.Value.GetTableReference("Settings");
+            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var table = client.GetTableReference("Settings");
 
             var query =
                 new TableQuery<SettingTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
@@ -29,7 +29,8 @@ namespace PersonalHomePage.Services.CloudStorageService
 
         public void ReplaceSettingValueForService(SettingTableEntity updateSettingTableEntity)
         {
-            var table = _cloudTableClient.Value.GetTableReference("Settings");
+            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var table = client.GetTableReference("Settings");
 
             var retrieveOperation =
                 TableOperation.Retrieve<SettingTableEntity>(updateSettingTableEntity.PartitionKey,

@@ -8,25 +8,26 @@ namespace PersonalHomePage.Services
 {
     public sealed class RedisCacheService
     {
-        private readonly Lazy<IDatabase> _cacheDatabase = new Lazy<IDatabase>(() =>
+        private readonly Lazy<ConnectionMultiplexer> _cacheDatabase = new Lazy<ConnectionMultiplexer>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["RedisCacheConnectionString"].ConnectionString;
-            return ConnectionMultiplexer.Connect(connectionString).GetDatabase();
+            return ConnectionMultiplexer.Connect(connectionString);
         });
 
         public bool Store<T>(string key, T value, TimeSpan? expiry = null)
         {
             var serializedValue = Serialize(value);
-            return _cacheDatabase.Value.StringSet(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
+            return _cacheDatabase.Value.GetDatabase().StringSet(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
         }
 
         public T Get<T>(string key)
         {
-            if (!_cacheDatabase.Value.KeyExists(key))
+            var database = _cacheDatabase.Value.GetDatabase();
+            if (!database.KeyExists(key))
             {
                 return default(T);
             }
-            var serializedValue = _cacheDatabase.Value.StringGet(key);
+            var serializedValue = database.StringGet(key);
             if (!string.IsNullOrEmpty(serializedValue))
             {
                 return Deserialize<T>(serializedValue);
@@ -35,7 +36,7 @@ namespace PersonalHomePage.Services
         }
         public bool Delete(string key)
         {
-            return _cacheDatabase.Value.KeyDelete(key, CommandFlags.FireAndForget);
+            return _cacheDatabase.Value.GetDatabase().KeyDelete(key, CommandFlags.FireAndForget);
         }
 
         private static byte[] Serialize<T>(T value)
