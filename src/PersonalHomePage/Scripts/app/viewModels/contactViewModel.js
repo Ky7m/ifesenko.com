@@ -4,9 +4,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-/// <reference path="../../typings/toastr/toastr.d.ts" />
-/// <reference path="../../typings/nprogress/nprogress.d.ts" />
-/// <reference path="../base/validatableobject.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var ViewModels;
@@ -37,17 +34,19 @@ var PersonalHomePage;
                 if (this.validate()) {
                     this.isReady = false;
                     var $form = $(form);
-                    NProgress.start();
+                    $("#loader").fadeIn("slow");
                     $.post($form.attr("data-action"), $form.serialize()).done(function (response) {
                         var show = response.IsSuccess ? toastr.success : toastr.error;
                         show(response.Message);
                         if (response.IsSuccess) {
                             $form.get(0).reset();
                         }
-                    }).fail(function () {
+                    })
+                        .fail(function () {
                         toastr.error("Internal error. Please try again.");
-                    }).always(function () {
-                        NProgress.done();
+                    })
+                        .always(function () {
+                        $("#loader").fadeOut("slow");
                         _this.isReady = true;
                     });
                 }

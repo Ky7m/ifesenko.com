@@ -1,4 +1,3 @@
-/// <reference path="skillrate.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var Models;
@@ -16,4 +15,4 @@ var PersonalHomePage;
         Models.SkillItem = SkillItem;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=skillitem.js.map
+//# sourceMappingURL=skillItem.js.map

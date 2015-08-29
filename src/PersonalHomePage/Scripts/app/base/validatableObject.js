@@ -1,4 +1,3 @@
-/// <reference path="../../typings/knockout.validation/knockout.validation.d.ts" />
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var Base;
