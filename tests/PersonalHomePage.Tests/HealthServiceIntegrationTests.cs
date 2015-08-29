@@ -1,6 +1,6 @@
-﻿using PersonalHomePage.Services.HealthService;
-using PersonalHomePage.Services.HealthService.Model;
-using PersonalHomePage.Services.HealthService.Model.Responses;
+﻿using PersonalHomePage.Services;
+using PersonalHomePage.Services.CloudStorageService;
+using PersonalHomePage.Services.HealthService;
 using Xunit;
 
 namespace PersonalHomePage.Tests
@@ -10,7 +10,7 @@ namespace PersonalHomePage.Tests
         readonly HealthService _healthService;
         public HealthServiceIntegrationTests()
         {
-            _healthService = new HealthService();
+            _healthService = new HealthService(new SettingsService(new CloudStorageService()));
         }
 
         [Fact]

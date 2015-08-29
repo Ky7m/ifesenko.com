@@ -16,8 +16,14 @@ namespace PersonalHomePage.Controllers
     {
         private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
-        private readonly Lazy<HealthService> _healthService = new Lazy<HealthService>(() => new HealthService());
-        private readonly Lazy<RedisCacheService> _redisCacheService = new Lazy<RedisCacheService>(() => new RedisCacheService());
+        private readonly IHealthService _healthService;
+        private readonly ICacheService _cacheService;
+
+        public HomeController(IHealthService healthService, ICacheService cacheService)
+        {
+            _healthService = healthService;
+            _cacheService = cacheService;
+        }
 
         [CompressContent,
          MinifyHtml,
@@ -84,7 +90,7 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                profile = _redisCacheService.Value.Get<Profile>(cacheKey);
+                profile = _cacheService.Get<Profile>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -96,8 +102,8 @@ namespace PersonalHomePage.Controllers
                 return profile;
             }
 
-            profile = await _healthService.Value.GetProfileAsync();
-            _redisCacheService.Value.Store(cacheKey, profile, TimeSpan.FromHours(2.0));
+            profile = await _healthService.GetProfileAsync();
+            _cacheService.Store(cacheKey, profile, TimeSpan.FromHours(2.0));
 
             return profile;
         }
@@ -109,7 +115,7 @@ namespace PersonalHomePage.Controllers
 
             try
             {
-                todaysSummary = _redisCacheService.Value.Get<Summary>(cacheKey);
+                todaysSummary = _cacheService.Get<Summary>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -121,9 +127,9 @@ namespace PersonalHomePage.Controllers
                 return todaysSummary;
             }
 
-            var summaries = await _healthService.Value.GetTodaysSummaryAsync();
+            var summaries = await _healthService.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            _redisCacheService.Value.Store(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
+            _cacheService.Store(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
 
             return todaysSummary;
         }

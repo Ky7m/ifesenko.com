@@ -7,6 +7,11 @@ using System.Web.Routing;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using PersonalHomePage.Extensions;
+using PersonalHomePage.Services;
+using PersonalHomePage.Services.CloudStorageService;
+using PersonalHomePage.Services.HealthService;
+using SimpleInjector;
+using SimpleInjector.Integration.Web.Mvc;
 
 namespace PersonalHomePage
 {
@@ -27,6 +32,8 @@ namespace PersonalHomePage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ConfigureRegistrationMap();
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -35,11 +42,6 @@ namespace PersonalHomePage
             WriteExceptionToApplicationInsights(exception);
         }
 
-        /// <summary>
-        /// Configures the view engines. By default, Asp.Net MVC includes the Web Forms (WebFormsViewEngine) and 
-        /// Razor (RazorViewEngine) view engines. You can remove view engines you are not using here for better
-        /// performance.
-        /// </summary>
         static void ConfigureViewEngines()
         {
             // Only use the RazorViewEngine.
@@ -47,9 +49,19 @@ namespace PersonalHomePage
             ViewEngines.Engines.Add(new RazorViewEngine());
         }
 
-        /// <summary>
-        /// Configures the anti-forgery tokens.
-        /// </summary>
+        void ConfigureRegistrationMap()
+        {
+            var container = new Container();
+
+            container.Register<IHealthService, HealthService>(Lifestyle.Singleton);
+            container.Register<ICacheService, RedisCacheService>(Lifestyle.Singleton);
+            container.Register<ISettingsService, SettingsService>(Lifestyle.Singleton);
+            container.Register<IStorageService, CloudStorageService>(Lifestyle.Singleton);
+
+            container.Verify();
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+        }
+
         static void ConfigureAntiForgeryTokens()
         {
             // Rename the Anti-Forgery cookie from "__RequestVerificationToken" to "f". 

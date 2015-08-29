@@ -7,7 +7,7 @@ using PersonalHomePage.Services.CloudStorageService.Model;
 
 namespace PersonalHomePage.Services.CloudStorageService
 {
-    public sealed class CloudStorageService
+    public sealed class CloudStorageService : IStorageService
     {
         private readonly Lazy<CloudStorageAccount> _cloudTableClient = new Lazy<CloudStorageAccount>(() =>
         {
