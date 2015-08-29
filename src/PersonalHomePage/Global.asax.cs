@@ -55,8 +55,8 @@ namespace PersonalHomePage
 
             container.Register<IHealthService, HealthService>(Lifestyle.Singleton);
             container.Register<ICacheService, RedisCacheService>(Lifestyle.Singleton);
-            container.Register<ISettingsService, SettingsService>(Lifestyle.Transient);
-            container.Register<IStorageService, CloudStorageService>(Lifestyle.Transient);
+            container.Register<ISettingsService, SettingsService>(Lifestyle.Singleton);
+            container.Register<IStorageService, CloudStorageService>(Lifestyle.Singleton);
 
             container.Verify();
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
