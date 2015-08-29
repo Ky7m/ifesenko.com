@@ -307,7 +307,6 @@
     <Content Include="Content\images\profile.jpg" />
     <Content Include="Content\jquery.smooth.scroll.css" />
     <Content Include="Content\jquery.smooth.scroll.min.css" />
-    <Content Include="Content\nprogress.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Content\simpletextrotator.css" />
@@ -353,8 +352,6 @@
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
-    <Content Include="Scripts\nprogress.js" />
-    <Content Include="Scripts\nprogress.min.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="sitemap.xml" />
@@ -409,8 +406,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\ai.0.15.0-build46802.d.ts" />
     <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
-    <TypeScriptCompile Include="Scripts\app\helpers\preloader.ts" />
-    <TypeScriptCompile Include="Scripts\app\models\certification.ts" />
     <TypeScriptCompile Include="Scripts\app\base\contentItem.ts" />
     <TypeScriptCompile Include="Scripts\app\models\socialProfile.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
@@ -422,10 +417,8 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jqueryPluginsRegister.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\knockout\bindingHandlersRegister.d.ts" />
     <TypeScriptCompile Include="Scripts\bindingHandlers\ko.textrotator.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\nprogress\NProgress.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\toastr\toastr.d.ts" />
   </ItemGroup>
   <ItemGroup>

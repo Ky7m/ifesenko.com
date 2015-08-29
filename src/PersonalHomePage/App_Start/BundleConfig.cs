@@ -47,10 +47,6 @@ namespace PersonalHomePage
             textRotatorCssBundle.Include("~/Content/simpletextrotator.css");
             bundles.Add(textRotatorCssBundle);
 
-            var nprogressCssBundle = new StyleBundle("~/bundles/nprogress-css", "//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css");
-            nprogressCssBundle.Include("~/Content/nprogress.css");
-            bundles.Add(nprogressCssBundle);
-
             var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
@@ -106,15 +102,9 @@ namespace PersonalHomePage
             knockoutValidationJsBundle.Include("~/Scripts/knockout.validation.js");
             bundles.Add(knockoutValidationJsBundle);
 
-            var nprogressJsBundle = new ScriptBundle("~/bundles/nprogress-js", "//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js");
-            nprogressJsBundle.Include("~/Scripts/nprogress.js");
-            bundles.Add(nprogressJsBundle);
-
             var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName.TrimStart("~/".ToCharArray())));
             siteJsBundle.Include(
                 "~/Scripts/bindingHandlers/*.js",
-
-                "~/Scripts/app/helpers/*.js",
 
                 "~/Scripts/app/base/*.js",
                 "~/Scripts/app/models/*.js",

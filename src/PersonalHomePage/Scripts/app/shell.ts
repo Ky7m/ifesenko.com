@@ -1,25 +1,18 @@
-﻿/// <reference path="models/skillitem.ts" />
-/// <reference path="models/certification.ts" />
-/// <reference path="models/socialprofile.ts" />
-/// <reference path="base/contentitem.ts" />
-/// <reference path="viewmodels/contactviewmodel.ts" />
-/// <reference path="viewmodels/homeviewmodel.ts" />
-/// <reference path="../typings/jquery/jquerypluginsregister.d.ts" />
-/// <reference path="../typings/bootstrap/bootstrap.d.ts" />
-/// <reference path="helpers/preloader.ts" />
-module PersonalHomePage.Shell {
+﻿module PersonalHomePage.Shell {
     import SkillItem = Models.SkillItem;
-    import Certification = Models.Certification;
     import SocialProfile = Models.SocialProfile;
     import HomeViewModel = ViewModels.HomeViewModel;
-    import Preloader = Helpers.Preloader;
     import ContactViewModel = ViewModels.ContactViewModel;
     import ContentItem = Base.ContentItem;
     declare var WOW: any;
 
-    new Preloader("#status", "#preloader").attach(window);
+
     var bgContentItem = new ContentItem("content/images/background.jpg");
     $("#intro").backstretch([bgContentItem.Uri]);
+
+    $(window).load(() => {
+        $("#loader").fadeOut("slow");
+    });
 
     $(() => {
 
@@ -65,18 +58,18 @@ module PersonalHomePage.Shell {
             new SkillItem("Web Applications and Sites", 4),
             new SkillItem("Web Services and SOA", 4),
             new SkillItem("Security and Identity", 4),
+            new SkillItem("Cloud Computing", 4),
             new SkillItem("Data Access, Integration, and Databases", 3),
             new SkillItem("Desktop Applications", 3),
-            new SkillItem("Cloud Computing", 3),
-            new SkillItem("Mobile Client Applications", 3),
-            new SkillItem("Big Data", 2)
+            new SkillItem("Big Data", 3),
+            new SkillItem("Mobile Client Applications", 2)
         ];
 
-        var certifications: Array<Certification> = [
-            new Certification("MCSD: Web Applications"),
-            new Certification("MS: Programming in C# Specialist"),
-            new Certification("MS: Programming in HTML5 with JavaScript and CSS3 Specialist"),
-            new Certification("MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management")
+        var certifications: Array<string> = [
+            "MCSD: Web Applications",
+            "MS: Programming in C# Specialist",
+            "MS: Programming in HTML5 with JavaScript and CSS3 Specialist",
+            "MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management"
         ];
 
         var socialProfiles: Array<SocialProfile> = [

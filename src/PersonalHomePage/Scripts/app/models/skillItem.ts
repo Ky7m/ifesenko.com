@@ -1,5 +1,4 @@
-﻿/// <reference path="skillrate.ts" />
-module PersonalHomePage.Models {
+﻿module PersonalHomePage.Models {
     export class SkillItem {
         public skillRates: Array<SkillRate> = [];
         constructor(public title: string, rate: number) {
