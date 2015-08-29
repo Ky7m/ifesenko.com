@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using PersonalHomePage.Services;
+using PersonalHomePage.Services.CloudStorageService;
 using PersonalHomePage.Services.HealthService;
 using PersonalHomePage.Services.HealthService.Model;
 using Xunit;
@@ -14,7 +15,7 @@ namespace PersonalHomePage.Tests
         readonly RedisCacheService _redisCacheService;
         public RedisCacheServiceIntegrationTests()
         {
-            _healthService = new HealthService();
+            _healthService = new HealthService(new SettingsService(new CloudStorageService()));
             _redisCacheService = new RedisCacheService();
         }
 

@@ -17,7 +17,7 @@ using PersonalHomePage.Services.HealthService.Model.Responses;
 
 namespace PersonalHomePage.Services.HealthService
 {
-    public sealed class HealthService
+    public sealed class HealthService : IHealthService
     {
         private const string RedirectUri = "https://login.live.com/oauth20_desktop.srf";
         private const string TokenUrl = "https://login.live.com/oauth20_token.srf";
@@ -30,11 +30,12 @@ namespace PersonalHomePage.Services.HealthService
 
         private LiveIdCredentials _credentials;
 
-        private readonly SettingsService _settingsService;
+        private readonly ISettingsService _settingsService;
 
-        public HealthService()
+        public HealthService(ISettingsService settingsService)
         {
-            _settingsService = new SettingsService();
+            _settingsService = settingsService;
+
             var settings = _settingsService.RetrieveAllSettingsValuesForService("HealthService");
 
             _apiUri = settings["ApiUri"];

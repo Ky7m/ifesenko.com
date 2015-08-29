@@ -6,7 +6,7 @@ using StackExchange.Redis;
 
 namespace PersonalHomePage.Services
 {
-    public sealed class RedisCacheService
+    public sealed class RedisCacheService : ICacheService
     {
         private readonly Lazy<ConnectionMultiplexer> _cacheDatabase = new Lazy<ConnectionMultiplexer>(() =>
         {
