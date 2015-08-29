@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Reflection;
 using System.Web.Optimization;
 
@@ -17,11 +16,11 @@ namespace PersonalHomePage
             //BundleTable.EnableOptimizations = true; //force optimization while debugging
 
             var version = Assembly.GetAssembly(typeof(BundleConfig)).GetName().Version;
-            Version = string.Format("{0}.{1}.{2}", version.Major, version.Minor, version.Build);
+            Version = $"{version.Major}.{version.Minor}.{version.Build}";
             CdnUrl = ConfigurationManager.AppSettings.Get("CdnUrl") + "/{0}";
             var bundleVersion = Version.Replace(".", "-");
-            SiteCssBundleName = string.Format("~/bundles/site-css-{0}", bundleVersion);
-            SiteJsBundleName = string.Format("~/bundles/site-js-{0}", bundleVersion);
+            SiteCssBundleName = $"~/bundles/site-css-{bundleVersion}";
+            SiteJsBundleName = $"~/bundles/site-js-{bundleVersion}";
         }
 
         public static void RegisterBundles(BundleCollection bundles)
@@ -124,8 +123,6 @@ namespace PersonalHomePage
                 "~/Scripts/app/shell.js"
                 );
             bundles.Add(siteJsBundle);
-
-
         }
     }
 }

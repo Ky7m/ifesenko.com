@@ -3,7 +3,7 @@ using NWebsec.Mvc.HttpHeaders;
 
 namespace PersonalHomePage
 {
-    public class FilterConfig
+    public static class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
