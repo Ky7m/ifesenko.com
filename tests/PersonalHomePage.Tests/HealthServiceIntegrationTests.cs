@@ -1,6 +1,6 @@
-﻿using PersonalHomePage.Services;
-using PersonalHomePage.Services.CloudStorageService;
-using PersonalHomePage.Services.HealthService;
+﻿using PersonalHomePage.Services.Implementation;
+using PersonalHomePage.Services.Implementation.CloudStorageService;
+using PersonalHomePage.Services.Implementation.HealthService;
 using Xunit;
 
 namespace PersonalHomePage.Tests

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using PersonalHomePage.Services;
-using PersonalHomePage.Services.CloudStorageService;
-using PersonalHomePage.Services.HealthService;
-using PersonalHomePage.Services.HealthService.Model;
+using PersonalHomePage.Services.Implementation;
+using PersonalHomePage.Services.Implementation.CloudStorageService;
+using PersonalHomePage.Services.Implementation.HealthService;
+using PersonalHomePage.Services.Implementation.HealthService.Model;
 using Xunit;
 
 namespace PersonalHomePage.Tests
