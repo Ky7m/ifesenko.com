@@ -129,6 +129,10 @@
       <HintPath>..\..\packages\NWebsec.Mvc.4.1.1\lib\45\NWebsec.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Polly, Version=2.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Polly.2.2.3\lib\net45\Polly.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SendGrid.SmtpApi, Version=1.3.1.0, Culture=neutral, PublicKeyToken=2ae73662c35d80e4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SendGrid.SmtpApi.1.3.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
       <Private>True</Private>
@@ -249,46 +253,47 @@
     <Compile Include="Models\EmailMessageModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CloudStorageService\IStorageService.cs" />
-    <Compile Include="Services\HealthService\IHealthService.cs" />
-    <Compile Include="Services\ICacheService.cs" />
-    <Compile Include="Services\RedisCacheService.cs" />
+    <Compile Include="Services\Implementation\CloudStorageService\Model\ShortToLongUrlMapTableEntity.cs" />
+    <Compile Include="Services\Interfaces\IStorageService.cs" />
+    <Compile Include="Services\Interfaces\IHealthService.cs" />
+    <Compile Include="Services\Interfaces\ICacheService.cs" />
+    <Compile Include="Services\Implementation\RedisCacheService.cs" />
     <Compile Include="Services\EmailService.cs" />
-    <Compile Include="Services\HealthService\HealthService.cs" />
+    <Compile Include="Services\Implementation\HealthService\HealthService.cs" />
     <Compile Include="Extensions\ListExtensions.cs" />
-    <Compile Include="Services\HealthService\Model\ActivityBase.cs" />
-    <Compile Include="Services\HealthService\Model\ActivitySegment.cs" />
-    <Compile Include="Services\HealthService\Model\BikeActivity.cs" />
-    <Compile Include="Services\HealthService\Model\CaloriesBurnedSummary.cs" />
-    <Compile Include="Services\HealthService\Model\ChildActivity.cs" />
-    <Compile Include="Services\HealthService\Model\Device.cs" />
-    <Compile Include="Services\HealthService\Model\DistanceSummary.cs" />
-    <Compile Include="Services\HealthService\Model\Exercise.cs" />
-    <Compile Include="Services\HealthService\Model\FreePlayActivity.cs" />
-    <Compile Include="Services\HealthService\Model\GolfActivity.cs" />
-    <Compile Include="Services\HealthService\Model\GuidedWorkoutActivity.cs" />
-    <Compile Include="Services\HealthService\Model\HeartRateSummary.cs" />
-    <Compile Include="Services\HealthService\Model\HeartRateZones.cs" />
-    <Compile Include="Services\HealthService\Model\Location.cs" />
-    <Compile Include="Services\HealthService\Model\MapPoint.cs" />
-    <Compile Include="Services\HealthService\Model\MinuteSummary.cs" />
-    <Compile Include="Services\HealthService\Model\PerformanceSummary.cs" />
-    <Compile Include="Services\HealthService\Model\Profile.cs" />
-    <Compile Include="Services\HealthService\Model\Requests\ActivitiesRequest.cs" />
-    <Compile Include="Services\HealthService\Model\Requests\ActivityFields.cs" />
-    <Compile Include="Services\HealthService\Model\Requests\SplitDistanceType.cs" />
-    <Compile Include="Services\HealthService\Model\Responses\ActivitiesResponse.cs" />
-    <Compile Include="Services\HealthService\Model\Responses\DevicesResponse.cs" />
-    <Compile Include="Services\HealthService\Model\Responses\SummariesResponse.cs" />
-    <Compile Include="Services\HealthService\Model\Round.cs" />
-    <Compile Include="Services\HealthService\Model\RunActivity.cs" />
-    <Compile Include="Services\HealthService\Model\SleepActivity.cs" />
-    <Compile Include="Services\HealthService\Model\Summary.cs" />
-    <Compile Include="Services\HealthService\LiveIdCredentials.cs" />
-    <Compile Include="Services\ISettingsService.cs" />
-    <Compile Include="Services\SettingsService.cs" />
-    <Compile Include="Services\CloudStorageService\Model\SettingTableEntity.cs" />
-    <Compile Include="Services\CloudStorageService\CloudStorageService.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\ActivityBase.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\ActivitySegment.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\BikeActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\CaloriesBurnedSummary.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\ChildActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Device.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\DistanceSummary.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Exercise.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\FreePlayActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\GolfActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\GuidedWorkoutActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\HeartRateSummary.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\HeartRateZones.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Location.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\MapPoint.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\MinuteSummary.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\PerformanceSummary.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Profile.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Requests\ActivitiesRequest.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Requests\ActivityFields.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Requests\SplitDistanceType.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Responses\ActivitiesResponse.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Responses\DevicesResponse.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Responses\SummariesResponse.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Round.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\RunActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\SleepActivity.cs" />
+    <Compile Include="Services\Implementation\HealthService\Model\Summary.cs" />
+    <Compile Include="Services\Implementation\HealthService\LiveIdCredentials.cs" />
+    <Compile Include="Services\Interfaces\ISettingsService.cs" />
+    <Compile Include="Services\Implementation\SettingsService.cs" />
+    <Compile Include="Services\Implementation\CloudStorageService\Model\SettingTableEntity.cs" />
+    <Compile Include="Services\Implementation\CloudStorageService\CloudStorageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon.png" />

@@ -7,9 +7,10 @@ using System.Web.Routing;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using PersonalHomePage.Extensions;
-using PersonalHomePage.Services;
-using PersonalHomePage.Services.CloudStorageService;
-using PersonalHomePage.Services.HealthService;
+using PersonalHomePage.Services.Implementation;
+using PersonalHomePage.Services.Implementation.CloudStorageService;
+using PersonalHomePage.Services.Implementation.HealthService;
+using PersonalHomePage.Services.Interfaces;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 

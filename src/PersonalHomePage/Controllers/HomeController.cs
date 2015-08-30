@@ -6,8 +6,8 @@ using Microsoft.ApplicationInsights;
 using PersonalHomePage.Extensions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
-using PersonalHomePage.Services.HealthService;
-using PersonalHomePage.Services.HealthService.Model;
+using PersonalHomePage.Services.Implementation.HealthService.Model;
+using PersonalHomePage.Services.Interfaces;
 using WebMarkupMin.Mvc.ActionFilters;
 
 namespace PersonalHomePage.Controllers
@@ -18,11 +18,13 @@ namespace PersonalHomePage.Controllers
 
         private readonly IHealthService _healthService;
         private readonly ICacheService _cacheService;
+        private readonly ISettingsService _settingsService;
 
-        public HomeController(IHealthService healthService, ICacheService cacheService)
+        public HomeController(IHealthService healthService, ICacheService cacheService, ISettingsService settingsService)
         {
             _healthService = healthService;
             _cacheService = cacheService;
+            _settingsService = settingsService;
         }
 
         [CompressContent,
@@ -79,9 +81,20 @@ namespace PersonalHomePage.Controllers
 
         public ActionResult RedirectToLong(string shortUrl)
         {
-            return Redirect("https://www.google.com.ua/search?q=" + shortUrl);
-        }
+            if (string.IsNullOrEmpty(shortUrl))
+            {
+                return RedirectToAction("NotFound", "Error");
+            }
 
+            var longUrlMapTableEntity = _settingsService.RetrieveLongUrlMapForShortUrl(shortUrl.ToLowerInvariant());
+            if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
+            {
+                return RedirectToAction("NotFound", "Error");
+            }
+
+            Response.StatusCode = 302;
+            return Redirect(longUrlMapTableEntity.Target);
+        }
 
         private async Task<Profile> GetProfileAsync()
         {
