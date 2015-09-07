@@ -13,4 +13,3 @@ var PersonalHomePage;
         Models.SocialProfile = SocialProfile;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=socialProfile.js.map

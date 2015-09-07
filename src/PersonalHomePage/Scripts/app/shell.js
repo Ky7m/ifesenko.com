@@ -60,9 +60,9 @@ var PersonalHomePage;
                 "MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management"
             ];
             var socialProfiles = [
-                new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
-                new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
-                new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
+                new SocialProfile("http://ifesenko.com/go/github", "fa-github-alt"),
+                new SocialProfile("http://ifesenko.com/go/linkedin", "fa-linkedin"),
+                new SocialProfile("http://ifesenko.com/go/twitter", "fa-twitter")
             ];
             var contactViewModel = new ContactViewModel();
             var profileContentItem = new ContentItem("content/images/profile.jpg");
@@ -83,7 +83,7 @@ var PersonalHomePage;
                 /*
                 Bootstrap uses 'error' class annotate invalid fields.
                 */
-                errorElementClass: 'has-error'
+                errorElementClass: "has-error"
             });
             // setup toastr options
             toastr.options.closeButton = true;
@@ -96,4 +96,3 @@ var PersonalHomePage;
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=shell.js.map

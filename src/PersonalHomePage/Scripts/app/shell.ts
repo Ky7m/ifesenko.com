@@ -73,9 +73,9 @@
         ];
 
         var socialProfiles: Array<SocialProfile> = [
-            new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
-            new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
-            new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
+            new SocialProfile("http://ifesenko.com/go/github", "fa-github-alt"),
+            new SocialProfile("http://ifesenko.com/go/linkedin", "fa-linkedin"),
+            new SocialProfile("http://ifesenko.com/go/twitter", "fa-twitter")
         ];
         var contactViewModel = new ContactViewModel();
         var profileContentItem = new ContentItem("content/images/profile.jpg");
@@ -97,7 +97,7 @@
             /*
             Bootstrap uses 'error' class annotate invalid fields.
             */
-            errorElementClass: 'has-error'
+            errorElementClass: "has-error"
 
         });
 
