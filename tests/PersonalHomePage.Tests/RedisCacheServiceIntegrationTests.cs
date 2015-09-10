@@ -22,15 +22,15 @@ namespace PersonalHomePage.Tests
         [Fact]
         public async Task CheckThatProfileIsNotNull()
         {
-            var cacheKey = "Test.HealthService.GetProfileAsync";
-            _redisCacheService.Delete(cacheKey);
-            var profile = _redisCacheService.Get<Profile>(cacheKey);
+            const string cacheKey = "Test.HealthService.GetProfileAsync";
+            await _redisCacheService.DeleteAsync(cacheKey);
+            var profile = await _redisCacheService.GetAsync<Profile>(cacheKey);
             if (profile == null)
             {
                 profile = await _healthService.GetProfileAsync();
-                _redisCacheService.Store(cacheKey, profile, TimeSpan.FromSeconds(30));
+                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromSeconds(30));
             }
-            var expected = _redisCacheService.Get<Profile>(cacheKey);
+            var expected = _redisCacheService.GetAsync<Profile>(cacheKey);
             Assert.NotNull(expected);
         }
 
@@ -38,15 +38,15 @@ namespace PersonalHomePage.Tests
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
             var cacheKey = "Test.HealthService.GetTodaysSummaryAsync";
-            _redisCacheService.Delete(cacheKey);
-            var summary = _redisCacheService.Get<Summary>(cacheKey);
+            await _redisCacheService.DeleteAsync(cacheKey);
+            var summary = await _redisCacheService.GetAsync<Summary>(cacheKey);
             if (summary == null)
             {
                 var summaries = await _healthService.GetTodaysSummaryAsync();
                 summary = summaries.Summaries.FirstOrDefault();
-                _redisCacheService.Store(cacheKey, summary, TimeSpan.FromSeconds(60));
+                await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromSeconds(60));
             }
-            var expected = _redisCacheService.Get<Summary>(cacheKey);
+            var expected = _redisCacheService.GetAsync<Summary>(cacheKey);
             Assert.NotNull(expected);
         }
 

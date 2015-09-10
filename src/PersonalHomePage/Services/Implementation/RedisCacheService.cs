@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using PersonalHomePage.Services.Interfaces;
 using StackExchange.Redis;
 
@@ -15,42 +16,35 @@ namespace PersonalHomePage.Services.Implementation
             return ConnectionMultiplexer.Connect(connectionString);
         });
 
-        public bool Store<T>(string key, T value, TimeSpan? expiry = null)
+        public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
             var serializedValue = Serialize(value);
-            return _cacheDatabase.Value.GetDatabase().StringSet(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
+            return await _cacheDatabase.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
         }
 
-        public T Get<T>(string key)
+        public async Task<T> GetAsync<T>(string key)
         {
             var database = _cacheDatabase.Value.GetDatabase();
-            if (!database.KeyExists(key))
-            {
-                return default(T);
-            }
-            var serializedValue = database.StringGet(key);
-            if (!string.IsNullOrEmpty(serializedValue))
-            {
-                return Deserialize<T>(serializedValue);
-            }
-            return default(T);
+            var serializedValue = await database.StringGetAsync(key);
+            return !string.IsNullOrEmpty(serializedValue) ? Deserialize<T>(serializedValue) : default(T);
         }
-        public bool Delete(string key)
+        public async Task<bool> DeleteAsync(string key)
         {
-            return _cacheDatabase.Value.GetDatabase().KeyDelete(key, CommandFlags.FireAndForget);
+            return await _cacheDatabase.Value.GetDatabase().KeyDeleteAsync(key, CommandFlags.FireAndForget);
         }
 
         private static byte[] Serialize<T>(T value)
         {
-            byte[] objectDataAsStream = null;
-            if (value != null)
+            byte[] objectDataAsStream;
+            if (value == null)
             {
-                var binaryFormatter = new BinaryFormatter();
-                using (var memoryStream = new MemoryStream())
-                {
-                    binaryFormatter.Serialize(memoryStream, value);
-                    objectDataAsStream = memoryStream.ToArray();
-                }
+                return null;
+            }
+            var binaryFormatter = new BinaryFormatter();
+            using (var memoryStream = new MemoryStream())
+            {
+                binaryFormatter.Serialize(memoryStream, value);
+                objectDataAsStream = memoryStream.ToArray();
             }
             return objectDataAsStream;
         }
