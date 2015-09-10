@@ -39,7 +39,7 @@ namespace PersonalHomePage
             animateCssBundle.Include("~/Content/animate.css");
             bundles.Add(animateCssBundle);
 
-            var toastrCssBundle = new StyleBundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.cs");
+            var toastrCssBundle = new StyleBundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css");
             toastrCssBundle.Include("~/Content/toastr.css");
             bundles.Add(toastrCssBundle);
 
