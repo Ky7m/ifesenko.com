@@ -98,12 +98,12 @@ namespace PersonalHomePage.Controllers
 
         private async Task<Profile> GetProfileAsync()
         {
-            var cacheKey = "HealthService.GetProfileAsync";
+            const string cacheKey = "HealthService.GetProfileAsync";
             Profile profile = null;
 
             try
             {
-                profile = _cacheService.Get<Profile>(cacheKey);
+                profile = await _cacheService.GetAsync<Profile>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -116,19 +116,19 @@ namespace PersonalHomePage.Controllers
             }
 
             profile = await _healthService.GetProfileAsync();
-            _cacheService.Store(cacheKey, profile, TimeSpan.FromHours(2.0));
+            await _cacheService.StoreAsync(cacheKey, profile, TimeSpan.FromHours(2.0));
 
             return profile;
         }
 
         private async Task<Summary> GetTodaysSummaryAsync()
         {
-            var cacheKey = "HealthService.GetTodaysSummaryAsync";
+            const string cacheKey = "HealthService.GetTodaysSummaryAsync";
             Summary todaysSummary = null;
 
             try
             {
-                todaysSummary = _cacheService.Get<Summary>(cacheKey);
+                todaysSummary = await _cacheService.GetAsync<Summary>(cacheKey);
             }
             catch (Exception exception)
             {
@@ -142,7 +142,7 @@ namespace PersonalHomePage.Controllers
 
             var summaries = await _healthService.GetTodaysSummaryAsync();
             todaysSummary = summaries.Summaries.FirstOrDefault();
-            _cacheService.Store(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
+            await _cacheService.StoreAsync(cacheKey, todaysSummary, TimeSpan.FromHours(2.0));
 
             return todaysSummary;
         }

@@ -1,26 +1,17 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var PersonalHomePage;
 (function (PersonalHomePage) {
     var ViewModels;
     (function (ViewModels) {
-        var ContactViewModel = (function (_super) {
-            __extends(ContactViewModel, _super);
+        var ContactViewModel = (function () {
             function ContactViewModel() {
-                _super.call(this);
                 this.isReady = true;
                 this.name = ko.observable("").extend({ required: true, minLength: 3 });
                 this.email = ko.observable("").extend({ required: true, email: true });
                 this.message = ko.observable("").extend({ required: true, minLength: 5 });
             }
             ContactViewModel.prototype.validate = function () {
-                this.errors = ko.validation.group(this);
-                this.isValid = this.errors().length === 0;
-                return this.isValid;
+                var errors = ko.validation.group(this);
+                return errors().length === 0;
             };
             ContactViewModel.prototype.submit = function (form) {
                 var _this = this;
@@ -35,7 +26,8 @@ var PersonalHomePage;
                     this.isReady = false;
                     var $form = $(form);
                     $("#loader").fadeIn("slow");
-                    $.post($form.attr("data-action"), $form.serialize()).done(function (response) {
+                    $.post($form.attr("data-action"), $form.serialize())
+                        .done(function (response) {
                         var show = response.IsSuccess ? toastr.success : toastr.error;
                         show(response.Message);
                         if (response.IsSuccess) {
@@ -56,7 +48,7 @@ var PersonalHomePage;
                 return false;
             };
             return ContactViewModel;
-        })(PersonalHomePage.Base.ValidatableObject);
+        })();
         ViewModels.ContactViewModel = ContactViewModel;
     })(ViewModels = PersonalHomePage.ViewModels || (PersonalHomePage.ViewModels = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));

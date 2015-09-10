@@ -1,14 +1,9 @@
 ﻿module PersonalHomePage.Shell {
-    import SkillItem = Models.SkillItem;
-    import SocialProfile = Models.SocialProfile;
-    import HomeViewModel = ViewModels.HomeViewModel;
-    import ContactViewModel = ViewModels.ContactViewModel;
-    import ContentItem = Base.ContentItem;
     declare var WOW: any;
 
 
-    var bgContentItem = new ContentItem("content/images/background.jpg");
-    $("#intro").backstretch([bgContentItem.Uri]);
+    var bgContentItem = new Models.ContentItem("content/images/background.jpg");
+    $("#intro").backstretch([bgContentItem.uri]);
 
     $(window).load(() => {
         $("#loader").fadeOut("slow");
@@ -23,7 +18,7 @@
         });
 
         $("a[href*=#]").bind("click", function (e) {
-            var anchor = $(this);
+            const anchor = $(this);
             $("html, body").stop().animate({
                 scrollTop: $(anchor.attr("href")).offset().top
             }, 1000);
@@ -39,12 +34,12 @@
         }
 
         $(window).scroll(function () {
-            var state = $(this).scrollTop() >= navHeight;
+            const state = $(this).scrollTop() >= navHeight;
             navbar.toggleClass("navbar-color", state);
         });
 
         $(window).resize(function () {
-            var state = $(this).width() <= 767;
+            const state = $(this).width() <= 767;
             navbar.toggleClass("custom-collapse", state);
         });
 
@@ -54,51 +49,12 @@
         }).init();
 
 
-        var skillItems: Array<SkillItem> = [
-            new SkillItem("Web Applications and Sites", 4),
-            new SkillItem("Web Services and SOA", 4),
-            new SkillItem("Security and Identity", 4),
-            new SkillItem("Cloud Computing", 4),
-            new SkillItem("Data Access, Integration, and Databases", 3),
-            new SkillItem("Desktop Applications", 3),
-            new SkillItem("Big Data", 3),
-            new SkillItem("Mobile Client Applications", 2)
-        ];
-
-        var certifications: Array<string> = [
-            "MCSD: Web Applications",
-            "MS: Programming in C# Specialist",
-            "MS: Programming in HTML5 with JavaScript and CSS3 Specialist",
-            "MS: Delivering Continuous Value with Visual Studio Application Lifecycle Management"
-        ];
-
-        var socialProfiles: Array<SocialProfile> = [
-            new SocialProfile("https://github.com/Ky7m", "fa-github-alt"),
-            new SocialProfile("https://www.linkedin.com/profile/view?id=182744142", "fa-linkedin"),
-            new SocialProfile("https://twitter.com/ky7m", "fa-twitter")
-        ];
-        var contactViewModel = new ContactViewModel();
-        var profileContentItem = new ContentItem("content/images/profile.jpg");
-        var homeViewModel = new HomeViewModel(profileContentItem.Uri, certifications, skillItems, socialProfiles, contactViewModel);
-
+        var homeViewModel = new ViewModels.HomeViewModel();
+       
         ko.validation.init({
-            /*
-            parseInputAttributes is required for html5 attributes to work
-            */
             parseInputAttributes: true,
-            /*
-            decorateElement: true allows knockout.validation to add
-            or remove errorElementClass from input elements. This is
-            also required for validationElement binding to work.
-            ValidationElement binding is required for decorating
-            Bootstrap's control-groups with 'error' class.
-            */
             decorateElement: true,
-            /*
-            Bootstrap uses 'error' class annotate invalid fields.
-            */
-            errorElementClass: 'has-error'
-
+            errorElementClass: "has-error"
         });
 
         // setup toastr options
