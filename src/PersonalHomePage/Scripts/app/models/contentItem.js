@@ -5,12 +5,9 @@ var PersonalHomePage;
         var ContentItem = (function () {
             function ContentItem(relativePath) {
                 var options = window["options"];
-                var cdnUrl = options.cdnUrl;
-                var useCdn = options.useCdn;
-                var host = window.location.host;
-                this.uri = cdnUrl + "/" + relativePath;
-                var localPath = "//" + host + "/" + relativePath;
-                if (!useCdn) {
+                this.uri = options.cdnUrl + "/" + relativePath;
+                var localPath = "//" + window.location.host + "/" + relativePath;
+                if (!options.useCdn) {
                     this.uri = localPath;
                 }
             }

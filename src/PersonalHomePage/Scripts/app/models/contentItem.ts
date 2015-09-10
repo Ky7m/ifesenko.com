@@ -4,12 +4,9 @@
 
         constructor(relativePath: string) {
             const options = window["options"];
-            const cdnUrl = options.cdnUrl;
-            const useCdn = options.useCdn;
-            const host = window.location.host;
-            this.uri = cdnUrl + "/" + relativePath;
-            const localPath = `//${host}/${relativePath}`;
-            if (!useCdn) {
+            this.uri = options.cdnUrl + "/" + relativePath;
+            const localPath = `//${window.location.host}/${relativePath}`;
+            if (!options.useCdn) {
                 this.uri = localPath;
             }
         }
