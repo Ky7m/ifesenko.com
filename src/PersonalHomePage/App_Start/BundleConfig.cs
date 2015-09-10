@@ -35,11 +35,11 @@ namespace PersonalHomePage
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
-            var animateCssBundle = new StyleBundle("~/bundles/animate-css", "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css");
+            var animateCssBundle = new StyleBundle("~/bundles/animate-css", "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css");
             animateCssBundle.Include("~/Content/animate.css");
             bundles.Add(animateCssBundle);
 
-            var toastrCssBundle = new StyleBundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.css");
+            var toastrCssBundle = new StyleBundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.cs");
             toastrCssBundle.Include("~/Content/toastr.css");
             bundles.Add(toastrCssBundle);
 
@@ -67,7 +67,7 @@ namespace PersonalHomePage
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
 
-            var html5shivBundle = new ScriptBundle("~/bundles/html5shiv-js", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js");
+            var html5shivBundle = new ScriptBundle("~/bundles/html5shiv-js", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js");
             html5shivBundle.Include("~/Scripts/html5shiv.js");
             html5shivBundle.CdnFallbackExpression = "window.html5";
             bundles.Add(html5shivBundle);
@@ -82,7 +82,7 @@ namespace PersonalHomePage
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
 
-            var toastrJsBundle = new ScriptBundle("~/bundles/toastr-js", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.1/toastr.min.js");
+            var toastrJsBundle = new ScriptBundle("~/bundles/toastr-js", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js");
             toastrJsBundle.Include("~/Scripts/toastr.js");
             bundles.Add(toastrJsBundle);
 
