@@ -1,22 +1,22 @@
 var PersonalHomePage;
 (function (PersonalHomePage) {
-    var Base;
-    (function (Base) {
+    var Models;
+    (function (Models) {
         var ContentItem = (function () {
             function ContentItem(relativePath) {
                 var options = window["options"];
                 var cdnUrl = options.cdnUrl;
                 var useCdn = options.useCdn;
                 var host = window.location.host;
-                this.Uri = cdnUrl + "/" + relativePath;
+                this.uri = cdnUrl + "/" + relativePath;
                 var localPath = "//" + host + "/" + relativePath;
-                //if debug mode
                 if (!useCdn) {
-                    this.Uri = localPath;
+                    this.uri = localPath;
                 }
             }
             return ContentItem;
         })();
-        Base.ContentItem = ContentItem;
-    })(Base = PersonalHomePage.Base || (PersonalHomePage.Base = {}));
+        Models.ContentItem = ContentItem;
+    })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
+//# sourceMappingURL=contentItem.js.map

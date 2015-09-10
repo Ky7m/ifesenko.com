@@ -410,8 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\ai.0.15.0-build46802.d.ts" />
-    <TypeScriptCompile Include="Scripts\app\base\validatableObject.ts" />
-    <TypeScriptCompile Include="Scripts\app\base\contentItem.ts" />
+    <TypeScriptCompile Include="Scripts\app\models\contentItem.ts" />
     <TypeScriptCompile Include="Scripts\app\models\socialProfile.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\homeViewModel.ts" />

@@ -1,21 +1,19 @@
 ﻿module PersonalHomePage.ViewModels {
-    export class ContactViewModel extends Base.ValidatableObject {
+    export class ContactViewModel {
         name: KnockoutObservable<string>;
         email: KnockoutObservable<string>;
         message: KnockoutObservable<string>;
         isReady: boolean;
 
         constructor() {
-            super();
             this.isReady = true;
             this.name = ko.observable("").extend({ required: true, minLength: 3 });
             this.email = ko.observable("").extend({ required: true, email: true });
             this.message = ko.observable("").extend({ required: true, minLength: 5 });
         }
         validate(): boolean {
-            this.errors = ko.validation.group(this);
-            this.isValid = this.errors().length === 0;
-            return this.isValid;
+            const errors = ko.validation.group(this);
+            return errors().length === 0;
         }
         submit(form) {
             // Stop form from submitting normally
@@ -31,7 +29,8 @@
                 this.isReady = false;
                 var $form = $(form);
                 $("#loader").fadeIn("slow");
-                $.post($form.attr("data-action"), $form.serialize()).done(response => {
+                $.post($form.attr("data-action"), $form.serialize())
+                    .done(response => {
                         var show = response.IsSuccess ? toastr.success : toastr.error;
                         show(response.Message);
                         if (response.IsSuccess) {

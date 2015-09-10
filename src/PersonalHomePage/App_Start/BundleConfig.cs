@@ -106,7 +106,6 @@ namespace PersonalHomePage
             siteJsBundle.Include(
                 "~/Scripts/bindingHandlers/*.js",
 
-                "~/Scripts/app/base/*.js",
                 "~/Scripts/app/models/*.js",
                 "~/Scripts/app/viewModels/*.js",
 
