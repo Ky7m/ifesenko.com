@@ -43,10 +43,6 @@ namespace PersonalHomePage
             toastrCssBundle.Include("~/Content/toastr.css");
             bundles.Add(toastrCssBundle);
 
-            var textRotatorCssBundle = new StyleBundle("~/bundles/simpletextrotator-css", "//cdnjs.cloudflare.com/ajax/libs/simple-text-rotator/1.0.0/simpletextrotator.min.css");
-            textRotatorCssBundle.Include("~/Content/simpletextrotator.css");
-            bundles.Add(textRotatorCssBundle);
-
             var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
@@ -86,10 +82,6 @@ namespace PersonalHomePage
             toastrJsBundle.Include("~/Scripts/toastr.js");
             bundles.Add(toastrJsBundle);
 
-            var textRotatorJsBundle = new ScriptBundle("~/bundles/simpletextrotator-js", "//cdnjs.cloudflare.com/ajax/libs/simple-text-rotator/1.0.0/jquery.simple-text-rotator.min.js");
-            textRotatorJsBundle.Include("~/Scripts/jquery.simple-text-rotator.js");
-            bundles.Add(textRotatorJsBundle);
-
             var wowJsBundle = new ScriptBundle("~/bundles/wow-js", "//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js");
             wowJsBundle.Include("~/Scripts/wow.js");
             bundles.Add(wowJsBundle);
@@ -104,7 +96,9 @@ namespace PersonalHomePage
 
             var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName.TrimStart("~/".ToCharArray())));
             siteJsBundle.Include(
-                "~/Scripts/bindingHandlers/*.js",
+                "~/Scripts/app/extensions/*.js",
+                
+                "~/Scripts/app/bindingHandlers/*.js",
 
                 "~/Scripts/app/models/*.js",
                 "~/Scripts/app/viewModels/*.js",
