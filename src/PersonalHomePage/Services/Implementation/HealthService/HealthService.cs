@@ -12,9 +12,6 @@ using PersonalHomePage.Services.Implementation.HealthService.Model.Requests;
 using PersonalHomePage.Services.Implementation.HealthService.Model.Responses;
 using PersonalHomePage.Services.Interfaces;
 
-// await GetActivity("Sleep");
-// await GetActivity("FreePlay");
-// await GetActivity("GuidedWorkout");
 
 namespace PersonalHomePage.Services.Implementation.HealthService
 {
@@ -57,42 +54,50 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             SetCredentials(_credentials);
         }
 
-        public Task<SummariesResponse> GetTodaysSummaryAsync()
+        public async Task<Summary> GetTodaysSummaryAsync()
         {
             var now = DateTime.UtcNow;
-            return GetDailySummaryAsync(now.StartOfDay(), now.EndOfDay());
+            var dailySummaries = await GetDailySummaryAsync(now.StartOfDay(), now.EndOfDay());
+            return dailySummaries?.Summaries?.FirstOrDefault();
         }
 
         public async Task<Profile> GetProfileAsync()
         {
-            await ValidateCredentials();
-
-            var response = await GetResponse<Profile>("Profile", new Dictionary<string, string>());
-
-            return response;
+            await ValidateCredentialsAsync();
+            return await GetResponseAsync<Profile>("Profile", new Dictionary<string, string>());
         }
 
-        public async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null)
+        public async Task<SleepActivity> GetTodaysSleepActivityAsync()
         {
-            await ValidateCredentials();
-
-            var postData = request != null ? request.ToDictionary() : new Dictionary<string, string>();
-
-            var response = await GetResponse<ActivitiesResponse>("Activities", postData);
-
-            return response;
-        }
+            var now = DateTime.UtcNow;
+            var request = new ActivitiesRequest
+            {
+                ActivityTypes = new [] { "Sleep" },
+                StartTime = now.AddDays(-1.0).StartOfDay(),
+                EndTime = now.EndOfDay(),
+                MaxItemsReturned = 1
+            };
+            var activitiesResponse = await GetActivitiesAsync(request);
+            return activitiesResponse?.SleepActivities?.FirstOrDefault();
+        } 
 
         #region Private
 
-        private Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null)
+        private async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null)
         {
-            return GetSummaryInfo(startTime, endTime, "Daily", maxItemsToReturn);
+            await ValidateCredentialsAsync();
+            var postData = request != null ? request.ToDictionary() : new Dictionary<string, string>();
+            return await GetResponseAsync<ActivitiesResponse>("Activities", postData);
         }
 
-        private async Task<SummariesResponse> GetSummaryInfo(DateTime startTime, DateTime endTime, string period, int? maxItemsToReturn)
+        private async Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null)
         {
-            await ValidateCredentials();
+            return await GetSummaryInfoAsync(startTime, endTime, "Daily", maxItemsToReturn);
+        }
+
+        private async Task<SummariesResponse> GetSummaryInfoAsync(DateTime startTime, DateTime endTime, string period, int? maxItemsToReturn)
+        {
+            await ValidateCredentialsAsync();
 
             var postData = new Dictionary<string, string>();
 
@@ -109,10 +114,10 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
             var path = $"Summaries/{period}";
 
-            return await GetResponse<SummariesResponse>(path, postData);
+            return await GetResponseAsync<SummariesResponse>(path, postData);
         }
 
-        private async Task<TReturnType> GetResponse<TReturnType>(string path, Dictionary<string, string> postData, string baseUri = null)
+        private async Task<TReturnType> GetResponseAsync<TReturnType>(string path, Dictionary<string, string> postData, string baseUri = null)
         {
             var uri = new UriBuilder(baseUri ?? _apiUri);
             uri.Path += path;
@@ -125,9 +130,8 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 await ExchangeCodeAsync(_credentials.RefreshToken, true);
-
                 // Re-issue the same request (will use new auth token now)
-                return await GetResponse<TReturnType>(path, postData, baseUri);
+                return await GetResponseAsync<TReturnType>(path, postData, baseUri);
             }
 
             response.EnsureSuccessStatusCode();
@@ -137,7 +141,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             return item;
         }
 
-        private Task<bool> ValidateCredentials()
+        private Task<bool> ValidateCredentialsAsync()
         {
             if (string.IsNullOrEmpty(_credentials?.AccessToken))
             {
@@ -179,7 +183,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
                 postData.Add("grant_type", "authorization_code");
             }
 
-            var response = await GetResponse<LiveIdCredentials>(string.Empty, postData, TokenUrl);
+            var response = await GetResponseAsync<LiveIdCredentials>(string.Empty, postData, TokenUrl);
             SetCredentials(response);
             if (isTokenRefresh)
             {
