@@ -1,7 +1,9 @@
+using System;
 using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
+    [Serializable]
     public class SleepActivity : ActivityBase
     {
         [JsonProperty("awakeDuration")]
