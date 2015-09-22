@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
-    <TypeScriptToolsVersion>1.5</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ApplicationInsightsResourceId>/subscriptions/a5c647da-3f97-440c-9ba1-21fd71438a9a/resourcegroups/IFesenkoWebSiteGroup/providers/microsoft.insights/components/ifesenko</ApplicationInsightsResourceId>
