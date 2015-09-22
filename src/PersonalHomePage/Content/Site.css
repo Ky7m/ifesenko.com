@@ -117,26 +117,21 @@ a,
 .btn,
 .navbar,
 .form-control {
-    -webkit-transition: all 0.125s ease-in-out 0s;
-    -moz-transition: all 0.125s ease-in-out 0s;
-    -ms-transition: all 0.125s ease-in-out 0s;
-    -o-transition: all 0.125s ease-in-out 0s;
-    transition: all 0.125s ease-in-out 0s;
+    transition: all 0.125s ease-in-out 0;
 }
 
-/* ---------------------------------------------- /*
+    /* ---------------------------------------------- /*
  * Reset box-shadow
 /* ---------------------------------------------- */
 
-.btn,
-.panel,
-.form-control,
-.modal-content,
-.form-control:hover,
-.form-control:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
+    .btn,
+    .panel,
+    .form-control,
+    .modal-content,
+    .form-control:hover,
+    .form-control:focus {
+        box-shadow: none;
+    }
 
 /* ---------------------------------------------- /*
  * Reset border-radius
@@ -149,9 +144,6 @@ a,
 .modal-content,
 .panel-group .panel,
 .widget-social li a {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -303,12 +295,6 @@ h3 > .fa {
 }
 
     .mouse-icon .wheel {
-        -webkit-animation-name: drop;
-        -webkit-animation-duration: 1s;
-        -webkit-animation-timing-function: linear;
-        -webkit-animation-delay: 0s;
-        -webkit-animation-iteration-count: infinite;
-        -webkit-animation-play-state: running;
         animation-name: drop;
         animation-duration: 1s;
         animation-timing-function: linear;
@@ -561,6 +547,7 @@ h3 > .fa {
 /* ---------------------------------------------- /*
  * Loader
 /* ---------------------------------------------- */
+
 #loader {
     width: 100%;
     height: 100%;
@@ -614,6 +601,7 @@ h3 > .fa {
     width: 20%;
     margin-top: 30px;
 }
+
 /* ---------------------------------------------- /*
  * Media
 /* ---------------------------------------------- */
