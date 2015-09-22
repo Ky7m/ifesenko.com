@@ -71,8 +71,12 @@ a {
 }
 
 textarea {
+    -moz-resize: vertical;
+    -ms-resize: vertical;
+    -o-resize: vertical;
     resize: vertical;
 }
+
 /* ---------------------------------------------- /*
  * Typography
 /* ---------------------------------------------- */
@@ -117,26 +121,27 @@ a,
 .btn,
 .navbar,
 .form-control {
-    -webkit-transition: all 0.125s ease-in-out 0s;
-    -moz-transition: all 0.125s ease-in-out 0s;
-    -ms-transition: all 0.125s ease-in-out 0s;
-    -o-transition: all 0.125s ease-in-out 0s;
-    transition: all 0.125s ease-in-out 0s;
+    -webkit-transition: all 0.125s ease-in-out 0;
+    -moz-transition: all 0.125s ease-in-out 0;
+    -ms-transition: all 0.125s ease-in-out 0;
+    -o-transition: all 0.125s ease-in-out 0;
+    transition: all 0.125s ease-in-out 0;
 }
 
-/* ---------------------------------------------- /*
+    /* ---------------------------------------------- /*
  * Reset box-shadow
 /* ---------------------------------------------- */
 
-.btn,
-.panel,
-.form-control,
-.modal-content,
-.form-control:hover,
-.form-control:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
+    .btn,
+    .panel,
+    .form-control,
+    .modal-content,
+    .form-control:hover,
+    .form-control:focus {
+        -webkit-box-shadow: none;
+        -ms-box-shadow: none;
+        box-shadow: none;
+    }
 
 /* ---------------------------------------------- /*
  * Reset border-radius
@@ -152,6 +157,7 @@ a,
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     -o-border-radius: 3px;
+    -ms-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -274,6 +280,7 @@ a,
     }
 
 .remove-shadow {
+    -ms-text-shadow: 0 0 0 !important;
     text-shadow: 0 0 0 !important;
 }
 
@@ -294,6 +301,7 @@ h3 > .fa {
 .mouse-icon {
     position: relative;
     border: 2px solid #fff;
+    -ms-border-radius: 16px;
     border-radius: 16px;
     height: 50px;
     width: 30px;
@@ -306,19 +314,36 @@ h3 > .fa {
         -webkit-animation-name: drop;
         -webkit-animation-duration: 1s;
         -webkit-animation-timing-function: linear;
-        -webkit-animation-delay: 0s;
+        -webkit-animation-delay: 0;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-play-state: running;
+        -moz-animation-name: drop;
+        -ms-animation-name: drop;
+        -o-animation-name: drop;
         animation-name: drop;
+        -moz-animation-duration: 1s;
+        -ms-animation-duration: 1s;
+        -o-animation-duration: 1s;
         animation-duration: 1s;
+        -moz-animation-timing-function: linear;
+        -ms-animation-timing-function: linear;
+        -o-animation-timing-function: linear;
         animation-timing-function: linear;
-        animation-delay: 0s;
+        -moz-animation-delay: 0;
+        -ms-animation-delay: 0;
+        -o-animation-delay: 0;
+        animation-delay: 0;
+        -moz-animation-iteration-count: infinite;
+        -ms-animation-iteration-count: infinite;
+        -o-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
+        -moz-animation-play-state: running;
+        -ms-animation-play-state: running;
+        -o-animation-play-state: running;
         animation-play-state: running;
-    }
 
-    .mouse-icon .wheel {
         position: relative;
+        -ms-border-radius: 10px;
         border-radius: 10px;
         background: #fff;
         width: 4px;
@@ -368,6 +393,7 @@ h3 > .fa {
 
 .navbar {
     background: none;
+    -ms-border-radius: 0;
     border-radius: 0;
     border: 0;
     padding: 20px 0;
@@ -405,7 +431,9 @@ h3 > .fa {
 .navbar-color,
 .custom-collapse {
     background: #FFF;
-    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 0 4px #cbcbb2;
+    -ms-box-shadow: 0 0 4px #cbcbb2;
+    box-shadow: 0 0 4px #cbcbb2;
     padding: 0;
 }
 
@@ -458,7 +486,9 @@ h3 > .fa {
 /* ---------------------------------------------- */
 
 #profile-contact {
-    box-shadow: 0 0 4px rgba(0, 0, 0, .2);
+    -webkit-box-shadow: 0 0 4px #cbcbb2;
+    -ms-box-shadow: 0 0 4px #cbcbb2;
+    box-shadow: 0 0 4px #cbcbb2;
     padding: 20px 0;
 }
 
@@ -577,6 +607,7 @@ h3 > .fa {
     background-image: url('../Content/images/loader.gif');
     background-position: center;
     background-repeat: no-repeat;
+    -ms-background-size: 70px 70px;
     background-size: 70px 70px;
     width: 200px;
     height: 200px;
