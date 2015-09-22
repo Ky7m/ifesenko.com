@@ -16,4 +16,3 @@ var PersonalHomePage;
         Models.ContentItem = ContentItem;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=contentItem.js.map

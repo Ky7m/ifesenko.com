@@ -37,4 +37,3 @@ var PersonalHomePage;
         ViewModels.HomeViewModel = HomeViewModel;
     })(ViewModels = PersonalHomePage.ViewModels || (PersonalHomePage.ViewModels = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=homeViewModel.js.map

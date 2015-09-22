@@ -1,7 +1,6 @@
 ﻿module PersonalHomePage.Shell {
     declare var WOW: any;
 
-
     var bgContentItem = new Models.ContentItem("content/images/background.jpg");
     $("#intro").backstretch([bgContentItem.uri]);
 
@@ -10,7 +9,6 @@
     });
 
     $(() => {
-
         $(document).on("click", ".navbar-collapse.in", function (e) {
             if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
                 $(this).collapse("hide");

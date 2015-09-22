@@ -13,4 +13,3 @@ var PersonalHomePage;
         Models.SkillRate = SkillRate;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=skillRate.js.map

@@ -15,4 +15,3 @@ var PersonalHomePage;
         Models.SkillItem = SkillItem;
     })(Models = PersonalHomePage.Models || (PersonalHomePage.Models = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
-//# sourceMappingURL=skillItem.js.map
