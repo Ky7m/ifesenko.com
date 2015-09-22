@@ -1,6 +1,7 @@
 ﻿@using System.Configuration
 <!DOCTYPE html>
 <html>
+@* https://github.com/iandevlin/html5bones/blob/master/main-template.html *@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,36 +17,34 @@
     @Styles.Render("~/bundles/font-awesome-css")
     @Styles.Render("~/bundles/bootstrap-css")
     @Styles.Render("~/bundles/animate-css")
-    @Styles.Render("~/bundles/toastr-css")
     @Styles.Render(BundleConfig.SiteCssBundleName)
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
-    @RenderBody()
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <p class="copy text-center">
-                    @BundleConfig.Version
-                </p>
-            </div>
+@RenderBody()
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <p class="copy text-center">
+                @BundleConfig.Version
+            </p>
         </div>
-    </footer>
-    @Scripts.Render("~/bundles/ai-js")
-    @AnalyticsHelper.GetAppInsightsScript()
-    <script type="text/javascript">
-        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
-    </script>
-    <!--[if lt IE 9]>
+    </div>
+</footer>
+@Scripts.Render("~/bundles/ai-js")
+@AnalyticsHelper.GetAppInsightsScript()
+<script type="text/javascript">
+    window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
+</script>
+<!--[if lt IE 9]>
     @Scripts.Render("~/bundles/html5shiv-js")
     @Scripts.Render("~/bundles/respond-js")
-    <![endif]-->
-    @Scripts.Render("~/bundles/jquery-js")
-    @Scripts.Render("~/bundles/bootstrap-js")
-    @Scripts.Render("~/bundles/knockout")
-    @Scripts.Render("~/bundles/toastr-js")
-    @Scripts.Render("~/bundles/wow-js")
-    @Scripts.Render("~/bundles/backstretch-js")
-    @Scripts.Render("~/bundles/knockout-validation-js")
-    @Scripts.Render(BundleConfig.SiteJsBundleName)
+<![endif]-->
+@Scripts.Render("~/bundles/jquery-js")
+@Scripts.Render("~/bundles/bootstrap-js")
+@Scripts.Render("~/bundles/knockout")
+@Scripts.Render("~/bundles/wow-js")
+@Scripts.Render("~/bundles/backstretch-js")
+@Scripts.Render("~/bundles/knockout-validation-js")
+@Scripts.Render(BundleConfig.SiteJsBundleName)
 </body>
 </html>

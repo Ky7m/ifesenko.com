@@ -39,10 +39,6 @@ namespace PersonalHomePage
             animateCssBundle.Include("~/Content/animate.css");
             bundles.Add(animateCssBundle);
 
-            var toastrCssBundle = new StyleBundle("~/bundles/toastr-css", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css");
-            toastrCssBundle.Include("~/Content/toastr.css");
-            bundles.Add(toastrCssBundle);
-
             var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
@@ -77,10 +73,6 @@ namespace PersonalHomePage
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
-
-            var toastrJsBundle = new ScriptBundle("~/bundles/toastr-js", "//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js");
-            toastrJsBundle.Include("~/Scripts/toastr.js");
-            bundles.Add(toastrJsBundle);
 
             var wowJsBundle = new ScriptBundle("~/bundles/wow-js", "//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js");
             wowJsBundle.Include("~/Scripts/wow.js");
