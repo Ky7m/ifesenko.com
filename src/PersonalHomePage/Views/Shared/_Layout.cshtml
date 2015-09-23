@@ -20,31 +20,30 @@
     @Styles.Render(BundleConfig.SiteCssBundleName)
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
-@RenderBody()
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <p class="copy text-center">
-                @BundleConfig.Version
-            </p>
+    @RenderBody()
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <p class="copy text-center">
+                    @BundleConfig.Version
+                </p>
+            </div>
         </div>
-    </div>
-</footer>
-@Scripts.Render("~/bundles/ai-js")
-@AnalyticsHelper.GetAppInsightsScript()
-<script type="text/javascript">
-    window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
-</script>
-<!--[if lt IE 9]>
-    @Scripts.Render("~/bundles/html5shiv-js")
-    @Scripts.Render("~/bundles/respond-js")
-<![endif]-->
-@Scripts.Render("~/bundles/jquery-js")
-@Scripts.Render("~/bundles/bootstrap-js")
-@Scripts.Render("~/bundles/knockout")
-@Scripts.Render("~/bundles/wow-js")
-@Scripts.Render("~/bundles/backstretch-js")
-@Scripts.Render("~/bundles/knockout-validation-js")
-@Scripts.Render(BundleConfig.SiteJsBundleName)
+    </footer>
+    @Scripts.Render("~/bundles/ai-js")
+    @AnalyticsHelper.GetAppInsightsScript()
+    <script type="text/javascript">
+        window.options = { cdnUrl: '@ConfigurationManager.AppSettings["CdnUrl"]', useCdn: @BundleTable.Bundles.UseCdn.ToString().ToLowerInvariant() };
+    </script>
+    <!--[if lt IE 9]>
+        @Scripts.Render("~/bundles/html5shiv-js")
+        @Scripts.Render("~/bundles/respond-js")
+    <![endif]-->
+    @Scripts.Render("~/bundles/jquery-js")
+    @Scripts.Render("~/bundles/bootstrap-js")
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/wow-js")
+    @Scripts.Render("~/bundles/backstretch-js")
+    @Scripts.Render(BundleConfig.SiteJsBundleName)
 </body>
 </html>

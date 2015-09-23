@@ -1,47 +1,63 @@
 ﻿<div class="container">
-	<div class="row">
-		<div class="col-md-12 headline wow bounceInLeft">
-			<h2>Contact Me</h2>
-			<p>Drop me a line or give me a ring. I love to hear you.</p>
-		</div>
-		<div class="col-md-6 wow bounceInUp">
-			<p data-bind="text: goalMessage"></p>
-			<ul class="icon-list">
-				<li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine (UTC+02:00)</li>
-				<li><i class="fa fa-fw fa-twitter"></i><a href="http://ifesenko.com/go/twitter">@@Ky7m</a></li>
-				<li><i class="fa fa-fw fa-envelope-o"></i>ifesenko<!-- >@@. --><!-- >@@. -->@@<!-- >@@. -->outlook<!-- >@@. -->.<!-- >@@. -->com</li>
-			</ul>
-		</div>
-		<div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
-			<form id="contact-form" role="form" method="POST" data-action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
-				@Html.AntiForgeryToken()
-				<fieldset>
-					<div class="form-group">
-						<label class="sr-only" for="name">Name</label>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-fw fa-lg fa-user"></i>
-							</span>
-							<input type="text" required="required" id="name" class="form-control" name="name" placeholder="Name" data-bind="value:name">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="sr-only" for="email">Email address</label>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-fw fa-lg fa-envelope"></i>
-							</span>
-							<input type="email" required="required" id="email" class="form-control" name="email" placeholder="E-mail" data-bind="value:email">
-						</div>
-					</div>
-					<div class="form-group">
-						<textarea class="form-control" type="text" required="required" id="message" name="message" rows="7" placeholder="Your message" data-bind="value:message"></textarea>
-					</div>
-				</fieldset>
-				<button type="submit" class="btn btn-custom-1" data-bind="enabled: isReady">
-					<i class="fa fa-bullhorn icon-before"></i> Send it
-				</button>
-			</form>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-12 headline wow bounceInLeft">
+            <h2>Contact Me</h2>
+            <p>Drop me a line or give me a ring. I love to hear you.</p>
+        </div>
+        <div class="col-md-6 wow bounceInUp">
+            <p data-bind="text: goalMessage"></p>
+            <ul class="icon-list">
+                <li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine (UTC+02:00)</li>
+                <li><i class="fa fa-fw fa-twitter"></i><a href="http://ifesenko.com/go/twitter">@@Ky7m</a></li>
+                <li><i class="fa fa-fw fa-envelope-o"></i>ifesenko<!-- >@@. --><!-- >@@. -->@@<!-- >@@. -->outlook<!-- >@@. -->.<!-- >@@. -->com</li>
+            </ul>
+        </div>
+        <div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
+            <form id="contact-form" role="form" method="POST" data-action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
+                @Html.AntiForgeryToken()
+                <fieldset>
+                    <div class="form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-lg fa-user"></i>
+                            </span>
+                            <input type="text" required="required" id="name" class="form-control" name="name" 
+                                   placeholder="Name" data-bind="value: name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-lg fa-envelope"></i>
+                            </span>
+                            <input type="email" required="required" id="email" class="form-control" 
+                                   name="email" placeholder="E-mail" data-bind="value: email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" required="required"
+                                  name="message" rows="7" placeholder="Your message" data-bind="value: message">
+                        </textarea>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <div class="col-md-4 no-padding">
+                        <button type="submit" class="btn btn-custom-1" data-bind="enabled: isReady">
+                            <i class="fa fa-bullhorn icon-before"></i> <span data-bind="text: sendItButtonText"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-8 no-padding">
+                        <div class="alert alert-dismissible" role="alert" data-bind="visible: isAlertVisible, css: {'alert-warning': !isSuccess(), 'alert-success': isSuccess()}">
+                            <button type="button" class="close" aria-label="Close" data-bind="click: closeAlert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong data-bind="text: status"></strong>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

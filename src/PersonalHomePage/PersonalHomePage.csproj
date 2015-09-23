@@ -347,8 +347,6 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
-    <Content Include="Scripts\knockout.validation.js" />
-    <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="sitemap.xml" />
     <Content Include="yandex_54eed4dda67262be.txt" />
     <Content Include="ApplicationInsights.config">
@@ -386,7 +384,6 @@
     <Content Include="Views\Home\Sections\Resume.cshtml" />
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
-    <Content Include="Scripts\knockout.validation.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,7 +405,6 @@
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jqueryPluginsRegister.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\knockout.validation\knockout.validation.d.ts" />
     <TypeScriptCompile Include="Scripts\app\bindingHandlers\ko.textrotator.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
   </ItemGroup>

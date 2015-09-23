@@ -4,3 +4,4 @@ ko.bindingHandlers["textrotator"] = {
         $(element).textrotator(value);
     }
 };
+//# sourceMappingURL=ko.textrotator.js.map

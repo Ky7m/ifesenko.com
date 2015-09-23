@@ -46,24 +46,9 @@
             mobile: false
         }).init();
 
-
-        var homeViewModel = new ViewModels.HomeViewModel();
-       
-        ko.validation.init({
-            parseInputAttributes: true,
-            decorateElement: true,
-            errorElementClass: "has-error"
-        });
-
-        // setup toastr options
-        toastr.options.closeButton = true;
-        toastr.options.newestOnTop = true;
-        toastr.options.progressBar = true;
-        toastr.options.positionClass = "toast-top-center";
-
         // tooltips
         $("[data-toggle='tooltip']").tooltip();
 
-        ko.applyBindings(homeViewModel);
+        ko.applyBindings(new ViewModels.HomeViewModel());
     });
 }
