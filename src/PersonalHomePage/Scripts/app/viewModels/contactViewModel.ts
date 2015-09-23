@@ -4,16 +4,20 @@
         email: KnockoutObservable<string>;
         message: KnockoutObservable<string>;
         isReady: boolean;
+        sendItButtonText: KnockoutObservable<string>;
+        isAlertVisible: KnockoutObservable<boolean>;
+        isSuccess: KnockoutObservable<boolean>;
+        status: KnockoutObservable<string>;
 
         constructor() {
             this.isReady = true;
-            this.name = ko.observable("").extend({ required: true, minLength: 3 });
-            this.email = ko.observable("").extend({ required: true, email: true });
-            this.message = ko.observable("").extend({ required: true, minLength: 5 });
-        }
-        validate(): boolean {
-            const errors = ko.validation.group(this);
-            return errors().length === 0;
+            this.name = ko.observable("");
+            this.email = ko.observable("");
+            this.message = ko.observable("");
+            this.sendItButtonText = ko.observable("Send it");
+            this.isAlertVisible = ko.observable(false);
+            this.isSuccess = ko.observable(false);
+            this.status = ko.observable("");
         }
         submit(form) {
             // Stop form from submitting normally
@@ -23,32 +27,38 @@
             if (!this.isReady) {
                 return false;
             }
-
-            toastr.clear();
-            if (this.validate()) {
-                this.isReady = false;
-                var $form = $(form);
-                $("#loader").fadeIn("slow");
-                $.post($form.attr("data-action"), $form.serialize())
-                    .done(response => {
-                        var show = response.IsSuccess ? toastr.success : toastr.error;
-                        show(response.Message);
-                        if (response.IsSuccess) {
-                            (<HTMLFormElement> $form.get(0)).reset();
-                        }
-                    })
-                    .fail(() => {
-                        toastr.error("Internal error. Please try again.");
-                    })
-                    .always(() => {
-                        $("#loader").fadeOut("slow");
-                        this.isReady = true;
-                    });
-            } else {
-                toastr.warning("Please check your data and re-submit the form.");
-            }
+            this.closeAlert();
+            this.sendItButtonText("Sending...");
+            this.isReady = false;
+            var $form = $(form);
+            $("#loader").fadeIn("slow");
+            $.post($form.attr("data-action"), $form.serialize())
+                .done(response => {
+                    this.isSuccess(response.IsSuccess);
+                    this.status(response.Message);
+                    if (response.IsSuccess) {
+                        (<HTMLFormElement>$form.get(0)).reset();
+                        this.message("");
+                    }
+                })
+                .fail(() => {
+                    this.isSuccess(false);
+                    this.status("Internal error. Please try again.");
+                })
+                .always(() => {
+                    $("#loader").fadeOut("slow");
+                    this.isReady = true;
+                    this.sendItButtonText("Send it");
+                    this.isAlertVisible(true);
+                });
 
             return false;
+        }
+
+        closeAlert = () => {
+            this.isAlertVisible(false);
+            this.status("");
+            this.isSuccess(false);
         }
     }
 }

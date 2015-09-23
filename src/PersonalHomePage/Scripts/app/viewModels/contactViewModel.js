@@ -4,15 +4,21 @@ var PersonalHomePage;
     (function (ViewModels) {
         var ContactViewModel = (function () {
             function ContactViewModel() {
+                var _this = this;
+                this.closeAlert = function () {
+                    _this.isAlertVisible(false);
+                    _this.status("");
+                    _this.isSuccess(false);
+                };
                 this.isReady = true;
-                this.name = ko.observable("").extend({ required: true, minLength: 3 });
-                this.email = ko.observable("").extend({ required: true, email: true });
-                this.message = ko.observable("").extend({ required: true, minLength: 5 });
+                this.name = ko.observable("");
+                this.email = ko.observable("");
+                this.message = ko.observable("");
+                this.sendItButtonText = ko.observable("Send it");
+                this.isAlertVisible = ko.observable(false);
+                this.isSuccess = ko.observable(false);
+                this.status = ko.observable("");
             }
-            ContactViewModel.prototype.validate = function () {
-                var errors = ko.validation.group(this);
-                return errors().length === 0;
-            };
             ContactViewModel.prototype.submit = function (form) {
                 var _this = this;
                 // Stop form from submitting normally
@@ -21,30 +27,30 @@ var PersonalHomePage;
                 if (!this.isReady) {
                     return false;
                 }
-                toastr.clear();
-                if (this.validate()) {
-                    this.isReady = false;
-                    var $form = $(form);
-                    $("#loader").fadeIn("slow");
-                    $.post($form.attr("data-action"), $form.serialize())
-                        .done(function (response) {
-                        var show = response.IsSuccess ? toastr.success : toastr.error;
-                        show(response.Message);
-                        if (response.IsSuccess) {
-                            $form.get(0).reset();
-                        }
-                    })
-                        .fail(function () {
-                        toastr.error("Internal error. Please try again.");
-                    })
-                        .always(function () {
-                        $("#loader").fadeOut("slow");
-                        _this.isReady = true;
-                    });
-                }
-                else {
-                    toastr.warning("Please check your data and re-submit the form.");
-                }
+                this.closeAlert();
+                this.sendItButtonText("Sending...");
+                this.isReady = false;
+                var $form = $(form);
+                $("#loader").fadeIn("slow");
+                $.post($form.attr("data-action"), $form.serialize())
+                    .done(function (response) {
+                    _this.isSuccess(response.IsSuccess);
+                    _this.status(response.Message);
+                    if (response.IsSuccess) {
+                        $form.get(0).reset();
+                        _this.message("");
+                    }
+                })
+                    .fail(function () {
+                    _this.isSuccess(false);
+                    _this.status("Internal error. Please try again.");
+                })
+                    .always(function () {
+                    $("#loader").fadeOut("slow");
+                    _this.isReady = true;
+                    _this.sendItButtonText("Send it");
+                    _this.isAlertVisible(true);
+                });
                 return false;
             };
             return ContactViewModel;

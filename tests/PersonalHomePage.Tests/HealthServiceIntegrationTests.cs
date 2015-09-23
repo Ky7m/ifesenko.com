@@ -1,8 +1,6 @@
 ﻿using PersonalHomePage.Services.Implementation;
 using PersonalHomePage.Services.Implementation.CloudStorageService;
 using PersonalHomePage.Services.Implementation.HealthService;
-using PersonalHomePage.Services.Implementation.HealthService.Model.Requests;
-using PersonalHomePage.Services.Implementation.HealthService.Model.Responses;
 using Xunit;
 
 namespace PersonalHomePage.Tests
