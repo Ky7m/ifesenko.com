@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    <header>
+    <header role="banner">
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -33,44 +33,46 @@
             </div>
         </nav>
     </header>
-    <section id="intro" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="hello wow bounceInDown">
-                        <h1>Hi, I'm Igor Fesenko</h1>
-                        <h3>
-                            <span class="remove-shadow" data-bind="textrotator: {separator:'|', speed:3000}">Software Design Engineer. | Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
-                        </h3>
-                    </div>
-                    <a href="#profile">
-                        <div class="mouse-icon">
-                            <div class="wheel"></div>
+    <main role="main">
+        <section id="intro" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hello wow bounceInDown">
+                            <h1>Hi, I'm Igor Fesenko</h1>
+                            <h3>
+                                <span class="remove-shadow" data-bind="textrotator: {separator:'|', speed:3000}">Software Design Engineer. | Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
+                            </h3>
                         </div>
-                    </a>
+                        <a href="#profile">
+                            <div class="mouse-icon">
+                                <div class="wheel"></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="profile-contact">
-        @{Html.RenderPartial("Sections/QuickInformation");}
-    </section>
-    <section id="profile" class="section">
-        @{Html.RenderPartial("Sections/Profile");}
-    </section>
-    <section id="stats" class="callout">
-        @{Html.RenderPartial("Sections/Stats", Model);}
-    </section>
-    <section id="services" class="section">
-        @{Html.RenderPartial("Sections/Services");}
-    </section>
-    <section id="resume" class="section">
-        @{Html.RenderPartial("Sections/Resume");}
-    </section>
-    <section id="certifications" class="callout">
-        @{Html.RenderPartial("Sections/Certifications");}
-    </section>
-    <section id="contact" class="section">
-        @{Html.RenderPartial("Sections/Contact");}
-    </section>
+        </section>
+        <section id="profile-contact">
+            @{Html.RenderPartial("Sections/QuickInformation");}
+        </section>
+        <section id="profile" class="section">
+            @{Html.RenderPartial("Sections/Profile");}
+        </section>
+        <section id="stats" class="callout">
+            @{Html.RenderPartial("Sections/Stats", Model);}
+        </section>
+        <section id="services" class="section">
+            @{Html.RenderPartial("Sections/Services");}
+        </section>
+        <section id="resume" class="section">
+            @{Html.RenderPartial("Sections/Resume");}
+        </section>
+        <section id="certifications" class="callout">
+            @{Html.RenderPartial("Sections/Certifications");}
+        </section>
+        <section id="contact" class="section">
+            @{Html.RenderPartial("Sections/Contact");}
+        </section>
+    </main>
 </div>
