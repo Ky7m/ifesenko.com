@@ -10,6 +10,6 @@ namespace PersonalHomePage.Models
         public double? TotalDistanceOnFoot { get; set; }
         public string AverageHeartRate { get; set; }
         public string SleepDuration { get; set; }
-        public int SleepEfficiencyPercentage { get; set; }
+        public int? SleepEfficiencyPercentage { get; set; }
     }
 }

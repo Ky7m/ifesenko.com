@@ -51,7 +51,7 @@ namespace PersonalHomePage.Controllers
                 homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
 
                 var sleepActivity = sleepActivityTask.Result;
-                if (!string.IsNullOrEmpty(sleepActivity.SleepDuration))
+                if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
                 {
                     var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
                     if (sleepDuration.Hours < 4)
@@ -60,7 +60,7 @@ namespace PersonalHomePage.Controllers
                     }
                     homeModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
                 }
-                homeModel.SleepEfficiencyPercentage = sleepActivity.SleepEfficiencyPercentage;
+                homeModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
             }
             catch (Exception exception)
             {
