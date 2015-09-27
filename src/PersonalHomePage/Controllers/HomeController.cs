@@ -77,7 +77,7 @@ namespace PersonalHomePage.Controllers
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.Keys.SelectMany(k => ModelState[k].Errors).Select(m => m.ErrorMessage).ToArray();
-                return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain,errors);
+                return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain, errors);
             }
             try
             {
@@ -120,7 +120,7 @@ namespace PersonalHomePage.Controllers
             return await GetFromCacheOrAddToCacheFromService("HealthService.GetTodaysSleepActivityAsync", service => service.GetTodaysSleepActivityAsync());
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TReturn>(string cacheKey, Func<IHealthService, Task<TReturn>> getFromServiceFunc)
+        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TReturn>(string cacheKey, Func<IHealthService, Task<TReturn>> getFromServiceFunc) where TReturn : class
         {
             var cachedValue = await _cacheService.GetAsync<TReturn>(cacheKey);
             if (cachedValue != null)
