@@ -16,7 +16,7 @@ namespace PersonalHomePage.Services.Implementation
             return ConnectionMultiplexer.Connect(connectionString);
         });
 
-        public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null)
+        public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null) where T : class
         {
             var serializedValue = Serialize(value);
             return await _cacheDatabase.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry, flags: CommandFlags.FireAndForget);
@@ -33,7 +33,7 @@ namespace PersonalHomePage.Services.Implementation
             return await _cacheDatabase.Value.GetDatabase().KeyDeleteAsync(key, CommandFlags.FireAndForget);
         }
 
-        private static byte[] Serialize<T>(T value)
+        private static byte[] Serialize<T>(T value) where T : class
         {
             byte[] objectDataAsStream;
             if (value == null)
@@ -52,13 +52,14 @@ namespace PersonalHomePage.Services.Implementation
         private static T Deserialize<T>(byte[] stream)
         {
             var result = default(T);
-            if (stream != null)
+            if (stream == null)
             {
-                var binaryFormatter = new BinaryFormatter();
-                using (var memoryStream = new MemoryStream(stream))
-                {
-                    result = (T)binaryFormatter.Deserialize(memoryStream);
-                }
+                return result;
+            }
+            var binaryFormatter = new BinaryFormatter();
+            using (var memoryStream = new MemoryStream(stream))
+            {
+                result = (T)binaryFormatter.Deserialize(memoryStream);
             }
 
             return result;

@@ -7,7 +7,7 @@ namespace PersonalHomePage.Extensions
     {
         public static MvcHtmlString GetGoogleAnalyticsScript()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("<script>(function(G,o,O,g,l){G.GoogleAnalyticsObject=O;G[O]||(G[O]=function()");
             sb.Append("{(G[O].q=G[O].q||[]).push(arguments)});G[O].l=+new ");
             sb.Append("Date;g=o.createElement('script'),l=o.scripts[0];g.src='//www.google-");
@@ -18,7 +18,7 @@ namespace PersonalHomePage.Extensions
 
         public static MvcHtmlString GetYandexMetricsScript()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("<script type='text/javascript'>(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter28078209 = new Ya.Metrika({id:28078209, webvisor:true,");
             sb.Append("clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName('script')[0], s = d.createElement('script'), f = ");
             sb.Append("function () { n.parentNode.insertBefore(s, n); }; s.type = 'text/javascript'; s.async = true; s.src = (d.location.protocol == 'https:' ? 'https:' : 'http:') + ");
@@ -29,7 +29,7 @@ namespace PersonalHomePage.Extensions
 
         public static MvcHtmlString GetAppInsightsScript()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("<script type='text/javascript'>var appInsights=window.appInsights||function(config){function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e='script',");
             sb.Append("o=r.createElement(e),i,u;for(o.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace'];i.length;)");
             sb.Append("s('track'+i.pop());return config.disableExceptionTracking||(i='onerror',s('_'+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t['_'+i](config,r,f,e,o),s}),t}");

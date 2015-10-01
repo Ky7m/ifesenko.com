@@ -19,7 +19,7 @@ namespace PersonalHomePage.Extensions
 
             url = url.ToLowerInvariant().Replace("~",string.Empty);
 
-            string absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url).Replace(@"\", @"/"));
+            var absolutepath = VirtualPathUtility.ToAbsolute(Path.Combine("~", url).Replace(@"\", @"/"));
             if (!BundleTable.EnableOptimizations)
             {
                 return absolutepath;
@@ -27,7 +27,7 @@ namespace PersonalHomePage.Extensions
 
             if (HttpRuntime.Cache[url] == null)
             {
-                string physicalPath = HostingEnvironment.MapPath(absolutepath);
+                var physicalPath = HostingEnvironment.MapPath(absolutepath);
                 if (String.IsNullOrEmpty(physicalPath) || !File.Exists(physicalPath))
                 {
                     return url;
