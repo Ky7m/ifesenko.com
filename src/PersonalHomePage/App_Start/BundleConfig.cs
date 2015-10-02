@@ -31,7 +31,7 @@ namespace PersonalHomePage
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
-            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css");
+            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css");
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
@@ -49,12 +49,12 @@ namespace PersonalHomePage
             aiBundle.Include("~/Scripts/ai.0.15.0-build46802.min.js");
             bundles.Add(aiBundle);
 
-            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");
+            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
 
-            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js");
+            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js");
             bootstrapJsBundle.Include("~/Scripts/bootstrap.js");
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
@@ -69,7 +69,7 @@ namespace PersonalHomePage
             respondJsBundle.CdnFallbackExpression = "window.respond";
             bundles.Add(respondJsBundle);
 
-            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js");
+            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js");
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
