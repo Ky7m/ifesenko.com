@@ -25,6 +25,10 @@ namespace PersonalHomePage
             ConfigureViewEngines();
             ConfigureAntiForgeryTokens();
 
+#if DEBUG
+            TelemetryConfiguration.Active.DisableTelemetry = true;
+#endif
+
             // Set context properties using custom telemetry initializers
             TelemetryConfiguration.Active.ContextInitializers.Add(new ApplicationInsightsConfigInitializer());
 
