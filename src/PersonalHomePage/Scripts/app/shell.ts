@@ -1,7 +1,7 @@
 ﻿module PersonalHomePage.Shell {
     declare var WOW: any;
 
-    $("#intro").backstretch("/Content/Images/Background.jpg");
+    $("#intro").backstretch("//az717836.vo.msecnd.net/Content/images/background.jpg");
 
     $(window).load(() => {
         $("#loader").fadeOut("slow");
