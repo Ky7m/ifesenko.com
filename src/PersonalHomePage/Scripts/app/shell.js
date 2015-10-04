@@ -2,8 +2,7 @@ var PersonalHomePage;
 (function (PersonalHomePage) {
     var Shell;
     (function (Shell) {
-        var bgContentItem = new PersonalHomePage.Models.ContentItem("content/images/background.jpg");
-        $("#intro").backstretch([bgContentItem.uri]);
+        $("#intro").backstretch("/Content/Images/Background.jpg");
         $(window).load(function () {
             $("#loader").fadeOut("slow");
         });

@@ -1,10 +1,8 @@
 ﻿module PersonalHomePage.ViewModels {
     import SocialProfile = Models.SocialProfile;
-    import ContentItem = Models.ContentItem;
     import SkillItem = Models.SkillItem;
 
     export class HomeViewModel {
-        personalPhotoUri: string;
         certifications: Array<string>;
         skillItems: Array<Models.SkillItem>;
         socialProfiles: Array<Models.SocialProfile>;
@@ -12,7 +10,6 @@
         goalMessage: string;
 
         constructor() {
-            this.personalPhotoUri = new ContentItem("content/images/profile.jpg").uri;
             this.certifications = [
                 "MCSD: Web Applications",
                 "MS: Programming in C# Specialist",

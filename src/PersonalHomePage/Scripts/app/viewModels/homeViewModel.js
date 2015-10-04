@@ -3,11 +3,9 @@ var PersonalHomePage;
     var ViewModels;
     (function (ViewModels) {
         var SocialProfile = PersonalHomePage.Models.SocialProfile;
-        var ContentItem = PersonalHomePage.Models.ContentItem;
         var SkillItem = PersonalHomePage.Models.SkillItem;
         var HomeViewModel = (function () {
             function HomeViewModel() {
-                this.personalPhotoUri = new ContentItem("content/images/profile.jpg").uri;
                 this.certifications = [
                     "MCSD: Web Applications",
                     "MS: Programming in C# Specialist",

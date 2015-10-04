@@ -1,8 +1,7 @@
 ﻿module PersonalHomePage.Shell {
     declare var WOW: any;
 
-    var bgContentItem = new Models.ContentItem("content/images/background.jpg");
-    $("#intro").backstretch([bgContentItem.uri]);
+    $("#intro").backstretch("/Content/Images/Background.jpg");
 
     $(window).load(() => {
         $("#loader").fadeOut("slow");
