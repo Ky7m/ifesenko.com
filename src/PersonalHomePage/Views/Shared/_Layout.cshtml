@@ -7,7 +7,10 @@
     <meta name="description" content="Igor Fesenko - Personal Site. I'm available for helping your team succeed. You can find details on the home page. Please feel free to contact me.">
     <meta name="keywords" content="Web Applications,Sites,Web Services,SOA,Security,Identity,Data Access,Integration,Databases,Desktop Applications,Cloud Computing,Mobile Client Applications,Big Data">
     <meta name="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link rel="dns-prefetch" href="@ConfigurationManager.AppSettings["CdnUrl"]">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
     <link rel="shortcut icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
     <link rel="icon" href="@CdnUrl.Content("favicon.ico")" type="image/x-icon">
     <link rel="apple-touch-icon" href="@CdnUrl.Content("apple-touch-icon.png")">
