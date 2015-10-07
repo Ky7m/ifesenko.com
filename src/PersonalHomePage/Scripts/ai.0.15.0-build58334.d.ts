@@ -200,9 +200,19 @@ declare module Microsoft.ApplicationInsights.Context {
         constructor();
     }
 }
+declare module Microsoft.ApplicationInsights {
+    class SamplingScoreGenerator {
+        static INT_MAX_VALUE: number;
+        static getScore(envelope: Telemetry.Common.Envelope): number;
+        static getSamplingHashCode(input: string): number;
+    }
+}
 declare module Microsoft.ApplicationInsights.Context {
     class Sample {
-        sampleRate: string;
+        sampleRate: number;
+        INT_MAX_VALUE: number;
+        constructor(sampleRate: number);
+        isSampledIn(envelope: Telemetry.Common.Envelope): boolean;
     }
 }
 declare module AI {
@@ -555,6 +565,7 @@ declare module Microsoft.ApplicationInsights {
         accountId: () => string;
         sessionRenewalMs: () => number;
         sessionExpirationMs: () => number;
+        sampleRate: () => number;
     }
     class TelemetryContext {
         _config: ITelemetryConfig;
@@ -635,6 +646,7 @@ declare module Microsoft.ApplicationInsights {
         disableTelemetry: boolean;
         verboseLogging: boolean;
         diagnosticLogInterval: number;
+        samplingPercentage: number;
         autoTrackPageVisitTime: boolean;
     }
     class AppInsights {
