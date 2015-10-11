@@ -2,10 +2,8 @@
 
 namespace PersonalHomePage.Extensions
 {
-    public class ApplicationInsightsConfigInitializer
-         : IContextInitializer
+    public class ApplicationInsightsConfigInitializer : IContextInitializer
     {
-
         public void Initialize(Microsoft.ApplicationInsights.DataContracts.TelemetryContext context)
         {
             // Configure app version
