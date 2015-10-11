@@ -27,11 +27,11 @@ namespace PersonalHomePage
         {
             bundles.UseCdn = true;
 
-            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
+            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
-            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css");
+            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css");
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
@@ -45,31 +45,31 @@ namespace PersonalHomePage
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build46802.min.js"));
-            aiBundle.Include("~/Scripts/ai.0.15.0-build46802.min.js");
+            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build58334.min.js"));
+            aiBundle.Include("~/Scripts/ai.0.15.0-build58334.min.js");
             bundles.Add(aiBundle);
 
-            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");
+            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
 
-            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js");
+            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js");
             bootstrapJsBundle.Include("~/Scripts/bootstrap.js");
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
 
-            var html5shivBundle = new ScriptBundle("~/bundles/html5shiv-js", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js");
+            var html5shivBundle = new ScriptBundle("~/bundles/html5shiv-js", "//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js");
             html5shivBundle.Include("~/Scripts/html5shiv.js");
             html5shivBundle.CdnFallbackExpression = "window.html5";
             bundles.Add(html5shivBundle);
 
-            var respondJsBundle = new ScriptBundle("~/bundles/respond-js", "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js");
+            var respondJsBundle = new ScriptBundle("~/bundles/respond-js", "//oss.maxcdn.com/respond/1.4.2/respond.min.js");
             respondJsBundle.Include("~/Scripts/respond.js");
             respondJsBundle.CdnFallbackExpression = "window.respond";
             bundles.Add(respondJsBundle);
 
-            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js");
+            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js");
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
@@ -81,10 +81,6 @@ namespace PersonalHomePage
             var backstretchJsBundle = new ScriptBundle("~/bundles/backstretch-js", "//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js");
             backstretchJsBundle.Include("~/Scripts/jquery.backstretch.js");
             bundles.Add(backstretchJsBundle);
-
-            var knockoutValidationJsBundle = new ScriptBundle("~/bundles/knockout-validation-js", "//cdnjs.cloudflare.com/ajax/libs/knockout-validation/2.0.3/knockout.validation.min.js");
-            knockoutValidationJsBundle.Include("~/Scripts/knockout.validation.js");
-            bundles.Add(knockoutValidationJsBundle);
 
             var siteJsBundle = new ScriptBundle(SiteJsBundleName, string.Format(CdnUrl, SiteJsBundleName.TrimStart("~/".ToCharArray())));
             siteJsBundle.Include(
