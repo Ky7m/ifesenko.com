@@ -15,11 +15,13 @@ namespace PersonalHomePage.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
+        #region Fields and Ctor
+        
+        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
-        private readonly IHealthService _healthService;
-        private readonly ICacheService _cacheService;
-        private readonly ISettingsService _settingsService;
+        readonly IHealthService _healthService;
+        readonly ICacheService _cacheService;
+        readonly ISettingsService _settingsService;
 
         public HomeController(IHealthService healthService, ICacheService cacheService, ISettingsService settingsService)
         {
@@ -28,44 +30,15 @@ namespace PersonalHomePage.Controllers
             _settingsService = settingsService;
         }
 
+        #endregion Fields and Ctor
+        #region Actions
+
         [CompressContent,
          MinifyHtml,
          OutputCache(CacheProfile = "HomePage")]
         public async Task<ActionResult> Index()
         {
-            var homeModel = new HomeModel();
-            try
-            {
-                var summaryTask = GetTodaysSummaryAsync();
-                var sleepActivityTask = GetTodaysSleepActivityAsync();
-                await Task.WhenAll(summaryTask, sleepActivityTask);
-
-                var summary = summaryTask.Result;
-                homeModel.StepsTaken = summary?.StepsTaken;
-                homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
-                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
-                if (homeModel.TotalDistanceOnFoot.HasValue)
-                {
-                    homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
-                }
-                homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
-
-                var sleepActivity = sleepActivityTask.Result;
-                if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
-                {
-                    var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
-                    if (sleepDuration.Hours < 4)
-                    {
-                        sleepDuration = sleepDuration.Add(TimeSpan.FromHours(4 - sleepDuration.Hours));
-                    }
-                    homeModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
-                }
-                homeModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
-            }
-            catch (Exception exception)
-            {
-                _telemetryClient.Value.TrackException(exception);
-            }
+            var homeModel = await PopulateHomeModel();
             return View(homeModel);
         }
 
@@ -76,7 +49,7 @@ namespace PersonalHomePage.Controllers
             const string internalErrorPleaseTryAgain = "Internal error. Please try again.";
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Keys.SelectMany(k => ModelState[k].Errors).Select(m => m.ErrorMessage).ToArray();
+                var errors = ModelState.Keys.SelectMany(key => ModelState[key].Errors).Select(modelError => modelError.ErrorMessage).ToArray();
                 return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain, errors);
             }
             try
@@ -106,10 +79,9 @@ namespace PersonalHomePage.Controllers
             return Redirect(longUrlMapTableEntity.Target);
         }
 
-        private async Task<Profile> GetProfileAsync()
-        {
-            return await GetFromCacheOrAddToCacheFromService("HealthService.GetProfileAsync", service => service.GetProfileAsync());
-        }
+        #endregion Actions
+
+        #region Inner
 
         private async Task<Summary> GetTodaysSummaryAsync()
         {
@@ -120,16 +92,59 @@ namespace PersonalHomePage.Controllers
             return await GetFromCacheOrAddToCacheFromService("HealthService.GetTodaysSleepActivityAsync", service => service.GetTodaysSleepActivityAsync());
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TReturn>(string cacheKey, Func<IHealthService, Task<TReturn>> getFromServiceFunc) where TReturn : class
+        private async Task<HomeModel> PopulateHomeModel()
         {
-            var cachedValue = await _cacheService.GetAsync<TReturn>(cacheKey);
+            var homeModel = new HomeModel();
+            try
+            {
+                var summaryTask = GetTodaysSummaryAsync();
+                var sleepActivitiesTask = GetTodaysSleepActivityAsync();
+                await Task.WhenAll(summaryTask, sleepActivitiesTask);
+
+                var summary = summaryTask.Result;
+                homeModel.StepsTaken = summary?.StepsTaken;
+                homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
+                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
+                if (homeModel.TotalDistanceOnFoot.HasValue)
+                {
+                    homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
+                }
+                homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
+
+                var sleepActivity = sleepActivitiesTask.Result;
+
+                if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
+                {
+                    var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
+                    if (sleepDuration.Hours < 4)
+                    {
+                        sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
+                    }
+                    homeModel.SleepDuration = $"{sleepDuration.Hours.ToString()}h {sleepDuration.Minutes.ToString()}m";
+                }
+                   
+                homeModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
+            }
+            catch (Exception exception)
+            {
+                _telemetryClient.Value.TrackException(exception);
+            }
+            return homeModel;
+        }
+
+        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TReturn>(string key, Func<IHealthService, Task<TReturn>> getFromServiceFunc) 
+            where TReturn : class
+        {
+            var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {
                 return cachedValue;
             }
             cachedValue = await getFromServiceFunc(_healthService);
-            await _cacheService.StoreAsync(cacheKey, cachedValue, TimeSpan.FromHours(2.0));
+            await _cacheService.StoreAsync(key, cachedValue, TimeSpan.FromHours(3.0));
             return cachedValue;
         }
+
+        #endregion Inner
     }
 }

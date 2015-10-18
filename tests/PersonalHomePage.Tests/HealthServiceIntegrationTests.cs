@@ -13,12 +13,6 @@ namespace PersonalHomePage.Tests
             _healthService = new HealthService(new SettingsService(new CloudStorageService()));
         }
 
-        [Fact]
-        public void CheckThatProfileIsNotNull()
-        {
-            var profile = _healthService.GetProfileAsync().Result;
-            Assert.NotNull(profile);
-        }
 
         [Fact]
         public void CheckThatTodaysSummaryIsNotNull()
