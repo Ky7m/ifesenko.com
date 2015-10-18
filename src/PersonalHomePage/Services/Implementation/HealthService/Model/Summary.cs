@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    [Serializable]
     public sealed class Summary
     {
         [JsonProperty("userId")]

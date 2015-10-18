@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    [Serializable]
     public abstract class ActivityBase
     {
         [JsonProperty("activityType")]
