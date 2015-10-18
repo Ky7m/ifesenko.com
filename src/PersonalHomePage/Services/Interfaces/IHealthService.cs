@@ -6,7 +6,6 @@ namespace PersonalHomePage.Services.Interfaces
     public interface IHealthService
     {
         Task<Summary> GetTodaysSummaryAsync();
-        Task<Profile> GetProfileAsync();
         Task<SleepActivity> GetTodaysSleepActivityAsync();
     }
 }

@@ -19,21 +19,6 @@ namespace PersonalHomePage.Tests
         }
 
         [Fact]
-        public async Task CheckThatProfileIsNotNull()
-        {
-            const string cacheKey = "Test.HealthService.GetProfileAsync";
-            await _redisCacheService.DeleteAsync(cacheKey);
-            var profile = await _redisCacheService.GetAsync<Profile>(cacheKey);
-            if (profile == null)
-            {
-                profile = await _healthService.GetProfileAsync();
-                await _redisCacheService.StoreAsync(cacheKey, profile, TimeSpan.FromSeconds(30));
-            }
-            var expected = _redisCacheService.GetAsync<Profile>(cacheKey);
-            Assert.NotNull(expected);
-        }
-
-        [Fact]
         public async Task CheckThatTodaysSummaryIsNotNull()
         {
             var cacheKey = "Test.HealthService.GetTodaysSummaryAsync";

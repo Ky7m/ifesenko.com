@@ -34,7 +34,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
         {
             _settingsService = settingsService;
 
-            var settings = _settingsService.RetrieveAllSettingsValuesForService("HealthService");
+            var settings = _settingsService.RetrieveAllSettingsValuesForService(nameof(HealthService));
 
             _apiUri = settings["ApiUri"];
             _clientId = settings["ClientId"];
@@ -59,12 +59,6 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             var now = DateTime.UtcNow;
             var dailySummaries = await GetDailySummaryAsync(now.StartOfDay(), now.EndOfDay());
             return dailySummaries?.Summaries?.FirstOrDefault();
-        }
-
-        public async Task<Profile> GetProfileAsync()
-        {
-            await ValidateCredentialsAsync();
-            return await GetResponseAsync<Profile>("Profile", new Dictionary<string, string>());
         }
 
         public async Task<SleepActivity> GetTodaysSleepActivityAsync()

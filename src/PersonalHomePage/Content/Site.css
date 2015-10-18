@@ -576,19 +576,19 @@ h3 > .fa {
     }
 
 /* ---------------------------------------------- /*
- * Resume
+ * CV
 /* ---------------------------------------------- */
 
-.resume-items {
+.cv-items {
     margin-bottom: 40px;
 }
 
-.resume-place {
+.cv-place {
     margin-bottom: 20px;
 }
 
-    .resume-place > i,
-    .resume-place > h4 > i {
+    .cv-place > i,
+    .cv-place > h4 > i {
         color: #C4C4C4;
         font-size: 14px;
         margin-right: 5px;
