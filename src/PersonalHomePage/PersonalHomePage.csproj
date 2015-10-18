@@ -381,7 +381,7 @@
     <Content Include="Views\Home\Sections\QuickInformation.cshtml" />
     <Content Include="Views\Home\Sections\Profile.cshtml" />
     <Content Include="Views\Home\Sections\Services.cshtml" />
-    <Content Include="Views\Home\Sections\Resume.cshtml" />
+    <Content Include="Views\Home\Sections\CV.cshtml" />
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
   </ItemGroup>
