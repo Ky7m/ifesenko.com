@@ -29,8 +29,8 @@ namespace PersonalHomePage.Tests
                 summary = await _healthService.GetTodaysSummaryAsync();
                 await _redisCacheService.StoreAsync(cacheKey, summary, TimeSpan.FromSeconds(60));
             }
-            var expected = _redisCacheService.GetAsync<Summary>(cacheKey);
-            Assert.NotNull(expected);
+            var expected = await _redisCacheService.GetAsync<Summary>(cacheKey);
+            Assert.Equal(summary.StepsTaken, expected.StepsTaken);
         }
 
         [Fact]
@@ -44,8 +44,8 @@ namespace PersonalHomePage.Tests
                 sleepActivity = await _healthService.GetTodaysSleepActivityAsync();
                 await _redisCacheService.StoreAsync(cacheKey, sleepActivity, TimeSpan.FromSeconds(60));
             }
-            var expected = _redisCacheService.GetAsync<SleepActivity>(cacheKey);
-            Assert.NotNull(expected);
+            var expected = await _redisCacheService.GetAsync<SleepActivity>(cacheKey);
+            Assert.Equal(sleepActivity.SleepEfficiencyPercentage, expected.SleepEfficiencyPercentage);
         }
     }
 }
