@@ -43,7 +43,6 @@ namespace PersonalHomePage.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<JsonResult> SendEmailMessage(EmailMessageModel emailMessage)
         {
             const string internalErrorPleaseTryAgain = "Internal error. Please try again.";
