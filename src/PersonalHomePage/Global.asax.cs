@@ -23,7 +23,6 @@ namespace PersonalHomePage
         protected void Application_Start()
         {
             ConfigureViewEngines();
-            ConfigureAntiForgeryTokens();
 
 #if DEBUG
             TelemetryConfiguration.Active.DisableTelemetry = true;
@@ -65,18 +64,6 @@ namespace PersonalHomePage
 
             container.Verify();
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
-        }
-
-        static void ConfigureAntiForgeryTokens()
-        {
-            // Rename the Anti-Forgery cookie from "__RequestVerificationToken" to "f". 
-            // This adds a little security through obscurity and also saves sending a 
-            // few characters over the wire.
-            AntiForgeryConfig.CookieName = "f";
-
-            // If you have enabled SSL. Uncomment this line to ensure that the Anti-Forgery 
-            // cookie requires SSL to be sent accross the wire. 
-            // AntiForgeryConfig.RequireSsl = true;
         }
 
         void WriteExceptionToApplicationInsights(Exception exception)
