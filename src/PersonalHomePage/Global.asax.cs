@@ -29,7 +29,7 @@ namespace PersonalHomePage
 #endif
 
             // Set context properties using custom telemetry initializers
-            TelemetryConfiguration.Active.ContextInitializers.Add(new ApplicationInsightsConfigInitializer());
+            TelemetryConfiguration.Active.TelemetryInitializers.Add(new ApplicationInsightsTelemetryInitializer());
 
             MvcHandler.DisableMvcResponseHeader = true;
             AreaRegistration.RegisterAllAreas();
