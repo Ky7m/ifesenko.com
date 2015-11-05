@@ -96,11 +96,7 @@ namespace PersonalHomePage.Controllers
             var homeModel = new HomeModel();
             try
             {
-                var summaryTask = GetTodaysSummaryAsync();
-                var sleepActivitiesTask = GetTodaysSleepActivityAsync();
-                await Task.WhenAll(summaryTask, sleepActivitiesTask);
-
-                var summary = summaryTask.Result;
+                var summary = await GetTodaysSummaryAsync();
                 homeModel.StepsTaken = summary?.StepsTaken;
                 homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
                 homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
@@ -110,8 +106,7 @@ namespace PersonalHomePage.Controllers
                 }
                 homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
 
-                var sleepActivity = sleepActivitiesTask.Result;
-
+                var sleepActivity = await GetTodaysSleepActivityAsync();
                 if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
                 {
                     var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
