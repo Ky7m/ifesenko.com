@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class DistanceSummary
+    public struct DistanceSummary
     {
         [JsonProperty("period")]
         public string Period { get; set; }

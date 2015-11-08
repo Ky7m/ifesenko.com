@@ -6,10 +6,10 @@ namespace PersonalHomePage
 {
     public static class BundleConfig
     {
-        public static string CdnUrl { get;  private set; }
-        public static string Version { get;  private set; }
-        public static string SiteJsBundleName { get; private set; }
-        public static string SiteCssBundleName { get; private set; }
+        public static string CdnUrl { get; }
+        public static string Version { get; }
+        public static string SiteJsBundleName { get; }
+        public static string SiteCssBundleName { get; }
 
         static BundleConfig()
         {
@@ -58,16 +58,6 @@ namespace PersonalHomePage
             bootstrapJsBundle.Include("~/Scripts/bootstrap.js");
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
-
-            var html5shivBundle = new ScriptBundle("~/bundles/html5shiv-js", "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js");
-            html5shivBundle.Include("~/Scripts/html5shiv.js");
-            html5shivBundle.CdnFallbackExpression = "window.html5";
-            bundles.Add(html5shivBundle);
-
-            var respondJsBundle = new ScriptBundle("~/bundles/respond-js", "//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js");
-            respondJsBundle.Include("~/Scripts/respond.js");
-            respondJsBundle.CdnFallbackExpression = "window.respond";
-            bundles.Add(respondJsBundle);
 
             var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js");
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");

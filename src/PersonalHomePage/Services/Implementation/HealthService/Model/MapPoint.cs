@@ -2,7 +2,7 @@
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class MapPoint
+    public struct MapPoint
     {
         [JsonProperty("secondsSinceStart")]
         public int SecondsSinceStart { get; set; }

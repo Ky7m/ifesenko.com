@@ -13,14 +13,14 @@ namespace PersonalHomePage.Services.Implementation
             _storageService = storageService;
         }
 
-        public Dictionary<string, string> RetrieveAllSettingsValuesForService(string serviceName)
+        public Dictionary<string, SettingTableEntity> RetrieveAllSettingsValuesForService(string serviceName)
         {
             var settings = _storageService.RetrieveAllSettingsForService(serviceName);
-            var settingsValues = new Dictionary<string,string>(settings.Length);
+            var settingsValues = new Dictionary<string, SettingTableEntity>(settings.Length);
 
             foreach (var settingTableEntity in settings)
             {
-                settingsValues.Add(settingTableEntity.RowKey,settingTableEntity.Value);
+                settingsValues.Add(settingTableEntity.RowKey, settingTableEntity);
             }
 
             return settingsValues;

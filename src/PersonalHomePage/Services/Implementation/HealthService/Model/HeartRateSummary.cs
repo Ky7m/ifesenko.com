@@ -2,7 +2,7 @@
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class HeartRateSummary
+    public struct HeartRateSummary
     {
         [JsonProperty("period")]
         public string Period { get; set; }

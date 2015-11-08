@@ -2,7 +2,7 @@
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class HeartRateZones
+    public struct HeartRateZones
     {
         [JsonProperty("underAerobic")]
         public int UnderAerobic { get; set; }
