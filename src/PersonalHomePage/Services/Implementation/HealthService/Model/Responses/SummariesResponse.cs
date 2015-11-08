@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model.Responses
 {
-    public class SummariesResponse
+    public sealed class SummariesResponse
     {
         [JsonProperty("summaries")]
         public IEnumerable<Summary> Summaries { get; set; }

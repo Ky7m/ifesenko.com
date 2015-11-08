@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Security.Authentication;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PersonalHomePage.Extensions;
@@ -46,14 +45,17 @@ namespace PersonalHomePage.Services.Implementation.HealthService
         {
             var settings = _settingsService.RetrieveAllSettingsValuesForService(nameof(HealthService));
 
-            _apiUri = settings["ApiUri"];
-            _clientId = settings["ClientId"];
-            _clientSecret = settings["ClientSecret"];
+            _apiUri = settings["ApiUri"].Value;
+            _clientId = settings["ClientId"].Value;
+            _clientSecret = settings["ClientSecret"].Value;
 
+            var accessToken = settings["AccessToken"];
+            var expires = accessToken.Timestamp.UtcDateTime.AddSeconds(Convert.ToDouble(settings["ExpiresIn"].Value));
             _credentials = new LiveIdCredentials
             {
-                AccessToken = settings["AccessToken"],
-                RefreshToken = settings["RefreshToken"]
+                AccessToken = accessToken.Value,
+                Expires = expires,
+                RefreshToken = settings["RefreshToken"].Value
             };
 
             SetAuthorizationHttpRequestHeader();
@@ -82,11 +84,9 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
         #region Private
 
-        private async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request = null)
+        private async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request)
         {
-            await ValidateCredentialsAsync();
-            var postData = request != null ? request.ToDictionary() : new Dictionary<string, string>();
-            return await GetResponseAsync<ActivitiesResponse>("Activities", postData);
+            return await GetResponseAsync<ActivitiesResponse>(BuildRequestUri("Activities", request.ToDictionary()));
         }
 
         private async Task<SummariesResponse> GetDailySummaryAsync(DateTime startTime, DateTime endTime, int? maxItemsToReturn = null)
@@ -96,8 +96,6 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
         private async Task<SummariesResponse> GetSummaryInfoAsync(DateTime startTime, DateTime endTime, string period, int? maxItemsToReturn)
         {
-            await ValidateCredentialsAsync();
-
             var postData = new Dictionary<string, string>();
 
             var startTimeString = startTime.ToString("O");
@@ -113,24 +111,22 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
             var path = $"Summaries/{period}";
 
-            return await GetResponseAsync<SummariesResponse>(path, postData);
+            return await GetResponseAsync<SummariesResponse>(BuildRequestUri(path, postData));
         }
 
-        private async Task<TReturnType> GetResponseAsync<TReturnType>(string path, Dictionary<string, string> postData, string baseUri = null)
+        private async Task<TReturnType> GetResponseAsync<TReturnType>(Uri requestUri)
         {
-            var uri = new UriBuilder(baseUri ?? _apiUri);
-            uri.Path += path;
+            if (DateTime.UtcNow.CompareTo(_credentials.Expires) >= 0)
+            {
+                await ExchangeCodeAsync(_credentials.RefreshToken);
+            }
 
-            var queryParams = string.Join("&", postData.Select(x => $"{x.Key}={x.Value}"));
-            uri.Query = queryParams;
-
-            var response = await _httpClient.GetAsync(uri.Uri);
-
+            var response = await _httpClient.GetAsync(requestUri);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 await ExchangeCodeAsync(_credentials.RefreshToken);
                 // Re-issue the same request (will use new auth token now)
-                return await GetResponseAsync<TReturnType>(path, postData, baseUri);
+                return await GetResponseAsync<TReturnType>(requestUri);
             }
 
             response.EnsureSuccessStatusCode();
@@ -140,21 +136,20 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             return item;
         }
 
-        private Task<bool> ValidateCredentialsAsync()
-        {
-            if (string.IsNullOrEmpty(_credentials.AccessToken))
-            {
-                throw new AuthenticationException("No valid credentials have been set");
-            }
-
-            return Task.FromResult(true);
-        }
-
         private void SetAuthorizationHttpRequestHeader()
         {
-            var headerName = HttpRequestHeader.Authorization.ToString();
-            _httpClient.DefaultRequestHeaders.Remove(headerName);
-            _httpClient.DefaultRequestHeaders.Add(headerName, $"bearer {_credentials.AccessToken}");
+            _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _credentials.AccessToken);
+        }
+
+        private Uri BuildRequestUri(string path, Dictionary<string, string> postData, string baseUri = null)
+        {
+            var uri = new UriBuilder(baseUri ?? _apiUri);
+            uri.Path += path;
+
+            var queryParams = string.Join("&", postData.Select(x => $"{x.Key}={x.Value}"));
+            uri.Query = queryParams;
+
+            return uri.Uri;
         }
 
         private async Task ExchangeCodeAsync(string code)
@@ -173,12 +168,18 @@ namespace PersonalHomePage.Services.Implementation.HealthService
                 {"grant_type", "refresh_token"}
             };
 
-            _credentials = await GetResponseAsync<LiveIdCredentials>(string.Empty, postData, TokenUrl);
-     
+            var response = await _httpClient.GetAsync(BuildRequestUri(string.Empty, postData, TokenUrl));
+            response.EnsureSuccessStatusCode();
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            _credentials = JsonConvert.DeserializeObject<LiveIdCredentials>(responseString);
+            _credentials.Expires = DateTime.UtcNow.AddSeconds(_credentials.ExpiresIn);
+
             SetAuthorizationHttpRequestHeader();
 
             _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", _credentials.AccessToken);
             _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", _credentials.RefreshToken);
+            _settingsService.ReplaceSettingValueForService("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString());
         }
 
         #endregion Private

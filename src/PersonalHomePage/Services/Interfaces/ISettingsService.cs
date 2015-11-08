@@ -5,7 +5,7 @@ namespace PersonalHomePage.Services.Interfaces
 {
     public interface ISettingsService
     {
-        Dictionary<string, string> RetrieveAllSettingsValuesForService(string serviceName);
+        Dictionary<string, SettingTableEntity> RetrieveAllSettingsValuesForService(string serviceName);
 
         void ReplaceSettingValueForService(string serviceName, string settingName, string settingValue);
 

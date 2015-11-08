@@ -98,13 +98,13 @@ namespace PersonalHomePage.Controllers
             {
                 var summary = await GetTodaysSummaryAsync();
                 homeModel.StepsTaken = summary?.StepsTaken;
-                homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary?.TotalCalories;
-                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary?.TotalDistanceOnFoot / 100.0 / 1000.0;
+                homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary.TotalCalories;
+                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary.TotalDistanceOnFoot / 100.0 / 1000.0;
                 if (homeModel.TotalDistanceOnFoot.HasValue)
                 {
                     homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
                 }
-                homeModel.AverageHeartRate = summary?.HeartRateSummary?.AverageHeartRate;
+                homeModel.AverageHeartRate = summary?.HeartRateSummary.AverageHeartRate;
 
                 var sleepActivity = await GetTodaysSleepActivityAsync();
                 if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
@@ -135,7 +135,7 @@ namespace PersonalHomePage.Controllers
                 return cachedValue;
             }
             cachedValue = await getFromServiceFunc(_healthService);
-            await _cacheService.StoreAsync(key, cachedValue, TimeSpan.FromHours(3.0));
+            await _cacheService.StoreAsync(key, cachedValue, TimeSpan.FromHours(1.5));
             return cachedValue;
         }
 

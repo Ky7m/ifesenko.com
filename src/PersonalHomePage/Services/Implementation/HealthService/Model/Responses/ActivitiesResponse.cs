@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model.Responses
 {
-    public class ActivitiesResponse
+    public sealed class ActivitiesResponse
     {
         [JsonProperty("bikeActivities")]
         public IEnumerable<BikeActivity> BikeActivities { get; set; }

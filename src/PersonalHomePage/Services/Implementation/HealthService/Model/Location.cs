@@ -2,7 +2,7 @@
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class Location
+    public struct Location
     {
         [JsonProperty("speedOverGround")]
         public int SpeedOverGround { get; set; }

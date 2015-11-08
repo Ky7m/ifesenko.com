@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class Round
+    public struct Round
     {
         [JsonProperty("exercises")]
         public IEnumerable<Exercise> Exercises { get; set; }

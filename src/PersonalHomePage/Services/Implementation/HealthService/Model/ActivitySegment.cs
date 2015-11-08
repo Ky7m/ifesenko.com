@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class ActivitySegment
+    public struct ActivitySegment
     {
         [JsonProperty("distanceSummary")]
         public DistanceSummary DistanceSummary { get; set; }

@@ -331,10 +331,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\html5shiv-printshiv.js" />
-    <Content Include="Scripts\html5shiv-printshiv.min.js" />
-    <Content Include="Scripts\html5shiv.js" />
-    <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -364,10 +360,6 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Scripts\jquery.backstretch.js" />
     <Content Include="Scripts\app\extensions\jquery.simple-text-rotator.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.js" />
-    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
-    <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">

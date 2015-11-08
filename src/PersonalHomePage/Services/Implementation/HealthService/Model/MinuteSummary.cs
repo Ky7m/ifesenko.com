@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model
 {
-    public class MinuteSummary
+    public struct MinuteSummary
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }

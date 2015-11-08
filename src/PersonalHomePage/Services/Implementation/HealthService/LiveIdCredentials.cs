@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService
@@ -15,5 +16,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
         [JsonProperty("user_id")]
         public string UserId { get; set; }
+
+        public DateTime Expires { get; set; }
     }
 }

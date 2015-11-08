@@ -4,7 +4,7 @@ using PersonalHomePage.Extensions;
 
 namespace PersonalHomePage.Services.Implementation.HealthService.Model.Requests
 {
-    public class ActivitiesRequest
+    public struct ActivitiesRequest
     {
         public IEnumerable<string> ActivityIds { get; set; }
         public IEnumerable<string> ActivityTypes { get; set; }
