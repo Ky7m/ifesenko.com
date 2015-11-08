@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace PersonalHomePage.Services.Implementation.HealthService
 {
-    public sealed class LiveIdCredentials
+    public struct LiveIdCredentials
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

@@ -1,16 +1,15 @@
 ﻿<div class="container">
     <div class="row">
         <div class="col-md-12 headline wow bounceInLeft">
-            <h2>Contact Me</h2>
-            <p>Drop me a line or give me a ring. I love to hear you.</p>
+            <h2>Contact</h2>
+            <p>
+                In most cases,
+                <span><i class="fa fa-fw fa-twitter"></i><a href="http://ifesenko.com/go/twitter">Twitter</a></span>
+                will get you a faster reply than email.
+            </p>
         </div>
         <div class="col-md-6 wow bounceInUp">
-            <p data-bind="text: goalMessage"></p>
-            <ul class="icon-list">
-                <li><i class="fa fa-fw fa-map-marker"></i>Lviv, Ukraine (UTC+02:00)</li>
-                <li><i class="fa fa-fw fa-twitter"></i><a href="http://ifesenko.com/go/twitter">@@Ky7m</a></li>
-                <li><i class="fa fa-fw fa-envelope-o"></i>ifesenko<!-- >@@. --><!-- >@@. -->@@<!-- >@@. -->outlook<!-- >@@. -->.<!-- >@@. -->com</li>
-            </ul>
+            <p>I would be happy to discuss speaking (usually about C# & JavaScript topics).</p>
         </div>
         <div class="col-md-6 wow bounceInRight" data-bind="with: contactViewModel">
             <form id="contact-form" role="form" method="POST" data-action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
@@ -21,7 +20,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-fw fa-lg fa-user"></i>
                             </span>
-                            <input type="text" required="required" id="name" class="form-control" name="name" 
+                            <input type="text" required="required" id="name" class="form-control" name="name"
                                    placeholder="Name" data-bind="value: name">
                         </div>
                     </div>
@@ -31,14 +30,13 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-fw fa-lg fa-envelope"></i>
                             </span>
-                            <input type="email" required="required" id="email" class="form-control" 
+                            <input type="email" required="required" id="email" class="form-control"
                                    name="email" placeholder="E-mail" data-bind="value: email">
                         </div>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" type="text" required="required"
-                                  name="message" rows="7" placeholder="Your message" data-bind="value: message">
-                        </textarea>
+                                  name="message" rows="7" placeholder="Your message" data-bind="value: message"></textarea>
                     </div>
                 </fieldset>
                 <div class="form-group">

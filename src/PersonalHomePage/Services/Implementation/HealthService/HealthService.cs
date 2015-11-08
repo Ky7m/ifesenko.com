@@ -20,11 +20,11 @@ namespace PersonalHomePage.Services.Implementation.HealthService
         private const string RedirectUri = "https://login.live.com/oauth20_desktop.srf";
         private const string TokenUrl = "https://login.live.com/oauth20_token.srf";
 
-        private readonly HttpClient _httpClient;
+        private volatile HttpClient _httpClient;
 
-        private readonly string _apiUri;
-        private readonly string _clientId;
-        private readonly string _clientSecret;
+        private string _apiUri;
+        private string _clientId;
+        private string _clientSecret;
 
         private LiveIdCredentials _credentials;
 
@@ -33,25 +33,30 @@ namespace PersonalHomePage.Services.Implementation.HealthService
         public HealthService(ISettingsService settingsService)
         {
             _settingsService = settingsService;
-
-            var settings = _settingsService.RetrieveAllSettingsValuesForService(nameof(HealthService));
-
-            _apiUri = settings["ApiUri"];
-            _clientId = settings["ClientId"];
-            _clientSecret = settings["ClientSecret"];
-
-            var accessToken = settings["AccessToken"];
-            var refreshToken = settings["RefreshToken"];
-
-            _credentials = new LiveIdCredentials { AccessToken = accessToken, RefreshToken = refreshToken };
-
             var messageHandler = new HttpClientHandler
             {
                 AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
             };
 
             _httpClient = new HttpClient(messageHandler);
-            SetCredentials(_credentials);
+            ReadSettings();
+        }
+
+        private void ReadSettings()
+        {
+            var settings = _settingsService.RetrieveAllSettingsValuesForService(nameof(HealthService));
+
+            _apiUri = settings["ApiUri"];
+            _clientId = settings["ClientId"];
+            _clientSecret = settings["ClientSecret"];
+
+            _credentials = new LiveIdCredentials
+            {
+                AccessToken = settings["AccessToken"],
+                RefreshToken = settings["RefreshToken"]
+            };
+
+            SetAuthorizationHttpRequestHeader();
         }
 
         public async Task<Summary> GetTodaysSummaryAsync()
@@ -66,14 +71,14 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             var now = DateTime.UtcNow;
             var request = new ActivitiesRequest
             {
-                ActivityTypes = new [] { "Sleep" },
+                ActivityTypes = new[] { "Sleep" },
                 StartTime = now.AddDays(-1.0).StartOfDay(),
                 EndTime = now.EndOfDay(),
                 MaxItemsReturned = 1
             };
             var activitiesResponse = await GetActivitiesAsync(request);
             return activitiesResponse?.SleepActivities?.FirstOrDefault();
-        } 
+        }
 
         #region Private
 
@@ -123,7 +128,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                await ExchangeCodeAsync(_credentials.RefreshToken, true);
+                await ExchangeCodeAsync(_credentials.RefreshToken);
                 // Re-issue the same request (will use new auth token now)
                 return await GetResponseAsync<TReturnType>(path, postData, baseUri);
             }
@@ -137,7 +142,7 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
         private Task<bool> ValidateCredentialsAsync()
         {
-            if (string.IsNullOrEmpty(_credentials?.AccessToken))
+            if (string.IsNullOrEmpty(_credentials.AccessToken))
             {
                 throw new AuthenticationException("No valid credentials have been set");
             }
@@ -145,47 +150,35 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             return Task.FromResult(true);
         }
 
-        private void SetCredentials(LiveIdCredentials credentials)
+        private void SetAuthorizationHttpRequestHeader()
         {
-            _credentials = credentials;
-            _httpClient.DefaultRequestHeaders.Remove(HttpRequestHeader.Authorization.ToString());
-            _httpClient.DefaultRequestHeaders.Add(HttpRequestHeader.Authorization.ToString(), $"bearer {_credentials.AccessToken}");
+            var headerName = HttpRequestHeader.Authorization.ToString();
+            _httpClient.DefaultRequestHeaders.Remove(headerName);
+            _httpClient.DefaultRequestHeaders.Add(headerName, $"bearer {_credentials.AccessToken}");
         }
 
-        private async Task<LiveIdCredentials> ExchangeCodeAsync(string code, bool isTokenRefresh = false)
+        private async Task ExchangeCodeAsync(string code)
         {
             if (string.IsNullOrEmpty(code))
             {
-                throw new ArgumentNullException(nameof(code), "code cannot be null or empty");
+                throw new ArgumentNullException(nameof(code));
             }
 
             var postData = new Dictionary<string, string>
             {
                 {"redirect_uri", Uri.EscapeUriString(RedirectUri)},
                 {"client_id", Uri.EscapeUriString(_clientId)},
-                {"client_secret", Uri.EscapeUriString(_clientSecret)}
+                {"client_secret", Uri.EscapeUriString(_clientSecret)},
+                {"refresh_token", Uri.EscapeUriString(code)},
+                {"grant_type", "refresh_token"}
             };
 
-            if (isTokenRefresh)
-            {
-                postData.Add("refresh_token", Uri.EscapeUriString(code));
-                postData.Add("grant_type", "refresh_token");
-            }
-            else
-            {
-                postData.Add("code", Uri.EscapeUriString(code));
-                postData.Add("grant_type", "authorization_code");
-            }
+            _credentials = await GetResponseAsync<LiveIdCredentials>(string.Empty, postData, TokenUrl);
+     
+            SetAuthorizationHttpRequestHeader();
 
-            var response = await GetResponseAsync<LiveIdCredentials>(string.Empty, postData, TokenUrl);
-            SetCredentials(response);
-            if (isTokenRefresh)
-            {
-                _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", response.AccessToken);
-                _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", response.RefreshToken);
-            }
-
-            return response;
+            _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", _credentials.AccessToken);
+            _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", _credentials.RefreshToken);
         }
 
         #endregion Private
