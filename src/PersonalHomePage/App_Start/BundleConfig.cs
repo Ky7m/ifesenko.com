@@ -59,7 +59,7 @@ namespace PersonalHomePage
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
 
-            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js");
+            var knockoutJsBundle = new ScriptBundle("~/bundles/knockout", "//cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js");
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
