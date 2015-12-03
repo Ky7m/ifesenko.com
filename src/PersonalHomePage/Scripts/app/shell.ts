@@ -1,7 +1,7 @@
 ﻿module PersonalHomePage.Shell {
     declare var WOW: any;
 
-    $("#intro").backstretch("//az717836.vo.msecnd.net/Content/images/background.jpg");
+    $("#intro").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
 
     $(window).load(() => {
         $("#loader").fadeOut("slow");
@@ -15,7 +15,7 @@
         });
 
         $("a[href*=#]").bind("click", function (e) {
-            const anchor = $(this);
+            var anchor = $(this);
             $("html, body").stop().animate({
                 scrollTop: $(anchor.attr("href")).offset().top
             }, 1000);
@@ -31,12 +31,12 @@
         }
 
         $(window).scroll(function () {
-            const state = $(this).scrollTop() >= navHeight;
+            var state = $(this).scrollTop() >= navHeight;
             navbar.toggleClass("navbar-color", state);
         });
 
         $(window).resize(function () {
-            const state = $(this).width() <= 767;
+            var state = $(this).width() <= 767;
             navbar.toggleClass("custom-collapse", state);
         });
 
