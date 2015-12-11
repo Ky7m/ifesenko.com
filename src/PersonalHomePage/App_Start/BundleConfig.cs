@@ -31,7 +31,7 @@ namespace PersonalHomePage
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
-            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css");
+            var bootstrapCssBundle = new StyleBundle("~/bundles/bootstrap-css", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css");
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
@@ -54,7 +54,7 @@ namespace PersonalHomePage
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
 
-            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js");
+            var bootstrapJsBundle = new ScriptBundle("~/bundles/bootstrap-js", "//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js");
             bootstrapJsBundle.Include("~/Scripts/bootstrap.js");
             bootstrapJsBundle.CdnFallbackExpression = "$.fn.modal";
             bundles.Add(bootstrapJsBundle);
