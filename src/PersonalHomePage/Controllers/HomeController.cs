@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml;
@@ -7,6 +8,7 @@ using Microsoft.ApplicationInsights;
 using PersonalHomePage.Extensions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
+using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
 using PersonalHomePage.Services.Implementation.HealthService.Model;
 using PersonalHomePage.Services.Interfaces;
 using WebMarkupMin.Mvc.ActionFilters;
@@ -16,18 +18,20 @@ namespace PersonalHomePage.Controllers
     public class HomeController : Controller
     {
         #region Fields and Ctor
-        
-        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
-        readonly IHealthService _healthService;
-        readonly ICacheService _cacheService;
-        readonly ISettingsService _settingsService;
+        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
-        public HomeController(IHealthService healthService, ICacheService cacheService, ISettingsService settingsService)
+        private readonly IHealthService _healthService;
+        private readonly ICacheService _cacheService;
+        private readonly IStorageService _storageService;
+
+        public HomeController(IHealthService healthService, 
+            ICacheService cacheService, 
+            IStorageService storageService)
         {
             _healthService = healthService;
             _cacheService = cacheService;
-            _settingsService = settingsService;
+            _storageService = storageService;
         }
 
         #endregion Fields and Ctor
@@ -63,13 +67,13 @@ namespace PersonalHomePage.Controllers
             return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain);
         }
 
-        public ActionResult RedirectToLong(string shortUrl)
+        public async Task<ActionResult> RedirectToLong(string shortUrl)
         {
             if (string.IsNullOrEmpty(shortUrl))
             {
                 return RedirectToAction("NotFound", "Error");
             }
-            var longUrlMapTableEntity = _settingsService.RetrieveLongUrlMapForShortUrl(shortUrl.ToLowerInvariant());
+            var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
             if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
             {
                 return RedirectToAction("NotFound", "Error");
@@ -81,15 +85,6 @@ namespace PersonalHomePage.Controllers
         #endregion Actions
 
         #region Inner
-
-        private async Task<Summary> GetTodaysSummaryAsync()
-        {
-            return await GetFromCacheOrAddToCacheFromService("HealthService.GetTodaysSummaryAsync", service => service.GetTodaysSummaryAsync());
-        }
-        private async Task<SleepActivity> GetTodaysSleepActivityAsync()
-        {
-            return await GetFromCacheOrAddToCacheFromService("HealthService.GetTodaysSleepActivityAsync", service => service.GetTodaysSleepActivityAsync());
-        }
 
         private async Task<HomeModel> PopulateHomeModel()
         {
@@ -118,6 +113,8 @@ namespace PersonalHomePage.Controllers
                 }
                    
                 homeModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
+
+                var events = await GetEventsAsync();
             }
             catch (Exception exception)
             {
@@ -126,16 +123,31 @@ namespace PersonalHomePage.Controllers
             return homeModel;
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TReturn>(string key, Func<IHealthService, Task<TReturn>> getFromServiceFunc) 
+        private async Task<Summary> GetTodaysSummaryAsync()
+        {
+            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSummaryAsync(), TimeSpan.FromHours(1.0));
+        }
+        private async Task<SleepActivity> GetTodaysSleepActivityAsync()
+        {
+            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(8.0));
+        }
+
+        private async Task<EventTableEntity[]> GetEventsAsync()
+        {
+            return await GetFromCacheOrAddToCacheFromService(_storageService, service => service.RetrieveAllEventsAsync(), TimeSpan.FromDays(1.0));
+        }
+
+        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "") 
             where TReturn : class
         {
+            var key = $"{nameof(HomeController)}.{memberName}";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {
                 return cachedValue;
             }
-            cachedValue = await getFromServiceFunc(_healthService);
-            await _cacheService.StoreAsync(key, cachedValue, TimeSpan.FromHours(1.5));
+            cachedValue = await getFromServiceFunc(service);
+            await _cacheService.StoreAsync(key, cachedValue, expiryTime ?? TimeSpan.FromHours(3.0));
             return cachedValue;
         }
 

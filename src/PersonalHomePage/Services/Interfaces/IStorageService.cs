@@ -1,13 +1,13 @@
-﻿using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
+﻿using System.Threading.Tasks;
+using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
 
 namespace PersonalHomePage.Services.Interfaces
 {
     public interface IStorageService
     {
-        SettingTableEntity[] RetrieveAllSettingsForService(string serviceName);
-
-        void ReplaceSettingValueForService(SettingTableEntity updateSettingTableEntity);
-
-        ShortToLongUrlMapTableEntity RetrieveLongUrlMapForShortUrl(string shortUrl);
+        Task<SettingTableEntity[]> RetrieveAllSettingsForServiceAsync(string serviceName);
+        Task ReplaceSettingValueForServiceAsync(SettingTableEntity updateSettingTableEntity);
+        Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl);
+        Task<EventTableEntity[]> RetrieveAllEventsAsync();
     }
 }

@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
 
 namespace PersonalHomePage.Services.Interfaces
 {
     public interface ISettingsService
     {
-        Dictionary<string, SettingTableEntity> RetrieveAllSettingsValuesForService(string serviceName);
-
-        void ReplaceSettingValueForService(string serviceName, string settingName, string settingValue);
-
-        ShortToLongUrlMapTableEntity RetrieveLongUrlMapForShortUrl(string shortUrl);
-
+        Task<Dictionary<string, SettingTableEntity>> RetrieveAllSettingsValuesForServiceAsync(string serviceName);
+        Task ReplaceSettingValueForServiceAsync(string serviceName, string settingName, string settingValue);
     }
 }

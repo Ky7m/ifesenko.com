@@ -7,7 +7,7 @@ namespace PersonalHomePage.Tests
 {
     public sealed class HealthServiceIntegrationTests
     {
-        readonly HealthService _healthService;
+        private readonly HealthService _healthService;
         public HealthServiceIntegrationTests()
         {
             _healthService = new HealthService(new SettingsService(new CloudStorageService()));

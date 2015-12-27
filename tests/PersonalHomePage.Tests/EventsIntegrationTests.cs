@@ -8,5 +8,7 @@ namespace PersonalHomePage.Tests
 {
     public sealed class EventsIntegrationTests
     {
+
+
     }
 }

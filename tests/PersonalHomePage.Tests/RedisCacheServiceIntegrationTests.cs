@@ -10,8 +10,8 @@ namespace PersonalHomePage.Tests
 {
     public sealed class RedisCacheServiceIntegrationTests
     {
-        readonly HealthService _healthService;
-        readonly RedisCacheService _redisCacheService;
+        private readonly HealthService _healthService;
+        private readonly RedisCacheService _redisCacheService;
         public RedisCacheServiceIntegrationTests()
         {
             _healthService = new HealthService(new SettingsService(new CloudStorageService()));

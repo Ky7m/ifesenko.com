@@ -17,7 +17,7 @@ namespace PersonalHomePage
 {
     public class MvcApplication : HttpApplication
     {
-        readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
+        private readonly Lazy<TelemetryClient> _telemetryClient = new Lazy<TelemetryClient>(() => new TelemetryClient());
 
         protected void Application_Start()
         {
@@ -45,14 +45,14 @@ namespace PersonalHomePage
             WriteExceptionToApplicationInsights(exception);
         }
 
-        static void ConfigureViewEngines()
+        private static void ConfigureViewEngines()
         {
             // Only use the RazorViewEngine.
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
         }
 
-        void ConfigureRegistrationMap()
+        private static void ConfigureRegistrationMap()
         {
             var container = new Container();
 
@@ -65,7 +65,7 @@ namespace PersonalHomePage
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
 
-        void WriteExceptionToApplicationInsights(Exception exception)
+        private void WriteExceptionToApplicationInsights(Exception exception)
         {
             _telemetryClient.Value.TrackException(exception);
         }
