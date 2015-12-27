@@ -270,6 +270,7 @@
     <Compile Include="Models\EmailMessageModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Implementation\CloudStorageService\Model\EventTableEntity.cs" />
     <Compile Include="Services\Implementation\CloudStorageService\Model\ShortToLongUrlMapTableEntity.cs" />
     <Compile Include="Services\Interfaces\IStorageService.cs" />
     <Compile Include="Services\Interfaces\IHealthService.cs" />

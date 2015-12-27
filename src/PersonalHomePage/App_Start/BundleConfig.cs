@@ -27,7 +27,7 @@ namespace PersonalHomePage
         {
             bundles.UseCdn = true;
 
-            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
+            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
