@@ -8,7 +8,7 @@ using Xunit;
 
 namespace PersonalHomePage.Tests
 {
-    public class RedisCacheServiceIntegrationTests
+    public sealed class RedisCacheServiceIntegrationTests
     {
         readonly HealthService _healthService;
         readonly RedisCacheService _redisCacheService;
