@@ -16,7 +16,6 @@ var PersonalHomePage;
                     new SkillItem("Mobile Client Applications", 2)
                 ];
                 this.contactViewModel = new ViewModels.ContactViewModel();
-                this.goalMessage = "I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.";
             }
             return HomeViewModel;
         })();

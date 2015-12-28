@@ -5,7 +5,6 @@
         skillItems: Array<Models.SkillItem>;
 
         contactViewModel: ContactViewModel;
-        goalMessage: string;
 
         constructor() {
             this.skillItems = [
@@ -20,7 +19,6 @@
             ];
 
             this.contactViewModel = new ContactViewModel();
-            this.goalMessage = "I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.";
         }
     }
 }
