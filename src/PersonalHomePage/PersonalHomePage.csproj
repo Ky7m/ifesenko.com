@@ -407,10 +407,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\ai.0.15.0-build58334.d.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
-    <TypeScriptCompile Include="Scripts\app\viewModels\homeViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
-    <TypeScriptCompile Include="Scripts\app\models\skillItem.ts" />
-    <TypeScriptCompile Include="Scripts\app\models\skillRate.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jqueryPluginsRegister.d.ts" />

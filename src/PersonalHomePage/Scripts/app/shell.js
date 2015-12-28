@@ -39,7 +39,8 @@ var PersonalHomePage;
             }).init();
             // tooltips
             $("[data-toggle='tooltip']").tooltip();
-            ko.applyBindings(new PersonalHomePage.ViewModels.HomeViewModel());
+            ko.applyBindings(new PersonalHomePage.ViewModels.ContactViewModel());
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
+//# sourceMappingURL=shell.js.map

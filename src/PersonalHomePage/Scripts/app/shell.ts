@@ -48,6 +48,6 @@
         // tooltips
         $("[data-toggle='tooltip']").tooltip();
 
-        ko.applyBindings(new ViewModels.HomeViewModel());
+        ko.applyBindings(new ViewModels.ContactViewModel());
     });
 }

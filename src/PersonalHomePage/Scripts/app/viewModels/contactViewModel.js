@@ -58,3 +58,4 @@ var PersonalHomePage;
         ViewModels.ContactViewModel = ContactViewModel;
     })(ViewModels = PersonalHomePage.ViewModels || (PersonalHomePage.ViewModels = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
+//# sourceMappingURL=contactViewModel.js.map

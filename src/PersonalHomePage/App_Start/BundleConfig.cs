@@ -78,7 +78,6 @@ namespace PersonalHomePage
                 
                 "~/Scripts/app/bindingHandlers/*.js",
 
-                "~/Scripts/app/models/*.js",
                 "~/Scripts/app/viewModels/*.js",
 
                 "~/Scripts/app/shell.js"
