@@ -396,6 +396,7 @@
     <Content Include="Views\Home\Sections\CV.cshtml" />
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
+    <Content Include="Views\Home\Sections\Events.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -405,7 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\ai.0.15.0-build58334.d.ts" />
-    <TypeScriptCompile Include="Scripts\app\models\socialProfile.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\homeViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
