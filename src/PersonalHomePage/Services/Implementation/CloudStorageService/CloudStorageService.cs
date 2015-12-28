@@ -12,7 +12,7 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
 {
     public sealed class CloudStorageService : IStorageService
     {
-        private readonly Lazy<CloudStorageAccount> _cloudTableClient = new Lazy<CloudStorageAccount>(() =>
+        private readonly Lazy<CloudStorageAccount> _cloudStorageAccount = new Lazy<CloudStorageAccount>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString;
             return CloudStorageAccount.Parse(connectionString);
@@ -28,7 +28,7 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
 
         public async Task ReplaceSettingValueForServiceAsync(SettingTableEntity updateSettingTableEntity)
         {
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
             var table = client.GetTableReference("Settings");
 
             var retrieveOperation =
@@ -58,7 +58,7 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
 
         public async Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl)
         {
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
             var table = client.GetTableReference("ShortToLongUrlsMap");
 
             var query =
@@ -85,7 +85,7 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
         private async Task<T[]> ExecuteQueryAsync<T>(string tableName, TableQuery<T> tableQuery = null) where T : ITableEntity, new()
         {
             var result = new List<T>();
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
             var table = client.GetTableReference(tableName);
             if (tableQuery == null)
             {

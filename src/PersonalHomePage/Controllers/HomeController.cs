@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -25,8 +26,8 @@ namespace PersonalHomePage.Controllers
         private readonly ICacheService _cacheService;
         private readonly IStorageService _storageService;
 
-        public HomeController(IHealthService healthService, 
-            ICacheService cacheService, 
+        public HomeController(IHealthService healthService,
+            ICacheService cacheService,
             IStorageService storageService)
         {
             _healthService = healthService;
@@ -35,6 +36,7 @@ namespace PersonalHomePage.Controllers
         }
 
         #endregion Fields and Ctor
+
         #region Actions
 
         [CompressContent,
@@ -91,15 +93,16 @@ namespace PersonalHomePage.Controllers
             var homeModel = new HomeModel();
             try
             {
+                var statsModel = new StatsModel();
                 var summary = await GetTodaysSummaryAsync();
-                homeModel.StepsTaken = summary?.StepsTaken;
-                homeModel.CaloriesBurned = summary?.CaloriesBurnedSummary.TotalCalories;
-                homeModel.TotalDistanceOnFoot = summary?.DistanceSummary.TotalDistanceOnFoot / 100.0 / 1000.0;
-                if (homeModel.TotalDistanceOnFoot.HasValue)
+                statsModel.StepsTaken = summary?.StepsTaken;
+                statsModel.CaloriesBurned = summary?.CaloriesBurnedSummary.TotalCalories;
+                statsModel.TotalDistanceOnFoot = summary?.DistanceSummary.TotalDistanceOnFoot / 100.0 / 1000.0;
+                if (statsModel.TotalDistanceOnFoot.HasValue)
                 {
-                    homeModel.TotalDistanceOnFoot = Math.Round(homeModel.TotalDistanceOnFoot.Value, 2);
+                    statsModel.TotalDistanceOnFoot = Math.Round(statsModel.TotalDistanceOnFoot.Value, 2);
                 }
-                homeModel.AverageHeartRate = summary?.HeartRateSummary.AverageHeartRate;
+                statsModel.AverageHeartRate = summary?.HeartRateSummary.AverageHeartRate;
 
                 var sleepActivity = await GetTodaysSleepActivityAsync();
                 if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
@@ -109,12 +112,36 @@ namespace PersonalHomePage.Controllers
                     {
                         sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
                     }
-                    homeModel.SleepDuration = $"{sleepDuration.Hours.ToString()}h {sleepDuration.Minutes.ToString()}m";
+                    statsModel.SleepDuration = $"{sleepDuration.Hours.ToString()}h {sleepDuration.Minutes.ToString()}m";
                 }
-                   
-                homeModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
+
+                statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
+
+                homeModel.Stats = statsModel;
 
                 var events = await GetEventsAsync();
+
+                var todayDate = DateTime.UtcNow.Date;
+                var upcomingEvents = new List<EventTableEntity>();
+                var previousEvents = new List<EventTableEntity>();
+
+                foreach (var eventTableEntity in events)
+                {
+                    if (eventTableEntity.DateStart >= todayDate)
+                    {
+                        upcomingEvents.Add(eventTableEntity);
+                    }
+                    else
+                    {
+                        previousEvents.Add(eventTableEntity);
+                    }
+                }
+
+                homeModel.Events = new EventsModel
+                {
+                    Upcoming = upcomingEvents.ToArray(),
+                    Previous = previousEvents.ToArray()
+                };
             }
             catch (Exception exception)
             {
@@ -137,7 +164,7 @@ namespace PersonalHomePage.Controllers
             return await GetFromCacheOrAddToCacheFromService(_storageService, service => service.RetrieveAllEventsAsync(), TimeSpan.FromDays(1.0));
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "") 
+        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
             where TReturn : class
         {
             var key = $"{nameof(HomeController)}.{memberName}";

@@ -60,13 +60,13 @@
             @{Html.RenderPartial("Sections/Profile");}
         </section>
         <section id="stats" class="callout">
-            @{Html.RenderPartial("Sections/Stats", Model);}
+            @{Html.RenderPartial("Sections/Stats", Model.Stats);}
         </section>
         <section id="services" class="section">
             @{Html.RenderPartial("Sections/Services");}
         </section>
         <section id="events" class="callout">
-            @{Html.RenderPartial("Sections/Events");}
+            @{Html.RenderPartial("Sections/Events", Model.Events);}
         </section>
         <section id="cv" class="section">
             @{Html.RenderPartial("Sections/CV");}
