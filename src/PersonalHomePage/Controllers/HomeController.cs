@@ -119,29 +119,30 @@ namespace PersonalHomePage.Controllers
 
                 homeModel.Stats = statsModel;
 
-                var events = await GetEventsAsync();
+                //var events = await GetEventsAsync();
 
-                var todayDate = DateTime.UtcNow.Date;
-                var upcomingEvents = new List<EventTableEntity>();
-                var previousEvents = new List<EventTableEntity>();
+                //var todayDate = DateTime.UtcNow.Date;
+                //var upcomingEvents = new List<EventTableEntity>();
+                //var previousEvents = new List<EventTableEntity>();
 
-                foreach (var eventTableEntity in events)
-                {
-                    if (eventTableEntity.DateStart >= todayDate)
-                    {
-                        upcomingEvents.Add(eventTableEntity);
-                    }
-                    else
-                    {
-                        previousEvents.Add(eventTableEntity);
-                    }
-                }
+                //foreach (var eventTableEntity in events)
+                //{
+                //    if (eventTableEntity.DateStart >= todayDate)
+                //    {
+                //        upcomingEvents.Add(eventTableEntity);
+                //    }
+                //    else
+                //    {
+                //        previousEvents.Add(eventTableEntity);
+                //    }
+                //}
 
-                homeModel.Events = new EventsModel
-                {
-                    Upcoming = upcomingEvents.ToArray(),
-                    Previous = previousEvents.ToArray()
-                };
+                //homeModel.Events = new EventsModel
+                //{
+                //    Upcoming = upcomingEvents.ToArray(),
+                //    Previous = previousEvents.ToArray()
+                //};
+                homeModel.Events = new EventsModel();
             }
             catch (Exception exception)
             {
