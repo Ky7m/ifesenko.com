@@ -49,7 +49,7 @@ namespace PersonalHomePage
             aiBundle.Include("~/Scripts/ai.0.15.0-build58334.min.js");
             bundles.Add(aiBundle);
 
-            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");
+            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
