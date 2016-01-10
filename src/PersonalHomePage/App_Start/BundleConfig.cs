@@ -35,10 +35,6 @@ namespace PersonalHomePage
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
-            var animateCssBundle = new StyleBundle("~/bundles/animate-css", "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css");
-            animateCssBundle.Include("~/Content/animate.css");
-            bundles.Add(animateCssBundle);
-
             var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
@@ -63,10 +59,6 @@ namespace PersonalHomePage
             knockoutJsBundle.Include("~/Scripts/knockout-{version}.js");
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
-
-            var wowJsBundle = new ScriptBundle("~/bundles/wow-js", "//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js");
-            wowJsBundle.Include("~/Scripts/wow.js");
-            bundles.Add(wowJsBundle);
 
             var backstretchJsBundle = new ScriptBundle("~/bundles/backstretch-js", "//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js");
             backstretchJsBundle.Include("~/Scripts/jquery.backstretch.js");

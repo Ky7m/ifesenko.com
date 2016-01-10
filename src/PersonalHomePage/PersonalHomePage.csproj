@@ -317,8 +317,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon.png" />
-    <Content Include="Content\animate.css" />
-    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -373,7 +371,6 @@
     </Content>
     <Content Include="Scripts\jquery.backstretch.js" />
     <Content Include="Scripts\app\extensions\jquery.simple-text-rotator.js" />
-    <Content Include="Scripts\wow.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

@@ -33,10 +33,6 @@ var PersonalHomePage;
                 var state = $(this).width() <= 767;
                 navbar.toggleClass("custom-collapse", state);
             });
-            // WOW Animation When You Scroll
-            new WOW({
-                mobile: false
-            }).init();
             // tooltips
             $("[data-toggle='tooltip']").tooltip();
             ko.applyBindings(new PersonalHomePage.ViewModels.ContactViewModel());
