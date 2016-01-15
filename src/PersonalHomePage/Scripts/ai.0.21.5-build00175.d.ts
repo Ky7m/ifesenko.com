@@ -39,7 +39,7 @@ declare module Microsoft.ApplicationInsights {
         static getCookie(name: any): string;
         static deleteCookie(name: string): void;
         static trim(str: any): string;
-        static newGuid(): string;
+        static newId(): string;
         static isArray(obj: any): boolean;
         static isError(obj: any): boolean;
         static isDate(obj: any): boolean;
@@ -49,8 +49,94 @@ declare module Microsoft.ApplicationInsights {
         static dump(object: any): string;
         static addEventHandler(eventName: string, callback: any): boolean;
     }
+    class UrlHelper {
+        private static document;
+        private static htmlAnchorElement;
+        static parseUrl(url: any): HTMLAnchorElement;
+        static getAbsoluteUrl(url: any): string;
+        static getPathName(url: any): string;
+    }
 }
 declare module Microsoft.ApplicationInsights {
+    class extensions {
+        static IsNullOrUndefined(obj: any): boolean;
+    }
+    class stringUtils {
+        static GetLength(strObject: any): number;
+    }
+    class dateTime {
+        static Now: () => number;
+        static GetDuration: (start: any, end: any) => any;
+    }
+    class EventHelper {
+        static AttachEvent(obj: any, eventNameWithoutOn: any, handlerRef: any): boolean;
+        static DetachEvent(obj: any, eventNameWithoutOn: any, handlerRef: any): void;
+    }
+}
+declare module Microsoft.ApplicationInsights {
+    class XHRMonitoringState {
+        openDone: boolean;
+        setRequestHeaderDone: boolean;
+        sendDone: boolean;
+        abortDone: boolean;
+        onreadystatechangeCallbackAttached: boolean;
+    }
+    class ajaxRecord {
+        completed: boolean;
+        requestHeadersSize: any;
+        ttfb: any;
+        responseReceivingDuration: any;
+        callbackDuration: any;
+        ajaxTotalDuration: any;
+        aborted: any;
+        pageUrl: any;
+        requestUrl: any;
+        requestSize: number;
+        method: any;
+        status: any;
+        requestSentTime: any;
+        responseStartedTime: any;
+        responseFinishedTime: any;
+        callbackFinishedTime: any;
+        endTime: any;
+        originalOnreadystatechage: any;
+        xhrMonitoringState: XHRMonitoringState;
+        clientFailure: number;
+        getAbsoluteUrl(): string;
+        getPathName(): string;
+        CalculateMetrics: () => void;
+    }
+}
+declare module Microsoft.ApplicationInsights {
+    interface XMLHttpRequestInstrumented extends XMLHttpRequest {
+        ajaxData: ajaxRecord;
+    }
+    class AjaxMonitor {
+        private appInsights;
+        private initialized;
+        private static instrumentedByAppInsightsName;
+        constructor(appInsights: Microsoft.ApplicationInsights.AppInsights);
+        private Init();
+        static DisabledPropertyName: string;
+        private isMonitoredInstance(xhr, excludeAjaxDataValidation?);
+        private supportsMonitoring();
+        private instrumentOpen();
+        private openHandler(xhr, method, url, async);
+        private static getFailedAjaxDiagnosticsMessage(xhr);
+        private instrumentSend();
+        private sendHandler(xhr, content);
+        private instrumentAbort();
+        private attachToOnReadyStateChange(xhr);
+        private onAjaxComplete(xhr);
+    }
+}
+declare module Microsoft.ApplicationInsights {
+    enum FieldType {
+        Default = 0,
+        Required = 1,
+        Array = 2,
+        Hidden = 4,
+    }
     interface ISerializable {
         aiDataContract: any;
     }
@@ -103,6 +189,7 @@ declare module AI {
         applicationVersion: string;
         applicationBuild: string;
         applicationTypeId: string;
+        applicationId: string;
         deviceId: string;
         deviceIp: string;
         deviceLanguage: string;
@@ -126,6 +213,7 @@ declare module AI {
         operationRootId: string;
         operationSyntheticSource: string;
         operationIsSynthetic: string;
+        operationCorrelationVector: string;
         sessionId: string;
         sessionIsFirst: string;
         sessionIsNew: string;
@@ -138,6 +226,13 @@ declare module AI {
         userAnonymousUserAcquisitionDate: string;
         userAuthenticatedUserAcquisitionDate: string;
         sampleRate: string;
+        cloudName: string;
+        cloudRoleVer: string;
+        cloudEnvironment: string;
+        cloudLocation: string;
+        cloudDeploymentUnit: string;
+        serverDeviceOS: string;
+        serverDeviceOSVer: string;
         internalSdkVersion: string;
         internalAgentVersion: string;
         internalDataCollectorReceivedTime: string;
@@ -153,6 +248,7 @@ declare module AI {
         internalIsAudit: string;
         internalTrackingSourceId: string;
         internalTrackingType: string;
+        internalIsDiagnosticExample: string;
         constructor();
     }
 }
@@ -265,6 +361,16 @@ declare module Microsoft.ApplicationInsights.Context {
         private validateUserInput(id);
     }
 }
+interface XDomainRequest extends XMLHttpRequestEventTarget {
+    responseText: string;
+    send(payload: string): any;
+    open(method: string, url: string): any;
+}
+declare var XDomainRequest: {
+    prototype: XDomainRequest;
+    new (): XDomainRequest;
+    create(): XDomainRequest;
+};
 declare module Microsoft.ApplicationInsights {
     interface ISenderConfig {
         endpointUrl: () => string;
@@ -286,7 +392,7 @@ declare module Microsoft.ApplicationInsights {
         private _xhrSender(payload, isAsync);
         private _xdrSender(payload, isAsync);
         static _xhrReadyStateChange(xhr: XMLHttpRequest, payload: string): void;
-        static _xdrOnLoad(xdr: any, payload: string): void;
+        static _xdrOnLoad(xdr: XDomainRequest, payload: string): void;
         static _onError(payload: string, message: string, event?: ErrorEvent): void;
         static _onSuccess(payload: string): void;
     }
@@ -337,11 +443,11 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            message: boolean;
-            severityLevel: boolean;
-            measurements: boolean;
-            properties: boolean;
+            ver: FieldType;
+            message: FieldType;
+            severityLevel: FieldType;
+            measurements: FieldType;
+            properties: FieldType;
         };
         constructor(message: string, properties?: Object);
     }
@@ -360,10 +466,10 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            name: boolean;
-            properties: boolean;
-            measurements: boolean;
+            ver: FieldType;
+            name: FieldType;
+            properties: FieldType;
+            measurements: FieldType;
         };
         constructor(name: string, properties?: Object, measurements?: Object);
     }
@@ -408,12 +514,12 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            handledAt: boolean;
-            exceptions: boolean;
-            severityLevel: boolean;
-            properties: boolean;
-            measurements: boolean;
+            ver: FieldType;
+            handledAt: FieldType;
+            exceptions: FieldType;
+            severityLevel: FieldType;
+            properties: FieldType;
+            measurements: FieldType;
         };
         constructor(exception: Error, handledAt?: string, properties?: Object, measurements?: Object);
         static CreateSimpleException(message: string, typeName: string, assembly: string, fileName: string, details: string, line: number, handledAt?: string): Telemetry.Exception;
@@ -448,13 +554,13 @@ declare module AI {
 declare module Microsoft.ApplicationInsights.Telemetry.Common {
     class DataPoint extends AI.DataPoint implements ISerializable {
         aiDataContract: {
-            name: boolean;
-            kind: boolean;
-            value: boolean;
-            count: boolean;
-            min: boolean;
-            max: boolean;
-            stdDev: boolean;
+            name: FieldType;
+            kind: FieldType;
+            value: FieldType;
+            count: FieldType;
+            min: FieldType;
+            max: FieldType;
+            stdDev: FieldType;
         };
     }
 }
@@ -463,9 +569,9 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            metrics: boolean;
-            properties: boolean;
+            ver: FieldType;
+            metrics: FieldType;
+            properties: FieldType;
         };
         constructor(name: string, value: number, count?: number, min?: number, max?: number, properties?: Object);
     }
@@ -488,12 +594,12 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            name: boolean;
-            url: boolean;
-            duration: boolean;
-            properties: boolean;
-            measurements: boolean;
+            ver: FieldType;
+            name: FieldType;
+            url: FieldType;
+            duration: FieldType;
+            properties: FieldType;
+            measurements: FieldType;
         };
         constructor(name?: string, url?: string, durationMs?: number, properties?: any, measurements?: any);
     }
@@ -521,20 +627,23 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            name: boolean;
-            url: boolean;
-            duration: boolean;
-            perfTotal: boolean;
-            networkConnect: boolean;
-            sentRequest: boolean;
-            receivedResponse: boolean;
-            domProcessing: boolean;
-            properties: boolean;
-            measurements: boolean;
+            ver: FieldType;
+            name: FieldType;
+            url: FieldType;
+            duration: FieldType;
+            perfTotal: FieldType;
+            networkConnect: FieldType;
+            sentRequest: FieldType;
+            receivedResponse: FieldType;
+            domProcessing: FieldType;
+            properties: FieldType;
+            measurements: FieldType;
         };
-        isValid: boolean;
-        constructor(name: string, url: string, durationMs: number, properties?: any, measurements?: any);
+        private isValid;
+        getIsValid(): boolean;
+        private durationMs;
+        getDurationMs(): number;
+        constructor(name: string, url: string, unused: number, properties?: any, measurements?: any);
         static getPerformanceTiming(): PerformanceTiming;
         static isPerformanceTimingSupported(): PerformanceTiming;
         static isPerformanceTimingDataReady(): boolean;
@@ -553,8 +662,8 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         static envelopeType: string;
         static dataType: string;
         aiDataContract: {
-            ver: boolean;
-            state: boolean;
+            ver: FieldType;
+            state: FieldType;
         };
         constructor(state: AI.SessionState);
     }
@@ -566,6 +675,8 @@ declare module Microsoft.ApplicationInsights {
         sessionRenewalMs: () => number;
         sessionExpirationMs: () => number;
         sampleRate: () => number;
+        appUserId: () => string;
+        endpointUrl: () => string;
     }
     class TelemetryContext {
         _config: ITelemetryConfig;
@@ -605,10 +716,19 @@ declare module Microsoft.Telemetry {
 declare module Microsoft.ApplicationInsights.Telemetry.Common {
     class Data<TDomain> extends Microsoft.Telemetry.Data<TDomain> implements ISerializable {
         aiDataContract: {
-            baseType: boolean;
-            baseData: boolean;
+            baseType: FieldType;
+            baseData: FieldType;
         };
         constructor(type: string, data: TDomain);
+    }
+}
+declare module Microsoft.ApplicationInsights.Telemetry {
+    class PageViewManager {
+        private pageViewPerformanceSent;
+        private overridePageViewDuration;
+        private appInsights;
+        constructor(appInsights: IAppInsightsInternal, overridePageViewDuration: boolean);
+        trackPageView(name?: string, url?: string, properties?: Object, measurements?: Object, duration?: number): void;
     }
 }
 declare module Microsoft.ApplicationInsights.Telemetry {
@@ -629,6 +749,67 @@ declare module Microsoft.ApplicationInsights.Telemetry {
         constructor(pageName: any, pageUrl: any);
     }
 }
+declare module AI {
+    enum DependencyKind {
+        SQL = 0,
+        Http = 1,
+        Other = 2,
+    }
+}
+declare module AI {
+    enum DependencySourceType {
+        Undefined = 0,
+        Aic = 1,
+        Apmc = 2,
+    }
+}
+declare module AI {
+    class RemoteDependencyData extends Microsoft.Telemetry.Domain {
+        ver: number;
+        name: string;
+        id: string;
+        resultCode: string;
+        kind: AI.DataPointType;
+        value: number;
+        count: number;
+        min: number;
+        max: number;
+        stdDev: number;
+        dependencyKind: AI.DependencyKind;
+        success: boolean;
+        async: boolean;
+        dependencySource: AI.DependencySourceType;
+        commandName: string;
+        dependencyTypeName: string;
+        properties: any;
+        constructor();
+    }
+}
+declare module Microsoft.ApplicationInsights.Telemetry {
+    class RemoteDependencyData extends AI.RemoteDependencyData implements ISerializable {
+        static envelopeType: string;
+        static dataType: string;
+        aiDataContract: {
+            ver: FieldType;
+            name: FieldType;
+            kind: FieldType;
+            value: FieldType;
+            count: FieldType;
+            min: FieldType;
+            max: FieldType;
+            stdDev: FieldType;
+            dependencyKind: FieldType;
+            success: FieldType;
+            async: FieldType;
+            dependencySource: FieldType;
+            commandName: FieldType;
+            dependencyTypeName: FieldType;
+            properties: FieldType;
+            resultCode: FieldType;
+        };
+        constructor(name: string, commandName: string, value: number, success: boolean, resultCode: number);
+    }
+}
 declare module Microsoft.ApplicationInsights {
     var Version: string;
     interface IConfig {
@@ -642,29 +823,40 @@ declare module Microsoft.ApplicationInsights {
         maxBatchSizeInBytes: number;
         maxBatchInterval: number;
         enableDebug: boolean;
-        autoCollectErrors: boolean;
+        disableExceptionTracking: boolean;
         disableTelemetry: boolean;
         verboseLogging: boolean;
         diagnosticLogInterval: number;
         samplingPercentage: number;
         autoTrackPageVisitTime: boolean;
+        disableAjaxTracking: boolean;
+        overridePageViewDuration: boolean;
+        maxAjaxCallsPerView: number;
     }
-    class AppInsights {
+    interface IAppInsightsInternal {
+        sendPageViewInternal(name?: string, url?: string, duration?: number, properties?: Object, measurements?: Object): any;
+        sendPageViewPerformanceInternal(pageViewPerformance: ApplicationInsights.Telemetry.PageViewPerformance): any;
+        flush(): any;
+    }
+    class AppInsights implements IAppInsightsInternal {
+        private _trackAjaxAttempts;
         private _eventTracking;
         private _pageTracking;
+        private _pageViewManager;
         private _pageVisitTimeManager;
         config: IConfig;
         context: TelemetryContext;
         static defaultConfig: IConfig;
         constructor(config: IConfig);
-        private sendPageViewInternal(name?, url?, duration?, properties?, measurements?);
+        sendPageViewInternal(name?: string, url?: string, duration?: number, properties?: Object, measurements?: Object): void;
+        sendPageViewPerformanceInternal(pageViewPerformance: ApplicationInsights.Telemetry.PageViewPerformance): void;
         startTrackPage(name?: string): void;
         stopTrackPage(name?: string, url?: string, properties?: Object, measurements?: Object): void;
-        trackPageView(name?: string, url?: string, properties?: Object, measurements?: Object): void;
-        private trackPageViewInternal(name?, url?, properties?, measurements?);
+        trackPageView(name?: string, url?: string, properties?: Object, measurements?: Object, duration?: number): void;
         startTrackEvent(name: string): void;
         stopTrackEvent(name: string, properties?: Object, measurements?: Object): void;
         trackEvent(name: string, properties?: Object, measurements?: Object): void;
+        trackAjax(absoluteUrl: string, pathName: string, totalTime: number, success: boolean, resultCode: number): void;
         trackException(exception: Error, handledAt?: string, properties?: Object, measurements?: Object): void;
         trackMetric(name: string, average: number, sampleCount?: number, min?: number, max?: number, properties?: Object): void;
         trackTrace(message: string, properties?: Object): void;
@@ -694,40 +886,6 @@ declare module AI {
         success: boolean;
         properties: any;
         measurements: any;
-        constructor();
-    }
-}
-declare module AI {
-    enum DependencyKind {
-        SQL = 0,
-        Http = 1,
-        Other = 2,
-    }
-}
-declare module AI {
-    enum DependencySourceType {
-        Undefined = 0,
-        Aic = 1,
-        Apmc = 2,
-    }
-}
-declare module AI {
-    class RemoteDependencyData extends Microsoft.Telemetry.Domain {
-        ver: number;
-        name: string;
-        kind: AI.DataPointType;
-        value: number;
-        count: number;
-        min: number;
-        max: number;
-        stdDev: number;
-        dependencyKind: AI.DependencyKind;
-        success: boolean;
-        async: boolean;
-        dependencySource: AI.DependencySourceType;
-        commandName: string;
-        dependencyTypeName: string;
-        properties: any;
         constructor();
     }
 }
@@ -763,4 +921,5 @@ declare module Microsoft.ApplicationInsights {
         static getDefaultConfig(config?: IConfig): IConfig;
     }
 }
-declare function initializeAppInsights(): void;
+declare module Microsoft.ApplicationInsights {
+}
