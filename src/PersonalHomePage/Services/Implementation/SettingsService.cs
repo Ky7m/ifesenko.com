@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
 using PersonalHomePage.Services.Interfaces;
 
@@ -13,9 +14,9 @@ namespace PersonalHomePage.Services.Implementation
             _storageService = storageService;
         }
 
-        public Dictionary<string, SettingTableEntity> RetrieveAllSettingsValuesForService(string serviceName)
+        public async Task<Dictionary<string, SettingTableEntity>> RetrieveAllSettingsValuesForServiceAsync(string serviceName)
         {
-            var settings = _storageService.RetrieveAllSettingsForService(serviceName);
+            var settings = await _storageService.RetrieveAllSettingsForServiceAsync(serviceName);
             var settingsValues = new Dictionary<string, SettingTableEntity>(settings.Length);
 
             foreach (var settingTableEntity in settings)
@@ -25,19 +26,14 @@ namespace PersonalHomePage.Services.Implementation
 
             return settingsValues;
         }
-        public void ReplaceSettingValueForService(string serviceName, string settingName, string settingValue)
+        public async Task ReplaceSettingValueForServiceAsync(string serviceName, string settingName, string settingValue)
         {
             var updateSettingTableEntity = new SettingTableEntity(serviceName, settingName)
             {
                 Value = settingValue
             };
 
-            _storageService.ReplaceSettingValueForService(updateSettingTableEntity);
-        }
-
-        public ShortToLongUrlMapTableEntity RetrieveLongUrlMapForShortUrl(string shortUrl)
-        {
-            return _storageService.RetrieveLongUrlMapForShortUrl(shortUrl);
+            await _storageService.ReplaceSettingValueForServiceAsync(updateSettingTableEntity);
         }
     }
 }

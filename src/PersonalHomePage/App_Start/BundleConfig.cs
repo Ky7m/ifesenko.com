@@ -27,7 +27,7 @@ namespace PersonalHomePage
         {
             bundles.UseCdn = true;
 
-            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css");
+            var fontAwesomeBundle = new StyleBundle("~/bundles/font-awesome-css", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css");
             fontAwesomeBundle.Include("~/Content/css/font-awesome.css");
             bundles.Add(fontAwesomeBundle);
 
@@ -35,21 +35,17 @@ namespace PersonalHomePage
             bootstrapCssBundle.Include("~/Content/bootstrap.css");
             bundles.Add(bootstrapCssBundle);
 
-            var animateCssBundle = new StyleBundle("~/bundles/animate-css", "//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css");
-            animateCssBundle.Include("~/Content/animate.css");
-            bundles.Add(animateCssBundle);
-
             var siteCssBundle = new StyleBundle(SiteCssBundleName, string.Format(CdnUrl, SiteCssBundleName.TrimStart("~/".ToCharArray())));
             siteCssBundle.Include("~/Content/site.css");
             bundles.Add(siteCssBundle);
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.15.0-build58334.min.js"));
-            aiBundle.Include("~/Scripts/ai.0.15.0-build58334.min.js");
+            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.21.5-build00175.min.js"));
+            aiBundle.Include("~/Scripts/ai.0.21.5-build00175.min.js");
             bundles.Add(aiBundle);
 
-            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js");
+            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);
@@ -64,10 +60,6 @@ namespace PersonalHomePage
             knockoutJsBundle.CdnFallbackExpression = "window.ko";
             bundles.Add(knockoutJsBundle);
 
-            var wowJsBundle = new ScriptBundle("~/bundles/wow-js", "//cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js");
-            wowJsBundle.Include("~/Scripts/wow.js");
-            bundles.Add(wowJsBundle);
-
             var backstretchJsBundle = new ScriptBundle("~/bundles/backstretch-js", "//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js");
             backstretchJsBundle.Include("~/Scripts/jquery.backstretch.js");
             bundles.Add(backstretchJsBundle);
@@ -78,7 +70,6 @@ namespace PersonalHomePage
                 
                 "~/Scripts/app/bindingHandlers/*.js",
 
-                "~/Scripts/app/models/*.js",
                 "~/Scripts/app/viewModels/*.js",
 
                 "~/Scripts/app/shell.js"

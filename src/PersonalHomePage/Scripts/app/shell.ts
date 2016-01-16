@@ -1,6 +1,4 @@
 ﻿module PersonalHomePage.Shell {
-    declare var WOW: any;
-
     $("#intro").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
 
     $(window).load(() => {
@@ -14,7 +12,7 @@
             }
         });
 
-        $("a[href*=#]").bind("click", function (e) {
+        $("a[href*='#']").bind("click", function (e) {
             var anchor = $(this);
             $("html, body").stop().animate({
                 scrollTop: $(anchor.attr("href")).offset().top
@@ -40,14 +38,9 @@
             navbar.toggleClass("custom-collapse", state);
         });
 
-        // WOW Animation When You Scroll
-        new WOW({
-            mobile: false
-        }).init();
-
         // tooltips
         $("[data-toggle='tooltip']").tooltip();
 
-        ko.applyBindings(new ViewModels.HomeViewModel());
+        ko.applyBindings(new ViewModels.ContactViewModel());
     });
 }

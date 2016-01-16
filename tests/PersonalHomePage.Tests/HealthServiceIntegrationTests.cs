@@ -5,9 +5,9 @@ using Xunit;
 
 namespace PersonalHomePage.Tests
 {
-    public class HealthServiceIntegrationTests
+    public sealed class HealthServiceIntegrationTests
     {
-        readonly HealthService _healthService;
+        private readonly HealthService _healthService;
         public HealthServiceIntegrationTests()
         {
             _healthService = new HealthService(new SettingsService(new CloudStorageService()));

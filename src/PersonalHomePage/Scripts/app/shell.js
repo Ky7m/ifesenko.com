@@ -12,7 +12,7 @@ var PersonalHomePage;
                     $(this).collapse("hide");
                 }
             });
-            $("a[href*=#]").bind("click", function (e) {
+            $("a[href*='#']").bind("click", function (e) {
                 var anchor = $(this);
                 $("html, body").stop().animate({
                     scrollTop: $(anchor.attr("href")).offset().top
@@ -33,13 +33,9 @@ var PersonalHomePage;
                 var state = $(this).width() <= 767;
                 navbar.toggleClass("custom-collapse", state);
             });
-            // WOW Animation When You Scroll
-            new WOW({
-                mobile: false
-            }).init();
             // tooltips
             $("[data-toggle='tooltip']").tooltip();
-            ko.applyBindings(new PersonalHomePage.ViewModels.HomeViewModel());
+            ko.applyBindings(new PersonalHomePage.ViewModels.ContactViewModel());
         });
     })(Shell = PersonalHomePage.Shell || (PersonalHomePage.Shell = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));

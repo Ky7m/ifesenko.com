@@ -38,12 +38,12 @@ namespace PersonalHomePage.Services.Implementation.HealthService
             };
 
             _httpClient = new HttpClient(messageHandler);
-            ReadSettings();
+            ReadSettings().Wait();
         }
 
-        private void ReadSettings()
+        private async Task ReadSettings()
         {
-            var settings = _settingsService.RetrieveAllSettingsValuesForService(nameof(HealthService));
+            var settings = await _settingsService.RetrieveAllSettingsValuesForServiceAsync(nameof(HealthService));
 
             _apiUri = settings["ApiUri"].Value;
             _clientId = settings["ClientId"].Value;
@@ -177,9 +177,9 @@ namespace PersonalHomePage.Services.Implementation.HealthService
 
             SetAuthorizationHttpRequestHeader();
 
-            _settingsService.ReplaceSettingValueForService("HealthService", "AccessToken", _credentials.AccessToken);
-            _settingsService.ReplaceSettingValueForService("HealthService", "RefreshToken", _credentials.RefreshToken);
-            _settingsService.ReplaceSettingValueForService("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString());
+            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "AccessToken", _credentials.AccessToken);
+            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "RefreshToken", _credentials.RefreshToken);
+            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString());
         }
 
         #endregion Private

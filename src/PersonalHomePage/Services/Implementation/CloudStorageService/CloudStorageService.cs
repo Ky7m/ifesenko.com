@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
@@ -10,27 +12,23 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
 {
     public sealed class CloudStorageService : IStorageService
     {
-        private readonly Lazy<CloudStorageAccount> _cloudTableClient = new Lazy<CloudStorageAccount>(() =>
+        private readonly Lazy<CloudStorageAccount> _cloudStorageAccount = new Lazy<CloudStorageAccount>(() =>
         {
             var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionString"].ConnectionString;
             return CloudStorageAccount.Parse(connectionString);
         });
 
-        public SettingTableEntity[] RetrieveAllSettingsForService(string serviceName)
+        public async Task<SettingTableEntity[]> RetrieveAllSettingsForServiceAsync(string serviceName)
         {
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
-            var table = client.GetTableReference("Settings");
+            var tableQuery = new TableQuery<SettingTableEntity>()
+                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, serviceName));
 
-            var query =
-                new TableQuery<SettingTableEntity>().Where(TableQuery.GenerateFilterCondition("PartitionKey",
-                    QueryComparisons.Equal, serviceName));
-
-            return table.ExecuteQuery(query).ToArray();
+            return await ExecuteQueryAsync("Settings", tableQuery);
         }
 
-        public void ReplaceSettingValueForService(SettingTableEntity updateSettingTableEntity)
+        public async Task ReplaceSettingValueForServiceAsync(SettingTableEntity updateSettingTableEntity)
         {
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
             var table = client.GetTableReference("Settings");
 
             var retrieveOperation =
@@ -38,29 +36,29 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
                     updateSettingTableEntity.RowKey);
 
             var newValue = updateSettingTableEntity.Value;
-/*
-            Policy
-              .Handle<StorageException>(ex => ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
-              .Retry(3)
-              .Execute(() =>
-              {*/
-                  var retrievedResult = table.Execute(retrieveOperation);
+            /*
+                        Policy
+                          .Handle<StorageException>(ex => ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
+                          .Retry(3)
+                          .Execute(() =>
+                          {*/
+            var retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
-                  var updateEntity = (SettingTableEntity)retrievedResult.Result;
-                  if (updateEntity == null)
-                  {
-                      return;
-                  }
-                 
-                  updateEntity.Value = newValue;
-                  var updateOperation = TableOperation.Replace(updateEntity);
-                  table.Execute(updateOperation);
-              /*});*/
+            var updateEntity = (SettingTableEntity)retrievedResult.Result;
+            if (updateEntity == null)
+            {
+                return;
+            }
+
+            updateEntity.Value = newValue;
+            var updateOperation = TableOperation.Replace(updateEntity);
+            await table.ExecuteAsync(updateOperation);
+            /*});*/
         }
 
-        public ShortToLongUrlMapTableEntity RetrieveLongUrlMapForShortUrl(string shortUrl)
+        public async Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl)
         {
-            var client = _cloudTableClient.Value.CreateCloudTableClient();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
             var table = client.GetTableReference("ShortToLongUrlsMap");
 
             var query =
@@ -68,14 +66,43 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
                     QueryComparisons.Equal, shortUrl));
 
             var shortToLongUrlMapTableEntity = table.ExecuteQuery(query).ToArray().FirstOrDefault();
-            if (shortToLongUrlMapTableEntity != null)
+            if (shortToLongUrlMapTableEntity == null)
             {
-                shortToLongUrlMapTableEntity.Stats++;
-                var replaceOperation = TableOperation.Replace(shortToLongUrlMapTableEntity);
-                table.Execute(replaceOperation);
+                return null;
             }
+            shortToLongUrlMapTableEntity.Stats++;
+            var replaceOperation = TableOperation.Replace(shortToLongUrlMapTableEntity);
+            await table.ExecuteAsync(replaceOperation);
 
             return shortToLongUrlMapTableEntity;
+        }
+
+        public async Task<EventTableEntity[]> RetrieveAllEventsAsync()
+        {
+            return await ExecuteQueryAsync<EventTableEntity>("Events");
+        }
+
+        private async Task<T[]> ExecuteQueryAsync<T>(string tableName, TableQuery<T> tableQuery = null) where T : ITableEntity, new()
+        {
+            var result = new List<T>();
+            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
+            var table = client.GetTableReference(tableName);
+            if (tableQuery == null)
+            {
+                tableQuery = new TableQuery<T>();
+            }
+            TableContinuationToken continuationToken = null;
+            do
+            {
+                var tableQueryResult = await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
+
+                continuationToken = tableQueryResult.ContinuationToken;
+                result.AddRange(tableQueryResult.Results);
+
+                // Loop until a null continuation token is received, indicating the end of the table.
+            } while (continuationToken != null);
+
+            return result.ToArray();
         }
     }
 }

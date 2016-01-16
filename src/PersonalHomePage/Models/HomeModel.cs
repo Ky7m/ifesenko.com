@@ -1,15 +1,8 @@
-﻿using System;
-
-namespace PersonalHomePage.Models
+﻿namespace PersonalHomePage.Models
 {
-    public class HomeModel
+    public sealed class HomeModel
     {
-        public DateTime? LastUpdateTimeUtc { get; set; }
-        public int? StepsTaken { get; set; }
-        public int? CaloriesBurned { get; set; }
-        public double? TotalDistanceOnFoot { get; set; }
-        public string AverageHeartRate { get; set; }
-        public string SleepDuration { get; set; }
-        public int? SleepEfficiencyPercentage { get; set; }
+        public StatsModel Stats { get; set; }
+        public EventsModel Events { get; set; }
     }
 }
