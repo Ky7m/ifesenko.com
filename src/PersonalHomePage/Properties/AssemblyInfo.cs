@@ -4,5 +4,5 @@
 [assembly: AssemblyProduct("ifesenko.com")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 
-[assembly: AssemblyVersion("3.9.7")]
-[assembly: AssemblyFileVersion("3.9.7")]
+[assembly: AssemblyVersion("3.9.8")]
+[assembly: AssemblyFileVersion("3.9.8")]
