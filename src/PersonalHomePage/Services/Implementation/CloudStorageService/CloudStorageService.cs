@@ -77,11 +77,6 @@ namespace PersonalHomePage.Services.Implementation.CloudStorageService
             return shortToLongUrlMapTableEntity;
         }
 
-        public async Task<EventTableEntity[]> RetrieveAllEventsAsync()
-        {
-            return await ExecuteQueryAsync<EventTableEntity>("Events");
-        }
-
         private async Task<T[]> ExecuteQueryAsync<T>(string tableName, TableQuery<T> tableQuery = null) where T : ITableEntity, new()
         {
             var result = new List<T>();

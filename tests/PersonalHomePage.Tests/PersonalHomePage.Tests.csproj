@@ -89,7 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventsIntegrationTests.cs" />
     <Compile Include="RedisCacheServiceIntegrationTests.cs" />
     <Compile Include="HealthServiceIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
