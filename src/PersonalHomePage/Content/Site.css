@@ -485,16 +485,16 @@ h3 > .fa {
     }
 
 /* ---------------------------------------------- /*
- * Intro
+ * Home
 /* ---------------------------------------------- */
 
-#intro {
+#home {
     padding: 260px 0 160px 0;
     text-align: center;
     color: #FFF;
 }
 
-    #intro h1, #intro h2, #intro h3, #intro h4, #intro h5, #intro h6 {
+    #home h1, #home h2, #home h3, #home h4, #home h5, #home h6 {
         color: #FFF;
     }
 
@@ -561,34 +561,21 @@ h3 > .fa {
         margin-right: 10px;
     }
 
-/* ---------------------------------------------- /*
- * Service
-/* ---------------------------------------------- */
-
-.service {
-    margin: 0 0 40px;
-}
-
-    .service .icon {
-        font-size: 32px;
-        margin: 0 0 5px;
-        color: #222;
-    }
 
 /* ---------------------------------------------- /*
- * CV
+ * Events
 /* ---------------------------------------------- */
 
-.cv-items {
+.event-items {
     margin-bottom: 40px;
 }
 
-.cv-place {
+.event-place {
     margin-bottom: 20px;
 }
 
-    .cv-place > i,
-    .cv-place > h4 > i {
+    .event-place > i,
+    .event-place > h4 > i {
         color: #C4C4C4;
         font-size: 14px;
         margin-right: 5px;
