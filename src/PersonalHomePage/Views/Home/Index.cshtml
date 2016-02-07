@@ -19,14 +19,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#intro">Igor Fesenko</a>
+                    <a class="navbar-brand" href="#home">Igor Fesenko</a>
                 </div>
                 <div class="collapse navbar-collapse" id="bs-navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#intro">Home</a></li>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#profile">Profile</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#cv">CV</a></li>
+                        <li><a href="#events">Events</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -34,14 +33,14 @@
         </nav>
     </header>
     <main role="main">
-        <section id="intro" class="section">
+        <section id="home" class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="hello">
                             <h1>Hi, I'm Igor Fesenko</h1>
                             <h3>
-                                <span class="remove-shadow" data-bind="textrotator: {separator:'|', speed:3000}">Software Design Engineer. | Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
+                                <span class="remove-shadow" data-bind="textrotator: {separator:'|', speed:3000}">Microsoft Certified Solutions Developer. | Create simple solutions to complex problems.</span>
                             </h3>
                         </div>
                         <a href="#profile">
@@ -62,14 +61,8 @@
         <section id="stats" class="callout">
             @{Html.RenderPartial("Sections/Stats", Model.Stats);}
         </section>
-        <section id="services" class="section">
-            @{Html.RenderPartial("Sections/Services");}
-        </section>
-        @*<section id="events" class="callout">
-            @{Html.RenderPartial("Sections/Events", Model.Events);}
-        </section>*@
-        <section id="cv" class="section">
-            @{Html.RenderPartial("Sections/CV");}
+        <section id="events" class="section">
+            @{Html.RenderPartial("Sections/Events");}
         </section>
         <section id="certifications" class="callout">
             @{Html.RenderPartial("Sections/Certifications");}

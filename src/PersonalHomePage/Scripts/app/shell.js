@@ -2,7 +2,7 @@ var PersonalHomePage;
 (function (PersonalHomePage) {
     var Shell;
     (function (Shell) {
-        $("#intro").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
+        $("#home").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
         $(window).load(function () {
             $("#loader").fadeOut("slow");
         });

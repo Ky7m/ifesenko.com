@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -21,6 +22,9 @@ namespace PersonalHomePage
 
         protected void Application_Start()
         {
+            ServicePointManager.DefaultConnectionLimit = Environment.ProcessorCount * 8;
+            ServicePointManager.Expect100Continue = false;
+
             ConfigureViewEngines();
 
 #if DEBUG

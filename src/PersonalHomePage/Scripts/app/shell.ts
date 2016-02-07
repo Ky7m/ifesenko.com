@@ -1,5 +1,5 @@
 ﻿module PersonalHomePage.Shell {
-    $("#intro").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
+    $("#home").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
 
     $(window).load(() => {
         $("#loader").fadeOut("slow");

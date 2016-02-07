@@ -2,22 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>http://ifesenko.com/</loc>
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
         <loc>http://ifesenko.com/#profile</loc>
-        <changefreq>weekly</changefreq>
+        <changefreq>monthly</changefreq>
         <priority>0.2</priority>
     </url>
     <url>
-        <loc>http://ifesenko.com/#services</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-    <url>
-        <loc>http://ifesenko.com/#cv</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
+        <loc>http://ifesenko.com/#events</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
     </url>
 </urlset>

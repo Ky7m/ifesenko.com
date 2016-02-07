@@ -8,6 +8,5 @@ namespace PersonalHomePage.Services.Interfaces
         Task<SettingTableEntity[]> RetrieveAllSettingsForServiceAsync(string serviceName);
         Task ReplaceSettingValueForServiceAsync(SettingTableEntity updateSettingTableEntity);
         Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl);
-        Task<EventTableEntity[]> RetrieveAllEventsAsync();
     }
 }

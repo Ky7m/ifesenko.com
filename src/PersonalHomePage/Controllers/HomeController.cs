@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -9,7 +8,6 @@ using Microsoft.ApplicationInsights;
 using PersonalHomePage.Extensions;
 using PersonalHomePage.Models;
 using PersonalHomePage.Services;
-using PersonalHomePage.Services.Implementation.CloudStorageService.Model;
 using PersonalHomePage.Services.Implementation.HealthService.Model;
 using PersonalHomePage.Services.Interfaces;
 using WebMarkupMin.Mvc.ActionFilters;
@@ -118,31 +116,6 @@ namespace PersonalHomePage.Controllers
                 statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
 
                 homeModel.Stats = statsModel;
-
-                //var events = await GetEventsAsync();
-
-                //var todayDate = DateTime.UtcNow.Date;
-                //var upcomingEvents = new List<EventTableEntity>();
-                //var previousEvents = new List<EventTableEntity>();
-
-                //foreach (var eventTableEntity in events)
-                //{
-                //    if (eventTableEntity.DateStart >= todayDate)
-                //    {
-                //        upcomingEvents.Add(eventTableEntity);
-                //    }
-                //    else
-                //    {
-                //        previousEvents.Add(eventTableEntity);
-                //    }
-                //}
-
-                //homeModel.Events = new EventsModel
-                //{
-                //    Upcoming = upcomingEvents.ToArray(),
-                //    Previous = previousEvents.ToArray()
-                //};
-                homeModel.Events = new EventsModel();
             }
             catch (Exception exception)
             {
@@ -158,11 +131,6 @@ namespace PersonalHomePage.Controllers
         private async Task<SleepActivity> GetTodaysSleepActivityAsync()
         {
             return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(8.0));
-        }
-
-        private async Task<EventTableEntity[]> GetEventsAsync()
-        {
-            return await GetFromCacheOrAddToCacheFromService(_storageService, service => service.RetrieveAllEventsAsync(), TimeSpan.FromDays(1.0));
         }
 
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
