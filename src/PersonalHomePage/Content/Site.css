@@ -341,7 +341,6 @@ h3 > .fa {
         -ms-animation-play-state: running;
         -o-animation-play-state: running;
         animation-play-state: running;
-
         position: relative;
         -ms-border-radius: 10px;
         border-radius: 10px;
@@ -566,7 +565,7 @@ h3 > .fa {
  * Events
 /* ---------------------------------------------- */
 
-.event-items {
+.events-per-year {
     margin-bottom: 40px;
 }
 
@@ -581,6 +580,32 @@ h3 > .fa {
         margin-right: 5px;
     }
 
+.collateral {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+@media only screen and (min-width : 800px) {
+    .collateral li {
+        display: inline-block;
+    }
+
+        .collateral li:after {
+            content: ' |';
+        }
+
+        .collateral li:before {
+            content: '';
+        }
+
+        .collateral li:first-child:before {
+            content: '[ ';
+        }
+
+        .collateral li:last-child:after {
+            content: ' ]';
+        }
+}
 /* ---------------------------------------------- /*
  * Footer
 /* ---------------------------------------------- */
