@@ -580,7 +580,7 @@ h3 > .fa {
         margin-right: 5px;
     }
 
-ul.collateral {
+.collateral {
     list-style-type: none;
     padding-left: 0;
 }
@@ -595,7 +595,7 @@ ul.collateral {
         }
 
         .collateral li:before {
-            content: '';
+            content: ' ';
         }
 
         .collateral li:first-child:before {
