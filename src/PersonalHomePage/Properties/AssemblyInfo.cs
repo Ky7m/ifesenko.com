@@ -2,7 +2,7 @@
 
 [assembly: AssemblyTitle("ifesenko.com")]
 [assembly: AssemblyProduct("ifesenko.com")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 
-[assembly: AssemblyVersion("4.0.1")]
-[assembly: AssemblyFileVersion("4.0.1")]
+[assembly: AssemblyVersion("4.0.2")]
+[assembly: AssemblyFileVersion("4.0.2")]
