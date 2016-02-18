@@ -333,7 +333,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="humans.txt" />
-    <Content Include="loaderio-652773ddab0fe23402da19db423d9acf.txt" />
     <Content Include="robots.txt" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
