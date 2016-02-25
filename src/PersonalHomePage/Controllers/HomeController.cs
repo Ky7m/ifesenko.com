@@ -110,18 +110,28 @@ namespace PersonalHomePage.Controllers
                     {
                         sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
                     }
-                    statsModel.SleepDuration = $"{sleepDuration.Hours.ToString()}h {sleepDuration.Minutes.ToString()}m";
+                    statsModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
                 }
 
                 statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
 
                 homeModel.Stats = statsModel;
+
+                homeModel.Events = PopulateEvents();
             }
             catch (Exception exception)
             {
                 _telemetryClient.Value.TrackException(exception);
             }
             return homeModel;
+        }
+
+        private EventModel[] PopulateEvents()
+        {
+            return new EventModel[]
+            {
+                
+            };
         }
 
         private async Task<Summary> GetTodaysSummaryAsync()

@@ -594,17 +594,21 @@ h3 > .fa {
             content: ' |';
         }
 
-        .collateral li:before {
-            content: ' ';
-        }
+    nav li:last-child:after {
+        content: '';
+    }
 
-        .collateral li:first-child:before {
-            content: '[ ';
-        }
+    .collateral li:before {
+        content: '';
+    }
 
-        .collateral li:last-child:after {
-            content: ' ]';
-        }
+    .collateral li:first-child:before {
+        content: '[ ';
+    }
+
+    .collateral li:last-child:after {
+        content: ' ]';
+    }
 }
 /* ---------------------------------------------- /*
  * Footer
