@@ -41,11 +41,11 @@ namespace PersonalHomePage
 
             //
 
-            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.21.5-build00175.min.js"));
+            var aiBundle = new ScriptBundle("~/bundles/ai-js", string.Format(CdnUrl, "Scripts/ai.0.22.6-build00108.min.js"));
             aiBundle.Include("~/Scripts/ai.0.21.5-build00175.min.js");
             bundles.Add(aiBundle);
 
-            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js");
+            var jQueryBundle = new ScriptBundle("~/bundles/jquery-js", "//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js");
             jQueryBundle.Include("~/Scripts/jquery-{version}.js");
             jQueryBundle.CdnFallbackExpression = "window.jQuery";
             bundles.Add(jQueryBundle);

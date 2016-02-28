@@ -110,12 +110,14 @@ namespace PersonalHomePage.Controllers
                     {
                         sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
                     }
-                    statsModel.SleepDuration = $"{sleepDuration.Hours.ToString()}h {sleepDuration.Minutes.ToString()}m";
+                    statsModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
                 }
 
                 statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
 
                 homeModel.Stats = statsModel;
+
+                homeModel.Events = await _storageService.RetrieveAllEventsAsync();
             }
             catch (Exception exception)
             {

@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -90,6 +92,10 @@
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -256,6 +262,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Extensions\CommonStrings.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Extensions\ApplicationInsightsTelemetryInitializer.cs" />
@@ -268,6 +275,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\EmailMessageModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\StatsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -321,25 +329,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\robot.png" />
-    <Content Include="css\font-awesome.css" />
-    <Content Include="css\font-awesome.min.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\profile.jpg" />
     <Content Include="Content\jquery.smooth.scroll.css" />
     <Content Include="Content\jquery.smooth.scroll.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="humans.txt" />
     <Content Include="robots.txt" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -348,16 +351,20 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\ai.0.21.5-build00175.js" />
-    <Content Include="Scripts\ai.0.21.5-build00175.min.js" />
+    <Content Include="Scripts\ai.0.22.6-build00108.js" />
+    <Content Include="Scripts\ai.0.22.6-build00108.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.2.0.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="sitemap.xml" />
@@ -390,7 +397,7 @@
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
     <Content Include="Views\Home\Sections\Events.cshtml" />
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -399,7 +406,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.0.21.5-build00175.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.0.22.6-build00108.d.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
@@ -441,6 +448,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
