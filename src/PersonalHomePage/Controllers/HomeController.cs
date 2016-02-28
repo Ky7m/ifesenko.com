@@ -117,21 +117,13 @@ namespace PersonalHomePage.Controllers
 
                 homeModel.Stats = statsModel;
 
-                homeModel.Events = PopulateEvents();
+                homeModel.Events = await _storageService.RetrieveAllEventsAsync();
             }
             catch (Exception exception)
             {
                 _telemetryClient.Value.TrackException(exception);
             }
             return homeModel;
-        }
-
-        private EventModel[] PopulateEvents()
-        {
-            return new EventModel[]
-            {
-                
-            };
         }
 
         private async Task<Summary> GetTodaysSummaryAsync()
