@@ -322,25 +322,20 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\robot.png" />
-    <Content Include="css\font-awesome.css" />
-    <Content Include="css\font-awesome.min.css" />
-    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\background.jpg" />
     <Content Include="Content\images\profile.jpg" />
     <Content Include="Content\jquery.smooth.scroll.css" />
     <Content Include="Content\jquery.smooth.scroll.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="humans.txt" />
     <Content Include="robots.txt" />
     <Content Include="Content\jquery.smooth.scroll.css.map" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -349,16 +344,20 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\ai.0.21.5-build00175.js" />
-    <Content Include="Scripts\ai.0.21.5-build00175.min.js" />
+    <Content Include="Scripts\ai.0.22.6-build00108.js" />
+    <Content Include="Scripts\ai.0.22.6-build00108.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="Scripts\jquery-2.2.0.js" />
-    <Content Include="Scripts\jquery-2.2.0.min.js" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\knockout-3.4.0.debug.js" />
     <Content Include="Scripts\knockout-3.4.0.js" />
     <Content Include="sitemap.xml" />
@@ -391,7 +390,7 @@
     <Content Include="Views\Home\Sections\Certifications.cshtml" />
     <Content Include="Views\Home\Sections\Contact.cshtml" />
     <Content Include="Views\Home\Sections\Events.cshtml" />
-    <Content Include="Scripts\jquery-2.2.0.min.map" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -400,7 +399,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.0.21.5-build00175.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.0.22.6-build00108.d.ts" />
     <TypeScriptCompile Include="Scripts\app\viewModels\contactViewModel.ts" />
     <TypeScriptCompile Include="Scripts\app\shell.ts" />
     <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
