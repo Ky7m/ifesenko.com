@@ -599,7 +599,7 @@ h3 > .fa {
     }
 
     .collateral li:before {
-        content: '';
+        content: '\00a0';
     }
 
     .collateral li:first-child:before {
