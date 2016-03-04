@@ -54,7 +54,7 @@ var PersonalHomePage;
                 return false;
             };
             return ContactViewModel;
-        })();
+        }());
         ViewModels.ContactViewModel = ContactViewModel;
     })(ViewModels = PersonalHomePage.ViewModels || (PersonalHomePage.ViewModels = {}));
 })(PersonalHomePage || (PersonalHomePage = {}));
