@@ -1,54 +1,59 @@
 {
-  "AppSettings": {
-    "SiteShortTitle": "Boilerplate",
-    "SiteTitle": "ASP.NET MVC Boilerplate"
-  },
-  "ApplicationInsights": {
-    "InstrumentationKey": "11111111-2222-3333-4444-555555555555"
-  },
-  "Logging": {
-    "IncludeScopes": true,
-    "LogLevel": {
-      "Default": "Verbose",
-      "System": "Information",
-      "Microsoft": "Information"
-    }
-  },
+    "AppSettings": {
+        "StorageConnectionString": "DefaultEndpointsProtocol=https;AccountName=ifesenko;AccountKey=eaf2ozvWqyIgqak/HLdqSbHYefCoyPRN41o+tIX6a3mzIN9Z2bu9fdbX19wXikVuKG8YZhDtY2aOJSJL+/s/uw==",
+        "RedisCacheConnectionString": "ifesenko.redis.cache.windows.net:6380,ssl=true,abortConnect=false,password=bUnADG6dGGP9kAYjcgMfbNgexGGk9ChIBPrPhiSciw0="
+    },
+    "EmailServiceSettings": {
+        "Account": "ifesenko.com",
+        "Password": "OhQ0mXBKovVnjK9tJwr1",
+        "EmailTo": "igor.aka.ky7m@gmail.com"
+    },
+    "ApplicationInsights": {
+        "InstrumentationKey": "1f26649d-7b51-452a-af4a-514e08ffa75d"
+    },
+    "Logging": {
+        "IncludeScopes": true,
+        "LogLevel": {
+            "Default": "Verbose",
+            "System": "Information",
+            "Microsoft": "Information"
+        }
+    },
     "SitemapSettings": {
         "SitemapPingLocations": [
             "https://www.google.com/ping?sitemap=",
             "http://www.bing.com/ping?sitemap="
         ]
     },
-  "CacheProfileSettings": {
-    "CacheProfiles": {
-      "BrowserConfigXml": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "Error": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "Feed": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "ManifestJson": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "OpenSearchXml": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "RobotsText": {
-        "Duration": 86400,
-        "Location": "Any"
-      },
-      "SitemapNodes": {
-        "Duration": 86400
-      }
+    "CacheProfileSettings": {
+        "CacheProfiles": {
+            "BrowserConfigXml": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "Error": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "Feed": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "ManifestJson": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "OpenSearchXml": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "RobotsText": {
+                "Duration": 86400,
+                "Location": "Any"
+            },
+            "SitemapNodes": {
+                "Duration": 86400
+            }
+        }
     }
-  }
 }

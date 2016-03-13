@@ -1,6 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Error";
+﻿@using System.Threading.Tasks
+@using Microsoft.AspNet.Http
+@model int
+
+@{
+    switch (Model)
+    {
+        case StatusCodes.Status400BadRequest:
+            ViewBag.Icon = "fa fa-ban text-danger";
+            ViewBag.Title = "Bad Request";
+            ViewBag.Description = "Your browser sent a request that this server could not understand.";
+            break;
+        case StatusCodes.Status401Unauthorized:
+            ViewBag.Icon = "fa fa-ban text-danger";
+            ViewBag.Title = "Unauthorized";
+            ViewBag.Description = "Sorry, but the page requires authentication.";
+            break;
+        case StatusCodes.Status403Forbidden:
+            ViewBag.Icon = "fa fa-exclamation-circle text-danger";
+            ViewBag.Title = "Forbidden";
+            ViewBag.Description = "Sorry, but you don't have permission to access this page.";
+            break;
+        case StatusCodes.Status404NotFound:
+            ViewBag.Icon = "fa fa-exclamation-circle text-danger";
+            ViewBag.Title = "Page Not Found";
+            ViewBag.Description = "Sorry, but the page you were looking for can't be found.";
+            break;
+        case StatusCodes.Status500InternalServerError:
+        default:
+            ViewBag.Icon = "fa fa-exclamation-circle text-danger";
+            ViewBag.Title = "Unexpected Error";
+            ViewBag.Description = "Well, this is embarrassing. An error occurred while processing your request. Rest assured, this problem has been logged and hamsters have been released to fix the problem.";
+            break;
+    }
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+<div class="errorPage">
+    <img class="error-image" src="~/images/robot.png" alt="An error occurred!" />
+    <h1>@ViewBag.Title</h1>
+    <h3>@ViewBag.Description - I am sorry, but the page you are looking for cannot be found.</h3>
+</div>

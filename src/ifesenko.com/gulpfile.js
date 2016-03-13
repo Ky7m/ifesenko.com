@@ -53,9 +53,6 @@ var environment = {
     }
 };
 
-// The URL to your deployed site e.g. 'http://example.com'. This is used by the Google PageSpeed tasks.
-var siteUrl = undefined;
-
 // Initialize directory paths.
 var paths = {
     // Source Directory Paths
@@ -107,6 +104,14 @@ var sources = {
             paths: paths.bower + 'font-awesome/css/font-awesome.min.css'
         },
         {
+            // name - The name of the final CSS file to build.
+            name: 'bootstrap.css',
+            // copy - Just copy the file and don't run it through the minification pipeline.
+            copy: true,
+            // paths - The path to the file to copy.
+            paths: paths.bower + 'bootstrap/dist/css/bootstrap.css'
+        },
+        {
             name: 'site.css',
             // paths - An array of paths to CSS or SASS files which will be compiled to CSS, concatenated and minified
             // to create a file with the above file name.
@@ -121,7 +126,7 @@ var sources = {
             // The name of the folder the fonts will be output to.
             name: 'bootstrap',
             // The source directory to get the font files from. Note that we support all font file types.
-            path: paths.bower + 'bootstrap-sass/**/*.{ttf,svg,woff,woff2,otf,eot}'
+            path: paths.bower + 'bootstrap/**/*.{ttf,svg,woff,woff2,otf,eot}'
         },
         {
             name: 'font-awesome',
@@ -154,7 +159,7 @@ var sources = {
             copy: true,
             // paths - A single or array of paths to JavaScript or TypeScript files which will be concatenated and
             // minified to create a file with the above file name.
-            paths: paths.bower + 'bootstrap-sass/assets/javascripts/bootstrap.min.js'
+            paths: paths.bower + 'bootstrap/dist/js/bootstrap.js'
         },
         {
             name: 'jquery.js',

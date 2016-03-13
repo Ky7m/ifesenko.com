@@ -23,12 +23,18 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
         "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1",
         "Newtonsoft.Json": "8.0.2",
-        "WindowsAzure.Storage": "6.1.1-*",
-       
+        "WindowsAzure.Storage": "6.2.0",
+
         "Microsoft.AspNet.Razor.Runtime.Precompilation": "4.0.0-rc1-final",
         "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc1-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
-        "NWebsec.Mvc": "5.0.0-gamma-39"
+        "NWebsec.Mvc": "5.0.0-gamma-39",
+
+        "Sendgrid": "6.3.4",
+        "AntiXSS": "4.2.1",
+        "Wire": "0.0.6",
+        "StackExchange.Redis": "1.1.572-alpha",
+        "Microsoft.IO.RecyclableMemoryStream": "1.1.0"
     },
     "commands": {
         "web": "Microsoft.AspNet.Server.Kestrel"
@@ -39,12 +45,6 @@
             "frameworkAssemblies": {
                 "System.Net.Http": "4.0.0.0",
                 "System.ServiceModel": "4.0.0.0"
-            }
-        },
-        "dnxcore50": {
-            "dependencies": {
-                "System.IO.Compression": "4.1.0-*",
-                "System.Net.Http": "4.0.1-*"
             }
         }
     },

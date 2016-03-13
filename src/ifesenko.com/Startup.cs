@@ -1,5 +1,8 @@
-﻿using System.Reflection;
-using IfesenkoDotCom.Filters;
+﻿using IfesenkoDotCom.Filters;
+using IfesenkoDotCom.Services.Implementation;
+using IfesenkoDotCom.Services.Implementation.CloudStorageService;
+using IfesenkoDotCom.Services.Implementation.HealthService;
+using IfesenkoDotCom.Services.Interfaces;
 using IfesenkoDotCom.Settings;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
@@ -44,10 +47,11 @@ namespace IfesenkoDotCom
             services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
             services.Configure<CacheProfileSettings>(Configuration.GetSection(nameof(CacheProfileSettings)));
             services.Configure<SitemapSettings>(Configuration.GetSection(nameof(SitemapSettings)));
+            services.Configure<EmailServiceSettings>(Configuration.GetSection(nameof(EmailServiceSettings)));
 
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddCaching();
+            //services.AddCaching();
             // services.AddTransient<IDistributedCache, RedisCache>();
 
 
@@ -91,9 +95,13 @@ namespace IfesenkoDotCom
 
             if (HostingEnvironment.IsProduction())
             {
-                mvcBuilder.AddPrecompiledRazorViews(GetType().GetTypeInfo().Assembly);
+                mvcBuilder.AddPrecompiledRazorViews(typeof(Startup).Assembly);
             }
 
+            services.AddSingleton<IHealthService, HealthService>();
+            services.AddSingleton<ICacheService, RedisCacheService>();
+            services.AddSingleton<ISettingsService, SettingsService>();
+            services.AddSingleton<IStorageService, CloudStorageService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -113,7 +121,12 @@ namespace IfesenkoDotCom
             }
             else
             {
-                app.UseExceptionHandler("/error");
+                // Add error handling middle-ware which handles all HTTP status codes from 400 to 599 by re-executing
+                // the request pipeline for the following URL. '{0}' is the HTTP status code e.g. 404.
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
+
+                // Returns a 500 Internal Server Error response when an unhandled exception occurs.
+                //app.UseInternalServerErrorOnException();
             }
 
             app.UseIISPlatformHandler();
