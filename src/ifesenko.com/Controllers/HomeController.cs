@@ -130,7 +130,7 @@ namespace IfesenkoDotCom.Controllers
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}";
+            var key = $"{nameof(HomeController)}.{memberName}.ASPNETCORE";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

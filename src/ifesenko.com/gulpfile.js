@@ -112,7 +112,7 @@ var sources = {
             paths: paths.bower + 'bootstrap/dist/css/bootstrap.css'
         },
         {
-            name: 'site.css',
+            name: 'app.css',
             // paths - An array of paths to CSS or SASS files which will be compiled to CSS, concatenated and minified
             // to create a file with the above file name.
             paths: [
@@ -140,19 +140,6 @@ var sources = {
     // An array containing objects required to build a single JavaScript file.
     js: [
         {
-            name: 'application-insights.js',
-            paths: [
-                paths.scripts + 'application-insights.js'
-            ],
-            // replacements - Replacement to be made in the files above.
-            replacement: {
-                // find - The string or regular expression to find.
-                find: '[ApplicationInsightsInstrumentationKey]',
-                // replace - The string or function used to make the replacement.
-                replace: config.ApplicationInsights.InstrumentationKey
-            }
-        },
-        {
             // name - The name of the final JavaScript file to build.
             name: 'bootstrap.js',
             // copy - Just copy the file and don't run it through the minification pipeline.
@@ -167,12 +154,13 @@ var sources = {
             paths: paths.bower + 'jquery/dist/jquery.min.js'
         },
         {
-            name: 'site.js',
-            paths: [
-                paths.scripts + 'fallback/styles.js',
-                paths.scripts + 'fallback/scripts.js',
-                paths.scripts + 'site.js'
-            ]
+            name: 'knockout.js',
+            copy: true,
+            paths: paths.bower + 'knockout/dist/knockout.js'
+        },
+        {
+            name: 'app.js',
+            paths: paths.scripts + '**/*.js'
         }
     ]
 };
@@ -181,10 +169,7 @@ var sources = {
 var lintSources = {
     css: paths.styles + '**/*.{css}',
     scss: paths.styles + '**/*.{scss}',
-    js: [
-        '!**/application-insights.js',
-        paths.scripts + '**/*.js'
-    ],
+    js: paths.scripts + '**/*.js',
     ts: paths.scripts + '**/*.ts'
 };
 

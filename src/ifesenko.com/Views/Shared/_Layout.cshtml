@@ -21,11 +21,11 @@
     <environment names="@nameof(EnvironmentName.Development)">
         <link asp-append-version="true" rel="stylesheet" href="~/css/font-awesome.css" />
         <link asp-append-version="true" rel="stylesheet" href="~/css/bootstrap.css" />
-        <link asp-append-version="true" rel="stylesheet" href="~/css/site.css" />
+        <link asp-append-version="true" rel="stylesheet" href="~/css/app.css" />
     </environment>
     <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css" />
-        <link asp-append-version="true" rel="stylesheet" href="~/css/site.css" />
+        <link asp-append-version="true" rel="stylesheet" href="~/css/app.css" />
     </environment>
     <partial name="_AnalyticsHead" />
 </head>
@@ -47,7 +47,7 @@
     <environment names="@nameof(EnvironmentName.Development)">
         <script asp-append-version="true" src="~/js/jquery.js"></script>
         <script asp-append-version="true" src="~/js/bootstrap.js"></script>
-        <script asp-append-version="true" src="~/js/site.js"></script>
+        <script asp-append-version="true" src="~/js/app.js"></script>
     </environment>
     <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
         <script src=""></script>
