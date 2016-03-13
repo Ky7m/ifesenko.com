@@ -52,11 +52,13 @@
     "exclude": [
         "wwwroot",
         "node_modules",
-        "bower_components"
+        "bower_components",
+        "typings"
     ],
     "publishExclude": [
         "node_modules",
         "bower_components",
+        "typings",
         "**.xproj",
         "**.user",
         "**.vspscc"
