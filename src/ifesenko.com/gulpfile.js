@@ -1,33 +1,34 @@
 ﻿/// <binding Clean='clean' BeforeBuild='build' ProjectOpened='watch'/>
-'use strict';   // Enable strict mode for JavaScript (See https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode).
+'use strict';  
 
 // Set up imported packages.
 var gulp = require('gulp'),
-    fs = require('fs'),                         // npm file system API (https://nodejs.org/api/fs.html)
-    autoprefixer = require('gulp-autoprefixer'),// Auto-prefix CSS (https://www.npmjs.com/package/gulp-autoprefixer)
-    concat = require('gulp-concat'),            // Concatenate files (https://www.npmjs.com/package/gulp-concat/)
-    csslint = require('gulp-csslint'),          // CSS linter (https://www.npmjs.com/package/gulp-csslint/)
-    cssnano = require('gulp-cssnano'),          // Minifies CSS (https://www.npmjs.com/package/gulp-cssnano/)
-    gulpif = require('gulp-if'),                // If statement (https://www.npmjs.com/package/gulp-if/)
-    imagemin = require('gulp-imagemin'),        // Optimizes images (https://www.npmjs.com/package/gulp-imagemin/)
-    jscs = require('gulp-jscs'),                // JavaScript style linter (https://www.npmjs.com/package/gulp-jscs)
+    fs = require('fs'),                         
+    autoprefixer = require('gulp-autoprefixer'),
+    concat = require('gulp-concat'),
+    csslint = require('gulp-csslint'),
+    cssnano = require('gulp-cssnano'),
+    gulpif = require('gulp-if'),
+    imagemin = require('gulp-imagemin'),
+    jscs = require('gulp-jscs'),
 
-    plumber = require('gulp-plumber'),          // Handles Gulp errors (https://www.npmjs.com/package/gulp-plumber)
-    rename = require('gulp-rename'),            // Renames file paths (https://www.npmjs.com/package/gulp-rename/)
-    replace = require('gulp-replace'),          // String replace (https://www.npmjs.com/package/gulp-replace/)
-    size = require('gulp-size'),                // Prints size of files to console (https://www.npmjs.com/package/gulp-size/)
-    sourcemaps = require('gulp-sourcemaps'),    // Creates source map files (https://www.npmjs.com/package/gulp-sourcemaps/)
-    uglify = require('gulp-uglify'),            // Minifies JavaScript (https://www.npmjs.com/package/gulp-uglify/)
-    gutil = require('gulp-util'),               // Gulp utilities (https://www.npmjs.com/package/gulp-util/)
-    merge = require('merge-stream'),            // Merges one or more gulp streams into one (https://www.npmjs.com/package/merge-stream/)
+    plumber = require('gulp-plumber'),
+    rename = require('gulp-rename'),
+    replace = require('gulp-replace'),
+    size = require('gulp-size'),
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify = require('gulp-uglify'),
+    gutil = require('gulp-util'),
+    merge = require('merge-stream'),
 
-    rimraf = require('rimraf'),                 // Deletes files and folders (https://www.npmjs.com/package/rimraf/)
-    sass = require('gulp-sass'),                // Compile SCSS to CSS (https://www.npmjs.com/package/gulp-sass/)
-    scsslint = require('gulp-scss-lint'),       // SASS linter (https://www.npmjs.com/package/gulp-scss-lint/)
-    typescript = require('gulp-typescript'),    // TypeScript compiler (https://www.npmjs.com/package/gulp-typescript/)
-    config = require('./config.json'),          // Read the config.json file into the config variable.
-    hosting = require('./hosting.json'),        // Read the hosting.json file into the hosting variable.
-    project = require('./project.json');        // Read the project.json file into the project variable.
+    rimraf = require('rimraf'),
+    sass = require('gulp-sass'),
+    scsslint = require('gulp-scss-lint'),
+    typescript = require('gulp-typescript'),
+    tsd = require('gulp-tsd'),
+    config = require('./config.json'),
+    hosting = require('./hosting.json'),
+    project = require('./project.json');
 
 // Holds information about the hosting environment.
 var environment = {
@@ -140,12 +141,8 @@ var sources = {
     // An array containing objects required to build a single JavaScript file.
     js: [
         {
-            // name - The name of the final JavaScript file to build.
             name: 'bootstrap.js',
-            // copy - Just copy the file and don't run it through the minification pipeline.
             copy: true,
-            // paths - A single or array of paths to JavaScript or TypeScript files which will be concatenated and
-            // minified to create a file with the above file name.
             paths: paths.bower + 'bootstrap/dist/js/bootstrap.js'
         },
         {
@@ -154,13 +151,18 @@ var sources = {
             paths: paths.bower + 'jquery/dist/jquery.min.js'
         },
         {
+            name: 'backstretch.js',
+            copy: true,
+            paths: paths.bower + 'jquery-backstretch-2/jquery.backstretch.js'
+        },
+        {
             name: 'knockout.js',
             copy: true,
             paths: paths.bower + 'knockout/dist/knockout.js'
         },
         {
             name: 'app.js',
-            paths: paths.scripts + '**/*.js'
+            paths: paths.scripts + '**/*.ts'
         }
     ]
 };
@@ -394,7 +396,9 @@ gulp.task('watch-js', function () {
  * Watch the styles and scripts folders for changes. Build the CSS and JavaScript if something changes.
  */
 gulp.task('watch', ['watch-css', 'watch-js']);
-
+gulp.task('tsd', function () {
+    return gulp.src('./gulp_tsd.json').pipe(tsd());
+});
 /*
  * The default gulp task. This is useful for scenarios where you are not using Visual Studio. Does a full clean and
  * build before watching for any file changes.
@@ -402,6 +406,7 @@ gulp.task('watch', ['watch-css', 'watch-js']);
 gulp.task(
     'default',
     [
+        'tsd',
         'build',
         'watch'
     ]);
