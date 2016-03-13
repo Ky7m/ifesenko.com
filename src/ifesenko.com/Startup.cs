@@ -1,0 +1,135 @@
+﻿using System.Reflection;
+using IfesenkoDotCom.Filters;
+using IfesenkoDotCom.Settings;
+using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Routing;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
+using Newtonsoft.Json.Serialization;
+
+namespace IfesenkoDotCom
+{
+    public class Startup
+    {
+        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+
+        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(appEnv.ApplicationBasePath)
+                .AddJsonFile("config.json")
+                .AddJsonFile($"config.{env.EnvironmentName}.json", optional: true);
+
+            if (env.IsDevelopment())
+            {
+                builder.AddUserSecrets();
+                builder.AddApplicationInsightsSettings(developerMode: true);
+            }
+
+            builder.AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+            HostingEnvironment = env;
+        }
+
+        public IConfiguration Configuration { get; set; }
+        public IHostingEnvironment HostingEnvironment { get; set; }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
+            services.Configure<CacheProfileSettings>(Configuration.GetSection(nameof(CacheProfileSettings)));
+            services.Configure<SitemapSettings>(Configuration.GetSection(nameof(SitemapSettings)));
+
+            services.AddApplicationInsightsTelemetry(Configuration);
+
+            services.AddCaching();
+            // services.AddTransient<IDistributedCache, RedisCache>();
+
+
+            RouteOptions routeOptions = null;
+            services.ConfigureRouting(
+                x =>
+                {
+                    routeOptions = x;
+                    // All generated URL's should append a trailing slash.
+                    routeOptions.AppendTrailingSlash = true;
+                    // All generated URL's should be lower-case.
+                    routeOptions.LowercaseUrls = true;
+                });
+
+            // Add many MVC services to the services container.
+            var mvcBuilder = services.AddMvc(
+                mvcOptions =>
+                {
+
+                    var configurationSection = Configuration.GetSection(nameof(CacheProfileSettings));
+                    var cacheProfileSettings = new CacheProfileSettings();
+                    configurationSection.Bind(cacheProfileSettings);
+
+                    foreach (var keyValuePair in cacheProfileSettings.CacheProfiles)
+                    {
+                        mvcOptions.CacheProfiles.Add(keyValuePair);
+                    }
+
+                    mvcOptions.Filters.Add(new RedirectToCanonicalUrlAttribute(routeOptions.AppendTrailingSlash, routeOptions.LowercaseUrls));
+                });
+
+            mvcBuilder.AddJsonOptions(
+               x => x.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
+            services.ConfigureAntiforgery(
+                antiforgeryOptions =>
+                {
+                    antiforgeryOptions.CookieName = "f";
+                    antiforgeryOptions.FormFieldName = "f";
+                });
+
+            if (HostingEnvironment.IsProduction())
+            {
+                mvcBuilder.AddPrecompiledRazorViews(GetType().GetTypeInfo().Assembly);
+            }
+
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
+            if (env.IsProduction())
+            {
+                app.UseApplicationInsightsRequestTelemetry();
+                app.UseApplicationInsightsExceptionTelemetry();
+            }
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+            }
+
+            app.UseIISPlatformHandler();
+
+            app.UseStaticFiles();
+
+            app.Use((context, next) =>
+             {
+                 if (context.Request.Path.StartsWithSegments("/ping"))
+                 {
+                     return context.Response.WriteAsync("pong");
+                 }
+                 return next();
+             });
+
+            app.UseMvc();
+        }
+    }
+}
