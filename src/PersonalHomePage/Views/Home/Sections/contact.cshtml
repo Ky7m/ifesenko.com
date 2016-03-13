@@ -1,0 +1,60 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 headline">
+            <h2>Contact</h2>
+            <p>
+                In most cases,
+                <span><i class="fa fa-fw fa-twitter"></i><a href="https://twitter.com/Ky7m">Twitter</a></span>
+                will get you a faster reply than email.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p>I would be happy to discuss speaking (usually about C#,JavaScript & Azure topics).</p>
+        </div>
+        <div class="col-md-6">
+            <form id="contact-form" role="form" method="POST" data-action="@Url.Action("SendEmailMessage", "Home")" data-bind="submit: submit">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="sr-only" for="name">Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-lg fa-user"></i>
+                            </span>
+                            <input type="text" required="required" id="name" class="form-control" name="name"
+                                   placeholder="Name" data-bind="value: name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="email">Email address</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-fw fa-lg fa-envelope"></i>
+                            </span>
+                            <input type="email" required="required" id="email" class="form-control"
+                                   name="email" placeholder="E-mail" data-bind="value: email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" type="text" required="required"
+                                  name="message" rows="7" placeholder="Your message" data-bind="value: message"></textarea>
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <div class="col-md-4 no-padding">
+                        <button type="submit" class="btn btn-custom-1" data-bind="enabled: isReady">
+                            <i class="fa fa-bullhorn icon-before"></i> <span data-bind="text: sendItButtonText"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-8 no-padding">
+                        <div class="alert alert-dismissible" role="alert" data-bind="visible: isAlertVisible, css: {'alert-warning': !isSuccess(), 'alert-success': isSuccess()}">
+                            <button type="button" class="close" aria-label="Close" data-bind="click: closeAlert">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong data-bind="text: status"></strong>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+﻿# TEAM
+    Igor Fesenko -- Main Developer -- https://twitter.com/ky7m
+# TECHNOLOGY COLOPHON
+    CSS3, HTML5, ASP.NET MVC, Azure, KnockoutJS
