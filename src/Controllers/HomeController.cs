@@ -2,9 +2,10 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Xml;
+using ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model;
+using ifesenko.com.Infrastructure.Services.Interfaces;
 using ifesenko.com.Models;
-using ifesenko.com.Services.Implementation.HealthService.Model;
-using ifesenko.com.Services.Interfaces;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNet.Mvc;
 
 namespace ifesenko.com.Controllers
@@ -16,14 +17,16 @@ namespace ifesenko.com.Controllers
         private readonly IHealthService _healthService;
         private readonly ICacheService _cacheService;
         private readonly IStorageService _storageService;
+        private readonly TelemetryClient _telemetryClient;
 
         public HomeController(IHealthService healthService,
             ICacheService cacheService,
-            IStorageService storageService)
+            IStorageService storageService, TelemetryClient telemetryClient)
         {
             _healthService = healthService;
             _cacheService = cacheService;
             _storageService = storageService;
+            _telemetryClient = telemetryClient;
         }
 
         #endregion Fields and Ctor
@@ -112,8 +115,7 @@ namespace ifesenko.com.Controllers
             }
             catch (Exception exception)
             {
-                var ex = exception;
-                // _telemetryClient.Value.TrackException(exception);
+                _telemetryClient.TrackException(exception);
             }
             return homeModel;
         }
@@ -130,7 +132,7 @@ namespace ifesenko.com.Controllers
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}.ASPNETCORE";
+            var key = $"{nameof(HomeController)}.{memberName}.ASPNET";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

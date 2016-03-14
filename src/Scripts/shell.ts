@@ -1,4 +1,13 @@
-﻿module PersonalHomePage.Shell {
+﻿/// <reference path="../typings/main.d.ts" />
+interface JQuery {
+    textrotator(options?: any): JQuery;
+    backstretch(options?: any): JQuery;
+}
+
+declare var textrotator: JQueryStatic;
+declare var backstretch: JQueryStatic;
+
+module ifesenko.com.Shell {
     $("#home").backstretch("//ifesenko.azureedge.net/Content/images/background.jpg");
 
     $(window).load(() => {
@@ -41,6 +50,6 @@
         // tooltips
         $("[data-toggle='tooltip']").tooltip();
 
-        ko.applyBindings(new ViewModels.ContactViewModel());
+        $("#textrotator").textrotator({ separator: '|', speed: 3000 });
     });
 }

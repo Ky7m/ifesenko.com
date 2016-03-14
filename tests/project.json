@@ -7,7 +7,7 @@
   "licenseUrl": "",
 
   "dependencies": {
-    "ifesenko.com": "",
+    "src": "",
     "xunit": "2.1.0-*",
     "xunit.runner.dnx": "2.1.0-*"
   },

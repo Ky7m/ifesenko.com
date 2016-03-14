@@ -1,9 +1,8 @@
 ﻿/// <binding Clean='clean' BeforeBuild='build' ProjectOpened='watch'/>
-'use strict';  
+'use strict';
 
-// Set up imported packages.
 var gulp = require('gulp'),
-    fs = require('fs'),                         
+    fs = require('fs'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     csslint = require('gulp-csslint'),
@@ -154,11 +153,6 @@ var sources = {
             name: 'backstretch.js',
             copy: true,
             paths: paths.bower + 'jquery-backstretch-2/jquery.backstretch.js'
-        },
-        {
-            name: 'knockout.js',
-            copy: true,
-            paths: paths.bower + 'knockout/dist/knockout.js'
         },
         {
             name: 'app.js',
@@ -407,6 +401,5 @@ gulp.task(
     'default',
     [
         'tsd',
-        'build',
-        'watch'
+        'build'
     ]);

@@ -1,4 +1,5 @@
 ﻿using ifesenko.com.Infrastructure;
+using ifesenko.com.Infrastructure.Extensions;
 using Microsoft.AspNet.Mvc;
 
 namespace ifesenko.com.Controllers

@@ -1,11 +1,13 @@
-﻿<div class="container">
+﻿@using ifesenko.com.Infrastructure.Settings
+@inject Microsoft.Extensions.OptionsModel.IOptions<AppSettings> AppSettingsOptions
+<div class="container">
     <div class="row">
         <div class="col-md-12 headline">
             <h2>Igor Fesenko</h2>
             <p>Microsoft Certified Solutions Developer. Create simple solutions to complex problems.</p>
         </div>
         <div class="col-md-3 col-sm-6 hidden-xs">
-            @*<img class="avatar" src="@CdnUrl.Content("content/images/profile.jpg")" alt="Personal photo">*@
+            <img class="avatar" src="@($"{AppSettingsOptions.Value.CdnUrl}/content/images/profile.jpg")" alt="Personal photo">
             <div class="profile-widget">
                 <ul class="widget-social">
                     <li><a href="https://github.com/Ky7m"><i class="fa fa-github-alt"></i></a></li>
@@ -88,6 +90,8 @@
             <p>I'm proficient in C#, JavaScript & Azure and have managed and assessed multiple projects focusing on high performance and large data solutions, taking advantage of all the features and capabilities available on target platform.</p>
             <p>My current focus is on the building and improvement of scalable and secure web applications, cloud-enabled applications and operations, and identity & access management.</p>
             <p>I'm available for helping your team succeed through focused and effective consulting services in software solution architecture, design, development, security, operations, automated lifecycle management, and more.</p>
+            <p>In most cases, <span><i class="fa fa-fw fa-twitter"></i><a href="https://twitter.com/Ky7m">Twitter</a></span> will get you a faster reply than <span><i class="fa fa-fw fa-linkedin"></i><a href="https://www.linkedin.com/profile/view?id=182744142">LinkedIn</a></span>.</p>
+            <p> I would be happy to discuss speaking, usually about C#,JavaScript & Azure.</p>
         </div>
     </div>
 </div>
