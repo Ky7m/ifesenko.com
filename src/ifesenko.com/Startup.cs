@@ -46,19 +46,10 @@ namespace ifesenko.com
         {
             services.AddApplicationInsightsTelemetry(Configuration);
 
-
-            services.AddOptions();
-            services.ConfigureOptions<AppSettings>();
-            services.ConfigureOptions<CacheProfileSettings>();
-            services.ConfigureOptions<SitemapSettings>();
-            services.ConfigureOptions<EmailServiceSettings>();
-
-            //services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
-            //services.Configure<CacheProfileSettings>(Configuration.GetSection(nameof(CacheProfileSettings)));
-            //services.Configure<SitemapSettings>(Configuration.GetSection(nameof(SitemapSettings)));
-            //services.Configure<EmailServiceSettings>(Configuration.GetSection(nameof(EmailServiceSettings)));
-
-            
+            services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
+            services.Configure<CacheProfileSettings>(Configuration.GetSection(nameof(CacheProfileSettings)));
+            services.Configure<SitemapSettings>(Configuration.GetSection(nameof(SitemapSettings)));
+            services.Configure<EmailServiceSettings>(Configuration.GetSection(nameof(EmailServiceSettings)));
 
             //services.AddCaching();
             // services.AddTransient<IDistributedCache, RedisCache>();
