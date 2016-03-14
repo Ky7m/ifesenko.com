@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace IfesenkoDotCom.Infrastructure.Extensions
+namespace ifesenko.com.Infrastructure.Extensions
 {
     internal static class ListExtensions
     {

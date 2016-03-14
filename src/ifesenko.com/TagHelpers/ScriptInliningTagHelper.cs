@@ -7,7 +7,7 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.AspNet.Razor.TagHelpers;
 
-namespace IfesenkoDotCom.TagHelpers
+namespace ifesenko.com.TagHelpers
 {
     [HtmlTargetElement("script", Attributes = "inline")]
     public class ScriptInliningTagHelper : TagHelper

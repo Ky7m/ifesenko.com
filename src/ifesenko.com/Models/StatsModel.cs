@@ -1,4 +1,4 @@
-﻿namespace IfesenkoDotCom.Models
+﻿namespace ifesenko.com.Models
 {
     public sealed class StatsModel
     {

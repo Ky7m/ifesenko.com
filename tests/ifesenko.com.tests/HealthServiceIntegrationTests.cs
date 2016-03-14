@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using IfesenkoDotCom.Services.Implementation;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService;
-using IfesenkoDotCom.Services.Implementation.HealthService;
-using IfesenkoDotCom.Settings;
+using ifesenko.com.Services.Implementation;
+using ifesenko.com.Services.Implementation.CloudStorageService;
+using ifesenko.com.Services.Implementation.HealthService;
+using ifesenko.com.Settings;
 using Microsoft.Extensions.OptionsModel;
 using Xunit;
 

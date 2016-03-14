@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IfesenkoDotCom.Services.Implementation.HealthService.Model.Responses
+namespace ifesenko.com.Services.Implementation.HealthService.Model.Responses
 {
     internal struct DevicesResponse
     {

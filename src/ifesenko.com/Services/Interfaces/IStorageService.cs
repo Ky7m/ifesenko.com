@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using IfesenkoDotCom.Models;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService.Model;
+using ifesenko.com.Models;
+using ifesenko.com.Services.Implementation.CloudStorageService.Model;
 
-namespace IfesenkoDotCom.Services.Interfaces
+namespace ifesenko.com.Services.Interfaces
 {
     public interface IStorageService
     {

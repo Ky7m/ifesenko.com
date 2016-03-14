@@ -5,7 +5,7 @@ using Microsoft.AspNet.Mvc.ViewEngines;
 using Microsoft.AspNet.Mvc.ViewFeatures;
 using Microsoft.AspNet.Razor.TagHelpers;
 
-namespace IfesenkoDotCom.TagHelpers
+namespace ifesenko.com.TagHelpers
 {
     [HtmlTargetElement("partial", Attributes = "name")]
     public class PartialTagHelper : TagHelper

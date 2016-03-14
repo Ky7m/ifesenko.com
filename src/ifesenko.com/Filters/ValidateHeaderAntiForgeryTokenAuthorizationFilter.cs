@@ -5,7 +5,7 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.Extensions.OptionsModel;
 
-namespace IfesenkoDotCom.Filters
+namespace ifesenko.com.Filters
 {
     /// <summary>
     /// Represents a filter that is used to prevent forgery of a request. This instance checks the HTTP Headers instead

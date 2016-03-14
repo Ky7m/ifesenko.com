@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using IfesenkoDotCom.Models;
+using ifesenko.com.Models;
 
-namespace IfesenkoDotCom.Services.Interfaces
+namespace ifesenko.com.Services.Interfaces
 {
     public interface IEmailService
     {

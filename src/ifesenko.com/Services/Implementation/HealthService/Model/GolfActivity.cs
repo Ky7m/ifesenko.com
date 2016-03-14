@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IfesenkoDotCom.Services.Implementation.HealthService.Model
+namespace ifesenko.com.Services.Implementation.HealthService.Model
 {
     public class GolfActivity : ActivityBase
     {

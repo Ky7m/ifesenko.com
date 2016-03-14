@@ -1,7 +1,7 @@
-﻿using IfesenkoDotCom.Infrastructure;
+﻿using ifesenko.com.Infrastructure;
 using Microsoft.AspNet.Mvc;
 
-namespace IfesenkoDotCom.Controllers
+namespace ifesenko.com.Controllers
 {
     [Route("[controller]")]
     public sealed class ErrorController : Controller

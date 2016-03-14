@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Infrastructure.Extensions;
-using IfesenkoDotCom.Models;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService.Model;
-using IfesenkoDotCom.Services.Interfaces;
-using IfesenkoDotCom.Settings;
+using ifesenko.com.Infrastructure.Extensions;
+using ifesenko.com.Models;
+using ifesenko.com.Services.Implementation.CloudStorageService.Model;
+using ifesenko.com.Services.Interfaces;
+using ifesenko.com.Settings;
 using Microsoft.Extensions.OptionsModel;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 
-namespace IfesenkoDotCom.Services.Implementation.CloudStorageService
+namespace ifesenko.com.Services.Implementation.CloudStorageService
 {
     public sealed class CloudStorageService : IStorageService
     {

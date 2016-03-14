@@ -1,7 +1,7 @@
 ﻿using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.Extensibility;
 
-namespace IfesenkoDotCom.Infrastructure.Extensions
+namespace ifesenko.com.Infrastructure.Extensions
 {
     public class ApplicationInsightsTelemetryInitializer : ITelemetryInitializer
     {

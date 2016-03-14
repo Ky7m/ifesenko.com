@@ -4,7 +4,7 @@ using Microsoft.AspNet.Http.Extensions;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Filters;
 
-namespace IfesenkoDotCom.Filters
+namespace ifesenko.com.Filters
 {
     /// <summary>
     /// To improve Search Engine Optimization SEO, there should only be a single URL for each resource. Case

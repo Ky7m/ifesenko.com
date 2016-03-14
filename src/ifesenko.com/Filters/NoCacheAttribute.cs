@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.Mvc;
 
-namespace IfesenkoDotCom.Filters
+namespace ifesenko.com.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public class NoCacheAttribute : ResponseCacheAttribute

@@ -1,4 +1,4 @@
-namespace IfesenkoDotCom.Infrastructure.Extensions
+namespace ifesenko.com.Infrastructure.Extensions
 {
     internal static class CommonStrings
     {

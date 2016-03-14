@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Services.Interfaces;
-using IfesenkoDotCom.Settings;
+using ifesenko.com.Services.Interfaces;
+using ifesenko.com.Settings;
 using Microsoft.Extensions.OptionsModel;
 using Microsoft.IO;
 using StackExchange.Redis;
 using Wire;
 
-namespace IfesenkoDotCom.Services.Implementation
+namespace ifesenko.com.Services.Implementation
 {
     public sealed class RedisCacheService : ICacheService
     {

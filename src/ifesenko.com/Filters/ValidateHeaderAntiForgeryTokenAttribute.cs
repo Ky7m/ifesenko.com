@@ -4,7 +4,7 @@ using Microsoft.AspNet.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.OptionsModel;
 
-namespace IfesenkoDotCom.Filters
+namespace ifesenko.com.Filters
 {
     /// <summary>
     /// Represents an attribute that is used to prevent forgery of a request. Same as

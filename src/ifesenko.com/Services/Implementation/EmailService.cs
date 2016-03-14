@@ -1,14 +1,14 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Models;
-using IfesenkoDotCom.Services.Interfaces;
-using IfesenkoDotCom.Settings;
+using ifesenko.com.Models;
+using ifesenko.com.Services.Interfaces;
+using ifesenko.com.Settings;
 using Microsoft.Extensions.OptionsModel;
 using Microsoft.Security.Application;
 using SendGrid;
 
-namespace IfesenkoDotCom.Services.Implementation
+namespace ifesenko.com.Services.Implementation
 {
     public sealed class EmailService : IEmailService
     {

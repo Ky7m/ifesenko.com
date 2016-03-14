@@ -1,4 +1,4 @@
-﻿namespace IfesenkoDotCom.Settings
+﻿namespace ifesenko.com.Settings
 {
     public class AppSettings
     {

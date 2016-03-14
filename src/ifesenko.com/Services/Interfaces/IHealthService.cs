@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model;
+using ifesenko.com.Services.Implementation.HealthService.Model;
 
-namespace IfesenkoDotCom.Services.Interfaces
+namespace ifesenko.com.Services.Interfaces
 {
     public interface IHealthService
     {

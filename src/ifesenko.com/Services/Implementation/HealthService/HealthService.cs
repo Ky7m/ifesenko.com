@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Infrastructure.Extensions;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model.Requests;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model.Responses;
-using IfesenkoDotCom.Services.Interfaces;
+using ifesenko.com.Infrastructure.Extensions;
+using ifesenko.com.Services.Implementation.HealthService.Model;
+using ifesenko.com.Services.Implementation.HealthService.Model.Requests;
+using ifesenko.com.Services.Implementation.HealthService.Model.Responses;
+using ifesenko.com.Services.Interfaces;
 using Newtonsoft.Json;
 
-namespace IfesenkoDotCom.Services.Implementation.HealthService
+namespace ifesenko.com.Services.Implementation.HealthService
 {
     public sealed class HealthService : IHealthService
     {

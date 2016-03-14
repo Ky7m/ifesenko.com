@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Services.Implementation;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService;
-using IfesenkoDotCom.Services.Implementation.HealthService;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model;
-using IfesenkoDotCom.Settings;
+using ifesenko.com.Services.Implementation;
+using ifesenko.com.Services.Implementation.CloudStorageService;
+using ifesenko.com.Services.Implementation.HealthService;
+using ifesenko.com.Services.Implementation.HealthService.Model;
+using ifesenko.com.Settings;
 using Microsoft.Extensions.OptionsModel;
 using Xunit;
 

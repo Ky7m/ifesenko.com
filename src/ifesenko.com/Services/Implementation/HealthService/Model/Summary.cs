@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace IfesenkoDotCom.Services.Implementation.HealthService.Model
+namespace ifesenko.com.Services.Implementation.HealthService.Model
 {
     public sealed class Summary
     {

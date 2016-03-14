@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService.Model;
-using IfesenkoDotCom.Services.Interfaces;
+using ifesenko.com.Services.Implementation.CloudStorageService.Model;
+using ifesenko.com.Services.Interfaces;
 
-namespace IfesenkoDotCom.Services.Implementation
+namespace ifesenko.com.Services.Implementation
 {
     public sealed class SettingsService : ISettingsService
     {

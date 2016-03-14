@@ -2,12 +2,12 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Xml;
-using IfesenkoDotCom.Models;
-using IfesenkoDotCom.Services.Implementation.HealthService.Model;
-using IfesenkoDotCom.Services.Interfaces;
+using ifesenko.com.Models;
+using ifesenko.com.Services.Implementation.HealthService.Model;
+using ifesenko.com.Services.Interfaces;
 using Microsoft.AspNet.Mvc;
 
-namespace IfesenkoDotCom.Controllers
+namespace ifesenko.com.Controllers
 {
     public class HomeController : Controller
     {

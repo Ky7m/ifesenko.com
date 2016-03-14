@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService.Model;
+using ifesenko.com.Services.Implementation.CloudStorageService.Model;
 
-namespace IfesenkoDotCom.Services.Interfaces
+namespace ifesenko.com.Services.Interfaces
 {
     public interface ISettingsService
     {

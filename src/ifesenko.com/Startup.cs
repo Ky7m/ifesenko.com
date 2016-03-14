@@ -1,9 +1,9 @@
-﻿using IfesenkoDotCom.Filters;
-using IfesenkoDotCom.Services.Implementation;
-using IfesenkoDotCom.Services.Implementation.CloudStorageService;
-using IfesenkoDotCom.Services.Implementation.HealthService;
-using IfesenkoDotCom.Services.Interfaces;
-using IfesenkoDotCom.Settings;
+﻿using ifesenko.com.Filters;
+using ifesenko.com.Services.Implementation;
+using ifesenko.com.Services.Implementation.CloudStorageService;
+using ifesenko.com.Services.Implementation.HealthService;
+using ifesenko.com.Services.Interfaces;
+using ifesenko.com.Settings;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
@@ -14,7 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using Newtonsoft.Json.Serialization;
 
-namespace IfesenkoDotCom
+namespace ifesenko.com
 {
     public class Startup
     {

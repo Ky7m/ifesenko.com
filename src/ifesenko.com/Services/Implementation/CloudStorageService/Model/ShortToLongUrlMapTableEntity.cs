@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 
-namespace IfesenkoDotCom.Services.Implementation.CloudStorageService.Model
+namespace ifesenko.com.Services.Implementation.CloudStorageService.Model
 {
     public sealed class ShortToLongUrlMapTableEntity : TableEntity
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 
-namespace IfesenkoDotCom.Settings
+namespace ifesenko.com.Settings
 {
     public class CacheProfileSettings
     {
