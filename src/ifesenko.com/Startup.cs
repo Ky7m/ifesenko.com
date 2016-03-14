@@ -54,7 +54,6 @@ namespace ifesenko.com
             //services.AddCaching();
             // services.AddTransient<IDistributedCache, RedisCache>();
 
-
             RouteOptions routeOptions = null;
             services.ConfigureRouting(
                 x =>
