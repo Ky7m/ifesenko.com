@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using PersonalHomePage.Services.Implementation;
-using PersonalHomePage.Services.Implementation.CloudStorageService;
-using PersonalHomePage.Services.Implementation.HealthService;
-using PersonalHomePage.Services.Implementation.HealthService.Model;
+using IfesenkoDotCom.Services.Implementation;
+using IfesenkoDotCom.Services.Implementation.CloudStorageService;
+using IfesenkoDotCom.Services.Implementation.HealthService;
+using IfesenkoDotCom.Services.Implementation.HealthService.Model;
+using IfesenkoDotCom.Settings;
+using Microsoft.Extensions.OptionsModel;
 using Xunit;
 
-namespace PersonalHomePage.Tests
+namespace ifesenko.com.tests
 {
     public sealed class RedisCacheServiceIntegrationTests
     {
@@ -14,8 +17,17 @@ namespace PersonalHomePage.Tests
         private readonly RedisCacheService _redisCacheService;
         public RedisCacheServiceIntegrationTests()
         {
-            _healthService = new HealthService(new SettingsService(new CloudStorageService()));
-            _redisCacheService = new RedisCacheService();
+            var appSettings = new OptionsManager<AppSettings>(new List<IConfigureOptions<AppSettings>>
+            {
+                new ConfigureOptions<AppSettings>(settings =>
+                {
+                    settings.RedisCacheConnectionString = "ifesenko.redis.cache.windows.net:6380,ssl=true,abortConnect=false,password=bUnADG6dGGP9kAYjcgMfbNgexGGk9ChIBPrPhiSciw0=";
+                    settings.StorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=ifesenko;AccountKey=eaf2ozvWqyIgqak/HLdqSbHYefCoyPRN41o+tIX6a3mzIN9Z2bu9fdbX19wXikVuKG8YZhDtY2aOJSJL+/s/uw==";
+
+                })
+            });
+            _healthService = new HealthService(new SettingsService(new CloudStorageService(appSettings)));
+            _redisCacheService = new RedisCacheService(appSettings);
         }
 
         [Fact]
