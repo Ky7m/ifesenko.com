@@ -1,0 +1,65 @@
+﻿@model ifesenko.com.Models.StatsModel
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-12 hidden-xs">
+            <h3>
+                <span>Today's Activities</span>
+                <i class="fa fa-info" data-toggle="tooltip" data-placement="top" title="Information is based on data gathered from the fitness device (Microsoft Band)"></i>
+            </h3>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-street-view hidden-xs"></i><span>@Model.StepsTaken.GetValueOrDefault()</span></h2>
+                </div>
+                <h3>Steps taken</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-arrows-h hidden-xs"></i><span>@Model.TotalDistanceOnFoot.GetValueOrDefault()</span></h2>
+                </div>
+                <h3>Distance (km)</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 hidden-xs"></div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-fire hidden-xs"></i><span>@Model.CaloriesBurned.GetValueOrDefault()</span></h2>
+                </div>
+                <h3>Calories burned</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-heartbeat hidden-xs"></i><span>@Model.AverageHeartRate</span></h2>
+                </div>
+                <h3>Average heart rate (BPM)</h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-12 hidden-xs"></div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-bed hidden-xs"></i><span>@Model.SleepDuration</span></h2>
+                </div>
+                <h3>Actual sleep</h3>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            <div class="stat">
+                <div class="stat-icon">
+                    <h2><i class="fa fa-moon-o hidden-xs"></i><span>@Model.SleepEfficiencyPercentage.GetValueOrDefault()</span></h2>
+                </div>
+                <h3>Sleep efficiency (%)</h3>
+            </div>
+        </div>
+    </div>
+</div>
