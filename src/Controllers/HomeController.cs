@@ -42,11 +42,12 @@ namespace ifesenko.com.Controllers
             return View(homeModel);
         }
 
+        [Route("go/{shortUrl?}")]
         public async Task<IActionResult> RedirectToLong(string shortUrl)
         {
             if (string.IsNullOrEmpty(shortUrl))
             {
-                return RedirectToAction("Error","Error", StatusCodes.Status404NotFound);
+                return RedirectToAction("Error","Error",new { statusCode = StatusCodes.Status404NotFound });
             }
             var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
             if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
