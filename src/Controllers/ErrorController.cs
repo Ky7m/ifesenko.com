@@ -1,5 +1,4 @@
-﻿using ifesenko.com.Infrastructure;
-using ifesenko.com.Infrastructure.Extensions;
+﻿using ifesenko.com.Infrastructure.Extensions;
 using Microsoft.AspNet.Mvc;
 
 namespace ifesenko.com.Controllers
@@ -7,9 +6,8 @@ namespace ifesenko.com.Controllers
     [Route("[controller]")]
     public sealed class ErrorController : Controller
     {
-        [ResponseCache(CacheProfileName = "Error")]
-        [HttpGet("{statusCode}/{status?}")]
-        public IActionResult Error(int statusCode, string status)
+        [HttpGet("{statusCode}")]
+        public IActionResult Error(int statusCode)
         {
             Response.StatusCode = statusCode;
 

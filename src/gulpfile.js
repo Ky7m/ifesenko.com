@@ -24,7 +24,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     scsslint = require('gulp-scss-lint'),
     typescript = require('gulp-typescript'),
-    tsd = require('gulp-tsd'),
     config = require('./config.json'),
     hosting = require('./hosting.json'),
     project = require('./project.json');
@@ -390,9 +389,6 @@ gulp.task('watch-js', function () {
  * Watch the styles and scripts folders for changes. Build the CSS and JavaScript if something changes.
  */
 gulp.task('watch', ['watch-css', 'watch-js']);
-gulp.task('tsd', function () {
-    return gulp.src('./gulp_tsd.json').pipe(tsd());
-});
 /*
  * The default gulp task. This is useful for scenarios where you are not using Visual Studio. Does a full clean and
  * build before watching for any file changes.
@@ -400,6 +396,5 @@ gulp.task('tsd', function () {
 gulp.task(
     'default',
     [
-        'tsd',
         'build'
     ]);

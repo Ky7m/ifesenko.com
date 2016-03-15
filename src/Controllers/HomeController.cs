@@ -6,6 +6,7 @@ using ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model;
 using ifesenko.com.Infrastructure.Services.Interfaces;
 using ifesenko.com.Models;
 using Microsoft.ApplicationInsights;
+using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 
 namespace ifesenko.com.Controllers
@@ -40,21 +41,21 @@ namespace ifesenko.com.Controllers
             var homeModel = await PopulateHomeModel();
             return View(homeModel);
         }
-        
-        //public async Task<ActionResult> RedirectToLong(string shortUrl)
-        //{
-        //    if (string.IsNullOrEmpty(shortUrl))
-        //    {
-        //        return RedirectToAction("NotFound", "Error");
-        //    }
-        //    var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
-        //    if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
-        //    {
-        //        return RedirectToAction("NotFound", "Error");
-        //    }
-        //    Response.StatusCode = 302;
-        //    return Redirect(longUrlMapTableEntity.Target);
-        //}
+
+        public async Task<IActionResult> RedirectToLong(string shortUrl)
+        {
+            if (string.IsNullOrEmpty(shortUrl))
+            {
+                return RedirectToAction("Error","Error", StatusCodes.Status404NotFound);
+            }
+            var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
+            if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
+            {
+                return RedirectToAction("Error", "Error", StatusCodes.Status404NotFound);
+            }
+            Response.StatusCode = 302;
+            return Redirect(longUrlMapTableEntity.Target);
+        }
 
         #endregion Actions
 
