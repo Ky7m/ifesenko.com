@@ -21,7 +21,8 @@ namespace ifesenko.com.Controllers
 
         public HomeController(IHealthService healthService,
             ICacheService cacheService,
-            IStorageService storageService, TelemetryClient telemetryClient)
+            IStorageService storageService, 
+            TelemetryClient telemetryClient)
         {
             _healthService = healthService;
             _cacheService = cacheService;
@@ -39,28 +40,7 @@ namespace ifesenko.com.Controllers
             var homeModel = await PopulateHomeModel();
             return View(homeModel);
         }
-
-        //[HttpPost]
-        //public async Task<JsonResult> SendEmailMessage(EmailMessageModel emailMessage)
-        //{
-        //    const string internalErrorPleaseTryAgain = "Internal error. Please try again.";
-        //    if (!ModelState.IsValid)
-        //    {
-        //        var errors = ModelState.Keys.SelectMany(key => ModelState[key].Errors).Select(modelError => modelError.ErrorMessage).ToArray();
-        //        return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain, errors);
-        //    }
-        //    try
-        //    {
-        //        await EmailService.SendEmailAsync(emailMessage);
-        //        return JsonResultBuilder.SuccessResponse("Thank you very much for your email.");
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        _telemetryClient.Value.TrackException(exception);
-        //    }
-        //    return JsonResultBuilder.ErrorResponse(internalErrorPleaseTryAgain);
-        //}
-
+        
         //public async Task<ActionResult> RedirectToLong(string shortUrl)
         //{
         //    if (string.IsNullOrEmpty(shortUrl))
