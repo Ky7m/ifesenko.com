@@ -1,6 +1,5 @@
 {
     "webroot": "wwwroot",
-    "userSecretsId": "ifesenko.com-20150723035013",
     "version": "1.0.0-*",
     "compilationOptions": {
         "warningsAsErrors": true,
@@ -15,20 +14,18 @@
         "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
         "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
         "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
-        "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0-rc1-final",
         "Microsoft.Extensions.Logging": "1.0.0-rc1-final",
         "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
-        "Microsoft.AspNet.Razor.Runtime.Precompilation": "4.0.0-rc1-final",
         "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc1-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
         "Microsoft.IO.RecyclableMemoryStream": "1.1.0",
         "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1-update2",
         "Newtonsoft.Json": "8.0.3",
-        "WindowsAzure.Storage": "6.2.0",
         "NWebsec.Mvc": "5.0.0-*",
         "Wire": "0.0.6",
-        "StackExchange.Redis": "1.1.572-*"
+        "StackExchange.Redis": "1.1.572-*",
+        "WindowsAzure.Storage": "6.2.2-*"
     },
     "commands": {
         "web": "Microsoft.AspNet.Server.Kestrel"

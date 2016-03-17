@@ -25,7 +25,6 @@ namespace ifesenko.com
 
             if (env.IsDevelopment())
             {
-                builder.AddUserSecrets();
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
 

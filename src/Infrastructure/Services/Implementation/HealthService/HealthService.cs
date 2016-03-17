@@ -81,8 +81,6 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService
             return activitiesResponse?.SleepActivities?.FirstOrDefault();
         }
 
-        #region Private
-
         private async Task<ActivitiesResponse> GetActivitiesAsync(ActivitiesRequest request)
         {
             return await GetResponseAsync<ActivitiesResponse>(BuildRequestUri("Activities", request.ToDictionary()));
@@ -180,7 +178,5 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService
             await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "RefreshToken", _credentials.RefreshToken);
             await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString());
         }
-
-        #endregion Private
     }
 }

@@ -13,8 +13,6 @@ namespace ifesenko.com.Controllers
 {
     public class HomeController : Controller
     {
-        #region Fields and Ctor
-
         private readonly IHealthService _healthService;
         private readonly ICacheService _cacheService;
         private readonly IStorageService _storageService;
@@ -22,7 +20,7 @@ namespace ifesenko.com.Controllers
 
         public HomeController(IHealthService healthService,
             ICacheService cacheService,
-            IStorageService storageService, 
+            IStorageService storageService,
             TelemetryClient telemetryClient)
         {
             _healthService = healthService;
@@ -30,10 +28,6 @@ namespace ifesenko.com.Controllers
             _storageService = storageService;
             _telemetryClient = telemetryClient;
         }
-
-        #endregion Fields and Ctor
-
-        #region Actions
 
         [Route("/")]
         public async Task<IActionResult> Index()
@@ -57,10 +51,6 @@ namespace ifesenko.com.Controllers
             Response.StatusCode = 302;
             return Redirect(longUrlMapTableEntity.Target);
         }
-
-        #endregion Actions
-
-        #region Inner
 
         private async Task<HomeModel> PopulateHomeModel()
         {
@@ -104,11 +94,11 @@ namespace ifesenko.com.Controllers
 
         private async Task<Summary> GetTodaysSummaryAsync()
         {
-            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSummaryAsync(), TimeSpan.FromHours(1.0));
+            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSummaryAsync(), TimeSpan.FromHours(3.0));
         }
         private async Task<SleepActivity> GetTodaysSleepActivityAsync()
         {
-            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(8.0));
+            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(4.0));
         }
 
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
@@ -124,7 +114,5 @@ namespace ifesenko.com.Controllers
             await _cacheService.StoreAsync(key, cachedValue, expiryTime ?? TimeSpan.FromHours(3.0));
             return cachedValue;
         }
-
-        #endregion Inner
     }
 }

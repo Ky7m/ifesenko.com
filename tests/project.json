@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "ifesenko.com.tests",
   "authors": [ "Igor Fesenko" ],
@@ -6,11 +6,11 @@
   "projectUrl": "",
   "licenseUrl": "",
 
-  "dependencies": {
-    "src": "",
-    "xunit": "2.1.0-*",
-    "xunit.runner.dnx": "2.1.0-*"
-  },
+    "dependencies": {
+        "src": "",
+        "xunit": "2.2.0-*",
+        "xunit.runner.dnx": "2.1.0-*"
+    },
 
   "commands": {
     "test": "xunit.runner.dnx"
