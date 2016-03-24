@@ -22,10 +22,10 @@
         "Microsoft.IO.RecyclableMemoryStream": "1.1.0",
         "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1-update2",
         "Newtonsoft.Json": "8.0.3",
-        "NWebsec.Mvc": "5.0.0-*",
+        "NWebsec.Mvc": "5.0.0-gamma-39",
+        "StackExchange.Redis": "1.1.572-alpha",
         "Wire": "0.0.6",
-        "StackExchange.Redis": "1.1.572-*",
-        "WindowsAzure.Storage": "6.2.2-*"
+        "WindowsAzure.Storage": "6.2.2-preview"
     },
     "commands": {
         "web": "Microsoft.AspNet.Server.Kestrel"
