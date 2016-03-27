@@ -42,7 +42,6 @@
             </div>
         </div>
     </footer>
-
     <environment names="@nameof(EnvironmentName.Development)">
         <script asp-append-version="true" src="~/js/jquery.js"></script>
         <script asp-append-version="true" src="~/js/backstretch.js"></script>
@@ -51,12 +50,10 @@
     </environment>
     <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.12/jquery.backstretch.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script asp-append-version="true" src="@($"{AppSettingsOptions.Value.CdnUrl}/js/app.js")"></script>
     </environment>
-
-
     @RenderSection("scripts", required: false)
 </body>
 </html>
