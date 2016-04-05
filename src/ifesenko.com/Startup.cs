@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using WebMarkupMin.AspNet5;
+
 
 namespace ifesenko.com
 {
@@ -43,15 +45,48 @@ namespace ifesenko.com
 
             services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
 
-            //services.AddCaching();
-            // services.AddTransient<IDistributedCache, RedisCache>();
-
             services.ConfigureRouting(
                 routeOptions =>
                 {
                     routeOptions.AppendTrailingSlash = true;
                     routeOptions.LowercaseUrls = true;
                 });
+
+
+            /*
+
+               <html whitespaceMinificationMode="Medium"
+               removeHtmlComments="true"
+               removeHtmlCommentsFromScriptsAndStyles="true"
+               removeCdataSectionsFromScriptsAndStyles="true"
+               useShortDoctype="true"
+               useMetaCharsetTag="true"
+               emptyTagRenderMode="NoSlash"
+               removeOptionalEndTags="true"
+               removeTagsWithoutContent="false"
+               collapseBooleanAttributes="true"
+               removeEmptyAttributes="true"
+               attributeQuotesRemovalMode="Html5"
+               removeRedundantAttributes="true" removeJsTypeAttributes="true"
+               removeCssTypeAttributes="true" removeHttpProtocolFromAttributes="false"
+               removeHttpsProtocolFromAttributes="false" removeJsProtocolFromAttributes="true"
+               minifyEmbeddedCssCode="true" minifyInlineCssCode="true"
+               minifyEmbeddedJsCode="true" minifyInlineJsCode="true" processableScriptTypeList=""
+               minifyKnockoutBindingExpressions="false" minifyAngularBindingExpressions="false"
+               customAngularDirectiveList="" />
+
+
+
+
+             */
+
+
+            // Add WebMarkupMin services to the services container.
+            services.AddWebMarkupMin(options =>
+            {
+                //options.AllowMinificationInDevelopmentEnvironment = true;
+               // options.AllowCompressionInDevelopmentEnvironment = true;
+            }).AddHtmlMinification();
 
             services.AddMvc();
 
@@ -83,6 +118,8 @@ namespace ifesenko.com
             }
 
             app.UseIISPlatformHandler();
+
+            app.UseWebMarkupMin();
 
             app.UseStaticFiles();
 

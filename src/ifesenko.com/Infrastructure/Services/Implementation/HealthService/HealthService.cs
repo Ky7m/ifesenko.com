@@ -174,9 +174,11 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService
 
             SetAuthorizationHttpRequestHeader();
 
-            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "AccessToken", _credentials.AccessToken);
-            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "RefreshToken", _credentials.RefreshToken);
-            await _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString());
+            await Task.WhenAll(
+                _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "RefreshToken", _credentials.RefreshToken),
+                _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "AccessToken", _credentials.AccessToken),
+                _settingsService.ReplaceSettingValueForServiceAsync("HealthService", "ExpiresIn", _credentials.ExpiresIn.ToString())
+                );
         }
     }
 }
