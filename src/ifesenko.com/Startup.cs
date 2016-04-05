@@ -5,12 +5,12 @@ using ifesenko.com.Infrastructure.Services.Interfaces;
 using ifesenko.com.Infrastructure.Settings;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
 using WebMarkupMin.AspNet5;
-
 
 namespace ifesenko.com
 {
@@ -51,7 +51,7 @@ namespace ifesenko.com
                     routeOptions.AppendTrailingSlash = true;
                     routeOptions.LowercaseUrls = true;
                 });
-
+            //https://github.com/Taritsyn/WebMarkupMin/wiki/WebMarkupMin:-ASP.NET-5
 
             /*
 
@@ -88,7 +88,19 @@ namespace ifesenko.com
                // options.AllowCompressionInDevelopmentEnvironment = true;
             }).AddHtmlMinification();
 
-            services.AddMvc();
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("HomePage", new CacheProfile
+                {
+                    Location = ResponseCacheLocation.Any,
+                    Duration = 3600
+                });
+                options.CacheProfiles.Add("ErrorPage", new CacheProfile
+                {
+                    Location = ResponseCacheLocation.Any,
+                    Duration = 86400
+                });
+            });
 
             services.AddSingleton<IHealthService, HealthService>();
             services.AddSingleton<ICacheService, RedisCacheService>();

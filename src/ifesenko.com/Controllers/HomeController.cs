@@ -30,6 +30,7 @@ namespace ifesenko.com.Controllers
         }
 
         [Route("/")]
+        [ResponseCache(CacheProfileName = "HomePage")]
         public async Task<IActionResult> Index()
         {
             var homeModel = await PopulateHomeModel();

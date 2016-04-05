@@ -7,6 +7,7 @@ namespace ifesenko.com.Controllers
     public sealed class ErrorController : Controller
     {
         [HttpGet("{statusCode}")]
+        [ResponseCache(CacheProfileName = "ErrorPage")]
         public IActionResult Error(int statusCode)
         {
             Response.StatusCode = statusCode;
