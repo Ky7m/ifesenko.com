@@ -4,7 +4,7 @@
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
+var moreCSS = require('gulp-more-css');
 var gulpif = require('gulp-if');
 var imagemin = require('gulp-imagemin');
 var plumber = require('gulp-plumber');
@@ -18,6 +18,8 @@ var merge = require('merge-stream');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
 var typescript = require('gulp-typescript');
+var uncss = require('gulp-uncss');
+var shorthand = require('gulp-shorthand');
 var config = require('./config.json');
 var hosting = require('./hosting.json');
 var project = require('./project.json');
@@ -144,35 +146,40 @@ gulp.task('clean-code', function (cb) {
 });
 
 gulp.task('styles', ['clean-styles'], function () {
-  var tasks = sources.css.map(function (source) {
+  var tasks = sources.css.map(function(source) {
     if (source.copy) {
       return gulp
-          .src(source.paths)
-          .pipe(rename({
-            basename: source.name,
-            extname: ''
-          }))
-          .pipe(gulp.dest(paths.css));
-    }
-    else {
+        .src(source.paths)
+        .pipe(rename({
+          basename: source.name,
+          extname: ''
+        }))
+        .pipe(gulp.dest(paths.css));
+    } else {
       return gulp
-          .src(source.paths)
-          .pipe(plumber())
-          .pipe(gulpif(
-              environment.isDevelopment(),
-              sourcemaps.init()))
-          .pipe(gulpif('**/*.scss', sass()))
-          .pipe(autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
-          .pipe(concat(source.name))
-          .pipe(sizeBefore(source.name))
-          .pipe(gulpif(
-              !environment.isDevelopment(),
-              cssnano()))
-          .pipe(sizeAfter(source.name))
-          .pipe(gulpif(
-              environment.isDevelopment(),
-              sourcemaps.write('.')))
-          .pipe(gulp.dest(paths.css));
+        .src(source.paths)
+        .pipe(plumber())
+        .pipe(gulpif(
+          environment.isDevelopment(),
+          sourcemaps.init()))
+        .pipe(gulpif('**/*.scss', sass()))
+        .pipe(autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
+        .pipe(concat(source.name))
+        .pipe(sizeBefore(source.name))
+        .pipe(gulpif(
+          !environment.isDevelopment(),
+          uncss({ html: ['views/**/*.cshtml'] })))
+        .pipe(gulpif(
+          !environment.isDevelopment(),
+          shorthand()))
+        .pipe(gulpif(
+          !environment.isDevelopment(),
+          moreCSS()))
+        .pipe(sizeAfter(source.name))
+        .pipe(gulpif(
+          environment.isDevelopment(),
+          sourcemaps.write('.')))
+        .pipe(gulp.dest(paths.css));
     }
   });
   return merge(tasks);
