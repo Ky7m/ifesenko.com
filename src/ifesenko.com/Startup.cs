@@ -52,41 +52,7 @@ namespace ifesenko.com
                     routeOptions.LowercaseUrls = true;
                 });
             //https://github.com/Taritsyn/WebMarkupMin/wiki/WebMarkupMin:-ASP.NET-5
-
-            /*
-
-               <html whitespaceMinificationMode="Medium"
-               removeHtmlComments="true"
-               removeHtmlCommentsFromScriptsAndStyles="true"
-               removeCdataSectionsFromScriptsAndStyles="true"
-               useShortDoctype="true"
-               useMetaCharsetTag="true"
-               emptyTagRenderMode="NoSlash"
-               removeOptionalEndTags="true"
-               removeTagsWithoutContent="false"
-               collapseBooleanAttributes="true"
-               removeEmptyAttributes="true"
-               attributeQuotesRemovalMode="Html5"
-               removeRedundantAttributes="true" removeJsTypeAttributes="true"
-               removeCssTypeAttributes="true" removeHttpProtocolFromAttributes="false"
-               removeHttpsProtocolFromAttributes="false" removeJsProtocolFromAttributes="true"
-               minifyEmbeddedCssCode="true" minifyInlineCssCode="true"
-               minifyEmbeddedJsCode="true" minifyInlineJsCode="true" processableScriptTypeList=""
-               minifyKnockoutBindingExpressions="false" minifyAngularBindingExpressions="false"
-               customAngularDirectiveList="" />
-
-
-
-
-             */
-
-
-            // Add WebMarkupMin services to the services container.
-            services.AddWebMarkupMin(options =>
-            {
-                //options.AllowMinificationInDevelopmentEnvironment = true;
-               // options.AllowCompressionInDevelopmentEnvironment = true;
-            }).AddHtmlMinification();
+            services.AddWebMarkupMin().AddHtmlMinification();
 
             services.AddMvc(options =>
             {
