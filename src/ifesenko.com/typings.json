@@ -1,0 +1,8 @@
+{
+  "name": "ifesenko.com",
+  "version": false,
+  "ambientDependencies": {
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#d22516f9f089de107d7e7d5938566377370631f6",
+    "bootstrap": "github:DefinitelyTyped/DefinitelyTyped/bootstrap/bootstrap.d.ts#d22516f9f089de107d7e7d5938566377370631f6"
+  }
+}
