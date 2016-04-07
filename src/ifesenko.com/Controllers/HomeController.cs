@@ -8,6 +8,7 @@ using ifesenko.com.Models;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace ifesenko.com.Controllers
 {
@@ -17,16 +18,19 @@ namespace ifesenko.com.Controllers
         private readonly ICacheService _cacheService;
         private readonly IStorageService _storageService;
         private readonly TelemetryClient _telemetryClient;
+        private readonly IApplicationEnvironment _appEnv;
 
         public HomeController(IHealthService healthService,
             ICacheService cacheService,
             IStorageService storageService,
-            TelemetryClient telemetryClient)
+            TelemetryClient telemetryClient,
+            IApplicationEnvironment appEnv)
         {
             _healthService = healthService;
             _cacheService = cacheService;
             _storageService = storageService;
             _telemetryClient = telemetryClient;
+            _appEnv = appEnv;
         }
 
         [Route("/")]
@@ -42,12 +46,12 @@ namespace ifesenko.com.Controllers
         {
             if (string.IsNullOrEmpty(shortUrl))
             {
-                return RedirectToAction("Error","Error",new { statusCode = StatusCodes.Status404NotFound });
+                return RedirectToAction("Error","Error", new { statusCode = StatusCodes.Status404NotFound });
             }
             var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
             if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
             {
-                return RedirectToAction("Error", "Error", StatusCodes.Status404NotFound);
+                return RedirectToAction("Error", "Error", new { statusCode = StatusCodes.Status404NotFound });
             }
             Response.StatusCode = 302;
             return Redirect(longUrlMapTableEntity.Target);
@@ -105,7 +109,7 @@ namespace ifesenko.com.Controllers
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}.DNX";
+            var key = $"{nameof(HomeController)}.{memberName}.{_appEnv.ApplicationVersion}";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

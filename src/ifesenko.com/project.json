@@ -1,6 +1,6 @@
 {
     "webroot": "wwwroot",
-    "version": "5.0.1-preview",
+    "version": "5.0.0-beta",
     "compilationOptions": {
         "warningsAsErrors": true,
         "emitEntryPoint": true
