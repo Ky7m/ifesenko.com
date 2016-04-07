@@ -7,7 +7,7 @@ $icon-font-path: "../fonts/";
 /* ---------------------------------------------- */
 
 body {
-    font: 300 15px/1.6, serif, sans-serif;
+    font: 400 15px/1.6 'serif', sans-serif;
     color: #545454;
 }
 
@@ -45,7 +45,7 @@ textarea {
 /* ---------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
-    font: 400 46px/1.2, serif, sans-serif;
+    font: 600 46px/1.2 'serif', sans-serif;
     margin: 5px 0 5px;
     color: #222;
 }
@@ -393,7 +393,7 @@ h3 > .fa {
 }
 
 .navbar-custom .navbar-brand {
-    font: 700 18px/1.2, serif, sans-serif;
+    font: 700 18px/1.2 'serif', sans-serif;
     color: #FFF;
 }
 
