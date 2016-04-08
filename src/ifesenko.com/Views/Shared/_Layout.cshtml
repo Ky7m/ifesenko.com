@@ -1,6 +1,8 @@
 ﻿@using System.Threading.Tasks
 @using ifesenko.com.Infrastructure.Settings
 @using Microsoft.AspNet.Hosting
+@using Microsoft.ApplicationInsights.Extensibility
+@inject TelemetryConfiguration TelemetryConfiguration
 @inject IHostingEnvironment HostingEnvironment
 @inject Microsoft.Extensions.PlatformAbstractions.IApplicationEnvironment ApplicationEnvironment
 @inject Microsoft.Extensions.OptionsModel.IOptions<AppSettings> AppSettingsOptions
@@ -29,7 +31,9 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link asp-append-version="true" rel="stylesheet" href="@($"{AppSettingsOptions.Value.CdnUrl}/css/app.css")"/>
     </environment>
-    <partial name="_AnalyticsHead" />
+    <environment names="Production">
+        @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+    </environment>
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
     @RenderBody()
