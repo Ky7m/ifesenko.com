@@ -92,7 +92,7 @@ namespace ifesenko.com
             }
             else
             {
-                app.UseStatusCodePagesWithReExecute("/error/{0}");
+                app.UseStatusCodePagesWithReExecute("/error/{0}/");
 
                 app.Use(async (context, next) =>
                 {

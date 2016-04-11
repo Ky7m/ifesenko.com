@@ -42,12 +42,7 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                     updateSettingTableEntity.RowKey);
 
             var newValue = updateSettingTableEntity.Value;
-            /*
-                        Policy
-                          .Handle<StorageException>(ex => ex.RequestInformation.HttpStatusCode == (int)HttpStatusCode.PreconditionFailed)
-                          .Retry(3)
-                          .Execute(() =>
-                          {*/
+
             var retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
             var updateEntity = (SettingTableEntity)retrievedResult.Result;
@@ -59,7 +54,6 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
             updateEntity.Value = newValue;
             var updateOperation = TableOperation.Replace(updateEntity);
             await table.ExecuteAsync(updateOperation);
-            /*});*/
         }
 
         public async Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl)
@@ -116,6 +110,21 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
         {
             return new[]
             {
+                new EventModel
+                {
+                    Title = "Ciklum Lviv .Net Saturday",
+                    Link = "http://dou.ua/calendar/10488/",
+                    Description = "The Present and Future of C# or I Know What You Did on Your Last Project",
+                    //Collateral = new Dictionary<string, string>(3)
+                    //{
+                    //    ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
+                    //    ["https://doc.co/NwAbvv"] = CommonStrings.CollateralPowerpoint,
+                    //    ["https://ifesenko.blob.core.windows.net/assets/ExceptionHandlingAdvancedTipsAndTricks.zip"] =
+                    //        CommonStrings.CollateralDemoCode
+                    //},
+                    Location = "Lviv (Ukraine)",
+                    Date = new DateTime(2016, 4, 16)
+                },
                 new EventModel
                 {
                     Title = CommonStrings.DotNetCommunitySoftserve,
