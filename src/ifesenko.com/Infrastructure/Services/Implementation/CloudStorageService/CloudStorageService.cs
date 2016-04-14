@@ -118,8 +118,8 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                     Collateral = new Dictionary<string, string>(3)
                     {
                         ["https://doc.co/ZVofdm"] = CommonStrings.CollateralPowerpoint,
-                        //["https://ifesenko.blob.core.windows.net/assets/ExceptionHandlingAdvancedTipsAndTricks.zip"] =
-                        //    CommonStrings.CollateralDemoCode
+                        ["https://ifesenko.blob.core.windows.net/assets/CiklumLvivDotNetSaturday.zip"] =
+                            CommonStrings.CollateralDemoCode
                     },
                     Location = "Lviv (Ukraine)",
                     Date = new DateTime(2016, 4, 16)
