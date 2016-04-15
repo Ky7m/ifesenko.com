@@ -115,13 +115,12 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                     Title = "Ciklum Lviv .Net Saturday",
                     Link = "http://dou.ua/calendar/10488/",
                     Description = "The Present and Future of C# or I Know What You Did on Your Last Project",
-                    //Collateral = new Dictionary<string, string>(3)
-                    //{
-                    //    ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
-                    //    ["https://doc.co/NwAbvv"] = CommonStrings.CollateralPowerpoint,
-                    //    ["https://ifesenko.blob.core.windows.net/assets/ExceptionHandlingAdvancedTipsAndTricks.zip"] =
-                    //        CommonStrings.CollateralDemoCode
-                    //},
+                    Collateral = new Dictionary<string, string>(3)
+                    {
+                        ["https://doc.co/ZVofdm"] = CommonStrings.CollateralPowerpoint,
+                        ["https://ifesenko.blob.core.windows.net/assets/CiklumLvivDotNetSaturday.zip"] =
+                            CommonStrings.CollateralDemoCode
+                    },
                     Location = "Lviv (Ukraine)",
                     Date = new DateTime(2016, 4, 16)
                 },
