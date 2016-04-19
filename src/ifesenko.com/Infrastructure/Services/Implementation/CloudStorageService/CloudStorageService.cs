@@ -112,10 +112,22 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
             {
                 new EventModel
                 {
+                    Title = CommonStrings.DotNetCommunitySoftserve,
+                    Description = ".NET Framework 461 & C# 67",
+                    Collateral = new Dictionary<string, string>(2)
+                    {
+                        //["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
+                        ["https://doc.co/RLDSpp"] = CommonStrings.CollateralPowerpoint
+                    },
+                    Location = CommonStrings.LocationWebcast,
+                    Date = new DateTime(2016, 4, 20)
+                },
+                new EventModel
+                {
                     Title = "Ciklum Lviv .Net Saturday",
                     Link = "http://dou.ua/calendar/10488/",
                     Description = "The Present and Future of C# or I Know What You Did on Your Last Project",
-                    Collateral = new Dictionary<string, string>(3)
+                    Collateral = new Dictionary<string, string>(2)
                     {
                         ["https://doc.co/ZVofdm"] = CommonStrings.CollateralPowerpoint,
                         ["https://ifesenko.blob.core.windows.net/assets/CiklumLvivDotNetSaturday.zip"] =
