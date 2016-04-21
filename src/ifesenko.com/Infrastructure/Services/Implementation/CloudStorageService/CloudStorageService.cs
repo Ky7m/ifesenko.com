@@ -116,7 +116,7 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                     Description = ".NET Framework 461 & C# 67",
                     Collateral = new Dictionary<string, string>(2)
                     {
-                        //["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
+                        ["https://www.youtube.com/watch?v=auSzzmaUTWU"] = CommonStrings.CollateralVideoRus,
                         ["https://doc.co/RLDSpp"] = CommonStrings.CollateralPowerpoint
                     },
                     Location = CommonStrings.LocationWebcast,
