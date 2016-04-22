@@ -113,6 +113,7 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                 new EventModel
                 {
                     Title = "Modernize your business - a Modern Requirements and Microsoft Showcase",
+                    Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x148353d22c",
                     Description = "OPTIMIZE your business by streamlining application lifecycle management process",
                     //Collateral = new Dictionary<string, string>(2)
                     //{
