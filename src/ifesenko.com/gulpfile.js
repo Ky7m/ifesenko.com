@@ -96,7 +96,7 @@ var sources = {
       {
         name: 'jquery.js',
         copy: true,
-        paths: paths.bower + 'jquery/dist/jquery.min.js'
+        paths: paths.bower + 'jquery/dist/jquery.js'
       },
       {
         name: 'backstretch.js',
