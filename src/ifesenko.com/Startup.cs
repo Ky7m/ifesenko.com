@@ -5,6 +5,8 @@ using ifesenko.com.Infrastructure.Services.Implementation.HealthService;
 using ifesenko.com.Infrastructure.Services.Interfaces;
 using ifesenko.com.Infrastructure.Settings;
 using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
@@ -43,7 +45,29 @@ namespace ifesenko.com
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationInsightsTelemetry(_configuration);
+            // Disable the default adaptive sampling feature
+            var aiOptions = new Microsoft.ApplicationInsights.AspNet.Extensions.ApplicationInsightsServiceOptions();
+            aiOptions.EnableAdaptiveSampling = false;
+            services.AddApplicationInsightsTelemetry(_configuration, aiOptions);
+
+            // Initialize QuickPulseTelemetryModule
+            var module = new QuickPulseTelemetryModule();
+            module.Initialize(TelemetryConfiguration.Active);
+
+            // Use and Register QuickPulseTelemetryProcessor
+            QuickPulseTelemetryProcessor processor;
+            var telemetryBuilder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+            telemetryBuilder.Use(next => {
+                processor = new QuickPulseTelemetryProcessor(next);
+                module.RegisterTelemetryProcessor(processor);
+                return processor;
+            });
+
+            // Re-enable Adaptive sampling
+            telemetryBuilder.UseAdaptiveSampling();
+
+            // Build the processors
+            telemetryBuilder.Build();
 
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
 
