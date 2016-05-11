@@ -23,11 +23,11 @@
         "Newtonsoft.Json": "8.0.3",
         "NWebsec.Mvc": "5.0.0-*",
         "StackExchange.Redis": "1.1.572-*",
-        "WebMarkupMin.Core": "2.0.0-*",
+        "WebMarkupMin.Core": "2.0.0-rc7",
         "WebMarkupMin.AspNet5": "2.0.0-*",
         "Wire": "0.0.6",
         "WindowsAzure.Storage": "7.0.1-*",
-        "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1-update4"
+        "Microsoft.ApplicationInsights.AspNet": "1.0.0-rc1-*"
     },
   "commands": {
     "web": "Microsoft.AspNet.Server.Kestrel"
