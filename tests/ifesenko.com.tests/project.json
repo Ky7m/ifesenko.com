@@ -1,21 +1,22 @@
 {
-  "description": "ifesenko.com.tests",
-  "authors": [ "Igor Fesenko" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
-
     "dependencies": {
-        "ifesenko.com": "",
-        "xunit": "2.2.0-*",
-        "xunit.runner.dnx": "2.1.0-*"
+        "Microsoft.NETCore.App": {
+            "type": "platform",
+            "version": "1.0.0-rc2-3002702"
+        },
+        "ifesenko.com": {
+            "target": "project"
+        },
+        "xunit": "2.2.0-beta1-build3239",
+        "dotnet-test-xunit": "1.0.0-rc2-build10015"
     },
-
-  "commands": {
-    "test": "xunit.runner.dnx"
-  },
-
-  "frameworks": {
-    "dnx451": { }
-  }
+    "testRunner": "xunit",
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": [
+                "dotnet5.4",
+                "portable-net451+win8"
+            ]
+        }
+    }
 }

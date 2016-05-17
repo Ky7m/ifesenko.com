@@ -1,10 +1,6 @@
 ﻿@using System.Threading.Tasks
 @using ifesenko.com.Infrastructure.Settings
-@using Microsoft.AspNet.Hosting
-@using Microsoft.ApplicationInsights.Extensibility
-@inject TelemetryConfiguration TelemetryConfiguration
-@inject IHostingEnvironment HostingEnvironment
-@inject Microsoft.Extensions.PlatformAbstractions.IApplicationEnvironment ApplicationEnvironment
+@using Microsoft.AspNetCore.Hosting
 @inject Microsoft.Extensions.OptionsModel.IOptions<AppSettings> AppSettingsOptions
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <p class="copy text-center">
-                    @ApplicationEnvironment.ApplicationVersion
+                   @*@ApplicationEnvironment.ApplicationVersion*@
                 </p>
             </div>
         </div>
@@ -60,5 +56,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<!-- Environment: @HostingEnvironment.EnvironmentName -->
-<!-- Framework: @ApplicationEnvironment.RuntimeFramework -->

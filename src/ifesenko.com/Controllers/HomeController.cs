@@ -6,9 +6,8 @@ using ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model;
 using ifesenko.com.Infrastructure.Services.Interfaces;
 using ifesenko.com.Models;
 using Microsoft.ApplicationInsights;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ifesenko.com.Controllers
 {
@@ -18,19 +17,16 @@ namespace ifesenko.com.Controllers
         private readonly ICacheService _cacheService;
         private readonly IStorageService _storageService;
         private readonly TelemetryClient _telemetryClient;
-        private readonly IApplicationEnvironment _appEnv;
 
         public HomeController(IHealthService healthService,
             ICacheService cacheService,
             IStorageService storageService,
-            TelemetryClient telemetryClient,
-            IApplicationEnvironment appEnv)
+            TelemetryClient telemetryClient)
         {
             _healthService = healthService;
             _cacheService = cacheService;
             _storageService = storageService;
             _telemetryClient = telemetryClient;
-            _appEnv = appEnv;
         }
 
         [Route("/")]
@@ -109,7 +105,7 @@ namespace ifesenko.com.Controllers
         private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}.{_appEnv.ApplicationVersion}";
+            var key = $"{nameof(HomeController)}.{memberName}._appEnv.ApplicationVersion";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

@@ -8,11 +8,11 @@
         "InstrumentationKey": "1f26649d-7b51-452a-af4a-514e08ffa75d"
     },
     "Logging": {
-        "IncludeScopes": true,
-        "LogLevel": {
-            "Default": "Verbose",
-            "System": "Information",
-            "Microsoft": "Information"
-        }
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
     }
+  }
 }
