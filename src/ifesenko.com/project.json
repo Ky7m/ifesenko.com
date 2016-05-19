@@ -25,8 +25,7 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
 
-        "Microsoft.IO.RecyclableMemoryStream": "1.1.0",
-        "Newtonsoft.Json": "8.0.3",
+        "Newtonsoft.Json": "8.0.4-beta1",
         "NWebsec.Mvc": "5.0.0-gamma-39",
         "StackExchange.Redis": "1.1.603",
         "Wire": "0.0.6",
