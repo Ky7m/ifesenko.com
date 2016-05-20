@@ -1,5 +1,4 @@
 {
-    "webroot": "wwwroot",
     "version": "5.0.5",
 
     "dependencies": {
@@ -28,7 +27,6 @@
         "Newtonsoft.Json": "8.0.4-beta1",
         "NWebsec.Mvc": "5.0.0-gamma-39",
         "StackExchange.Redis": "1.1.603",
-        "Salar.Bois": "2.2.1",
         "WindowsAzure.Storage": "7.0.1-preview",
         "WebMarkupMin.AspNet5": "2.0.0-rc5",
         "WebMarkupMin.Core": "2.0.0-rc8"
@@ -69,7 +67,7 @@
         "include": [
             "wwwroot",
             "Views",
-            "config.json",
+            "appsettings.json",
             "web.config"
         ]
     },
