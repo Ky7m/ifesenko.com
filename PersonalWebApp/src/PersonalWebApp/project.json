@@ -25,7 +25,7 @@
         "Newtonsoft.Json": "8.0.4-beta1",
         "NWebsec.Mvc": "5.0.0-gamma-39",
         "WindowsAzure.Storage": "7.0.1-preview",
-        "StackExchange.Redis": "1.1.603",
+        //"StackExchange.Redis": "1.1.603",
         "WebMarkupMin.AspNetCore1": "2.0.0-rc8"
     },
 

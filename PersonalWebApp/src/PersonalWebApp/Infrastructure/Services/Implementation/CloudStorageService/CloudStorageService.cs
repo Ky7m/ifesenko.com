@@ -65,7 +65,7 @@ namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageServic
                 new TableQuery<ShortToLongUrlMapTableEntity>().Where(TableQuery.GenerateFilterCondition("RowKey",
                     QueryComparisons.Equal, shortUrl));
 
-            var shortToLongUrlMapTableEntity = table.ExecuteQuery(query).ToArray().FirstOrDefault();
+            var shortToLongUrlMapTableEntity = (await ExecuteQueryAsync("ShortToLongUrlsMap", query)).FirstOrDefault();
             if (shortToLongUrlMapTableEntity == null)
             {
                 return null;
