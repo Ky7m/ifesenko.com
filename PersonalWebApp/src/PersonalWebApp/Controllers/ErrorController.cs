@@ -1,7 +1,7 @@
-﻿using ifesenko.com.Infrastructure.Extensions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PersonalWebApp.Infrastructure.Extensions;
 
-namespace ifesenko.com.Controllers
+namespace PersonalWebApp.Controllers
 {
     [Route("[controller]")]
     public sealed class ErrorController : Controller

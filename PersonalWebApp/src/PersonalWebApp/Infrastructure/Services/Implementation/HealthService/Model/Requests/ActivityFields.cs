@@ -1,4 +1,4 @@
-﻿namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model.Requests
+﻿namespace PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model.Requests
 {
     public enum ActivityFields
     {

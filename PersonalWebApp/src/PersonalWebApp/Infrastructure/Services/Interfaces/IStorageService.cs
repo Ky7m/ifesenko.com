@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using ifesenko.com.Infrastructure.Services.Implementation.CloudStorageService.Model;
-using ifesenko.com.Models;
+using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService.Model;
+using PersonalWebApp.Models;
 
-namespace ifesenko.com.Infrastructure.Services.Interfaces
+namespace PersonalWebApp.Infrastructure.Services.Interfaces
 {
     public interface IStorageService
     {

@@ -1,4 +1,4 @@
-﻿namespace ifesenko.com.Models
+﻿namespace PersonalWebApp.Models
 {
     public sealed class StatsModel
     {

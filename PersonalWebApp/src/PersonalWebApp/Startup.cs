@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ifesenko.com.Infrastructure.Services.Implementation;
-using ifesenko.com.Infrastructure.Services.Implementation.CloudStorageService;
-using ifesenko.com.Infrastructure.Services.Implementation.HealthService;
-using ifesenko.com.Infrastructure.Services.Interfaces;
-using ifesenko.com.Infrastructure.Settings;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -15,6 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using PersonalWebApp.Infrastructure.Services.Implementation;
+using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
+using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
+using PersonalWebApp.Infrastructure.Services.Interfaces;
+using PersonalWebApp.Infrastructure.Settings;
+using WebMarkupMin.AspNetCore1;
 
 namespace PersonalWebApp
 {
@@ -39,28 +37,22 @@ namespace PersonalWebApp
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            //services.Configure<AppSettings>(Configuration.GetSection(nameof(AppSettings)));
+            services.Configure<AppSettings>(options => Configuration.GetSection(nameof(AppSettings)).Bind(options));
 
-            //services.ConfigureRouting(
-            //  routeOptions =>
-            //  {
-            //      routeOptions.AppendTrailingSlash = true;
-            //      routeOptions.LowercaseUrls = true;
-            //  });
-            //https://github.com/Taritsyn/WebMarkupMin/wiki/WebMarkupMin:-ASP.NET-5
-            //services.AddWebMarkupMin().AddHtmlMinification();
+            services.AddRouting(routeOptions =>
+              {
+                  routeOptions.AppendTrailingSlash = true;
+                  routeOptions.LowercaseUrls = true;
+              });
+            services.AddWebMarkupMin().AddHtmlMinification();
 
             services.AddMvc(options =>
             {
-                if (env.IsDevelopment())
-                {
-                    return;
-                }
                 options.CacheProfiles.Add("HomePage", new CacheProfile
                 {
                     Location = ResponseCacheLocation.Any,

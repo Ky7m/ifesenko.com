@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ifesenko.com.Infrastructure.Extensions;
+using PersonalWebApp.Infrastructure.Extensions;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model.Requests
+namespace PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model.Requests
 {
     public struct ActivitiesRequest
     {

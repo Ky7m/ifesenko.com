@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model
+namespace PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model
 {
     public struct Profile
     {

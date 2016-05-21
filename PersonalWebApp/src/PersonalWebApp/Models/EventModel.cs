@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ifesenko.com.Models
+namespace PersonalWebApp.Models
 {
     public sealed class EventModel
     {

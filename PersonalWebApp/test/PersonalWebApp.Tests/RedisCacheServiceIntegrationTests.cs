@@ -1,15 +1,15 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Threading.Tasks;
-//using ifesenko.com.Infrastructure.Services.Implementation;
-//using ifesenko.com.Infrastructure.Services.Implementation.CloudStorageService;
-//using ifesenko.com.Infrastructure.Services.Implementation.HealthService;
-//using ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model;
-//using ifesenko.com.Infrastructure.Settings;
 //using Microsoft.Extensions.OptionsModel;
+//using PersonalWebApp.Infrastructure.Services.Implementation;
+//using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
+//using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
+//using PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model;
+//using PersonalWebApp.Infrastructure.Settings;
 //using Xunit;
 
-//namespace ifesenko.com.tests
+//namespace PersonalWebApp.Tests
 //{
 //    public sealed class RedisCacheServiceIntegrationTests
 //    {

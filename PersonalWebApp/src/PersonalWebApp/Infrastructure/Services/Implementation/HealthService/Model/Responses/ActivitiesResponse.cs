@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model.Responses
+namespace PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model.Responses
 {
     public sealed class ActivitiesResponse
     {

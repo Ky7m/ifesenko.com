@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ifesenko.com.Infrastructure.Extensions
+namespace PersonalWebApp.Infrastructure.Extensions
 {
     public static class DateTimeExtensions
     {

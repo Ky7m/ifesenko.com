@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation.HealthService
+namespace PersonalWebApp.Infrastructure.Services.Implementation.HealthService
 {
     public struct LiveIdCredentials
     {

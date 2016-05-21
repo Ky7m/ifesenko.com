@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Http;
 
-namespace ifesenko.com.Infrastructure.Extensions
+namespace PersonalWebApp.Infrastructure.Extensions
 {
     public static class HttpRequestExtensions
     {

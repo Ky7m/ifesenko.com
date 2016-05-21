@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace ifesenko.com.Infrastructure.Services.Interfaces
+namespace PersonalWebApp.Infrastructure.Services.Interfaces
 {
     public interface ICacheService
     {

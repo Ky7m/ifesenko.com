@@ -1,6 +1,6 @@
 ﻿using Microsoft.WindowsAzure.Storage.Table;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation.CloudStorageService.Model
+namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService.Model
 {
     public sealed class SettingTableEntity : TableEntity
     {

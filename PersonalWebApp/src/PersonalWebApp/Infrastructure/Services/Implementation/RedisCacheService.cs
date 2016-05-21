@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ifesenko.com.Infrastructure.Services.Interfaces;
-using ifesenko.com.Infrastructure.Settings;
-using Microsoft.Extensions.OptionsModel;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using PersonalWebApp.Infrastructure.Services.Interfaces;
+using PersonalWebApp.Infrastructure.Settings;
+
 //using StackExchange.Redis;
 
-namespace ifesenko.com.Infrastructure.Services.Implementation
+namespace PersonalWebApp.Infrastructure.Services.Implementation
 {
     public sealed class RedisCacheService : ICacheService
     {

@@ -1,4 +1,4 @@
-﻿namespace ifesenko.com.Infrastructure.Settings
+﻿namespace PersonalWebApp.Infrastructure.Settings
 {
     public class AppSettings
     {

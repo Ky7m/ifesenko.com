@@ -2,14 +2,14 @@
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Xml;
-using ifesenko.com.Infrastructure.Services.Implementation.HealthService.Model;
-using ifesenko.com.Infrastructure.Services.Interfaces;
-using ifesenko.com.Models;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model;
+using PersonalWebApp.Infrastructure.Services.Interfaces;
+using PersonalWebApp.Models;
 
-namespace ifesenko.com.Controllers
+namespace PersonalWebApp.Controllers
 {
     public class HomeController : Controller
     {
