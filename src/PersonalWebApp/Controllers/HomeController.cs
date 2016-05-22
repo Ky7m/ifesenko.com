@@ -102,10 +102,13 @@ namespace PersonalWebApp.Controllers
             return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(4.0));
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service, Func<TService, Task<TReturn>> getFromServiceFunc, TimeSpan? expiryTime = null, [CallerMemberName] string memberName = "")
+        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service,
+            Func<TService, Task<TReturn>> getFromServiceFunc,
+            TimeSpan? expiryTime = null,
+            [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}._appEnv.ApplicationVersion";
+            var key = $"{nameof(HomeController)}.{memberName}.{Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion}";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

@@ -12,7 +12,6 @@ using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
 using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
 using PersonalWebApp.Infrastructure.Services.Interfaces;
 using PersonalWebApp.Infrastructure.Settings;
-using WebMarkupMin.AspNetCore1;
 
 namespace PersonalWebApp
 {
@@ -49,7 +48,7 @@ namespace PersonalWebApp
                   routeOptions.AppendTrailingSlash = true;
                   routeOptions.LowercaseUrls = true;
               });
-            services.AddWebMarkupMin().AddHtmlMinification();
+            //services.AddWebMarkupMin().AddHtmlMinification();
 
             services.AddMvc(options =>
             {

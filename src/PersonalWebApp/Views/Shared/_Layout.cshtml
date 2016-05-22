@@ -1,5 +1,4 @@
-﻿@using System.Threading.Tasks
-@using Microsoft.AspNetCore.Hosting
+﻿@using Microsoft.AspNetCore.Hosting
 @using PersonalWebApp.Infrastructure.Settings
 @inject Microsoft.Extensions.Options.IOptions<AppSettings> AppSettingsOptions
 <!DOCTYPE html>
@@ -36,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <p class="copy text-center">
-                    @*@ApplicationEnvironment.ApplicationVersion*@
+                    @Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion
                 </p>
             </div>
         </div>

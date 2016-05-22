@@ -4,19 +4,18 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PersonalWebApp.Infrastructure.Services.Interfaces;
 using PersonalWebApp.Infrastructure.Settings;
-
-//using StackExchange.Redis;
+using StackExchange.Redis;
 
 namespace PersonalWebApp.Infrastructure.Services.Implementation
 {
     public sealed class RedisCacheService : ICacheService
     {
         private readonly AppSettings _appSettings;
-       // private readonly Lazy<ConnectionMultiplexer> _cacheDatabase;
+        private readonly Lazy<ConnectionMultiplexer> _cacheDatabase;
         public RedisCacheService(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
-           // _cacheDatabase = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(_appSettings.RedisCacheConnectionString));
+            _cacheDatabase = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(_appSettings.RedisCacheConnectionString));
         }
 
         private readonly JsonSerializer _serializer = new JsonSerializer { Formatting = Formatting.None };
@@ -28,25 +27,22 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation
             {
                 serializedValue = JsonConvert.SerializeObject(value);
             }
-            return await Task.FromResult(true);
-            //return await _cacheDatabase.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry);
+            return await _cacheDatabase.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry);
         }
 
         public async Task<T> GetAsync<T>(string key)
         {
-            return await Task.FromResult(default(T));
-            //var database = _cacheDatabase.Value.GetDatabase();
-            //var serializedValue = await database.StringGetAsync(key);
-            //if (string.IsNullOrEmpty(serializedValue))
-            //{
-            //    return default(T);
-            //}
-            //return JsonConvert.DeserializeObject<T>(serializedValue);
+            var database = _cacheDatabase.Value.GetDatabase();
+            var serializedValue = await database.StringGetAsync(key);
+            if (string.IsNullOrEmpty(serializedValue))
+            {
+                return default(T);
+            }
+            return JsonConvert.DeserializeObject<T>(serializedValue);
         }
         public async Task<bool> DeleteAsync(string key)
         {
-            return await Task.FromResult(true);
-            //return await _cacheDatabase.Value.GetDatabase().KeyDeleteAsync(key);
+            return await _cacheDatabase.Value.GetDatabase().KeyDeleteAsync(key);
         }
     }
 }
