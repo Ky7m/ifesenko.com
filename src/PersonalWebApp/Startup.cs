@@ -17,6 +17,8 @@ namespace PersonalWebApp
 {
     public class Startup
     {
+        private readonly IConfigurationRoot _configuration;
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -30,18 +32,17 @@ namespace PersonalWebApp
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
-            Configuration = builder.Build();
+            _configuration = builder.Build();
         }
-
-        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddApplicationInsightsTelemetry(Configuration);
+            services.AddApplicationInsightsTelemetry(_configuration);
 
-            services.Configure<AppSettings>(options => Configuration.GetSection(nameof(AppSettings)).Bind(options));
+            services.AddOptions();
+            services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
 
             services.AddRouting(routeOptions =>
               {
@@ -64,6 +65,7 @@ namespace PersonalWebApp
                 });
             });
 
+            services.AddSingleton<IConfiguration>(_configuration);
             services.AddSingleton<IHealthService, HealthService>();
             services.AddSingleton<ICacheService, RedisCacheService>();
             services.AddSingleton<ISettingsService, SettingsService>();
@@ -77,7 +79,7 @@ namespace PersonalWebApp
 
             if (env.IsDevelopment())
             {
-                loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+                loggerFactory.AddConsole(_configuration.GetSection("Logging"));
                 loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
