@@ -60,7 +60,10 @@
   },
 
   "runtimeOptions": {
-    "gcServer": true
+    "configProperties": {
+      "System.GC.Concurrent": true,
+      "System.GC.Server": true
+    }
   },
 
   "publishOptions": {
