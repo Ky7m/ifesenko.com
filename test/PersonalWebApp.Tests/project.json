@@ -1,4 +1,4 @@
-﻿{
+{
     "version": "1.0.0-*",
     "dependencies": {
         "Microsoft.NETCore.App": {
@@ -6,7 +6,7 @@
             "version": "1.0.0-rc2-3002702"
         },
         "xunit": "2.2.0-beta1-build3239",
-        "dotnet-test-xunit": "1.0.0-rc2-build10015",
+        "dotnet-test-xunit": "1.0.0-rc2-build10025",
         "PersonalWebApp": {
             "target": "project"
         }
