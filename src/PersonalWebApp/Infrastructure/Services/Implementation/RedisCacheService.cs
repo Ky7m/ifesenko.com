@@ -18,14 +18,12 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation
             _cacheDatabase = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(_appSettings.RedisCacheConnectionString));
         }
 
-        private readonly JsonSerializer _serializer = new JsonSerializer { Formatting = Formatting.None };
-
         public async Task<bool> StoreAsync<T>(string key, T value, TimeSpan? expiry = null) where T: class
         {
             string serializedValue = null;
             if (value != null)
             {
-                serializedValue = JsonConvert.SerializeObject(value);
+                serializedValue = JsonConvert.SerializeObject(value, Formatting.None);
             }
             return await _cacheDatabase.Value.GetDatabase().StringSetAsync(key, serializedValue, expiry);
         }
