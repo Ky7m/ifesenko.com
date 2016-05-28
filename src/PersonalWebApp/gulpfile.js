@@ -26,7 +26,7 @@ var environment = {
     staging: 'Staging',
     production: 'Production',
     current: function () {
-        return process.env.ASPNETCORE_ENVIRONMENT || process.env.ASPNET_ENVIRONMENT || process.env.ASPNET_ENV || this.development;
+        return process.env.ASPNETCORE_ENVIRONMENT || this.development;
     },
     isDevelopment: function () {
         return this.current() === this.development;
@@ -39,16 +39,15 @@ var environment = {
     }
 };
 
-var webroot = 'wwwroot';
+var webroot = "./wwwroot/";
 var paths = {
     bower: './bower_components/',
     scripts: 'Scripts/',
     styles: 'Styles/',
-    wwwroot: './' + webroot + '/',
-    css: './' + webroot + '/css/',
-    fonts: './' + webroot + '/fonts/',
-    img: './' + webroot + '/img/',
-    js: './' + webroot + '/js/'
+    css: webroot + 'css/',
+    fonts: webroot + 'fonts/',
+    img: webroot + 'img/',
+    js: webroot + 'js/'
 };
 
 var sources = {
