@@ -46,7 +46,7 @@ var paths = {
     styles: 'Styles/',
     css: webroot + 'css/',
     fonts: webroot + 'fonts/',
-    img: webroot + 'img/',
+    img: webroot + 'images/',
     js: webroot + 'js/'
 };
 
@@ -275,6 +275,6 @@ gulp.task('watch-code', function () {
         });
 });
 
-gulp.task('build', ['styles', 'fonts', 'code', 'images']);
+gulp.task('build', ['styles', 'fonts', 'code']);
 
 gulp.task('default', ['build']);
