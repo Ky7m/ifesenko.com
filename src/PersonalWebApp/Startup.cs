@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NWebsec.AspNetCore.Mvc.HttpHeaders.Csp;
+using PersonalWebApp.Infrastructure.Middleware;
 using PersonalWebApp.Infrastructure.Services.Implementation;
 using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
 using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
@@ -131,6 +132,11 @@ namespace PersonalWebApp
             app.UseStaticFiles();
 
             app.UseWebMarkupMin();
+
+            app.UseHeadersMiddleware(new HeadersBuilder()
+                .RemoveHeader("X-HTML-Minification-Powered-By")
+                .RemoveHeader("X-Powered-By")
+                .RemoveHeader("Server"));
 
             app.UseMvc(routes =>
             {
