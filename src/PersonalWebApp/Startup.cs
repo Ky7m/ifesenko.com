@@ -56,25 +56,35 @@ namespace PersonalWebApp
                   routeOptions.LowercaseUrls = true;
               });
 
-            services.AddWebMarkupMin().AddHtmlMinification();
+            // Add WebMarkupMin services to the services container.
+            services.AddWebMarkupMin(options =>
+                {
+                    options.AllowMinificationInDevelopmentEnvironment = false;
+                    options.AllowCompressionInDevelopmentEnvironment = false;
+                })
+                .AddHtmlMinification(options =>
+                {
+                    var settings = options.MinificationSettings;
+                    settings.RemoveRedundantAttributes = true;
+                    settings.RemoveHttpProtocolFromAttributes = true;
+                    settings.RemoveHttpsProtocolFromAttributes = true;
+                })
+                .AddHttpCompression();
 
             services.AddMvc(options =>
             {
-                if (!_hostingEnvironment.IsDevelopment())
+                options.CacheProfiles.Add("HomePage", new CacheProfile
                 {
-                    options.CacheProfiles.Add("HomePage", new CacheProfile
-                    {
-                        Location = ResponseCacheLocation.Any,
-                        Duration = 3600
-                    });
-                    options.CacheProfiles.Add("ErrorPage", new CacheProfile
-                    {
-                        Location = ResponseCacheLocation.Any,
-                        Duration = 86400
-                    });
-                }
+                    Location = ResponseCacheLocation.Any,
+                    Duration = 3600
+                });
+                options.CacheProfiles.Add("ErrorPage", new CacheProfile
+                {
+                    Location = ResponseCacheLocation.Any,
+                    Duration = 86400
+                });
 
-                ConfigureContentSecurityPolicyFilters(_hostingEnvironment, options.Filters);
+                ConfigureContentSecurityPolicyFilters(options.Filters);
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
@@ -120,6 +130,8 @@ namespace PersonalWebApp
 
             app.UseStaticFiles();
 
+            app.UseWebMarkupMin();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -128,88 +140,43 @@ namespace PersonalWebApp
             });
         }
 
-        private static void ConfigureContentSecurityPolicyFilters(IHostingEnvironment environment, ICollection<IFilterMetadata> filters)
+        private void ConfigureContentSecurityPolicyFilters(ICollection<IFilterMetadata> filters)
         {
+            var cdnUrl = _configuration.GetValue<string>("AppSettings:CdnUrl");
             filters.Add(new CspAttribute());
-            filters.Add(new CspDefaultSrcAttribute
-            {
-                Self = true
-            });
-
-            filters.Add(new CspBaseUriAttribute
-            {
-                Self = true
-            });
-
-            filters.Add(new CspChildSrcAttribute
-            {
-                Self = true
-            });
-            filters.Add(new CspConnectSrcAttribute
-            {
-                CustomSources = string.Join(
-                        " ",
-                        "dc.services.visualstudio.com"),
-                Self = true
-            });
-            filters.Add(new CspFontSrcAttribute
-            {
-                CustomSources = string.Join(
-                        " ",
-                        "cdnjs.cloudflare.com"),
-                Self = true
-            });
-            filters.Add(new CspFormActionAttribute
-            {
-                Self = true
-            });
-            filters.Add(
-                new CspFrameSrcAttribute
-                {
-                    Self = false
-                });
-            filters.Add(
-                new CspFrameAncestorsAttribute
-                {
-                    Self = false
-                });
-            filters.Add(new CspImgSrcAttribute
-            {
-                CustomSources = string.Join(
-                        " ",
-                        "ifesenko.azureedge.net"),
-                Self = true,
-            });
+            filters.Add(new CspDefaultSrcAttribute {Self = true});
+            filters.Add(new CspBaseUriAttribute {Self = true});
+            filters.Add(new CspChildSrcAttribute {Self = true});
+            filters.Add(new CspConnectSrcAttribute {CustomSources = "dc.services.visualstudio.com", Self = true});
+            filters.Add(new CspFontSrcAttribute { CustomSources = "cdnjs.cloudflare.com", Self = true});
+            filters.Add(new CspFormActionAttribute {Self = true});
+            filters.Add(new CspFrameSrcAttribute{Self = false});
+            filters.Add(new CspFrameAncestorsAttribute{Self = false});
+            filters.Add(new CspImgSrcAttribute {CustomSources = cdnUrl, Self = true});
             filters.Add(new CspScriptSrcAttribute
             {
                 CustomSources = string.Join(
                     " ",
                     "az416426.vo.msecnd.net",
                     "cdnjs.cloudflare.com",
-                    "ifesenko.azureedge.net"),
+                    cdnUrl),
                 Self = true,
                 UnsafeEval = true,
                 UnsafeInline = true
             });
-            filters.Add(new CspMediaSrcAttribute
-            {
-                Self = false
-            });
-            filters.Add(new CspObjectSrcAttribute
-            {
-                Self = false
-            });
+            filters.Add(new CspMediaSrcAttribute {Self = false});
+            filters.Add(new CspObjectSrcAttribute {Self = false});
             filters.Add(new CspStyleSrcAttribute
             {
                 CustomSources = string.Join(
                     " ",
                     "cdnjs.cloudflare.com",
-                    "ifesenko.azureedge.net"),
+                    cdnUrl),
                 Self = true,
                 UnsafeInline = true
             });
 
-            if (environment.IsDevelopment())
+            if (_hostingEnvironment.IsDevelopment())
             {
                 filters.Add(new CspConnectSrcAttribute
                 {
