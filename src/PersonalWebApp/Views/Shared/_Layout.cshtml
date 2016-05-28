@@ -10,11 +10,11 @@
     <meta name="keywords" content="Web Applications,Sites,Web Services,SOA,Security,Identity,Data Access,Integration,Databases,Desktop Applications,Cloud Computing,Mobile Client Applications,Big Data">
     <meta name="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>@ViewData["Title"]</title>
-    <link rel="dns-prefetch" href="@AppSettingsOptions.Value.CdnUrl">
+    <link rel="dns-prefetch" href="//@AppSettingsOptions.Value.CdnUrl">
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="shortcut icon" href="@($"{AppSettingsOptions.Value.CdnUrl}/favicon.ico")" type="image/x-icon">
-    <link rel="icon" href="@($"{AppSettingsOptions.Value.CdnUrl}/favicon.ico")" type="image/x-icon">
-    <link rel="apple-touch-icon" href="@($"{AppSettingsOptions.Value.CdnUrl}/apple-touch-icon.png")">
+    <link rel="shortcut icon" href="@($"//{AppSettingsOptions.Value.CdnUrl}/favicon.ico")" type="image/x-icon">
+    <link rel="icon" href="@($"//{AppSettingsOptions.Value.CdnUrl}/favicon.ico")" type="image/x-icon">
+    <link rel="apple-touch-icon" href="@($"//{AppSettingsOptions.Value.CdnUrl}/apple-touch-icon.png")">
     <environment names="@nameof(EnvironmentName.Development)">
         <link asp-append-version="true" rel="stylesheet" href="~/css/font-awesome.css" />
         <link asp-append-version="true" rel="stylesheet" href="~/css/bootstrap.css" />
@@ -23,7 +23,7 @@
     <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
-        <link asp-append-version="true" rel="stylesheet" href="@($"{AppSettingsOptions.Value.CdnUrl}/css/app.css")" />
+        <link asp-append-version="true" rel="stylesheet" href="@($"//{AppSettingsOptions.Value.CdnUrl}/css/app.css")" />
     </environment>
     <environment names="@nameof(EnvironmentName.Production)">
         @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
@@ -50,7 +50,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.13/jquery.backstretch.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script asp-append-version="true" src="@($"{AppSettingsOptions.Value.CdnUrl}/js/app.js")"></script>
+        <script asp-append-version="true" src="@($"//{AppSettingsOptions.Value.CdnUrl}/js/app.js")"></script>
     </environment>
     @RenderSection("scripts", required: false)
 </body>
