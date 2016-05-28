@@ -62,6 +62,7 @@ namespace PersonalWebApp
                 {
                     options.AllowMinificationInDevelopmentEnvironment = false;
                     options.AllowCompressionInDevelopmentEnvironment = false;
+                    options.DisablePoweredByHttpHeaders = true;
                 })
                 .AddHtmlMinification(options =>
                 {
@@ -134,7 +135,6 @@ namespace PersonalWebApp
             app.UseWebMarkupMin();
 
             app.UseHeadersMiddleware(new HeadersBuilder()
-                .RemoveHeader("X-HTML-Minification-Powered-By")
                 .RemoveHeader("X-Powered-By")
                 .RemoveHeader("Server"));
 
