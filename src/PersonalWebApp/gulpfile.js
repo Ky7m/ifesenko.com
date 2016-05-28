@@ -275,6 +275,6 @@ gulp.task('watch-code', function () {
         });
 });
 
-gulp.task('build', ['styles', 'fonts', 'code']);
+gulp.task('build', ['styles', 'fonts', 'code', 'images']);
 
 gulp.task('default', ['build']);
