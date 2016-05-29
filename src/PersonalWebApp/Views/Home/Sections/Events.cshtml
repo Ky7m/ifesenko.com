@@ -21,6 +21,12 @@
                 var titleLayout = string.IsNullOrEmpty(eventModel.Value.Link) ?
                      eventModel.Value.Title :
                      $"<a href=\"{eventModel.Value.Link}\">{eventModel.Value.Title}</a>";
+
+                var isUpcoming = DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
+                if (isUpcoming)
+                {
+                    titleLayout += "&emsp;<span class=\"label label-info\">Upcoming</span>";
+                }
                 <div class="@className">
                     <h4>@Html.Raw(titleLayout)</h4>
                     @foreach (var item in eventModel.Value.Items)
