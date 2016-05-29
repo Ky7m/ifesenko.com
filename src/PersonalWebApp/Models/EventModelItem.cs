@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using PersonalWebApp.Infrastructure.Extensions;
 
 namespace PersonalWebApp.Models
 {
@@ -11,7 +12,7 @@ namespace PersonalWebApp.Models
             Description = description;
         }
 
-        public EventModelItem(string description, Dictionary<string, string> collateral) : this(description, collateral.ToImmutableDictionary())
+        public EventModelItem(string description, ImmutableDictionaryBuilder<string, string> collateral) : this(description, collateral.ToImmutable())
         {
         }
 

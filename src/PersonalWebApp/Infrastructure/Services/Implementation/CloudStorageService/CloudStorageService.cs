@@ -141,7 +141,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem(".NET Framework 461 & C# 67",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=auSzzmaUTWU"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/RLDSpp"] = CommonStrings.CollateralPowerpoint
@@ -157,7 +157,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("The Present and Future of C# or I Know What You Did on Your Last Project",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/ZVofdm"] = CommonStrings.CollateralPowerpoint,
                             ["https://ifesenko.blob.core.windows.net/assets/CiklumLvivDotNetSaturday.zip"] =
@@ -173,7 +173,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Exception Handling - Advanced Tips & Tricks",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/NwAbvv"] = CommonStrings.CollateralPowerpoint,
@@ -191,7 +191,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Web Development in Future",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=Om_NPxSuEf8"] = CommonStrings.CollateralVideoRus,
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
@@ -208,7 +208,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Effective Memory Management - Memory Hygiene",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint,
@@ -226,7 +226,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("How C# 6.0 Simplifies Your Code",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=gUfrK1rGWB0"] = CommonStrings.CollateralVideoRus
                         })
@@ -254,7 +254,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Effective Memory Management: Memory Hygien",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
                         })
@@ -269,7 +269,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("C# GTD : Get Things Done in Bloody Enterprise",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=hOjNpHeMvvw"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/2EFqPy"] = CommonStrings.CollateralPowerpoint
@@ -284,7 +284,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("C# : Hack yourself",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=WHwy0vDd8Tg"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/13tWp4"] = CommonStrings.CollateralPowerpoint
@@ -301,7 +301,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Web Development in Future",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
                         })
@@ -317,7 +317,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
                         })
@@ -332,7 +332,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Web Development in Future",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
                         })
@@ -346,7 +346,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Findings from .NET Microsoft Open Source Projects",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=m9MFhqq0g3k"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/PU9YJa"] = CommonStrings.CollateralPowerpoint
@@ -361,7 +361,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=jpOgZBGL66g"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
@@ -376,7 +376,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Web Development in Future",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/k8w18R"] = CommonStrings.CollateralSway
                         })
@@ -390,7 +390,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Typescript",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=UqustygnUgk"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/k8w18R"] = CommonStrings.CollateralPowerpoint
@@ -405,7 +405,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Git workflows for enterprise teams",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=RlJOX5bbh1U"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/6XH7Kv"] = CommonStrings.CollateralPowerpoint
@@ -420,7 +420,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Making .Net Applications Faster",
-                        new Dictionary<string, string>
+                        new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=Rgvr1hynOmE"] = CommonStrings.CollateralVideoRus,
                             ["https://doc.co/8VaeeJ"] = CommonStrings.CollateralPowerpoint,
