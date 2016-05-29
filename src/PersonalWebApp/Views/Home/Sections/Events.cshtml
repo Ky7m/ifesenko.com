@@ -1,5 +1,4 @@
-﻿@using PersonalWebApp.Models
-@model PersonalWebApp.Models.EventModel[]
+﻿@model PersonalWebApp.Models.EventModel[]
 <div class="container">
     <div class="row">
         <div class="col-md-12 headline">
@@ -24,13 +23,16 @@
                      $"<a href=\"{eventModel.Value.Link}\">{eventModel.Value.Title}</a>";
                 <div class="@className">
                     <h4>@Html.Raw(titleLayout)</h4>
-                    <p>@eventModel.Value.Description</p>
-                    <ul class="collateral">
-                        @foreach (var collateralItem in eventModel.Value.Collateral)
-                        {
-                            <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
-                        }
-                    </ul>
+                    @foreach (var item in eventModel.Value.Items)
+                    {
+                        <p>@item.Description</p>
+                        <ul class="collateral">
+                            @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
+                            {
+                                <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
+                            }
+                        </ul>
+                    }
                     <hr class="hidden-xs">
                 </div>
                 <div class="col-md-3 col-sm-4 event-place">

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Immutable;
 
 namespace PersonalWebApp.Models
 {
@@ -7,12 +7,11 @@ namespace PersonalWebApp.Models
     {
         public EventModel()
         {
-            Collateral = new Dictionary<string, string>(0);
+            Items = ImmutableArray<EventModelItem>.Empty;
         }
         public string Title { get; set; }
         public string Link { get; set; }
-        public string Description { get; set; }
-        public Dictionary<string,string> Collateral { get; set; }
+        public ImmutableArray<EventModelItem> Items { get; set; }
         public string Location { get; set; }
         public DateTime Date { get; set; }
     }
