@@ -1,3 +1,0 @@
-﻿User-agent: *
-Disallow:
-Sitemap: http://ifesenko.com/sitemap.xml
