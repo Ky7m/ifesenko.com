@@ -108,7 +108,8 @@ namespace PersonalWebApp.Controllers
             [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var key = $"{nameof(HomeController)}.{memberName}.{Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion}";
+            var version = Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
+            var key = $"{nameof(HomeController)}.{memberName}.{version}";
             var cachedValue = await _cacheService.GetAsync<TReturn>(key);
             if (cachedValue != null)
             {

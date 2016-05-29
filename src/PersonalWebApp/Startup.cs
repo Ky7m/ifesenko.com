@@ -135,7 +135,6 @@ namespace PersonalWebApp
             app.UseWebMarkupMin();
 
             app.UseHeadersMiddleware(new HeadersBuilder()
-                .RemoveHeader("X-Powered-By")
                 .RemoveHeader("Server"));
 
             app.UseMvc(routes =>
