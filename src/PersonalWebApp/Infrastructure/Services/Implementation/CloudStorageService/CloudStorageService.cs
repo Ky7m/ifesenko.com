@@ -207,7 +207,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Link = "https://www.facebook.com/events/688982824575438/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Effective Memory Management - Memory Hygiene",
+                    new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.CollateralVideoRus,
@@ -253,7 +253,7 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Link = "https://www.facebook.com/events/1650103461936579/1654170548196537/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Effective Memory Management: Memory Hygien",
+                    new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint

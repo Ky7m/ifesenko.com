@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.ApplicationInsights;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
@@ -108,25 +105,8 @@ namespace PersonalWebApp
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
-            else
-            {
-                app.UseStatusCodePagesWithReExecute("/error/{0}/");
 
-                app.Use(async (context, next) =>
-                {
-                    try
-                    {
-                        await next.Invoke();
-                    }
-                    catch (Exception exception)
-                    {
-                        var telemetry = app.ApplicationServices.GetService<TelemetryClient>();
-                        telemetry?.TrackException(exception);
-                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    }
-                });
-                //app.UseExceptionHandler("/Home/Error");
-            }
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             app.UseApplicationInsightsExceptionTelemetry();
 

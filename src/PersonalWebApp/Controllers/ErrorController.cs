@@ -1,29 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PersonalWebApp.Infrastructure.Extensions;
 
 namespace PersonalWebApp.Controllers
 {
     [Route("[controller]")]
     public sealed class ErrorController : Controller
     {
-        [HttpGet("{statusCode}")]
+        [Route("{statusCode}")]
         [ResponseCache(CacheProfileName = "ErrorPage")]
         public IActionResult Error(int statusCode)
         {
-            Response.StatusCode = statusCode;
-
-            ActionResult result;
-            if (Request.IsAjaxRequest())
-            {
-                // This allows us to show errors even in partial views.
-                result = PartialView("Error", statusCode);
-            }
-            else
-            {
-                result = View("Error", statusCode);
-            }
-
-            return result;
+            return View("Error", statusCode);
         }
     }
 }

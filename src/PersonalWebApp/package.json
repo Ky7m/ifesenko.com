@@ -1,6 +1,6 @@
 {
-    "name": "asp.net",
-    "version": "0.0.0",
+    "name": "personalwebapp",
+    "version": "1.0.0",
     "private": true,
     "devDependencies": {
         "gulp": "3.9.1",
@@ -15,7 +15,7 @@
         "gulp-sass": "2.3.1",
         "gulp-size": "2.1.0",
         "gulp-sourcemaps": "1.6.0",
-        "gulp-typescript": "2.13.5",
+        "gulp-typescript": "2.13.6",
         "gulp-uglify": "1.5.3",
         "gulp-util": "3.0.7",
         "merge-stream": "1.0.0",
