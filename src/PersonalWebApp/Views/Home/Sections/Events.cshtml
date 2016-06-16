@@ -31,13 +31,16 @@
                     <h4>@Html.Raw(titleLayout)</h4>
                     @foreach (var item in eventModel.Value.Items)
                     {
-                        <p>@item.Description</p>
-                        <ul class="collateral">
-                            @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
-                            {
-                                <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
-                            }
-                        </ul>
+                        <div>@item.Description</div>
+                        if(!isUpcoming && item.Collateral.Any())
+                        {
+                            <ul class="collateral">
+                                @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
+                                {
+                                    <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
+                                }
+                            </ul>
+                        }
                     }
                     <hr class="hidden-xs">
                 </div>

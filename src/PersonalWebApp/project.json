@@ -1,91 +1,91 @@
 ﻿{
-  "version": "6.1.1-*",
-  "dependencies": {
-    "Microsoft.NETCore.App": {
-      "version": "1.0.0-rc2-3002702",
-      "type": "platform"
+    "version": "6.1.2-*",
+    "dependencies": {
+        "Microsoft.NETCore.App": {
+            "version": "1.0.0-rc2-3002702",
+            "type": "platform"
+        },
+        "Microsoft.ApplicationInsights.AspNetCore": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Razor.Tools": {
+            "version": "1.0.0-preview1-final",
+            "type": "build"
+        },
+        "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
+        "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0-rc2-final",
+        "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Configuration.Binder": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
+        "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
+        "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
+        "NWebsec.AspNetCore.Mvc": "1.0.0-gamma-5",
+        "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5",
+        "StackExchange.Redis": "1.1.604-alpha",
+        "WebMarkupMin.AspNetCore1": "2.0.0-rc8",
+        "WindowsAzure.Storage": "7.0.2-preview"
     },
-    "Microsoft.ApplicationInsights.AspNetCore": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Razor.Tools": {
-      "version": "1.0.0-preview1-final",
-      "type": "build"
-    },
-    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0-rc2-final",
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0-rc2-final",
-    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.Binder": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
-    "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
-    "NWebsec.AspNetCore.Mvc": "1.0.0-gamma-5",
-    "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5",
-    "StackExchange.Redis": "1.1.604-alpha",
-    "WebMarkupMin.AspNetCore1": "2.0.0-rc8",
-    "WindowsAzure.Storage": "7.0.2-preview"
-  },
 
-  "tools": {
-    "Microsoft.AspNetCore.Razor.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net45+win8+dnxcore50"
+    "tools": {
+        "Microsoft.AspNetCore.Razor.Tools": {
+            "version": "1.0.0-preview1-final",
+            "imports": "portable-net45+win8+dnxcore50"
+        },
+        "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
+            "version": "1.0.0-preview1-final",
+            "imports": "portable-net45+win8+dnxcore50"
+        },
+        "Microsoft.DotNet.Watcher.Tools": {
+            "version": "1.0.0-preview1-final",
+            "imports": "portable-net451+win8"
+        }
     },
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net45+win8+dnxcore50"
+
+    "frameworks": {
+        "netcoreapp1.0": {
+            "imports": [
+                "dotnet5.6",
+                "dnxcore50",
+                "portable-net45+win8"
+            ]
+        }
     },
-    "Microsoft.DotNet.Watcher.Tools": {
-      "version": "1.0.0-preview1-final",
-      "imports": "portable-net451+win8"
+
+    "buildOptions": {
+        "compile": {
+            "exclude": [
+                "bower_components",
+                "node_modules",
+                "wwwroot"
+            ]
+        },
+        "emitEntryPoint": true,
+        "preserveCompilationContext": true
+    },
+
+    "runtimeOptions": {
+        "configProperties": {
+            "System.GC.Concurrent": true,
+            "System.GC.Server": true
+        }
+    },
+
+    "publishOptions": {
+        "include": [
+            "wwwroot",
+            "Views",
+            "appsettings.json",
+            "web.config"
+        ]
+    },
+
+    "scripts": {
+        "prepublish": [ "npm install", "bower install", "gulp build" ],
+        "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
     }
-  },
-
-  "frameworks": {
-    "netcoreapp1.0": {
-      "imports": [
-        "dotnet5.6",
-        "dnxcore50",
-        "portable-net45+win8"
-      ]
-    }
-  },
-
-  "buildOptions": {
-    "compile": {
-      "exclude": [
-        "bower_components",
-        "node_modules",
-        "wwwroot"
-      ]
-    },
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true
-  },
-
-  "runtimeOptions": {
-    "configProperties": {
-      "System.GC.Concurrent": true,
-      "System.GC.Server": true
-    }
-  },
-
-  "publishOptions": {
-    "include": [
-      "wwwroot",
-      "Views",
-      "appsettings.json",
-      "web.config"
-    ]
-  },
-
-  "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp build" ],
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
-  }
 }
