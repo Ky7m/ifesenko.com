@@ -129,6 +129,18 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
             },
             new EventModel
             {
+                Title = "Application Innovation Strategy Briefing",
+                Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x138568b7ed",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem(
+                        "The Application Innovation Strategy Briefing is a mix of discussion, application architecture design, white boarding and hands-on labs. Your team will design the future of business with new functionalities that augment existing business applications and drive development and execution of new initiatives.")
+                }),
+                Location = "Cambridge, MA (USA)",
+                Date = new DateTime(2016, 6, 9)
+            },
+            new EventModel
+            {
                 Title = "Modernize your business - a Modern Requirements and Microsoft Showcase",
                 Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x148353d22c",
                 Items = ImmutableArray.CreateRange(new[]
