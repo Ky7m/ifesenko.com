@@ -569,10 +569,6 @@ h3 > .fa {
         content: '';
     }
 
-    .collateral li:before {
-        content: '\00a0';
-    }
-
     .collateral li:first-child:before {
         content: '[ ';
     }
