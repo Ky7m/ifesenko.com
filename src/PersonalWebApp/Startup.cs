@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -42,8 +43,11 @@ namespace PersonalWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddApplicationInsightsTelemetry(_configuration);
+            var aiOptions = new ApplicationInsightsServiceOptions
+            {
+                EnableQuickPulseMetricStream = false
+            };
+            services.AddApplicationInsightsTelemetry(_configuration, aiOptions);
 
             services.AddOptions();
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
