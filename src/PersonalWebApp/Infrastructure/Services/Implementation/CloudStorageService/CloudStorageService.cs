@@ -118,7 +118,11 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
                 Link = "http://azureday.net/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Workshop: Application Insights From The Ground Up"),
+                    new EventModelItem("Workshop: Application Insights From The Ground Up", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/vJQoPZ"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/application-insights-workshop"] = CommonStrings.CollateralDemoCode
+                    }),
                     new EventModelItem("Enabling DevTest in Microsoft Azure", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
