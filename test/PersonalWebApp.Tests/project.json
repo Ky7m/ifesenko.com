@@ -3,7 +3,7 @@
     "dependencies": {
         "Microsoft.NETCore.App": {
             "type": "platform",
-            "version": "1.0.0-rc2-3002702"
+            "version": "1.0.0"
         },
         "xunit": "2.2.0-beta1-build3239",
       "PersonalWebApp": {
@@ -15,8 +15,8 @@
     "frameworks": {
         "netcoreapp1.0": {
             "imports": [
-                "dotnet5.4",
-                "portable-net451+win8"
+                "dotnet5.6",
+                "portable-net45+win8"
             ]
         }
     }
