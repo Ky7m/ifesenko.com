@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NWebsec.AspNetCore.Middleware;
+//using NWebsec.AspNetCore.Middleware;
 using PersonalWebApp.Infrastructure.Middleware;
 using PersonalWebApp.Infrastructure.Services.Implementation;
 using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
@@ -109,74 +109,74 @@ namespace PersonalWebApp
 
             var cdnUrl = _configuration.GetValue<string>("AppSettings:CdnUrl");
 
-            app.UseCsp(
-                options =>
-                {
-                    options
-                        .DefaultSources(x => x.Self())
-                        .ChildSources(x => x.Self())
-                        .ConnectSources(
-                            x =>
-                            {
-                                x.Self();
-                                var customSources = new List<string>
-                                {
-                                  "dc.services.visualstudio.com"
-                                };
-                                if (env.IsDevelopment())
-                                {
-                                    customSources.Add("localhost:*");
-                                    customSources.Add("ws://localhost:*");
-                                }
-                                x.CustomSources(customSources.ToArray());
-                            })
-                        .FontSources(
-                            x =>
-                            {
-                                x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com");
-                            })
-                        .FormActions(x => x.Self())
-                        .ImageSources(
-                            x =>
-                            {
-                                x.Self();
-                                if (env.IsDevelopment())
-                                {
-                                    x.CustomSources("data:");
-                                }
-                                x.CustomSources(cdnUrl);
-                            })
-                        .ScriptSources(
-                            x =>
-                            {
-                                x.Self();
-                                var customSources = new List<string>
-                                {
-                                    "az416426.vo.msecnd.net",
-                                    "cdnjs.cloudflare.com",
-                                    cdnUrl
-                                };
-                                if (env.IsDevelopment())
-                                {
-                                    customSources.Add("localhost:*");
-                                }
-                                x.CustomSources(customSources.ToArray());
-                                x.UnsafeEval();
-                                x.UnsafeInline();
-                            })
-                        .StyleSources(
-                            x =>
-                            {
-                                x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com", cdnUrl);
-                                x.UnsafeInline();
-                            });
-                });
+            //app.UseCsp(
+            //    options =>
+            //    {
+            //        options
+            //            .DefaultSources(x => x.Self())
+            //            .ChildSources(x => x.Self())
+            //            .ConnectSources(
+            //                x =>
+            //                {
+            //                    x.Self();
+            //                    var customSources = new List<string>
+            //                    {
+            //                      "dc.services.visualstudio.com"
+            //                    };
+            //                    if (env.IsDevelopment())
+            //                    {
+            //                        customSources.Add("localhost:*");
+            //                        customSources.Add("ws://localhost:*");
+            //                    }
+            //                    x.CustomSources(customSources.ToArray());
+            //                })
+            //            .FontSources(
+            //                x =>
+            //                {
+            //                    x.Self();
+            //                    x.CustomSources("cdnjs.cloudflare.com");
+            //                })
+            //            .FormActions(x => x.Self())
+            //            .ImageSources(
+            //                x =>
+            //                {
+            //                    x.Self();
+            //                    if (env.IsDevelopment())
+            //                    {
+            //                        x.CustomSources("data:");
+            //                    }
+            //                    x.CustomSources(cdnUrl);
+            //                })
+            //            .ScriptSources(
+            //                x =>
+            //                {
+            //                    x.Self();
+            //                    var customSources = new List<string>
+            //                    {
+            //                        "az416426.vo.msecnd.net",
+            //                        "cdnjs.cloudflare.com",
+            //                        cdnUrl
+            //                    };
+            //                    if (env.IsDevelopment())
+            //                    {
+            //                        customSources.Add("localhost:*");
+            //                    }
+            //                    x.CustomSources(customSources.ToArray());
+            //                    x.UnsafeEval();
+            //                    x.UnsafeInline();
+            //                })
+            //            .StyleSources(
+            //                x =>
+            //                {
+            //                    x.Self();
+            //                    x.CustomSources("cdnjs.cloudflare.com", cdnUrl);
+            //                    x.UnsafeInline();
+            //                });
+            //    });
 
-            app.UseXContentTypeOptions()
-                .UseXDownloadOptions()
-                .UseXfo(options => options.Deny());
+            //app.UseXContentTypeOptions()
+            //    .UseXDownloadOptions()
+            //    .UseXfo(options => options.Deny());
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
