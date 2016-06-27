@@ -6,7 +6,7 @@
             "type": "platform"
         },
         //"NWebsec.AspNetCore.Mvc": "1.0.0-gamma-5",
-       // "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5",
+        // "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5",
         "StackExchange.Redis": "1.1.604-alpha",
         //"WebMarkupMin.AspNetCore1": "2.0.0-rc8",
         "WindowsAzure.Storage": "7.0.2-preview",
@@ -40,6 +40,7 @@
         "netcoreapp1.0": {
             "imports": [
                 "dotnet5.6",
+                "dnxcore50",
                 "portable-net45+win8"
             ]
         }
