@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8139829-251D-43B7-89AB-826C440CC4ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{33F46330-CDAA-4CDB-90E4-C566AD95319E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C1179AF-F5CC-49E5-A7DB-302B0D7254E9}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonalWebApp", "src\PersonalWebApp\PersonalWebApp.xproj", "{38CF127A-6E05-4306-9D2A-1F4026EC4707}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{33F46330-CDAA-4CDB-90E4-C566AD95319E}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonalWebApp.Tests", "test\PersonalWebApp.Tests\PersonalWebApp.Tests.xproj", "{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonalWebApp.Infrastructure", "src\PersonalWebApp.Infrastructure\PersonalWebApp.Infrastructure.xproj", "{3532078C-1DB2-480A-A412-CB381C6DDD8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3532078C-1DB2-480A-A412-CB381C6DDD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3532078C-1DB2-480A-A412-CB381C6DDD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3532078C-1DB2-480A-A412-CB381C6DDD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3532078C-1DB2-480A-A412-CB381C6DDD8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{38CF127A-6E05-4306-9D2A-1F4026EC4707} = {C8139829-251D-43B7-89AB-826C440CC4ED}
 		{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8} = {33F46330-CDAA-4CDB-90E4-C566AD95319E}
+		{3532078C-1DB2-480A-A412-CB381C6DDD8E} = {C8139829-251D-43B7-89AB-826C440CC4ED}
 	EndGlobalSection
 EndGlobal

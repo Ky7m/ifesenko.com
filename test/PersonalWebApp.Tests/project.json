@@ -1,21 +1,22 @@
 {
     "version": "1.0.0-*",
+    "testRunner": "xunit",
+
     "dependencies": {
         "Microsoft.NETCore.App": {
-            "type": "platform",
-            "version": "1.0.0"
+            "version": "1.0.0",
+            "type": "platform"
         },
-        "xunit": "2.2.0-beta1-build3239",
-      "PersonalWebApp": {
-        "target": "project"
-      },
-      "dotnet-test-xunit": "1.0.0-rc2-build10025"
+        "PersonalWebApp": {
+            "target": "project"
+        },
+        "dotnet-test-xunit": "2.2.0-preview2-build1029",
+        "xunit": "2.2.0-beta2-build3300"
     },
-    "testRunner": "xunit",
     "frameworks": {
         "netcoreapp1.0": {
             "imports": [
-                "dotnet5.6",
+                "dnxcore50",
                 "portable-net45+win8"
             ]
         }
