@@ -27,8 +27,7 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0",
         "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-        "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5",
-        "WebMarkupMin.AspNetCore1": "2.0.0-rc8"
+        "NWebsec.AspNetCore.Middleware": "1.0.0-gamma-5"
     },
 
     "tools": {

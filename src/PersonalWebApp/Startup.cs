@@ -13,7 +13,7 @@ using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
 using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
 using PersonalWebApp.Infrastructure.Services.Interfaces;
 using PersonalWebApp.Infrastructure.Settings;
-using WebMarkupMin.AspNetCore1;
+//using WebMarkupMin.AspNetCore1;
 
 namespace PersonalWebApp
 {
@@ -56,20 +56,20 @@ namespace PersonalWebApp
               });
 
             // Add WebMarkupMin services to the services container.
-            services.AddWebMarkupMin(options =>
-                {
-                    options.AllowMinificationInDevelopmentEnvironment = false;
-                    options.AllowCompressionInDevelopmentEnvironment = false;
-                    options.DisablePoweredByHttpHeaders = true;
-                })
-                .AddHtmlMinification(options =>
-                {
-                    var settings = options.MinificationSettings;
-                    settings.RemoveRedundantAttributes = true;
-                    settings.RemoveHttpProtocolFromAttributes = true;
-                    settings.RemoveHttpsProtocolFromAttributes = true;
-                })
-                .AddHttpCompression();
+            //services.AddWebMarkupMin(options =>
+            //    {
+            //        options.AllowMinificationInDevelopmentEnvironment = false;
+            //        options.AllowCompressionInDevelopmentEnvironment = false;
+            //        options.DisablePoweredByHttpHeaders = true;
+            //    })
+            //    .AddHtmlMinification(options =>
+            //    {
+            //        var settings = options.MinificationSettings;
+            //        settings.RemoveRedundantAttributes = true;
+            //        settings.RemoveHttpProtocolFromAttributes = true;
+            //        settings.RemoveHttpsProtocolFromAttributes = true;
+            //    })
+            //    .AddHttpCompression();
 
             services.AddMvc(options =>
             {
@@ -182,7 +182,7 @@ namespace PersonalWebApp
 
             app.UseStaticFiles();
 
-            app.UseWebMarkupMin();
+            //app.UseWebMarkupMin();
 
             app.UseHeadersMiddleware(new HeadersBuilder()
                 .RemoveHeader("Server"));
