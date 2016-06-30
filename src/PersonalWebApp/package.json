@@ -16,7 +16,7 @@
         "gulp-size": "2.1.0",
         "gulp-sourcemaps": "1.6.0",
         "gulp-typescript": "2.13.6",
-        "gulp-uglify": "1.5.3",
+        "gulp-uglify": "1.5.4",
         "gulp-util": "3.0.7",
         "merge-stream": "1.0.0",
         "rimraf": "2.5.2",
