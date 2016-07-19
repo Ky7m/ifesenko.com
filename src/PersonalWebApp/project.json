@@ -28,6 +28,7 @@
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
         "BundlerMinifier.Core": "2.1.258",
         "NWebsec.AspNetCore.Middleware": "1.0.0-gamma1-15",
+        "WebMarkupMin.AspNetCore1": "2.1.0",
         "WindowsAzure.Storage": "7.1.3-preview"
     },
 
