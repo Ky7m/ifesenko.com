@@ -3,11 +3,10 @@ using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using NWebsec.AspNetCore.Mvc.HttpHeaders.Csp;
+using NWebsec.AspNetCore.Middleware;
 using PersonalWebApp.Infrastructure.Middleware;
 using PersonalWebApp.Infrastructure.Services.Implementation;
 using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
@@ -21,7 +20,6 @@ namespace PersonalWebApp
     public class Startup
     {
         private readonly IConfigurationRoot _configuration;
-        private readonly IHostingEnvironment _hostingEnvironment;
 
         public Startup(IHostingEnvironment env)
         {
@@ -37,7 +35,6 @@ namespace PersonalWebApp
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
             _configuration = builder.Build();
-            _hostingEnvironment = env;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -58,21 +55,21 @@ namespace PersonalWebApp
                   routeOptions.LowercaseUrls = true;
               });
 
-            // Add WebMarkupMin services to the services container.
-            services.AddWebMarkupMin(options =>
-                {
-                    options.AllowMinificationInDevelopmentEnvironment = false;
-                    options.AllowCompressionInDevelopmentEnvironment = false;
-                    options.DisablePoweredByHttpHeaders = true;
-                })
-                .AddHtmlMinification(options =>
-                {
-                    var settings = options.MinificationSettings;
-                    settings.RemoveRedundantAttributes = true;
-                    settings.RemoveHttpProtocolFromAttributes = true;
-                    settings.RemoveHttpsProtocolFromAttributes = true;
-                })
-                .AddHttpCompression();
+           // Add WebMarkupMin services to the services container.
+           services.AddWebMarkupMin(options =>
+               {
+                   //options.AllowMinificationInDevelopmentEnvironment = true;
+                   //options.AllowCompressionInDevelopmentEnvironment = true;
+                   options.DisablePoweredByHttpHeaders = true;
+               })
+               .AddHtmlMinification(options =>
+               {
+                   var settings = options.MinificationSettings;
+                   settings.RemoveRedundantAttributes = true;
+                   settings.RemoveHttpProtocolFromAttributes = true;
+                   settings.RemoveHttpsProtocolFromAttributes = true;
+               })
+               .AddHttpCompression();
 
             services.AddMvc(options =>
             {
@@ -86,8 +83,6 @@ namespace PersonalWebApp
                     Location = ResponseCacheLocation.Any,
                     Duration = 86400
                 });
-
-                ConfigureContentSecurityPolicyFilters(options.Filters);
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
@@ -110,6 +105,77 @@ namespace PersonalWebApp
                 app.UseBrowserLink();
             }
 
+            var cdnUrl = _configuration.GetValue<string>("AppSettings:CdnUrl");
+
+            app.UseCsp(
+                options =>
+                {
+                    options
+                        .DefaultSources(x => x.Self())
+                        .ChildSources(x => x.Self())
+                        .ConnectSources(
+                            x =>
+                            {
+                                x.Self();
+                                var customSources = new List<string>
+                                {
+                                  "dc.services.visualstudio.com"
+                                };
+                                if (env.IsDevelopment())
+                                {
+                                    customSources.Add("localhost:*");
+                                    customSources.Add("ws://localhost:*");
+                                }
+                                x.CustomSources(customSources.ToArray());
+                            })
+                        .FontSources(
+                            x =>
+                            {
+                                x.Self();
+                                x.CustomSources("cdnjs.cloudflare.com");
+                            })
+                        .FormActions(x => x.Self())
+                        .ImageSources(
+                            x =>
+                            {
+                                x.Self();
+                                if (env.IsDevelopment())
+                                {
+                                    x.CustomSources("data:");
+                                }
+                                x.CustomSources(cdnUrl);
+                            })
+                        .ScriptSources(
+                            x =>
+                            {
+                                x.Self();
+                                var customSources = new List<string>
+                                {
+                                    "az416426.vo.msecnd.net",
+                                    "cdnjs.cloudflare.com",
+                                    cdnUrl
+                                };
+                                if (env.IsDevelopment())
+                                {
+                                    customSources.Add("localhost:*");
+                                }
+                                x.CustomSources(customSources.ToArray());
+                                x.UnsafeEval();
+                                x.UnsafeInline();
+                            })
+                        .StyleSources(
+                            x =>
+                            {
+                                x.Self();
+                                x.CustomSources("cdnjs.cloudflare.com", cdnUrl);
+                                x.UnsafeInline();
+                            });
+                });
+
+            app.UseXContentTypeOptions()
+                .UseXDownloadOptions()
+                .UseXfo(options => options.Deny());
+
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             app.UseApplicationInsightsExceptionTelemetry();
@@ -127,53 +193,6 @@ namespace PersonalWebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}");
             });
-        }
-
-        private void ConfigureContentSecurityPolicyFilters(ICollection<IFilterMetadata> filters)
-        {
-            var cdnUrl = _configuration.GetValue<string>("AppSettings:CdnUrl");
-            filters.Add(new CspAttribute());
-            filters.Add(new CspDefaultSrcAttribute {Self = true});
-            filters.Add(new CspBaseUriAttribute {Self = true});
-            filters.Add(new CspChildSrcAttribute {Self = true});
-            filters.Add(new CspConnectSrcAttribute {CustomSources = "dc.services.visualstudio.com", Self = true});
-            filters.Add(new CspFontSrcAttribute { CustomSources = "cdnjs.cloudflare.com", Self = true});
-            filters.Add(new CspFormActionAttribute {Self = true});
-            filters.Add(new CspFrameSrcAttribute{Self = false});
-            filters.Add(new CspFrameAncestorsAttribute{Self = false});
-            filters.Add(new CspImgSrcAttribute {CustomSources = cdnUrl, Self = true});
-            filters.Add(new CspScriptSrcAttribute
-            {
-                CustomSources = string.Join(
-                    " ",
-                    "az416426.vo.msecnd.net",
-                    "cdnjs.cloudflare.com",
-                    cdnUrl),
-                Self = true,
-                UnsafeEval = true,
-                UnsafeInline = true
-            });
-            filters.Add(new CspMediaSrcAttribute {Self = false});
-            filters.Add(new CspObjectSrcAttribute {Self = false});
-            filters.Add(new CspStyleSrcAttribute
-            {
-                CustomSources = string.Join(
-                    " ",
-                    "cdnjs.cloudflare.com",
-                    cdnUrl),
-                Self = true,
-                UnsafeInline = true
-            });
-
-            if (_hostingEnvironment.IsDevelopment())
-            {
-                filters.Add(new CspConnectSrcAttribute
-                {
-                    CustomSources = string.Join(" ", "localhost:*", "ws://localhost:*")
-                });
-                filters.Add(new CspImgSrcAttribute {CustomSources = "data:"});
-                filters.Add(new CspScriptSrcAttribute {CustomSources = "localhost:*"});
-            }
         }
     }
 }
