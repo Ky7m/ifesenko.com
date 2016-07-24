@@ -37,7 +37,7 @@
                             <ul class="collateral">
                                 @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
                                 {
-                                    <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
+                                    <li><a href="@collateralItem.Key" rel="noopener">@collateralItem.Value</a></li>
                                 }
                             </ul>
                         }
