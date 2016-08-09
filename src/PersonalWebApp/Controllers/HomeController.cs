@@ -5,6 +5,7 @@ using System.Xml;
 using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.PlatformAbstractions;
 using PersonalWebApp.Infrastructure.Services.Implementation.HealthService.Model;
 using PersonalWebApp.Infrastructure.Services.Interfaces;
 using PersonalWebApp.Models;
@@ -42,9 +43,10 @@ namespace PersonalWebApp.Controllers
         {
             if (string.IsNullOrEmpty(shortUrl))
             {
-                return RedirectToAction("Error","Error", new { statusCode = StatusCodes.Status404NotFound });
+                return RedirectToAction("Error", "Error", new { statusCode = StatusCodes.Status404NotFound });
             }
-            var longUrlMapTableEntity = await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
+            var longUrlMapTableEntity =
+                await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
             if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
             {
                 return RedirectToAction("Error", "Error", new { statusCode = StatusCodes.Status404NotFound });
@@ -60,30 +62,34 @@ namespace PersonalWebApp.Controllers
             {
                 var statsModel = new StatsModel();
                 var summary = await GetTodaysSummaryAsync();
-                statsModel.StepsTaken = summary?.StepsTaken;
-                statsModel.CaloriesBurned = summary?.CaloriesBurnedSummary.TotalCalories;
-                statsModel.TotalDistanceOnFoot = summary?.DistanceSummary.TotalDistanceOnFoot / 100.0 / 1000.0;
+                if (summary != null)
+                {
+                    statsModel.StepsTaken = summary.StepsTaken;
+                    statsModel.CaloriesBurned = summary.CaloriesBurnedSummary.TotalCalories;
+                    statsModel.TotalDistanceOnFoot = summary.DistanceSummary.TotalDistanceOnFoot / 100.0 / 1000.0;
+                    statsModel.AverageHeartRate = summary.HeartRateSummary.AverageHeartRate;
+                }
                 if (statsModel.TotalDistanceOnFoot.HasValue)
                 {
                     statsModel.TotalDistanceOnFoot = Math.Round(statsModel.TotalDistanceOnFoot.Value, 2);
                 }
-                statsModel.AverageHeartRate = summary?.HeartRateSummary.AverageHeartRate;
 
                 var sleepActivity = await GetTodaysSleepActivityAsync();
-                if (!string.IsNullOrEmpty(sleepActivity?.SleepDuration))
+                if (sleepActivity != null)
                 {
-                    var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
-                    if (sleepDuration.Hours < 4)
+                    if (!string.IsNullOrEmpty(sleepActivity.SleepDuration))
                     {
-                        sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
+                        var sleepDuration = XmlConvert.ToTimeSpan(sleepActivity.SleepDuration);
+                        if (sleepDuration.Hours < 4)
+                        {
+                            sleepDuration += TimeSpan.FromHours(4 - sleepDuration.Hours);
+                        }
+                        statsModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
                     }
-                    statsModel.SleepDuration = $"{sleepDuration.Hours}h {sleepDuration.Minutes}m";
+
+                    statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
                 }
-
-                statsModel.SleepEfficiencyPercentage = sleepActivity?.SleepEfficiencyPercentage;
-
                 homeModel.Stats = statsModel;
-
                 homeModel.Events = await _storageService.RetrieveAllEventsAsync();
             }
             catch (Exception exception)
@@ -95,28 +101,43 @@ namespace PersonalWebApp.Controllers
 
         private async Task<Summary> GetTodaysSummaryAsync()
         {
-            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSummaryAsync(), TimeSpan.FromHours(3.0));
-        }
-        private async Task<SleepActivity> GetTodaysSleepActivityAsync()
-        {
-            return await GetFromCacheOrAddToCacheFromService(_healthService, service => service.GetTodaysSleepActivityAsync(), TimeSpan.FromHours(4.0));
+            return
+                await
+                    GetFromServiceUsingCache(_healthService, service => service.GetTodaysSummaryAsync(),
+                        TimeSpan.FromHours(3.0));
         }
 
-        private async Task<TReturn> GetFromCacheOrAddToCacheFromService<TService, TReturn>(TService service,
+        private async Task<SleepActivity> GetTodaysSleepActivityAsync()
+        {
+            return
+                await
+                    GetFromServiceUsingCache(_healthService, service => service.GetTodaysSleepActivityAsync(),
+                        TimeSpan.FromHours(4.0));
+        }
+
+        private async Task<TReturn> GetFromServiceUsingCache<TService, TReturn>(TService service,
             Func<TService, Task<TReturn>> getFromServiceFunc,
             TimeSpan? expiryTime = null,
             [CallerMemberName] string memberName = "")
             where TReturn : class
         {
-            var version = Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
+            var version = PlatformServices.Default.Application.ApplicationVersion;
             var key = $"{nameof(HomeController)}.{memberName}.{version}";
-            var cachedValue = await _cacheService.GetAsync<TReturn>(key);
-            if (cachedValue != null)
+            TReturn cachedValue = null;
+            try
             {
-                return cachedValue;
+                cachedValue = await _cacheService.GetAsync<TReturn>(key);
+                if (cachedValue != null)
+                {
+                    return cachedValue;
+                }
+                cachedValue = await getFromServiceFunc(service);
+                await _cacheService.StoreAsync(key, cachedValue, expiryTime ?? TimeSpan.FromHours(3.0));
             }
-            cachedValue = await getFromServiceFunc(service);
-            await _cacheService.StoreAsync(key, cachedValue, expiryTime ?? TimeSpan.FromHours(3.0));
+            catch (Exception exception)
+            {
+                _telemetryClient.TrackException(exception);
+            }
             return cachedValue;
         }
     }

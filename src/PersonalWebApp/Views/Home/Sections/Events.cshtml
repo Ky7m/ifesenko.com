@@ -20,7 +20,7 @@
                 var className = eventModel.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 col-md-offset-3 col-sm-8";
                 var titleLayout = string.IsNullOrEmpty(eventModel.Value.Link) ?
                      eventModel.Value.Title :
-                     $"<a href=\"{eventModel.Value.Link}\">{eventModel.Value.Title}</a>";
+                     $"<a href=\"{eventModel.Value.Link}\" rel=\"noopener\">{eventModel.Value.Title}</a>";
 
                 var isUpcoming = DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
                 if (isUpcoming)
@@ -37,7 +37,7 @@
                             <ul class="collateral">
                                 @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
                                 {
-                                    <li><a href="@collateralItem.Key">@collateralItem.Value</a></li>
+                                    <li><a href="@collateralItem.Key" rel="noopener">@collateralItem.Value</a></li>
                                 }
                             </ul>
                         }
