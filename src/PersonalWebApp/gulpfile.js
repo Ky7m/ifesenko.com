@@ -41,7 +41,7 @@ var environment = {
 
 var webroot = "./wwwroot/";
 var paths = {
-    bower: './bower_components/',
+    npm: './node_modules/',
     scripts: 'Scripts/',
     styles: 'Styles/',
     css: webroot + 'css/',
@@ -55,12 +55,12 @@ var sources = {
         {
             name: 'font-awesome.css',
             copy: true,
-            paths: paths.bower + 'font-awesome/css/font-awesome.min.css'
+            paths: paths.npm + 'font-awesome/css/font-awesome.min.css'
         },
         {
             name: 'bootstrap.css',
             copy: true,
-            paths: paths.bower + 'bootstrap/dist/css/bootstrap.css'
+            paths: paths.npm + 'bootstrap/dist/css/bootstrap.css'
         },
         {
             name: 'app.css',
@@ -72,11 +72,11 @@ var sources = {
     fonts: [
         {
             name: 'bootstrap',
-            path: paths.bower + 'bootstrap/**/*.{ttf,svg,woff,woff2,otf,eot}'
+            path: paths.npm + 'bootstrap/**/*.{ttf,svg,woff,woff2,otf,eot}'
         },
         {
             name: 'font-awesome',
-            path: paths.bower + 'font-awesome/**/*.{ttf,svg,woff,woff2,otf,eot}'
+            path: paths.npm + 'font-awesome/**/*.{ttf,svg,woff,woff2,otf,eot}'
         }
     ],
     img: [
@@ -86,17 +86,17 @@ var sources = {
         {
             name: 'bootstrap.js',
             copy: true,
-            paths: paths.bower + 'bootstrap/dist/js/bootstrap.js'
+            paths: paths.npm + 'bootstrap/dist/js/bootstrap.js'
         },
         {
             name: 'jquery.js',
             copy: true,
-            paths: paths.bower + 'jquery/dist/jquery.js'
+            paths: paths.npm + 'jquery/dist/jquery.js'
         },
         {
             name: 'backstretch.js',
             copy: true,
-            paths: paths.bower + 'jquery-backstretch-2/jquery.backstretch.js'
+            paths: paths.npm + 'jquery-backstretch-2/jquery.backstretch.js'
         },
         {
             name: 'app.js',
