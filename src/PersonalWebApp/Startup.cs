@@ -42,7 +42,7 @@ namespace PersonalWebApp
         {
             var aiOptions = new ApplicationInsightsServiceOptions
             {
-                EnableQuickPulseMetricStream = false
+                EnableQuickPulseMetricStream = true
             };
             services.AddApplicationInsightsTelemetry(_configuration, aiOptions);
 

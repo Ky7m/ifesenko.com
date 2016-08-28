@@ -6,7 +6,7 @@ var ifesenko;
         var Shell;
         (function (Shell) {
             $("#home").backstretch("//ifesenko.azureedge.net/images/background.jpg");
-            $(window).load(function () {
+            $(window).on('load', function () {
                 $("#loader").fadeOut("slow");
             });
             $(function () {

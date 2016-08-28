@@ -8,7 +8,7 @@
         "StackExchange.Redis": "1.1.604-alpha",
         "System.Collections.Immutable": "1.2.0",
         "WindowsAzure.Storage": "7.2.0",
-        "Wire": "0.7.1"
+        "Wire": "0.8.0"
     },
 
   "frameworks": {
