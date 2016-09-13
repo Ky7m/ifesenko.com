@@ -116,18 +116,13 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
             {
                 Title = "IT Weekend Ukraine 2016",
                 Link = "https://ukraine.itweekend.ua/en/",
-                //Items = ImmutableArray.CreateRange(new[]
-                //{
-                //    new EventModelItem("Workshop: Application Insights From The Ground Up", new ImmutableDictionaryBuilder<string, string>
-                //    {
-                //        ["https://doc.co/vJQoPZ"] = CommonStrings.CollateralPowerpoint,
-                //        ["https://github.com/Ky7m/application-insights-workshop"] = CommonStrings.CollateralDemoCode
-                //    }),
-                //    new EventModelItem("Enabling DevTest in Microsoft Azure", new ImmutableDictionaryBuilder<string, string>
-                //    {
-                //        ["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
-                //    })
-                //}),
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
                 Location = "Kiev (Ukraine)",
                 Date = new DateTime(2016, 9, 17)
             },
