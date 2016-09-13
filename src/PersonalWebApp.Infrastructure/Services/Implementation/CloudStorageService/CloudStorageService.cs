@@ -114,6 +114,25 @@ namespace PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageServ
         private static EventModel[] Events { get; } = {
             new EventModel
             {
+                Title = "IT Weekend Ukraine 2016",
+                Link = "https://ukraine.itweekend.ua/en/",
+                //Items = ImmutableArray.CreateRange(new[]
+                //{
+                //    new EventModelItem("Workshop: Application Insights From The Ground Up", new ImmutableDictionaryBuilder<string, string>
+                //    {
+                //        ["https://doc.co/vJQoPZ"] = CommonStrings.CollateralPowerpoint,
+                //        ["https://github.com/Ky7m/application-insights-workshop"] = CommonStrings.CollateralDemoCode
+                //    }),
+                //    new EventModelItem("Enabling DevTest in Microsoft Azure", new ImmutableDictionaryBuilder<string, string>
+                //    {
+                //        ["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
+                //    })
+                //}),
+                Location = "Kiev (Ukraine)",
+                Date = new DateTime(2016, 9, 17)
+            },
+            new EventModel
+            {
                 Title = "AzureDay",
                 Link = "http://azureday.net/",
                 Items = ImmutableArray.CreateRange(new[]
