@@ -47,6 +47,6 @@ Task("Publish")
     });
 
 Task("Default")
-    .IsDependentOn("Pack");
+    .IsDependentOn("Publish");
 
 RunTarget(target);
