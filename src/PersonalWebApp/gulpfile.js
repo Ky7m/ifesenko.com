@@ -222,7 +222,7 @@ function () {
                         source.replacement ? source.replacement.replace : '')))
                 .pipe(gulpif(
                     '**/*.ts',
-                    typescript(tsProject)))
+                    tsProject()))
                 .pipe(concat(source.name))
                 .pipe(sizeBefore(source.name))
                 .pipe(gulpif(
