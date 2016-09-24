@@ -41,8 +41,7 @@ Task("Publish")
                 new DotNetCorePublishSettings()
                 {
                     Configuration = configuration,
-                    OutputDirectory = artifactsDirectory,
-                    Verbose = true
+                    OutputDirectory = artifactsDirectory
                 });
     });
 
