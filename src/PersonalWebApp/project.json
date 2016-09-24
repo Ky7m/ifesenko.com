@@ -8,7 +8,6 @@
         "PersonalWebApp.Infrastructure": {
             "target": "project"
         },
-        "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
         "Microsoft.AspNetCore.Diagnostics": "1.0.0",
         "Microsoft.AspNetCore.Mvc": "1.0.1",
         "Microsoft.AspNetCore.Razor.Tools": {
@@ -27,14 +26,15 @@
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
         "NWebsec.AspNetCore.Middleware": "1.0.0-gamma1-15",
         "WebMarkupMin.AspNetCore1": "2.1.0",
-        "WindowsAzure.Storage": "7.2.0",
         "Microsoft.AspNetCore.Routing": "1.0.1",
         "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
-            "version": "1.0.0-preview2-final",
+            "version": "1.0.0-preview2-update1",
             "type": "build"
         },
+        "Microsoft.ApplicationInsights.AspNetCore": "1.0.1",
+        "WindowsAzure.Storage": "7.2.1",
         "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
-            "version": "1.0.0-preview2-final",
+            "version": "1.0.0-preview2-update1",
             "type": "build"
         }
     },
@@ -45,7 +45,7 @@
         "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final",
         "Microsoft.DotNet.Watcher.Tools": "1.0.0-preview2-final",
         "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
-            "version": "1.0.0-preview2-final",
+            "version": "1.0.0-preview2-update1",
             "imports": [
                 "portable-net45+win8"
             ]
