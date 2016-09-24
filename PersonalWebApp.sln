@@ -7,11 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8139829-251
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{33F46330-CDAA-4CDB-90E4-C566AD95319E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C1179AF-F5CC-49E5-A7DB-302B0D7254E9}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonalWebApp", "src\PersonalWebApp\PersonalWebApp.xproj", "{38CF127A-6E05-4306-9D2A-1F4026EC4707}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PersonalWebApp.Tests", "test\PersonalWebApp.Tests\PersonalWebApp.Tests.xproj", "{4667F35C-BF9C-4F7A-9AF7-379EE99E5BC8}"
