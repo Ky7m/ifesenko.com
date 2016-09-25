@@ -16,5 +16,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ApplicationInsightsResourceId>/subscriptions/a5c647da-3f97-440c-9ba1-21fd71438a9a/resourcegroups/IFesenkoWebSiteGroup/providers/microsoft.insights/components/ifesenko</ApplicationInsightsResourceId>
   </PropertyGroup>
+  <ItemGroup>
+    <DnxInvisibleFolder Include=".vscode\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\DotNet.Web\Microsoft.DotNet.Web.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>
