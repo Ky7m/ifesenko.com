@@ -4,12 +4,14 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var artifactsDirectory = Directory("./artifacts");
+var outputDirectory = Directory("./output");
+var packageDirectory= Directory("./publish");
 
 Task("Clean")
     .Does(() =>
     {
-        CleanDirectory(artifactsDirectory);
+        CleanDirectory(outputDirectory);
+		CleanDirectory(packageDirectory);
     });
 
 Task("Restore")
@@ -44,7 +46,7 @@ Task("Publish")
                 new DotNetCorePublishSettings()
                 {
                     Configuration = configuration,
-                    OutputDirectory = artifactsDirectory
+                    OutputDirectory = outputDirectory
                 });
     });
 
@@ -52,7 +54,7 @@ Task("Zip-Files")
     .IsDependentOn("Publish")
     .Does(() =>
     {
-        Zip(artifactsDirectory, "publish.zip");
+        Zip(outputDirectory, "./publish/PersonalWebApp.zip");
     });
 
 
