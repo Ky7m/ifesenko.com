@@ -1,3 +1,6 @@
+// Install addins.
+#addin "nuget:https://www.nuget.org/api/v2?package=Newtonsoft.Json&version=9.0.1"
+
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
@@ -45,7 +48,15 @@ Task("Publish")
                 });
     });
 
+Task("Zip-Files")
+    .IsDependentOn("Publish")
+    .Does(() =>
+    {
+        Zip(artifactsDirectory, "publish.zip");
+    });
+
+
 Task("Default")
-    .IsDependentOn("Publish");
+    .IsDependentOn("Zip-Files");
 
 RunTarget(target);
