@@ -1,5 +1,4 @@
-﻿/// <reference path="../typings/index.d.ts" />
-interface JQuery {
+﻿interface JQuery {
     textrotator(options?: any): JQuery;
     backstretch(options?: any): JQuery;
 }

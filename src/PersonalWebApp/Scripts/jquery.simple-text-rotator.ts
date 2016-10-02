@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 !function($: any){
   var defaults = {
         animation: "dissolve",

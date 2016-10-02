@@ -8,7 +8,7 @@ Task("Clean")
     .Does(() =>
     {
         CleanDirectory(outputDirectory);
-		CleanDirectory(packageDirectory);
+        CleanDirectory(packageDirectory);
     });
 
 Task("Restore")
