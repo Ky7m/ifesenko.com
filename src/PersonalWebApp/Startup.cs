@@ -99,8 +99,6 @@ namespace PersonalWebApp
                 app.UseBrowserLink();
             }
 
-            var cdnUrl = _configuration.GetValue<string>("AppSettings:CdnUrl");
-
             app.UseCsp(
                 options =>
                 {
@@ -133,16 +131,10 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                var customSources = new List<string>
-                                {
-                                    "ifesenko.azureedge.net",
-                                    cdnUrl
-                                };
                                 if (env.IsDevelopment())
                                 {
                                     x.CustomSources("data:");
                                 }
-                                x.CustomSources(customSources.ToArray());
                             })
                         .ScriptSources(
                             x =>
@@ -151,8 +143,7 @@ namespace PersonalWebApp
                                 var customSources = new List<string>
                                 {
                                     "az416426.vo.msecnd.net",
-                                    "cdnjs.cloudflare.com",
-                                    cdnUrl
+                                    "cdnjs.cloudflare.com"
                                 };
                                 if (env.IsDevelopment())
                                 {
@@ -166,7 +157,7 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com", cdnUrl);
+                                x.CustomSources("cdnjs.cloudflare.com");
                                 x.UnsafeInline();
                             });
                 });

@@ -96,7 +96,7 @@ var sources = {
         {
             name: 'backstretch.js',
             copy: true,
-            paths: paths.npm + 'jquery-backstretch-2/jquery.backstretch.js'
+            paths: paths.npm + 'jquery.backstretch/jquery.backstretch.js'
         },
         {
             name: 'app.js',
