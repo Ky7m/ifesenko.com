@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NWebsec.AspNetCore.Middleware;
 using PersonalWebApp.Middleware;
-using PersonalWebApp.Services.Implementation;
 using PersonalWebApp.Services.Implementation.CloudStorageService;
 using PersonalWebApp.Services.Interfaces;
 using PersonalWebApp.Settings;
@@ -85,8 +84,6 @@ namespace PersonalWebApp
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
-            services.AddSingleton<ICacheService, RedisCacheService>();
-            services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IStorageService, CloudStorageService>();
         }
 

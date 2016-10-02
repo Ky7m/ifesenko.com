@@ -113,6 +113,20 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
         private static EventModel[] Events { get; } = {
             new EventModel
             {
+                Title = ".NET Framework Day 2016",
+                Link = "https://frameworksdays.com/event/net-framework-day-2016",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
+                Location = "Kiev (Ukraine)",
+                Date = new DateTime(2016, 10, 22)
+            },
+            new EventModel
+            {
                 Title = "IT Weekend Ukraine 2016",
                 Link = "https://ukraine.itweekend.ua/en/",
                 Items = ImmutableArray.CreateRange(new[]
