@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace PersonalWebApp.Infrastructure.Middleware
+namespace PersonalWebApp.Middleware
 {
     public sealed class HeadersMiddleware
     {

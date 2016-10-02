@@ -1,6 +1,6 @@
 using System;
 
-namespace PersonalWebApp.Infrastructure.Middleware
+namespace PersonalWebApp.Middleware
 {
     public sealed class HeadersBuilder
     {

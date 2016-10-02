@@ -1,12 +1,14 @@
-﻿namespace PersonalWebApp.Models
+﻿using System;
+using PersonalWebApp.Services.Implementation.CloudStorageService.Model;
+
+namespace PersonalWebApp.Models
 {
     public sealed class HomeModel
     {
         public HomeModel()
         {
-            Events = new EventModel[0];
+            Events = Array.Empty<EventModel>();
         }
-        public StatsModel Stats { get; set; }
         public EventModel[] Events { get; set; }
     }
 }

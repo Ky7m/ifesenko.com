@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 
-namespace PersonalWebApp.Infrastructure.Middleware
+namespace PersonalWebApp.Middleware
 {
 public static class MiddlewareExtensions
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PersonalWebApp.Infrastructure.Middleware
+namespace PersonalWebApp.Middleware
 {
     public sealed class HeadersPolicy
     {

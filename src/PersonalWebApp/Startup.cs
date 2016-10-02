@@ -7,12 +7,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NWebsec.AspNetCore.Middleware;
-using PersonalWebApp.Infrastructure.Middleware;
-using PersonalWebApp.Infrastructure.Services.Implementation;
-using PersonalWebApp.Infrastructure.Services.Implementation.CloudStorageService;
-using PersonalWebApp.Infrastructure.Services.Implementation.HealthService;
-using PersonalWebApp.Infrastructure.Services.Interfaces;
-using PersonalWebApp.Infrastructure.Settings;
+using PersonalWebApp.Middleware;
+using PersonalWebApp.Services.Implementation;
+using PersonalWebApp.Services.Implementation.CloudStorageService;
+using PersonalWebApp.Services.Interfaces;
+using PersonalWebApp.Settings;
 using WebMarkupMin.AspNetCore1;
 
 namespace PersonalWebApp
@@ -86,7 +85,6 @@ namespace PersonalWebApp
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
-            services.AddSingleton<IHealthService, HealthService>();
             services.AddSingleton<ICacheService, RedisCacheService>();
             services.AddSingleton<ISettingsService, SettingsService>();
             services.AddSingleton<IStorageService, CloudStorageService>();
