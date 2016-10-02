@@ -1,7 +1,8 @@
 #addin "nuget:https://www.nuget.org/api/v2?package=Newtonsoft.Json&version=9.0.1"
+
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-var version = Argument("version", "1.0.0");
+var version = Argument("buildNumber", "1.0.0");
 
 var outputDirectory = Directory("./output");
 var packageDirectory= Directory("./publish");
