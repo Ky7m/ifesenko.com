@@ -133,7 +133,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
+                        ["https://doc.co/oRJMtu"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kiev (Ukraine)",
