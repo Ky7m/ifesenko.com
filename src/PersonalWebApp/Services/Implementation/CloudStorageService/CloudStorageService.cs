@@ -119,7 +119,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
+                        ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kiev (Ukraine)",
