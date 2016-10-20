@@ -1,6 +1,7 @@
 #tool "nuget:?package=OctopusTools"
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var buildNumber = Argument("buildNumber", "1.0.0.0");
 
 var outputDirectory = Directory("./build");
 var packageDirectory= Directory("./publish");
@@ -52,7 +53,7 @@ Task("Zip-Files")
     .IsDependentOn("Publish")
     .Does(() =>
     {
-        Zip(outputDirectory, "./publish/PersonalWebApp.zip");
+        Zip(outputDirectory, String.Format("./publish/PersonalWebApp.{0}.zip",buildNumber));
     });
 
 
