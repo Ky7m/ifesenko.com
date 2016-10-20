@@ -1,7 +1,8 @@
+#tool "nuget:?package=OctopusTools"
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-var outputDirectory = Directory("./output");
+var outputDirectory = Directory("./build");
 var packageDirectory= Directory("./publish");
 
 Task("Clean")
