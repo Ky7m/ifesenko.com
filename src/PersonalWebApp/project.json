@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "dependencies": {
     "Microsoft.NETCore.App": {
@@ -28,8 +28,8 @@
     "WindowsAzure.Storage": "7.2.1",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
     "WebMarkupMin.AspNetCore1": "2.2.1",
-    "Newtonsoft.Json": "9.0.1",
-    "System.Collections.Immutable": "1.2.0"
+    "System.Collections.Immutable": "1.2.0",
+    "Newtonsoft.Json": "9.0.2-beta1"
   },
   "tools": {
     "BundlerMinifier.Core": "2.2.281",

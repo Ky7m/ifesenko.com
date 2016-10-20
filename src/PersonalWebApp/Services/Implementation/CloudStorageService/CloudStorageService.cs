@@ -111,6 +111,20 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
         private static EventModel[] PopulateEvents() => Events;
 
         private static EventModel[] Events { get; } = {
+             new EventModel
+            {
+                Title = "XP Days Ukraine",
+                Link = "http://xpdays.com.ua",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
+                Location = "Kiev (Ukraine)",
+                Date = new DateTime(2016, 11, 11)
+            },
             new EventModel
             {
                 Title = ".NET Framework Day 2016",
@@ -119,7 +133,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
+                        ["https://doc.co/oRJMtu"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kiev (Ukraine)",
