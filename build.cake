@@ -4,6 +4,8 @@ var configuration = Argument("configuration", "Release");
 var buildNumber = Argument("buildNumber", "1.0.0.0");
 var octoServer = Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azure.com");
 var octoApiKey = Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
+var octoProject = Argument("octoProject", "www.ifesenko.com");
+var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging"); 
 
 var outputDirectory = Directory("./build");
 var packageDirectory= Directory("./publish");
@@ -74,13 +76,27 @@ Task("OctoPush")
 Task("OctoRelease")
   .IsDependentOn("OctoPush")
   .Does(() => {
-    OctoCreateRelease("www.ifesenko.com", new CreateReleaseSettings {
+    OctoCreateRelease(octoProject, new CreateReleaseSettings {
         Server = octoServer,
         ApiKey = octoApiKey,
         ReleaseNumber = buildNumber
       });
   });
-
+/*
+Task("OctoDeploy")
+  .IsDependentOn("OctoRelease")
+  .Does(() => {
+    OctoDeployRelease(octoServer,
+        octoApiKey,
+        octoProject,
+        octoTargetEnvironment,
+        buildNumber, 
+        new OctopusDeployReleaseDeploymentSettings {
+            ShowProgress = false,
+            WaitForDeployment = false
+      });
+  });
+*/
 Task("Default")
     .IsDependentOn("OctoRelease");
 
