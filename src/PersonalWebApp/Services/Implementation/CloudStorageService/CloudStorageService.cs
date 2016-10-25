@@ -111,19 +111,35 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
         private static EventModel[] PopulateEvents() => Events;
 
         private static EventModel[] Events { get; } = {
-             new EventModel
+            new EventModel
             {
                 Title = "XP Days Ukraine",
                 Link = "http://xpdays.com.ua",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring", new ImmutableDictionaryBuilder<string, string>
-                    {
-                        ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint
-                    })
+                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring", 
+                    new ImmutableDictionaryBuilder<string, string>
+                        {
+                            ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint
+                        })
                 }),
                 Location = "Kiev (Ukraine)",
                 Date = new DateTime(2016, 11, 11)
+            },
+            new EventModel
+            {
+                Title = "Metrics Morning@Lohika",
+                Link = "http://morning.lohika.com/past-events/net-morninglohika",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
+                        new ImmutableDictionaryBuilder<string, string>
+                        {
+                            ["https://doc.co/XZpwqc"] = CommonStrings.CollateralPowerpoint
+                        })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2016, 11, 5)
             },
             new EventModel
             {
@@ -257,14 +273,13 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
                         })
                 }),
-
                 Location = CommonStrings.LocationWebcast,
                 Date = new DateTime(2016, 2, 18)
             },
             new EventModel
             {
                 Title = ".Net Morning@Lohika",
-                Link = "https://www.facebook.com/events/688982824575438/",
+                Link = "http://morning.lohika.com/past-events/net-morninglohika",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
@@ -276,7 +291,6 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             CommonStrings.CollateralDemoCode
                         })
                 }),
-
                 Location = "Lviv (Ukraine)",
                 Date = new DateTime(2016, 2, 13)
             },
@@ -291,7 +305,6 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://www.youtube.com/watch?v=gUfrK1rGWB0"] = CommonStrings.CollateralVideoRus
                         })
                 }),
-
                 Location = CommonStrings.LocationWebcast,
                 Date = new DateTime(2016, 2, 10)
             },
@@ -319,7 +332,6 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
-
                 Location = "Lviv (Ukraine)",
                 Date = new DateTime(2015, 12, 21)
             },
@@ -350,7 +362,6 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://doc.co/13tWp4"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
-
                 Location = CommonStrings.LocationWebcast,
                 Date = new DateTime(2015, 11, 19)
             },
@@ -366,7 +377,6 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
                         })
                 }),
-
                 Location = "Kharkiv (Ukraine)",
                 Date = new DateTime(2015, 11, 14)
             },
