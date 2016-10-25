@@ -2,24 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/PersonalWebApp.dll",
-            "args": [],
-            "cwd": "${workspaceRoot}",
-            "stopAtEntry": false
-        },
-        {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/PersonalWebApp.dll",
+            "program": "${workspaceRoot}/src/PersonalWebApp/bin/Debug/netcoreapp1.0/PersonalWebApp.dll",
             "args": [],
             "cwd": "${workspaceRoot}",
             "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",
@@ -33,13 +24,19 @@
                 "linux": {
                     "command": "xdg-open"
                 }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceRoot}/Views"
             }
         },
         {
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach",
-            "processName": "<example>"
+            "processId": "${command.pickProcess}"
         }
     ]
 }
