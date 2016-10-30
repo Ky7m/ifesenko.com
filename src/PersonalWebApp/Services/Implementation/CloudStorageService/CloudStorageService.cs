@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Services.Implementation.CloudStorageService.Model;
 using PersonalWebApp.Services.Interfaces;
@@ -24,88 +21,11 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             _cloudStorageAccount = new Lazy<CloudStorageAccount>(() => CloudStorageAccount.Parse(_appSettings.StorageConnectionString));
         }
 
-        public async Task<SettingTableEntity[]> RetrieveAllSettingsForServiceAsync(string serviceName)
-        {
-            var tableQuery = new TableQuery<SettingTableEntity>()
-                .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, serviceName));
-
-            return await ExecuteQueryAsync("Settings", tableQuery);
-        }
-
-        public async Task ReplaceSettingValueForServiceAsync(SettingTableEntity updateSettingTableEntity)
-        {
-            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
-            var table = client.GetTableReference("Settings");
-
-            var retrieveOperation =
-                TableOperation.Retrieve<SettingTableEntity>(updateSettingTableEntity.PartitionKey,
-                    updateSettingTableEntity.RowKey);
-
-            var newValue = updateSettingTableEntity.Value;
-
-            var retrievedResult = await table.ExecuteAsync(retrieveOperation);
-
-            var updateEntity = (SettingTableEntity)retrievedResult.Result;
-            if (updateEntity == null)
-            {
-                return;
-            }
-
-            updateEntity.Value = newValue;
-            var updateOperation = TableOperation.Replace(updateEntity);
-            await table.ExecuteAsync(updateOperation);
-        }
-
-        public async Task<ShortToLongUrlMapTableEntity> RetrieveLongUrlMapForShortUrlAsync(string shortUrl)
-        {
-            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
-            var table = client.GetTableReference("ShortToLongUrlsMap");
-
-            var query =
-                new TableQuery<ShortToLongUrlMapTableEntity>().Where(TableQuery.GenerateFilterCondition("RowKey",
-                    QueryComparisons.Equal, shortUrl));
-
-            var shortToLongUrlMapTableEntity = (await ExecuteQueryAsync("ShortToLongUrlsMap", query)).FirstOrDefault();
-            if (shortToLongUrlMapTableEntity == null)
-            {
-                return null;
-            }
-            shortToLongUrlMapTableEntity.Stats++;
-            var replaceOperation = TableOperation.Replace(shortToLongUrlMapTableEntity);
-            await table.ExecuteAsync(replaceOperation);
-
-            return shortToLongUrlMapTableEntity;
-        }
-
         public async Task<EventModel[]> RetrieveAllEventsAsync()
         {
             var events = PopulateEvents();
             return await Task.FromResult(events);
         }
-
-        private async Task<T[]> ExecuteQueryAsync<T>(string tableName, TableQuery<T> tableQuery = null) where T : ITableEntity, new()
-        {
-            var result = new List<T>();
-            var client = _cloudStorageAccount.Value.CreateCloudTableClient();
-            var table = client.GetTableReference(tableName);
-            if (tableQuery == null)
-            {
-                tableQuery = new TableQuery<T>();
-            }
-            TableContinuationToken continuationToken = null;
-            do
-            {
-                var tableQueryResult = await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
-
-                continuationToken = tableQueryResult.ContinuationToken;
-                result.AddRange(tableQueryResult.Results);
-
-                // Loop until a null continuation token is received, indicating the end of the table.
-            } while (continuationToken != null);
-
-            return result.ToArray();
-        }
-
 
         #region Events
         private static EventModel[] PopulateEvents() => Events;
@@ -117,7 +37,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Link = "http://xpdays.com.ua",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring", 
+                    new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
                     new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint
@@ -149,7 +69,8 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/oRJMtu"] = CommonStrings.CollateralPowerpoint
+                        ["https://doc.co/oRJMtu"] = CommonStrings.CollateralPowerpoint,
+                        ["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = "Kiev (Ukraine)",
@@ -183,6 +104,11 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Enabling DevTest in Microsoft Azure", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
+                    }),
+                    new EventModelItem("Channel 9: DevOps Video Lessons", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure"] = CommonStrings.CollateralVideoRus,
+                        ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure-demo"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = "Kiev (Ukraine)",

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.ApplicationInsights;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalWebApp.Models;
 using PersonalWebApp.Services.Interfaces;
@@ -26,23 +25,6 @@ namespace PersonalWebApp.Controllers
         {
             var homeModel = await PopulateHomeModel();
             return View(homeModel);
-        }
-
-        [Route("go/{shortUrl?}")]
-        public async Task<IActionResult> RedirectToLong(string shortUrl)
-        {
-            if (string.IsNullOrEmpty(shortUrl))
-            {
-                return RedirectToAction("Error", "Error", new { statusCode = StatusCodes.Status404NotFound });
-            }
-            var longUrlMapTableEntity =
-                await _storageService.RetrieveLongUrlMapForShortUrlAsync(shortUrl.ToLowerInvariant());
-            if (string.IsNullOrEmpty(longUrlMapTableEntity?.Target))
-            {
-                return RedirectToAction("Error", "Error", new { statusCode = StatusCodes.Status404NotFound });
-            }
-            Response.StatusCode = 302;
-            return Redirect(longUrlMapTableEntity.Target);
         }
 
         private async Task<HomeModel> PopulateHomeModel()
