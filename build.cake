@@ -1,16 +1,28 @@
+//////////////////////////////////////////////////////////////////////
+// TOOLS
+//////////////////////////////////////////////////////////////////////
 #tool "nuget:?package=OctopusTools"
+
+//////////////////////////////////////////////////////////////////////
+// ARGUMENTS
+//////////////////////////////////////////////////////////////////////
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 var buildNumber = Argument("buildNumber", "1.0.0.0");
 var octoServer = Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azure.com");
 var octoApiKey = Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
 var octoProject = Argument("octoProject", "www.ifesenko.com");
-var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging"); 
+var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging");
 
+///////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+///////////////////////////////////////////////////////////////////////////////
 var outputDirectory = Directory("./build");
 var packageDirectory= Directory("./publish");
 
 var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
+
+var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
 Task("Clean")
     .Does(() =>
@@ -56,6 +68,7 @@ Task("Publish")
     });
 
 Task("Zip-Files")
+    .WithCriteria(isContinuousIntegrationBuild)
     .IsDependentOn("Publish")
     .Does(() =>
     {
@@ -63,17 +76,19 @@ Task("Zip-Files")
     });
 
 Task("OctoPush")
+  .WithCriteria(isContinuousIntegrationBuild)
   .IsDependentOn("Zip-Files")
   .Does(() => {
-    OctoPush(octoServer, 
-			 octoApiKey, 
-			 new FilePath(packageName),
-			 new OctopusPushSettings {
-				ReplaceExisting = true
-			 });
+    OctoPush(octoServer,
+             octoApiKey,
+             new FilePath(packageName),
+             new OctopusPushSettings {
+                ReplaceExisting = true
+             });
   });
 
 Task("OctoRelease")
+  .WithCriteria(isContinuousIntegrationBuild)
   .IsDependentOn("OctoPush")
   .Does(() => {
     OctoCreateRelease(octoProject, new CreateReleaseSettings {
@@ -84,13 +99,14 @@ Task("OctoRelease")
   });
 /*
 Task("OctoDeploy")
+  .WithCriteria(isContinuousIntegrationBuild)
   .IsDependentOn("OctoRelease")
   .Does(() => {
     OctoDeployRelease(octoServer,
         octoApiKey,
         octoProject,
         octoTargetEnvironment,
-        buildNumber, 
+        buildNumber,
         new OctopusDeployReleaseDeploymentSettings {
             ShowProgress = false,
             WaitForDeployment = false
