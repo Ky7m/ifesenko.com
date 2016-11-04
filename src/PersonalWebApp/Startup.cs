@@ -80,8 +80,6 @@ namespace PersonalWebApp
                     Location = ResponseCacheLocation.Any,
                     Duration = 86400
                 });
-
-                options.Filters.Add(new RequireHttpsAttribute());
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
@@ -167,8 +165,6 @@ namespace PersonalWebApp
             app.UseXContentTypeOptions()
                 .UseXDownloadOptions()
                 .UseXfo(options => options.Deny());
-
-            app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
