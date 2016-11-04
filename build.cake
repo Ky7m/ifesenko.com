@@ -22,7 +22,7 @@ var packageDirectory= Directory("./publish");
 
 var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
 
-var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
+var isContinuousIntegrationBuild = true;//!BuildSystem.IsLocalBuild;
 
 Task("Clean")
     .Does(() =>
