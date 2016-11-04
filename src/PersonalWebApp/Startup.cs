@@ -81,7 +81,7 @@ namespace PersonalWebApp
                     Duration = 86400
                 });
 
-                //options.Filters.Add(new RequireHttpsAttribute());
+                options.Filters.Add(new RequireHttpsAttribute());
             });
 
             services.AddSingleton<IConfiguration>(_configuration);
@@ -168,7 +168,7 @@ namespace PersonalWebApp
                 .UseXDownloadOptions()
                 .UseXfo(options => options.Deny());
 
-            //app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
+            app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
