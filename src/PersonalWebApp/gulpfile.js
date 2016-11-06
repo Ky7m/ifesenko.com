@@ -1,6 +1,4 @@
-/// <binding BeforeBuild='build' Clean='clean' />
 'use strict';
-
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');

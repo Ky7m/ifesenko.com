@@ -10,8 +10,6 @@
     "exclude": [
         "bower_components",
         "node_modules",
-        "wwwroot",
-        "typings/browser.d.ts",
-        "typings/browser"
+        "wwwroot"
     ]
 }
