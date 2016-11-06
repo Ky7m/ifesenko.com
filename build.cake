@@ -64,7 +64,7 @@ Task("Restore")
 
         Wyam(new WyamSettings()
                 {
-                    OutputPath  = "./build/Blog"
+                    OutputPath  = "./build/wwwroot/blog"
                 });
     });
 

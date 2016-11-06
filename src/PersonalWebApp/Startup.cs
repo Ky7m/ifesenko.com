@@ -171,6 +171,7 @@ namespace PersonalWebApp
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+            app.UseDefaultFiles();
 
             app.UseWebMarkupMin();
 
