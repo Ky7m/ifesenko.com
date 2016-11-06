@@ -9,7 +9,7 @@
     </header>
     @foreach (var post in Documents["Posts"])
     {
-        <h3><a href="/Blog/@post.String("RelativeFilePath")">@post.String("Title")</a></h3>
+        <h3><a href="/blog/@post.String("RelativeFilePath")">@post.String("Title")</a></h3>
         <p>Published on @(post.Get<DateTime>("Published").ToLongDateString())</p>
     }
 
