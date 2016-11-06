@@ -1,26 +1,14 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using Microsoft.WindowsAzure.Storage;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Services.Implementation.CloudStorageService.Model;
 using PersonalWebApp.Services.Interfaces;
-using PersonalWebApp.Settings;
 
 namespace PersonalWebApp.Services.Implementation.CloudStorageService
 {
     public sealed class CloudStorageService : IStorageService
     {
-        private readonly AppSettings _appSettings;
-        private readonly Lazy<CloudStorageAccount> _cloudStorageAccount;
-
-        public CloudStorageService(IOptions<AppSettings> appSettings)
-        {
-            _appSettings = appSettings.Value;
-            _cloudStorageAccount = new Lazy<CloudStorageAccount>(() => CloudStorageAccount.Parse(_appSettings.StorageConnectionString));
-        }
-
         public async Task<EventModel[]> RetrieveAllEventsAsync()
         {
             var events = PopulateEvents();
