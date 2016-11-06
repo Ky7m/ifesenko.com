@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
-#addin "Cake.Yarn"
+#addin "Cake.Npm"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -41,6 +41,7 @@ Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
+        Npm.FromPath("./src/PersonalWebApp").Install();
         DotNetCoreRestore();
     });
 
@@ -58,8 +59,6 @@ Task("Restore")
                     Configuration = configuration
                 });
         }
-
-        Yarn.FromPath("./src/PersonalWebApp").Install();
     });
 
 Task("Publish")
