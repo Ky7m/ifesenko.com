@@ -41,7 +41,21 @@ Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
-        Npm.FromPath("./src/PersonalWebApp").Install();
+        Npm.Install(settings => settings.Package("hexo-cli").Globally());
+        var packageFiles = new []
+        {
+            "./src/PersonalWebApp",
+            "./src/PersonalWebApp/Blog",
+            "./src/PersonalWebApp/Blog/themes/next"
+        };
+        foreach(var package in packageFiles)
+        {
+            Npm.FromPath(package).Install();
+        }
+
+        ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
+        ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
+
         DotNetCoreRestore();
     });
 
@@ -124,3 +138,40 @@ Task("Default")
     .IsDependentOn("OctoRelease");
 
 RunTarget(target);
+
+
+void ExecuteCommand(string command, string workingDir = null)
+{
+    if (string.IsNullOrEmpty(workingDir))
+        workingDir = System.IO.Directory.GetCurrentDirectory();
+
+    System.Diagnostics.ProcessStartInfo processStartInfo;
+
+    if (IsRunningOnWindows())
+    {
+        processStartInfo = new System.Diagnostics.ProcessStartInfo
+        {
+            UseShellExecute = false,
+            WorkingDirectory = workingDir,
+            FileName = "cmd",
+            Arguments = "/C " + command,
+        };
+    }
+    else
+    {
+        processStartInfo = new System.Diagnostics.ProcessStartInfo
+        {
+            UseShellExecute = false,
+            WorkingDirectory = workingDir,
+            Arguments = command,
+        };
+    }
+
+    using (var process = System.Diagnostics.Process.Start(processStartInfo))
+    {
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+            throw new Exception(string.Format("Exit code {0} from {1}", process.ExitCode, command));
+    }
+}
