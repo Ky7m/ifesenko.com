@@ -2,13 +2,11 @@
 // TOOLS
 //////////////////////////////////////////////////////////////////////
 #tool "nuget:?package=OctopusTools"
-#tool "nuget:?package=Wyam&prerelease"
 
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 #addin "Cake.Npm"
-#addin "nuget:?package=Cake.Wyam&prerelease"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -61,11 +59,6 @@ Task("Restore")
                     Configuration = configuration
                 });
         }
-
-        Wyam(new WyamSettings()
-                {
-                    OutputPath  = "./build/wwwroot/blog"
-                });
     });
 
 Task("Publish")
