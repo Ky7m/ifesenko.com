@@ -18,7 +18,7 @@ var octoServer = Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azu
 var octoApiKey = Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
 var octoProject = Argument("octoProject", "www.ifesenko.com");
 var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging");
-var isContinuousIntegrationBuild = Argument("isContinuousIntegrationBuild", false);
+//var isContinuousIntegrationBuild = Argument("isContinuousIntegrationBuild", false);
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -28,7 +28,7 @@ var packageDirectory= Directory("./publish");
 
 var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
 
-//var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
+var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
 Task("Clean")
     .Does(() =>
@@ -118,7 +118,7 @@ Task("OctoRelease")
         ReleaseNumber = buildNumber
       });
   });
-/*
+
 Task("OctoDeploy")
   .WithCriteria(isContinuousIntegrationBuild)
   .IsDependentOn("OctoRelease")
@@ -133,7 +133,7 @@ Task("OctoDeploy")
             WaitForDeployment = false
       });
   });
-*/
+
 Task("Default")
     .IsDependentOn("OctoRelease");
 
