@@ -30,9 +30,9 @@ canonical: true
 menu:
   home: /
   categories: categories
-#  about: about
   archives: archives
   tags: tags
+  about: http://www.ifesenko.com
 #  schedule: schedule
 #  commonweal: 404.html
 
