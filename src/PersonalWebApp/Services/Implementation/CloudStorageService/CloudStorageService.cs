@@ -37,7 +37,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             new EventModel
             {
                 Title = "Metrics Morning@Lohika",
-                Link = "http://morning.lohika.com/news/metrics-morning",
+                Link = "http://morning.lohika.com/past-events/metrics-morning",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
