@@ -18,7 +18,6 @@ var octoServer = Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azu
 var octoApiKey = Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
 var octoProject = Argument("octoProject", "www.ifesenko.com");
 var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging");
-//var isContinuousIntegrationBuild = Argument("isContinuousIntegrationBuild", false);
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
