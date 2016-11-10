@@ -127,7 +127,9 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com");
+                                x.CustomSources("cdnjs.cloudflare.com", 
+                                    "fonts.googleapis.com",
+                                    "fonts.gstatic.com");
                             })
                         .FormActions(x => x.Self())
                         .ImageSources(
@@ -160,7 +162,8 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com");
+                                x.CustomSources("cdnjs.cloudflare.com", 
+                                    "fonts.googleapis.com");
                                 x.UnsafeInline();
                             });
                 });
