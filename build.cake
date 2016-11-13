@@ -40,22 +40,27 @@ Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
-        Npm.Install(settings => settings.Package("hexo-cli").Globally());
+        DotNetCoreRestore();
+    });
+
+ Task("GenerateBlog")
+    .IsDependentOn("Clean")
+    .Does(() =>
+    {
         var packageFiles = new []
-        {
-            "./src/PersonalWebApp",
-            "./src/PersonalWebApp/Blog",
-            "./src/PersonalWebApp/Blog/themes/next"
-        };
+            {
+                "./src/PersonalWebApp",
+                "./src/PersonalWebApp/Blog",
+                "./src/PersonalWebApp/Blog/themes/next"
+            };
         foreach(var package in packageFiles)
         {
             Npm.FromPath(package).Install();
         }
 
+        Npm.Install(settings => settings.Package("hexo-cli").Globally());
         ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
         ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
-
-        DotNetCoreRestore();
     });
 
  Task("Build")
@@ -76,6 +81,7 @@ Task("Restore")
 
 Task("Publish")
     .IsDependentOn("Build")
+    .IsDependentOn("GenerateBlog")
     .Does(() =>
     {
         DotNetCorePublish(
