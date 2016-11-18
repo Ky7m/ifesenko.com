@@ -29,7 +29,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint,
-                            ["https://www.youtube.com/watch?v=ExGplTRTUTo"] = CommonStrings.CollateralVideoRus
+                            ["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.CollateralVideoRus
                         })
                 }),
                 Location = "Kiev (Ukraine)",
