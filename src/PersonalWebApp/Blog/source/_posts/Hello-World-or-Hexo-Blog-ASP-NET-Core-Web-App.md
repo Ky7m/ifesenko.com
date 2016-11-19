@@ -65,13 +65,6 @@ hexo init
 npm install
 ```
 
-Also repeat this operation for selected theme (in my case it is default: "landscape"):
-
-``` bat
-cd themes\landscape
-npm install
-```
-
 After this step you will see next structure in your directory:
 
 ``` bat
