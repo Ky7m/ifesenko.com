@@ -50,8 +50,7 @@ Task("Restore")
         var packageFiles = new []
             {
                 "./src/PersonalWebApp",
-                "./src/PersonalWebApp/Blog",
-                "./src/PersonalWebApp/Blog/themes/next"
+                "./src/PersonalWebApp/Blog"
             };
         foreach(var package in packageFiles)
         {
