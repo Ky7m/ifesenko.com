@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
-#addin "Cake.Npm"
+#addin "Cake.Yarn"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -54,7 +54,7 @@ Task("Restore")
             };
         foreach(var package in packageFiles)
         {
-            Npm.FromPath(package).Install();
+            Yarn.FromPath(package).Install();
         }
 
         //Npm.Install(settings => settings.Package("hexo-cli").Globally());
