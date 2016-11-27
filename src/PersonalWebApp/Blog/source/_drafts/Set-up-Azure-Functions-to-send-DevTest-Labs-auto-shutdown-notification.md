@@ -10,6 +10,9 @@ There is an great [post](https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/
 
 ## Set up web hook dev test labs
 
+https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/set-up-devtest-labs-to-send-auto-shutdown-notification/
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-compare-logic-apps-ms-flow-webjobs
+
 ## Create azure functions
 
 ## implement logic
