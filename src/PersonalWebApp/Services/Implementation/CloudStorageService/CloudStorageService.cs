@@ -21,8 +21,23 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
         private static EventModel[] Events { get; } = {
             new EventModel
             {
+                Title = "Most JS Frameworks Day 2016",
+                Link = "http://frameworksdays.com/event/most-js-fwdays-2016/review/lets-build-a-web-application",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Let's Build a Web Application (and Talk About Ways to Improve Bad Parts)", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
+                        //["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = "Kiev (Ukraine)",
+                Date = new DateTime(2016, 12, 4)
+            },
+            new EventModel
+            {
                 Title = "XP Days Ukraine",
-                Link = "http://xpdays.com.ua",
+                Link = "http://xpdays.com.ua/speaker/igor-fesenko",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
@@ -53,7 +68,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             new EventModel
             {
                 Title = ".NET Framework Day 2016",
-                Link = "https://frameworksdays.com/event/net-framework-day-2016",
+                Link = "http://frameworksdays.com/event/net-framework-day-2016/review/direction-of-csharp",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
