@@ -185,7 +185,7 @@ namespace PersonalWebApp
 
             app.UseFileServer(new FileServerOptions
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\blog")),
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot","blog")),
                 RequestPath = new PathString("/blog"),
                 EnableDirectoryBrowsing = false
             });

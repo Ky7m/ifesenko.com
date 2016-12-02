@@ -167,7 +167,8 @@ void ExecuteCommand(string command, string workingDir = null)
         {
             UseShellExecute = false,
             WorkingDirectory = workingDir,
-            Arguments = command,
+            FileName = "bash",
+            Arguments = "-c " + command,
         };
     }
 

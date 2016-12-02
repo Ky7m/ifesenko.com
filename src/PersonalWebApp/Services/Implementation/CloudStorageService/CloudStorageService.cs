@@ -59,7 +59,8 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/XZpwqc"] = CommonStrings.CollateralPowerpoint
+                            ["https://doc.co/XZpwqc"] = CommonStrings.CollateralPowerpoint,
+                            ["https://www.youtube.com/watch?v=aFsk7yDkwBs"] = CommonStrings.CollateralVideoRus
                         })
                 }),
                 Location = "Lviv (Ukraine)",
