@@ -55,8 +55,11 @@ namespace PersonalWebApp
                   routeOptions.LowercaseUrls = true;
               });
 
-           // Add WebMarkupMin services to the services container.
-           services.AddWebMarkupMin(options =>
+            services.AddResponseCaching();
+            services.AddResponseCompression();
+
+            // Add WebMarkupMin services to the services container.
+            services.AddWebMarkupMin(options =>
                {
                    //options.AllowMinificationInDevelopmentEnvironment = true;
                    //options.AllowCompressionInDevelopmentEnvironment = true;
@@ -68,8 +71,7 @@ namespace PersonalWebApp
                    settings.RemoveRedundantAttributes = true;
                    settings.RemoveHttpProtocolFromAttributes = true;
                    settings.RemoveHttpsProtocolFromAttributes = true;
-               })
-               .AddHttpCompression();
+               });
 
             services.AddMvc(options =>
             {
@@ -101,6 +103,9 @@ namespace PersonalWebApp
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
+
+            app.UseResponseCaching();
+            app.UseResponseCompression();
 
             app.UseCsp(
                 options =>

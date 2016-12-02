@@ -32,15 +32,19 @@
       "type": "build"
     },
     "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-       "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Design": {
+    "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Design": {
       "version": "1.1.0-preview4-final",
       "type": "build"
-    }
+    },
+    "Microsoft.AspNetCore.ResponseCaching": "1.1.0",
+    "Microsoft.Extensions.Caching.Memory": "1.1.0",
+    "Microsoft.AspNetCore.ResponseCompression": "1.0.0"
   },
   "tools": {
     "Microsoft.AspNetCore.Razor.Tools": "1.1.0-preview4-final",
     "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.1.0-preview4-final",
-    "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Tools": "1.1.0-preview4-final"
+    "Microsoft.AspNetCore.Mvc.Razor.ViewCompilation.Tools": "1.1.0-preview4-final",
+    "Microsoft.DotNet.Watcher.Tools": "1.1.0-preview4-final"
   },
    "frameworks": {
     "netcoreapp1.1": {
