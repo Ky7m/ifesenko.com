@@ -80,12 +80,12 @@ After this step you will see next structure in your directory:
 ```
 
 Now you are ready to start blogging with Hexo, but we need to integrate two applications in one.
-Open *_config.yml* file ([more info](https://hexo.io/docs/configuration.html)) and find *public_dir* setting, you need point to "*..\wwwroot\blog*".
+Open *_config.yml* file ([more info](https://hexo.io/docs/configuration.html)) and find *public_dir* setting, you need point to "*../wwwroot/blog*" (pay attention to path segment separator, it allows to build right path accros POSIX and Windows platforms).
 Also update *url* setting:
 
 ``` yaml
 root: /blog/
-public_dir: ..\wwwroot\blog
+public_dir: ../wwwroot/blog
 ```
 
 After that you can generate static content:
