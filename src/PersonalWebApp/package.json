@@ -28,6 +28,6 @@
     "gulp-util": "3.0.7",
     "merge-stream": "1.0.1",
     "rimraf": "2.5.4",
-    "typescript": "2.0.10"
+    "typescript": "2.1.4"
   }
 }
