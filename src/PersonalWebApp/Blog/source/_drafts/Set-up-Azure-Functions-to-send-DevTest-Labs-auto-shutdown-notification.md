@@ -36,7 +36,7 @@ Below are the steps you will follow to enable auto-shutdown notification in your
 - Click Save to save the settings.
 
 
-
+http://dontcodetired.com/blog/post/Screen-Scraping-As-A-Service-with-Azure-Functions-in-5-Mins
 https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/set-up-devtest-labs-to-send-auto-shutdown-notification/
 https://docs.microsoft.com/en-us/azure/azure-functions/functions-compare-logic-apps-ms-flow-webjobs
 http://www.dotnetcurry.com/visualstudio/1326/create-vsts-extension-azure-functions
