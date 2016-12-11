@@ -18,7 +18,7 @@
     "gulp-more-css": "1.0.0",
     "gulp-plumber": "1.1.0 ",
     "gulp-replace": "0.5.4",
-    "gulp-sass": "2.3.2",
+    "gulp-sass": "3.0.0",
     "gulp-shorthand": "1.1.0",
     "gulp-size": "2.1.0",
     "gulp-sourcemaps": "2.2.0",

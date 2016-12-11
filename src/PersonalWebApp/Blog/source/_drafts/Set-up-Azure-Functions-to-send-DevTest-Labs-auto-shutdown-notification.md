@@ -15,11 +15,11 @@ For our task, we will use an HTTP-triggered Azure Function. You can get more inf
 This is more than enough to start working with Azure Functions.
 As I mentioned before we need to choose HTTP-triggered template:
 
-{% asset_img HTTP-triggered-template.jpg "Azure Function setup" %}
+{% asset_img HTTP-triggered-template.png "Azure Function setup" %}
 
 Once Azure Function is created we need to save Function url value that will be required for the next step:
 
-{% asset_img Azure-function-url.jpg "Azure Function url value" %}
+{% asset_img Azure-function-url.png "Azure Function url value" %}
 
 Now we can proceed and integrate our Azure Function with DevTest Labs service.
 
@@ -30,10 +30,12 @@ Below are the steps you will follow to enable auto-shutdown notification in your
 - Go to the Auto-shutdown settings of your lab.
 - For the option Send notification 15 minutes before auto-shutdown, select Yes.
 
-{% asset_img DevTestLabs-auto-shutdown-settings.jpg "Auto-shutdown notification settings" %}
+{% asset_img DevTestLabs-auto-shutdown-settings.png "Auto-shutdown notification settings" %}
 
 - Input the Webhook URL.
 - Click Save to save the settings.
+
+
 
 https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/set-up-devtest-labs-to-send-auto-shutdown-notification/
 https://docs.microsoft.com/en-us/azure/azure-functions/functions-compare-logic-apps-ms-flow-webjobs
