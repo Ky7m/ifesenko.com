@@ -35,13 +35,144 @@ Below are the steps you will follow to enable auto-shutdown notification in your
 - Input the Webhook URL.
 - Click Save to save the settings.
 
+Now we can get back to Azure Function and implement logic that will handle this notification and send an email.
 
-http://dontcodetired.com/blog/post/Screen-Scraping-As-A-Service-with-Azure-Functions-in-5-Mins
-https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/set-up-devtest-labs-to-send-auto-shutdown-notification/
-https://docs.microsoft.com/en-us/azure/azure-functions/functions-compare-logic-apps-ms-flow-webjobs
-http://www.dotnetcurry.com/visualstudio/1326/create-vsts-extension-azure-functions
-http://blogs.lessthandot.com/index.php/enterprisedev/cloud/azure/csv-file-to-api-using-azure-functions-csvaas/
+## How to send an email from Azure Function
 
-## implement logic
+First of all, we need to understand what schema of request is. I have used built-in log functionality of Azure Function to capture JSON schema that is used by caller. 
 
-## summary
+To add a reference to Newtonsoft.Json package you need add simple line at the top of file:
+
+```
+#r "Newtonsoft.Json"
+```
+
+After that we can use JsonConvert class:
+
+```cs
+var jsonContent = await req.Content.ReadAsStringAsync();
+log.Info($"Request:{jsonContent}");
+dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonContent);
+```
+
+An example of the request body would look like this (I cut some sensitive information):
+
+```json
+{
+   "skipUrl":"{Skip this autoshutdown long url}",
+   "delayUrl60":"{One hour delay long url}",
+   "delayUrl120":"{Two hours delay long url}",
+   "vmName":"CloudStation",
+   "guid":"a0242323-234f-4ff6-23dc-dafc26sdf50f",
+   "owner":"{Your email address}",
+   "eventType":"AutoShutdown",
+   "text":"Azure DevTest Labs notification: The virtual machine CloudStation in lab hpcdevenvironments with subscriptionId {Your subscription id} is scheduled for automatic shutdown in 15 minutes. Machine user is {Your email address}. <https://prod.skipdelay.vsdth.visualstudio.com/skip?...|Skip> this autoshutdown. <https://prod.skipdelay.vsdth.visualstudio.com/delay?...|Delay one hour>. <https://prod.skipdelay.vsdth.visualstudio.com/delay? ...|Delay two hours>.",
+   "subscriptionId":"{Your subscription id}",
+   "resourceGroupName":"hpcdevenvironmentsrg1234",
+   "labName":"hpcdevenvironments"
+}
+```
+
+From this schema we are able to get all information what we need to send notification. There are two options to do this. First option is just to extract value from "text" field and send as body of email. Second option is to build your own template. I prefer a second one. 
+The C# .NET code for implementatin of this option would look like this:
+
+```cs
+var subject = $"Planned shutdown of {data.vmName}";
+var body = $"{data.vmName} is scheduled to shutdown in 15 minutes. \n\n"+
+$"Delay shutdown for 1 hour: {data.delayUrl60} \n\n"+
+$"Delay shutdown for 2 hours: {data.delayUrl120} \n\n"+
+$"Skip this shutdown: {data.skipUrl} \n\n";
+```
+
+Finally, we are ready to send an email. From all available options I really like [SendGrid](https://sendgrid.com/) service. It allows you to send 12k emails per month for free. If you are already registered and have account, you need to generate an access key on [API Keys page](https://app.sendgrid.com/settings/api_keys). Give access only to "Mail Send" action, it is enough for our purposes:
+
+{% asset_img SendGrid-api-key.png "SendGrid API Key" %}
+
+Once we get Api key we can import the SendGrid nuget package into our Function by creating a project.json file that contains this following:
+
+```json
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "Sendgrid": "8.0.5"
+      }
+    }
+   }
+}
+```
+
+{% asset_img Add-project-json.png "Add project.json file" %}
+
+After click Save button you will see starting of NuGet packages restore process in Logs output window.
+
+To send an email using SendGrid API include following namespaces:
+
+```cs
+using SendGrid;
+using SendGrid.Helpers.Mail;
+```
+and then we can use this code snippet:
+
+```cs
+var apiKey = "{Your SendGrid API Key}";
+var sg = new SendGridAPIClient(apiKey);
+var myEmail = new Email("{Your email address}");
+var content = new Content("text/plain",body);
+var mail = new Mail(myEmail, subject, myEmail, content).Get();
+var response = await sg.client.mail.send.post(requestBody: mail);
+```
+
+The code should basically work right away, the only thing we need to do is to enhance code with detailed logs. 
+
+```cs
+#r "Newtonsoft.Json"
+
+using System.Net;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+
+public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+{
+    var jsonContent = await req.Content.ReadAsStringAsync();
+    log.Info($"Request:{jsonContent}");
+    dynamic data = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonContent);
+
+    var subject = $"Planned shutdown of {data.vmName}";
+    var body = $"{data.vmName} is scheduled to shutdown in 15 minutes. \n\n"+
+    $"Delay shutdown for 1 hour: {data.delayUrl60} \n\n"+
+    $"Delay shutdown for 2 hours: {data.delayUrl120} \n\n"+
+    $"Skip this shutdown: {data.skipUrl} \n\n";
+    
+    var apiKey = "{Your SendGrid API Key}";
+    var sg = new SendGridAPIClient(apiKey);
+    var myEmail = new Email("{Your email address}");
+    var content = new Content("text/plain",body);
+    var mail = new Mail(myEmail, subject, myEmail, content).Get();
+    
+    log.Info(mail);
+    
+    var response = await sg.client.mail.send.post(requestBody: mail);
+    log.Info($"Response: {response.StatusCode} {await response.Body.ReadAsStringAsync()}");
+    
+    return req.CreateResponse(HttpStatusCode.OK);
+}
+```
+That is all for implementation phase and now is good time to test functionality.
+
+## Test Azure Function
+
+Azure portal has embedded tab to test your Function:
+
+{% asset_img Test-azure-function.png "Test Azure Function" %}
+
+Alternative way is to install [Visual Studio Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2016/12/01/visual-studio-tools-for-azure-functions/). It is a wrapper for [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli), but Visual Studio extension and CLI tool only currently work on Windows, since the underlying Functions Host is not yet cross-platform.
+In our case Azure portal is more than enough. I took captured before request and put as body to test Function and click Run.
+Within just a couple of seconds, depending on which SMTP relay / provider you are using, you should receive an email being sent from your Azure Function App.
+
+{% asset_img Planned-shutdown-notification.png "Planned shutdown notification" %}
+
+## Summary
+
+Azure Functions service is pretty useful and helps a lot in automation. There are some additional areas out there where I use Azure Functions and I will describe them in next blog posts.
+I hope this blog post has been useful. Stay tuned!
