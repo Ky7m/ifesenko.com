@@ -1,5 +1,6 @@
 ---
 title: Set up Azure Functions to send DevTest Labs auto-shutdown notification
+date: 2016-12-12 17:37:25
 tags:
 categories: Azure
 ---
