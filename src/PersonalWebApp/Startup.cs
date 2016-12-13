@@ -114,7 +114,9 @@ namespace PersonalWebApp
                         .DefaultSources(x => x.Self())
                         .ChildSources(x => {
                             x.Self();
-                            x.CustomSources("www.youtube.com");
+                            x.CustomSources(
+                                "www.youtube.com",
+                                "disqus.com");
                         })
                         .ConnectSources(
                             x =>
@@ -135,7 +137,8 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com", 
+                                x.CustomSources(
+                                    "cdnjs.cloudflare.com", 
                                     "fonts.googleapis.com",
                                     "fonts.gstatic.com");
                             })
@@ -144,6 +147,9 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
+                                x.CustomSources(
+                                    "referrer.disqus.com",
+                                    "a.disquscdn.com");
                                 if (env.IsDevelopment())
                                 {
                                     x.CustomSources("data:");
@@ -156,7 +162,9 @@ namespace PersonalWebApp
                                 var customSources = new List<string>
                                 {
                                     "az416426.vo.msecnd.net",
-                                    "cdnjs.cloudflare.com"
+                                    "cdnjs.cloudflare.com",
+                                    "ifesenko.disqus.com",
+                                    "a.disquscdn.com"
                                 };
                                 if (env.IsDevelopment())
                                 {
@@ -170,7 +178,10 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com", "fonts.googleapis.com");
+                                x.CustomSources(
+                                    "cdnjs.cloudflare.com", 
+                                    "fonts.googleapis.com",
+                                    "a.disquscdn.com");
                                 x.UnsafeInline();
                             });
                 });
