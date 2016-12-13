@@ -99,9 +99,10 @@ Once we get Api key we can import the SendGrid nuget package into our Function b
 }
 ```
 
+After click Save button you will see starting of NuGet packages restore process in Logs output window.
+
 {% asset_img Add-project-json.png "Add project.json file" %}
 
-After click Save button you will see starting of NuGet packages restore process in Logs output window.
 To send an email using SendGrid API include following namespaces:
 
 ```cs
@@ -169,5 +170,4 @@ In our case Azure portal is more than enough. I took captured before request and
 
 ## Summary
 
-Azure Functions service is pretty useful and helps a lot in automation. There are some additional areas out there where I use Azure Functions and I will describe them in next blog posts.
-I hope this blog post has been useful. Stay tuned!
+Azure Functions service is pretty useful and helps a lot in automation. There are some additional areas out there where I use Azure Functions and I will describe them in next blog posts. I hope this blog post has been useful. Stay tuned!
