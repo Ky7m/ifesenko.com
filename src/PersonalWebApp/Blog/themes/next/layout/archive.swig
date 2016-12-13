@@ -19,8 +19,6 @@
         {% elif posts_length > 80 %} {% set cheers = 'good' %}
         {% elif posts_length > 50 %} {% set cheers = 'nice' %}
         {% elif posts_length > 30 %} {% set cheers = 'ok' %}
-      {% else %}
-        {% set cheers = 'um' %}
       {% endif %}
       {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", site.posts.length) }} {{ __('keep_on') }}
     </span>
