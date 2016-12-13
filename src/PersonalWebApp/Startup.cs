@@ -141,6 +141,7 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
+                                x.CustomSources("img.youtube.com");
                                 if (env.IsDevelopment())
                                 {
                                     x.CustomSources("data:");
@@ -167,8 +168,7 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("cdnjs.cloudflare.com", 
-                                    "fonts.googleapis.com");
+                                x.CustomSources("cdnjs.cloudflare.com", "fonts.googleapis.com");
                                 x.UnsafeInline();
                             });
                 });
