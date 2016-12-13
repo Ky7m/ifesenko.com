@@ -112,7 +112,10 @@ namespace PersonalWebApp
                 {
                     options
                         .DefaultSources(x => x.Self())
-                        .ChildSources(x => x.Self())
+                        .ChildSources(x => {
+                            x.Self();
+                            x.CustomSources("www.youtube.com");
+                        })
                         .ConnectSources(
                             x =>
                             {
@@ -141,7 +144,6 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources("img.youtube.com");
                                 if (env.IsDevelopment())
                                 {
                                     x.CustomSources("data:");

@@ -34,7 +34,7 @@ menu:
   home: /
   categories: /categories
   archives: /archives
- # tags: /tags
+  tags: /tags
   about: http://www.ifesenko.com
   #sitemap: /sitemap.xml
   #commonweal: /404.html

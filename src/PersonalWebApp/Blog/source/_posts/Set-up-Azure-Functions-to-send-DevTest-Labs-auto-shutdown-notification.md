@@ -1,7 +1,7 @@
 ---
 title: Set up Azure Functions to send DevTest Labs auto-shutdown notification
 date: 2016-12-13 10:37:25
-tags:
+tags: [Azure Functions, Serverless, DevTest, SendGrid]
 categories: Azure
 ---
 In this post I would like to share my experience in integration Azure DevTest Labs and Azure Functions services to make my life easier. 
@@ -12,7 +12,9 @@ There is an great [post](https://blogs.msdn.microsoft.com/devtestlab/2016/08/30/
 ## Create a new Azure Function
 
 For our task, we will use an HTTP-triggered Azure Function. You can get more information about Azure Functions via [offical documentation](https://azure.microsoft.com/en-in/services/functions/). I also recommend to watch a 2-minute overview video by Scott Hanselman:
-[![Get Started with Azure Functions](https://img.youtube.com/vi/nCExarOuPAw/maxresdefault.jpg)](https://www.youtube.com/watch?v=nCExarOuPAw)
+
+{% youtube nCExarOuPAw %}
+
 This is more than enough to start working with Azure Functions. As I mentioned before we need to choose HTTP-triggered template:
 
 {% asset_img HTTP-triggered-template.png "Azure Function setup" %}
