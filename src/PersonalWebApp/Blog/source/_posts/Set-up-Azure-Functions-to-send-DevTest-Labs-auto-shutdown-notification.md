@@ -26,8 +26,7 @@ Now we can proceed and integrate our Azure Function with DevTest Labs service.
 
 ## Enable auto-shutdown notification in DevTest Labs
 
-It is very straightforward to enable auto-shutdown notification. We have already got a Webhook URL which the notification will send to. 
-Below are the steps you will follow to enable auto-shutdown notification in your lab:
+It is very straightforward to enable auto-shutdown notification. We have already got a Webhook URL which the notification will send to. Below are the steps you will follow to enable auto-shutdown notification in your lab:
 - Go to the Auto-shutdown settings of your lab.
 - For the option Send notification 15 minutes before auto-shutdown, select Yes.
 
@@ -40,9 +39,7 @@ Now we can get back to Azure Function and implement logic that will handle this 
 
 ## How to send an email from Azure Function
 
-First of all, we need to understand what schema of request is. I have used built-in log functionality of Azure Function to capture JSON schema that is used by caller. 
-
-To add a reference to Newtonsoft.Json package you need add simple line at the top of file:
+First of all, we need to understand what schema of request is. I have used built-in log functionality of Azure Function to capture JSON schema that is used by caller and deserialize using Json.NET. To add a reference to Newtonsoft.Json package you need add simple line at the top of file:
 
 ```
 #r "Newtonsoft.Json"
@@ -74,8 +71,7 @@ An example of the request body would look like this (I cut some sensitive inform
 }
 ```
 
-From this schema we are able to get all information what we need to send notification. There are two options to do this. First option is just to extract value from "text" field and send as body of email. Second option is to build your own template. I prefer a second one. 
-The C# .NET code for implementatin of this option would look like this:
+From this schema we are able to get all information what we need to send notification. There are two options to do this. First option is just to extract value from "text" field and send as body of email. Second option is to build your own template. I prefer a second one. The C# .NET code for implementatin of this option would look like this:
 
 ```cs
 var subject = $"Planned shutdown of {data.vmName}";
@@ -106,7 +102,6 @@ Once we get Api key we can import the SendGrid nuget package into our Function b
 {% asset_img Add-project-json.png "Add project.json file" %}
 
 After click Save button you will see starting of NuGet packages restore process in Logs output window.
-
 To send an email using SendGrid API include following namespaces:
 
 ```cs
@@ -168,8 +163,7 @@ Azure portal has embedded tab to test your Function:
 {% asset_img Test-azure-function.png "Test Azure Function" %}
 
 Alternative way is to install [Visual Studio Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2016/12/01/visual-studio-tools-for-azure-functions/). It is a wrapper for [Azure Functions CLI](https://www.npmjs.com/package/azure-functions-cli), but Visual Studio extension and CLI tool only currently work on Windows, since the underlying Functions Host is not yet cross-platform.
-In our case Azure portal is more than enough. I took captured before request and put as body to test Function and click Run.
-Within just a couple of seconds, depending on which SMTP relay / provider you are using, you should receive an email being sent from your Azure Function App.
+In our case Azure portal is more than enough. I took captured before request and put as body to test Function and click Run. Within just a couple of seconds, depending on which SMTP relay / provider you are using, you should receive an email being sent from your Azure Function App.
 
 {% asset_img Planned-shutdown-notification.png "Planned shutdown notification" %}
 
