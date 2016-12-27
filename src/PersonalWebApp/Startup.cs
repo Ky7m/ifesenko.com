@@ -27,24 +27,16 @@ namespace PersonalWebApp
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables()
+                .AddApplicationInsightsSettings(developerMode: env.IsDevelopment());
 
-            if (env.IsDevelopment())
-            {
-                // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
-                builder.AddApplicationInsightsSettings(developerMode: true);
-            }
             _configuration = builder.Build();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var aiOptions = new ApplicationInsightsServiceOptions
-            {
-                EnableQuickPulseMetricStream = true
-            };
-            services.AddApplicationInsightsTelemetry(_configuration, aiOptions);
+            services.AddApplicationInsightsTelemetry(_configuration);
 
             services.AddOptions();
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
@@ -94,8 +86,6 @@ namespace PersonalWebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseApplicationInsightsRequestTelemetry();
-
             if (env.IsDevelopment())
             {
                 loggerFactory.AddConsole(_configuration.GetSection("Logging"));
@@ -138,7 +128,7 @@ namespace PersonalWebApp
                             {
                                 x.Self();
                                 x.CustomSources(
-                                    "cdnjs.cloudflare.com", 
+                                    "cdnjs.cloudflare.com",
                                     "fonts.googleapis.com",
                                     "fonts.gstatic.com");
                             })
@@ -179,7 +169,7 @@ namespace PersonalWebApp
                             {
                                 x.Self();
                                 x.CustomSources(
-                                    "cdnjs.cloudflare.com", 
+                                    "cdnjs.cloudflare.com",
                                     "fonts.googleapis.com",
                                     "a.disquscdn.com");
                                 x.UnsafeInline();
@@ -191,8 +181,6 @@ namespace PersonalWebApp
                 .UseXfo(options => options.Deny());
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
-
-            app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
 
