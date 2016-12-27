@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Hosting
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet AppInsightsJs
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +24,7 @@
         <link asp-append-version="true" rel="stylesheet" href="~/css/app.css" />
     </environment>
     <environment names="@nameof(EnvironmentName.Production)">
-        @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+        @Html.Raw(AppInsightsJs.FullScript)
     </environment>
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">

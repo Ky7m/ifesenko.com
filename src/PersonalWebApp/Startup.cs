@@ -27,8 +27,7 @@ namespace PersonalWebApp
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .AddApplicationInsightsSettings(developerMode: env.IsDevelopment());
+                .AddEnvironmentVariables();
 
             _configuration = builder.Build();
         }
