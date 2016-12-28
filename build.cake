@@ -7,6 +7,7 @@
 // ADDINS
 //////////////////////////////////////////////////////////////////////
 #addin "Cake.Yarn"
+#addin "Cake.NPM"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -57,7 +58,7 @@ Task("Restore")
             Yarn.FromPath(package).Install();
         }
 
-        Yarn.Add(settings => settings.Package("hexo-cli").Globally());
+        NPM.Install(settings => settings.Package("hexo-cli").Globally());
         ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
         ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
     });
