@@ -174,8 +174,7 @@ namespace PersonalWebApp
                                     "fonts.googleapis.com",
                                     "a.disquscdn.com");
                                 x.UnsafeInline();
-                            })
-                       .UpgradeInsecureRequests();
+                            });
                 });
 
             app.UseXContentTypeOptions()
