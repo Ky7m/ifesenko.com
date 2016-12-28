@@ -49,7 +49,7 @@ Task("Restore")
     .Does(() =>
     {
         Npm.Install(settings => settings.Package("yarn").Globally());
-        Yarn.Add(settings => settings.Package("hexo-cli").Globally());
+        Npm.Install(settings => settings.Package("hexo-cli").Globally());
 
         var packageFiles = new []
             {
