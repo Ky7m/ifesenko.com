@@ -153,7 +153,8 @@ namespace PersonalWebApp
                                     "az416426.vo.msecnd.net",
                                     "cdnjs.cloudflare.com",
                                     "ifesenko.disqus.com",
-                                    "a.disquscdn.com"
+                                    "a.disquscdn.com",
+                                    "google-analytics.com"
                                 };
                                 if (env.IsDevelopment())
                                 {
