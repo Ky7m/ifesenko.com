@@ -138,7 +138,8 @@ namespace PersonalWebApp
                                 x.Self();
                                 x.CustomSources(
                                     "referrer.disqus.com",
-                                    "a.disquscdn.com");
+                                    "a.disquscdn.com",
+                                    "www.google-analytics.com");
                                 if (env.IsDevelopment())
                                 {
                                     x.CustomSources("data:");
