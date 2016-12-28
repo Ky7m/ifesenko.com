@@ -154,7 +154,8 @@ namespace PersonalWebApp
                                     "cdnjs.cloudflare.com",
                                     "ifesenko.disqus.com",
                                     "a.disquscdn.com",
-                                    "www.google-analytics.com"
+                                    "www.google-analytics.com",
+                                    "data:"
                                 };
                                 if (env.IsDevelopment())
                                 {
