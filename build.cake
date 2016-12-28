@@ -57,7 +57,7 @@ Task("Restore")
             Yarn.FromPath(package).Install();
         }
 
-        Yarn.Install(settings => settings.Package("hexo-cli").Globally());
+        Yarn.Add(settings => settings.Package("hexo-cli").Globally());
         ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
         ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
     });
