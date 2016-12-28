@@ -48,6 +48,9 @@ Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
+        Npm.Install(settings => settings.Package("yarn").Globally());
+        Npm.Install(settings => settings.Package("hexo-cli").Globally());
+
         var packageFiles = new []
             {
                 "./src/PersonalWebApp",
@@ -58,7 +61,6 @@ Task("Restore")
             Yarn.FromPath(package).Install(settings => settings.ForProduction());
         }
 
-        Npm.Install(settings => settings.Package("hexo-cli").Globally());
         ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
         ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
     });
