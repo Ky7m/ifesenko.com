@@ -28,7 +28,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Let's Build a Web Application (and Talk About Ways to Improve Bad Parts)", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
-                        //["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.CollateralVideoRus
+                        ["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = "Kiev (Ukraine)",
