@@ -16,6 +16,9 @@ rss: /atom.xml
 # Specify the date when the site was setup
 since: 2016
 
+# icon between year and author @Footer
+authoricon: heart
+
 # Footer `powered-by` and `theme-info` copyright
 copyright: false
 
@@ -24,6 +27,8 @@ copyright: false
 # Tips: Before you open this tag, remeber set up your URL in hexo _config.yml ( ex. url: http://yourdomain.com )
 canonical: true
 
+# Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
+seo: true
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -32,9 +37,9 @@ canonical: true
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  categories: /categories
-  archives: /archives
-  tags: /tags
+  categories: categories
+  archives: archives
+  tags: tags
   about: http://www.ifesenko.com
   #sitemap: /sitemap.xml
   #commonweal: /404.html
@@ -208,6 +213,7 @@ auto_excerpt:
 
 # Post meta display settings
 post_meta:
+  item_text: true
   created_at: true
   updated_at: false
   categories: true
@@ -268,6 +274,9 @@ disqus_shortname: ifesenko
 # Hypercomments
 #hypercomments_id:
 
+# Gentie productKey
+#gentie_productKey:
+
 # Baidu Share
 # Available value:
 #    button | slide
@@ -295,7 +304,6 @@ google_analytics: UA-58923658-1
 #cnzz_siteid:
 
 # Application Insights
-# See https://azure.microsoft.com/en-us/services/application-insights/
 application_insights: 789e569b-c1cc-4ed7-9328-9e8c7bcc6aa3
 
 # Make duoshuo show UA

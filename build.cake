@@ -6,7 +6,6 @@
 //////////////////////////////////////////////////////////////////////
 // ADDINS
 //////////////////////////////////////////////////////////////////////
-#addin "Cake.Yarn"
 #addin "Cake.Npm"
 
 //////////////////////////////////////////////////////////////////////
@@ -30,43 +29,33 @@ var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
 
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
+var blogPath = "./src/PersonalWebApp/Blog";
+
+
+Task("InstallTools")
+  .WithCriteria(isContinuousIntegrationBuild)
+  .Does(() => 
+  {
+      Npm.Install(settings => settings.Package("hexo-cli").Globally());
+  });
+
 Task("Clean")
+    .IsDependentOn("InstallTools")
     .Does(() =>
     {
         CleanDirectory(outputDirectory);
         CleanDirectory(packageDirectory);
     });
 
-Task("Restore")
+Task("NugetRestore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
         DotNetCoreRestore();
     });
 
- Task("GenerateBlog")
-    .IsDependentOn("Clean")
-    .Does(() =>
-    {
-        Npm.Install(settings => settings.Package("yarn").Globally());
-        Npm.Install(settings => settings.Package("hexo-cli").Globally());
-
-        var packageFiles = new []
-            {
-                "./src/PersonalWebApp",
-                "./src/PersonalWebApp/Blog"
-            };
-        foreach(var package in packageFiles)
-        {
-            Yarn.FromPath(package).Install();
-        }
-
-        ExecuteCommand("\"hexo clean\"","./src/PersonalWebApp/Blog");
-        ExecuteCommand("\"hexo generate\"","./src/PersonalWebApp/Blog");
-    });
-
  Task("Build")
-    .IsDependentOn("Restore")
+    .IsDependentOn("NugetRestore")
     .Does(() =>
     {
         var projects = GetFiles("./**/*.xproj");
@@ -79,6 +68,29 @@ Task("Restore")
                     Configuration = configuration
                 });
         }
+    });
+
+Task("NpmInstall")
+    .IsDependentOn("Clean")
+    .Does(() =>
+    {
+        var packageFiles = new []
+            {
+                "./src/PersonalWebApp",
+                blogPath
+            };
+        foreach(var package in packageFiles)
+        {
+            Npm.FromPath(package).Install();
+        }
+    });
+
+Task("GenerateBlog")
+    .IsDependentOn("NpmInstall")
+    .Does(() =>
+    {
+        ExecuteCommand("\"hexo clean\"", blogPath);
+        ExecuteCommand("\"hexo generate\"", blogPath);
     });
 
 Task("Publish")
@@ -150,36 +162,25 @@ RunTarget(target);
 void ExecuteCommand(string command, string workingDir = null)
 {
     if (string.IsNullOrEmpty(workingDir))
+    {
         workingDir = System.IO.Directory.GetCurrentDirectory();
-
-    System.Diagnostics.ProcessStartInfo processStartInfo;
-
-    if (IsRunningOnWindows())
-    {
-        processStartInfo = new System.Diagnostics.ProcessStartInfo
-        {
-            UseShellExecute = false,
-            WorkingDirectory = workingDir,
-            FileName = "cmd",
-            Arguments = "/C " + command,
-        };
     }
-    else
-    {
-        processStartInfo = new System.Diagnostics.ProcessStartInfo
-        {
-            UseShellExecute = false,
-            WorkingDirectory = workingDir,
-            FileName = "bash",
-            Arguments = "-c " + command,
-        };
-    }
+
+    var processStartInfo = new System.Diagnostics.ProcessStartInfo
+                                {
+                                    UseShellExecute = false,
+                                    WorkingDirectory = workingDir,
+                                    FileName = IsRunningOnWindows() ? "cmd" : "bash",
+                                    Arguments = (IsRunningOnWindows() ? "/C " : "-c ") + command
+                                };
 
     using (var process = System.Diagnostics.Process.Start(processStartInfo))
     {
         process.WaitForExit();
 
         if (process.ExitCode != 0)
+        {
             throw new Exception(string.Format("Exit code {0} from {1}", process.ExitCode, command));
+        }
     }
 }
