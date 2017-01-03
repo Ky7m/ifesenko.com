@@ -2,7 +2,7 @@
 title: Hello World or Hexo Blog & ASP.NET Core Web App
 date: 2016-11-13 17:57:25
 tags: [Hexo, Static Generator, ASP.NET Core]
-categories: .NET
+categories: [.NET, C#, JavaScript] 
 ---
 
 Welcome to my blog and this is my first post! 
