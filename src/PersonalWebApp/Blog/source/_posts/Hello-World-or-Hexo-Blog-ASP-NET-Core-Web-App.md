@@ -1,9 +1,14 @@
 ---
 title: Hello World or Hexo Blog & ASP.NET Core Web App
+tags:
+  - Hexo
+  - Static Generator
+  - ASP.NET Core
+categories:
+  - .NET
 date: 2016-11-13 17:57:25
-tags: [Hexo, Static Generator, ASP.NET Core]
-categories: .NET
 ---
+
 
 Welcome to my blog and this is my first post! 
 Nowadays you have a lot of options ([List of Top Open-Source Static Site Generators](https://www.staticgen.com)) and tools to start your own blog, but I have already personal web site and main requirement was to stick to current technology stack and tools as much as possible.
