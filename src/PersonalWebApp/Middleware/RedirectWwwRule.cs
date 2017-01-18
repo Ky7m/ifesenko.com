@@ -13,13 +13,10 @@ namespace PersonalWebApp.Middleware
         {
             var request = context.HttpContext.Request;
             var requestHost = request.Host;
-            if (requestHost.Host.StartsWith("www", StringComparison.OrdinalIgnoreCase))
-            {
-                context.Result = RuleResult.ContinueRules;
-                return;
-            }
 
-            if (string.Equals(requestHost.Host, "localhost", StringComparison.OrdinalIgnoreCase))
+            if (requestHost.Host.StartsWith("www", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(requestHost.Host, "localhost", StringComparison.OrdinalIgnoreCase) ||
+                requestHost.Host.IndexOf("ifesenko.com", StringComparison.OrdinalIgnoreCase) < 0)
             {
                 context.Result = RuleResult.ContinueRules;
                 return;
