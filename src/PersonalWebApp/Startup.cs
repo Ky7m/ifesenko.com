@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -93,6 +93,8 @@ namespace PersonalWebApp
                 app.UseBrowserLink();
             }
 
+            app.UseRewriter(new RewriteOptions().Add(new RedirectWwwRule()));
+            
             app.UseResponseCaching();
             app.UseResponseCompression();
 

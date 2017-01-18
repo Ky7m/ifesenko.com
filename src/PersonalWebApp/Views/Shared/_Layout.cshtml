@@ -1,5 +1,7 @@
-﻿@using Microsoft.AspNetCore.Hosting
-@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet AppInsightsJs
+﻿@using Microsoft.ApplicationInsights.AspNetCore
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.PlatformAbstractions
+@inject JavaScriptSnippet AppInsightsJs
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <p class="copy text-center">
-                    @Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion
+                    @PlatformServices.Default.Application.ApplicationVersion
                 </p>
             </div>
         </div>
