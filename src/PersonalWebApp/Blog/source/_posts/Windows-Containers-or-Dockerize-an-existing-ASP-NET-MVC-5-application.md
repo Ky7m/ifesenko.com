@@ -38,13 +38,18 @@ Therefore this image is a perfect base for building Web Applications using Web F
 
 ## Add Docker project support
 
-There are two approaches to package an application into a container image.
+There are several approaches to package an application into a container image.
 
-#### Approach 1: Building the application inside a container
+#### Approach 1: Building image from existing ASP.NET web servers using Image2Docker
+ 
+One of available approaches is to use [Image2Docker tool](https://github.com/docker/communitytools-image2docker-win). You need to provide a virtual machine disk image (VHD, VHDX or WIM). The tool will look at the disk image for known artifacts, extract them to a list and generates based on it a Dockerfile. The Dockerfile uses the [microsoft/windowsservercore image](https://hub.docker.com/r/microsoft/windowsservercore/) as the base and installs all the artifacts the tool found on the VM disk. 
+Pay your attention that final container image might contain redundant artifacts or does not include required ones (if you have some special artifacts, tool scans for IIS & ASP.NET apps, MSMQ, DNS, DHCP, Apache, MSSQL Server only). Whatever, it can be a good star for some workloads.
+
+#### Approach 2: Building the application inside a container
 
 This approach helps a lot to deal with different tools, technologies, versions, etc. without polluting continuous delivery infrastructure. In this case, you have to incorporate a base image with the development platform as well as the runtime. It means that image contains the source code of the application and compiles it as one step in building the container image. The big plus is the entire development platform that can build your application on any machine with installed Docker. On the other hand, it requires much more space and increase container size to include all the dev tools needed to build the application. For sure, it is possible to sweep up them after the end of the image build or copy artifacts from the build output to a separate container image (in other words, build Docker image in Docker container). This process is more complex and requires more efforts from the development team to build this pipeline (if you could not find official or created by community images, e.g. [official images for building ASP.NET Core applications](https://hub.docker.com/r/microsoft/aspnetcore-build/). Usually, I prefer a less complex and more effective approach - build the application and copy all assets to target container image. 
 
-#### Approach 2: Building the application outside and then dockerize it
+#### Approach 3: Building the application outside and then dockerize it
  
 From my experience this approach is more trivial, because development teams already know how to build the application and what runtime is needed to run it properly. Perhaps, that process is already automated. 
 From the container image we expect only runtime to run application bits. It gives a smaller and more optimized container image.
