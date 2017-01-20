@@ -17,6 +17,7 @@ namespace PersonalWebApp.Middleware
         {
             _appLifetime = appLifetime;
             _telemetry = telemetry;
+            _telemetry.Context.Properties["MachineName"] = Environment.MachineName;
             _cachedWebRoot = cachedWebRoot;
         }
 
@@ -27,22 +28,22 @@ namespace PersonalWebApp.Middleware
             {
                 _appLifetime.ApplicationStarted.Register(() =>
                 {
-                    var startedEvent = new EventTelemetry("Application Started");
+                    var startedEvent = new EventTelemetry($"Application Started @{Environment.MachineName}");
                     _telemetry.TrackEvent(startedEvent);
                 });
                 _appLifetime.ApplicationStopping.Register(() =>
                 {
-                    var startedEvent = new EventTelemetry("Application Stopping");
+                    var startedEvent = new EventTelemetry($"Application Stopping @{Environment.MachineName}");
                     _telemetry.TrackEvent(startedEvent);
                 });
                 _appLifetime.ApplicationStopped.Register(() =>
                 {
-                    var stoppedEvent = new EventTelemetry("Application Stopped");
+                    var stoppedEvent = new EventTelemetry($"Application Stopped @{Environment.MachineName}");
                     _telemetry.TrackEvent(stoppedEvent);
                     _telemetry.Flush();
 
                     // Allow some time for flushing before shutdown.
-                    Thread.Sleep(1000);
+                    Thread.Sleep(2000);
                 });
             }
 
