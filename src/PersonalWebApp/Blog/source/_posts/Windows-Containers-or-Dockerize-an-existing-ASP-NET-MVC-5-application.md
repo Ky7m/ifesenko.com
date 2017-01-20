@@ -356,3 +356,4 @@ In this topic, you have seen the process of migration, how to move, split (if it
 - [Dockerfile on Windows](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile)
 - [SQL Server Lab](https://github.com/docker/labs/tree/master/windows/sql-server)
 - [MSDN Forums](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+- [Debug ContainerHost](https://github.com/Microsoft/Virtualization-Documentation/tree/live/windows-server-container-tools/Debug-ContainerHost)
