@@ -28,17 +28,17 @@ namespace PersonalWebApp.Middleware
             {
                 _appLifetime.ApplicationStarted.Register(() =>
                 {
-                    var startedEvent = new EventTelemetry($"Application Started @{Environment.MachineName}");
+                    var startedEvent = new EventTelemetry($"Application Started at {Environment.MachineName}");
                     _telemetry.TrackEvent(startedEvent);
                 });
                 _appLifetime.ApplicationStopping.Register(() =>
                 {
-                    var startedEvent = new EventTelemetry($"Application Stopping @{Environment.MachineName}");
+                    var startedEvent = new EventTelemetry($"Application Stopping at {Environment.MachineName}");
                     _telemetry.TrackEvent(startedEvent);
                 });
                 _appLifetime.ApplicationStopped.Register(() =>
                 {
-                    var stoppedEvent = new EventTelemetry($"Application Stopped @{Environment.MachineName}");
+                    var stoppedEvent = new EventTelemetry($"Application Stopped at {Environment.MachineName}");
                     _telemetry.TrackEvent(stoppedEvent);
                     _telemetry.Flush();
 
