@@ -170,7 +170,7 @@ Invoke-WebRequest https://dl.bintray.com/docker-compose/master/docker-compose-Wi
 Definition of docker compose file is also very simple and does not need line-by-line explanation:
 
 ``` yaml
-version: '2'
+version: '2.1'
 
 services:
   surveyserver-db:
