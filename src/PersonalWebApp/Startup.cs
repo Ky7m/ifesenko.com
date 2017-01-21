@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NWebsec.AspNetCore.Middleware;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services.Implementation.CloudStorageService;
@@ -77,6 +78,13 @@ namespace PersonalWebApp
                     Duration = 86400
                 });
             });
+
+            // Turn off compaction on memory pressure as it results in things being evicted during the priming of the
+            // cache on application start.
+            services.AddMemoryCache(options => options.CompactOnMemoryPressure = false);
+            services.AddSingleton<CachedWebRootFileProvider>();
+            services.AddSingleton<IConfigureOptions<StaticFileOptions>, StaticFileOptionsSetup>();
+            services.AddSingleton<IStartupFilter, AppStart>();
 
             services.AddSingleton<IConfiguration>(_configuration);
             services.AddSingleton<IStorageService, CloudStorageService>();

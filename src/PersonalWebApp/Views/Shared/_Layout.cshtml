@@ -1,6 +1,7 @@
 ﻿@using Microsoft.ApplicationInsights.AspNetCore
 @using Microsoft.AspNetCore.Hosting
 @using Microsoft.Extensions.PlatformAbstractions
+@inject IHostingEnvironment HostingEnvironment
 @inject JavaScriptSnippet AppInsightsJs
 <!DOCTYPE html>
 <html lang="en">
@@ -55,3 +56,11 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<cache>
+<!-- ViewType: @GetType().AssemblyQualifiedName -->
+<!-- Framework: @PlatformServices.Default.Application.RuntimeFramework -->
+<!-- Runtime: @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription, @System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture, @Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.RuntimeFramework.Version -->
+<!-- OS: @System.Runtime.InteropServices.RuntimeInformation.OSDescription @System.Runtime.InteropServices.RuntimeInformation.OSArchitecture  -->
+<!-- Environment: @HostingEnvironment.EnvironmentName  -->
+<!-- MachineName: @Environment.MachineName  -->
+</cache>
