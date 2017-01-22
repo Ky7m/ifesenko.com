@@ -229,6 +229,13 @@ RUN powershell -Command Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\S
 
 ```
 
+Other important thing is to explicitly expose SQL server port (1433), some sources say that is required only for debug, but it does not working with out it at this moment:  
+
+``` yaml
+ports:
+  - "1433:1433"
+```
+
 #### Docker Network configuration
 
 Due to a known limitation, you have to use the existing NAT network, which is created by default by Docker on Windows. At present Windows only supports one NAT network.
