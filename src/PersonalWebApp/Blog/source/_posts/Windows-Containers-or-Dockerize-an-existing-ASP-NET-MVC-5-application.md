@@ -229,7 +229,7 @@ RUN powershell -Command Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\S
 
 ```
 
-Other important thing is to explicitly expose SQL server port (1433), some sources say that is required only for debug, but it does not working with out it at this moment:  
+Important part here is to explicitly expose SQL server port (1433), some manuals say that is required only for debug, but it does not working with out it at this moment:  
 
 ``` yaml
 ports:
