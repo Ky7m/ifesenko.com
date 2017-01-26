@@ -30,6 +30,7 @@ var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
 var blogPath = "./src/PersonalWebApp/Blog";
+var solutionPath = "./PersonalWebApp.sln";
 
 
 Task("InstallTools")
@@ -51,23 +52,14 @@ Task("NugetRestore")
     .IsDependentOn("Clean")
     .Does(() =>
     {
-        DotNetCoreRestore();
+        DotNetCoreRestore(solutionPath);
     });
 
  Task("Build")
     .IsDependentOn("NugetRestore")
     .Does(() =>
     {
-        var projects = GetFiles("./**/*.xproj");
-        foreach(var project in projects)
-        {
-            DotNetCoreBuild(
-                project.GetDirectory().FullPath,
-                new DotNetCoreBuildSettings()
-                {
-                    Configuration = configuration
-                });
-        }
+        DotNetCoreBuild(solutionPath);
     });
 
 Task("NpmInstall")
@@ -99,7 +91,7 @@ Task("Publish")
     .Does(() =>
     {
         DotNetCorePublish(
-                "./src/PersonalWebApp",
+                solutionPath,
                 new DotNetCorePublishSettings()
                 {
                     Configuration = configuration,
