@@ -11,7 +11,8 @@ date: 2017-01-18 14:39:03
 
 
 The purpose of this blog post is to describe the process of the migrating of existing ASP.NET MVC 5 (this approach is valid for ASP.NET Web Forms as well) application to Windows Containers, some problems and workarounds.
-A few words about the application. The application is a part of [SoftServe’s Survey & Form Builder accelerator project](https://www.youtube.com/watch?v=B0VSRPCU8BU) (since this is a public available product I can share some information), specifically, the server-side part that sits between front-end layer and data storage (relational database). Technology stack is a set of standard components: ASP.NET Web Api 2, Entity Framework, Swagger, RESTful/OData, Application Insights and MSSQL as data storage.
+A few words about the application. The application is a part of [SoftServe’s Survey & Form Builder accelerator project](https://www.youtube.com/watch?v=B0VSRPCU8BU) (since this is a public available product I can share some information), specifically, the server-side part that sits between front-end layer and data storage (relational database). 
+Technology stack is a set of standard components: ASP.NET Web Api 2, Entity Framework, Swagger, RESTful/OData, Application Insights and MSSQL as data storage.
 Containers support is very important for us to achieve the following:
 
 - Boost continuous delivery to the cloud (IaaS/PaaS) or/and on-premises: it is not very complicated, but for each deployment target you need to specify  certain steps, the containers are more effective, standardized and repeatable way.
@@ -57,7 +58,6 @@ If you are migrating the existing ASP.NET MVC or ASP.NET Web Forms applications 
 ##  Application build
 
 The first step is to get all the needed assets and to load into an image in one place. I guess it is the simplest part, because you did it many times before. Usually for ASP.NET Web projects teams often use [The Publish Web Site Tool](https://msdn.microsoft.com/en-us/library/377y0s6t.aspx#Anchor_2). Personally, I prefer to automate that with [Cake (C# Make)](http://cakebuild.net/) build system. Once all assets, which are required to run the application, are in one place you can proceed.
-
 In my case, I have "Publish" directory with all the needed bits.
 
 {% asset_img TheAssets.png "The Assets" %}
@@ -255,8 +255,7 @@ ERROR: HNS failed with error : The parameter is incorrect.
 
 #### Application configuration settings
 
-How to store configuration settings is always a difficult topic. In the .NET world, you have several ways to store configurations and there is no best solution for all situations.
-In this particular case I recommend to consider two approaches:
+How to store configuration settings is always a difficult topic. In the .NET world, you have several ways to store configurations and there is no best solution for all situations. In this particular case I recommend to consider two approaches:
 
 - Update settings in web.config file from runtime context during container provisioning - use PowerShell script to update web.config/app.config files ([good example of this technique](http://www.protosystem.net/post/2009/06/01/Using-Powershell-to-manage-application-configuration.aspx))
 - Read settings from environment variables directly and fallback to web.config file - perhaps, it requires simple code changes. 
