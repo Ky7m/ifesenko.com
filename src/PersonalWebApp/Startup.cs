@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,7 +51,13 @@ namespace PersonalWebApp
               });
 
             services.AddResponseCaching();
-            services.AddResponseCompression();
+
+            services.AddResponseCompression(
+                    options =>
+                    {
+                        options.EnableForHttps = true;
+                    })
+                .Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Optimal);
 
             // Add WebMarkupMin services to the services container.
             services.AddWebMarkupMin(options =>
@@ -67,6 +76,8 @@ namespace PersonalWebApp
 
             services.AddMvc(options =>
             {
+                options.Filters.Add(new RequireHttpsAttribute());
+
                 options.CacheProfiles.Add("HomePage", new CacheProfile
                 {
                     Location = ResponseCacheLocation.Any,
@@ -100,9 +111,14 @@ namespace PersonalWebApp
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
+            else
+            {
+                var rewriteOptions = new RewriteOptions()
+                    .AddRedirectToHttpsPermanent()
+                    .Add(new RedirectWwwRule());
+                app.UseRewriter(rewriteOptions);
+            }
 
-            app.UseRewriter(new RewriteOptions().Add(new RedirectWwwRule()));
-            
             app.UseResponseCaching();
             app.UseResponseCompression();
 
@@ -110,8 +126,10 @@ namespace PersonalWebApp
                 options =>
                 {
                     options
+                        .UpgradeInsecureRequests()
                         .DefaultSources(x => x.Self())
-                        .ChildSources(x => {
+                        .ChildSources(x =>
+                        {
                             x.Self();
                             x.CustomSources(
                                 "www.youtube.com",
@@ -123,7 +141,7 @@ namespace PersonalWebApp
                                 x.Self();
                                 var customSources = new List<string>
                                 {
-                                  "dc.services.visualstudio.com"
+                                    "dc.services.visualstudio.com"
                                 };
                                 if (env.IsDevelopment())
                                 {
@@ -207,6 +225,8 @@ namespace PersonalWebApp
 
             app.UseHeadersMiddleware(new HeadersBuilder()
                 .RemoveHeader("Server"));
+
+            app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
 
             app.UseMvc(routes =>
             {
