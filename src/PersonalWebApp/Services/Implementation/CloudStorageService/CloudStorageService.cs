@@ -23,7 +23,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             new EventModel
             {
                 Title = ".NET Framework Day 2017",
-                //Link = "http://frameworksdays.com/event/dotnet-fwdays-2017/review/what-is-new-in-c-sharp-7-0",
+                Link = "http://frameworksdays.com/event/dotnet-fwdays-2017/review/what-is-new-in-c-sharp-7-0",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
@@ -37,8 +37,8 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             },
             new EventModel
             {
-                Title = "Rivne .NET Community inaugural meeting",
-                //Link = "http://frameworksdays.com/event/most-js-fwdays-2016/review/lets-build-a-web-application",
+                Title = "Rivne .NET Community inaugural meetings",
+                Link = "https://www.facebook.com/events/480091672379391/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
