@@ -19,6 +19,38 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
         private static EventModel[] PopulateEvents() => Events;
 
         private static EventModel[] Events { get; } = {
+            //2017
+            new EventModel
+            {
+                Title = ".NET Framework Day 2017",
+                //Link = "http://frameworksdays.com/event/dotnet-fwdays-2017/review/what-is-new-in-c-sharp-7-0",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                       // ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
+                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = "Kiev (Ukraine)",
+                Date = new DateTime(2017, 3, 25)
+            },
+            new EventModel
+            {
+                Title = "Rivne .NET Community inaugural meeting",
+                //Link = "http://frameworksdays.com/event/most-js-fwdays-2016/review/lets-build-a-web-application",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
+                    {
+                       // ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
+                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = "Rivne (Ukraine)",
+                Date = new DateTime(2017, 2, 18)
+            },
+            // 2016
             new EventModel
             {
                 Title = "Most JS Frameworks Day 2016",
@@ -251,6 +283,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Location = "Dallas (USA)",
                 Date = new DateTime(2016, 1, 26)
             },
+            // 2015
             new EventModel
             {
                 Title = "Tech#Skills_Day 1.2.",
