@@ -40,8 +40,8 @@ menu:
   categories: categories
   archives: archives
   tags: tags
-  subscribe: http://www.ifesenko.com/blog/atom.xml
-  about: http://www.ifesenko.com
+  subscribe: https://www.ifesenko.com/blog/atom.xml
+  about: https://www.ifesenko.com
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
