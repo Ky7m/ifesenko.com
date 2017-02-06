@@ -37,7 +37,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             },
             new EventModel
             {
-                Title = "Rivne .NET Community inaugural meetings",
+                Title = "Rivne .NET Community inaugural meeting",
                 Link = "https://www.facebook.com/events/480091672379391/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
