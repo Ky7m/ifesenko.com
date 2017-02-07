@@ -50,6 +50,20 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Location = "Rivne (Ukraine)",
                 Date = new DateTime(2017, 2, 18)
             },
+            new EventModel
+            {
+                Title = CommonStrings.DotNetCommunitySoftserve,
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Getting started with .Net Core", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/n8LeRM"] = CommonStrings.CollateralPowerpoint,
+                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = CommonStrings.LocationWebcast,
+                Date = new DateTime(2017, 2, 8)
+            },
             // 2016
             new EventModel
             {

@@ -208,7 +208,8 @@ namespace PersonalWebApp
 
             app.UseXContentTypeOptions()
                 .UseXDownloadOptions()
-                .UseXfo(options => options.Deny());
+                .UseXfo(options => options.Deny())
+                .UseXXssProtection(options => options.EnabledWithBlockMode());
 
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
