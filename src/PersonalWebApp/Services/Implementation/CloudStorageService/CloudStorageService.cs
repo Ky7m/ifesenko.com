@@ -58,7 +58,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Getting started with .Net Core", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/n8LeRM"] = CommonStrings.CollateralPowerpoint,
-                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                        ["https://www.youtube.com/watch?v=FH3dMIVCDVY"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = CommonStrings.LocationWebcast,
