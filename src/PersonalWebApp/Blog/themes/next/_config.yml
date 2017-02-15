@@ -223,9 +223,9 @@ post_meta:
 # Post wordcount display settings
 # Dependies: https://github.com/willin/hexo-wordcount
 post_wordcount:
-  item_text: true
+  item_text: false
   wordcount: false
-  min2read: true
+  min2read: false
 
 # Wechat Subscriber
 #wechat_subscriber:
