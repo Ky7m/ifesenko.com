@@ -28,7 +28,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                       // ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
+                        ["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint
                         //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
                     })
                 }),
@@ -43,8 +43,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                       // ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
-                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                        ["https://doc.co/VMXzqJ"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Rivne (Ukraine)",
