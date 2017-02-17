@@ -48,20 +48,6 @@ Task("Clean")
         CleanDirectory(packageDirectory);
     });
 
-Task("NugetRestore")
-    .IsDependentOn("Clean")
-    .Does(() =>
-    {
-        DotNetCoreRestore(solutionPath);
-    });
-
- Task("Build")
-    .IsDependentOn("NugetRestore")
-    .Does(() =>
-    {
-        DotNetCoreBuild(solutionPath);
-    });
-
 Task("NpmInstall")
     .IsDependentOn("Clean")
     .Does(() =>
@@ -86,10 +72,10 @@ Task("GenerateBlog")
     });
 
 Task("Publish")
-    .IsDependentOn("Build")
     .IsDependentOn("GenerateBlog")
     .Does(() =>
     {
+		DotNetCoreRestore(solutionPath);
         DotNetCorePublish(
                 solutionPath,
                 new DotNetCorePublishSettings()
