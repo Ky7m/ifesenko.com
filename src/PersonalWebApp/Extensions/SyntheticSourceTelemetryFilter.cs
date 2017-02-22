@@ -1,4 +1,5 @@
 ﻿using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace PersonalWebApp.Extensions
@@ -14,7 +15,14 @@ namespace PersonalWebApp.Extensions
 
         public void Process(ITelemetry item)
         {
+            // Filter out synthetic requests
             if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource))
+            {
+                return;
+            }
+            // Filter out “fast” requests
+            var request = item as RequestTelemetry;
+            if (request?.Duration.Milliseconds < 100)
             {
                 return;
             }
