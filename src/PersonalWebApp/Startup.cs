@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NWebsec.AspNetCore.Middleware;
+using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services.Implementation.CloudStorageService;
 using PersonalWebApp.Services.Interfaces;
@@ -117,6 +119,10 @@ namespace PersonalWebApp
                     .Add(new RedirectWwwRule());
                 app.UseRewriter(rewriteOptions);
             }
+           
+            var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
+            builder.Use(next => new SyntheticSourceTelemetryFilter(next));
+            builder.Build();
 
             app.UseResponseCaching();
             app.UseResponseCompression();
