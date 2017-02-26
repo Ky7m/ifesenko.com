@@ -27,7 +27,7 @@
     "gulp-uncss": "1.0.6",
     "gulp-util": "3.0.8",
     "merge-stream": "1.0.1",
-    "rimraf": "2.6.0",
-    "typescript": "2.1.6"
+    "rimraf": "2.6.1",
+    "typescript": "2.2.1"
   }
 }
