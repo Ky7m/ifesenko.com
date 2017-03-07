@@ -229,9 +229,6 @@ namespace PersonalWebApp
 
             app.UseWebMarkupMin();
 
-            app.UseHeadersMiddleware(new HeadersBuilder()
-                .RemoveHeader("Server"));
-
             app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
 
             app.UseMvc(routes =>

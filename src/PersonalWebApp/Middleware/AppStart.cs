@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.AspNetCore.Builder;
@@ -41,9 +40,6 @@ namespace PersonalWebApp.Middleware
                     var stoppedEvent = new EventTelemetry($"Application Stopped at {Environment.MachineName}");
                     _telemetry.TrackEvent(stoppedEvent);
                     _telemetry.Flush();
-
-                    // Allow some time for flushing before shutdown.
-                    Thread.Sleep(2000);
                 });
             }
 
