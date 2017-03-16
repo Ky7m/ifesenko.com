@@ -18,6 +18,6 @@
     "hexo-generator-feed": "1.2.0",
     "hexo-generator-json-content": "3.0.1",
     "hexo-generator-sitemap": "1.1.2",
-    "hexo-wordcount": "2.0.0" 
+    "hexo-wordcount": "2.0.1" 
   }
 }
