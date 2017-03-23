@@ -22,6 +22,20 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             //2017
             new EventModel
             {
+                Title = "TalkIT Ivano-Frankivsk #.Net",
+                Link = "https://www.facebook.com/events/200151533802892/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Why You Should Take Another Look at C# in 2017", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/7xCn9E"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
+                Location = "Ivano-Frankivsk (Ukraine)",
+                Date = new DateTime(2017, 4, 1)
+            },
+            new EventModel
+            {
                 Title = ".NET Framework Day 2017",
                 Link = "http://frameworksdays.com/event/dotnet-fwdays-2017/review/what-is-new-in-c-sharp-7-0",
                 Items = ImmutableArray.CreateRange(new[]
