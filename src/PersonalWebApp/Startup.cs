@@ -229,7 +229,10 @@ namespace PersonalWebApp
 
             app.UseWebMarkupMin();
 
-            app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
+            if (!env.IsDevelopment())
+            {
+                app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
+            }
 
             app.UseMvc(routes =>
             {
