@@ -22,6 +22,69 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             //2017
             new EventModel
             {
+                Title = "It Weekend Rivne",
+                Link = "https://www.facebook.com/events/935238653285985/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Rivne (Ukraine)",
+                Date = new DateTime(2017, 4, 29)
+            },
+            new EventModel
+            {
+                Title = "MeetUp “What’s New in C# 7.0”",
+                Link = "https://www.facebook.com/events/1851330288440169/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2017, 4, 26)
+            },
+            /*
+            new EventModel
+            {
+                Title = "Dnipro",
+                Link = "",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
+                        //["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = "Dnipropetrovsk (Ukraine)",
+                Date = new DateTime(2017, 4, 22)
+            },*/
+            /*
+            new EventModel
+            {
+                Title = CommonStrings.DotNetCommunitySoftserve,
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
+                        //["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
+                        //["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = CommonStrings.LocationWebcast,
+                Date = new DateTime(2017, 4, 19)
+            },*/
+            new EventModel
+            {
                 Title = "TalkIT Ivano-Frankivsk #.Net",
                 Link = "https://www.facebook.com/events/200151533802892/",
                 Items = ImmutableArray.CreateRange(new[]
