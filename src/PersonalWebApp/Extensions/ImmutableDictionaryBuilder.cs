@@ -6,14 +6,11 @@ namespace PersonalWebApp.Extensions
     {
         private readonly ImmutableDictionary<TKey, TValue>.Builder _builder;
 
-        public ImmutableDictionaryBuilder()
-        {
-            _builder = ImmutableDictionary.CreateBuilder<TKey, TValue>();
-        }
+        public ImmutableDictionaryBuilder() => _builder = ImmutableDictionary.CreateBuilder<TKey, TValue>();
 
         public TValue this[TKey key]
         {
-            set { _builder[key] = value; }
+            set => _builder[key] = value;
         }
 
         public ImmutableDictionary<TKey, TValue> ToImmutable() => _builder.ToImmutable();

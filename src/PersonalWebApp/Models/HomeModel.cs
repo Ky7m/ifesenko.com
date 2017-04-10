@@ -5,10 +5,7 @@ namespace PersonalWebApp.Models
 {
     public sealed class HomeModel
     {
-        public HomeModel()
-        {
-            Events = Array.Empty<EventModel>();
-        }
+        public HomeModel() => Events = Array.Empty<EventModel>();
         public EventModel[] Events { get; set; }
     }
 }

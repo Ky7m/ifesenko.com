@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using NWebsec.AspNetCore.Middleware;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services.Implementation.CloudStorageService;

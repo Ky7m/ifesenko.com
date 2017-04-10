@@ -22,7 +22,7 @@ namespace PersonalWebApp.Middleware
                 return;
             }
 
-            string newPath = request.Scheme + "://www." + requestHost.Value + request.PathBase + request.Path + request.QueryString;
+            var newPath = request.Scheme + "://www." + requestHost.Value + request.PathBase + request.Path + request.QueryString;
 
             var response = context.HttpContext.Response;
             response.StatusCode = StatusCode;

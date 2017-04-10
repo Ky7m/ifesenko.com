@@ -8,10 +8,7 @@ namespace PersonalWebApp.Extensions
     {
         private ITelemetryProcessor Next { get; }
 
-        public SyntheticSourceTelemetryFilter(ITelemetryProcessor next)
-        {
-            Next = next;
-        }
+        public SyntheticSourceTelemetryFilter(ITelemetryProcessor next) => Next = next;
 
         public void Process(ITelemetry item)
         {
@@ -27,7 +24,7 @@ namespace PersonalWebApp.Extensions
                 return;
             }
 
-            this.Next.Process(item);
+            Next.Process(item);
         }
     }
 }

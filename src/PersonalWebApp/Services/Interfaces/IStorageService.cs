@@ -5,6 +5,6 @@ namespace PersonalWebApp.Services.Interfaces
 {
     public interface IStorageService
     {
-        Task<EventModel[]> RetrieveAllEventsAsync();
+        ValueTask<EventModel[]> RetrieveAllEventsAsync();
     }
 }

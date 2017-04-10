@@ -18,12 +18,10 @@ namespace PersonalWebApp.Middleware
         private readonly IFileProvider _fileProvider;
         private readonly IMemoryCache _cache;
 
-        public CachedWebRootFileProvider(ILogger<CachedWebRootFileProvider> logger, IHostingEnvironment hostingEnv, IMemoryCache memoryCache)
-        {
-            _logger = logger;
-            _fileProvider = hostingEnv.WebRootFileProvider;
-            _cache = memoryCache;
-        }
+        public CachedWebRootFileProvider(ILogger<CachedWebRootFileProvider> logger,
+            IHostingEnvironment hostingEnv,
+            IMemoryCache memoryCache) =>
+            (_logger, _fileProvider, _cache) = (logger, hostingEnv.WebRootFileProvider, memoryCache);
 
         public void PrimeCache()
         {
@@ -71,8 +69,7 @@ namespace PersonalWebApp.Middleware
         {
             // TODO: Normalize the subpath here, e.g. strip/always-add leading slashes, ensure slash consistency, etc.
             var key = nameof(GetDirectoryContents) + "_" + subpath;
-            IDirectoryContents cachedResult;
-            if (_cache.TryGetValue(key, out cachedResult))
+            if (_cache.TryGetValue(key, out IDirectoryContents cachedResult))
             {
                 // Item already exists in cache, just return it
                 return cachedResult;
@@ -97,8 +94,7 @@ namespace PersonalWebApp.Middleware
         {
             // TODO: Normalize the subpath here, e.g. strip/always-add leading slashes, ensure slash consistency, etc.
             var key = nameof(GetFileInfo) + "_" + subpath;
-            IFileInfo cachedResult;
-            if (_cache.TryGetValue(key, out cachedResult))
+            if (_cache.TryGetValue(key, out IFileInfo cachedResult))
             {
                 // Item already exists in cache, just return it
                 return cachedResult;
@@ -144,12 +140,8 @@ namespace PersonalWebApp.Middleware
             private readonly string _subpath;
             private byte[] _contents;
 
-            public CachedFileInfo(ILogger logger, IFileInfo fileInfo, string subpath)
-            {
-                _logger = logger;
-                _fileInfo = fileInfo;
-                _subpath = subpath;
-            }
+            public CachedFileInfo(ILogger logger, IFileInfo fileInfo, string subpath) =>
+                (_logger, _fileInfo, _subpath) = (logger, fileInfo, subpath);
 
             public bool Exists => _fileInfo.Exists;
 

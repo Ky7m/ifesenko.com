@@ -7,10 +7,7 @@ namespace PersonalWebApp.Middleware
     {
         private readonly CachedWebRootFileProvider _cachedWebRoot;
 
-        public StaticFileOptionsSetup(CachedWebRootFileProvider cachedWebRoot)
-        {
-            _cachedWebRoot = cachedWebRoot;
-        }
+        public StaticFileOptionsSetup(CachedWebRootFileProvider cachedWebRoot) => _cachedWebRoot = cachedWebRoot;
 
         public void Configure(StaticFileOptions options)
         {

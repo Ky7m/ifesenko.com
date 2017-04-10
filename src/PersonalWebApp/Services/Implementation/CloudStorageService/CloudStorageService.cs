@@ -9,10 +9,10 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
 {
     public sealed class CloudStorageService : IStorageService
     {
-        public async Task<EventModel[]> RetrieveAllEventsAsync()
+        public ValueTask<EventModel[]> RetrieveAllEventsAsync()
         {
             var events = PopulateEvents();
-            return await Task.FromResult(events);
+            return new ValueTask<EventModel[]>(events);
         }
 
         #region Events

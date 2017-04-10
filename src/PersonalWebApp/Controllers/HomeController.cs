@@ -13,11 +13,8 @@ namespace PersonalWebApp.Controllers
         private readonly TelemetryClient _telemetryClient;
 
         public HomeController(IStorageService storageService,
-            TelemetryClient telemetryClient)
-        {
-            _storageService = storageService;
-            _telemetryClient = telemetryClient;
-        }
+            TelemetryClient telemetryClient) =>
+            (_storageService, _telemetryClient) = (storageService, telemetryClient);
 
         [Route("/")]
         [ResponseCache(CacheProfileName = "HomePage")]
@@ -29,16 +26,7 @@ namespace PersonalWebApp.Controllers
 
         private async Task<HomeModel> PopulateHomeModel()
         {
-            var homeModel = new HomeModel();
-            try
-            {
-                homeModel.Events = await _storageService.RetrieveAllEventsAsync();
-            }
-            catch (Exception exception)
-            {
-                _telemetryClient.TrackException(exception);
-            }
-            return homeModel;
+            return new HomeModel {Events = await _storageService.RetrieveAllEventsAsync()};
         }
     }
 }

@@ -12,12 +12,14 @@ namespace PersonalWebApp.Middleware
         private readonly CachedWebRootFileProvider _cachedWebRoot;
         private readonly TelemetryClient _telemetry;
 
-        public AppStart(IApplicationLifetime appLifetime, TelemetryClient telemetry, CachedWebRootFileProvider cachedWebRoot)
+        public AppStart(IApplicationLifetime appLifetime,
+            TelemetryClient telemetry,
+            CachedWebRootFileProvider cachedWebRoot)
         {
             _appLifetime = appLifetime;
             _telemetry = telemetry;
-            _telemetry.Context.Properties["MachineName"] = Environment.MachineName;
             _cachedWebRoot = cachedWebRoot;
+            _telemetry.Context.Properties["MachineName"] = Environment.MachineName;
         }
 
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next) => app =>
