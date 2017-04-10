@@ -61,13 +61,6 @@ Task("NpmInstall")
         {
             Npm.FromPath(package).Install();
         }
-
-        // path Hexo lib https://github.com/hexojs/hexo/pull/2348/files
-        const string fileName = "./src/PersonalWebApp/Blog/node_modules/hexo/lib/plugins/helper/open_graph.js";
-        var content = System.IO.File.ReadAllText(fileName);
-        content = content.Replace(@"if (path[0] !== '/') path = '/' + path;", string.Empty);
-        content = content.Replace("return config.url + path;","return urlFn.resolve(url || config.url, path);");
-        System.IO.File.WriteAllText(fileName, content);
     });
 
 Task("GenerateBlog")
