@@ -65,13 +65,13 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Location = "Dnipropetrovsk (Ukraine)",
                 Date = new DateTime(2017, 4, 22)
             },
-            /*
+
             new EventModel
             {
                 Title = CommonStrings.DotNetCommunitySoftserve,
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
                     {
                         //["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
                         //["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
@@ -80,7 +80,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 }),
                 Location = CommonStrings.LocationWebcast,
                 Date = new DateTime(2017, 4, 19)
-            },*/
+            },
             new EventModel
             {
                 Title = "TalkIT Ivano-Frankivsk #.Net",
