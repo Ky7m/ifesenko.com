@@ -99,7 +99,7 @@ Once we get Api key we can import the SendGrid NuGet package into our Function b
   "frameworks": {
     "net46":{
       "dependencies": {
-        "Sendgrid": "8.0.5"
+        "Sendgrid": "9.1.1"
       }
     }
    }
@@ -120,11 +120,10 @@ and then we can use this code snippet:
 
 ```cs
 var apiKey = "{Your SendGrid API Key}";
-var sg = new SendGridAPIClient(apiKey);
-var myEmail = new Email("{Your email address}");
-var content = new Content("text/plain",body);
-var mail = new Mail(myEmail, subject, myEmail, content).Get();
-var response = await sg.client.mail.send.post(requestBody: mail);
+var client = new SendGridClient(apiKey);
+var myEmail = new EmailAddress("someone@example.com");
+var mail = MailHelper.CreateSingleEmail(myEmail, myEmail, subject, body, string.Empty);
+var response = await client.SendEmailAsync(mail);
 ```
 
 The code should basically work right away, the only thing we need to do is to enhance code with detailed logs. 
@@ -149,16 +148,15 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     $"Skip this shutdown: {data.skipUrl} \n\n";
     
     var apiKey = "{Your SendGrid API Key}";
-    var sg = new SendGridAPIClient(apiKey);
-    var myEmail = new Email("{Your email address}");
-    var content = new Content("text/plain",body);
-    var mail = new Mail(myEmail, subject, myEmail, content).Get();
-    
-    log.Info(mail);
-    
-    var response = await sg.client.mail.send.post(requestBody: mail);
-    log.Info($"Response: {response.StatusCode} {await response.Body.ReadAsStringAsync()}");
-    
+    var client = new SendGridClient(apiKey);
+    var myEmail = new EmailAddress("someone@example.com");
+    var mail = MailHelper.CreateSingleEmail(myEmail, myEmail, subject, body, string.Empty);
+     
+    log.Info(mail.Serialize());
+     
+    var response = await client.SendEmailAsync(mail);
+    log.Info($"Response: {response.StatusCode} {response.Headers}");
+     
     return req.CreateResponse(HttpStatusCode.OK);
 }
 ```
