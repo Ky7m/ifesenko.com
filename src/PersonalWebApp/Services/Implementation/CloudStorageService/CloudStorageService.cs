@@ -74,7 +74,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/vJ7Jr4"] = CommonStrings.CollateralPowerpoint,
-                        //["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] = CommonStrings.CollateralDemoCode,
                         //["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
                     })
                 }),

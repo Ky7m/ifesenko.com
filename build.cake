@@ -127,7 +127,7 @@ Task("OctoDeploy")
         buildNumber,
         new OctopusDeployReleaseDeploymentSettings {
             ShowProgress = false,
-            WaitForDeployment = false
+            WaitForDeployment = true
       });
   });
 
