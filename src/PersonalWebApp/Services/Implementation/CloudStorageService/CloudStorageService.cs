@@ -75,7 +75,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     {
                         ["https://doc.co/vJ7Jr4"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] = CommonStrings.CollateralDemoCode,
-                        //["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
+                        ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = CommonStrings.LocationWebcast,
