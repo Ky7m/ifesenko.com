@@ -53,7 +53,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             new EventModel
             {
                 Title = "MUG Dnipro: C# 7.0 & API",
-                Link = "https://www.facebook.com/ifesen/posts/1483697885036751",
+                Link = "https://www.facebook.com/events/1874373382806547/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
