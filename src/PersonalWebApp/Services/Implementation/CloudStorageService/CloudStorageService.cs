@@ -22,8 +22,8 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             //2017
             new EventModel
             {
-                Title = "It Weekend Rivne",
-                Link = "https://www.facebook.com/events/935238653285985/",
+                Title = "IT Weekend Rivne",
+                Link = "https://itweekend.ua/ua/announcements/itw-rv-17a/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
