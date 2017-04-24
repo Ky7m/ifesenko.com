@@ -28,7 +28,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/EuujXd"] = CommonStrings.CollateralPowerpoint,
+                        ["https://doc.co/dKQnXb"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
                     })
                 }),
