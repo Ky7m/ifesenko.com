@@ -22,6 +22,21 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             //2017
             new EventModel
             {
+                Title = "IT Weekend Kharkiv: Enterprise Software Solutions",
+                Link = "https://itweekend.ua/en/announcements/itw-kh-17m/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("How to survive in software development", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://doc.co/dKQnXb"] = CommonStrings.CollateralPowerpoint,
+                        //["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Kharkiv (Ukraine)",
+                Date = new DateTime(2017, 5, 27)
+            },
+            new EventModel
+            {
                 Title = "IT Weekend Rivne",
                 Link = "https://itweekend.ua/ua/announcements/itw-rv-17a/",
                 Items = ImmutableArray.CreateRange(new[]
