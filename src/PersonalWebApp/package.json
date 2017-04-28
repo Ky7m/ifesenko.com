@@ -2,7 +2,7 @@
   "name": "personalwebapp",
   "version": "1.0.0",
   "dependencies": {
-    "@types/bootstrap": "3.3.32",
+    "@types/bootstrap": "3.3.33",
     "@types/jquery": "2.0.41",
     "bootstrap": "3.3.7",
     "font-awesome": "4.7.0",
@@ -21,13 +21,13 @@
     "gulp-sass": "3.1.0",
     "gulp-shorthand": "1.1.0",
     "gulp-size": "2.1.0",
-    "gulp-sourcemaps": "2.5.1",
+    "gulp-sourcemaps": "2.6.0",
     "gulp-typescript": "3.1.6",
     "gulp-uglify": "2.1.2",
     "gulp-uncss": "1.0.6",
     "gulp-util": "3.0.8",
     "merge-stream": "1.0.1",
     "rimraf": "2.6.1",
-    "typescript": "2.2.2"
+    "typescript": "2.3.1"
   }
 }
