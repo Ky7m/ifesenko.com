@@ -22,6 +22,9 @@ authoricon: heart
 # Footer `powered-by` and `theme-info` copyright
 copyright: false
 
+# ---------------------------------------------------------------
+# SEO Settings
+# ---------------------------------------------------------------
 
 # Canonical, set a canonical link tag in your hexo, you could use it for your SEO of blog.
 # See: https://support.google.com/webmasters/answer/139066
@@ -30,6 +33,10 @@ canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
 seo: true
+
+# If true, will add site-subtitle to index page, added in main hexo config.
+# subtitle: Subtitle
+index_with_subtitle: false
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -215,6 +222,9 @@ sidebar:
 # Automatically scroll page to section which is under <!-- more --> mark.
 scroll_to_more: true
 
+# Automatically saving scroll position on each post/page in cookies.
+save_scroll: false
+
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
 
@@ -284,6 +294,9 @@ mathjax:
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 
+# Han Support docs: https://hanzi.pro/
+han: false
+
 # Swiftype Search API Key
 #swiftype_key:
 
@@ -296,7 +309,7 @@ mathjax:
 # Disqus
 disqus:
   enable: false
-  shortname: ifesenko
+  shortname:
   count: true
 
 # Hypercomments
@@ -350,7 +363,7 @@ google_analytics: UA-58923658-1
 
 # Application Insights
 # See https://azure.microsoft.com/en-us/services/application-insights/
-application_insights: 789e569b-c1cc-4ed7-9328-9e8c7bcc6aa3
+# application_insights:
 
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
@@ -457,6 +470,11 @@ algolia_search:
 # Local search
 local_search:
   enable: false
+  # if auto, trigger search by changing input
+  # if manual, trigger search by pressing enter key or search button
+  trigger: auto
+  # show top n results per article, show all results by setting to -1
+  top_n_per_article: 1
 
 # External URL with BASE64 encrypt & decrypt
 # Usage: {% exturl text url "title" %}
@@ -478,8 +496,18 @@ fancybox: true
 # Canvas-nest
 canvas_nest: false
 
-#three_waves
+# three_waves
 three_waves: false
+
+# canvas_lines
+canvas_lines: false
+
+# canvas_sphere
+canvas_sphere: false
+
+# Only fit scheme Pisces
+# Canvas-ribbon
+canvas_ribbon: false
 
 # Script Vendors.
 # Set a CDN address for the vendor you want to customize.
@@ -531,10 +559,29 @@ vendors:
   # Internal version: 1.0.0
   # https://github.com/hustcc/canvas-nest.js
   canvas_nest:
-  
-  #three
+
+  # three
   three:
+
+  # three_waves
+  # https://github.com/jjandxa/three_waves
   three_waves:
+
+  # three_waves
+  # https://github.com/jjandxa/canvas_lines
+  canvas_lines:
+
+  # three_waves
+  # https://github.com/jjandxa/canvas_sphere
+  canvas_sphere:
+
+  # Internal version: 1.0.0
+  # https://github.com/zproo/canvas-ribbon
+  canvas_ribbon:
+
+  # Internal version: 3.3.0
+  # https://github.com/ethantw/Han
+  han:
 
 
 
@@ -544,4 +591,4 @@ js: js
 images: images
 
 # Theme version
-version: 5.1.0
+version: 5.1.1
