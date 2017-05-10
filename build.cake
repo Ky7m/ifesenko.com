@@ -37,7 +37,12 @@ Task("InstallTools")
   .WithCriteria(isContinuousIntegrationBuild)
   .Does(() => 
   {
-      Npm.Install(settings => settings.Package("hexo-cli").Globally());
+      var settings = new NpmInstallSettings();
+      settings.Global = true;
+      settings.AddPackage("hexo-cli");
+      settings.AddPackage("gulp");
+      
+      NpmInstall(settings);
   });
 
 Task("Clean")
@@ -57,10 +62,20 @@ Task("NpmInstall")
                 "./src/PersonalWebApp",
                 blogPath
             };
-        foreach(var package in packageFiles)
+            
+        var settings = new NpmInstallSettings();
+        foreach(var packagePath in packageFiles)
         {
-            Npm.FromPath(package).Install();
+            settings.WorkingDirectory = packagePath;
+            NpmInstall(settings);
         }
+        var runScriptSettings = new NpmRunScriptSettings
+        {
+            WorkingDirectory = packageFiles[0],
+            ScriptName = "postinstall"
+        };
+        runScriptSettings.Arguments.Add("force");
+        NpmRunScript(runScriptSettings);
     });
 
 Task("GenerateBlog")
