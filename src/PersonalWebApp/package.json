@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@types/bootstrap": "3.3.33",
-    "@types/jquery": "2.0.41",
+    "@types/jquery": "2.0.43",
     "bootstrap": "3.3.7",
     "font-awesome": "4.7.0",
     "jquery": "3.2.1",
@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "gulp": "3.9.1",
-    "gulp-autoprefixer": "3.1.1",
+    "gulp-autoprefixer": "4.0.0",
     "gulp-concat": "2.6.1",
     "gulp-if": "2.0.2",
     "gulp-imagemin": "3.2.0",
@@ -28,7 +28,7 @@
     "gulp-util": "3.0.8",
     "merge-stream": "1.0.1",
     "rimraf": "2.6.1",
-    "typescript": "2.3.1"
+    "typescript": "2.3.2"
   },
   "scripts": {
     "postinstall": "npm rebuild node-sass"
