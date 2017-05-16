@@ -28,12 +28,25 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 {
                     new EventModelItem("How to survive in software development", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://doc.co/dKQnXb"] = CommonStrings.CollateralPowerpoint,
-                        //["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                        ["https://doc.co/SHj1rv"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kharkiv (Ukraine)",
                 Date = new DateTime(2017, 5, 27)
+            },
+            new EventModel
+            {
+                Title = CommonStrings.DotNetCommunitySoftserve,
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/ZYJeRp"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = CommonStrings.LocationWebcast,
+                Date = new DateTime(2017, 5, 17)
             },
             new EventModel
             {
