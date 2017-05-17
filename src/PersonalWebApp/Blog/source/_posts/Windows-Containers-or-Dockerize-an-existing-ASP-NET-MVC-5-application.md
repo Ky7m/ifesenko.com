@@ -11,6 +11,9 @@ date: 2017-01-18 14:39:03
 
 
 The purpose of this blog post is to describe the process of the migrating of existing ASP.NET MVC 5 (this approach is valid for ASP.NET Web Forms as well) application to Windows Containers, some problems and workarounds.
+
+<!-- more -->
+
 A few words about the application. The application is a part of [SoftServe’s Survey & Form Builder accelerator project](https://www.youtube.com/watch?v=B0VSRPCU8BU) (since this is a public available product I can share some information), specifically, the server-side part that sits between front-end layer and data storage (relational database). 
 Technology stack is a set of standard components: ASP.NET Web Api 2, Entity Framework, Swagger, RESTful/OData, Application Insights and MSSQL as data storage.
 Containers support is very important for us to achieve the following:

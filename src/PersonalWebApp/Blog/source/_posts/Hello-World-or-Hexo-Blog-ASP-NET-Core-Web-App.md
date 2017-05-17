@@ -14,6 +14,8 @@ Welcome to my blog and this is my first post!
 Nowadays you have a lot of options ([List of Top Open-Source Static Site Generators](https://www.staticgen.com)) and tools to start your own blog, but I have already personal web site and main requirement was to stick to current technology stack and tools as much as possible.
 I did research and decided to use [Hexo](https://hexo.io/) as blog engine. Next step was an integration to ASP.NET Core application and this experience I want to share with you.
 
+<!-- more -->
+
 ## Hexo Blog & ASP.NET Core web application
 
 I am going to share entire process step by step from zero to complete solution. Feel free to skip steps which you already did.
