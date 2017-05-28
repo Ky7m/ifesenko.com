@@ -26,7 +26,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Link = "https://itweekend.ua/en/announcements/itw-kh-17m/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("How to survive in software development", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("How to Survive in Software Development", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://doc.co/SHj1rv"] = CommonStrings.CollateralPowerpoint
                     })
