@@ -19,7 +19,6 @@ namespace PersonalWebApp.Middleware
             _appLifetime = appLifetime;
             _telemetry = telemetry;
             _cachedWebRoot = cachedWebRoot;
-            _telemetry.Context.Properties["MachineName"] = Environment.MachineName;
         }
 
         public Action<IApplicationBuilder> Configure(Action<IApplicationBuilder> next) => app =>

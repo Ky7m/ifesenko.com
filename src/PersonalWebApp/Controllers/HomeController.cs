@@ -9,11 +9,8 @@ namespace PersonalWebApp.Controllers
     public class HomeController : Controller
     {
         private readonly IStorageService _storageService;
-        private readonly TelemetryClient _telemetryClient;
 
-        public HomeController(IStorageService storageService,
-            TelemetryClient telemetryClient) =>
-            (_storageService, _telemetryClient) = (storageService, telemetryClient);
+        public HomeController(IStorageService storageService) => _storageService = storageService;
 
         [Route("/")]
         [ResponseCache(CacheProfileName = "HomePage")]

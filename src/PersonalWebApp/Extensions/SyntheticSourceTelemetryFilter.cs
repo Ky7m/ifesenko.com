@@ -6,9 +6,9 @@ namespace PersonalWebApp.Extensions
 {
     public sealed class SyntheticSourceTelemetryFilter : ITelemetryProcessor
     {
-        private ITelemetryProcessor Next { get; }
+        private readonly ITelemetryProcessor _next;
 
-        public SyntheticSourceTelemetryFilter(ITelemetryProcessor next) => Next = next;
+        public SyntheticSourceTelemetryFilter(ITelemetryProcessor next) => _next = next;
 
         public void Process(ITelemetry item)
         {
@@ -24,7 +24,7 @@ namespace PersonalWebApp.Extensions
                 return;
             }
 
-            Next.Process(item);
+            _next.Process(item);
         }
     }
 }
