@@ -33,7 +33,6 @@
     <PackageReference Include="WebMarkupMin.AspNetCore1" Version="2.4.0" />
     <PackageReference Include="System.Collections.Immutable" Version="1.4.0-preview1-25305-02" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0-preview1-25305-02" />
-    <PackageReference Include="Microsoft.ApplicationInsights.SnapshotCollector" Version="1.0.3" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
     <Exec Command="gulp build" />
