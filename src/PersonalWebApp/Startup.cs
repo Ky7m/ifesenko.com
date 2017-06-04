@@ -70,7 +70,7 @@ namespace PersonalWebApp
                {
                    var settings = options.MinificationSettings;
                    settings.RemoveRedundantAttributes = true;
-                   settings.RemoveHttpProtocolFromAttributes = true;
+                   settings.RemoveHttpProtocolFromAttributes = false;
                    settings.RemoveHttpsProtocolFromAttributes = true;
                });
 
