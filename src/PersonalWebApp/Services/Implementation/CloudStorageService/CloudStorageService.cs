@@ -22,6 +22,20 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
             //2017
             new EventModel
             {
+                Title = ".Net Fest 2017",
+                Link = "http://dotnetfest.com/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("C# Language Internals", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://doc.co/tFhni2"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
+                Location = "Kyiv (Ukraine)",
+                Date = new DateTime(2017, 10, 28)
+            },
+            new EventModel
+            {
                 Title = "IT Weekend Kharkiv: Enterprise Software Solutions",
                 Link = "https://itweekend.ua/en/announcements/itw-kh-17m/",
                 Items = ImmutableArray.CreateRange(new[]
@@ -138,7 +152,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         ["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
                     })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2017, 3, 25)
             },
             new EventModel
@@ -182,7 +196,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         ["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
                     })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2016, 12, 4)
             },
             new EventModel
@@ -198,7 +212,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                             ["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.CollateralVideoRus
                         })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2016, 11, 11)
             },
             new EventModel
@@ -229,7 +243,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         ["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.CollateralVideoRus
                     })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2016, 10, 22)
             },
             new EventModel
@@ -243,7 +257,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         ["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2016, 9, 17)
             },
             new EventModel
@@ -267,7 +281,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure-demo"] = CommonStrings.CollateralVideoRus
                     })
                 }),
-                Location = "Kiev (Ukraine)",
+                Location = "Kyiv (Ukraine)",
                 Date = new DateTime(2016, 6, 18)
             },
             new EventModel
