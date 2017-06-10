@@ -1,6 +1,6 @@
-﻿using PersonalWebApp.Services.Implementation.CloudStorageService.Model;
+﻿using PersonalWebApp.Models;
 
-namespace PersonalWebApp.Services.Interfaces
+namespace PersonalWebApp.Services
 {
     public interface IStorageService
     {

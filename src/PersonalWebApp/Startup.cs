@@ -15,8 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
-using PersonalWebApp.Services.Implementation.CloudStorageService;
-using PersonalWebApp.Services.Interfaces;
+using PersonalWebApp.Services;
 using PersonalWebApp.Settings;
 using WebMarkupMin.AspNetCore1;
 
@@ -99,7 +98,7 @@ namespace PersonalWebApp
             services.AddSingleton<IStartupFilter, AppStart>();
 
             services.AddSingleton<IConfiguration>(_configuration);
-            services.AddSingleton<IStorageService, StorageService>();
+            services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

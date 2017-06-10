@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonalWebApp.Models;
-using PersonalWebApp.Services.Interfaces;
+using PersonalWebApp.Services;
 
 namespace PersonalWebApp.Controllers
 {

@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using PersonalWebApp.Extensions;
 
-namespace PersonalWebApp.Services.Implementation.CloudStorageService.Model
+namespace PersonalWebApp.Models
 {
     public sealed class EventModelItem
     {
