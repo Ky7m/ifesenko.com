@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.1"
+    "version": "3.3.7"
   },
   "dependencies": {
     "hexo": "3.3.7",
@@ -14,10 +14,10 @@
     "hexo-renderer-ejs": "0.3.0",
     "hexo-renderer-stylus": "0.3.3",
     "hexo-renderer-marked": "0.3.0",
-    "hexo-server": "0.2.0",
+    "hexo-server": "0.2.1",
     "hexo-generator-feed": "1.2.0",
     "hexo-generator-json-content": "3.0.1",
     "hexo-generator-sitemap": "1.2.0",
-    "hexo-wordcount": "2.0.1"
+    "hexo-wordcount": "3.0.2"
   }
 }

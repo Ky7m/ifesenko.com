@@ -111,14 +111,11 @@ namespace PersonalWebApp
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
-            else
-            {
-                var rewriteOptions = new RewriteOptions()
+            var rewriteOptions = new RewriteOptions()
                     .AddRedirectToHttpsPermanent()
                     .Add(new RedirectWwwRule());
                 app.UseRewriter(rewriteOptions);
-            }
-           
+            
             var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
             builder.Use(next => new SyntheticSourceTelemetryFilter(next));
             builder.Build();

@@ -10,6 +10,7 @@ namespace PersonalWebApp
             var host = new WebHostBuilder()
                .UseKestrel()
                .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseIISIntegration()
                .UseApplicationInsights()
                .UseAzureAppServices()
                .UseStartup<Startup>()
