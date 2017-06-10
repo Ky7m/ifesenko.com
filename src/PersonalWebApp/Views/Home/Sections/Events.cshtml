@@ -1,4 +1,6 @@
-﻿@model PersonalWebApp.Services.Implementation.CloudStorageService.Model.EventModel[]
+﻿@using System
+@using System.Linq
+@model PersonalWebApp.Models.HomeModel
 <div class="container">
     <div class="row">
         <div class="col-md-12 headline">
@@ -6,10 +8,30 @@
             <p>
                 Locked in. There are always others waiting to be announced.
             </p>
+            @if (!Model.IsItAllEvents)
+            {
+                <p>Past years:
+                    <span>
+                        @if (Model.Events.All(x => x.Date.Year != 2015))
+                        {
+                            <a href="/?period=2015#events" rel="noopener">2015</a>
+                        }
+                        @if (Model.Events.All(x => x.Date.Year != 2016))
+                        {
+                            <a href="/?period=2016#events" rel="noopener">2016</a>
+                        }
+                        <a href="/?period=all#events" rel="noopener">Show All</a>
+                    </span>
+                </p>
+            }
+            else
+            {
+                <p><a href="/#events" rel="noopener">Back to current year</a></p>
+            }
         </div>
     </div>
 
-    @foreach (var groupedByYear in Model.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
+    @foreach (var groupedByYear in Model.Events.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
     {
         <div class="row events-per-year">
             <div class="col-md-3">

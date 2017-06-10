@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PersonalWebApp.Models;
 using PersonalWebApp.Services.Interfaces;
 
@@ -14,15 +12,11 @@ namespace PersonalWebApp.Controllers
 
         [Route("/")]
         [ResponseCache(CacheProfileName = "HomePage")]
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string period)
         {
-            var homeModel = await PopulateHomeModel();
+            var result = _storageService.RetrieveEventsForPeriod(period);
+            var homeModel = new HomeModel {Events = result.Events, IsItAllEvents = result.IsItAllEvents};
             return View(homeModel);
-        }
-
-        private async Task<HomeModel> PopulateHomeModel()
-        {
-            return new HomeModel {Events = await _storageService.RetrieveAllEventsAsync()};
         }
     }
 }

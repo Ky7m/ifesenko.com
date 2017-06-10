@@ -81,7 +81,8 @@ namespace PersonalWebApp
                 options.CacheProfiles.Add("HomePage", new CacheProfile
                 {
                     Location = ResponseCacheLocation.Any,
-                    Duration = 3600
+                    Duration = 3600,
+                    VaryByQueryKeys = new []{ "period" }
                 });
                 options.CacheProfiles.Add("ErrorPage", new CacheProfile
                 {
@@ -98,7 +99,7 @@ namespace PersonalWebApp
             services.AddSingleton<IStartupFilter, AppStart>();
 
             services.AddSingleton<IConfiguration>(_configuration);
-            services.AddSingleton<IStorageService, CloudStorageService>();
+            services.AddSingleton<IStorageService, StorageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
