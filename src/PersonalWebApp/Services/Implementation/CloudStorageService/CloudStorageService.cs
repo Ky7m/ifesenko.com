@@ -426,7 +426,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = "Lviv (Ukraine)",
@@ -441,7 +441,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=hOjNpHeMvvw"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/2EFqPy"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNLl8a5HhMnyufFxA"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -456,7 +456,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=WHwy0vDd8Tg"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/13tWp4"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNKIdej9rMPxG9coQ"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -486,7 +486,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNJH_-PWUG3h0sM6g"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = "Ivano-Frankivsk (Ukraine)",
@@ -516,7 +516,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=m9MFhqq0g3k"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/PU9YJa"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNGmoPgxIKJYEsNcg"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -531,7 +531,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=jpOgZBGL66g"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = "Chernivtsi (Ukraine)",
@@ -545,7 +545,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                     new EventModelItem("Web Development in Future",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/k8w18R"] = CommonStrings.CollateralSway
+                            ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.CollateralSway
                         })
                 }),
                 Location = "Kyiv (Ukraine)",
@@ -556,11 +556,11 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Title = "Web UI Community - SoftServe",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Typescript",
+                    new EventModelItem("TypeScript",
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=UqustygnUgk"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/k8w18R"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNCN_UOi3o5qOKQjw"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -571,11 +571,11 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                 Title = "Development Process Community - SoftServe",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Git workflows for enterprise teams",
+                    new EventModelItem("Git Workflows For Enterprise Teams",
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=RlJOX5bbh1U"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/6XH7Kv"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNBvUxr7cJJmWnSIA"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -590,7 +590,7 @@ namespace PersonalWebApp.Services.Implementation.CloudStorageService
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=Rgvr1hynOmE"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/8VaeeJ"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuM-syDv8BchBHdKIw"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/MakingDotNETApplicationsFaster"] =
                             CommonStrings.CollateralDemoCode
                         })
