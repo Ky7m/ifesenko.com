@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26014.0
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C8139829-251D-43B7-89AB-826C440CC4ED}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalWebApp", "src\PersonalWebApp\PersonalWebApp.csproj", "{38CF127A-6E05-4306-9D2A-1F4026EC4707}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D1E5F91-9705-465F-B013-C979A84001CC}"
@@ -25,8 +23,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{38CF127A-6E05-4306-9D2A-1F4026EC4707} = {C8139829-251D-43B7-89AB-826C440CC4ED}
 	EndGlobalSection
 EndGlobal

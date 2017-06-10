@@ -332,7 +332,7 @@ namespace PersonalWebApp.Services
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=auSzzmaUTWU"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/RLDSpp"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNSDzCr6-mUwqWbmg"] = CommonStrings.CollateralPowerpoint
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -347,9 +347,8 @@ namespace PersonalWebApp.Services
                     new EventModelItem("The Present and Future of C# or I Know What You Did on Your Last Project",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/ZVofdm"] = CommonStrings.CollateralPowerpoint,
-                            ["https://ifesenko.blob.core.windows.net/assets/CiklumLvivDotNetSaturday.zip"] =
-                            CommonStrings.CollateralDemoCode
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNRKE6T2hmJ6C5FVA"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CiklumLvivDotNetSaturday"] = CommonStrings.CollateralDemoCode
                         })
                 }),
                 Location = "Lviv (Ukraine)",
@@ -364,10 +363,8 @@ namespace PersonalWebApp.Services
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/NwAbvv"] = CommonStrings.CollateralPowerpoint,
-                            ["https://ifesenko.blob.core.windows.net/assets/ExceptionHandlingAdvancedTipsAndTricks.zip"]
-                            =
-                            CommonStrings.CollateralDemoCode
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNQ45EPNQN2UITD7g"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/ExceptionHandlingAdvancedTipsAndTricks"] = CommonStrings.CollateralDemoCode
                         })
                 }),
                 Location = CommonStrings.LocationWebcast,
@@ -398,9 +395,8 @@ namespace PersonalWebApp.Services
                         new ImmutableDictionaryBuilder<string, string>
                         {
                             ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.CollateralVideoRus,
-                            ["https://doc.co/LEvVSM"] = CommonStrings.CollateralPowerpoint,
-                            ["https://ifesenko.blob.core.windows.net/assets/EffectiveMemoryManagement.zip"] =
-                            CommonStrings.CollateralDemoCode
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/EffectiveMemoryManagement"] = CommonStrings.CollateralDemoCode
                         })
                 }),
                 Location = "Lviv (Ukraine)",
