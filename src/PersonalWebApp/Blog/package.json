@@ -2,6 +2,9 @@
   "name": "hexo-site",
   "version": "0.0.0",
   "private": true,
+  "hexo": {
+    "version": "3.3.7"
+  },
   "dependencies": {
     "hexo": "3.3.7",
     "hexo-generator-archive": "0.1.4",
