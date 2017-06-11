@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Linq;
+using JetBrains.Annotations;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Models;
 
 namespace PersonalWebApp.Services
 {
+    [UsedImplicitly]
     public sealed class InMemoryStorageService : IStorageService
     {
         public (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period)
@@ -33,7 +35,6 @@ namespace PersonalWebApp.Services
         private static EventModel[] PopulateEvents() => Events.Concat(Events2016).Concat(Events2015).ToArray();
 
         private static EventModel[] Events { get; } = {
-            //2017
             new EventModel
             {
                 Title = ".Net Fest 2017",
@@ -42,7 +43,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("C# Language Internals", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/tFhni2"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kyiv (Ukraine)",
@@ -56,7 +57,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("How to Survive in Software Development", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/SHj1rv"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNtEU4vkzhlKSdx3Q"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kharkiv (Ukraine)",
@@ -69,7 +70,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/ZYJeRp"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNs5VwIZYHzyEqvwQ"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
                         ["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.CollateralVideoRus
                     })
@@ -85,7 +86,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/dKQnXb"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNrcFT02PtgE55mxQ"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
                     })
                 }),
@@ -100,7 +101,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/EuujXd"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNpSkpb8DlPChyCHA"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
                     })
                 }),
@@ -115,7 +116,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/EuujXd"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNpSkpb8DlPChyCHA"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
                         ["https://www.youtube.com/watch?v=PL6GBQBf9-I&t=4m"] = CommonStrings.CollateralVideoRus
                     })
@@ -131,7 +132,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/vJ7Jr4"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNogknwMLZZSQmfiA"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] = CommonStrings.CollateralDemoCode,
                         ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.CollateralVideoRus
                     })
@@ -147,7 +148,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Why You Should Take Another Look at C# in 2017", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/7xCn9E"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNnuN2194rbhhrwOg"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Ivano-Frankivsk (Ukraine)",
@@ -161,7 +162,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("What’s New in C# 7.0", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/CJDqyN"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNm65LELY2o3pegng"] = CommonStrings.CollateralPowerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
                         ["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.CollateralVideoRus
                     })
@@ -177,7 +178,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/VMXzqJ"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNl4JBa6Fy6GWmNfg"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Rivne (Ukraine)",
@@ -190,7 +191,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Getting started with .Net Core", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/n8LeRM"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNkTLmI5BWv6FYH0A"] = CommonStrings.CollateralPowerpoint,
                         ["https://www.youtube.com/watch?v=FH3dMIVCDVY"] = CommonStrings.CollateralVideoRus
                     })
                 }),
