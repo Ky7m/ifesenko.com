@@ -41,7 +41,6 @@ Task("InstallTools")
       settings.Global = true;
       settings.AddPackage("hexo-cli");
       settings.AddPackage("gulp");
-      
       NpmInstall(settings);
   });
 
@@ -69,13 +68,6 @@ Task("NpmInstall")
             settings.WorkingDirectory = packagePath;
             NpmInstall(settings);
         }
-        var runScriptSettings = new NpmRunScriptSettings
-        {
-            WorkingDirectory = packageFiles[0],
-            ScriptName = "postinstall"
-        };
-        runScriptSettings.Arguments.Add("force");
-        NpmRunScript(runScriptSettings);
     });
 
 Task("GenerateBlog")
