@@ -32,6 +32,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
     @RenderBody()
+    <cache>
     <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="row">
@@ -41,6 +42,7 @@
             </div>
         </div>
     </footer>
+    </cache>
     <environment names="@nameof(EnvironmentName.Development)">
         <script src="~/js/jquery.js"></script>
         <script src="~/js/backstretch.js"></script>
@@ -56,11 +58,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<cache>
-<!-- ViewType: @GetType().AssemblyQualifiedName -->
-<!-- Framework: @PlatformServices.Default.Application.RuntimeFramework -->
-<!-- Runtime: @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription, @System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture, @Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.RuntimeFramework.Version -->
-<!-- OS: @System.Runtime.InteropServices.RuntimeInformation.OSDescription @System.Runtime.InteropServices.RuntimeInformation.OSArchitecture  -->
-<!-- Environment: @HostingEnvironment.EnvironmentName  -->
-<!-- MachineName: @Environment.MachineName  -->
-</cache>

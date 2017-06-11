@@ -17,7 +17,6 @@ using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services;
 using PersonalWebApp.Settings;
-using WebMarkupMin.AspNetCore1;
 
 namespace PersonalWebApp
 {
@@ -57,21 +56,6 @@ namespace PersonalWebApp
                         options.EnableForHttps = true;
                     })
                 .Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Optimal);
-
-            // Add WebMarkupMin services to the services container.
-            services.AddWebMarkupMin(options =>
-               {
-                   //options.AllowMinificationInDevelopmentEnvironment = true;
-                   //options.AllowCompressionInDevelopmentEnvironment = true;
-                   options.DisablePoweredByHttpHeaders = true;
-               })
-               .AddHtmlMinification(options =>
-               {
-                   var settings = options.MinificationSettings;
-                   settings.RemoveRedundantAttributes = true;
-                   settings.RemoveHttpProtocolFromAttributes = false;
-                   settings.RemoveHttpsProtocolFromAttributes = true;
-               });
 
             services.AddMvc(options =>
             {
@@ -222,8 +206,6 @@ namespace PersonalWebApp
                 RequestPath = new PathString("/blog"),
                 EnableDirectoryBrowsing = false
             });
-
-            app.UseWebMarkupMin();
 
             if (!env.IsDevelopment())
             {
