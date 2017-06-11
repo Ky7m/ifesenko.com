@@ -208,7 +208,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Let's Build a Web Application (and Talk About Ways to Improve Bad Parts)", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/j2eyrm"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNgQofEVXN-RC-1fw"] = CommonStrings.CollateralPowerpoint,
                         ["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
                     })
                 }),
@@ -224,7 +224,7 @@ namespace PersonalWebApp.Services
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/HvUtQo"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNfNE_1PZAWuz27DA"] = CommonStrings.CollateralPowerpoint,
                             ["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.CollateralVideoRus
                         })
                 }),
@@ -240,7 +240,7 @@ namespace PersonalWebApp.Services
                     new EventModelItem("Continuous Learning using Application Performance Management & Monitoring",
                         new ImmutableDictionaryBuilder<string, string>
                         {
-                            ["https://doc.co/XZpwqc"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNbe6H8GU6_9ebEew"] = CommonStrings.CollateralPowerpoint,
                             ["https://www.youtube.com/watch?v=aFsk7yDkwBs"] = CommonStrings.CollateralVideoRus
                         })
                 }),
@@ -255,7 +255,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/oRJMtu"] = CommonStrings.CollateralPowerpoint,
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNakepnrf471XgHIQ"] = CommonStrings.CollateralPowerpoint,
                         ["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.CollateralVideoRus
                     })
                 }),
@@ -270,7 +270,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Direction of C# as a High-Performance Language", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/PDy6kY"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNX5JautJLHYTLU0w"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kyiv (Ukraine)",
@@ -284,12 +284,12 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Workshop: Application Insights From The Ground Up", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/vJQoPZ"] = CommonStrings.CollateralPowerpoint,
-                        ["https://github.com/Ky7m/application-insights-workshop"] = CommonStrings.CollateralDemoCode
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
                     }),
                     new EventModelItem("Enabling DevTest in Microsoft Azure", new ImmutableDictionaryBuilder<string, string>
                     {
-                        ["https://doc.co/eJZL9s"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNVjIxVov3ZsewJ9Q"] = CommonStrings.CollateralPowerpoint
                     }),
                     new EventModelItem("Channel 9: DevOps Video Lessons", new ImmutableDictionaryBuilder<string, string>
                     {
