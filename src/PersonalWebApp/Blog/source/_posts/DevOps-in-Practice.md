@@ -7,7 +7,9 @@ tags:
 categories:
   - DevOps
   - Azure
+date: 2017-06-12 13:45:27
 ---
+
 
 [Also available on TechNet UK Blog](https://blogs.technet.microsoft.com/uktechnet/2017/05/18/devops-in-practice/)
 
