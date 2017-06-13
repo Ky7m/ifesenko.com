@@ -74,8 +74,8 @@ Task("GenerateBlog")
     .IsDependentOn("NpmInstall")
     .Does(() =>
     {
-        StartProcess("hexo", new ProcessSettings { Arguments = "clean", WorkingDirectory =  blogPath});
-        StartProcess("hexo", new ProcessSettings { Arguments = "generate", WorkingDirectory =  blogPath});
+        ExecuteCommand("\"hexo clean\"", blogPath);
+        ExecuteCommand("\"hexo generate\"", blogPath);
     });
 
 Task("Publish")
@@ -142,3 +142,30 @@ Task("Default")
     .IsDependentOn("OctoDeploy");
 
 RunTarget(target);
+
+
+void ExecuteCommand(string command, string workingDir = null)
+{
+    if (string.IsNullOrEmpty(workingDir))
+    {
+        workingDir = System.IO.Directory.GetCurrentDirectory();
+    }
+
+    var processStartInfo = new System.Diagnostics.ProcessStartInfo
+                                {
+                                    UseShellExecute = false,
+                                    WorkingDirectory = workingDir,
+                                    FileName = IsRunningOnWindows() ? "cmd" : "bash",
+                                    Arguments = (IsRunningOnWindows() ? "/C " : "-c ") + command
+                                };
+
+    using (var process = System.Diagnostics.Process.Start(processStartInfo))
+    {
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            throw new Exception(string.Format("Exit code {0} from {1}", process.ExitCode, command));
+        }
+    }
+}
