@@ -74,13 +74,6 @@ namespace PersonalWebApp
                 });
             });
 
-            // Turn off compaction on memory pressure as it results in things being evicted during the priming of the
-            // cache on application start.
-            services.AddMemoryCache(options => options.CompactOnMemoryPressure = false);
-            services.AddSingleton<CachedWebRootFileProvider>();
-            services.AddSingleton<IConfigureOptions<StaticFileOptions>, StaticFileOptionsSetup>();
-            services.AddSingleton<IStartupFilter, AppStart>();
-
             services.AddSingleton<IConfiguration>(_configuration);
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
@@ -117,8 +110,7 @@ namespace PersonalWebApp
                         {
                             x.Self();
                             x.CustomSources(
-                                "www.youtube.com",
-                                "disqus.com");
+                                "www.youtube.com");
                         })
                         .ConnectSources(
                             x =>
@@ -150,8 +142,6 @@ namespace PersonalWebApp
                             {
                                 x.Self();
                                 x.CustomSources(
-                                    "referrer.disqus.com",
-                                    "a.disquscdn.com",
                                     "www.google-analytics.com");
                                 if (env.IsDevelopment())
                                 {
@@ -166,8 +156,6 @@ namespace PersonalWebApp
                                 {
                                     "az416426.vo.msecnd.net",
                                     "cdnjs.cloudflare.com",
-                                    "ifesenko.disqus.com",
-                                    "a.disquscdn.com",
                                     "www.google-analytics.com",
                                     "data:"
                                 };
@@ -185,8 +173,7 @@ namespace PersonalWebApp
                                 x.Self();
                                 x.CustomSources(
                                     "cdnjs.cloudflare.com",
-                                    "fonts.googleapis.com",
-                                    "a.disquscdn.com");
+                                    "fonts.googleapis.com");
                                 x.UnsafeInline();
                             });
                 });
