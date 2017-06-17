@@ -7,7 +7,7 @@ declare var textrotator: JQueryStatic;
 declare var backstretch: JQueryStatic;
 
 module ifesenko.com.Shell {
-    $("#home").backstretch("images/background.jpg");
+    $("#home").backstretch($("#home").data("image-source"));
 
     $(window).on('load', () => {
         $("#loader").fadeOut("slow");

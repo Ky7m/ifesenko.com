@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using Microsoft.ApplicationInsights.Extensibility;
@@ -12,7 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services;
@@ -100,6 +100,9 @@ namespace PersonalWebApp
             app.UseResponseCaching();
             app.UseResponseCompression();
 
+            var appSettings = _configuration.GetSection(nameof(AppSettings)).Get<AppSettings>();
+            var cdnEndpoint = appSettings.CdnEndpoint.TrimStart(@"//".ToCharArray());
+
             app.UseCsp(
                 options =>
                 {
@@ -109,8 +112,7 @@ namespace PersonalWebApp
                         .ChildSources(x =>
                         {
                             x.Self();
-                            x.CustomSources(
-                                "www.youtube.com");
+                            x.CustomSources("www.youtube.com");
                         })
                         .ConnectSources(
                             x =>
@@ -141,12 +143,16 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources(
-                                    "www.google-analytics.com");
+                                var customSources = new List<string>
+                                {
+                                    "www.google-analytics.com",
+                                    cdnEndpoint
+                                };
                                 if (env.IsDevelopment())
                                 {
-                                    x.CustomSources("data:");
+                                    customSources.Add("data:");
                                 }
+                                x.CustomSources(customSources.ToArray());
                             })
                         .ScriptSources(
                             x =>
@@ -157,12 +163,14 @@ namespace PersonalWebApp
                                     "az416426.vo.msecnd.net",
                                     "cdnjs.cloudflare.com",
                                     "www.google-analytics.com",
-                                    "data:"
+                                    "data:",
+                                    cdnEndpoint
                                 };
                                 if (env.IsDevelopment())
                                 {
                                     customSources.Add("localhost:*");
                                 }
+                        
                                 x.CustomSources(customSources.ToArray());
                                 x.UnsafeEval();
                                 x.UnsafeInline();
@@ -171,9 +179,13 @@ namespace PersonalWebApp
                             x =>
                             {
                                 x.Self();
-                                x.CustomSources(
+                                var customSources = new List<string>
+                                {
                                     "cdnjs.cloudflare.com",
-                                    "fonts.googleapis.com");
+                                    "fonts.googleapis.com",
+                                    cdnEndpoint
+                                };
+                                x.CustomSources(customSources.ToArray());
                                 x.UnsafeInline();
                             });
                 });

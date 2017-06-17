@@ -1,5 +1,8 @@
 ﻿@using System.Threading.Tasks
+@using Microsoft.Extensions.Options
+@using PersonalWebApp.Settings
 @model PersonalWebApp.Models.HomeModel
+@inject IOptions<AppSettings> AppSettings
 @{
     ViewBag.Title = "Igor Fesenko - You're welcome!";
 }
@@ -35,7 +38,7 @@
         </nav>
     </header>
     <main role="main">
-        <section id="home" class="section">
+        <section id="home" class="section" data-image-source="@AppSettings.Value.CdnEndpoint/images/background.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
