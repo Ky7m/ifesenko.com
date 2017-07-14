@@ -51,6 +51,37 @@ namespace PersonalWebApp.Services
             },
             new EventModel
             {
+                Title = "LvivJS",
+                Link = "http://lvivjs.org.ua/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Let's Build a Web Application (and Talk About Ways to Improve Bad Parts)", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
+                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2017, 8, 26)
+            },
+            new EventModel
+            {
+                Title = "Webinar “What’s New in C# 7.x”",
+                Link = "https://dou.ua/calendar/16639/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("What’s New in C# 7.x", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjvNzrpzsPDMh46sePg"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
+                        //["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.CollateralVideoRus
+                    })
+                }),
+                Location = CommonStrings.LocationWebcast,
+                Date = new DateTime(2017, 7, 27)
+            },
+            new EventModel
+            {
                 Title = "IT Weekend Kharkiv: Enterprise Software Solutions",
                 Link = "https://itweekend.ua/en/announcements/itw-kh-17m/",
                 Items = ImmutableArray.CreateRange(new[]
