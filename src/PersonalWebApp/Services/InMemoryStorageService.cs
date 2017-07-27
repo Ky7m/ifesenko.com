@@ -73,8 +73,8 @@ namespace PersonalWebApp.Services
                     new EventModelItem("What’s New in C# 7.x", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjvNzrpzsPDMh46sePg"] = CommonStrings.CollateralPowerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode
-                        //["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.CollateralVideoRus
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.CollateralDemoCode,
+                        ["https://www.youtube.com/watch?v=zY0ELCJCcJQ"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = CommonStrings.LocationWebcast,
