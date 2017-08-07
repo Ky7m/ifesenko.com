@@ -37,6 +37,22 @@ namespace PersonalWebApp.Services
         private static EventModel[] Events { get; } = {
             new EventModel
             {
+                Title = "XP Days Ukraine",
+                Link = "http://xpdays.com.ua/speaker/igor-fesenko-2/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("To be anounced...",
+                        new ImmutableDictionaryBuilder<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNfNE_1PZAWuz27DA"] = CommonStrings.CollateralPowerpoint,
+                            //["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.CollateralVideoRus
+                        })
+                }),
+                Location = "Kyiv (Ukraine)",
+                Date = new DateTime(2017, 11, 10)
+            },
+            new EventModel
+            {
                 Title = ".Net Fest 2017",
                 Link = "http://dotnetfest.com/",
                 Items = ImmutableArray.CreateRange(new[]
@@ -51,11 +67,26 @@ namespace PersonalWebApp.Services
             },
             new EventModel
             {
+                Title = "AzureDAY 2017",
+                Link = "https://azureday.net/Speaker/IFesenko",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("Applied Microsoft Azure: Cloud Cost Optimization Techniques and Hacks For Enterprise Apps", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                       //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Kyiv (Ukraine)",
+                Date = new DateTime(2017, 9, 9)
+            },
+            new EventModel
+            {
                 Title = "LvivJS",
                 Link = "http://lvivjs.org.ua/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("Let's Build a Web Application (and Talk About Ways to Improve Bad Parts)", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("How to Track Success of Your Application", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
                         //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
