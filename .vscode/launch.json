@@ -1,15 +1,20 @@
 {
-    "version": "0.2.0",
-    "configurations": [
+   // Use IntelliSense to find out which attributes exist for C# debugging
+   // Use hover for the description of the existing attributes
+   // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+   "version": "0.2.0",
+   "configurations": [
         {
-            "name": "Debug Web App",
+            "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceRoot}/src/PersonalWebApp/bin/Debug/netcoreapp1.1/PersonalWebApp.dll",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceRoot}/src/PersonalWebApp/bin/Debug/netcoreapp2.0/PersonalWebApp.dll",
             "args": [],
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceRoot}/src/PersonalWebApp",
             "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
                 "enabled": true,
                 "args": "${auto-detect-url}",
@@ -30,20 +35,6 @@
             "sourceFileMap": {
                 "/Views": "${workspaceRoot}/Views"
             }
-        },
-        {
-            "name": "Debug build script",
-            "type": "coreclr",
-            "request": "launch",
-            "program": "${workspaceRoot}/tools/Cake.CoreCLR/Cake.dll",
-            "args": [
-                "${workspaceRoot}/build.cake",
-                "--debug",
-                "--verbosity=diagnostic"
-            ],
-            "cwd": "${workspaceRoot}",
-            "stopAtEntry": true,
-            "externalConsole": false
         }
     ]
 }

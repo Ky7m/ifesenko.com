@@ -1,10 +1,9 @@
-﻿@using Microsoft.ApplicationInsights.AspNetCore
-@using Microsoft.AspNetCore.Hosting
+﻿@using Microsoft.AspNetCore.Hosting
 @using Microsoft.Extensions.Options
 @using Microsoft.Extensions.PlatformAbstractions
 @using PersonalWebApp.Settings
 @inject IHostingEnvironment HostingEnvironment
-@inject JavaScriptSnippet AppInsightsJs
+
 @inject IOptions<AppSettings> AppSettings
 
 <!DOCTYPE html>
@@ -22,18 +21,26 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <environment names="@nameof(EnvironmentName.Development)">
+    <environment include="@nameof(EnvironmentName.Development)">
         <link rel="stylesheet" href="~/css/font-awesome.css" />
         <link rel="stylesheet" href="~/css/bootstrap.css" />
         <link asp-append-version="true" rel="stylesheet" href="~/css/app.css" />
     </environment>
-    <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
+    <environment exclude="@nameof(EnvironmentName.Development)">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
         <link asp-append-version="true" rel="stylesheet" href="@AppSettings.Value.CdnEndpoint/css/app.css" />
     </environment>
-    <environment names="@nameof(EnvironmentName.Production)">
-        @Html.Raw(AppInsightsJs.FullScript)
+    <environment include="@nameof(EnvironmentName.Production)">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-58923658-1', 'auto');
+            ga('send', 'pageview');
+        </script>
     </environment>
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
@@ -49,13 +56,13 @@
         </div>
     </footer>
     </cache>
-    <environment names="@nameof(EnvironmentName.Development)">
+    <environment include="@nameof(EnvironmentName.Development)">
         <script src="~/js/jquery.js"></script>
         <script src="~/js/backstretch.js"></script>
         <script src="~/js/bootstrap.js"></script>
         <script asp-append-version="true" src="~/js/app.js"></script>
     </environment>
-    <environment names="@nameof(EnvironmentName.Staging),@nameof(EnvironmentName.Production)">
+    <environment exclude="@nameof(EnvironmentName.Development)">
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.15/jquery.backstretch.min.js" integrity="sha384-KfOfdYnzwAkX89zxb9lBL7djcP2yi1PEz7dJRb7xS4MyeTAsLM94qYF/C9k2RXEo" crossorigin="anonymous"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

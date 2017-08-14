@@ -13,7 +13,7 @@
 //////////////////////////////////////////////////////////////////////
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
-var buildNumber = Argument("buildNumber", "1.0.0.0");
+var buildNumber = Argument("buildNumber", "255.255.255.255");
 var octoServer = Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azure.com");
 var octoApiKey = Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
 var octoProject = Argument("octoProject", "www.ifesenko.com");

@@ -22,24 +22,16 @@ namespace PersonalWebApp
 {
     public class Startup
     {
-        private readonly IConfigurationRoot _configuration;
+        private readonly IConfiguration _configuration;
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables();
-
-            _configuration = builder.Build();
+            _configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddApplicationInsightsTelemetry(_configuration);
-
-            services.AddOptions();
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
 
             services.AddRouting(routeOptions =>
@@ -74,7 +66,6 @@ namespace PersonalWebApp
                 });
             });
 
-            services.AddSingleton<IConfiguration>(_configuration);
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
@@ -83,11 +74,16 @@ namespace PersonalWebApp
         {
             if (env.IsDevelopment())
             {
-                loggerFactory.AddConsole(_configuration.GetSection("Logging"));
-                loggerFactory.AddDebug();
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
+            else
+            {
+                loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Information);
+                //app.UseExceptionHandler("/error");
+                app.UseStatusCodePagesWithReExecute("/error/{0}");
+            }
+
             var rewriteOptions = new RewriteOptions()
                     .AddRedirectToHttpsPermanent()
                     .Add(new RedirectWwwRule());
@@ -194,8 +190,6 @@ namespace PersonalWebApp
                 .UseXDownloadOptions()
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
-
-            app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             app.UseStaticFiles();
 
