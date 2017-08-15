@@ -3,7 +3,7 @@
 @using Microsoft.Extensions.PlatformAbstractions
 @using PersonalWebApp.Settings
 @inject IHostingEnvironment HostingEnvironment
-
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet AppInsightsJs
 @inject IOptions<AppSettings> AppSettings
 
 <!DOCTYPE html>
@@ -41,6 +41,7 @@
             ga('create', 'UA-58923658-1', 'auto');
             ga('send', 'pageview');
         </script>
+        @Html.Raw(AppInsightsJs.FullScript)
     </environment>
 </head>
 <body data-spy="scroll" data-target=".navbar-custom" data-offset="50">
