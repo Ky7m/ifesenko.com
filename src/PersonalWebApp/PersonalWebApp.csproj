@@ -7,8 +7,11 @@
     <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
   </PropertyGroup>
   <ItemGroup>
-    <Content Update="wwwroot\**\*;appsettings.json" CopyToPublishDirectory="PreserveNewest" />
-    <Content Remove="package-lock.json" />
+    <Content Update="Blog\**\*" CopyToPublishDirectory="Never" />
+    <Content Update="Views\**\*" CopyToPublishDirectory="Never" />
+    <Content Update="**\*.json" CopyToPublishDirectory="Never" />
+    <Content Remove="**\*-lock.json" />
+    <Content Update="wwwroot\**\*;appsettings.json" CopyToPublishDirectory="Always" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
