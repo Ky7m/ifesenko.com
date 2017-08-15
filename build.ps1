@@ -16,7 +16,7 @@ No tasks will be executed.
 .PARAMETER ScriptArgs
 Remaining arguments are added here.
 .LINK
-http://cakebuild.net
+https://cakebuild.net
 #>
 
 [CmdletBinding()]
@@ -31,8 +31,10 @@ Param(
     [string[]]$ScriptArgs
 )
 
-$CakeVersion = "0.20.0"
-$DotNetInstallerUri = "https://raw.githubusercontent.com/dotnet/cli/master/scripts/obtain/dotnet-install.ps1";
+$CakeVersion = "0.21.1"
+$DotNetChannel = "preview";
+$DotNetVersion = "2.0.0";
+$DotNetInstallerUri = "https://dot.net/v1/dotnet-install.ps1";
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 
 # Make sure tools folder exists
@@ -70,13 +72,13 @@ if (Get-Command dotnet -ErrorAction SilentlyContinue) {
     $FoundDotNetCliVersion = dotnet --version;
 }
 
-if(!$FoundDotNetCliVersion) {
+if($FoundDotNetCliVersion -ne $DotNetVersion) {
     $InstallPath = Join-Path $PSScriptRoot ".dotnet"
     if (!(Test-Path $InstallPath)) {
         mkdir -Force $InstallPath | Out-Null;
     }
     (New-Object System.Net.WebClient).DownloadFile($DotNetInstallerUri, "$InstallPath\dotnet-install.ps1");
-    & $InstallPath\dotnet-install.ps1 -InstallDir $InstallPath;
+    & $InstallPath\dotnet-install.ps1 -Channel $DotNetChannel -Version $DotNetVersion -InstallDir $InstallPath;
 
     Remove-PathVariable "$InstallPath"
     $env:PATH = "$InstallPath;$env:PATH"

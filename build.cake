@@ -88,7 +88,8 @@ Task("Publish")
                 new DotNetCorePublishSettings()
                 {
                     Configuration = configuration,
-                    OutputDirectory = outputDirectory
+                    OutputDirectory = outputDirectory,
+                    Runtime = "win10-x64"
                 });
     });
 
