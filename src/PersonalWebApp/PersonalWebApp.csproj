@@ -8,7 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Update="Blog\**\*" CopyToPublishDirectory="Never" />
-    <Content Update="Views\**\*" CopyToPublishDirectory="Never" />
     <Content Update="**\*.json" CopyToPublishDirectory="Never" />
     <Content Remove="**\*-lock.json" />
     <Content Update="wwwroot\**\*;appsettings.json" CopyToPublishDirectory="Always" />
