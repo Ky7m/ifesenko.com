@@ -132,7 +132,8 @@ namespace PersonalWebApp
                                 x.CustomSources(
                                     "cdnjs.cloudflare.com",
                                     "fonts.googleapis.com",
-                                    "fonts.gstatic.com");
+                                    "fonts.gstatic.com",
+                                    "data:");
                             })
                         .FormActions(x => x.Self())
                         .ImageSources(
