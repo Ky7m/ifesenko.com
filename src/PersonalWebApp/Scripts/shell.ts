@@ -9,11 +9,11 @@ declare var backstretch: JQueryStatic;
 module ifesenko.com.Shell {
     $("#home").backstretch($("#home").data("image-source"));
 
-    $(window).on('load', () => {
+    $(window).on('load', function() {
         $("#loader").fadeOut("slow");
     });
 
-    $(() => {
+    $(function () {
         $(document).on("click", ".navbar-collapse.in", function (e) {
             if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
                 $(this).collapse("hide");

@@ -5,7 +5,7 @@
         speed: 2000
     };
 
-    $.fx.step.textShadowBlur = (fx:any) => {
+    $.fx.step.textShadowBlur = function(fx:any) {
         $(fx.elem).prop("textShadowBlur", fx.now).css({textShadow: "0 0 " + Math.floor(fx.now) + "px black"});
     };
 
