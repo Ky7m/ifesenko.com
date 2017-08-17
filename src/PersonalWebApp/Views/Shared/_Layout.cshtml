@@ -17,7 +17,6 @@
     <title>@ViewData["Title"]</title>
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="@AppSettings.Value.CdnEndpoint">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -58,16 +57,16 @@
     </footer>
     </cache>
     <environment include="@nameof(EnvironmentName.Development)">
-        <script src="~/js/jquery.js"></script>
-        <script src="~/js/backstretch.js"></script>
-        <script src="~/js/bootstrap.js"></script>
-        <script asp-append-version="true" src="~/js/app.js"></script>
+        <script crossorigin="anonymous" src="~/js/jquery.js"></script>
+        <script crossorigin="anonymous" src="~/js/backstretch.js"></script>
+        <script crossorigin="anonymous" src="~/js/bootstrap.js"></script>
+        <script crossorigin="anonymous" asp-append-version="true" src="~/js/app.js"></script>
     </environment>
     <environment exclude="@nameof(EnvironmentName.Development)">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.15/jquery.backstretch.min.js" integrity="sha384-KfOfdYnzwAkX89zxb9lBL7djcP2yi1PEz7dJRb7xS4MyeTAsLM94qYF/C9k2RXEo" crossorigin="anonymous"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script asp-append-version="true" src="@AppSettings.Value.CdnEndpoint/js/app.js"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.15/jquery.backstretch.min.js" integrity="sha384-KfOfdYnzwAkX89zxb9lBL7djcP2yi1PEz7dJRb7xS4MyeTAsLM94qYF/C9k2RXEo" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" asp-append-version="true" src="@AppSettings.Value.CdnEndpoint/js/app.js"></script>
     </environment>
     @RenderSection("scripts", required: false)
 </body>
