@@ -22,7 +22,7 @@ var octoTargetEnvironment = Argument("octoTargetEnvironment", "Staging");
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
-var outputDirectory = Directory("./build");
+var outputDirectory = Directory("./.build");
 var packageDirectory= Directory("./publish");
 
 var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
