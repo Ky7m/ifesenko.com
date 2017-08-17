@@ -48,7 +48,7 @@ namespace PersonalWebApp
                         options.EnableForHttps = true;
                     })
                 .Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Optimal);
-
+            
             services.AddMvc(options =>
             {
                 options.Filters.Add(new RequireHttpsAttribute());
@@ -65,6 +65,8 @@ namespace PersonalWebApp
                     Duration = 86400
                 });
             });
+            
+            services.AddCors();
 
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
@@ -192,6 +194,10 @@ namespace PersonalWebApp
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
 
+            app.UseCors(options => options
+                .AllowAnyOrigin()
+                .AllowAnyMethod());
+            
             app.UseStaticFiles();
 
             app.UseFileServer(new FileServerOptions
