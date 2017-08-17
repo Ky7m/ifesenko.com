@@ -30,7 +30,7 @@ var packageName = string.Format("./publish/PersonalWebApp.{0}.zip",buildNumber);
 var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 
 var blogPath = "./src/PersonalWebApp/Blog";
-var solutionPath = "./PersonalWebApp.sln";
+var projectPath = "./src/PersonalWebApp";
 
 
 Task("InstallTools")
@@ -58,7 +58,7 @@ Task("NpmInstall")
     {
         var packageFiles = new []
             {
-                "./src/PersonalWebApp",
+                projectPath,
                 blogPath
             };
             
@@ -82,9 +82,8 @@ Task("Publish")
     .IsDependentOn("GenerateBlog")
     .Does(() =>
     {
-		DotNetCoreRestore(solutionPath);
         DotNetCorePublish(
-                solutionPath,
+                projectPath,
                 new DotNetCorePublishSettings()
                 {
                     Configuration = configuration,
