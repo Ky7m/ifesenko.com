@@ -32,20 +32,7 @@ var isContinuousIntegrationBuild = !BuildSystem.IsLocalBuild;
 var blogPath = "./src/PersonalWebApp/Blog";
 var projectPath = "./src/PersonalWebApp";
 
-
-Task("InstallTools")
-  .WithCriteria(isContinuousIntegrationBuild)
-  .Does(() => 
-  {
-      var settings = new NpmInstallSettings();
-      settings.Global = true;
-      settings.AddPackage("hexo-cli");
-      settings.AddPackage("gulp");
-      NpmInstall(settings);
-  });
-
 Task("Clean")
-    .IsDependentOn("InstallTools")
     .Does(() =>
     {
         CleanDirectories(GetDirectories(projectPath + "/obj") + 
@@ -76,8 +63,8 @@ Task("GenerateBlog")
     .IsDependentOn("NpmInstall")
     .Does(() =>
     {
-        ExecuteCommand("\"hexo clean\"", blogPath);
-        ExecuteCommand("\"hexo generate\"", blogPath);
+        ExecuteCommand("\"node_modules/.bin/hexo clean\"", blogPath);
+        ExecuteCommand("\"node_modules/.bin/hexo generate\"", blogPath);
     });
 
 Task("Publish")
