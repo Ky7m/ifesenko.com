@@ -63,8 +63,8 @@ Task("GenerateBlog")
     .IsDependentOn("NpmInstall")
     .Does(() =>
     {
-        ExecuteCommand("\"node_modules/.bin/hexo clean\"", blogPath);
-        ExecuteCommand("\"node_modules/.bin/hexo generate\"", blogPath);
+        ExecuteCommand("\"./node_modules/.bin/hexo clean\"", blogPath);
+        ExecuteCommand("\"./node_modules/.bin/hexo generate\"", blogPath);
     });
 
 Task("Publish")
@@ -144,8 +144,8 @@ void ExecuteCommand(string command, string workingDir = null)
                                 {
                                     UseShellExecute = false,
                                     WorkingDirectory = workingDir,
-                                    FileName = IsRunningOnWindows() ? "cmd" : "bash",
-                                    Arguments = (IsRunningOnWindows() ? "/C " : "-c ") + command
+                                    FileName = IsRunningOnWindows() ? "powershell" : "bash",
+                                    Arguments = (IsRunningOnWindows() ? "-Command " : "-c ") + command
                                 };
 
     using (var process = System.Diagnostics.Process.Start(processStartInfo))
