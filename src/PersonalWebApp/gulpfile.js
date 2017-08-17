@@ -24,7 +24,7 @@ var environment = {
     staging: 'Staging',
     production: 'Production',
     current: function () {
-        return process.env.ASPNETCORE_ENVIRONMENT || this.development;
+        return process.env.ASPNETCORE_ENVIRONMENT || this.production;
     },
     isDevelopment: function () {
         return this.current() === this.development;

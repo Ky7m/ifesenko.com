@@ -48,8 +48,10 @@ Task("Clean")
     .IsDependentOn("InstallTools")
     .Does(() =>
     {
-        CleanDirectory(outputDirectory);
-        CleanDirectory(packageDirectory);
+        CleanDirectories(GetDirectories(projectPath + "/obj") + 
+                             GetDirectories(projectPath + "/bin") +
+                             outputDirectory +
+                             packageDirectory);
     });
 
 Task("NpmInstall")
