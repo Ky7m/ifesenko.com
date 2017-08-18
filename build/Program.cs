@@ -1,12 +1,20 @@
-﻿using System;
+﻿using Cake.Frosting;
 
 namespace Build
 {
-    class Program
+    public class Program : IFrostingStartup
     {
-        static void Main(string[] args)
+        public static void Main(string[] args) => new CakeHostBuilder()
+            .WithArguments(args)
+            .UseStartup<Program>()
+            .Build()
+            .Run();
+
+        public void Configure(ICakeServices services)
         {
-            Console.WriteLine("Hello World!");
+            services.UseContext<Context>();
+            services.UseLifetime<Lifetime>();
+            services.UseWorkingDirectory("..");
         }
     }
 }
