@@ -162,9 +162,9 @@ gulp.task('styles', ['clean-styles'], function () {
               // .pipe(gulpif(
               //   !environment.isDevelopment(),
               //   uncss({ html: ['views/**/*.cshtml'] })))
-              .pipe(gulpif(
-                !environment.isDevelopment(),
-                shorthand()))
+              // .pipe(gulpif(
+              //   !environment.isDevelopment(),
+              //   shorthand()))
               .pipe(gulpif(
                 !environment.isDevelopment(),
                 moreCSS()))
