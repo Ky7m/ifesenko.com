@@ -24,7 +24,7 @@ namespace Build
             context.BlogPath = $"{context.ProjectPath}/Blog";
 
             context.PackageFullName = $"{context.PackagePath}/PersonalWebApp.{context.BuildNumber}.zip";
-            context.IsContinuousIntegrationBuild = context.BuildSystem().IsLocalBuild;
+            context.IsContinuousIntegrationBuild = !context.BuildSystem().IsLocalBuild;
         }
     }
 }
