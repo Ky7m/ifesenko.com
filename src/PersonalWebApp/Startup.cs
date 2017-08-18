@@ -145,12 +145,9 @@ namespace PersonalWebApp
                                 var customSources = new List<string>
                                 {
                                     "www.google-analytics.com",
+                                    "data:",
                                     cdnEndpoint
                                 };
-                                if (env.IsDevelopment())
-                                {
-                                    customSources.Add("data:");
-                                }
                                 x.CustomSources(customSources.ToArray());
                             })
                         .ScriptSources(

@@ -159,9 +159,9 @@ gulp.task('styles', ['clean-styles'], function () {
               .pipe(autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
               .pipe(concat(source.name))
               .pipe(sizeBefore(source.name))
-              .pipe(gulpif(
-                !environment.isDevelopment(),
-                uncss({ html: ['views/**/*.cshtml'] })))
+              // .pipe(gulpif(
+              //   !environment.isDevelopment(),
+              //   uncss({ html: ['views/**/*.cshtml'] })))
               .pipe(gulpif(
                 !environment.isDevelopment(),
                 shorthand()))
