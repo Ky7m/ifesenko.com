@@ -67,6 +67,36 @@ namespace PersonalWebApp.Services
             },
             new EventModel
             {
+                Title = "Full Stack Meet Up. Factory edition.",
+                Link = "http://factory.daxx.com/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("To be anounced...", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                        //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Dnipropetrovsk (Ukraine)",
+                Date = new DateTime(2017, 9, 23)
+            },
+            new EventModel
+            {
+                Title = "To be anounced...",
+                //Link = "http://factory.daxx.com/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("To be anounced...", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                        //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                    })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2017, 9, 16)
+            },
+            new EventModel
+            {
                 Title = "AzureDAY 2017",
                 Link = "https://azureday.net/Speaker/IFesenko",
                 Items = ImmutableArray.CreateRange(new[]

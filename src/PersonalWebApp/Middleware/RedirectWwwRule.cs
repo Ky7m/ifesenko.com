@@ -7,7 +7,7 @@ namespace PersonalWebApp.Middleware
 {
     public class RedirectWwwRule : IRule
     {
-        public int StatusCode { get; } = (int)HttpStatusCode.MovedPermanently;
+        private int StatusCode { get; } = (int)HttpStatusCode.MovedPermanently;
 
         public void ApplyRule(RewriteContext context)
         {
