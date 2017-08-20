@@ -1,8 +1,10 @@
 using Cake.Core;
 using Cake.Frosting;
+using JetBrains.Annotations;
 
 namespace Build
 {
+    [UsedImplicitly]
     public class Context : FrostingContext
     {
         public string Target { get; set; }

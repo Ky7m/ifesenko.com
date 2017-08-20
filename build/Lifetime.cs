@@ -1,9 +1,11 @@
 using Cake.Common;
 using Cake.Common.Build;
 using Cake.Frosting;
+using JetBrains.Annotations;
 
 namespace Build
 {
+    [UsedImplicitly]
     public sealed class Lifetime : FrostingLifetime<Context>
     {
         public override void Setup(Context context)
