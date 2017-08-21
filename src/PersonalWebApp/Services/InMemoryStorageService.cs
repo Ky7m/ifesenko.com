@@ -67,17 +67,34 @@ namespace PersonalWebApp.Services
             },
             new EventModel
             {
+                Title = "To be anounced...",
+                //Link = "http://factory.daxx.com/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("To be anounced...", 
+                        new ImmutableDictionaryBuilder<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                            //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                        })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2017, 9, 28)
+            },
+            new EventModel
+            {
                 Title = "Full Stack Meet Up. Factory edition.",
                 Link = "http://factory.daxx.com/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("To be anounced...", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("How to create reliable build tasks and more using power of Cake (C# Make)", 
+                        new ImmutableDictionaryBuilder<string, string>
                     {
                         //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
                         //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
                     })
                 }),
-                Location = "Dnipropetrovsk (Ukraine)",
+                Location = "Dnipro (Ukraine)",
                 Date = new DateTime(2017, 9, 23)
             },
             new EventModel
@@ -86,7 +103,23 @@ namespace PersonalWebApp.Services
                 //Link = "http://factory.daxx.com/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("To be anounced...", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("To be anounced...", 
+                        new ImmutableDictionaryBuilder<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
+                            //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                        })
+                }),
+                Location = "Dnipro (Ukraine)",
+                Date = new DateTime(2017, 9, 22)
+            },
+            new EventModel
+            {
+                Title = "To be anounced...",
+                //Link = "http://factory.daxx.com/",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("How to create reliable build tasks and more using power of Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
                     {
                         //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
                         //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
@@ -213,7 +246,7 @@ namespace PersonalWebApp.Services
                         ["https://www.youtube.com/watch?v=PL6GBQBf9-I&t=4m"] = CommonStrings.CollateralVideoRus
                     })
                 }),
-                Location = "Dnipropetrovsk (Ukraine)",
+                Location = "Dnipro (Ukraine)",
                 Date = new DateTime(2017, 4, 22)
             },
 
