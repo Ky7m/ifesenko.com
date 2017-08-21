@@ -40,7 +40,7 @@
         </div>
         <nav class="site-state motion-element">
 
-          {% if config.archive_dir != '/' %}
+          {% if config.archive_dir != '/' and site.posts.length > 0 %}
             <div class="site-state-item site-state-posts">
               <a href="{{ url_for(theme.menu.archives) }}">
                 <span class="site-state-item-count">{{ site.posts.length }}</span>
@@ -90,7 +90,9 @@
                   {% if theme.social_icons.enable %}
                     <i class="fa fa-fw fa-{{ theme.social_icons[name] | default('globe') | lower }}"></i>
                   {% endif %}
-                  {{ name }}
+                    {% if not theme.social_icons.icons_only %}
+                      {{ name }}
+                    {% endif %}
                 </a>
               </span>
             {% endfor %}

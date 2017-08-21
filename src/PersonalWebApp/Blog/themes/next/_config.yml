@@ -80,8 +80,9 @@ menu_icons:
 
 # Schemes
 #scheme: Muse
-scheme: Mist
+#scheme: Mist
 #scheme: Pisces
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -101,10 +102,20 @@ scheme: Mist
 #   When an globe mask icon presenting up means that the item has no mapping icon.
 social_icons:
   enable: true
+  icons_only: false
+  transition: false
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
+  E-Mail: envelope
+  Google: google
   Twitter: twitter
+  FB Page: facebook
+  VK Group: vk
+  Skype: skype
+  YouTube: youtube
+  Instagram: instagram
+  StackOverflow: stack-overflow
   Weibo: weibo
 
 # Blog rolls
@@ -152,7 +163,7 @@ sidebar:
 
   # Sidebar offset from top menubar in pixels.
   offset: 12
-  offset_float: 0
+  offset_float: 12
 
   # Back to top in sidebar
   b2t: false
@@ -196,6 +207,7 @@ post_wordcount:
   item_text: false
   wordcount: false
   min2read: false
+  totalcount: false
   separated_meta: false
 
 # Wechat Subscriber
@@ -203,6 +215,12 @@ post_wordcount:
   #enabled: true
   #qcode: /path/to/your/wechatqcode ex. /uploads/wechat-qcode.jpg
   #description: ex. subscribe to my blog by scanning my public wechat account
+
+# Reward
+#reward_comment: Donate comment here
+#wechatpay: /images/wechatpay.jpg
+#alipay: /images/alipay.jpg
+#bitcoin: /images/bitcoin.png
 
 # Declare license on posts
 post_copyright:
@@ -215,6 +233,12 @@ post_copyright:
 # Misc Theme Settings
 # ---------------------------------------------------------------
 
+# Reduce padding / margin indents on devices with narrow width.
+mobile_layout_economy: true
+
+# Android Chrome header panel color ($black-deep).
+android_chrome_color: "#222"
+
 # Custom Logo.
 # !!Only available for Default Scheme currently.
 # Options:
@@ -223,7 +247,6 @@ post_copyright:
 custom_logo:
   enabled: false
   image:
-
 
 # Code Highlight theme
 # Available value:
@@ -316,6 +339,18 @@ changyan:
   appid:
   appkey:
 
+    
+# Valine. 
+# You can get your appid and appkey from https://leancloud.cn
+# more info please open https://github.com/xCss/Valine
+valine:
+  enable: false
+  appid:  # your leancloud application appid
+  appkey:  # your leancloud application appkey
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+  verify: false # Verification code
+  placeholder: Comment input placeholder
+
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
 #youyan_uid: your uid
@@ -332,8 +367,11 @@ changyan:
 ##  type: button
 
 # Share
-#jiathis:
+# This plugin is more useful in China, make sure you known how to use it.
+# And you can find the use guide at official webiste: http://www.jiathis.com/.
 # Warning: JiaThis does not support https.
+#jiathis:
+  ##uid: Get this uid from http://www.jiathis.com/
 #add_this_id:
 
 # Share
@@ -365,6 +403,7 @@ duoshuo_info:
   admin_enable: false
   user_id: 0
   #admin_nickname: Author
+
 
 
 # Facebook SDK Support.
@@ -465,7 +504,6 @@ algolia_search:
     hits_empty: "We didn't find any results for the search: ${query}"
     hits_stats: "${hits} results found in ${time} ms"
 
-
 # Local search
 # Dependencies: https://github.com/flashlab/hexo-generator-search
 local_search:
@@ -480,10 +518,36 @@ local_search:
 # ---------------------------------------------------------------
 # Tags Settings
 # ---------------------------------------------------------------
-# External URL with BASE64 encrypt & decrypt
+
+# External URL with BASE64 encrypt & decrypt.
 # Usage: {% exturl text url "title" %}
 # Alias: {% extlink text url "title" %}
 exturl: false
+
+# Note tag (bs-callout).
+note:
+  # Note tag style values:
+  #  - simple    bs-callout old alert style. Default.
+  #  - modern    bs-callout new (v2-v3) alert style.
+  #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
+  #  - disabled  disable all CSS styles import of note tag.
+  style: simple
+  icons: false
+  border_radius: 3
+  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+  # Offset also applied to label tag variables. This option can work with disabled note tag.
+  light_bg_offset: 0
+
+# Label tag.
+label: true
+
+# Tabs tag.
+tabs:
+  enable: true
+  transition:
+    tabs: false
+    labels: true
+  border_radius: 0
 
 
 #! ---------------------------------------------------------------
@@ -622,4 +686,4 @@ js: js
 images: images
 
 # Theme version
-version: 5.1.1
+version: 5.1.2
