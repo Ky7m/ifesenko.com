@@ -30,7 +30,6 @@ namespace PersonalWebApp
             _configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
@@ -66,13 +65,10 @@ namespace PersonalWebApp
                     Duration = 86400
                 });
             });
-            
-            //services.AddCors();
-
+           
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
@@ -192,10 +188,6 @@ namespace PersonalWebApp
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
 
-            /*app.UseCors(options => options
-                .AllowAnyOrigin()
-                .AllowAnyMethod());
-            */
             app.UseStaticFiles(new StaticFileOptions
             {
                 OnPrepareResponse = (context) =>
@@ -220,9 +212,6 @@ namespace PersonalWebApp
             {
                 app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
             }
-            
-            // Add this after static files but before MVC in order to provide ETags to MVC Views and Razor Pages.
-            app.UseETagger();
 
             app.UseMvc(routes =>
             {
