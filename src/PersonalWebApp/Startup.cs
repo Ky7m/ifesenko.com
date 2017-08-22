@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Middleware;
 using PersonalWebApp.Services;
@@ -195,7 +196,18 @@ namespace PersonalWebApp
                 .AllowAnyOrigin()
                 .AllowAnyMethod());
             */
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = (context) =>
+                {
+                    var headers = context.Context.Response.GetTypedHeaders();
+                    headers.CacheControl = new CacheControlHeaderValue
+                    {
+                        Public = true,
+                        MaxAge = TimeSpan.FromDays(10)
+                    };
+                }
+            });
 
             app.UseFileServer(new FileServerOptions
             {
