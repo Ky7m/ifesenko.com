@@ -220,6 +220,9 @@ namespace PersonalWebApp
             {
                 app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
             }
+            
+            // Add this after static files but before MVC in order to provide ETags to MVC Views and Razor Pages.
+            app.UseETagger();
 
             app.UseMvc(routes =>
             {
