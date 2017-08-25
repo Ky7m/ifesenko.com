@@ -68,7 +68,7 @@ namespace PersonalWebApp.Services
             new EventModel
             {
                 Title = "To be anounced...",
-                //Link = "http://factory.daxx.com/",
+                //Link = "",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("To be anounced...", 
@@ -100,7 +100,7 @@ namespace PersonalWebApp.Services
             new EventModel
             {
                 Title = "To be anounced...",
-                //Link = "http://factory.daxx.com/",
+                //Link = "",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("To be anounced...", 
@@ -115,8 +115,22 @@ namespace PersonalWebApp.Services
             },
             new EventModel
             {
+                Title = "Microsoft Student Partners Roadshow Lviv",
+                Link = "https://2event.com/events/969409/schedule",
+                Items = ImmutableArray.CreateRange(new[]
+                {
+                    new EventModelItem("My other computer is an Azure Data Center", new ImmutableDictionaryBuilder<string, string>
+                    {
+                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint
+                    })
+                }),
+                Location = "Lviv (Ukraine)",
+                Date = new DateTime(2017, 9, 19)
+            },
+            new EventModel
+            {
                 Title = "To be anounced...",
-                //Link = "http://factory.daxx.com/",
+                //Link = "",
                 Items = ImmutableArray.CreateRange(new[]
                 {
                     new EventModelItem("How to create reliable build tasks and more using power of Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
@@ -152,7 +166,6 @@ namespace PersonalWebApp.Services
                     new EventModelItem("How to Track Success of Your Application", new ImmutableDictionaryBuilder<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
-                        //["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.CollateralVideoRus
                     })
                 }),
                 Location = "Lviv (Ukraine)",
