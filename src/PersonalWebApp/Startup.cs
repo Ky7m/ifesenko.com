@@ -66,7 +66,7 @@ namespace PersonalWebApp
                 });
             });
 
-            services.AddCors();
+            //services.AddCors();
         
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
@@ -191,14 +191,14 @@ namespace PersonalWebApp
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
 
-            app.UseCors(options => options
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            //app.UseCors(options => options
+            //    .AllowAnyOrigin()
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader());
 
             app.UseStaticFiles(new StaticFileOptions
             {
-                OnPrepareResponse = (context) =>
+                OnPrepareResponse = context =>
                 {
                     var headers = context.Context.Response.GetTypedHeaders();
                     headers.CacheControl = new CacheControlHeaderValue
@@ -206,6 +206,7 @@ namespace PersonalWebApp
                         Public = true,
                         MaxAge = TimeSpan.FromDays(10)
                     };
+                    headers.Set("Access-Control-Allow-Origin", "*");
                 }
             });
 
