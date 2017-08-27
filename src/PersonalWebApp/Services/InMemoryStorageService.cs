@@ -17,7 +17,7 @@ namespace PersonalWebApp.Services
                 return (PopulateEvents(), true);
             }
 
-            if (int.TryParse(period, out int year) && year >= 2015 && year < DateTime.UtcNow.Year)
+            if (int.TryParse(period, out var year) && year >= 2015 && year < DateTime.UtcNow.Year)
             {
                 switch (year)
                 {
@@ -87,7 +87,7 @@ namespace PersonalWebApp.Services
                 Link = "http://factory.daxx.com/",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("How to create reliable build tasks and more using power of Cake (C# Make)", 
+                    new EventModelItem("To be anounced...", 
                         new ImmutableDictionaryBuilder<string, string>
                     {
                         //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
@@ -119,9 +119,9 @@ namespace PersonalWebApp.Services
                 Link = "https://2event.com/events/969409/schedule",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("My other computer is an Azure Data Center", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("My Other Computer is an Azure Data Center", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjv9Zi2NMHyD-tC7gKA"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Lviv (Ukraine)",
@@ -133,10 +133,10 @@ namespace PersonalWebApp.Services
                 //Link = "",
                 Items = ImmutableArray.CreateRange(new[]
                 {
-                    new EventModelItem("How to create reliable build tasks and more using power of Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
+                    new EventModelItem("How to Create Reliable Build Tasks and More Using Power of Cake (C# Make)", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
-                        //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjv9XVcZF0-PM0NHrHw"] = CommonStrings.CollateralPowerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] = CommonStrings.CollateralDemoCode
                     })
                 }),
                 Location = "Lviv (Ukraine)",
@@ -150,8 +150,7 @@ namespace PersonalWebApp.Services
                 {
                     new EventModelItem("Applied Microsoft Azure: Cloud Cost Optimization Techniques and Hacks For Enterprise Apps", new ImmutableDictionaryBuilder<string, string>
                     {
-                        //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
-                       //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUjv9VA14mgQyBmAZiyQ"] = CommonStrings.CollateralPowerpoint
                     })
                 }),
                 Location = "Kyiv (Ukraine)",
