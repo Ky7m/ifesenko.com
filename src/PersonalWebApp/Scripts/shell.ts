@@ -46,9 +46,6 @@ module ifesenko.com.Shell {
             navbar.toggleClass("custom-collapse", state);
         });
 
-        // tooltips
-        $("[data-toggle='tooltip']").tooltip();
-
         $("#textrotator").textrotator({ separator: '|', speed: 3000 });
     });
 }
