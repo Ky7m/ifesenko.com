@@ -8,5 +8,12 @@ namespace PersonalWebApp.Extensions
         public const string CollateralDemoCode = "Demo Code";
         public const string LocationWebcast = "Webcast";
         public const string CollateralSway = "Sway";
+        
+        public const string LocationLviv = "Lviv (Ukraine)";
+        public const string LocationKyiv = "Kyiv (Ukraine)";
+        public const string LocationKharkiv = "Kharkiv (Ukraine)";
+        public const string LocationIvanoFrankivsk = "Ivano-Frankivsk (Ukraine)";
+        public const string LocationRivne = "Rivne (Ukraine)";
+        public const string LocationDnipro = "Dnipro (Ukraine)";
     }
 }

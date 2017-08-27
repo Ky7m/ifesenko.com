@@ -1,23 +1,20 @@
-using System.Collections.Immutable;
-using PersonalWebApp.Extensions;
+using System.Collections.Generic;
 
 namespace PersonalWebApp.Models
 {
     public sealed class EventModelItem
     {
         public string Description { get; }
-        public ImmutableDictionary<string, string> Collateral { get; }
+        public IReadOnlyDictionary<string, string> Collateral { get; }
         
-        public EventModelItem(string description, ImmutableDictionary<string, string> collateral) =>
+        private static IReadOnlyDictionary<string,string> EmptyDictionary { get; } = new Dictionary<string,string>(0);
+        
+        public EventModelItem(string description, IReadOnlyDictionary<string, string> collateral) =>
             (Collateral, Description) = (collateral, description);
 
-        public EventModelItem(string description, ImmutableDictionaryBuilder<string, string> collateral) :
-            this(description, collateral.ToImmutable())
-        {
-        }
-
+ 
         public EventModelItem(string description) :
-            this(description, ImmutableDictionary<string, string>.Empty)
+            this(description, EmptyDictionary)
         {
         }
     }
