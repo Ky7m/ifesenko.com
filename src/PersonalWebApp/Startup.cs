@@ -132,7 +132,8 @@ namespace PersonalWebApp
                                     "cdnjs.cloudflare.com",
                                     "fonts.googleapis.com",
                                     "fonts.gstatic.com",
-                                    "data:");
+                                    "data:",
+                                    cdnEndpoint);
                             })
                         .FormActions(x => x.Self())
                         .ImageSources(
