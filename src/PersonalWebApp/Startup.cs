@@ -193,7 +193,8 @@ namespace PersonalWebApp
 
             app.UseCors(options => options
                 .AllowAnyOrigin()
-                .AllowAnyMethod());
+                .AllowAnyMethod()
+                .AllowAnyHeader());
 
             app.UseStaticFiles(new StaticFileOptions
             {
