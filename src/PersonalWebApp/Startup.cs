@@ -65,7 +65,9 @@ namespace PersonalWebApp
                     Duration = 86400
                 });
             });
-           
+
+            services.AddCors();
+        
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
@@ -188,6 +190,10 @@ namespace PersonalWebApp
                 .UseXDownloadOptions()
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
+
+            app.UseCors(options => options
+                .AllowAnyOrigin()
+                .AllowAnyMethod());
 
             app.UseStaticFiles(new StaticFileOptions
             {
