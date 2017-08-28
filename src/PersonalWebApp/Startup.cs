@@ -66,8 +66,6 @@ namespace PersonalWebApp
                 });
             });
 
-            //services.AddCors();
-        
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
@@ -190,11 +188,6 @@ namespace PersonalWebApp
                 .UseXDownloadOptions()
                 .UseXfo(options => options.Deny())
                 .UseXXssProtection(options => options.EnabledWithBlockMode());
-
-            //app.UseCors(options => options
-            //    .AllowAnyOrigin()
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader());
 
             app.UseStaticFiles(new StaticFileOptions
             {

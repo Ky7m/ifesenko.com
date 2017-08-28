@@ -68,26 +68,10 @@ a,
 .btn,
 .navbar,
 .form-control {
-    -webkit-transition: all 0.125s ease-in-out 0;
-    -moz-transition: all 0.125s ease-in-out 0;
-    -ms-transition: all 0.125s ease-in-out 0;
-    -o-transition: all 0.125s ease-in-out 0;
-    transition: all 0.125s ease-in-out 0;
-}
-
-/* ---------------------------------------------- /*
- * Reset box-shadow
-/* ---------------------------------------------- */
-
-.btn,
-.panel,
-.form-control,
-.modal-content,
-.form-control:hover,
-.form-control:focus {
-    -webkit-box-shadow: none;
-    -ms-box-shadow: none;
-    box-shadow: none;
+    -webkit-transition: all 0.125s ease-in-out 0s;
+    -moz-transition: all 0.125s ease-in-out 0s;
+    -o-transition: all 0.125s ease-in-out 0s;
+    transition: all 0.125s ease-in-out 0s;
 }
 
 /* ---------------------------------------------- /*
@@ -177,7 +161,7 @@ a,
     -webkit-animation-name: drop;
     -webkit-animation-duration: 1s;
     -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 0;
+    -webkit-animation-delay: 0s;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-play-state: running;
     -moz-animation-name: drop;
@@ -192,10 +176,10 @@ a,
     -ms-animation-timing-function: linear;
     -o-animation-timing-function: linear;
     animation-timing-function: linear;
-    -moz-animation-delay: 0;
-    -ms-animation-delay: 0;
-    -o-animation-delay: 0;
-    animation-delay: 0;
+    -moz-animation-delay: 0s;
+    -ms-animation-delay: 0s;
+    -o-animation-delay: 0s;
+    animation-delay: 0s;
     -moz-animation-iteration-count: infinite;
     -ms-animation-iteration-count: infinite;
     -o-animation-iteration-count: infinite;
