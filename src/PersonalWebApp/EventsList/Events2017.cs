@@ -42,8 +42,8 @@ namespace PersonalWebApp.EventsList
             },
             new EventModel
             {
-                Title = "To be anounced...",
-                //Link = "",
+                Title = "Local .NET Conf - Recap of What's New in .NET!",
+                Link = "https://www.facebook.com/events/115416022513016/",
                 Items = new[]
                 {
                     new EventModelItem("To be anounced...",
@@ -62,7 +62,7 @@ namespace PersonalWebApp.EventsList
                 Link = "http://factory.daxx.com/",
                 Items = new[]
                 {
-                    new EventModelItem("To be anounced...",
+                    new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
                         new Dictionary<string, string>
                         {
                             //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
