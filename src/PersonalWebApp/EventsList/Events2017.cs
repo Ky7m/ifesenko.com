@@ -74,8 +74,8 @@ namespace PersonalWebApp.EventsList
             },
             new EventModel
             {
-                Title = "To be anounced...",
-                //Link = "",
+                Title = "IT talk: .NET Conf Local - Recap of What's New in .NET!",
+                Link = "https://www.meetup.com/IT-talk-Dnepr/events/242948073/",
                 Items = new[]
                 {
                     new EventModelItem("To be anounced...",
