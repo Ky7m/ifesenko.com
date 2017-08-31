@@ -105,8 +105,8 @@ namespace PersonalWebApp.EventsList
             },
             new EventModel
             {
-                Title = "To be anounced...",
-                //Link = "",
+                Title = "SUBMIT .NET 2017",
+                Link = "https://binary-studio.com/submit-net-2017/",
                 Items = new[]
                 {
                     new EventModelItem("How to Create Reliable Build Tasks and More Using Power of Cake (C# Make)",
