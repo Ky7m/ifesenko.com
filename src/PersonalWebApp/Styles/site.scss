@@ -545,15 +545,14 @@ a,
 
 @font-face {
     font-family: 'fontello';
-    src: url('./fonts/fontello.eot?84201116');
-    src: url('./fonts/fontello.eot?84201116#iefix') format('embedded-opentype'),
-    url('./fonts/fontello.woff?84201116') format('woff'),
-    url('./fonts/fontello.ttf?84201116') format('truetype'),
-    url('./fonts/fontello.svg?84201116#fontello') format('svg');
+    src: url('../fonts/fontello.eot?84201116');
+    src: url('../fonts/fontello.eot?84201116#iefix') format('embedded-opentype'),
+    url('../fonts/fontello.woff?84201116') format('woff'),
+    url('../fonts/fontello.ttf?84201116') format('truetype'),
+    url('../fonts/fontello.svg?84201116#fontello') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-
 
 .fa {
     font-family: "fontello";
