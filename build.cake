@@ -77,7 +77,7 @@ Task("Publish")
                 {
                     Configuration = configuration,
                     OutputDirectory = outputDirectory
-                    //Runtime = "win10-x64"
+                    //ArgumentCustomization = args => args.Append($"/p:ShowLinkerSizeComparison=true")
                 });
     });
 
