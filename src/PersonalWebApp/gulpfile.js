@@ -16,7 +16,6 @@ var merge = require('merge-stream');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
 var typescript = require('gulp-typescript');
-var uncss = require('gulp-uncss');
 var shorthand = require('gulp-shorthand');
 
 var environment = {
@@ -73,8 +72,8 @@ var sources = {
             path: paths.npm + 'bootstrap/**/*.{ttf,svg,woff,woff2,otf,eot}'
         },
         {
-            name: 'font-awesome',
-            path: paths.npm + 'font-awesome/**/*.{ttf,svg,woff,woff2,otf,eot}'
+            name: 'fonts',
+            path: 'Fonts/**/*.{ttf,svg,woff,woff2,otf,eot}'
         }
     ],
     img: [
@@ -159,12 +158,9 @@ gulp.task('styles', ['clean-styles'], function () {
               .pipe(autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
               .pipe(concat(source.name))
               .pipe(sizeBefore(source.name))
-              // .pipe(gulpif(
-              //   !environment.isDevelopment(),
-              //   uncss({ html: ['views/**/*.cshtml'] })))
-              // .pipe(gulpif(
-              //   !environment.isDevelopment(),
-              //   shorthand()))
+              .pipe(gulpif(
+                !environment.isDevelopment(),
+                shorthand()))
               .pipe(gulpif(
                 !environment.isDevelopment(),
                 moreCSS()))

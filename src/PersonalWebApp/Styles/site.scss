@@ -540,24 +540,54 @@ a,
     }
 }
 /* ---------------------------------------------- /*
- * Font Awesome
+ * Fontello
 /* ---------------------------------------------- */
 
 @font-face {
-    font-family: 'FontAwesome';
-    src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
-    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-family: 'fontello';
+    src: url('./fonts/fontello.eot?84201116');
+    src: url('./fonts/fontello.eot?84201116#iefix') format('embedded-opentype'),
+    url('./fonts/fontello.woff?84201116') format('woff'),
+    url('./fonts/fontello.ttf?84201116') format('truetype'),
+    url('./fonts/fontello.svg?84201116#fontello') format('svg');
     font-weight: normal;
-    font-style: normal
+    font-style: normal;
 }
 
+
 .fa {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
     display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* You can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Font smoothing. That was taken from TWBS */
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
 .fa-fw {
@@ -566,11 +596,11 @@ a,
 }
 
 .fa-map-marker:before {
-    content: "\f041"
+    content: "\e800"
 }
 
 .fa-calendar:before {
-    content: "\f073"
+    content: "\e801"
 }
 
 .fa-twitter:before {
@@ -591,14 +621,6 @@ a,
 
 .fa-user-o:before {
     content: "\f2c0"
-}
-
-.fa-ban:before {
-    content: "\f05e"
-}
-
-.fa-exclamation-circle:before {
-    content: "\f06a"
 }
 
 .sr-only {

@@ -15,7 +15,7 @@ namespace PersonalWebApp.EventsList
                 Link = "http://xpdays.com.ua/speaker/igor-fesenko-2/",
                 Items = new[]
                 {
-                    new EventModelItem("To be anounced...",
+                    new EventModelItem("Cloud Cost Optimization Techniques and Hacks For Enterprise Apps",
                         new Dictionary<string, string>
                         {
                             //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNfNE_1PZAWuz27DA"] = CommonStrings.CollateralPowerpoint,
