@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using JetBrains.Annotations;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace PersonalWebApp
             _configuration = configuration;
         }
 
+        [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
@@ -69,6 +71,7 @@ namespace PersonalWebApp
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
 
+        [UsedImplicitly]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
