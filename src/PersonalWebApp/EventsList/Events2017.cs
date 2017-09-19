@@ -65,8 +65,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
-                            //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JWbzxEEfD9p5cnig"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationDnipro,
