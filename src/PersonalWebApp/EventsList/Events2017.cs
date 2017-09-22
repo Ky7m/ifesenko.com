@@ -77,11 +77,20 @@ namespace PersonalWebApp.EventsList
                 Link = "https://www.meetup.com/IT-talk-Dnepr/events/242948073/",
                 Items = new[]
                 {
-                    new EventModelItem("To be anounced...",
+                    new EventModelItem(".NET Core: Overview and Tools",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
-                            //["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] = CommonStrings.CollateralDemoCode
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
+                        }),
+                    new EventModelItem("ASP.NET Core in a Nutshell",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4Jdub1grMeBWdw9VA"] = CommonStrings.CollateralPowerpoint
+                        }),
+                    new EventModelItem(".NET Standard",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JetthXqYUYCoUvNw"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationDnipro,
