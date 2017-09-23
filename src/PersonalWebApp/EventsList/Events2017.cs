@@ -91,6 +91,11 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JetthXqYUYCoUvNw"] = CommonStrings.CollateralPowerpoint
+                        }),
+                    new EventModelItem(".NET Conf Local - Video",
+                        new Dictionary<string, string>
+                        {
+                            ["https://www.youtube.com/watch?v=grwvMmpRDHM"] = CommonStrings.CollateralVideoRus
                         })
                 },
                 Location = CommonStrings.LocationDnipro,
