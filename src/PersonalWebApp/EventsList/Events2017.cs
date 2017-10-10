@@ -18,8 +18,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Cloud Cost Optimization Techniques and Hacks For Enterprise Apps",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjuNfNE_1PZAWuz27DA"] = CommonStrings.CollateralPowerpoint,
-                            //["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.CollateralVideoRus
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationKyiv,
@@ -34,7 +33,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("C# Language Internals",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode
                         })
                 },
                 Location = CommonStrings.LocationKyiv,
