@@ -12,7 +12,7 @@
     <Content Update="wwwroot\**\*;appsettings.json" CopyToPublishDirectory="Always" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="11.0.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="1.1.0" />
   </ItemGroup>
