@@ -34,7 +34,8 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode,
+                            ["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.CollateralVideoRus
                         })
                 },
                 Location = CommonStrings.LocationKyiv,
