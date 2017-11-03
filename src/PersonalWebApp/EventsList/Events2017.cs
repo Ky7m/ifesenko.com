@@ -11,6 +11,23 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Lviv .NET Community Meetup #1 Reload",
+                Link = "https://www.facebook.com/events/144988512913185/",
+                Items = new[]
+                {
+                    new EventModelItem("C# Language Internals",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode,
+                            ["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.CollateralVideoRus
+                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2017, 12, 1)
+            },
+            new EventModel
+            {
                 Title = "XP Days Ukraine",
                 Link = "http://xpdays.com.ua/speaker/igor-fesenko-2/",
                 Items = new[]
