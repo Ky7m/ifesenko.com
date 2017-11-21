@@ -35,7 +35,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Cloud Cost Optimization Techniques and Hacks For Enterprise Apps",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.CollateralPowerpoint,
+                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
                         })
                 },
                 Location = CommonStrings.LocationKyiv,
