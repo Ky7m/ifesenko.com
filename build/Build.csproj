@@ -7,6 +7,6 @@
     <PackageReference Include="Cake.Frosting" Version="0.1.0-alpha0071" />
     <PackageReference Include="Cake.Npm" Version="0.12.1" />
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
-    <PackageReference Include="OctopusTools" Version="4.24.4" />
+    <PackageReference Include="OctopusTools" Version="4.25.0" />
   </ItemGroup>
 </Project>
