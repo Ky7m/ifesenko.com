@@ -1,5 +1,6 @@
 using Cake.Common;
 using Cake.Common.Build;
+using Cake.Common.IO;
 using Cake.Frosting;
 using JetBrains.Annotations;
 
@@ -13,20 +14,32 @@ namespace Build
             // arguments
             context.Target = context.Argument("target", "Default");
             context.Configuration = context.Argument("configuration", "Release");
-            context.BuildNumber = context.Argument("buildNumber", "255.255.255.255");
-            context.OctoServer = context.Argument("octoServer", "http://ifesenko.westeurope.cloudapp.azure.com");
-            context.OctoApiKey = context.Argument("octoApiKey", "API-42NRB0K7W3L85TIBVULGVNE32S");
-            context.OctoProject = context.Argument("octoProject", "www.ifesenko.com");
-            context.OctoTargetEnvironment = context.Argument("octoTargetEnvironment", "Staging");
             
             // global variables
-            context.OutputPath = "./.build";
-            context.PackagePath = "./publish";
+            context.BuildNumber = context.TFBuild().Environment.Build.Number;
+            if (string.IsNullOrEmpty(context.BuildNumber))
+            {
+                context.BuildNumber = "255.255.255.255";
+            }
+
+            context.BinariesDirectoryPath = context.EnvironmentVariable("BUILD_BINARIESDIRECTORY");
+            if (string.IsNullOrEmpty(context.BinariesDirectoryPath))
+            {
+                context.BinariesDirectoryPath = "./Build.Binaries";
+                context.CleanDirectory(context.BinariesDirectoryPath);
+            }
+            
+            context.ArtifactDirectoryPath = context.EnvironmentVariable("BUILD_ARTIFACTSTAGINGDIRECTORY");
+            if (string.IsNullOrEmpty(context.ArtifactDirectoryPath))
+            {
+                context.ArtifactDirectoryPath = "./Build.ArtifactStagingDirectory";
+                context.CleanDirectory(context.ArtifactDirectoryPath);
+            }
+            
             context.ProjectPath = "./src/PersonalWebApp";
             context.BlogPath = $"{context.ProjectPath}/Blog";
 
-            context.PackageFullName = $"{context.PackagePath}/PersonalWebApp.{context.BuildNumber}.zip";
-            context.IsContinuousIntegrationBuild = !context.BuildSystem().IsLocalBuild;
+            context.PackageFullName = $"{context.ArtifactDirectoryPath}/PersonalWebApp.{context.BuildNumber}.zip";
         }
     }
 }

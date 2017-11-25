@@ -8,9 +8,7 @@ namespace Build.Tasks
     {
         public override void Run(Context context)
         {
-            context.Zip(context.OutputPath, context.PackageFullName);
+            context.Zip(context.BinariesDirectoryPath, context.PackageFullName);
         }
-
-        public override bool ShouldRun(Context context) => context.IsContinuousIntegrationBuild;
     }
 }

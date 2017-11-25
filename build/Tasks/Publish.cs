@@ -14,7 +14,7 @@ namespace Build.Tasks
                 new DotNetCorePublishSettings()
                 {
                     Configuration = context.Configuration,
-                    OutputDirectory = context.OutputPath
+                    OutputDirectory = context.BinariesDirectoryPath
                     //Runtime = "win10-x64"
                 });
         }
