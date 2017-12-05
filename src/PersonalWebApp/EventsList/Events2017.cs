@@ -9,6 +9,57 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
+//            new EventModel
+//            {
+//                Title = "Full Stack Meet Up. Factory edition.",
+//                Link = "http://factory.daxx.com/",
+//                Items = new[]
+//                {
+//                    new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JWbzxEEfD9p5cnig"] = CommonStrings.CollateralPowerpoint
+//                        })
+//                },
+//                Location = CommonStrings.LocationLviv,
+//                Date = new DateTime(2017, 9, 26)
+//            },
+//            new EventModel
+//            {
+//                Title = "Local .NET Conf - Recap of What's New in .NET!",
+//                Link = "https://www.facebook.com/events/115416022513016/",
+//                Items = new[]
+//                {
+//                    new EventModelItem(".NET Core: Overview and Tools",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
+//                        }),
+//                    new EventModelItem("ASP.NET Core in a Nutshell",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4Jdub1grMeBWdw9VA"] = CommonStrings.CollateralPowerpoint
+//                        })
+//                },
+//                Location = CommonStrings.LocationKharkiv,
+//                Date = new DateTime(2017, 12, 20)
+//            },
+            new EventModel
+            {
+                Title = "Cloud Meetup by Microsoft",
+                Link = "https://www.facebook.com/events/148131755830888/",
+                Items = new[]
+                {
+                    new EventModelItem(
+                        "Applied Microsoft Azure: Cloud Cost Optimization Techniques and Hacks For Enterprise Apps",
+                        new Dictionary<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjv9VA14mgQyBmAZiyQ"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationMinsk,
+                Date = new DateTime(2017, 12, 12)
+            },
             new EventModel
             {
                 Title = "Lviv .NET Community Meetup #1 Reload",

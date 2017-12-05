@@ -15,5 +15,6 @@ namespace PersonalWebApp.Extensions
         public const string LocationIvanoFrankivsk = "Ivano-Frankivsk (Ukraine)";
         public const string LocationRivne = "Rivne (Ukraine)";
         public const string LocationDnipro = "Dnipro (Ukraine)";
+        public const string LocationMinsk = "Minsk (Belarus)";
     }
 }
