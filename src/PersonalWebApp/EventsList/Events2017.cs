@@ -9,41 +9,42 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
-//            new EventModel
-//            {
-//                Title = "Full Stack Meet Up. Factory edition.",
-//                Link = "http://factory.daxx.com/",
-//                Items = new[]
-//                {
-//                    new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JWbzxEEfD9p5cnig"] = CommonStrings.CollateralPowerpoint
-//                        })
-//                },
-//                Location = CommonStrings.LocationLviv,
-//                Date = new DateTime(2017, 9, 26)
-//            },
-//            new EventModel
-//            {
-//                Title = "Local .NET Conf - Recap of What's New in .NET!",
-//                Link = "https://www.facebook.com/events/115416022513016/",
-//                Items = new[]
-//                {
-//                    new EventModelItem(".NET Core: Overview and Tools",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
-//                        }),
-//                    new EventModelItem("ASP.NET Core in a Nutshell",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4Jdub1grMeBWdw9VA"] = CommonStrings.CollateralPowerpoint
-//                        })
-//                },
-//                Location = CommonStrings.LocationKharkiv,
-//                Date = new DateTime(2017, 12, 20)
-//            },
+            new EventModel
+            {
+                Title = "Effective Team Work and Power of ASP.NET Core and Node.js",
+                Link = "https://www.facebook.com/events/130650640939464",
+                Items = new[]
+                {
+                    new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JWbzxEEfD9p5cnig"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2017, 12, 26)
+            },
+            new EventModel
+            {
+                Title = "IT Talk Kharkiv",
+                Link = "https://www.meetup.com/IT-talk-Kharkiv/events/245634133/",
+                Items = new[]
+                {
+                    new EventModelItem("C# Language Internals",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode,
+                        }),
+                    new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JWbzxEEfD9p5cnig"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationKharkiv,
+                Date = new DateTime(2017, 12, 20)
+            },
             new EventModel
             {
                 Title = "Cloud Meetup by Microsoft",
