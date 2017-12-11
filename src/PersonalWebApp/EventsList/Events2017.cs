@@ -55,7 +55,7 @@ namespace PersonalWebApp.EventsList
                         "Applied Microsoft Azure: Cloud Cost Optimization Techniques and Hacks For Enterprise Apps",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjv9VA14mgQyBmAZiyQ"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj8grFdvqjEeE2EROLw"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationMinsk,
