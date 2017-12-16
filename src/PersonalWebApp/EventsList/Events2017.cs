@@ -26,7 +26,7 @@ namespace PersonalWebApp.EventsList
             },
             new EventModel
             {
-                Title = "IT Talk Kharkiv",
+                Title = "IT Talk Kharkiv: Under the Hood of C# and Power of ASP.NET Core & Node.js",
                 Link = "https://www.meetup.com/IT-talk-Kharkiv/events/245634133/",
                 Items = new[]
                 {
