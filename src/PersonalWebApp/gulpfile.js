@@ -96,6 +96,11 @@ var sources = {
             paths: paths.npm + 'jquery.backstretch/jquery.backstretch.js'
         },
         {
+            name: 'popper.js',
+            copy: true,
+            paths: paths.npm + 'popper.js/dist/popper.js'
+        },
+        {
             name: 'app.js',
             paths: paths.scripts + '**/*.ts'
         }

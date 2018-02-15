@@ -28,7 +28,7 @@
         <link asp-append-version="true" rel="stylesheet" href="~/css/app.css" />
     </environment>
     <environment exclude="@nameof(EnvironmentName.Development)">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
         <link rel="stylesheet" href="@AppSettings.Value.CdnEndpoint/css/app.css?v=@applicationVersion" />
     </environment>
     <environment include="@nameof(EnvironmentName.Production)">
@@ -60,13 +60,15 @@
     <environment include="@nameof(EnvironmentName.Development)">
         <script crossorigin="anonymous" src="~/js/jquery.js"></script>
         <script crossorigin="anonymous" src="~/js/backstretch.js"></script>
+        <script crossorigin="anonymous" src="~/js/popper.js"></script>
         <script crossorigin="anonymous" src="~/js/bootstrap.js"></script>
         <script crossorigin="anonymous" asp-append-version="true" src="~/js/app.js"></script>
     </environment>
     <environment exclude="@nameof(EnvironmentName.Development)">
-        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
-        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.15/jquery.backstretch.min.js" integrity="sha384-KfOfdYnzwAkX89zxb9lBL7djcP2yi1PEz7dJRb7xS4MyeTAsLM94qYF/C9k2RXEo" crossorigin="anonymous"></script>
-        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/danielgindi-jquery-backstretch/2.1.15/jquery.backstretch.min.js" integrity="sha384-KfOfdYnzwAkX89zxb9lBL7djcP2yi1PEz7dJRb7xS4MyeTAsLM94qYF/C9k2RXEo"></script>
+        <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
+        <script crossorigin="anonymous" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"></script>
         <script crossorigin="anonymous" src="@AppSettings.Value.CdnEndpoint/js/app.js?v=@applicationVersion"></script>
     </environment>
     @RenderSection("scripts", required: false)
