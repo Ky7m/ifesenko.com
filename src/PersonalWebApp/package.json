@@ -2,12 +2,11 @@
   "name": "personalwebapp",
   "version": "1.0.0",
   "dependencies": {
-    "@types/bootstrap": "3.3.37",
-    "@types/jquery": "3.3.0",
-    "bootstrap": "4.0.0",
-    "jquery": "3.3.1",
-    "jquery.backstretch": "2.1.15",
-    "popper.js": "1.12.9"
+    "@types/bootstrap": "3.3.36",
+    "@types/jquery": "3.2.17",
+    "bootstrap": "3.3.7",
+    "jquery": "3.2.1",
+    "jquery.backstretch": "2.1.15"
   },
   "devDependencies": {
     "gulp": "3.9.1",
@@ -21,13 +20,13 @@
     "gulp-sass": "3.1.0",
     "gulp-shorthand": "1.1.0",
     "gulp-size": "3.0.0",
-    "gulp-sourcemaps": "2.6.4",
-    "gulp-typescript": "4.0.1",
+    "gulp-sourcemaps": "2.6.3",
+    "gulp-typescript": "3.2.3",
     "gulp-uglify": "3.0.0",
     "gulp-util": "3.0.8",
     "merge-stream": "1.0.1",
     "rimraf": "2.6.2",
-    "typescript": "2.7.1"
+    "typescript": "2.6.2"
   },
   "scripts": {
     "postinstall": "npm rebuild node-sass"
