@@ -17,6 +17,9 @@
     <meta name="description" content="Igor Fesenko - Personal Site & Blog. You can find details on the home page. Please feel free to contact me.">
     <meta name="keywords" content="Web Applications,Sites,Web Services,SOA,Security,Identity,Data Access,Integration,Databases,Cloud Computing">
     <meta name="X-UA-Compatible" content="IE=edge,chrome=1">
+    <environment include="Staging">
+        <meta name="robots" content="noindex, follow">
+    </environment>
     <title>@ViewData["Title"]</title>
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="@AppSettings.Value.CdnEndpoint">
