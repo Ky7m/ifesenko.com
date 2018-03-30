@@ -31,10 +31,10 @@ namespace PersonalWebApp.EventsList
                 Link = "https://frameworksdays.com/event/dotnet-fwdays-2018",
                 Items = new[]
                 {
-                    new EventModelItem("To Be Announced",
+                    new EventModelItem("Asynchronous Processing and Multithreading Are Always Fun",
                         new Dictionary<string, string>
                         {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.CollateralPowerpoint,
 //                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
                         })
                 },
