@@ -35,6 +35,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] = CommonStrings.CollateralDemoCode
 //                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
                         })
                 },
