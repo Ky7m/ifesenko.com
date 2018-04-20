@@ -15,10 +15,26 @@ namespace PersonalWebApp.EventsList
                 Link = "https://2018.iforum.ua/en/speakers/igor-fesenko/",
                 Items = new[]
                 {
-                    new EventModelItem("To Be Announced",
+                    new EventModelItem("What I learned making a global web app",
                         new Dictionary<string, string>
                         {
 //                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.CollateralPowerpoint,
+//                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
+                        })
+                },
+                Location = CommonStrings.LocationKyiv,
+                Date = new DateTime(2018, 4, 25)
+            },
+            new EventModel
+            {
+                Title = "Global Azure Bootcamp Lviv '18",
+                Link = "https://www.facebook.com/events/2038968596390170/",
+                Items = new[]
+                {
+                    new EventModelItem("Create Global Web App with Microsoft Azure",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkIIx_lcJ-B2ID0FpAw"] = CommonStrings.CollateralPowerpoint,
 //                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
                         })
                 },
