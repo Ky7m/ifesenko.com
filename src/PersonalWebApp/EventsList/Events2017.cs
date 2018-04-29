@@ -72,7 +72,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.CollateralDemoCode,
-                            //["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.CollateralVideoRus
+                            ["https://www.youtube.com/watch?v=IJNbmivri4U"] = CommonStrings.CollateralVideoRus
                         })
                 },
                 Location = CommonStrings.LocationLviv,
