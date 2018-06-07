@@ -66,7 +66,7 @@ namespace PersonalWebApp
                     Location = ResponseCacheLocation.Any,
                     Duration = 86400
                 });
-            });
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IStorageService, InMemoryStorageService>();
         }
@@ -76,12 +76,13 @@ namespace PersonalWebApp
         {
             if (env.IsDevelopment())
             {
+                loggerFactory.AddDebug();
+                loggerFactory.AddConsole(_configuration.GetSection("Logging"));
                 app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
             }
             else
             {
-                loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Information);
+                loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Warning);
                 //app.UseExceptionHandler("/error");
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
             }

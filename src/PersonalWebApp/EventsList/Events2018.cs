@@ -18,8 +18,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What I Learned Making a Global Web App",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkII0hLNCxL0ydrqcMw"] = CommonStrings.CollateralPowerpoint,
-//                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.CollateralVideoRus
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkII0hLNCxL0ydrqcMw"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationKyiv,

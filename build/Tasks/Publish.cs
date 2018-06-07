@@ -11,11 +11,12 @@ namespace Build.Tasks
         {
             context.DotNetCorePublish(
                 context.ProjectPath,
-                new DotNetCorePublishSettings()
+                new DotNetCorePublishSettings
                 {
+                    Runtime = "win10-x64",
+                    //NoRestore = true,
                     Configuration = context.Configuration,
                     OutputDirectory = context.BinariesDirectoryPath
-                    //Runtime = "win10-x64"
                 });
         }
     }
