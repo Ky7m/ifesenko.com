@@ -13,7 +13,6 @@ namespace PersonalWebApp
                 {
                     options.AddServerHeader = false;
                 })
-                .UseApplicationInsights()
                 .UseStartup<Startup>();
     }
 }

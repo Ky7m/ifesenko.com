@@ -69,6 +69,9 @@ namespace PersonalWebApp
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IStorageService, InMemoryStorageService>();
+            
+            services.AddApplicationInsightsTelemetry();
+            services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
         }
 
         [UsedImplicitly]
@@ -83,19 +86,20 @@ namespace PersonalWebApp
             else
             {
                 loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Warning);
-                //app.UseExceptionHandler("/error");
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
             }
 
+            // health check
+            app.Use((context, next) => context.Request.Path.StartsWithSegments("/hc")
+                ? context.Response.WriteAsync(string.Empty)
+                : next()
+            );
+            
             var rewriteOptions = new RewriteOptions()
                     .AddRedirectToHttpsPermanent()
                     .Add(new RedirectWwwRule());
                 app.UseRewriter(rewriteOptions);
             
-            var builder = TelemetryConfiguration.Active.TelemetryProcessorChainBuilder;
-            builder.Use(next => new SyntheticSourceTelemetryFilter(next));
-            builder.Build();
-
             app.UseResponseCaching();
             app.UseResponseCompression();
 

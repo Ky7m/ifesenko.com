@@ -31,9 +31,12 @@ Param(
     [string[]]$ScriptArgs
 )
 
-$DotNetVersion = "2.1.300";
+$DotNetVersion = "2.1.302";
 $DotNetInstallerUri = "https://dot.net/v1/dotnet-install.ps1";
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
+
+# Temporarily skip verification of addins.
+$ENV:CAKE_SETTINGS_SKIPVERIFICATION='true'
 
 # Make sure tools folder exists
 $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
@@ -49,12 +52,19 @@ if (!(Test-Path $ToolPath)) {
 
 Function Remove-PathVariable([string]$VariableToRemove)
 {
-  $path = [Environment]::GetEnvironmentVariable("PATH", "User")
-  $newItems = $path.Split(';') | Where-Object { $_.ToString() -inotlike $VariableToRemove }
-  [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "User")
-  $path = [Environment]::GetEnvironmentVariable("PATH", "Process")
-  $newItems = $path.Split(';') | Where-Object { $_.ToString() -inotlike $VariableToRemove }
-  [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "Process")
+    $path = [Environment]::GetEnvironmentVariable("PATH", "User")
+    if ($path -ne $null)
+    {
+        $newItems = $path.Split(';', [StringSplitOptions]::RemoveEmptyEntries) | Where-Object { "$($_)" -inotlike $VariableToRemove }
+        [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "User")
+    }
+
+    $path = [Environment]::GetEnvironmentVariable("PATH", "Process")
+    if ($path -ne $null)
+    {
+        $newItems = $path.Split(';', [StringSplitOptions]::RemoveEmptyEntries) | Where-Object { "$($_)" -inotlike $VariableToRemove }
+        [Environment]::SetEnvironmentVariable("PATH", [System.String]::Join(';', $newItems), "Process")
+    }
 }
 
 # Get .NET Core CLI path if installed.
@@ -68,21 +78,24 @@ if($FoundDotNetCliVersion -ne $DotNetVersion) {
     if (!(Test-Path $InstallPath)) {
         mkdir -Force $InstallPath | Out-Null;
     }
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
     (New-Object System.Net.WebClient).DownloadFile($DotNetInstallerUri, "$InstallPath\dotnet-install.ps1");
-    & $InstallPath\dotnet-install.ps1 -Version $DotNetVersion -InstallDir $InstallPath;
+    & $InstallPath\dotnet-install.ps1 -Channel $DotNetChannel -Version $DotNetVersion -InstallDir $InstallPath;
 
     Remove-PathVariable "$InstallPath"
     $env:PATH = "$InstallPath;$env:PATH"
-    $env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-    $env:DOTNET_CLI_TELEMETRY_OPTOUT=1
 }
+
+$env:DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
+$env:DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 
 ###########################################################################
 # INSTALL NUGET
 ###########################################################################
 
 # Make sure nuget.exe exists.
-$NugetPath = Join-Path $ToolPath "nuget.exe" 
+$NugetPath = Join-Path $ToolPath "nuget.exe"
 if (!(Test-Path $NugetPath)) {
     Write-Host "Downloading NuGet.exe..."
     (New-Object System.Net.WebClient).DownloadFile($NugetUrl, $NugetPath);
@@ -103,8 +116,7 @@ $Arguments = @{
 try {
     Push-Location
     Set-Location build
-    Write-Output "Running..."
-    Invoke-Expression "dotnet run $Arguments"
+    Invoke-Expression "dotnet run $Arguments $ScriptArgs"
 }
 finally {
     Pop-Location
