@@ -11,6 +11,70 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Local .NET Conf - Recap of What's New in .NET!",
+                Link = "https://app.softserveinc.com/apply/register/en/dotnetlocalconf",
+                Items = new[]
+                {
+                    new EventModelItem("TBA")
+//                    new EventModelItem(".NET Core: Overview and Tools",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
+//                        }),
+//                    new EventModelItem("ASP.NET Core in a Nutshell",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4Jdub1grMeBWdw9VA"] = CommonStrings.CollateralPowerpoint
+//                        }),
+//                    new EventModelItem(".NET Standard",
+//                        new Dictionary<string, string>
+//                        {
+//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JetthXqYUYCoUvNw"] = CommonStrings.CollateralPowerpoint
+//                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2017, 9, 13)
+            },
+            new EventModel
+            {
+                Title = "IT Weekend Ukraine 2018",
+                Link = "https://itweekend.events/event/it-weekend-ukraine-2018/",
+                Items = Array.Empty<EventModelItem>(),
+                Location = CommonStrings.LocationKyiv,
+                Date = new DateTime(2016, 9, 8)
+            },
+            new EventModel
+            {
+                Title = "LvivJS",
+                Link = "https://lvivjs.org.ua/",
+                Items = new[]
+                {
+                    new EventModelItem("What I learned making an integration between global ecosystems",
+                        new Dictionary<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2018, 9, 1)
+            },
+            new EventModel
+            {
+                Title = "LvivJS",
+                Link = "https://lvivjs.org.ua/",
+                Items = new[]
+                {
+                    new EventModelItem("What I learned making an integration between global ecosystems",
+                        new Dictionary<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2018, 9, 1)
+            },
+            new EventModel
+            {
                 Title = "iForum 2018",
                 Link = "https://2018.iforum.ua/en/speakers/igor-fesenko/",
                 Items = new[]
