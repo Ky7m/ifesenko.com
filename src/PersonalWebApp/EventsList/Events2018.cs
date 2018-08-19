@@ -37,7 +37,7 @@ namespace PersonalWebApp.EventsList
 //                        })
                 },
                 Location = CommonStrings.LocationLviv,
-                Date = new DateTime(2017, 9, 13)
+                Date = new DateTime(2018, 9, 13)
             },
             new EventModel
             {
@@ -52,7 +52,7 @@ namespace PersonalWebApp.EventsList
                         }),
                 },
                 Location = CommonStrings.LocationKyiv,
-                Date = new DateTime(2016, 9, 8)
+                Date = new DateTime(2018, 9, 8)
             },
             new EventModel
             {
