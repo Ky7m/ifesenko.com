@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="0.1.0-alpha0078" />
-    <PackageReference Include="Cake.Npm" Version="0.12.1" />
+    <PackageReference Include="Cake.Npm" Version="0.14.0" />
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
   </ItemGroup>
 </Project>
