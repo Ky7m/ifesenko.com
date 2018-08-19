@@ -15,7 +15,11 @@ namespace PersonalWebApp.EventsList
                 Link = "https://app.softserveinc.com/apply/register/en/dotnetlocalconf",
                 Items = new[]
                 {
-                    new EventModelItem("TBA")
+                    new EventModelItem("TBA",
+                        new Dictionary<string, string>
+                        {
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
+                        }),
 //                    new EventModelItem(".NET Core: Overview and Tools",
 //                        new Dictionary<string, string>
 //                        {
@@ -39,24 +43,16 @@ namespace PersonalWebApp.EventsList
             {
                 Title = "IT Weekend Ukraine 2018",
                 Link = "https://itweekend.events/event/it-weekend-ukraine-2018/",
-                Items = Array.Empty<EventModelItem>(),
-                Location = CommonStrings.LocationKyiv,
-                Date = new DateTime(2016, 9, 8)
-            },
-            new EventModel
-            {
-                Title = "LvivJS",
-                Link = "https://lvivjs.org.ua/",
                 Items = new[]
                 {
-                    new EventModelItem("What I learned making an integration between global ecosystems",
+                    new EventModelItem(string.Empty,
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
-                        })
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
+                        }),
                 },
-                Location = CommonStrings.LocationLviv,
-                Date = new DateTime(2018, 9, 1)
+                Location = CommonStrings.LocationKyiv,
+                Date = new DateTime(2016, 9, 8)
             },
             new EventModel
             {
