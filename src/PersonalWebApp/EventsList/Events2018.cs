@@ -63,7 +63,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What I learned making an integration between global ecosystems",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUjvN0CvlZT3FH9xDD3g"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationLviv,
