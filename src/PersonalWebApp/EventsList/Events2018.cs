@@ -11,15 +11,25 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
-                Title = "Local .NET Conf - Recap of What's New in .NET!",
-                Link = "https://app.softserveinc.com/apply/register/en/dotnetlocalconf",
+                Title = "ITEAHub TechTalk: easy win with C#",
+                Link = "https://www.facebook.com/events/2213455178936354/",
                 Items = new[]
                 {
-                    new EventModelItem("TBA",
+                    new EventModelItem("Securing your web applications with ASP.NET",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
-                        }),
+                            //["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
+                Location = CommonStrings.LocationLviv,
+                Date = new DateTime(2018, 9, 17)
+            },
+            new EventModel
+            {
+                Title = "Local .NET Conf - Recap of What's New in .NET!",
+                Link = "https://www.facebook.com/events/418182088707602/",
+//                Items = new[]
+//                {
 //                    new EventModelItem(".NET Core: Overview and Tools",
 //                        new Dictionary<string, string>
 //                        {
@@ -35,7 +45,7 @@ namespace PersonalWebApp.EventsList
 //                        {
 //                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JetthXqYUYCoUvNw"] = CommonStrings.CollateralPowerpoint
 //                        })
-                },
+//                },
                 Location = CommonStrings.LocationLviv,
                 Date = new DateTime(2018, 9, 13)
             },
@@ -43,14 +53,6 @@ namespace PersonalWebApp.EventsList
             {
                 Title = "IT Weekend Ukraine 2018",
                 Link = "https://itweekend.events/event/it-weekend-ukraine-2018/",
-                Items = new[]
-                {
-                    new EventModelItem(string.Empty,
-                        new Dictionary<string, string>
-                        {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
-                        }),
-                },
                 Location = CommonStrings.LocationKyiv,
                 Date = new DateTime(2018, 9, 8)
             },
@@ -60,7 +62,7 @@ namespace PersonalWebApp.EventsList
                 Link = "https://lvivjs.org.ua/",
                 Items = new[]
                 {
-                    new EventModelItem("What I learned making an integration between global ecosystems",
+                    new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.CollateralPowerpoint
