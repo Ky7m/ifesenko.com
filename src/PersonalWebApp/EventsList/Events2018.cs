@@ -15,10 +15,10 @@ namespace PersonalWebApp.EventsList
                 Link = "https://www.facebook.com/events/2213455178936354/",
                 Items = new[]
                 {
-                    new EventModelItem("Securing your web applications with ASP.NET",
+                    new EventModelItem("Securing Your Web Applications With ASP.NET",
                         new Dictionary<string, string>
                         {
-                            //["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEJ9nMcxsqkiqu0ng"] = CommonStrings.CollateralPowerpoint
                         })
                 },
                 Location = CommonStrings.LocationLviv,
@@ -48,6 +48,21 @@ namespace PersonalWebApp.EventsList
 //                },
                 Location = CommonStrings.LocationLviv,
                 Date = new DateTime(2018, 9, 13)
+            },
+            new EventModel
+            {
+                Title = "TechCases in Architecture #3",
+                Link = "https://www.facebook.com/events/302795240506275/",
+                Location = CommonStrings.LocationKyiv,
+                Items = new []
+                    {
+                        new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
+                            new Dictionary<string,string>
+                            {
+                                ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.CollateralPowerpoint
+                            })
+                    },
+                Date = new DateTime(2018, 9, 11)
             },
             new EventModel
             {
