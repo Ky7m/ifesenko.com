@@ -28,24 +28,19 @@ namespace PersonalWebApp.EventsList
             {
                 Title = "Local .NET Conf - Recap of What's New in .NET!",
                 Link = "https://www.facebook.com/events/418182088707602/",
-//                Items = new[]
-//                {
-//                    new EventModelItem(".NET Core: Overview and Tools",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JfNKrIZIGkuRzhwQ"] = CommonStrings.CollateralPowerpoint
-//                        }),
-//                    new EventModelItem("ASP.NET Core in a Nutshell",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4Jdub1grMeBWdw9VA"] = CommonStrings.CollateralPowerpoint
-//                        }),
-//                    new EventModelItem(".NET Standard",
-//                        new Dictionary<string, string>
-//                        {
-//                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj4JetthXqYUYCoUvNw"] = CommonStrings.CollateralPowerpoint
-//                        })
-//                },
+                Items = new[]
+                {
+                    new EventModelItem("What's New in .NET World?",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEZ8Ccyi0_zUChRrA"] = CommonStrings.CollateralPowerpoint
+                        }),
+                    new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEfZ-Rg05o5ZEJjEg"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
                 Location = CommonStrings.LocationLviv,
                 Date = new DateTime(2018, 9, 13)
             },
