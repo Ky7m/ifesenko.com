@@ -33,7 +33,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What's New in .NET World?",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEZ8Ccyi0_zUChRrA"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEhg2M2OLZuzAwJNg"] = CommonStrings.CollateralPowerpoint
                         }),
                     new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
                         new Dictionary<string, string>
