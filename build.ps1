@@ -31,7 +31,7 @@ Param(
     [string[]]$ScriptArgs
 )
 
-$DotNetVersion = "2.1.302";
+$DotNetVersion = "2.2.100-preview2-009404";
 $DotNetInstallerUri = "https://dot.net/v1/dotnet-install.ps1";
 $NugetUrl = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 
@@ -111,7 +111,7 @@ $Arguments = @{
     configuration=$Configuration;
     verbosity=$Verbosity;
     dryrun=$WhatIf;
-}.GetEnumerator() | ForEach-Object { "--{0}=`"{1}`"" -f $_.key, $_.value };
+}.GetEnumerator() | ForEach-Object { "t --{0}=`"{1}`"" -f $_.key, $_.value };
 
 try {
     Push-Location
