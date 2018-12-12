@@ -11,6 +11,41 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Holiday party / SF meetups: Azure, .NET, IT Pro, F#, C#, MSFT Data Platform",
+                Link =
+                    "https://www.eventbrite.com/e/holiday-party-sf-meetups-azure-net-it-pro-f-c-msft-data-platform-tickets-52889080664",
+                Items = new[]
+                {
+                    new EventModelItem("What's new in .NET Core 2.2 & ASP.NET Core 2.2 - Top Features",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJkNG37NqzSRqt4LxQ"] = CommonStrings.CollateralPowerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] =
+                                CommonStrings.CollateralDemoCode
+                        })
+                },
+                Location = CommonStrings.SanFrancisco,
+                Date = new DateTime(2018, 12, 12)
+            },
+            new EventModel
+            {
+                Title = "How to Integrate Your Apps",
+                Link =
+                    "https://www.eventbrite.com/e/softserve-microsoft-teams-how-to-integrate-your-apps-sf-tickets-49913991091#",
+                Items = new[]
+                {
+                    new EventModelItem("Building Apps for Microsoft Teams",
+                        new Dictionary<string, string>
+                        {
+                            ["https://github.com/Ky7m/DemoCode/tree/master/MicrosoftTeamsApps"] =
+                                CommonStrings.CollateralDemoCode
+                        })
+                },
+                Location = CommonStrings.SanFrancisco,
+                Date = new DateTime(2018, 10, 11)
+            },
+            new EventModel
+            {
                 Title = "ITEAHub TechTalk: easy win with C#",
                 Link = "https://www.facebook.com/events/2213455178936354/",
                 Items = new[]
@@ -49,14 +84,14 @@ namespace PersonalWebApp.EventsList
                 Title = "TechCases in Architecture #3",
                 Link = "https://www.facebook.com/events/302795240506275/",
                 Location = CommonStrings.LocationKyiv,
-                Items = new []
-                    {
-                        new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
-                            new Dictionary<string,string>
-                            {
-                                ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.CollateralPowerpoint
-                            })
-                    },
+                Items = new[]
+                {
+                    new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.CollateralPowerpoint
+                        })
+                },
                 Date = new DateTime(2018, 9, 11)
             },
             new EventModel
@@ -122,7 +157,8 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.CollateralPowerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] = CommonStrings.CollateralDemoCode,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] =
+                                CommonStrings.CollateralDemoCode,
                             ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.CollateralVideoRus
                         })
                 },

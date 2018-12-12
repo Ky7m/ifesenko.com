@@ -99,7 +99,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] =
-                            CommonStrings.CollateralDemoCode
+                                CommonStrings.CollateralDemoCode
                         }),
                     new EventModelItem("Enabling DevTest in Microsoft Azure",
                         new Dictionary<string, string>
@@ -110,9 +110,9 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure"] =
-                            CommonStrings.CollateralVideoRus,
+                                CommonStrings.CollateralVideoRus,
                             ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure-demo"] =
-                            CommonStrings.CollateralVideoRus
+                                CommonStrings.CollateralVideoRus
                         })
                 },
                 Location = CommonStrings.LocationKyiv,
@@ -139,7 +139,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem(
                         "OPTIMIZE your business by streamlining application lifecycle management process")
                 },
-                Location = "San Francisco (USA)",
+                Location = CommonStrings.SanFrancisco,
                 Date = new DateTime(2016, 4, 28)
             },
             new EventModel
@@ -168,7 +168,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNRKE6T2hmJ6C5FVA"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CiklumLvivDotNetSaturday"] =
-                            CommonStrings.CollateralDemoCode
+                                CommonStrings.CollateralDemoCode
                         })
                 },
                 Location = CommonStrings.LocationLviv,
@@ -185,7 +185,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.CollateralVideoRus,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNQ45EPNQN2UITD7g"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/ExceptionHandlingAdvancedTipsAndTricks"] =
-                            CommonStrings.CollateralDemoCode
+                                CommonStrings.CollateralDemoCode
                         })
                 },
                 Location = CommonStrings.LocationWebcast,
@@ -218,7 +218,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.CollateralVideoRus,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.CollateralPowerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/EffectiveMemoryManagement"] =
-                            CommonStrings.CollateralDemoCode
+                                CommonStrings.CollateralDemoCode
                         })
                 },
                 Location = CommonStrings.LocationLviv,
@@ -247,7 +247,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem(
                         "The Enable Application Innovation Immersion is a mix of discussion, application architecture design, white boarding and hands-on labs. Your team will design the future of business with new functionalities that augment existing business applications and drive development and execution of new initiatives.")
                 },
-                Location = "Dallas (USA)",
+                Location = "Dallas, TX (USA)",
                 Date = new DateTime(2016, 1, 26)
             }
         };

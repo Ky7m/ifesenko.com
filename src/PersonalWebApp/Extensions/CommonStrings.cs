@@ -8,7 +8,7 @@ namespace PersonalWebApp.Extensions
         public const string CollateralDemoCode = "Demo Code";
         public const string LocationWebcast = "Webcast";
         public const string CollateralSway = "Sway";
-        
+
         public const string LocationLviv = "Lviv (Ukraine)";
         public const string LocationKyiv = "Kyiv (Ukraine)";
         public const string LocationKharkiv = "Kharkiv (Ukraine)";
@@ -16,5 +16,6 @@ namespace PersonalWebApp.Extensions
         public const string LocationRivne = "Rivne (Ukraine)";
         public const string LocationDnipro = "Dnipro (Ukraine)";
         public const string LocationMinsk = "Minsk (Belarus)";
+        public const string SanFrancisco = "San Francisco, CA (USA)";
     }
 }
