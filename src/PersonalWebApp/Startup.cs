@@ -79,8 +79,6 @@ namespace PersonalWebApp
         {
             if (env.IsDevelopment())
             {
-                loggerFactory.AddDebug();
-                loggerFactory.AddConsole(_configuration.GetSection("Logging"));
                 app.UseDeveloperExceptionPage();
             }
             else
