@@ -111,7 +111,7 @@ $Arguments = @{
     configuration=$Configuration;
     verbosity=$Verbosity;
     dryrun=$WhatIf;
-}.GetEnumerator() | ForEach-Object { "t --{0}=`"{1}`"" -f $_.key, $_.value };
+}.GetEnumerator() | ForEach-Object { "--{0}=`"{1}`"" -f $_.key, $_.value };
 
 try {
     Push-Location

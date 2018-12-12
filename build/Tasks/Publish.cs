@@ -13,7 +13,7 @@ namespace Build.Tasks
                 context.ProjectPath,
                 new DotNetCorePublishSettings
                 {
-                    Runtime = "win10-x64",
+                    //Runtime = "win10-x64",
                     //NoRestore = true,
                     Configuration = context.Configuration,
                     OutputDirectory = context.BinariesDirectoryPath

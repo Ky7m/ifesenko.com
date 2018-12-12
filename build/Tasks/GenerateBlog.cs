@@ -35,7 +35,7 @@ namespace Build.Tasks
 
                     if (process.ExitCode != 0)
                     {
-                        throw new Exception(string.Format("Exit code {0} from {1}", process.ExitCode, command));
+                        throw new Exception($"Exit code {process.ExitCode} from {command}");
                     }
                 }
             }
