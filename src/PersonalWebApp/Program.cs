@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace PersonalWebApp
 {
@@ -9,10 +10,8 @@ namespace PersonalWebApp
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options =>
-                {
-                    options.AddServerHeader = false;
-                })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureKestrel((context, options) => { options.AddServerHeader = false; })
+                .ConfigureLogging(options => { options.AddApplicationInsights(); });
     }
 }

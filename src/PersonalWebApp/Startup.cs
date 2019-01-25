@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using JetBrains.Annotations;
-using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +26,7 @@ namespace PersonalWebApp
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+            CurrentDirectoryHelpers.SetCurrentDirectory();
         }
 
         [UsedImplicitly]
@@ -45,11 +43,10 @@ namespace PersonalWebApp
             services.AddResponseCaching();
 
             services.AddResponseCompression(
-                    options =>
-                    {
-                        options.EnableForHttps = true;
-                    })
-                .Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Optimal);
+                options =>
+                {
+                    options.EnableForHttps = true;
+                });
             
             services.AddMvc(options =>
             {
@@ -66,7 +63,7 @@ namespace PersonalWebApp
                     Location = ResponseCacheLocation.Any,
                     Duration = 86400
                 });
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSingleton<IStorageService, InMemoryStorageService>();
             
@@ -83,7 +80,6 @@ namespace PersonalWebApp
             }
             else
             {
-                loggerFactory.AddApplicationInsights(app.ApplicationServices, LogLevel.Warning);
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
             }
 
