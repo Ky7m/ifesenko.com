@@ -24,7 +24,7 @@ namespace PersonalWebApp.EventsList
                                 CommonStrings.CollateralDemoCode
                         })
                 },
-                Location = CommonStrings.SanFrancisco,
+                Location = CommonStrings.LocationSanFrancisco,
                 Date = new DateTime(2018, 12, 12)
             },
             new EventModel
@@ -41,7 +41,7 @@ namespace PersonalWebApp.EventsList
                                 CommonStrings.CollateralDemoCode
                         })
                 },
-                Location = CommonStrings.SanFrancisco,
+                Location = CommonStrings.LocationSanFrancisco,
                 Date = new DateTime(2018, 10, 11)
             },
             new EventModel

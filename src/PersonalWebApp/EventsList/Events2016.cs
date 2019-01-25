@@ -139,7 +139,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem(
                         "OPTIMIZE your business by streamlining application lifecycle management process")
                 },
-                Location = CommonStrings.SanFrancisco,
+                Location = CommonStrings.LocationSanFrancisco,
                 Date = new DateTime(2016, 4, 28)
             },
             new EventModel
