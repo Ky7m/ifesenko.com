@@ -1,5 +1,4 @@
-﻿@using System.Linq
-@model HomeModel
+﻿@model HomeModel
 <div class="container">
     <div class="row">
         <div class="col-md-12 headline">
@@ -51,7 +50,7 @@
                      eventModel.Value.Title :
                      $"<a href=\"{eventModel.Value.Link}\" rel=\"noopener\">{eventModel.Value.Title}</a>";
 
-                var isUpcoming = System.DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
+                var isUpcoming = DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
                 if (isUpcoming)
                 {
                     titleLayout += "&emsp;<span class=\"label label-info\">Upcoming</span>";

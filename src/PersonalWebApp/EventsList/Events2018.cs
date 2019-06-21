@@ -19,12 +19,12 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What's new in .NET Core 2.2 & ASP.NET Core 2.2 - Top Features",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJkNG37NqzSRqt4LxQ"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJkNG37NqzSRqt4LxQ"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] =
-                                CommonStrings.CollateralDemoCode
+                                CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.LocationSanFrancisco,
+                Location = CommonStrings.SanFrancisco,
                 Date = new DateTime(2018, 12, 12)
             },
             new EventModel
@@ -38,10 +38,10 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://github.com/Ky7m/DemoCode/tree/master/MicrosoftTeamsApps"] =
-                                CommonStrings.CollateralDemoCode
+                                CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.LocationSanFrancisco,
+                Location = CommonStrings.SanFrancisco,
                 Date = new DateTime(2018, 10, 11)
             },
             new EventModel
@@ -53,10 +53,10 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Securing Your Web Applications With ASP.NET",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEJ9nMcxsqkiqu0ng"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEJ9nMcxsqkiqu0ng"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.LocationLviv,
+                Location = CommonStrings.Lviv,
                 Date = new DateTime(2018, 9, 17)
             },
             new EventModel
@@ -68,28 +68,28 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What's New in .NET World?",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEhg2M2OLZuzAwJNg"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEhg2M2OLZuzAwJNg"] = CommonStrings.Powerpoint
                         }),
                     new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEfZ-Rg05o5ZEJjEg"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEfZ-Rg05o5ZEJjEg"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.LocationLviv,
+                Location = CommonStrings.Lviv,
                 Date = new DateTime(2018, 9, 13)
             },
             new EventModel
             {
                 Title = "TechCases in Architecture #3",
                 Link = "https://www.facebook.com/events/302795240506275/",
-                Location = CommonStrings.LocationKyiv,
+                Location = CommonStrings.Kyiv,
                 Items = new[]
                 {
                     new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.Powerpoint
                         })
                 },
                 Date = new DateTime(2018, 9, 11)
@@ -98,7 +98,7 @@ namespace PersonalWebApp.EventsList
             {
                 Title = "IT Weekend Ukraine 2018",
                 Link = "https://itweekend.events/event/it-weekend-ukraine-2018/",
-                Location = CommonStrings.LocationKyiv,
+                Location = CommonStrings.Kyiv,
                 Date = new DateTime(2018, 9, 8)
             },
             new EventModel
@@ -110,10 +110,10 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.LocationLviv,
+                Location = CommonStrings.Lviv,
                 Date = new DateTime(2018, 9, 1)
             },
             new EventModel
@@ -125,10 +125,10 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("What I Learned Making a Global Web App",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkII0hLNCxL0ydrqcMw"] = CommonStrings.CollateralPowerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkII0hLNCxL0ydrqcMw"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.LocationKyiv,
+                Location = CommonStrings.Kyiv,
                 Date = new DateTime(2018, 4, 25)
             },
             new EventModel
@@ -140,11 +140,11 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Create Global Web App with Microsoft Azure",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkIIx_lcJ-B2ID0FpAw"] = CommonStrings.CollateralPowerpoint,
-                            ["https://www.youtube.com/watch?v=BkRhK-2bfAk"] = CommonStrings.CollateralVideoRus
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkIIx_lcJ-B2ID0FpAw"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=BkRhK-2bfAk"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.LocationLviv,
+                Location = CommonStrings.Lviv,
                 Date = new DateTime(2018, 4, 21)
             },
             new EventModel
@@ -156,13 +156,13 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Asynchronous Processing and Multithreading Are Always Fun",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.CollateralPowerpoint,
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] =
-                                CommonStrings.CollateralDemoCode,
-                            ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.CollateralVideoRus
+                                CommonStrings.DemoCode,
+                            ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.LocationKyiv,
+                Location = CommonStrings.Kyiv,
                 Date = new DateTime(2018, 4, 15)
             }
         };

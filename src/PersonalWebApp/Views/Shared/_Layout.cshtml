@@ -1,12 +1,14 @@
-﻿@using Microsoft.AspNetCore.Hosting
+﻿@using System.Reflection
+@using Microsoft.ApplicationInsights.AspNetCore
+@using Microsoft.AspNetCore.Hosting
 @using Microsoft.Extensions.Options
 @using PersonalWebApp.Settings
 @inject IHostingEnvironment HostingEnvironment
-@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet AppInsightsJs
+@inject JavaScriptSnippet AppInsightsJs
 @inject IOptions<AppSettings> AppSettings
 
 @{
-    var applicationVersion = System.Reflection.Assembly.GetEntryAssembly().GetName().Version;
+    var applicationVersion = Assembly.GetEntryAssembly().GetName().Version;
 }
 
 <!DOCTYPE html>

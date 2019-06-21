@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Cake.Common;
 using Cake.Frosting;
 using static System.IO.Directory;
@@ -21,7 +22,7 @@ namespace Build.Tasks
                 }
 
                 var isRunningOnWindows = context.IsRunningOnWindows();
-                var processStartInfo = new System.Diagnostics.ProcessStartInfo
+                var processStartInfo = new ProcessStartInfo
                 {
                     UseShellExecute = false,
                     WorkingDirectory = workingDir,
@@ -29,7 +30,7 @@ namespace Build.Tasks
                     Arguments = (isRunningOnWindows ? "-Command " : "-c ") + command
                 };
 
-                using (var process = System.Diagnostics.Process.Start(processStartInfo))
+                using (var process = Process.Start(processStartInfo))
                 {
                     process.WaitForExit();
 

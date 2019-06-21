@@ -13,7 +13,7 @@ namespace Build
         {
             // arguments
             context.Target = context.Argument("target", "Default");
-            context.Configuration = context.Argument("configuration", "Release");
+            context.BuildConfiguration = context.Argument("configuration", "Release");
             
             // global variables
             context.BuildNumber = context.TFBuild().Environment.Build.Number;

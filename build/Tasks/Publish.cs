@@ -13,7 +13,7 @@ namespace Build.Tasks
                 context.ProjectPath,
                 new DotNetCorePublishSettings
                 {
-                    Configuration = context.Configuration,
+                    Configuration = context.BuildConfiguration,
                     OutputDirectory = context.BinariesDirectoryPath
                 });
         }

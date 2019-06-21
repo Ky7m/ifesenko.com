@@ -1,3 +1,7 @@
+using System;
+using System.Runtime.InteropServices;
+// ReSharper disable All
+
 namespace PersonalWebApp.Extensions
 {
     // Workaround for base dir when hosting in-process https://github.com/aspnet/Docs/pull/9873
@@ -5,21 +9,21 @@ namespace PersonalWebApp.Extensions
     {
         private const string AspNetCoreModuleDll = "aspnetcorev2_inprocess.dll";
 
-        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
-        private static extern System.IntPtr GetModuleHandle(string lpModuleName);
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetModuleHandle(string lpModuleName);
 
-        [System.Runtime.InteropServices.DllImport(AspNetCoreModuleDll)]
+        [DllImport(AspNetCoreModuleDll)]
         private static extern int http_get_application_properties(ref IISConfigurationData iiConfigData);
 
-        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential)]
         private struct IISConfigurationData
         {
-            public System.IntPtr pNativeApplication;
+            public IntPtr pNativeApplication;
 
-            [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.BStr)]
+            [MarshalAs(UnmanagedType.BStr)]
             public string pwzFullApplicationPath;
 
-            [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.BStr)]
+            [MarshalAs(UnmanagedType.BStr)]
             public string pwzVirtualApplicationPath;
 
             public bool fWindowsAuthEnabled;
@@ -32,11 +36,11 @@ namespace PersonalWebApp.Extensions
             try
             {
                 // Check if physical path was provided by ANCM
-                var sitePhysicalPath = System.Environment.GetEnvironmentVariable("ASPNETCORE_IIS_PHYSICAL_PATH");
+                var sitePhysicalPath = Environment.GetEnvironmentVariable("ASPNETCORE_IIS_PHYSICAL_PATH");
                 if (string.IsNullOrEmpty(sitePhysicalPath))
                 {
                     // Skip if not running ANCM InProcess
-                    if (GetModuleHandle(AspNetCoreModuleDll) == System.IntPtr.Zero)
+                    if (GetModuleHandle(AspNetCoreModuleDll) == IntPtr.Zero)
                     {
                         return;
                     }
@@ -50,7 +54,7 @@ namespace PersonalWebApp.Extensions
                     sitePhysicalPath = configurationData.pwzFullApplicationPath;
                 }
 
-                System.Environment.CurrentDirectory = sitePhysicalPath;
+                Environment.CurrentDirectory = sitePhysicalPath;
             }
             catch
             {

@@ -2,20 +2,20 @@ namespace PersonalWebApp.Extensions
 {
     internal static class CommonStrings
     {
-        public const string DotNetCommunitySoftserve = ".NET Community - SoftServe";
-        public const string CollateralVideoRus = "Video (Rus)";
-        public const string CollateralPowerpoint = "PowerPoint";
-        public const string CollateralDemoCode = "Demo Code";
-        public const string LocationWebcast = "Webcast";
-        public const string CollateralSway = "Sway";
+        public const string DotNetCommunitySoftServe = ".NET Community - SoftServe";
+        public const string VideoRus = "Video (Rus)";
+        public const string Powerpoint = "PowerPoint";
+        public const string DemoCode = "Demo Code";
+        public const string Webcast = "Webcast";
+        public const string Sway = "Sway";
 
-        public const string LocationLviv = "Lviv (Ukraine)";
-        public const string LocationKyiv = "Kyiv (Ukraine)";
-        public const string LocationKharkiv = "Kharkiv (Ukraine)";
-        public const string LocationIvanoFrankivsk = "Ivano-Frankivsk (Ukraine)";
-        public const string LocationRivne = "Rivne (Ukraine)";
-        public const string LocationDnipro = "Dnipro (Ukraine)";
-        public const string LocationMinsk = "Minsk (Belarus)";
-        public const string LocationSanFrancisco = "San Francisco, CA (USA)";
+        public const string Lviv = "Lviv (Ukraine)";
+        public const string Kyiv = "Kyiv (Ukraine)";
+        public const string Kharkiv = "Kharkiv (Ukraine)";
+        public const string IvanoFrankivsk = "Ivano-Frankivsk (Ukraine)";
+        public const string Rivne = "Rivne (Ukraine)";
+        public const string Dnipro = "Dnipro (Ukraine)";
+        public const string Minsk = "Minsk (Belarus)";
+        public const string SanFrancisco = "San Francisco, CA (USA)";
     }
 }

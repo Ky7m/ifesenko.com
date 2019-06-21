@@ -8,7 +8,7 @@ namespace Build
     public class Context : FrostingContext
     {
         public string Target { get; set; }
-        public string Configuration { get; set; }
+        public string BuildConfiguration { get; set; }
         public string BuildNumber { get; set; }
         public string BinariesDirectoryPath { get; set; }
         public string ArtifactDirectoryPath { get; set; }
