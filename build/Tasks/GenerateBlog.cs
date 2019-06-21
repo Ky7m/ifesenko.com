@@ -32,11 +32,11 @@ namespace Build.Tasks
 
                 using (var process = Process.Start(processStartInfo))
                 {
-                    process.WaitForExit();
+                    process?.WaitForExit();
 
-                    if (process.ExitCode != 0)
+                    if (process?.ExitCode != 0)
                     {
-                        throw new Exception($"Exit code {process.ExitCode} from {command}");
+                        throw new Exception($"Exit code {process?.ExitCode} from {command}");
                     }
                 }
             }

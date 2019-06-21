@@ -8,7 +8,7 @@
 @inject IOptions<AppSettings> AppSettings
 
 @{
-    var applicationVersion = Assembly.GetEntryAssembly().GetName().Version;
+    var applicationVersion = Assembly.GetEntryAssembly()?.GetName().Version;
 }
 
 <!DOCTYPE html>
