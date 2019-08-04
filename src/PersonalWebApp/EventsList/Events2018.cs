@@ -157,8 +157,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.Powerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] =
-                                CommonStrings.DemoCode,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] = CommonStrings.DemoCode,
                             ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.VideoRus
                         })
                 },

@@ -33,7 +33,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("DevOps: Be good, Get good or Give up",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkKxH4D42htegWfTxAw"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkKxH4D42htegWfTxAw"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=YXbkgU0tik8"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Kyiv,
