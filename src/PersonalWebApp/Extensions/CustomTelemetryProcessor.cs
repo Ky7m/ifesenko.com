@@ -1,6 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
 namespace PersonalWebApp.Extensions
@@ -16,7 +17,22 @@ namespace PersonalWebApp.Extensions
         {
             if (item.Context.Operation.Name != null)
             {
+                if (item.Context.Operation.Name.Equals("GET /", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+
                 if (item.Context.Operation.Name.Equals("GET /hc", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+
+                if (item.Context.Operation.Name.Equals("GET /index.html", StringComparison.OrdinalIgnoreCase))
+                {
+                    return;
+                }
+
+                if (item.Context.Operation.Name.Equals("POST /iisintegration", StringComparison.OrdinalIgnoreCase))
                 {
                     return;
                 }
@@ -24,6 +40,13 @@ namespace PersonalWebApp.Extensions
 
             // Filter out synthetic requests
             if (!string.IsNullOrEmpty(item.Context.Operation.SyntheticSource))
+            {
+                return;
+            }
+
+            // Filter out options requests
+            if (item is RequestTelemetry request && !string.IsNullOrEmpty(request.Name) &&
+                request.Name.StartsWith("options", StringComparison.OrdinalIgnoreCase))
             {
                 return;
             }
