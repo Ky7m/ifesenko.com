@@ -11,6 +11,64 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "ITEAHub Workshop: Designing and Building a Chatbot",
+                Link = "https://www.facebook.com/events/225823375004502/",
+                Items = new[]
+                {
+                    new EventModelItem("Workshop: Designing and Building a Chatbot",
+                        new Dictionary<string, string>())
+                },
+                Location = CommonStrings.Lviv,
+                Date = new DateTime(2019, 9, 9)
+            },
+            new EventModel
+            {
+                Title = "IТ Weekend Ukraine 2019",
+                Link = "https://itweekend.events/event/it-weekend-ukraine-2019-ukrainian-it-awards-2019/",
+                Items = new[]
+                {
+                    new EventModelItem("Lessons From The Trenches: Designing and Building a Chatbot",
+                        new Dictionary<string, string>()),
+                    new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
+                        new Dictionary<string, string>())
+                },
+                Location = CommonStrings.Kyiv,
+                Date = new DateTime(2019, 9, 7)
+            },
+            new EventModel
+            {
+                Title = "AllStars-IT Ukraine: Data & Logging Tech Meetup",
+                Link = "https://www.facebook.com/events/741738502913197/",
+                Items = new[]
+                {
+                    new EventModelItem("A Practical Look at Logging, Metrics, and Events in ASP.NET Core",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJP3A8ziSl6Ul6ovQ?e=TbBU6i"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Kyiv,
+                Date = new DateTime(2019, 9, 5)
+            },
+            new EventModel
+            {
+                Title = "Meet-Up .Net. Lviv",
+                Link = "https://www.facebook.com/events/2367809860143711/",
+                Items = new[]
+                {
+                    new EventModelItem("A Practical Look at Logging, Metrics, and Events in ASP.NET Core",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJP3A8ziSl6Ul6ovQ?e=TbBU6i"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Lviv,
+                Date = new DateTime(2019, 8, 28)
+            },
+            new EventModel
+            {
                 Title = "Digital Transformation Conference 2019",
                 Link = "https://dtconf.com",
                 Items = new[]
