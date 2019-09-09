@@ -16,7 +16,10 @@ namespace PersonalWebApp.EventsList
                 Items = new[]
                 {
                     new EventModelItem("Workshop: Designing and Building a Chatbot",
-                        new Dictionary<string, string>())
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLMTnV8qSFdRjGb9Tg?e=WkwImQ"] = CommonStrings.Powerpoint
+                        })
                 },
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2019, 9, 9)
@@ -28,9 +31,15 @@ namespace PersonalWebApp.EventsList
                 Items = new[]
                 {
                     new EventModelItem("Lessons From The Trenches: Designing and Building a Chatbot",
-                        new Dictionary<string, string>()),
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLMUfpLAnWFRHS3ZaQ?e=VcaD9d"] = CommonStrings.Powerpoint
+                        }),
                     new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
-                        new Dictionary<string, string>())
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJ0HoxGokVPnqjP6g?e=TmLTJc"] = CommonStrings.Powerpoint
+                        })
                 },
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 9, 7)
