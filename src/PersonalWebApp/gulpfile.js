@@ -13,7 +13,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
 const merge = require('merge-stream');
-const rimraf = require('rimraf');
+const rimraf = require('gulp-rimraf');
 const sass = require('gulp-sass');
 const typescript = require('gulp-typescript');
 const shorthand = require('gulp-shorthand');
@@ -113,16 +113,19 @@ function sizeAfter(title) {
     });
 }
 
-gulp.task('clean-styles', function (cb) {
-    return rimraf(paths.css,{ allowEmpty: true }, cb);
+gulp.task('clean-styles', function () {
+    return gulp.src(paths.css, { read: false, allowEmpty: true })
+        .pipe(rimraf());
 });
 
-gulp.task('clean-fonts', function (cb) {
-    return rimraf(paths.fonts,{ allowEmpty: true }, cb);
+gulp.task('clean-fonts', function () {
+    return gulp.src(paths.fonts, { read: false, allowEmpty: true })
+        .pipe(rimraf());
 });
 
-gulp.task('clean-code', function (cb) {
-    return rimraf(paths.js,{ allowEmpty: true }, cb);
+gulp.task('clean-code', function () {
+    return gulp.src(paths.js, { read: false, allowEmpty: true })
+        .pipe(rimraf());
 });
 
 gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
