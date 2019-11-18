@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 using PersonalWebApp.Extensions;
@@ -26,13 +27,12 @@ namespace PersonalWebApp
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
-            CurrentDirectoryHelpers.SetCurrentDirectory();
         }
 
         [UsedImplicitly]
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<AppSettings>(_configuration.GetSection(nameof(AppSettings)));
+            services.Configure<AppSettings>(_configuration);
 
             services.AddRouting(routeOptions =>
               {
@@ -47,11 +47,9 @@ namespace PersonalWebApp
                 {
                     options.EnableForHttps = true;
                 });
-            
-            services.AddMvc(options =>
-            {
-                options.Filters.Add(new RequireHttpsAttribute());
 
+            services.AddControllersWithViews(options =>
+            {
                 options.CacheProfiles.Add("HomePage", new CacheProfile
                 {
                     Location = ResponseCacheLocation.Any,
@@ -63,8 +61,8 @@ namespace PersonalWebApp
                     Location = ResponseCacheLocation.Any,
                     Duration = 86400
                 });
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            });
+            
             services.AddSingleton<IStorageService, InMemoryStorageService>();
             
             services.AddApplicationInsightsTelemetry();
@@ -72,7 +70,7 @@ namespace PersonalWebApp
         }
 
         [UsedImplicitly]
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +79,7 @@ namespace PersonalWebApp
             else
             {
                 app.UseStatusCodePagesWithReExecute("/error/{0}");
+                app.UseHsts();
             }
 
             // health check
@@ -89,10 +88,12 @@ namespace PersonalWebApp
                 : next()
             );
             
+            app.UseHttpsRedirection();
+            
             var rewriteOptions = new RewriteOptions()
-                    .AddRedirectToHttpsPermanent()
-                    .Add(new RedirectWwwRule());
-                app.UseRewriter(rewriteOptions);
+                .Add(new RedirectWwwRule());
+            
+            app.UseRewriter(rewriteOptions);
             
             app.UseResponseCaching();
             app.UseResponseCompression();
@@ -212,16 +213,11 @@ namespace PersonalWebApp
                 EnableDirectoryBrowsing = false
             });
 
-            if (!env.IsDevelopment())
-            {
-                app.UseHsts(options => options.MaxAge(days: 18 * 7).IncludeSubdomains().Preload());
-            }
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}");
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
