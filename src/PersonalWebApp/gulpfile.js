@@ -102,13 +102,6 @@ const sources = {
     ]
 };
 
-const lintSources = {
-    css: paths.styles + '**/*.{css}',
-    scss: paths.styles + '**/*.{scss}',
-    js: paths.scripts + '**/*.js',
-    ts: paths.scripts + '**/*.ts'
-};
-
 function sizeBefore(title) {
     return size({
         title: 'Before: ' + title
@@ -120,14 +113,9 @@ function sizeAfter(title) {
     });
 }
 
-
-gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
-
-
 gulp.task('clean-styles', function (cb) {
     return rimraf(paths.css, cb);
 });
-
 
 gulp.task('clean-fonts', function (cb) {
     return rimraf(paths.fonts, cb);
@@ -136,6 +124,8 @@ gulp.task('clean-fonts', function (cb) {
 gulp.task('clean-code', function (cb) {
     return rimraf(paths.js, cb);
 });
+
+gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
 
 gulp.task('styles', gulp.series('clean-styles', function () {
     const tasks = sources.css.map(function (source) {
@@ -174,7 +164,6 @@ gulp.task('styles', gulp.series('clean-styles', function () {
     return merge(tasks);
 }));
 
-
 gulp.task('fonts', gulp.series('clean-fonts', function () {
     const tasks = sources.fonts.map(function (source) {
         return gulp
@@ -187,7 +176,6 @@ gulp.task('fonts', gulp.series('clean-fonts', function () {
     });
     return merge(tasks);
 }));
-
 
 gulp.task('code', gulp.series('clean-code', function () {
     const tasks = sources.js.map(function (source) {
@@ -243,9 +231,6 @@ gulp.task('images', function () {
         .pipe(sizeAfter());
 });
 
-
-gulp.task('watch', gulp.series('watch-styles', 'watch-code'));
-
 gulp.task('watch-styles', function () {
     return gulp
         .watch(
@@ -266,6 +251,8 @@ gulp.task('watch-code', function () {
             gutil.log(gutil.colors.blue('File ' + event.path + ' was ' + event.type + ', code task started.'));
         });
 });
+
+gulp.task('watch', gulp.series('watch-styles', 'watch-code'));
 
 gulp.task('build', gulp.series('styles', 'fonts', 'code'));
 
