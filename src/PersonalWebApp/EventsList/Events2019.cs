@@ -11,6 +11,21 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Lviv .NET #20: Life after 3.0",
+                Link = "https://www.facebook.com/events/552967992184706/",
+                Items = new[]
+                {
+                    new EventModelItem("Lessons From The Trenches: Migration to ASP.NET Core 3.0 And C# 8.0",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLhoAriQ7uLvOmdiIQ"] = CommonStrings.Powerpoint
+                        })
+                },
+                Location = CommonStrings.Lviv,
+                Date = new DateTime(2019, 11, 19)
+            },
+            new EventModel
+            {
                 Title = "ITEAHub Workshop: Designing and Building a Chatbot",
                 Link = "https://www.facebook.com/events/225823375004502/",
                 Items = new[]
