@@ -114,15 +114,15 @@ function sizeAfter(title) {
 }
 
 gulp.task('clean-styles', function (cb) {
-    return rimraf(paths.css, cb);
+    return rimraf(paths.css,{ allowEmpty: true }, cb);
 });
 
 gulp.task('clean-fonts', function (cb) {
-    return rimraf(paths.fonts, cb);
+    return rimraf(paths.fonts,{ allowEmpty: true }, cb);
 });
 
 gulp.task('clean-code', function (cb) {
-    return rimraf(paths.js, cb);
+    return rimraf(paths.js,{ allowEmpty: true }, cb);
 });
 
 gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
