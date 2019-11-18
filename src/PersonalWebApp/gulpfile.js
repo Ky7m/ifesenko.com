@@ -1,24 +1,24 @@
 'use strict';
-var gulp = require('gulp');
-var autoprefixer = require('gulp-autoprefixer');
-var concat = require('gulp-concat');
-var moreCSS = require('gulp-more-css');
-var gulpif = require('gulp-if');
-var imagemin = require('gulp-imagemin');
-var plumber = require('gulp-plumber');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
-var size = require('gulp-size');
-var sourcemaps = require('gulp-sourcemaps');
-var uglify = require('gulp-uglify');
-var gutil = require('gulp-util');
-var merge = require('merge-stream');
-var rimraf = require('rimraf');
-var sass = require('gulp-sass');
-var typescript = require('gulp-typescript');
-var shorthand = require('gulp-shorthand');
+const gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
+const moreCSS = require('gulp-more-css');
+const gulpif = require('gulp-if');
+const imagemin = require('gulp-imagemin');
+const plumber = require('gulp-plumber');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const size = require('gulp-size');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const gutil = require('gulp-util');
+const merge = require('merge-stream');
+const rimraf = require('rimraf');
+const sass = require('gulp-sass');
+const typescript = require('gulp-typescript');
+const shorthand = require('gulp-shorthand');
 
-var environment = {
+const environment = {
     development: 'Development',
     staging: 'Staging',
     production: 'Production',
@@ -36,8 +36,8 @@ var environment = {
     }
 };
 
-var webroot = "./wwwroot/";
-var paths = {
+const webroot = "./wwwroot/";
+const paths = {
     npm: './node_modules/',
     scripts: 'Scripts/',
     styles: 'Styles/',
@@ -47,7 +47,7 @@ var paths = {
     js: webroot + 'js/'
 };
 
-var sources = {
+const sources = {
     css: [
         {
             name: 'font-awesome.css',
@@ -102,7 +102,7 @@ var sources = {
     ]
 };
 
-var lintSources = {
+const lintSources = {
     css: paths.styles + '**/*.{css}',
     scss: paths.styles + '**/*.{scss}',
     js: paths.scripts + '**/*.js',
@@ -121,7 +121,7 @@ function sizeAfter(title) {
 }
 
 
-gulp.task('clean', ['clean-styles', 'clean-fonts', 'clean-code']);
+gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
 
 
 gulp.task('clean-styles', function (cb) {
@@ -137,46 +137,46 @@ gulp.task('clean-code', function (cb) {
     return rimraf(paths.js, cb);
 });
 
-gulp.task('styles', ['clean-styles'], function () {
-    var tasks = sources.css.map(function (source) {
+gulp.task('styles', gulp.series('clean-styles', function () {
+    const tasks = sources.css.map(function (source) {
         if (source.copy) {
             return gulp
-              .src(source.paths)
-              .pipe(rename({
-                  basename: source.name,
-                  extname: ''
-              }))
-              .pipe(gulp.dest(paths.css));
+                .src(source.paths)
+                .pipe(rename({
+                    basename: source.name,
+                    extname: ''
+                }))
+                .pipe(gulp.dest(paths.css));
         } else {
             return gulp
-              .src(source.paths)
-              .pipe(plumber())
-              .pipe(gulpif(
-                environment.isDevelopment(),
-                sourcemaps.init()))
-              .pipe(gulpif('**/*.scss', sass()))
-              .pipe(autoprefixer({ browsers: ['last 2 version', '> 5%'] }))
-              .pipe(concat(source.name))
-              .pipe(sizeBefore(source.name))
-              .pipe(gulpif(
-                !environment.isDevelopment(),
-                shorthand()))
-              .pipe(gulpif(
-                !environment.isDevelopment(),
-                moreCSS()))
-              .pipe(sizeAfter(source.name))
-              .pipe(gulpif(
-                environment.isDevelopment(),
-                sourcemaps.write('.')))
-              .pipe(gulp.dest(paths.css));
+                .src(source.paths)
+                .pipe(plumber())
+                .pipe(gulpif(
+                    environment.isDevelopment(),
+                    sourcemaps.init()))
+                .pipe(gulpif('**/*.scss', sass()))
+                .pipe(autoprefixer({browsers: ['last 2 version', '> 5%']}))
+                .pipe(concat(source.name))
+                .pipe(sizeBefore(source.name))
+                .pipe(gulpif(
+                    !environment.isDevelopment(),
+                    shorthand()))
+                .pipe(gulpif(
+                    !environment.isDevelopment(),
+                    moreCSS()))
+                .pipe(sizeAfter(source.name))
+                .pipe(gulpif(
+                    environment.isDevelopment(),
+                    sourcemaps.write('.')))
+                .pipe(gulp.dest(paths.css));
         }
     });
     return merge(tasks);
-});
+}));
 
 
-gulp.task('fonts', ['clean-fonts'], function () {
-    var tasks = sources.fonts.map(function (source) {
+gulp.task('fonts', gulp.series('clean-fonts', function () {
+    const tasks = sources.fonts.map(function (source) {
         return gulp
             .src(source.path)
             .pipe(plumber())
@@ -186,12 +186,11 @@ gulp.task('fonts', ['clean-fonts'], function () {
             .pipe(gulp.dest(paths.fonts));
     });
     return merge(tasks);
-});
+}));
 
 
-gulp.task('code', ['clean-code'],
-function () {
-    var tasks = sources.js.map(function (source) {
+gulp.task('code', gulp.series('clean-code', function () {
+    const tasks = sources.js.map(function (source) {
         if (source.copy) {
             return gulp
                 .src(source.paths)
@@ -200,9 +199,8 @@ function () {
                     extname: ''
                 }))
                 .pipe(gulp.dest(paths.js));
-        }
-        else {
-            var tsProject = typescript.createProject('tsconfig.json', { typescript: require('typescript') });
+        } else {
+            const tsProject = typescript.createProject('tsconfig.json', {typescript: require('typescript')});
             return gulp
                 .src(source.paths)
                 .pipe(plumber())
@@ -230,7 +228,7 @@ function () {
         }
     });
     return merge(tasks);
-});
+}));
 
 gulp.task('images', function () {
     return gulp
@@ -246,7 +244,7 @@ gulp.task('images', function () {
 });
 
 
-gulp.task('watch', ['watch-styles', 'watch-code']);
+gulp.task('watch', gulp.series('watch-styles', 'watch-code'));
 
 gulp.task('watch-styles', function () {
     return gulp
@@ -269,6 +267,6 @@ gulp.task('watch-code', function () {
         });
 });
 
-gulp.task('build', ['styles', 'fonts', 'code']);
+gulp.task('build', gulp.series('styles', 'fonts', 'code'));
 
-gulp.task('default', ['build']);
+gulp.task('default', gulp.series('build'));
