@@ -50,11 +50,6 @@ const paths = {
 const sources = {
     css: [
         {
-            name: 'font-awesome.css',
-            copy: true,
-            paths: paths.npm + 'font-awesome/css/font-awesome.min.css'
-        },
-        {
             name: 'bootstrap.css',
             copy: true,
             paths: paths.npm + 'bootstrap/dist/css/bootstrap.css'
@@ -107,6 +102,7 @@ function sizeBefore(title) {
         title: 'Before: ' + title
     });
 }
+
 function sizeAfter(title) {
     return size({
         title: 'After: ' + title
@@ -114,17 +110,17 @@ function sizeAfter(title) {
 }
 
 gulp.task('clean-styles', function () {
-    return gulp.src(paths.css, { read: false, allowEmpty: true })
+    return gulp.src(paths.css, {read: false})
         .pipe(rimraf());
 });
 
 gulp.task('clean-fonts', function () {
-    return gulp.src(paths.fonts, { read: false, allowEmpty: true })
+    return gulp.src(paths.fonts, {read: false})
         .pipe(rimraf());
 });
 
 gulp.task('clean-code', function () {
-    return gulp.src(paths.js, { read: false, allowEmpty: true })
+    return gulp.src(paths.js, {read: false})
         .pipe(rimraf());
 });
 
