@@ -110,17 +110,17 @@ function sizeAfter(title) {
 }
 
 gulp.task('clean-styles', function () {
-    return gulp.src(paths.css, {read: false})
+    return gulp.src(paths.css, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
 gulp.task('clean-fonts', function () {
-    return gulp.src(paths.fonts, {read: false})
+    return gulp.src(paths.fonts, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
 gulp.task('clean-code', function () {
-    return gulp.src(paths.js, {read: false})
+    return gulp.src(paths.js, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
