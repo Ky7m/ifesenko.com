@@ -6,7 +6,6 @@ using static System.IO.Directory;
 
 namespace Build.Tasks
 {
-    [Dependency(typeof(NpmInstall))]
     public sealed class GenerateBlog: FrostingTask<Context>
     {
         public override void Run(Context context)
