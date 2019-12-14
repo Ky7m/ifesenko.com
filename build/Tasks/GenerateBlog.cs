@@ -11,7 +11,7 @@ namespace Build.Tasks
         public override void Run(Context context)
         {
             ExecuteCommand("\"./node_modules/.bin/hexo clean\"", context.BlogPath);
-            ExecuteCommand("\"./node_modules/.bin/hexo generate --debug\"", context.BlogPath);
+            ExecuteCommand("\"./node_modules/.bin/hexo generate\"", context.BlogPath);
             
             void ExecuteCommand(string command, string workingDir = null)
             {
