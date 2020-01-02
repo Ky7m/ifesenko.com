@@ -8,7 +8,7 @@ subtitle:
 description:
 author: Igor Fesenko
 language: en
-timezone: Pacific Standard Time
+timezone: America/Los_Angeles
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
