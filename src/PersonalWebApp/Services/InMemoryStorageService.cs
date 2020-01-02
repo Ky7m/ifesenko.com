@@ -28,13 +28,16 @@ namespace PersonalWebApp.Services
                         return (Events2017.List, false);
                     case 2018:
                         return (Events2018.List, false);
+                    case 2019:
+                        return (Events2019.List, false);
                 }
             }
             
-            return (Events2019.List, false);
+            return (Events2020.List, false);
         }
 
-        private static EventModel[] GetAllEvents() => Events2019.List
+        private static EventModel[] GetAllEvents() => Events2020.List
+            .Concat(Events2019.List)
             .Concat(Events2018.List)
             .Concat(Events2017.List)
             .Concat(Events2016.List)

@@ -48,12 +48,14 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Lessons From The Trenches: Designing and Building a Chatbot",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLMUfpLAnWFRHS3ZaQ?e=VcaD9d"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLMUfpLAnWFRHS3ZaQ?e=VcaD9d"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=xOEo1S-yuUs"] = CommonStrings.VideoRus
                         }),
                     new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJ0HoxGokVPnqjP6g?e=TmLTJc"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJ0HoxGokVPnqjP6g?e=TmLTJc"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=kG3CnQl7bTI"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Kyiv,

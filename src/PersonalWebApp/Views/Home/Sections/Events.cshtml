@@ -26,6 +26,10 @@
                         {
                             <a href="/?period=2018#events" rel="noopener">2018</a>
                         }
+                        @if (Model.Events.All(x => x.Date.Year != 2019))
+                        {
+                            <a href="/?period=2019#events" rel="noopener">2019</a>
+                        }
                         <a href="/?period=all#events" rel="noopener">Show All</a>
                     </span>
                 </p>
