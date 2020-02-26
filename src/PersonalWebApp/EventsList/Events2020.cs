@@ -21,6 +21,22 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2020, 4, 11)
             },
+            new EventModel
+            {
+                Title = "Svitla Smart Talk: .NET. Lifting Your Code Quality Higher",
+                Link = "https://www.facebook.com/events/191429968902776/",
+                Items = new[]
+                {
+                    new EventModelItem("Lifting Your C# Code Quality Higher",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
+                            //["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Kyiv,
+                Date = new DateTime(2020, 2, 27)
+            },
         };
     }
 }
