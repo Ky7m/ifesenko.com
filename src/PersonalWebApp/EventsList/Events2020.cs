@@ -19,7 +19,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>()
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkMxy2UQ0W3oPza9TCA?e=SXyMh0f"] = CommonStrings.Powerpoint,
-                            //["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharp8"] = CommonStrings.DemoCode
                         })
                 },
                 Location = CommonStrings.Kyiv,
