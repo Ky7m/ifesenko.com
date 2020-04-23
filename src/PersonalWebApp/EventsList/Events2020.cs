@@ -11,6 +11,22 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Lifting Your Code Quality Higher",
+                Link = "https://www.facebook.com/events/249165142884214/",
+                Items = new[]
+                {
+                    new EventModelItem("Lifting Your C# Code Quality Higher",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 4, 23)
+            },
+            new EventModel
+            {
                 Title = ".NET fwdays'20",
                 Link = "https://fwdays.com/event/dotnet-fwdays-2020",
                 Items = new[]
@@ -40,7 +56,7 @@ namespace PersonalWebApp.EventsList
                 },
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2020, 2, 27)
-            },
+            }
         };
     }
 }
