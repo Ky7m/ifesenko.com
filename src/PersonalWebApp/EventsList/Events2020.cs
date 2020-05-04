@@ -11,6 +11,22 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Diagnostics, instrumenting .NET Core 3.x application",
+                Link = "https://www.facebook.com/events/2971745402871621/",
+                Items = new[]
+                {
+                    new EventModelItem("Diagnostics, instrumenting .NET Core 3.x application",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkM0VMMrKi-6tYt3TZQ?e=x7lTKu"] = CommonStrings.Powerpoint,
+                            //["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 5, 7)
+            },
+            new EventModel
+            {
                 Title = "Lifting Your Code Quality Higher",
                 Link = "https://www.facebook.com/events/249165142884214/",
                 Items = new[]
