@@ -48,10 +48,11 @@ namespace PersonalWebApp.EventsList
                 Items = new[]
                 {
                     new EventModelItem("C# 8: Be Good, Get Good or Give Up",
-                        new Dictionary<string, string>()
+                        new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkMxy2UQ0W3oPza9TCA?e=SXyMh0f"] = CommonStrings.Powerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharp8"] = CommonStrings.DemoCode
+                            ["https://github.com/Ky7m/DemoCode/tree/master/CSharp8"] = CommonStrings.DemoCode,
+                            ["https://www.youtube.com/watch?v=YB6Cl-UOYuQ"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Kyiv,
