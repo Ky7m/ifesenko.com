@@ -18,7 +18,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Lessons From The Trenches: Migration to ASP.NET Core 3.0 And C# 8.0",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLhoAriQ7uLvOmdiIQ"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkLhoAriQ7uLvOmdiIQ"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=aj-MWsFx4Rs"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Lviv,
