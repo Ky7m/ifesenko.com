@@ -6,6 +6,6 @@
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="0.37.0" />
     <PackageReference Include="Cake.Npm" Version="0.17.0" />
-    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
   </ItemGroup>
 </Project>
