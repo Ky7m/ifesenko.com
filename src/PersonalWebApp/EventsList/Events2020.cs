@@ -11,6 +11,36 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Host and Deploy .NET Core App with Microsoft Azure",
+                Link = "https://www.facebook.com/events/708950909939787/",
+                Items = new[]
+                {
+                    new EventModelItem("Host and Deploy .NET Core App with Microsoft Azure",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 7, 30)
+            },
+            new EventModel
+            {
+                Title = "Podcast DotNet&More: .Net Summit",
+                Link = "https://dotnetmore.ru/podcast/35-netsummit/",
+                Items = new[]
+                {
+                    new EventModelItem("Podcast DotNet&More: .Net Summit",
+                        new Dictionary<string, string>
+                        {
+                            ["https://dotnetmore.ru/wp-content/uploads/2020/07/DotNetAndMore-35-DotNetSummit.mp3"] = CommonStrings.Webcast
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 7, 7)
+            },
+            new EventModel
+            {
                 Title = "Diagnostics, instrumenting .NET Core 3.x application",
                 Link = "https://www.facebook.com/events/2971745402871621/",
                 Items = new[]
