@@ -18,7 +18,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Host and Deploy .NET Core App with Microsoft Azure",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/PulumiDemo"] = CommonStrings.DemoCode
                         })
                 },
                 Location = CommonStrings.Webcast,
