@@ -19,7 +19,8 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/PulumiDemo"] = CommonStrings.DemoCode
+                            ["https://github.com/Ky7m/DemoCode/tree/master/PulumiDemo"] = CommonStrings.DemoCode,
+                            ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Webcast,
