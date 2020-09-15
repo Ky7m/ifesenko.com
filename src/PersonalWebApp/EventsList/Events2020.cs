@@ -52,7 +52,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkM0VMMrKi-6tYt3TZQ?e=x7lTKu"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationDiagnosticsNetCore"] = CommonStrings.DemoCode,
-                            ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.Webcast
+                            ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.VideoRus
                         })
                 },
                 Location = CommonStrings.Webcast,
