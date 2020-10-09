@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Frosting" Version="0.38.4" />
+    <PackageReference Include="Cake.Frosting" Version="0.38.5" />
     <PackageReference Include="Cake.Npm" Version="0.17.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2020.2.0-eap" />
   </ItemGroup>

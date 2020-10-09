@@ -11,6 +11,21 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "IT Arena 2020",
+                Link = "https://itarena.ua/speaker/igor-fesenko/",
+                Items = new[]
+                {
+                    new EventModelItem("Tips From The Trenches: How to survive in Software Engineering",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNVtiKHEvokeU0wEbQ?e=bJv1XC"] = CommonStrings.Powerpoint
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 10, 10)
+            },
+            new EventModel
+            {
                 Title = "Host and Deploy .NET Core App with Microsoft Azure",
                 Link = "https://www.facebook.com/events/708950909939787/",
                 Items = new[]
