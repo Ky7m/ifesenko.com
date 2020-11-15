@@ -16,7 +16,7 @@ namespace Build
             context.BuildConfiguration = context.Argument("configuration", "Release");
             
             // global variables
-            context.BuildNumber = context.TFBuild().Environment.Build.Number;
+            context.BuildNumber = context.AzurePipelines().Environment.Build.Number;
             if (string.IsNullOrEmpty(context.BuildNumber))
             {
                 context.BuildNumber = "255.255.255.255";

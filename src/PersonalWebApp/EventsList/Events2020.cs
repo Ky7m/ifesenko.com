@@ -11,6 +11,36 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "Svitla Smart Talk: Advanced Debugging Tools & Techniques for C# Developers",
+                Link = "https://www.facebook.com/events/3298952870202678",
+                Items = new[]
+                {
+                    new EventModelItem("Advanced Debugging Tools & Techniques for C# Developers",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZlVizBwGnhmdt0bg?e=adTtGi"] = CommonStrings.Powerpoint
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 11, 30)
+            },
+            new EventModel
+            {
+                Title = ".NET Conference 2020",
+                Link = "https://softserveinc.events/netconference2020",
+                Items = new[]
+                {
+                    new EventModelItem(".NET Development Yesterday, Today and Tomorrow",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZi_3F1g6JWDFr4-Q?e=xKXzqz"] = CommonStrings.Powerpoint
+                        })
+                },
+                Location = CommonStrings.Webcast,
+                Date = new DateTime(2020, 11, 17)
+            },
+            new EventModel
+            {
                 Title = "IT Arena 2020",
                 Link = "https://itarena.ua/speaker/igor-fesenko/",
                 Items = new[]
