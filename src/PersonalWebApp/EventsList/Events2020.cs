@@ -18,7 +18,8 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Advanced Debugging Tools & Techniques for C# Developers",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZlVizBwGnhmdt0bg?e=adTtGi"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZlVizBwGnhmdt0bg?e=adTtGi"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/DebuggingScenarios"] = CommonStrings.DemoCode
                         })
                 },
                 Location = CommonStrings.Webcast,
