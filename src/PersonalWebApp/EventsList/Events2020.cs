@@ -75,13 +75,13 @@ namespace PersonalWebApp.EventsList
             new EventModel
             {
                 Title = "Podcast DotNet&More: .Net Summit",
-                Link = "https://dotnetmore.ru/podcast/35-netsummit/",
+                Link = "https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b",
                 Items = new[]
                 {
                     new EventModelItem("Podcast DotNet&More: .Net Summit",
                         new Dictionary<string, string>
                         {
-                            ["https://dotnetmore.ru/wp-content/uploads/2020/07/DotNetAndMore-35-DotNetSummit.mp3"] = CommonStrings.Webcast
+                            ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Webcast
                         })
                 },
                 Location = CommonStrings.Webcast,
