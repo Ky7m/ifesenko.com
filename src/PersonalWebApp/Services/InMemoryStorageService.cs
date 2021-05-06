@@ -31,7 +31,7 @@ namespace PersonalWebApp.Services
                     case 2019:
                         return (Events2019.List, false); 
                     case 2020:
-                        return (Events2019.List, false);
+                        return (Events2020.List, false);
                 }
             }
             
