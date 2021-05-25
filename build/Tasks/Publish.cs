@@ -5,9 +5,9 @@ using Cake.Frosting;
 namespace Build.Tasks
 {
     [Dependency(typeof(GenerateBlog))]
-    public sealed class Publish : FrostingTask<Context>
+    public sealed class Publish : FrostingTask<BuildContext>
     {
-        public override void Run(Context context)
+        public override void Run(BuildContext context)
         {
             context.DotNetCorePublish(
                 context.ProjectPath,

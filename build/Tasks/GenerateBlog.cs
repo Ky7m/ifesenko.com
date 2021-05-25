@@ -6,9 +6,9 @@ using static System.IO.Directory;
 
 namespace Build.Tasks
 {
-    public sealed class GenerateBlog: FrostingTask<Context>
+    public sealed class GenerateBlog: FrostingTask<BuildContext>
     {
-        public override void Run(Context context)
+        public override void Run(BuildContext context)
         {
             ExecuteCommand("\"./node_modules/.bin/hexo clean\"", context.BlogPath);
             ExecuteCommand("\"./node_modules/.bin/hexo generate\"", context.BlogPath);

@@ -4,9 +4,9 @@ using Cake.Npm.Install;
 
 namespace Build.Tasks
 {
-    public sealed class NpmInstall: FrostingTask<Context>
+    public sealed class NpmInstall: FrostingTask<BuildContext>
     {
-        public override void Run(Context context)
+        public override void Run(BuildContext context)
         {
             var packageFiles = new []
             {
