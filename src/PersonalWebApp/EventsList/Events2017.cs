@@ -258,7 +258,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=zY0ELCJCcJQ"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2017, 7, 27)
             },
             new EventModel
@@ -289,7 +289,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2017, 5, 17)
             },
             new EventModel
@@ -356,7 +356,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2017, 4, 19)
             },
             new EventModel
@@ -418,7 +418,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=FH3dMIVCDVY"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2017, 2, 8)
             }
         };

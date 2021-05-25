@@ -6,7 +6,7 @@ namespace PersonalWebApp.Extensions
         public const string VideoRus = "Video (Rus)";
         public const string Powerpoint = "PowerPoint";
         public const string DemoCode = "Demo Code";
-        public const string Webcast = "Webcast";
+        public const string Online = "Online";
         public const string Sway = "Sway";
 
         public const string Lviv = "Lviv (Ukraine)";

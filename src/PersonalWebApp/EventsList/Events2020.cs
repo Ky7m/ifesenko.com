@@ -22,7 +22,7 @@ namespace PersonalWebApp.EventsList
                             ["https://github.com/Ky7m/DemoCode/tree/master/DebuggingScenarios"] = CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 11, 30)
             },
             new EventModel
@@ -37,7 +37,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZi_3F1g6JWDFr4-Q?e=xKXzqz"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 11, 17)
             },
             new EventModel
@@ -52,7 +52,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkNVtiKHEvokeU0wEbQ?e=bJv1XC"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 10, 10)
             },
             new EventModel
@@ -69,7 +69,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 7, 30)
             },
             new EventModel
@@ -81,10 +81,10 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Podcast DotNet&More: .Net Summit",
                         new Dictionary<string, string>
                         {
-                            ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Webcast
+                            ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Online
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 7, 7)
             },
             new EventModel
@@ -101,7 +101,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 5, 7)
             },
             new EventModel
@@ -117,7 +117,7 @@ namespace PersonalWebApp.EventsList
                             ["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2020, 4, 23)
             },
             new EventModel

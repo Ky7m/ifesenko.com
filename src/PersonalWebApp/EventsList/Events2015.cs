@@ -36,7 +36,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNLl8a5HhMnyufFxA"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 12, 16)
             },
             new EventModel
@@ -51,7 +51,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNKIdej9rMPxG9coQ"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 11, 19)
             },
             new EventModel
@@ -111,7 +111,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNGmoPgxIKJYEsNcg"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 10, 21)
             },
             new EventModel
@@ -155,7 +155,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNCN_UOi3o5qOKQjw"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 7, 24)
             },
             new EventModel
@@ -170,7 +170,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNBvUxr7cJJmWnSIA"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 6, 2)
             },
             new EventModel
@@ -187,7 +187,7 @@ namespace PersonalWebApp.EventsList
                             CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2015, 2, 11)
             }
         };

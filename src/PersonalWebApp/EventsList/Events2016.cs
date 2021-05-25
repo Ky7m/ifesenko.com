@@ -154,7 +154,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNSDzCr6-mUwqWbmg"] = CommonStrings.Powerpoint
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2016, 4, 20)
             },
             new EventModel
@@ -188,7 +188,7 @@ namespace PersonalWebApp.EventsList
                                 CommonStrings.DemoCode
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 24)
             },
             new EventModel
@@ -203,7 +203,7 @@ namespace PersonalWebApp.EventsList
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.Sway
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 18)
             },
             new EventModel
@@ -235,7 +235,7 @@ namespace PersonalWebApp.EventsList
                             ["https://www.youtube.com/watch?v=gUfrK1rGWB0"] = CommonStrings.VideoRus
                         })
                 },
-                Location = CommonStrings.Webcast,
+                Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 10)
             },
             new EventModel
