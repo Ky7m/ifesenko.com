@@ -47,7 +47,7 @@ namespace Build
                 context.CleanDirectory(ArtifactDirectoryPath);
             }
             
-            ProjectPath = "./src/PersonalWebApp";
+            ProjectPath = "../src/PersonalWebApp";
             BlogPath = $"{ProjectPath}/Blog";
 
             PackageFullName = $"{ArtifactDirectoryPath}/PersonalWebApp.{BuildNumber}.zip";
