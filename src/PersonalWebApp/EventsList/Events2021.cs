@@ -12,13 +12,14 @@ namespace PersonalWebApp.EventsList
             new EventModel
             {
                 Title = "AWS User Group: .NET Meetup",
-                Link = "https://net.aws-user-group.com.ua",
+                Link = "https://www.meetup.com/AWS-UserGroup-Ukraine/events/278234526/",
                 Items = new[]
                 {
                     new EventModelItem("Architecting Cloud Native .NET Applications",
                         new Dictionary<string, string>
                         {
-                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkOFjIjrN8iNKOz2HRA"] = CommonStrings.Powerpoint
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkOFjIjrN8iNKOz2HRA"] = CommonStrings.Powerpoint,
+                            ["https://www.youtube.com/watch?v=YGtd7WTjW2E"] = CommonStrings.Online
                         })
                 },
                 Location = CommonStrings.Online,
