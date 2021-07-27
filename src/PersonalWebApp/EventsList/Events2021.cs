@@ -11,6 +11,21 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = ".NET fwdays'21 conference",
+                Link = "https://fwdays.com/en/event/dotnet-fwdays-2021",
+                Items = new []
+                    {
+                      new EventModelItem("The Dark Side Of C#",
+                          new Dictionary<string, string>
+                          {
+                              ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint
+                          })
+                    },
+                Location = CommonStrings.Online,
+                Date = new DateTime(2021, 8, 7)
+            },
+            new EventModel
+            {
                 Title = "Lviv .NET #30: Public architect interview",
                 Link = "https://www.facebook.com/events/2866930863621382/",
                 Location = CommonStrings.Online,
