@@ -18,7 +18,8 @@ namespace PersonalWebApp.EventsList
                       new EventModelItem("The Dark Side Of C#",
                           new Dictionary<string, string>
                           {
-                              ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint
+                              ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint,
+                              ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode
                           })
                     },
                 Location = CommonStrings.Online,
