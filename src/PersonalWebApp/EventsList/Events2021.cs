@@ -59,6 +59,13 @@ namespace PersonalWebApp.EventsList
             {
                 Title = "Lviv .NET #30: Public architect interview",
                 Link = "https://www.facebook.com/events/2866930863621382/",
+                Items = new []
+                    {
+                      new EventModelItem(string.Empty, new Dictionary<string, string>
+                      {
+                          ["https://www.youtube.com/watch?v=_zrfq1ntUYc"] = CommonStrings.Online
+                      })  
+                    },
                 Location = CommonStrings.Online,
                 Date = new DateTime(2021, 6, 25)
             },
