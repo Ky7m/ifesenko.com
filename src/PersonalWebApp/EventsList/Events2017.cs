@@ -72,7 +72,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=IJNbmivri4U"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=IJNbmivri4U"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Lviv,
@@ -88,7 +88,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj5AYrB6EOv9kuN5ACw"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=erDG526EWH4"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -105,7 +105,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -175,7 +175,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem(".NET Conf Local - Video",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=grwvMmpRDHM"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=grwvMmpRDHM"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Dnipro,
@@ -255,7 +255,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjvNzrpzsPDMh46sePg"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=zY0ELCJCcJQ"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=zY0ELCJCcJQ"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -286,7 +286,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNs5VwIZYHzyEqvwQ"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -335,7 +335,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNpSkpb8DlPChyCHA"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=PL6GBQBf9-I&t=4m"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=PL6GBQBf9-I&t=4m"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Dnipro,
@@ -353,7 +353,7 @@ namespace PersonalWebApp.EventsList
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNogknwMLZZSQmfiA"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] =
                             CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -385,7 +385,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNm65LELY2o3pegng"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -415,7 +415,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNkTLmI5BWv6FYH0A"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=FH3dMIVCDVY"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=FH3dMIVCDVY"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,

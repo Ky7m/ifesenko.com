@@ -66,7 +66,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/PulumiDemo"] = CommonStrings.DemoCode,
-                            ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.VideoRus
+                            ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -81,7 +81,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Podcast DotNet&More: .Net Summit",
                         new Dictionary<string, string>
                         {
-                            ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Online
+                            ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -98,7 +98,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkM0VMMrKi-6tYt3TZQ?e=x7lTKu"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationDiagnosticsNetCore"] = CommonStrings.DemoCode,
-                            ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.VideoRus
+                            ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
@@ -131,7 +131,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkMxy2UQ0W3oPza9TCA?e=SXyMh0f"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/CSharp8"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=YB6Cl-UOYuQ"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=YB6Cl-UOYuQ"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,

@@ -141,7 +141,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkIIx_lcJ-B2ID0FpAw"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=BkRhK-2bfAk"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=BkRhK-2bfAk"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Lviv,
@@ -158,7 +158,7 @@ namespace PersonalWebApp.EventsList
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] = CommonStrings.DemoCode,
-                            ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,

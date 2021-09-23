@@ -19,7 +19,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNgQofEVXN-RC-1fw"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=teQkX9GoV1g"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -35,7 +35,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNfNE_1PZAWuz27DA"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=1OZNgD_eIqU"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -51,7 +51,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNbe6H8GU6_9ebEew"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=aFsk7yDkwBs"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=aFsk7yDkwBs"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Lviv,
@@ -67,7 +67,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNakepnrf471XgHIQ"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=rf6tZVog6LE"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -110,9 +110,9 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure"] =
-                                CommonStrings.VideoRus,
+                                CommonStrings.Recording,
                             ["https://channel9.msdn.com/Shows/DevOpsUA/Enabling-DevTest-in-Azure-demo"] =
-                                CommonStrings.VideoRus
+                                CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -150,7 +150,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem(".NET Framework 461 & C# 67",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=auSzzmaUTWU"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=auSzzmaUTWU"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNSDzCr6-mUwqWbmg"] = CommonStrings.Powerpoint
                         })
                 },
@@ -182,7 +182,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Exception Handling - Advanced Tips & Tricks",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNQ45EPNQN2UITD7g"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/ExceptionHandlingAdvancedTipsAndTricks"] =
                                 CommonStrings.DemoCode
@@ -199,7 +199,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Web Development in Future",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=Om_NPxSuEf8"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=Om_NPxSuEf8"] = CommonStrings.Recording,
                             ["https://sway.com/LxEYWidCXvki-OHN"] = CommonStrings.Sway
                         })
                 },
@@ -215,7 +215,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/DemoCode/tree/master/EffectiveMemoryManagement"] =
                                 CommonStrings.DemoCode
@@ -232,7 +232,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("How C# 6.0 Simplifies Your Code",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=gUfrK1rGWB0"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=gUfrK1rGWB0"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,

@@ -63,7 +63,7 @@ namespace PersonalWebApp.EventsList
                     {
                       new EventModelItem(string.Empty, new Dictionary<string, string>
                       {
-                          ["https://www.youtube.com/watch?v=_zrfq1ntUYc"] = CommonStrings.Online
+                          ["https://www.youtube.com/watch?v=_zrfq1ntUYc"] = CommonStrings.Recording
                       })  
                     },
                 Location = CommonStrings.Online,
@@ -101,7 +101,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkOFjIjrN8iNKOz2HRA"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=YGtd7WTjW2E"] = CommonStrings.Online
+                            ["https://www.youtube.com/watch?v=YGtd7WTjW2E"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,

@@ -3,7 +3,7 @@ namespace PersonalWebApp.Extensions
     internal static class CommonStrings
     {
         public const string DotNetCommunitySoftServe = ".NET Community - SoftServe";
-        public const string VideoRus = "Video (Rus)";
+        public const string Recording = "Recording";
         public const string Powerpoint = "PowerPoint";
         public const string DemoCode = "Demo Code";
         public const string Online = "Online";

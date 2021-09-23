@@ -32,7 +32,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("C# GTD : Get Things Done in Bloody Enterprise",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=hOjNpHeMvvw"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=hOjNpHeMvvw"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNLl8a5HhMnyufFxA"] = CommonStrings.Powerpoint
                         })
                 },
@@ -47,7 +47,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("C# : Hack yourself",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=WHwy0vDd8Tg"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=WHwy0vDd8Tg"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNKIdej9rMPxG9coQ"] = CommonStrings.Powerpoint
                         })
                 },
@@ -107,7 +107,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Findings from .NET Microsoft Open Source Projects",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=m9MFhqq0g3k"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=m9MFhqq0g3k"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNGmoPgxIKJYEsNcg"] = CommonStrings.Powerpoint
                         })
                 },
@@ -122,7 +122,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Effective Memory Management: Memory Hygiene",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=jpOgZBGL66g"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=jpOgZBGL66g"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.Powerpoint
                         })
                 },
@@ -151,7 +151,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("TypeScript",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=UqustygnUgk"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=UqustygnUgk"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNCN_UOi3o5qOKQjw"] = CommonStrings.Powerpoint
                         })
                 },
@@ -166,7 +166,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Git Workflows For Enterprise Teams",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=RlJOX5bbh1U"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=RlJOX5bbh1U"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNBvUxr7cJJmWnSIA"] = CommonStrings.Powerpoint
                         })
                 },
@@ -181,7 +181,7 @@ namespace PersonalWebApp.EventsList
                     new EventModelItem("Making .Net Applications Faster",
                         new Dictionary<string, string>
                         {
-                            ["https://www.youtube.com/watch?v=Rgvr1hynOmE"] = CommonStrings.VideoRus,
+                            ["https://www.youtube.com/watch?v=Rgvr1hynOmE"] = CommonStrings.Recording,
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUjuM-syDv8BchBHdKIw"] = CommonStrings.Powerpoint,
                             ["https://github.com/Ky7m/MakingDotNETApplicationsFaster"] =
                             CommonStrings.DemoCode

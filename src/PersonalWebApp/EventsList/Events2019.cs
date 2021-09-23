@@ -19,7 +19,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkLhoAriQ7uLvOmdiIQ"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=aj-MWsFx4Rs"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=aj-MWsFx4Rs"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Lviv,
@@ -50,13 +50,13 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkLMUfpLAnWFRHS3ZaQ?e=VcaD9d"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=xOEo1S-yuUs"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=xOEo1S-yuUs"] = CommonStrings.Recording
                         }),
                     new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJ0HoxGokVPnqjP6g?e=TmLTJc"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=kG3CnQl7bTI"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=kG3CnQl7bTI"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
@@ -119,7 +119,7 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkKxH4D42htegWfTxAw"] = CommonStrings.Powerpoint,
-                            ["https://www.youtube.com/watch?v=YXbkgU0tik8"] = CommonStrings.VideoRus
+                            ["https://www.youtube.com/watch?v=YXbkgU0tik8"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Kyiv,
