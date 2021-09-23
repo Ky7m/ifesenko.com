@@ -11,6 +11,36 @@ namespace PersonalWebApp.EventsList
         {
             new EventModel
             {
+                Title = "IT NonStop",
+                Link = "https://it-nonstop.net/",
+                Items = new []
+                {
+                    new EventModelItem("Deploy to Azure: What Could Possibly Go Wrong",
+                        new Dictionary<string, string>
+                        {
+                        })
+                },
+                Location = CommonStrings.Online,
+                Date = new DateTime(2021, 11, 18)
+            },
+            new EventModel
+            {
+                Title = "IT talk “Dark side of C#”",
+                Link = "https://www.eventbrite.com/e/it-talk-dark-side-of-c-tickets-170415027936",
+                Items = new []
+                {
+                    new EventModelItem("The Dark Side Of C#",
+                        new Dictionary<string, string>
+                        {
+                            ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint,
+                            ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode
+                        })
+                },
+                Location = CommonStrings.Online,
+                Date = new DateTime(2021, 9, 30)
+            },
+            new EventModel
+            {
                 Title = ".NET fwdays'21 conference",
                 Link = "https://fwdays.com/en/event/dotnet-fwdays-2021",
                 Items = new []

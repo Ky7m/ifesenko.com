@@ -10,7 +10,7 @@
     <Content Update="**\*.json" CopyToPublishDirectory="false" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2021.2.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0-eap3" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.18.0" />
   </ItemGroup>
