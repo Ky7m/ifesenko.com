@@ -33,7 +33,8 @@ namespace PersonalWebApp.EventsList
                         new Dictionary<string, string>
                         {
                             ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint,
-                            ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode
+                            ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode,
+                            ["https://www.youtube.com/watch?v=wVZhkFJmXUY"] = CommonStrings.Recording
                         })
                 },
                 Location = CommonStrings.Online,
