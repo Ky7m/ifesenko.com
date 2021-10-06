@@ -9,7 +9,7 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
-            new EventModel
+            new()
             {
                 Title = "Most JS Frameworks Day 2016",
                 Link = "http://frameworksdays.com/event/most-js-fwdays-2016/review/lets-build-a-web-application",
@@ -25,7 +25,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2016, 12, 4)
             },
-            new EventModel
+            new()
             {
                 Title = "XP Days Ukraine",
                 Link = "http://xpdays.com.ua/speaker/igor-fesenko",
@@ -41,7 +41,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2016, 11, 11)
             },
-            new EventModel
+            new()
             {
                 Title = "Metrics Morning@Lohika",
                 Link = "http://morning.lohika.com/past-events/metrics-morning",
@@ -57,7 +57,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2016, 11, 5)
             },
-            new EventModel
+            new()
             {
                 Title = ".NET Framework Day 2016",
                 Link = "http://frameworksdays.com/event/net-framework-day-2016/review/direction-of-csharp",
@@ -73,7 +73,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2016, 10, 22)
             },
-            new EventModel
+            new()
             {
                 Title = "IT Weekend Ukraine 2016",
                 Link = "https://ukraine.itweekend.ua/en/",
@@ -88,7 +88,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2016, 9, 17)
             },
-            new EventModel
+            new()
             {
                 Title = "AzureDay",
                 Link = "http://azureday.net/",
@@ -118,7 +118,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2016, 6, 18)
             },
-            new EventModel
+            new()
             {
                 Title = "Application Innovation Strategy Briefing",
                 Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x138568b7ed",
@@ -130,7 +130,7 @@ namespace PersonalWebApp.EventsList
                 Location = "Cambridge, MA (USA)",
                 Date = new DateTime(2016, 6, 9)
             },
-            new EventModel
+            new()
             {
                 Title = "Modernize your business - a Modern Requirements and Microsoft Showcase",
                 Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x148353d22c",
@@ -142,7 +142,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.SanFrancisco,
                 Date = new DateTime(2016, 4, 28)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -157,7 +157,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2016, 4, 20)
             },
-            new EventModel
+            new()
             {
                 Title = "Ciklum Lviv .Net Saturday",
                 Link = "http://dou.ua/calendar/10488/",
@@ -174,7 +174,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2016, 4, 16)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -191,7 +191,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 24)
             },
-            new EventModel
+            new()
             {
                 Title = "Web UI Community - SoftServe",
                 Items = new[]
@@ -206,7 +206,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 18)
             },
-            new EventModel
+            new()
             {
                 Title = ".Net Morning@Lohika",
                 Link = "http://morning.lohika.com/past-events/net-morninglohika",
@@ -224,7 +224,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2016, 2, 13)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -238,7 +238,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2016, 2, 10)
             },
-            new EventModel
+            new()
             {
                 Title = "Enable Application Innovation Immersion",
                 Link = "https://www.microsoftevents.com/profile/form/index.cfm?PKformID=0x40756dbc3",

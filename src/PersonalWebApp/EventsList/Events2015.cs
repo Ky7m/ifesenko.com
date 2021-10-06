@@ -9,7 +9,7 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
-            new EventModel
+            new()
             {
                 Title = "Tech#Skills_Day 1.2.",
                 Link = "https://www.facebook.com/events/1650103461936579/1654170548196537/",
@@ -24,7 +24,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2015, 12, 21)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -39,7 +39,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2015, 12, 16)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -54,7 +54,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2015, 11, 19)
             },
-            new EventModel
+            new()
             {
                 Title = "IT Weekend Kharkiv",
                 Link = "https://itweekend.ua/en/announcements/itw-kh-nov/",
@@ -69,7 +69,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kharkiv,
                 Date = new DateTime(2015, 11, 14)
             },
-            new EventModel
+            new()
             {
                 Title = "IT Weekend Ivano-Frankivsk",
                 Link = "https://itweekend.ua/en/announcements/itw-if-nov/",
@@ -84,7 +84,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.IvanoFrankivsk,
                 Date = new DateTime(2015, 11, 7)
             },
-            new EventModel
+            new()
             {
                 Title = "IT Weekend Rivne II",
                 Link = "https://itweekend.ua/en/announcements/itw-rv-oct/",
@@ -99,7 +99,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Rivne,
                 Date = new DateTime(2015, 10, 24)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]
@@ -114,7 +114,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2015, 10, 21)
             },
-            new EventModel
+            new()
             {
                 Title = "Pacemaker: .NET - SoftServe",
                 Items = new[]
@@ -129,7 +129,7 @@ namespace PersonalWebApp.EventsList
                 Location = "Chernivtsi (Ukraine)",
                 Date = new DateTime(2015, 10, 17)
             },
-            new EventModel
+            new()
             {
                 Title = "Pacemaker: WebUI - SoftServe",
                 Items = new[]
@@ -143,7 +143,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2015, 9, 5)
             },
-            new EventModel
+            new()
             {
                 Title = "Web UI Community - SoftServe",
                 Items = new[]
@@ -158,7 +158,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2015, 7, 24)
             },
-            new EventModel
+            new()
             {
                 Title = "Development Process Community - SoftServe",
                 Items = new[]
@@ -173,7 +173,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2015, 6, 2)
             },
-            new EventModel
+            new()
             {
                 Title = CommonStrings.DotNetCommunitySoftServe,
                 Items = new[]

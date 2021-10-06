@@ -29,7 +29,7 @@ namespace PersonalWebApp.Controllers
             "https://www.youtube.com/watch?v=sCNrK-n68CM"
         };
 
-        private readonly Random _random = new Random();
+        private readonly Random _random = new();
 
         [Route("admin.php")]
         [Route("admin/login.php")]

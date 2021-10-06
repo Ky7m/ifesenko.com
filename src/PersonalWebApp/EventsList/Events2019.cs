@@ -9,7 +9,7 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
-            new EventModel
+            new()
             {
                 Title = "Lviv .NET #20: Life after 3.0",
                 Link = "https://www.facebook.com/events/552967992184706/",
@@ -25,7 +25,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2019, 11, 19)
             },
-            new EventModel
+            new()
             {
                 Title = "ITEAHub Workshop: Designing and Building a Chatbot",
                 Link = "https://www.facebook.com/events/225823375004502/",
@@ -40,7 +40,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2019, 9, 9)
             },
-            new EventModel
+            new()
             {
                 Title = "IТ Weekend Ukraine 2019",
                 Link = "https://itweekend.events/event/it-weekend-ukraine-2019-ukrainian-it-awards-2019/",
@@ -62,7 +62,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 9, 7)
             },
-            new EventModel
+            new()
             {
                 Title = "AllStars-IT Ukraine: Data & Logging Tech Meetup",
                 Link = "https://www.facebook.com/events/741738502913197/",
@@ -78,7 +78,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 9, 5)
             },
-            new EventModel
+            new()
             {
                 Title = "Meet-Up .Net. Lviv",
                 Link = "https://www.facebook.com/events/2367809860143711/",
@@ -94,7 +94,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Lviv,
                 Date = new DateTime(2019, 8, 28)
             },
-            new EventModel
+            new()
             {
                 Title = "Digital Transformation Conference 2019",
                 Link = "https://dtconf.com",
@@ -109,7 +109,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 6, 22)
             },
-            new EventModel
+            new()
             {
                 Title = "DevOps Fest 2019",
                 Link = "http://www.devopsfest.com.ua/",
@@ -125,7 +125,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 4, 6)
             },
-            new EventModel
+            new()
             {
                 Title = "Tech Meetup: “Securing your web applications with ASP.NET“",
                 Link = "https://www.facebook.com/events/2217721638293124/",
@@ -140,7 +140,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2019, 4, 5)
             },
-            new EventModel
+            new()
             {
                 Title = "Microsoft Ignite | The Tour Government",
                 Link = "https://www.microsoft.com/en-us/ignite-the-tour/washington-dc",

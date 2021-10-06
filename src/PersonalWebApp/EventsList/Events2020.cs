@@ -9,7 +9,7 @@ namespace PersonalWebApp.EventsList
     {
         public static EventModel[] List { get; } =
         {
-            new EventModel
+            new()
             {
                 Title = "Svitla Smart Talk: Advanced Debugging Tools & Techniques for C# Developers",
                 Link = "https://www.facebook.com/events/3298952870202678",
@@ -25,7 +25,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 11, 30)
             },
-            new EventModel
+            new()
             {
                 Title = ".NET Conference 2020",
                 Link = "https://softserveinc.events/netconference2020",
@@ -40,7 +40,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 11, 17)
             },
-            new EventModel
+            new()
             {
                 Title = "IT Arena 2020",
                 Link = "https://itarena.ua/speaker/igor-fesenko/",
@@ -55,7 +55,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 10, 10)
             },
-            new EventModel
+            new()
             {
                 Title = "Host and Deploy .NET Core App with Microsoft Azure",
                 Link = "https://www.facebook.com/events/708950909939787/",
@@ -72,7 +72,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 7, 30)
             },
-            new EventModel
+            new()
             {
                 Title = "Podcast DotNet&More: .Net Summit",
                 Link = "https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b",
@@ -87,7 +87,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 7, 7)
             },
-            new EventModel
+            new()
             {
                 Title = "Diagnostics, instrumenting .NET Core 3.x application",
                 Link = "https://www.facebook.com/events/2971745402871621/",
@@ -104,7 +104,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 5, 7)
             },
-            new EventModel
+            new()
             {
                 Title = "Lifting Your Code Quality Higher",
                 Link = "https://www.facebook.com/events/249165142884214/",
@@ -120,7 +120,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Online,
                 Date = new DateTime(2020, 4, 23)
             },
-            new EventModel
+            new()
             {
                 Title = ".NET fwdays'20",
                 Link = "https://fwdays.com/event/dotnet-fwdays-2020",
@@ -137,7 +137,7 @@ namespace PersonalWebApp.EventsList
                 Location = CommonStrings.Kyiv,
                 Date = new DateTime(2020, 4, 11)
             },
-            new EventModel
+            new()
             {
                 Title = "Svitla Smart Talk: .NET. Lifting Your Code Quality Higher",
                 Link = "https://www.facebook.com/events/191429968902776/",
