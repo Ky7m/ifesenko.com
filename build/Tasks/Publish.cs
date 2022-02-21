@@ -1,15 +1,15 @@
-﻿using Cake.Common.Tools.DotNetCore;
+﻿using Cake.Common.Tools.DotNet;
 using Cake.Common.Tools.DotNetCore.Publish;
 using Cake.Frosting;
 
 namespace Build.Tasks
 {
-    [Dependency(typeof(GenerateBlog))]
+    [IsDependentOn(typeof(GenerateBlog))]
     public sealed class Publish : FrostingTask<BuildContext>
     {
         public override void Run(BuildContext context)
         {
-            context.DotNetCorePublish(
+            context.DotNetPublish(
                 context.ProjectPath,
                 new DotNetCorePublishSettings
                 {

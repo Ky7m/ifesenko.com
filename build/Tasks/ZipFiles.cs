@@ -3,7 +3,7 @@ using Cake.Frosting;
 
 namespace Build.Tasks
 {
-    [Dependency(typeof(Publish))]
+    [IsDependentOn(typeof(Publish))]
     public sealed class ZipFiles : FrostingTask<BuildContext>
     {
         public override void Run(BuildContext context)
