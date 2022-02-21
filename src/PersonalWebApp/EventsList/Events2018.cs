@@ -20,7 +20,7 @@ internal static class Events2018
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkJkNG37NqzSRqt4LxQ"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/HolidayPartySF2018"] =
                             CommonStrings.DemoCode
                     })
             },
@@ -37,7 +37,7 @@ internal static class Events2018
                 new EventModelItem("Building Apps for Microsoft Teams",
                     new Dictionary<string, string>
                     {
-                        ["https://github.com/Ky7m/DemoCode/tree/master/MicrosoftTeamsApps"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/MicrosoftTeamsApps"] =
                             CommonStrings.DemoCode
                     })
             },
@@ -157,7 +157,7 @@ internal static class Events2018
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUj_8sOR6OF_mS5DFRNg"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/AsynchronousAndMultithreading"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/AsynchronousAndMultithreading"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.Recording
                     })
             },

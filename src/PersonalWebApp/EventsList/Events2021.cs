@@ -18,7 +18,8 @@ internal static class Events2021
                 new EventModelItem("Deploy to Azure: What Could Possibly Go Wrong",
                     new Dictionary<string, string>
                     {
-                        ["https://1drv.ms/p/s!AmdJq1kgIxHUkOkQLd6851TlBNxaCw?e=jQ3IQH"] = CommonStrings.Powerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUkOkQLd6851TlBNxaCw?e=jQ3IQH"] = CommonStrings.Powerpoint,
+                        ["https://www.youtube.com/watch?v=PY6RshfGT34"] = CommonStrings.Recording
                     })
             },
             Location = CommonStrings.Online,
@@ -34,7 +35,7 @@ internal static class Events2021
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/DarkSideOfCSharp"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=wVZhkFJmXUY"] = CommonStrings.Recording
                     })
             },
@@ -51,7 +52,7 @@ internal static class Events2021
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkOQHAGIUetc3kdQY1A?e=BfRuJO"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/DarkSideOfCSharp"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/DarkSideOfCSharp"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Online,

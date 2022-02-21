@@ -72,7 +72,7 @@ internal static class Events2019
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJP3A8ziSl6Ul6ovQ?e=TbBU6i"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/HolidayPartySF2018"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Kyiv,
@@ -88,7 +88,7 @@ internal static class Events2019
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkLJP3A8ziSl6Ul6ovQ?e=TbBU6i"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/HolidayPartySF2018"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/HolidayPartySF2018"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Lviv,

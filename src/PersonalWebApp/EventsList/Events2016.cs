@@ -98,7 +98,7 @@ internal static class Events2016
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNW8LO4YXCtdtYXIg"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationInsightsWorkshop"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/ApplicationInsightsWorkshop"] =
                             CommonStrings.DemoCode
                     }),
                 new EventModelItem("Enabling DevTest in Microsoft Azure",
@@ -167,7 +167,7 @@ internal static class Events2016
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNRKE6T2hmJ6C5FVA"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CiklumLvivDotNetSaturday"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CiklumLvivDotNetSaturday"] =
                             CommonStrings.DemoCode
                     })
             },
@@ -184,7 +184,7 @@ internal static class Events2016
                     {
                         ["https://www.youtube.com/watch?v=_Gw_9KeJlbg"] = CommonStrings.Recording,
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNQ45EPNQN2UITD7g"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/ExceptionHandlingAdvancedTipsAndTricks"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/ExceptionHandlingAdvancedTipsAndTricks"] =
                             CommonStrings.DemoCode
                     })
             },
@@ -217,7 +217,7 @@ internal static class Events2016
                     {
                         ["https://www.youtube.com/watch?v=vUX2wFciHrs"] = CommonStrings.Recording,
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNFob8ClLkvBNX-fQ"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/EffectiveMemoryManagement"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/EffectiveMemoryManagement"] =
                             CommonStrings.DemoCode
                     })
             },

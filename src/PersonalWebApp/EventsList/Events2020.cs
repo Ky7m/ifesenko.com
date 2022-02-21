@@ -19,7 +19,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZlVizBwGnhmdt0bg?e=adTtGi"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/DebuggingScenarios"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/DebuggingScenarios"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Online,
@@ -65,7 +65,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkNJcTRQssiMkrsOgOQ?e=nhLOVs"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/PulumiDemo"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/PulumiDemo"] = CommonStrings.DemoCode,
                         ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.Recording
                     })
             },
@@ -97,7 +97,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkM0VMMrKi-6tYt3TZQ?e=x7lTKu"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/ApplicationDiagnosticsNetCore"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/ApplicationDiagnosticsNetCore"] = CommonStrings.DemoCode,
                         ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.Recording
                     })
             },
@@ -114,7 +114,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Online,
@@ -130,7 +130,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkMxy2UQ0W3oPza9TCA?e=SXyMh0f"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp8"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp8"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=YB6Cl-UOYuQ"] = CommonStrings.Recording
                     })
             },
@@ -147,7 +147,7 @@ internal static class Events2020
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Kyiv,

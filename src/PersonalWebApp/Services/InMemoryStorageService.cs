@@ -16,7 +16,7 @@ public sealed class InMemoryStorageService : IStorageService
             return (GetAllEvents(), true);
         }
 
-        if (int.TryParse(period, out var year) && year >= 2015 && year < DateTime.UtcNow.Year)
+        if (int.TryParse(period, out var year) && year >= 2015 && year < DateTimeOffset.UtcNow.Year)
         {
             switch (year)
             {
@@ -31,19 +31,23 @@ public sealed class InMemoryStorageService : IStorageService
                 case 2019:
                     return (Events2019.List, false); 
                 case 2020:
-                    return (Events2020.List, false);
+                    return (Events2020.List, false); 
+                case 2021:
+                    return (Events2021.List, false);
             }
         }
             
-        return (Events2021.List, false);
+        return (Events2022.List, false);
     }
 
-    private static EventModel[] GetAllEvents() => Events2021.List
-        .Concat(Events2020.List)
-        .Concat(Events2019.List)
-        .Concat(Events2018.List)
-        .Concat(Events2017.List)
-        .Concat(Events2016.List)
-        .Concat(Events2015.List)
-        .ToArray();
+    private static EventModel[] GetAllEvents() =>
+        Events2022.List
+            .Concat(Events2021.List)
+            .Concat(Events2020.List)
+            .Concat(Events2019.List)
+            .Concat(Events2018.List)
+            .Concat(Events2017.List)
+            .Concat(Events2016.List)
+            .Concat(Events2015.List)
+            .ToArray();
 }

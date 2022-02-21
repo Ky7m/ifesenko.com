@@ -34,7 +34,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharpInternals"] = CommonStrings.DemoCode
                     }),
                 new EventModelItem("Take a Power of ASP.NET Core and Node.js Using JavaScript Services",
                     new Dictionary<string, string>
@@ -71,7 +71,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharpInternals"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=IJNbmivri4U"] = CommonStrings.Recording
                     })
             },
@@ -104,7 +104,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuMA0ujGpZEBr94v0Q"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharpInternals"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharpInternals"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=ImnejSfJVAI"] = CommonStrings.Recording
                     })
             },
@@ -206,7 +206,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjv9XVcZF0-PM0NHrHw"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CakeBuild"] =
                             CommonStrings.DemoCode
                     })
             },
@@ -254,7 +254,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjvNzrpzsPDMh46sePg"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=zY0ELCJCcJQ"] = CommonStrings.Recording
                     })
             },
@@ -285,7 +285,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNs5VwIZYHzyEqvwQ"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=8aCQKnvJWZU"] = CommonStrings.Recording
                     })
             },
@@ -302,7 +302,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNrcFT02PtgE55mxQ"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Rivne,
@@ -318,7 +318,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNpSkpb8DlPChyCHA"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode
                     })
             },
             Location = CommonStrings.Lviv,
@@ -334,7 +334,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNpSkpb8DlPChyCHA"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=PL6GBQBf9-I&t=4m"] = CommonStrings.Recording
                     })
             },
@@ -351,7 +351,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNogknwMLZZSQmfiA"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CakeBuild"] =
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CakeBuild"] =
                             CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=1KQOUzY555E"] = CommonStrings.Recording
                     })
@@ -384,7 +384,7 @@ internal static class Events2017
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUjuNm65LELY2o3pegng"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/master/CSharp7"] = CommonStrings.DemoCode,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/CSharp7"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=n3PkTM32DCY"] = CommonStrings.Recording
                     })
             },
