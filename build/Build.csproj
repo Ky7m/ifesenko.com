@@ -10,13 +10,6 @@
     <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Build.ArtifactStagingDirectory" />
-    <Folder Include="Build.Binaries\runtimes\unix\lib\netcoreapp3.0" />
-    <Folder Include="Build.Binaries\runtimes\win\lib\netcoreapp2.0" />
-    <Folder Include="Build.Binaries\runtimes\win\lib\netcoreapp3.0" />
-    <Folder Include="Build.Binaries\runtimes\win\lib\netstandard2.0" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Build.Binaries\System.Windows.Extensions.dll" />
     <None Remove="Build.Binaries\System.Security.Permissions.dll" />
     <None Remove="Build.Binaries\System.Security.Cryptography.ProtectedData.dll" />
