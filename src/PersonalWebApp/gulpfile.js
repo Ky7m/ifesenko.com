@@ -14,7 +14,7 @@ const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
 const merge = require('merge-stream');
 const rimraf = require('gulp-rimraf');
-const sass = require('gulp-sass');
+const sass = require('gulp-sass')(require('sass'));
 const typescript = require('gulp-typescript');
 const shorthand = require('gulp-shorthand');
 

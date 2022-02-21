@@ -1,7 +1,6 @@
-﻿namespace PersonalWebApp.Settings
+﻿namespace PersonalWebApp.Settings;
+
+public class AppSettings
 {
-    public class AppSettings
-    {
-        public string CdnEndpoint { get; set; }
-    }
+    public string CdnEndpoint { get; set; }
 }

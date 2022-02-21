@@ -1,14 +1,13 @@
 ﻿using Cake.Common.IO;
 using Cake.Frosting;
 
-namespace Build.Tasks
+namespace Build.Tasks;
+
+[IsDependentOn(typeof(Publish))]
+public sealed class ZipFiles : FrostingTask<BuildContext>
 {
-    [IsDependentOn(typeof(Publish))]
-    public sealed class ZipFiles : FrostingTask<BuildContext>
+    public override void Run(BuildContext context)
     {
-        public override void Run(BuildContext context)
-        {
-            context.Zip(context.BinariesDirectoryPath, context.PackageFullName);
-        }
+        context.Zip(context.BinariesDirectoryPath, context.PackageFullName);
     }
 }

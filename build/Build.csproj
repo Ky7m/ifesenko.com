@@ -1,12 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Frosting" Version="2.1.0" />
     <PackageReference Include="Cake.Npm" Version="2.0.0" />
     <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Build.ArtifactStagingDirectory" />
+    <Folder Include="Build.Binaries\runtimes\unix\lib\netcoreapp3.0" />
+    <Folder Include="Build.Binaries\runtimes\win\lib\netcoreapp2.0" />
+    <Folder Include="Build.Binaries\runtimes\win\lib\netcoreapp3.0" />
+    <Folder Include="Build.Binaries\runtimes\win\lib\netstandard2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Build.Binaries\System.Windows.Extensions.dll" />
+    <None Remove="Build.Binaries\System.Security.Permissions.dll" />
+    <None Remove="Build.Binaries\System.Security.Cryptography.ProtectedData.dll" />
+    <None Remove="Build.Binaries\System.Drawing.Common.dll" />
+    <None Remove="Build.Binaries\System.Diagnostics.PerformanceCounter.dll" />
+    <None Remove="Build.Binaries\System.Configuration.ConfigurationManager.dll" />
+    <None Remove="Build.Binaries\PersonalWebApp.runtimeconfig.json" />
+    <None Remove="Build.Binaries\PersonalWebApp.dll" />
+    <None Remove="Build.Binaries\PersonalWebApp.deps.json" />
+    <None Remove="Build.Binaries\PersonalWebApp" />
+    <None Remove="Build.Binaries\Newtonsoft.Json.dll" />
+    <None Remove="Build.Binaries\NWebsec.AspNetCore.Middleware.dll" />
+    <None Remove="Build.Binaries\NWebsec.AspNetCore.Core.dll" />
+    <None Remove="Build.Binaries\Microsoft.Win32.SystemEvents.dll" />
+    <None Remove="Build.Binaries\Microsoft.Extensions.Logging.ApplicationInsights.dll" />
+    <None Remove="Build.Binaries\Microsoft.ApplicationInsights.dll" />
+    <None Remove="Build.Binaries\Microsoft.ApplicationInsights.AspNetCore.dll" />
+    <None Remove="Build.Binaries\Microsoft.AI.WindowsServer.dll" />
+    <None Remove="Build.Binaries\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <None Remove="Build.Binaries\Microsoft.AI.PerfCounterCollector.dll" />
+    <None Remove="Build.Binaries\Microsoft.AI.EventCounterCollector.dll" />
+    <None Remove="Build.Binaries\Microsoft.AI.DependencyCollector.dll" />
+    <None Remove="Build.Binaries\JetBrains.Annotations.dll" />
   </ItemGroup>
 </Project>

@@ -2,20 +2,19 @@
 using Cake.Common.Tools.DotNetCore.Publish;
 using Cake.Frosting;
 
-namespace Build.Tasks
+namespace Build.Tasks;
+
+[IsDependentOn(typeof(GenerateBlog))]
+public sealed class Publish : FrostingTask<BuildContext>
 {
-    [IsDependentOn(typeof(GenerateBlog))]
-    public sealed class Publish : FrostingTask<BuildContext>
+    public override void Run(BuildContext context)
     {
-        public override void Run(BuildContext context)
-        {
-            context.DotNetPublish(
-                context.ProjectPath,
-                new DotNetCorePublishSettings
-                {
-                    Configuration = context.BuildConfiguration,
-                    OutputDirectory = context.BinariesDirectoryPath
-                });
-        }
+        context.DotNetPublish(
+            context.ProjectPath,
+            new DotNetCorePublishSettings
+            {
+                Configuration = context.BuildConfiguration,
+                OutputDirectory = context.BinariesDirectoryPath
+            });
     }
 }

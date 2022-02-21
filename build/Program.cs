@@ -1,11 +1,10 @@
 ﻿using Cake.Frosting;
 
-namespace Build
+namespace Build;
+
+public static class Program
 {
-    public static class Program
-    {
-        public static void Main(string[] args) => new CakeHost()
-            .UseContext<BuildContext>()
-            .Run(args);
-    }
+    public static void Main(string[] args) => new CakeHost()
+        .UseContext<BuildContext>()
+        .Run(args);
 }

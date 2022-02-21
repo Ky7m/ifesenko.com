@@ -4,42 +4,41 @@ using Cake.Common;
 using Cake.Frosting;
 using static System.IO.Directory;
 
-namespace Build.Tasks
+namespace Build.Tasks;
+
+public sealed class GenerateBlog: FrostingTask<BuildContext>
 {
-    public sealed class GenerateBlog: FrostingTask<BuildContext>
+    public override void Run(BuildContext context)
     {
-        public override void Run(BuildContext context)
-        {
-            ExecuteCommand("\"./node_modules/.bin/hexo clean\"", context.BlogPath);
-            ExecuteCommand("\"./node_modules/.bin/hexo generate\"", context.BlogPath);
+        ExecuteCommand("\"./node_modules/.bin/hexo clean\"", context.BlogPath);
+        ExecuteCommand("\"./node_modules/.bin/hexo generate\"", context.BlogPath);
             
-            void ExecuteCommand(string command, string workingDir = null)
+        void ExecuteCommand(string command, string workingDir = null)
+        {
+            if (string.IsNullOrEmpty(workingDir))
             {
-                if (string.IsNullOrEmpty(workingDir))
-                {
-                    workingDir = GetCurrentDirectory();
-                }
+                workingDir = GetCurrentDirectory();
+            }
 
-                var isRunningOnWindows = context.IsRunningOnWindows();
-                var processStartInfo = new ProcessStartInfo
-                {
-                    UseShellExecute = false,
-                    WorkingDirectory = workingDir,
-                    FileName = isRunningOnWindows ? "powershell" : "bash",
-                    Arguments = (isRunningOnWindows ? "-Command " : "-c ") + command
-                };
+            var isRunningOnWindows = context.IsRunningOnWindows();
+            var processStartInfo = new ProcessStartInfo
+            {
+                UseShellExecute = false,
+                WorkingDirectory = workingDir,
+                FileName = isRunningOnWindows ? "powershell" : "bash",
+                Arguments = (isRunningOnWindows ? "-Command " : "-c ") + command
+            };
 
-                using (var process = Process.Start(processStartInfo))
-                {
-                    process?.WaitForExit();
+            using (var process = Process.Start(processStartInfo))
+            {
+                process?.WaitForExit();
 
-                    if (process?.ExitCode != 0)
-                    {
-                        throw new Exception($"Exit code {process?.ExitCode} from {command}");
-                    }
+                if (process?.ExitCode != 0)
+                {
+                    throw new Exception($"Exit code {process?.ExitCode} from {command}");
                 }
             }
-            
         }
+            
     }
 }

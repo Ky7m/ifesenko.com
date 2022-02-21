@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace PersonalWebApp.Models
+namespace PersonalWebApp.Models;
+
+public sealed class HomeModel
 {
-    public sealed class HomeModel
-    {
-        public HomeModel() => Events = Array.Empty<EventModel>();
-        public EventModel[] Events { get; set; }
-        public bool IsItAllEvents { get; set; }
-    }
+    public HomeModel() => Events = Array.Empty<EventModel>();
+    public EventModel[] Events { get; set; }
+    public bool IsItAllEvents { get; set; }
 }

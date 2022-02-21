@@ -1,9 +1,8 @@
 ﻿using PersonalWebApp.Models;
 
-namespace PersonalWebApp.Services
+namespace PersonalWebApp.Services;
+
+public interface IStorageService
 {
-    public interface IStorageService
-    {
-        (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period);
-    }
+    (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period);
 }
