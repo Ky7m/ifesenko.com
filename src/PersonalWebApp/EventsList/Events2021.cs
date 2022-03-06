@@ -11,6 +11,21 @@ internal static class Events2021
     {
         new()
         {
+            Title = ".NET Conference 2021",
+            Link = "https://www.meetup.com/dotnet-virtual-user-group/events/281576747/",
+            Items = new []
+            {
+                new EventModelItem("Virtual Panel Discussion",
+                    new Dictionary<string, string>
+                    {
+                        ["https://youtu.be/B25RVkPrUFI?t=3673"] = CommonStrings.Recording
+                    })
+            },
+            Location = CommonStrings.Online,
+            Date = new DateTime(2021, 11, 18)
+        },
+        new()
+        {
             Title = "IT NonStop",
             Link = "https://it-nonstop.net/",
             Items = new []
