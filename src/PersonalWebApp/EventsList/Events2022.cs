@@ -24,7 +24,7 @@ internal static class Events2022
                     })
             },
             Location = CommonStrings.Online,
-            Date = new DateTime(2022, 2, 25)
+            Date = new DateTime(2022, 4, 1)
         }
     };
 }
