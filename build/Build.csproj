@@ -5,9 +5,9 @@
     <RunWorkingDirectory>$(MSBuildProjectDirectory)</RunWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Frosting" Version="2.1.0" />
+    <PackageReference Include="Cake.Frosting" Version="2.2.0" />
     <PackageReference Include="Cake.Npm" Version="2.0.0" />
-    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Build.Binaries\System.Windows.Extensions.dll" />
