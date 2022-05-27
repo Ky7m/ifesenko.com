@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/PersonalWebApp/src"
+    schedule:
+      interval: "daily"
