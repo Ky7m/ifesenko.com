@@ -4,3 +4,7 @@ updates:
     directory: "/PersonalWebApp/src"
     schedule:
       interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "/PersonalWebApp/src"
+    schedule:
+      interval: "daily"
