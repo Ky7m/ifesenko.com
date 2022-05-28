@@ -1,10 +1,14 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/PersonalWebApp/src"
+    directory: "src/PersonalWebApp"
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
-    directory: "/PersonalWebApp/src"
+    directory: "src/PersonalWebApp"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "src/PersonalWebApp/Blog"
     schedule:
       interval: "daily"
