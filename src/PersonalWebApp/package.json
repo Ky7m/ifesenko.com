@@ -1,11 +1,11 @@
 {
-  "name": "personalwebapp",
+  "name": "ifesenko.com",
   "version": "1.0.0",
   "dependencies": {
     "@types/bootstrap": "3.3.36",
     "@types/jquery": "3.3.31",
-    "bootstrap": "3.3.7",
-    "jquery": "3.4.1",
+    "bootstrap": "3.4.1",
+    "jquery": "3.5.1",
     "jquery-backstretch": "2.1.18"
   },
   "devDependencies": {
