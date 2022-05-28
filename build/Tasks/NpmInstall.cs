@@ -10,8 +10,7 @@ public sealed class NpmInstall: FrostingTask<BuildContext>
     {
         var packageFiles = new []
         {
-            context.ProjectPath,
-            context.BlogPath
+            context.ProjectPath
         };
             
         var settings = new NpmInstallSettings();

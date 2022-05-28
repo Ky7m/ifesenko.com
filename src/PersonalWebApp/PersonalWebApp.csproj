@@ -4,9 +4,7 @@
     <Version>255.255.255.255</Version>
   </PropertyGroup>
   <ItemGroup>
-    <Content Update="Blog\**\*" CopyToPublishDirectory="false" />
     <Content Remove="**\*-lock.json" />
-    <Content Update="**\*.json" CopyToPublishDirectory="false" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" />

@@ -16,7 +16,6 @@ public class BuildContext : FrostingContext
     public string BinariesDirectoryPath { get; set; }
     public string ArtifactDirectoryPath { get; set; }
     public string ProjectPath { get; set; }
-    public string BlogPath { get; set; }
     public string PackageFullName { get; set; }
 
     public BuildContext(ICakeContext context) 
@@ -48,7 +47,6 @@ public class BuildContext : FrostingContext
         }
             
         ProjectPath = "../src/PersonalWebApp";
-        BlogPath = $"{ProjectPath}/Blog";
 
         PackageFullName = $"{ArtifactDirectoryPath}/PersonalWebApp.{BuildNumber}.zip";
     }

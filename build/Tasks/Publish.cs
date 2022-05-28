@@ -4,7 +4,7 @@ using Cake.Frosting;
 
 namespace Build.Tasks;
 
-[IsDependentOn(typeof(GenerateBlog))]
+[IsDependentOn(typeof(NpmInstall))]
 public sealed class Publish : FrostingTask<BuildContext>
 {
     public override void Run(BuildContext context)

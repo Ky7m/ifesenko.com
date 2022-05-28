@@ -198,13 +198,6 @@ public class Startup
             }
         });
 
-        app.UseFileServer(new FileServerOptions
-        {
-            FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot","blog")),
-            RequestPath = new PathString("/blog"),
-            EnableDirectoryBrowsing = false
-        });
-
         app.UseRouting();
 
         app.UseEndpoints(endpoints =>
