@@ -35,14 +35,14 @@ public class BuildContext : FrostingContext
         BinariesDirectoryPath = context.EnvironmentVariable("BUILD_BINARIESDIRECTORY");
         if (string.IsNullOrEmpty(BinariesDirectoryPath))
         {
-            BinariesDirectoryPath = "./Build.Binaries";
+            BinariesDirectoryPath = "./artifacts/Build.Binaries";
             context.CleanDirectory(BinariesDirectoryPath);
         }
             
         ArtifactDirectoryPath = context.EnvironmentVariable("BUILD_ARTIFACTSTAGINGDIRECTORY");
         if (string.IsNullOrEmpty(ArtifactDirectoryPath))
         {
-            ArtifactDirectoryPath = "./Build.ArtifactStagingDirectory";
+            ArtifactDirectoryPath = "./artifacts/Build.StagingDirectory";
             context.CleanDirectory(ArtifactDirectoryPath);
         }
             
