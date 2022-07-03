@@ -39,8 +39,17 @@ jobs:
     needs: build
     steps:
     - uses: actions/download-artifact@v3
+      with:
+        name: ${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
     
     - name: Display structure of downloaded files
       run: ls -R
+    
+    - name: "OIDC Login via Azure CLI"
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       
   
