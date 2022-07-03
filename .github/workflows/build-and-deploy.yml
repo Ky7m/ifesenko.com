@@ -11,7 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Get current time
+      uses: josStorer/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYY.MM.DD
+    - name: Get short sha
+      id: vars
+      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
     - name: Build
       shell: pwsh
-      run: .\build\build.ps1
-    - run: echo ${{ github.event.repository.updated_at}} | sed 's/:/./g'
+      run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
