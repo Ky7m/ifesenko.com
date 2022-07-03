@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      artifact-name: ${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
+      artifact-name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_id }}
     steps:
     - uses: actions/checkout@v3
     
@@ -22,18 +22,14 @@ jobs:
       with:
         format: YYYY.MM.DD
     
-    - name: Get short sha
-      id: vars
-      run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
-    
     - name: Build
       shell: pwsh
-      run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
+      run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ github.run_id }}
     
     - name: Publish
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
+        name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_id }}
         path: ${{ github.workspace }}/build/artifacts/Build.StagingDirectory/*.zip
 
   deploy:
