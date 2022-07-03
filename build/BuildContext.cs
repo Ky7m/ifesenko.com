@@ -1,5 +1,4 @@
 using Cake.Common;
-using Cake.Common.Build;
 using Cake.Common.IO;
 using Cake.Core;
 using Cake.Frosting;
@@ -35,6 +34,6 @@ public class BuildContext : FrostingContext
         
         ProjectPath = "../src/PersonalWebApp";
 
-        PackageFullName = $"{ArtifactDirectoryPath}/PersonalWebApp.{BuildNumber}.zip";
+        PackageFullName = $"{ArtifactDirectoryPath}/{BuildNumber}.zip";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Cake.Common.Tools.DotNet;
 using Cake.Common.Tools.DotNetCore.Publish;
+using Cake.Core;
 using Cake.Frosting;
 
 namespace Build.Tasks;
@@ -14,7 +15,8 @@ public sealed class Publish : FrostingTask<BuildContext>
             new DotNetCorePublishSettings
             {
                 Configuration = context.BuildConfiguration,
-                OutputDirectory = context.BinariesDirectoryPath
+                OutputDirectory = context.BinariesDirectoryPath,
+                ArgumentCustomization = args => args.Append($"-p:Version={context.BuildNumber}")
             });
     }
 }
