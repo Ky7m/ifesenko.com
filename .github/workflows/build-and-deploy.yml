@@ -63,7 +63,7 @@ jobs:
     needs: [ build, deploy-to-staging ]
     environment:
       name: prod
-      url: ${{ steps.deploywebapp.outputs.webapp-url }}
+      url: https://www.ifesenko.com
     steps:
     - uses: actions/download-artifact@v3
       with:
