@@ -1,0 +1,17 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      shell: pwsh
+      run: .\build\build.ps1
+    - run: echo ${{ github.event.repository.updated_at}} | sed 's/:/./g'
