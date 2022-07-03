@@ -8,16 +8,10 @@ public sealed class NpmInstall: FrostingTask<BuildContext>
 {
     public override void Run(BuildContext context)
     {
-        var packageFiles = new []
+        context.NpmInstall(new NpmInstallSettings
         {
-            context.ProjectPath
-        };
-            
-        var settings = new NpmInstallSettings();
-        foreach(var packagePath in packageFiles)
-        {
-            settings.WorkingDirectory = packagePath;
-            context.NpmInstall(settings);
-        }
+            WorkingDirectory = context.ProjectPath
+        });
+        
     }
 }
