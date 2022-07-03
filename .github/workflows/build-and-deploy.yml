@@ -23,7 +23,7 @@ jobs:
       shell: pwsh
       run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
     - name: Publish
-    - uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3
       with:
         path: ${{ github.workspace }}/build/artifacts/Build.StagingDirectory/*.zip
     - run: ls -la ${{ github.workspace }}/build/artifacts/Build.StagingDirectory 
