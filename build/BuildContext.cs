@@ -24,28 +24,15 @@ public class BuildContext : FrostingContext
         // arguments
         Target = context.Argument("target", "Default");
         BuildConfiguration = context.Argument("configuration", "Release");
-            
-        // global variables
-        BuildNumber = context.AzurePipelines().Environment.Build.Number;
-        if (string.IsNullOrEmpty(BuildNumber))
-        {
-            BuildNumber = "255.255.255.255";
-        }
+        BuildNumber = context.Argument("buildNumber", "255.255.255.255");;
 
-        BinariesDirectoryPath = context.EnvironmentVariable("BUILD_BINARIESDIRECTORY");
-        if (string.IsNullOrEmpty(BinariesDirectoryPath))
-        {
-            BinariesDirectoryPath = "./artifacts/Build.Binaries";
-            context.CleanDirectory(BinariesDirectoryPath);
-        }
-            
-        ArtifactDirectoryPath = context.EnvironmentVariable("BUILD_ARTIFACTSTAGINGDIRECTORY");
-        if (string.IsNullOrEmpty(ArtifactDirectoryPath))
-        {
-            ArtifactDirectoryPath = "./artifacts/Build.StagingDirectory";
-            context.CleanDirectory(ArtifactDirectoryPath);
-        }
-            
+        // global variables
+        BinariesDirectoryPath = "./artifacts/Build.Binaries";
+        context.CleanDirectory(BinariesDirectoryPath);
+        
+        ArtifactDirectoryPath = "./artifacts/Build.StagingDirectory";
+        context.CleanDirectory(ArtifactDirectoryPath);
+        
         ProjectPath = "../src/PersonalWebApp";
 
         PackageFullName = $"{ArtifactDirectoryPath}/PersonalWebApp.{BuildNumber}.zip";
