@@ -11,6 +11,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
     steps:
     - uses: actions/checkout@v3
     
@@ -40,7 +42,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v3
       with:
-        name: ${{ steps.current-time.outputs.formattedTime }}.${{ steps.vars.outputs.sha_short }}
+        name: ${{ needs.build.outputs.artifact-name }}
     
     - name: Display structure of downloaded files
       run: ls -R
