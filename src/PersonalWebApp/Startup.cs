@@ -108,7 +108,7 @@ public class Startup
                             x.Self();
                             var customSources = new List<string>
                             {
-                                "dc.services.visualstudio.com"
+                                "centralus-2.in.applicationinsights.azure.com"
                             };
                             if (env.IsDevelopment())
                             {
