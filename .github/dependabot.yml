@@ -4,6 +4,10 @@ updates:
     directory: "src/PersonalWebApp"
     schedule:
       interval: "daily"
+  - package-ecosystem: "nuget"
+    directory: "build"
+    schedule:
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "src/PersonalWebApp"
     schedule:

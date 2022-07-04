@@ -32,18 +32,18 @@ jobs:
         name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
         path: ${{ github.workspace }}/build/artifacts/Build.StagingDirectory/*.zip
 
-  deploy:
+  deploy-to-staging:
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: staging
+      url: ${{ steps.deploywebapp.outputs.webapp-url }}
     steps:
     - uses: actions/download-artifact@v3
       with:
         name: ${{ needs.build.outputs.artifact-name }}
     
-    - name: Display structure of downloaded files
-      run: ls -R
-    
-    - name: "OIDC Login via Azure CLI"
+    - name: OIDC Login via Azure CLI
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -51,10 +51,35 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         
     - name: Deploy to Stage
+      id: deploywebapp
       uses: azure/webapps-deploy@v2
       with:
         app-name: app-ifesenko-centralus
         slot-name: staging
         package: ${{ needs.build.outputs.artifact-name }}.zip
       
+  deploy-to-prod:
+    runs-on: ubuntu-latest
+    needs: [ build, deploy-to-staging ]
+    environment:
+      name: prod
+      url: https://www.ifesenko.com
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: ${{ needs.build.outputs.artifact-name }}
+    
+    - name: OIDC Login via Azure CLI
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        
+    - name: Deploy to Prod
+      id: deploywebapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: app-ifesenko-centralus
+        package: ${{ needs.build.outputs.artifact-name }}.zip
   
