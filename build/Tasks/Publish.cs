@@ -1,5 +1,5 @@
 ﻿using Cake.Common.Tools.DotNet;
-using Cake.Common.Tools.DotNetCore.Publish;
+using Cake.Common.Tools.DotNet.Publish;
 using Cake.Core;
 using Cake.Frosting;
 
@@ -12,7 +12,7 @@ public sealed class Publish : FrostingTask<BuildContext>
     {
         context.DotNetPublish(
             context.ProjectPath,
-            new DotNetCorePublishSettings
+            new DotNetPublishSettings
             {
                 Configuration = context.BuildConfiguration,
                 OutputDirectory = context.BinariesDirectoryPath,
