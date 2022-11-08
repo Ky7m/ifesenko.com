@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v3.0.3
+      with:
+         dotnet-version: 7.x
+        
     - name: Get current time
       uses: josStorer/get-current-time@v2
       id: current-time
