@@ -34,14 +34,17 @@ public sealed class InMemoryStorageService : IStorageService
                     return (Events2020.List, false); 
                 case 2021:
                     return (Events2021.List, false);
+                case 2022:
+                    return (Events2022.List, false);
             }
         }
             
-        return (Events2022.List, false);
+        return (Events2023.List, false);
     }
 
     private static EventModel[] GetAllEvents() =>
-        Events2022.List
+        Events2023.List
+            .Concat(Events2022.List)
             .Concat(Events2021.List)
             .Concat(Events2020.List)
             .Concat(Events2019.List)

@@ -11,6 +11,21 @@ internal static class Events2022
     {
         new()
         {
+            Title = "Ukrainian .NET Conference 2022",
+            Link = "https://app.softserveinc.com/apply/net-conference-2022/",
+            Items = new []
+            {
+                new EventModelItem("Virtual Panel Discussion",
+                    new Dictionary<string, string>
+                    {
+                        ["https://www.youtube.com/watch?v=kjpbGRhWy50"] = CommonStrings.Recording
+                    })
+            },
+            Location = CommonStrings.Online,
+            Date = new DateTime(2022, 11, 24)
+        },
+        new()
+        {
             Title = "Svitla Smart Talk",
             Link = "https://kommunity.com/svitla-systems/events/svitla-smart-talk-top-things-we-do-wrong-with-telemetry-data-in-net-e5430dd0",
             Items = new []
