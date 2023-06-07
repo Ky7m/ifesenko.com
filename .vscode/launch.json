@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/PersonalWebApp/bin/Debug/net7.0/PersonalWebApp.dll",
+            "launchSettingsFilePath": "${workspaceFolder}/src/PersonalWebApp/Properties/launchSettings.json",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/PersonalWebApp/bin/Debug/net7.0",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "Build",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/build/bin/Debug/net7.0/Build.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/build",
+            "stopAtEntry": false,
+            "console": "integratedTerminal"
+        }
+    ]
+}
