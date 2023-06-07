@@ -9,6 +9,13 @@
 			"nodeGypDependencies": true,
 			"version": "latest"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-dotnettools.csdevkit"
+			]
+		}
 	}
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
