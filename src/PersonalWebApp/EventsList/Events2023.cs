@@ -10,6 +10,21 @@ internal static class Events2023
     public static EventModel[] List { get; } = {
         new()
         {
+            Title = ".NET fwdays'23",
+            Link = "https://fwdays.com/en/event/dotnet-fwdays-2023",
+            Items = new[]
+            {
+                new EventModelItem("Discussion with Kevin Gosse",
+                    new Dictionary<string, string>
+                    {
+                        ["https://fwdays.com/en/event/dotnet-fwdays-2023/review/discussion-with-kevin-gosse"] = CommonStrings.Online
+                    })
+            },
+            Location = CommonStrings.Online,
+            Date = new DateTime(2023, 6, 15)
+        },
+        new()
+        {
             Title = "Microsoft Build 2023",
             Link = "https://news.microsoft.com/build-2023/",
             Items = new[]
