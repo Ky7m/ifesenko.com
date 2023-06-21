@@ -49,8 +49,8 @@ internal static class Events2023
                 new EventModelItem("Modern DevOps & Real Life Applications. 3.0.0-devops+20230318",
                     new Dictionary<string, string>
                     {
-                        ["https://1drv.ms/p/s!AmdJq1kgIxHUkPxHesyZdfXmSQZLcg?e=JZsyD3"] = CommonStrings.Powerpoint
-                        // ["https://www.youtube.com/watch?v=kjpbGRhWy50"] = CommonStrings.Recording
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUkPxHesyZdfXmSQZLcg?e=JZsyD3"] = CommonStrings.Powerpoint,
+                        ["https://www.youtube.com/watch?v=BQ7QlQqfcOw"] = CommonStrings.Recording
                     })
             },
             Location = CommonStrings.Online,
