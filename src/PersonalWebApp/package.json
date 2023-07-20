@@ -30,6 +30,6 @@
     "natives": "1.1.6",
     "typescript": "5.1.6",
     "node-sass": "9.0.0",
-    "sass": "1.63.6"
+    "sass": "1.64.0"
   }
 }
