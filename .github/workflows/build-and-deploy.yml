@@ -57,7 +57,7 @@ jobs:
         
     - name: Deploy to Stage
       id: deploywebapp
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: app-ifesenko-centralus
         slot-name: staging
@@ -84,7 +84,7 @@ jobs:
         
     - name: Deploy to Prod
       id: deploywebapp
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: app-ifesenko-centralus
         package: ${{ needs.build.outputs.artifact-name }}.zip
