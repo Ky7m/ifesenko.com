@@ -109,7 +109,7 @@ public class Startup
                             var customSources = new List<string>
                             {
                                 "centralus-2.in.applicationinsights.azure.com",
-                                "js.monitor.azure.com"
+                                "www.google-analytics.com"
                             };
                             if (env.IsDevelopment())
                             {
@@ -150,6 +150,7 @@ public class Startup
                             {
                                 "az416426.vo.msecnd.net",
                                 "cdnjs.cloudflare.com",
+                                "js.monitor.azure.com",
                                 "www.google-analytics.com",
                                 "data:",
                                 cdnEndpoint
