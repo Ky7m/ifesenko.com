@@ -152,6 +152,7 @@ public class Startup
                                 "cdnjs.cloudflare.com",
                                 "js.monitor.azure.com",
                                 "www.google-analytics.com",
+                                "www.googletagmanager.com",
                                 "data:",
                                 cdnEndpoint
                             };
