@@ -1,22 +1,28 @@
 'use strict';
-const gulp = require('gulp');
-const autoprefixer = require('gulp-autoprefixer');
-const concat = require('gulp-concat');
-const moreCSS = require('gulp-more-css');
-const gulpif = require('gulp-if');
-const imagemin = require('gulp-imagemin');
-const plumber = require('gulp-plumber');
-const rename = require('gulp-rename');
-const replace = require('gulp-replace');
-const size = require('gulp-size');
-const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
-const gutil = require('gulp-util');
-const merge = require('merge-stream');
-const rimraf = require('gulp-rimraf');
-const sass = require('gulp-sass')(require('sass'));
-const typescript = require('gulp-typescript');
-const shorthand = require('gulp-shorthand');
+import gulp from 'gulp';
+const { task, src, series, dest, watch } = gulp;
+import autoprefixer from 'gulp-autoprefixer';
+import concat from 'gulp-concat';
+import moreCSS from 'gulp-more-css';
+import gulpif from 'gulp-if';
+import imagemin from 'gulp-imagemin';
+import plumber from 'gulp-plumber';
+import rename from 'gulp-rename';
+import replace from 'gulp-replace';
+import size from 'gulp-size';
+import sourcemaps from 'gulp-sourcemaps';
+const { init, write } = sourcemaps;
+import uglify from 'gulp-uglify';
+import util from 'gulp-util';
+const { log, colors } = util;
+import merge from 'merge-stream';
+import rimraf from 'gulp-rimraf';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+import ts from 'gulp-typescript';
+const { createProject } = ts;
+import shorthand from 'gulp-shorthand';
 
 const environment = {
     development: 'Development',
@@ -109,42 +115,40 @@ function sizeAfter(title) {
     });
 }
 
-gulp.task('clean-styles', function () {
-    return gulp.src(paths.css, {read: false, allowEmpty: true})
+task('clean-styles', function () {
+    return src(paths.css, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
-gulp.task('clean-fonts', function () {
-    return gulp.src(paths.fonts, {read: false, allowEmpty: true})
+task('clean-fonts', function () {
+    return src(paths.fonts, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
-gulp.task('clean-code', function () {
-    return gulp.src(paths.js, {read: false, allowEmpty: true})
+task('clean-code', function () {
+    return src(paths.js, {read: false, allowEmpty: true})
         .pipe(rimraf());
 });
 
-gulp.task('clean', gulp.series('clean-styles', 'clean-fonts', 'clean-code'));
+task('clean', series('clean-styles', 'clean-fonts', 'clean-code'));
 
-gulp.task('styles', gulp.series('clean-styles', function () {
+task('styles', series('clean-styles', function () {
     const tasks = sources.css.map(function (source) {
         if (source.copy) {
-            return gulp
-                .src(source.paths)
+            return src(source.paths)
                 .pipe(rename({
                     basename: source.name,
                     extname: ''
                 }))
-                .pipe(gulp.dest(paths.css));
+                .pipe(dest(paths.css));
         } else {
-            return gulp
-                .src(source.paths)
+            return src(source.paths)
                 .pipe(plumber())
                 .pipe(gulpif(
                     environment.isDevelopment(),
-                    sourcemaps.init()))
+                    init()))
                 .pipe(gulpif('**/*.scss', sass()))
-                .pipe(autoprefixer({browsers: ['last 2 version', '> 5%']}))
+                .pipe(autoprefixer())
                 .pipe(concat(source.name))
                 .pipe(sizeBefore(source.name))
                 .pipe(gulpif(
@@ -156,44 +160,41 @@ gulp.task('styles', gulp.series('clean-styles', function () {
                 .pipe(sizeAfter(source.name))
                 .pipe(gulpif(
                     environment.isDevelopment(),
-                    sourcemaps.write('.')))
-                .pipe(gulp.dest(paths.css));
+                    write('.')))
+                .pipe(dest(paths.css));
         }
     });
     return merge(tasks);
 }));
 
-gulp.task('fonts', gulp.series('clean-fonts', function () {
+task('fonts', series('clean-fonts', function () {
     const tasks = sources.fonts.map(function (source) {
-        return gulp
-            .src(source.path)
+        return src(source.path)
             .pipe(plumber())
             .pipe(rename(function (path) {
                 path.dirname = '';
             }))
-            .pipe(gulp.dest(paths.fonts));
+            .pipe(dest(paths.fonts));
     });
     return merge(tasks);
 }));
 
-gulp.task('code', gulp.series('clean-code', function () {
+task('code', series('clean-code', function () {
     const tasks = sources.js.map(function (source) {
         if (source.copy) {
-            return gulp
-                .src(source.paths)
+            return src(source.paths)
                 .pipe(rename({
                     basename: source.name,
                     extname: ''
                 }))
-                .pipe(gulp.dest(paths.js));
+                .pipe(dest(paths.js));
         } else {
-            const tsProject = typescript.createProject('tsconfig.json', {typescript: require('typescript')});
-            return gulp
-                .src(source.paths)
+            const tsProject = createProject('tsconfig.json');
+            return src(source.paths)
                 .pipe(plumber())
                 .pipe(gulpif(
                     environment.isDevelopment(),
-                    sourcemaps.init()))
+                    init()))
                 .pipe(gulpif(
                     source.replacement,
                     replace(
@@ -210,49 +211,46 @@ gulp.task('code', gulp.series('clean-code', function () {
                 .pipe(sizeAfter(source.name))
                 .pipe(gulpif(
                     environment.isDevelopment(),
-                    sourcemaps.write('.')))
-                .pipe(gulp.dest(paths.js));
+                    write('.')))
+                .pipe(dest(paths.js));
         }
     });
     return merge(tasks);
 }));
 
-gulp.task('images', function () {
-    return gulp
-        .src(sources.img)
+task('images', function () {
+    return src(sources.img)
         .pipe(plumber())
         .pipe(sizeBefore())
         .pipe(imagemin({
             multipass: true,
             optimizationLevel: 4
         }))
-        .pipe(gulp.dest(paths.img))
+        .pipe(dest(paths.img))
         .pipe(sizeAfter());
 });
 
-gulp.task('watch-styles', function () {
-    return gulp
-        .watch(
+task('watch-styles', function () {
+    return watch(
             paths.styles + '**/*.{css,scss}',
             ['styles'])
         .on('change', function (event) {
-            gutil.log(gutil.colors.blue('File ' + event.path + ' was ' + event.type + ', styles task started.'));
+            log(colors.blue('File ' + event.path + ' was ' + event.type + ', styles task started.'));
         });
 });
 
 
-gulp.task('watch-code', function () {
-    return gulp
-        .watch(
+task('watch-code', function () {
+    return watch(
             paths.scripts + '**/*.{js,ts}',
             ['code'])
         .on('change', function (event) {
-            gutil.log(gutil.colors.blue('File ' + event.path + ' was ' + event.type + ', code task started.'));
+            log(colors.blue('File ' + event.path + ' was ' + event.type + ', code task started.'));
         });
 });
 
-gulp.task('watch', gulp.series('watch-styles', 'watch-code'));
+task('watch', series('watch-styles', 'watch-code'));
 
-gulp.task('build', gulp.series('styles', 'fonts', 'code'));
+task('build', series('styles', 'fonts', 'code'));
 
-gulp.task('default', gulp.series('build'));
+task('default', series('build'));
