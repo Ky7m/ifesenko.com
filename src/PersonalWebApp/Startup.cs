@@ -137,6 +137,7 @@ public class Startup
                             var customSources = new List<string>
                             {
                                 "www.google-analytics.com",
+                                "www.googletagmanager.com",
                                 "data:",
                                 cdnEndpoint
                             };
