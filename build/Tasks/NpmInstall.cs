@@ -1,5 +1,8 @@
-﻿using Cake.Frosting;
+﻿using Cake.Common.Build;
+using Cake.Core.Diagnostics;
+using Cake.Frosting;
 using Cake.Npm;
+using Cake.Npm.Ci;
 using Cake.Npm.Install;
 
 namespace Build.Tasks;
@@ -8,10 +11,21 @@ public sealed class NpmInstall: FrostingTask<BuildContext>
 {
     public override void Run(BuildContext context)
     {
-        context.NpmInstall(new NpmInstallSettings
+        if(context.GitHubActions().IsRunningOnGitHubActions)
         {
-            WorkingDirectory = context.ProjectPath
-        });
-        
+            context.Log.Information("command: npm ci");
+            context.NpmCi(new NpmCiSettings
+            {
+                WorkingDirectory = context.ProjectPath
+            });
+        }
+        else
+        {
+            context.Log.Information("command: npm install");
+            context.NpmInstall(new NpmInstallSettings
+            {
+                WorkingDirectory = context.ProjectPath
+            });
+        }
     }
 }
