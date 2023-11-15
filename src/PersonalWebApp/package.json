@@ -22,7 +22,6 @@
     "gulp-sass": "5.1.0",
     "gulp-shorthand": "1.1.0",
     "gulp-size": "5.0.0",
-    "gulp-sourcemaps": "3.0.0",
     "gulp-typescript": "5.0.1",
     "gulp-uglify": "3.0.2",
     "gulp-util": "3.0.8",

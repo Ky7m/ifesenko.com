@@ -10,8 +10,6 @@ import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import size from 'gulp-size';
-import sourcemaps from 'gulp-sourcemaps';
-const { init, write } = sourcemaps;
 import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 const { log, colors } = util;
@@ -144,9 +142,6 @@ task('styles', series('clean-styles', function () {
         } else {
             return src(source.paths)
                 .pipe(plumber())
-                .pipe(gulpif(
-                    environment.isDevelopment(),
-                    init()))
                 .pipe(gulpif('**/*.scss', sass()))
                 .pipe(autoprefixer())
                 .pipe(concat(source.name))
@@ -158,9 +153,6 @@ task('styles', series('clean-styles', function () {
                     !environment.isDevelopment(),
                     moreCSS()))
                 .pipe(sizeAfter(source.name))
-                .pipe(gulpif(
-                    environment.isDevelopment(),
-                    write('.')))
                 .pipe(dest(paths.css));
         }
     });
@@ -193,9 +185,6 @@ task('code', series('clean-code', function () {
             return src(source.paths)
                 .pipe(plumber())
                 .pipe(gulpif(
-                    environment.isDevelopment(),
-                    init()))
-                .pipe(gulpif(
                     source.replacement,
                     replace(
                         source.replacement ? source.replacement.find : '',
@@ -209,9 +198,6 @@ task('code', series('clean-code', function () {
                     !environment.isDevelopment(),
                     uglify()))
                 .pipe(sizeAfter(source.name))
-                .pipe(gulpif(
-                    environment.isDevelopment(),
-                    write('.')))
                 .pipe(dest(paths.js));
         }
     });
