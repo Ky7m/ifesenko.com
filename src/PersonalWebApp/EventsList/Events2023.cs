@@ -54,7 +54,7 @@ internal static class Events2023
                 new EventModelItem("LAB: Build a serverless web application end-to-end on Microsoft Azure",
                     new Dictionary<string, string>
                     {
-                        ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd"] = CommonStrings.Online
+                        ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd?wt.mc_id=DT-MVP-5002442"] = CommonStrings.Online
                     }),
                 new EventModelItem("Expert Meet-up .NET",
                     new Dictionary<string, string>())
