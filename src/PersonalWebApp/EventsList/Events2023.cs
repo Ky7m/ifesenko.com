@@ -14,11 +14,12 @@ internal static class Events2023
             Link = "https://www.linkedin.com/feed/update/urn:li:activity:7127654191111487489/",
             Items = new[]
             {
-                new EventModelItem(".NET Apps Observability with OpenTelemetry")
-                    // new Dictionary<string, string>
-                    // {
-                    //     ["https://fwdays.com/en/event/dotnet-fwdays-2023/review/discussion-with-kevin-gosse"] = CommonStrings.Online
-                    // })
+                new EventModelItem(".NET Apps Observability with OpenTelemetry",
+                    new Dictionary<string, string>
+                    {
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUn5gSjgrUggOjASjzow?e=NySE5v"] = CommonStrings.Powerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/WorkWithTelemetryInDotNET"] = CommonStrings.DemoCode
+                    })
             },
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 11, 17)
@@ -27,6 +28,10 @@ internal static class Events2023
         {
             Title = ".NET Conf 2023: Watch, Discuss, Network",
             Link = "https://app.softserveinc.com/apply/register/en/net-conf-2023-1",
+            Items = new[]
+            {
+                new EventModelItem("Panel Discussion")
+            },
             Location = CommonStrings.Lviv,
             Date = new DateTime(2023, 11, 14)
         },
