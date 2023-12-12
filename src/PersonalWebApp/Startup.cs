@@ -16,18 +16,11 @@ using PersonalWebApp.Settings;
 
 namespace PersonalWebApp;
 
-public class Startup
+public class Startup(IConfiguration configuration)
 {
-    private readonly IConfiguration _configuration;
-
-    public Startup(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
     public void ConfigureServices(IServiceCollection services)
     {
-        services.Configure<AppSettings>(_configuration);
+        services.Configure<AppSettings>(configuration);
 
         services.AddRouting(routeOptions =>
         {
@@ -88,7 +81,7 @@ public class Startup
         app.UseResponseCaching();
         app.UseResponseCompression();
 
-        var appSettings = _configuration.GetSection(nameof(AppSettings)).Get<AppSettings>();
+        var appSettings = configuration.GetSection(nameof(AppSettings)).Get<AppSettings>();
         var cdnEndpoint = appSettings.CdnEndpoint.TrimStart(@"//".ToCharArray());
 
         app.UseCsp(

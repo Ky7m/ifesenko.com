@@ -10,6 +10,17 @@ internal static class Events2023
     public static EventModel[] List { get; } = {
         new()
         {
+            Title = "Svitla Smart Talk: .NET CONF",
+            Link = "https://kommunity.com/svitla-systems/events/svitla-smart-talk-net-conf-db7d2cd9",
+            Items = new[]
+            {
+                new EventModelItem("Panel Discussion")
+            },
+            Location = CommonStrings.Online,
+            Date = new DateTime(2023, 12, 13)
+        },
+        new()
+        {
             Title = ".NET Apps Observability with OpenTelemetry",
             Link = "https://www.linkedin.com/feed/update/urn:li:activity:7127654191111487489/",
             Items = new[]
