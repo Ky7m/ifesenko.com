@@ -44,7 +44,7 @@ jobs:
       name: staging
       url: ${{ steps.deploywebapp.outputs.webapp-url }}
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ${{ needs.build.outputs.artifact-name }}
     
@@ -71,7 +71,7 @@ jobs:
       name: prod
       url: https://www.ifesenko.com
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         name: ${{ needs.build.outputs.artifact-name }}
     
