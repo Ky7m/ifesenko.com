@@ -16,7 +16,7 @@ public sealed class Publish : FrostingTask<BuildContext>
             {
                 Configuration = context.BuildConfiguration,
                 OutputDirectory = context.BinariesDirectoryPath,
-                SelfContained = true,
+                SelfContained = false,
                 ArgumentCustomization = args => args.Append($"-p:Version={context.BuildNumber}")
             });
     }
