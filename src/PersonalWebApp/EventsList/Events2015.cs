@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2015
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Tech#Skills_Day 1.2.",
@@ -190,5 +190,5 @@ internal static class Events2015
             Location = CommonStrings.Online,
             Date = new DateTime(2015, 2, 11)
         }
-    };
+    ];
 }

@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2018
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Holiday party / SF meetups: Azure, .NET, IT Pro, F#, C#, MSFT Data Platform",
@@ -164,5 +164,5 @@ internal static class Events2018
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2018, 4, 15)
         }
-    };
+    ];
 }

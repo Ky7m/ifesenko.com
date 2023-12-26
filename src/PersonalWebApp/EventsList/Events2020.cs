@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2020
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Svitla Smart Talk: Advanced Debugging Tools & Techniques for C# Developers",
@@ -153,5 +153,5 @@ internal static class Events2020
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2020, 2, 27)
         }
-    };
+    ];
 }

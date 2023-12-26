@@ -6,7 +6,7 @@ namespace PersonalWebApp.Controllers;
 public class AntiBotController: Controller
 {
     private static readonly string[] TenHoursOfFun =
-    {
+    [
         "https://www.youtube.com/watch?v=wbby9coDRCk",
         "https://www.youtube.com/watch?v=nb2evY0kmpQ",
         "https://www.youtube.com/watch?v=eh7lp9umG2I",
@@ -27,7 +27,7 @@ public class AntiBotController: Controller
         "https://www.youtube.com/watch?v=KMFOVSWn0mI",
         "https://www.youtube.com/watch?v=clU0Sh9ngmY",
         "https://www.youtube.com/watch?v=sCNrK-n68CM"
-    };
+    ];
 
     private readonly Random _random = new();
 

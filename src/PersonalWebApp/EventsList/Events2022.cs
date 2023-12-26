@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2022
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Ukrainian .NET Conference 2022",
@@ -58,5 +58,5 @@ internal static class Events2022
             Location = CommonStrings.Online,
             Date = new DateTime(2022, 4, 1)
         }
-    };
+    ];
 }

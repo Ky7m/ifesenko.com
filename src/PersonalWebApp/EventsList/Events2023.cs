@@ -7,14 +7,19 @@ namespace PersonalWebApp.EventsList;
 
 internal static class Events2023
 {
-    public static EventModel[] List { get; } = {
+    public static EventModel[] List { get; } =
+    [
         new()
         {
             Title = "Svitla Smart Talk: .NET CONF",
             Link = "https://kommunity.com/svitla-systems/events/svitla-smart-talk-net-conf-db7d2cd9",
             Items = new[]
             {
-                new EventModelItem("Panel Discussion")
+                new EventModelItem("Panel Discussion",
+                    new Dictionary<string, string>
+                    {
+                        ["https://www.youtube.com/watch?v=ORapxIWoEco"] = CommonStrings.Recording
+                    })
             },
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 12, 13)
@@ -94,5 +99,5 @@ internal static class Events2023
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 3, 18)
         }
-    };
+    ];
 }

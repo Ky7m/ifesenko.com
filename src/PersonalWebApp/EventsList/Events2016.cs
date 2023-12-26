@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2016
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Most JS Frameworks Day 2016",
@@ -250,5 +250,5 @@ internal static class Events2016
             Location = "Dallas, TX (USA)",
             Date = new DateTime(2016, 1, 26)
         }
-    };
+    ];
 }

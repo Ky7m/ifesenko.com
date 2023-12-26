@@ -42,7 +42,7 @@ public class Startup(IConfiguration configuration)
             {
                 Location = ResponseCacheLocation.Any,
                 Duration = 3600,
-                VaryByQueryKeys = new []{ "period" }
+                VaryByQueryKeys = ["period"]
             });
             options.CacheProfiles.Add("ErrorPage", new CacheProfile
             {

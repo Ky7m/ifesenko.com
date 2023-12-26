@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2017
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Effective Team Work and Power of ASP.NET Core and Node.js",
@@ -421,5 +421,5 @@ internal static class Events2017
             Location = CommonStrings.Online,
             Date = new DateTime(2017, 2, 8)
         }
-    };
+    ];
 }

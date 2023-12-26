@@ -8,7 +8,7 @@ namespace PersonalWebApp.EventsList;
 internal static class Events2019
 {
     public static EventModel[] List { get; } =
-    {
+    [
         new()
         {
             Title = "Lviv .NET #20: Life after 3.0",
@@ -155,5 +155,5 @@ internal static class Events2019
             Location = "Washington, D.C. (USA)",
             Date = new DateTime(2019, 2, 4)
         }
-    };
+    ];
 }
