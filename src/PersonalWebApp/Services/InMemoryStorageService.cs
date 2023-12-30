@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using JetBrains.Annotations;
 using PersonalWebApp.EventsList;
 using PersonalWebApp.Models;
@@ -16,7 +15,7 @@ public sealed class InMemoryStorageService : IStorageService
             return (GetAllEvents(), true);
         }
 
-        if (int.TryParse(period, out var year) && year >= 2015 && year < DateTimeOffset.UtcNow.Year)
+        if (int.TryParse(period, out var year) && year >= 2015 && year <= DateTimeOffset.UtcNow.Year)
         {
             switch (year)
             {
@@ -36,21 +35,25 @@ public sealed class InMemoryStorageService : IStorageService
                     return (Events2021.List, false);
                 case 2022:
                     return (Events2022.List, false);
+                case 2023:
+                    return (Events2023.List, false);
             }
         }
             
-        return (Events2023.List, false);
+        return (Events2024.List, false);
     }
 
     private static EventModel[] GetAllEvents() =>
-        Events2023.List
-            .Concat(Events2022.List)
-            .Concat(Events2021.List)
-            .Concat(Events2020.List)
-            .Concat(Events2019.List)
-            .Concat(Events2018.List)
-            .Concat(Events2017.List)
-            .Concat(Events2016.List)
-            .Concat(Events2015.List)
-            .ToArray();
+    [
+        ..Events2024.List,
+        ..Events2023.List,
+        ..Events2022.List,
+        ..Events2021.List,
+        ..Events2020.List,
+        ..Events2019.List,
+        ..Events2018.List,
+        ..Events2017.List,
+        ..Events2016.List,
+        ..Events2015.List
+    ];
 }
