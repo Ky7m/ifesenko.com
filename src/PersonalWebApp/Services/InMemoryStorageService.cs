@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using PersonalWebApp.EventsList;
 using PersonalWebApp.Models;
@@ -12,48 +14,28 @@ public sealed class InMemoryStorageService : IStorageService
     {
         if (string.Equals(period, "all", StringComparison.OrdinalIgnoreCase))
         {
-            return (GetAllEvents(), true);
+            return (AllEvents.Values.SelectMany(x => x).ToArray(), true);
         }
-
-        if (int.TryParse(period, out var year) && year >= 2015 && year <= DateTimeOffset.UtcNow.Year)
+        
+        if (int.TryParse(period, out var year) && AllEvents.TryGetValue(year, out var events))
         {
-            switch (year)
-            {
-                case 2015:
-                    return (Events2015.List, false);
-                case 2016:
-                    return (Events2016.List, false);
-                case 2017:
-                    return (Events2017.List, false);
-                case 2018:
-                    return (Events2018.List, false);
-                case 2019:
-                    return (Events2019.List, false); 
-                case 2020:
-                    return (Events2020.List, false); 
-                case 2021:
-                    return (Events2021.List, false);
-                case 2022:
-                    return (Events2022.List, false);
-                case 2023:
-                    return (Events2023.List, false);
-            }
+            return (events, false);
         }
             
-        return (Events2024.List, false);
+        return (AllEvents[DateTime.UtcNow.Year], false);
     }
 
-    private static EventModel[] GetAllEvents() =>
-    [
-        ..Events2024.List,
-        ..Events2023.List,
-        ..Events2022.List,
-        ..Events2021.List,
-        ..Events2020.List,
-        ..Events2019.List,
-        ..Events2018.List,
-        ..Events2017.List,
-        ..Events2016.List,
-        ..Events2015.List
-    ];
+    private readonly Dictionary<int, EventModel[]> AllEvents = new()
+    {
+        [2024] = Events2024.List,
+        [2023] = Events2023.List,
+        [2022] = Events2022.List,
+        [2021] = Events2021.List,
+        [2020] = Events2020.List,
+        [2019] = Events2019.List,
+        [2018] = Events2018.List,
+        [2017] = Events2017.List,
+        [2016] = Events2016.List,
+        [2015] = Events2015.List
+    };
 }
