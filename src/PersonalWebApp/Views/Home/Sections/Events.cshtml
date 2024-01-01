@@ -10,41 +10,12 @@
             {
                 <p>Past years:
                     <span>
-                        @if (Model.Events.All(x => x.Date.Year != 2015))
+                        @for (var year = 2015; year <= DateTime.UtcNow.Year; year++)
                         {
-                            <a href="/?period=2015#events" rel="noopener">2015</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2016))
-                        {
-                            <a href="/?period=2016#events" rel="noopener">2016</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2017))
-                        {
-                            <a href="/?period=2017#events" rel="noopener">2017</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2018))
-                        {
-                            <a href="/?period=2018#events" rel="noopener">2018</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2019))
-                        {
-                            <a href="/?period=2019#events" rel="noopener">2019</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2020))
-                        {
-                            <a href="/?period=2020#events" rel="noopener">2020</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2021))
-                        {
-                            <a href="/?period=2021#events" rel="noopener">2021</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2022))
-                        {
-                            <a href="/?period=2022#events" rel="noopener">2022</a>
-                        }
-                        @if (Model.Events.All(x => x.Date.Year != 2023))
-                        {
-                            <a href="/?period=2023#events" rel="noopener">2023</a>
+                            if (Model.Events.All(x => x.Date.Year != year))
+                            {
+                                <a href="/?period=@year#events" rel="noopener">@year</a>
+                            }
                         }
                         <a href="/?period=all#events" rel="noopener">Show All</a>
                     </span>
