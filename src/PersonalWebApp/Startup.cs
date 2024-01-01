@@ -31,10 +31,7 @@ public class Startup(IConfiguration configuration)
         services.AddResponseCaching();
 
         services.AddResponseCompression(
-            options =>
-            {
-                options.EnableForHttps = true;
-            });
+            options => { options.EnableForHttps = true; });
 
         services.AddControllersWithViews(options =>
         {
@@ -50,9 +47,9 @@ public class Startup(IConfiguration configuration)
                 Duration = 86400
             });
         });
-            
+
         services.AddSingleton<IStorageService, InMemoryStorageService>();
-            
+
         services.AddApplicationInsightsTelemetry();
         services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
     }
@@ -70,114 +67,98 @@ public class Startup(IConfiguration configuration)
             ? context.Response.WriteAsync(string.Empty)
             : next()
         );
-            
+
         app.UseHttpsRedirection();
-            
+
         var rewriteOptions = new RewriteOptions()
             .Add(new RedirectWwwRule());
-            
+
         app.UseRewriter(rewriteOptions);
-            
+
         app.UseResponseCaching();
         app.UseResponseCompression();
 
         var appSettings = configuration.GetSection(nameof(AppSettings)).Get<AppSettings>();
         var cdnEndpoint = appSettings.CdnEndpoint.TrimStart(@"//".ToCharArray());
 
-        app.UseCsp(
-            options =>
+        var policyCollection = new HeaderPolicyCollection()
+            .AddContentSecurityPolicy(builder =>
             {
-                options
-                    .UpgradeInsecureRequests()
-                    .DefaultSources(x => x.Self())
-                    .ChildSources(x =>
-                    {
-                        x.Self();
-                        x.CustomSources("www.youtube.com");
-                    })
-                    .ConnectSources(
-                        x =>
-                        {
-                            x.Self();
-                            var customSources = new List<string>
-                            {
-                                "centralus-2.in.applicationinsights.azure.com",
-                                "www.google-analytics.com"
-                            };
-                            if (env.IsDevelopment())
-                            {
-                                customSources.Add("localhost:*");
-                                customSources.Add("ws://localhost:*");
-                            }
-                            x.CustomSources(customSources.ToArray());
-                        })
-                    .FontSources(
-                        x =>
-                        {
-                            x.Self();
-                            x.CustomSources(
-                                "cdnjs.cloudflare.com",
-                                "fonts.googleapis.com",
-                                "fonts.gstatic.com",
-                                "data:",
-                                cdnEndpoint);
-                        })
-                    .FormActions(x => x.Self())
-                    .ImageSources(
-                        x =>
-                        {
-                            x.Self();
-                            var customSources = new List<string>
-                            {
-                                "www.google-analytics.com",
-                                "www.googletagmanager.com",
-                                "data:",
-                                cdnEndpoint
-                            };
-                            x.CustomSources(customSources.ToArray());
-                        })
-                    .ScriptSources(
-                        x =>
-                        {
-                            x.Self();
-                            var customSources = new List<string>
-                            {
-                                "az416426.vo.msecnd.net",
-                                "cdnjs.cloudflare.com",
-                                "js.monitor.azure.com",
-                                "www.google-analytics.com",
-                                "www.googletagmanager.com",
-                                "data:",
-                                cdnEndpoint
-                            };
-                            if (env.IsDevelopment())
-                            {
-                                customSources.Add("localhost:*");
-                            }
-                        
-                            x.CustomSources(customSources.ToArray());
-                            x.UnsafeEval();
-                            x.UnsafeInline();
-                        })
-                    .StyleSources(
-                        x =>
-                        {
-                            x.Self();
-                            var customSources = new List<string>
-                            {
-                                "cdnjs.cloudflare.com",
-                                "fonts.googleapis.com",
-                                cdnEndpoint
-                            };
-                            x.CustomSources(customSources.ToArray());
-                            x.UnsafeInline();
-                        });
+                builder.AddUpgradeInsecureRequests();
+                builder.AddBlockAllMixedContent();
+
+                builder.AddDefaultSrc()
+                    .Self();
+
+                var connectSrcList = new List<string>
+                {
+                    "centralus-2.in.applicationinsights.azure.com",
+                    "www.google-analytics.com"
+                };
+                if (env.IsDevelopment())
+                {
+                    connectSrcList.Add("localhost:*");
+                    connectSrcList.Add("ws://localhost:*");
+                }
+
+                builder.AddConnectSrc()
+                    .Self()
+                    .From(connectSrcList);
+
+                builder.AddFontSrc()
+                    .Self()
+                    .From(["cdnjs.cloudflare.com", "fonts.googleapis.com", "fonts.gstatic.com", "data:", cdnEndpoint]);
+
+                builder.AddObjectSrc() // object-src 'none'
+                    .None();
+
+                builder.AddFormAction()
+                    .Self();
+
+                builder.AddImgSrc()
+                    .Self()
+                    .From(["www.google-analytics.com", "www.googletagmanager.com", "data:", cdnEndpoint])
+                    .OverHttps();
+
+                var scriptSrcList = new List<string>
+                {
+                    "az416426.vo.msecnd.net",
+                    "cdnjs.cloudflare.com",
+                    "js.monitor.azure.com",
+                    "www.google-analytics.com",
+                    "www.googletagmanager.com",
+                    "data:",
+                    cdnEndpoint
+                };
+                if (env.IsDevelopment())
+                {
+                    scriptSrcList.Add("localhost:*");
+                }
+
+                builder.AddScriptSrc()
+                    .Self()
+                    .From(scriptSrcList)
+                    .UnsafeInline()
+                    .UnsafeEval()
+                    .ReportSample();
+
+                builder.AddStyleSrc()
+                    .Self()
+                    .UnsafeInline()
+                    .From(["cdnjs.cloudflare.com", "fonts.googleapis.com", cdnEndpoint])
+                    .StrictDynamic();
+
+                builder.AddMediaSrc()
+                    .OverHttps();
+
+                builder.AddFrameAncestors()
+                    .None();
+
+                builder.AddBaseUri()
+                    .Self();
             });
 
-        app.UseXContentTypeOptions()
-            .UseXDownloadOptions()
-            .UseXfo(options => options.Deny())
-            .UseXXssProtection(options => options.EnabledWithBlockMode());
+        app.UseSecurityHeaders(policyCollection);
 
         app.UseStaticFiles(new StaticFileOptions
         {
