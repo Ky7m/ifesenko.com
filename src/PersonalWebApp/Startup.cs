@@ -93,7 +93,7 @@ public class Startup(IConfiguration configuration)
                 var connectSrcList = new List<string>
                 {
                     "centralus-2.in.applicationinsights.azure.com",
-                    "www.google-analytics.com"
+                    "*.google-analytics.com"
                 };
                 if (env.IsDevelopment())
                 {
@@ -117,7 +117,7 @@ public class Startup(IConfiguration configuration)
 
                 builder.AddImgSrc()
                     .Self()
-                    .From(["www.google-analytics.com", "www.googletagmanager.com", "data:", cdnEndpoint])
+                    .From(["*.google-analytics.com", "www.googletagmanager.com", "data:", cdnEndpoint])
                     .OverHttps();
 
                 var scriptSrcList = new List<string>
@@ -125,7 +125,7 @@ public class Startup(IConfiguration configuration)
                     "az416426.vo.msecnd.net",
                     "cdnjs.cloudflare.com",
                     "js.monitor.azure.com",
-                    "www.google-analytics.com",
+                    "*.google-analytics.com",
                     "www.googletagmanager.com",
                     "data:",
                     cdnEndpoint
