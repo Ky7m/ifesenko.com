@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,rider,windows,visualstudio,visualstudiocode,aspnetcore,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,rider,windows,visualstudio,visualstudiocode,aspnetcore,node
+# Created by https://www.toptal.com/developers/gitignore/api/node,macos,rider,windows,aspnetcore,visualstudio,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos,rider,windows,aspnetcore,visualstudio,visualstudiocode
 
 ### ASPNETCore ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -810,4 +810,6 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,rider,windows,visualstudio,visualstudiocode,aspnetcore,node
+# End of https://www.toptal.com/developers/gitignore/api/node,macos,rider,windows,aspnetcore,visualstudio,visualstudiocode
+
+.mono/

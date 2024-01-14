@@ -1,6 +1,7 @@
 {
 	"name": "C# (.NET)",
 	"image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": true,
@@ -23,26 +24,22 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"ms-dotnettools.vscode-dotnet-runtime",
 				"ms-dotnettools.csdevkit"
 			]
 		}
 	},
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-
 	"forwardPorts": [5001],
 	"portsAttributes": {
 			"5001": {
 				"protocol": "https"
 			}
 	},
-
-	"postCreateCommand": "dotnet dev-certs https --trust"
-
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	// Add the locally installed dotnet to the path to ensure that it is activated
+	// This allows developers to just use 'dotnet build' on the command-line, and the local dotnet version will be used.
+	"remoteEnv": {
+		"PATH": "${containerWorkspaceFolder}/.dotnet:${containerEnv:PATH}",
+		"DOTNET_MULTILEVEL_LOOKUP": "0"
+	},
+	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/scripts/postCreateCommand.sh"
 }
