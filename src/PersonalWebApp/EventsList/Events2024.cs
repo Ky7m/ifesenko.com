@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using PersonalWebApp.Extensions;
 using PersonalWebApp.Models;
 
 namespace PersonalWebApp.EventsList;
@@ -6,5 +9,20 @@ internal static class Events2024
 {
     public static EventModel[] List { get; } =
     [
+        new()
+        {
+            Title = "DevOps fwdays'24",
+            Link = "https://fwdays.com/en/event/devops-fwdays-2024/review/platform-engineering-with-development-containers",
+            Items = new[]
+            {
+                new EventModelItem("Platform Engineering with Development Containers",
+                    new Dictionary<string, string>
+                    {
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUn5tuQVnsfYfoAcD5Zw?e=w0nAqg"] = CommonStrings.Powerpoint
+                    })
+            },
+            Location = CommonStrings.Online,
+            Date = new DateTime(2024, 2, 17)
+        }
     ];
 }

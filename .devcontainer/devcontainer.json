@@ -1,44 +1,44 @@
 {
-	"name": "C# (.NET)",
-	"image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": true,
-			"installOhMyZsh": true,
-			"installOhMyZshConfig": true,
-			"upgradePackages": true,
-			"username": "automatic",
-			"userUid": "automatic",
-			"userGid": "automatic"
-		},
-		"ghcr.io/devcontainers/features/node:1": {
-			"nodeGypDependencies": true,
-			"version": "latest",
-			"nvmVersion": "latest"
-		},
-		"ghcr.io/devcontainers/features/dotnet:2": {
-            "version": "none",
-            "dotnetRuntimeVersions": "7.0",
-            "aspNetCoreRuntimeVersions": "7.0"
-        }
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-dotnettools.vscode-dotnet-runtime",
-				"ms-dotnettools.csdevkit"
-			]
-		}
-	},
-	"forwardPorts": [5001],
-	"portsAttributes": {
-			"5001": {
-				"protocol": "https"
-			}
-	},
-	"remoteEnv": {
-		"DOTNET_MULTILEVEL_LOOKUP": "0"
-	},
-	"postCreateCommand": "dotnet dev-certs https --trust"
+  "name": "C# (.NET)",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "username": "automatic",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "latest",
+      "nvmVersion": "latest"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "none",
+      "dotnetRuntimeVersions": "7.0",
+      "aspNetCoreRuntimeVersions": "7.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  },
+  "forwardPorts": [5001],
+  "portsAttributes": {
+    "5001": {
+      "protocol": "https"
+    }
+  },
+  "remoteEnv": {
+    "DOTNET_MULTILEVEL_LOOKUP": "0"
+  },
+  "postCreateCommand": "dotnet dev-certs https --trust"
 }
