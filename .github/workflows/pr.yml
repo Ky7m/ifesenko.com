@@ -1,0 +1,26 @@
+name: PRs
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v4.0.0
+      with:
+         dotnet-version: 8.x
+        
+    - name: Get current time
+      uses: josStorer/get-current-time@v2
+      id: current-time
+      with:
+        format: YYYY.MM.DD
+    
+    - name: Build
+      shell: pwsh
+      run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
