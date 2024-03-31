@@ -1,5 +1,6 @@
 'use strict';
 import gulp from 'gulp';
+import debug from 'gulp-debug';
 const { task, src, series, dest, watch } = gulp;
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
@@ -14,7 +15,7 @@ import uglify from 'gulp-uglify';
 import util from 'gulp-util';
 const { log, colors } = util;
 import merge from 'merge-stream';
-import rimraf from 'gulp-rimraf';
+import {deleteAsync} from 'del';
 import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
@@ -114,18 +115,15 @@ function sizeAfter(title) {
 }
 
 task('clean-styles', function () {
-    return src(paths.css, {read: false, allowEmpty: true})
-        .pipe(rimraf());
+    return deleteAsync(paths.css);
 });
 
 task('clean-fonts', function () {
-    return src(paths.fonts, {read: false, allowEmpty: true})
-        .pipe(rimraf());
+    return deleteAsync(paths.fonts);
 });
 
 task('clean-code', function () {
-    return src(paths.js, {read: false, allowEmpty: true})
-        .pipe(rimraf());
+    return deleteAsync(paths.js);
 });
 
 task('clean', series('clean-styles', 'clean-fonts', 'clean-code'));
@@ -153,7 +151,8 @@ task('styles', series('clean-styles', function () {
                     !environment.isDevelopment(),
                     moreCSS()))
                 .pipe(sizeAfter(source.name))
-                .pipe(dest(paths.css));
+                .pipe(dest(paths.css))
+                .pipe(debug());
         }
     });
     return merge(tasks);
@@ -166,7 +165,8 @@ task('fonts', series('clean-fonts', function () {
             .pipe(rename(function (path) {
                 path.dirname = '';
             }))
-            .pipe(dest(paths.fonts));
+            .pipe(dest(paths.fonts))
+            .pipe(debug());
     });
     return merge(tasks);
 }));
@@ -198,7 +198,8 @@ task('code', series('clean-code', function () {
                     !environment.isDevelopment(),
                     uglify()))
                 .pipe(sizeAfter(source.name))
-                .pipe(dest(paths.js));
+                .pipe(dest(paths.js))
+                .pipe(debug());
         }
     });
     return merge(tasks);
@@ -213,7 +214,8 @@ task('images', function () {
             optimizationLevel: 4
         }))
         .pipe(dest(paths.img))
-        .pipe(sizeAfter());
+        .pipe(sizeAfter())
+        .pipe(debug());
 });
 
 task('watch-styles', function () {
