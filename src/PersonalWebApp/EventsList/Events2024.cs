@@ -11,6 +11,18 @@ internal static class Events2024
     [
         new()
         {
+            Title = "Microsoft Build 2024",
+            Link = "https://news.microsoft.com/build-2024-book-of-news/",
+            Items = new[]
+            {
+                new EventModelItem("Expert Meet-up .NET for Developer Tools",
+                    new Dictionary<string, string>())
+            },
+            Location = CommonStrings.Seattle,
+            Date = new DateTime(2024, 5, 21)
+        },
+        new()
+        {
             Title = "DevOps fwdays'24",
             Link = "https://fwdays.com/en/event/devops-fwdays-2024/review/platform-engineering-with-development-containers",
             Items = new[]

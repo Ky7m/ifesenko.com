@@ -69,7 +69,7 @@ internal static class Events2023
         new()
         {
             Title = "Microsoft Build 2023",
-            Link = "https://news.microsoft.com/build-2023/",
+            Link = "https://news.microsoft.com/build-2023-book-of-news/",
             Items = new[]
             {
                 new EventModelItem("LAB: Build a serverless web application end-to-end on Microsoft Azure",
