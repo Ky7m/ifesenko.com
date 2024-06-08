@@ -47,7 +47,6 @@ const paths = {
     scripts: 'Scripts/',
     styles: 'Styles/',
     css: webroot + 'css/',
-    fonts: webroot + 'fonts/',
     img: webroot + 'images/',
     js: webroot + 'js/'
 };
@@ -64,16 +63,6 @@ const sources = {
             paths: [
                 paths.styles + 'site.scss'
             ]
-        }
-    ],
-    fonts: [
-        {
-            name: 'bootstrap',
-            path: paths.npm + 'bootstrap/**/*.{ttf,svg,woff,woff2,otf,eot}'
-        },
-        {
-            name: 'fonts',
-            path: 'Fonts/**/*.{ttf,svg,woff,woff2,otf,eot}'
         }
     ],
     img: [
@@ -118,15 +107,11 @@ task('clean-styles', function () {
     return deleteAsync(paths.css);
 });
 
-task('clean-fonts', function () {
-    return deleteAsync(paths.fonts);
-});
-
 task('clean-code', function () {
     return deleteAsync(paths.js);
 });
 
-task('clean', series('clean-styles', 'clean-fonts', 'clean-code'));
+task('clean', series('clean-styles', 'clean-code'));
 
 task('styles', series('clean-styles', function () {
     const tasks = sources.css.map(function (source) {
@@ -154,19 +139,6 @@ task('styles', series('clean-styles', function () {
                 .pipe(dest(paths.css))
                 .pipe(debug());
         }
-    });
-    return merge(tasks);
-}));
-
-task('fonts', series('clean-fonts', function () {
-    const tasks = sources.fonts.map(function (source) {
-        return src(source.path)
-            .pipe(plumber())
-            .pipe(rename(function (path) {
-                path.dirname = '';
-            }))
-            .pipe(dest(paths.fonts))
-            .pipe(debug());
     });
     return merge(tasks);
 }));
@@ -239,6 +211,6 @@ task('watch-code', function () {
 
 task('watch', series('watch-styles', 'watch-code'));
 
-task('build', series('styles', 'fonts', 'code'));
+task('build', series('styles', 'code'));
 
 task('default', series('build'));
