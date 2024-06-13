@@ -31,7 +31,8 @@ internal static class Events2024
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUn5tuQVnsfYfoAcD5Zw?e=w0nAqg"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/blob/main/WorkWithTelemetryInDotNET/.devcontainer/devcontainer.json"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/blob/main/WorkWithTelemetryInDotNET/.devcontainer/devcontainer.json"] = CommonStrings.DemoCode,
+                        ["https://www.youtube.com/watch?v=yBwtNDicNZ0"] = CommonStrings.Recording
                     })
             },
             Location = CommonStrings.Online,
