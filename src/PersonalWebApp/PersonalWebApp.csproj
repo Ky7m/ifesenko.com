@@ -7,7 +7,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2024.2.0" />
-    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.22.0" />
+    <PackageReference Include="NetEscapades.AspNetCore.SecurityHeaders" Version="0.23.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.22.0" />
   </ItemGroup>
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
