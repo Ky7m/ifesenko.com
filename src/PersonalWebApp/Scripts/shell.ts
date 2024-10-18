@@ -1,4 +1,7 @@
-﻿interface JQuery {
+import "bootstrap";
+import "jquery";
+
+interface JQuery {
     textrotator(options?: any): JQuery;
     backstretch(options?: any): JQuery;
 }
@@ -16,7 +19,7 @@ module ifesenko.com.Shell {
     $(function () {
         $(document).on("click", ".navbar-collapse.in", function (e) {
             if ($(e.target).is("a") && $(e.target).attr("class") !== "dropdown-toggle") {
-                $(this).collapse("hide");
+                $(this).collapse("hide" as any);
             }
         });
 
