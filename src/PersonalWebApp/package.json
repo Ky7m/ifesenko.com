@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@types/bootstrap": "5.2.6",
-    "@types/jquery": "3.5.30",
+    "@types/jquery": "3.5.31",
     "bootstrap": "3.4.1",
     "jquery": "3.7.1",
     "jquery-backstretch": "2.1.18"
@@ -27,9 +27,9 @@
     "gulp-util": "3.0.8",
     "merge-stream": "2.0.0",
     "natives": "1.1.6",
-    "typescript": "5.5.4",
+    "typescript": "5.6.3",
     "node-sass": "9.0.0",
-    "sass": "1.77.8",
-    "del": "7.1.0"
+    "sass": "1.80.1",
+    "del": "8.0.0"
   }
 }
