@@ -56,7 +56,7 @@ const sources = {
         {
             name: 'bootstrap.css',
             copy: true,
-            paths: paths.npm + 'bootstrap/dist/css/bootstrap.css'
+            paths: paths.npm + 'bootstrap/dist/css/bootstrap.min.css'
         },
         {
             name: 'app.css',
@@ -72,7 +72,7 @@ const sources = {
         {
             name: 'bootstrap.js',
             copy: true,
-            paths: paths.npm + 'bootstrap/dist/js/bootstrap.js'
+            paths: paths.npm + 'bootstrap/dist/js/bootstrap.bundle.min.js'
         },
         {
             name: 'jquery.js',
