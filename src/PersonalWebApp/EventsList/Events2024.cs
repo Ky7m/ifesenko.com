@@ -11,13 +11,45 @@ internal static class Events2024
     [
         new()
         {
+            Title = "Microsoft Ignite 2024",
+            Link = "https://ignite.microsoft.com/en-US/home",
+            Items =
+            [
+                new EventModelItem("LAB: Integrate GenAI capabilities into your .NET apps with minimal code changes",
+                    new Dictionary<string, string>
+                    {
+                        // ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd?wt.mc_id=DT-MVP-5002442"] = CommonStrings.Online
+                    }),
+                new EventModelItem("LAB: Put the guardrail in 'self-serve with guardrails' with Microsoft Dev Box",
+                    new Dictionary<string, string>
+                    {
+                        // ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd?wt.mc_id=DT-MVP-5002442"] = CommonStrings.Online
+                    })
+            ],
+            Location = CommonStrings.Chicago,
+            Date = new DateTime(2024, 11, 19)
+        },
+        new()
+        {
+            Title = "One Line Coding Contest",
+            Link = "https://robotdreams.cc/uk/course/1645-konkurs-na-naykrashchiy-laynokod-ukrajini",
+            Items =
+            [
+                new EventModelItem("Expert Committee Member",
+                    new Dictionary<string, string>())
+            ],
+            Location = CommonStrings.Online,
+            Date = new DateTime(2024, 10, 31)
+        },
+        new()
+        {
             Title = "Microsoft Build 2024",
             Link = "https://news.microsoft.com/build-2024-book-of-news/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Expert Meet-up .NET for Developer Tools",
                     new Dictionary<string, string>())
-            },
+            ],
             Location = CommonStrings.Seattle,
             Date = new DateTime(2024, 5, 21)
         },
@@ -25,8 +57,8 @@ internal static class Events2024
         {
             Title = "DevOps fwdays'24",
             Link = "https://fwdays.com/en/event/devops-fwdays-2024/review/platform-engineering-with-development-containers",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Platform Engineering with Development Containers",
                     new Dictionary<string, string>
                     {
@@ -34,7 +66,7 @@ internal static class Events2024
                         ["https://github.com/Ky7m/DemoCode/blob/main/WorkWithTelemetryInDotNET/.devcontainer/devcontainer.json"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=yBwtNDicNZ0"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2024, 2, 17)
         }

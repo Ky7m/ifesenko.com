@@ -18,4 +18,5 @@ internal static class CommonStrings
     public const string Minsk = "Minsk (Belarus)";
     public const string SanFrancisco = "San Francisco, CA (USA)";
     public const string Seattle = "Seattle, WA (USA)";
+    public const string Chicago = "Chicago, IL (USA)";
 }

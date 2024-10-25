@@ -14,8 +14,8 @@ internal static class Events2018
             Title = "Holiday party / SF meetups: Azure, .NET, IT Pro, F#, C#, MSFT Data Platform",
             Link =
                 "https://www.eventbrite.com/e/holiday-party-sf-meetups-azure-net-it-pro-f-c-msft-data-platform-tickets-52889080664",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("What's new in .NET Core 2.2 & ASP.NET Core 2.2 - Top Features",
                     new Dictionary<string, string>
                     {
@@ -23,7 +23,7 @@ internal static class Events2018
                         ["https://github.com/Ky7m/DemoCode/tree/main/HolidayPartySF2018"] =
                             CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.SanFrancisco,
             Date = new DateTime(2018, 12, 12)
         },
@@ -32,15 +32,15 @@ internal static class Events2018
             Title = "How to Integrate Your Apps",
             Link =
                 "https://www.eventbrite.com/e/softserve-microsoft-teams-how-to-integrate-your-apps-sf-tickets-49913991091#",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Building Apps for Microsoft Teams",
                     new Dictionary<string, string>
                     {
                         ["https://github.com/Ky7m/DemoCode/tree/main/MicrosoftTeamsApps"] =
                             CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.SanFrancisco,
             Date = new DateTime(2018, 10, 11)
         },
@@ -48,14 +48,14 @@ internal static class Events2018
         {
             Title = "ITEAHub TechTalk: easy win with C#",
             Link = "https://www.facebook.com/events/2213455178936354/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Securing Your Web Applications With ASP.NET",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEJ9nMcxsqkiqu0ng"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Lviv,
             Date = new DateTime(2018, 9, 17)
         },
@@ -63,8 +63,8 @@ internal static class Events2018
         {
             Title = "Local .NET Conf - Recap of What's New in .NET!",
             Link = "https://www.facebook.com/events/418182088707602/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("What's New in .NET World?",
                     new Dictionary<string, string>
                     {
@@ -75,7 +75,7 @@ internal static class Events2018
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEfZ-Rg05o5ZEJjEg"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Lviv,
             Date = new DateTime(2018, 9, 13)
         },
@@ -84,14 +84,14 @@ internal static class Events2018
             Title = "TechCases in Architecture #3",
             Link = "https://www.facebook.com/events/302795240506275/",
             Location = CommonStrings.Kyiv,
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Scale Up An App And Engineering Processes To The Next Level With Azure",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkJEIUeLhTEjQlmSbPA"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Date = new DateTime(2018, 9, 11)
         },
         new()
@@ -105,14 +105,14 @@ internal static class Events2018
         {
             Title = "LvivJS",
             Link = "https://lvivjs.org.ua/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("What I Learned Making an Integration Between Global Ecosystems",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkJA4sfyBe1Jkr8BV5w"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Lviv,
             Date = new DateTime(2018, 9, 1)
         },
@@ -120,14 +120,14 @@ internal static class Events2018
         {
             Title = "iForum 2018",
             Link = "https://2018.iforum.ua/en/speakers/igor-fesenko/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("What I Learned Making a Global Web App",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkII0hLNCxL0ydrqcMw"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2018, 4, 25)
         },
@@ -135,15 +135,15 @@ internal static class Events2018
         {
             Title = "Global Azure Bootcamp Lviv '18",
             Link = "https://www.facebook.com/events/2038968596390170/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Create Global Web App with Microsoft Azure",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkIIx_lcJ-B2ID0FpAw"] = CommonStrings.Powerpoint,
                         ["https://www.youtube.com/watch?v=BkRhK-2bfAk"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Lviv,
             Date = new DateTime(2018, 4, 21)
         },
@@ -151,8 +151,8 @@ internal static class Events2018
         {
             Title = ".NET fwdays '18",
             Link = "https://frameworksdays.com/event/dotnet-fwdays-2018",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Asynchronous Processing and Multithreading Are Always Fun",
                     new Dictionary<string, string>
                     {
@@ -160,7 +160,7 @@ internal static class Events2018
                         ["https://github.com/Ky7m/DemoCode/tree/main/AsynchronousAndMultithreading"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=TR93nhJgHH0"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2018, 4, 15)
         }

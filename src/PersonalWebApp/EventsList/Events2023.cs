@@ -13,14 +13,14 @@ internal static class Events2023
         {
             Title = "Svitla Smart Talk: .NET CONF",
             Link = "https://kommunity.com/svitla-systems/events/svitla-smart-talk-net-conf-db7d2cd9",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Panel Discussion",
                     new Dictionary<string, string>
                     {
                         ["https://www.youtube.com/watch?v=ORapxIWoEco"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 12, 13)
         },
@@ -28,15 +28,15 @@ internal static class Events2023
         {
             Title = ".NET Apps Observability with OpenTelemetry",
             Link = "https://www.linkedin.com/feed/update/urn:li:activity:7127654191111487489/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem(".NET Apps Observability with OpenTelemetry",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUn5gSjgrUggOjASjzow?e=NySE5v"] = CommonStrings.Powerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/main/WorkWithTelemetryInDotNET"] = CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 11, 17)
         },
@@ -44,10 +44,10 @@ internal static class Events2023
         {
             Title = ".NET Conf 2023: Watch, Discuss, Network",
             Link = "https://app.softserveinc.com/apply/register/en/net-conf-2023-1",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Panel Discussion")
-            },
+            ],
             Location = CommonStrings.Lviv,
             Date = new DateTime(2023, 11, 14)
         },
@@ -55,14 +55,14 @@ internal static class Events2023
         {
             Title = ".NET fwdays'23",
             Link = "https://fwdays.com/en/event/dotnet-fwdays-2023",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Discussion with Kevin Gosse",
                     new Dictionary<string, string>
                     {
                         ["https://fwdays.com/en/event/dotnet-fwdays-2023/review/discussion-with-kevin-gosse"] = CommonStrings.Online
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 6, 15)
         },
@@ -70,8 +70,8 @@ internal static class Events2023
         {
             Title = "Microsoft Build 2023",
             Link = "https://news.microsoft.com/build-2023-book-of-news/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("LAB: Build a serverless web application end-to-end on Microsoft Azure",
                     new Dictionary<string, string>
                     {
@@ -79,7 +79,7 @@ internal static class Events2023
                     }),
                 new EventModelItem("Expert Meet-up .NET",
                     new Dictionary<string, string>())
-            },
+            ],
             Location = CommonStrings.Seattle,
             Date = new DateTime(2023, 5, 23)
         },
@@ -87,15 +87,15 @@ internal static class Events2023
         {
             Title = "DevOps fwdays'23 conference",
             Link = "https://fwdays.com/en/event/devops-fwdays-2023/review/modern-devops-real-life-applications",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Modern DevOps & Real Life Applications. 3.0.0-devops+20230318",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkPxHesyZdfXmSQZLcg?e=JZsyD3"] = CommonStrings.Powerpoint,
                         ["https://www.youtube.com/watch?v=BQ7QlQqfcOw"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2023, 3, 18)
         }

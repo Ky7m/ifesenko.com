@@ -13,15 +13,15 @@ internal static class Events2020
         {
             Title = "Svitla Smart Talk: Advanced Debugging Tools & Techniques for C# Developers",
             Link = "https://www.facebook.com/events/3298952870202678",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Advanced Debugging Tools & Techniques for C# Developers",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZlVizBwGnhmdt0bg?e=adTtGi"] = CommonStrings.Powerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/main/DebuggingScenarios"] = CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 11, 30)
         },
@@ -29,14 +29,14 @@ internal static class Events2020
         {
             Title = ".NET Conference 2020",
             Link = "https://softserveinc.events/netconference2020",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem(".NET Development Yesterday, Today and Tomorrow",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkNZi_3F1g6JWDFr4-Q?e=xKXzqz"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 11, 17)
         },
@@ -44,14 +44,14 @@ internal static class Events2020
         {
             Title = "IT Arena 2020",
             Link = "https://itarena.ua/speaker/igor-fesenko/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Tips From The Trenches: How to survive in Software Engineering",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkNVtiKHEvokeU0wEbQ?e=bJv1XC"] = CommonStrings.Powerpoint
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 10, 10)
         },
@@ -59,8 +59,8 @@ internal static class Events2020
         {
             Title = "Host and Deploy .NET Core App with Microsoft Azure",
             Link = "https://www.facebook.com/events/708950909939787/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Host and Deploy .NET Core App with Microsoft Azure",
                     new Dictionary<string, string>
                     {
@@ -68,7 +68,7 @@ internal static class Events2020
                         ["https://github.com/Ky7m/DemoCode/tree/main/PulumiDemo"] = CommonStrings.DemoCode,
                         ["https://www.facebook.com/SvitlaSystems/videos/vb.149447525111721/323925932064637/?type=3&theater"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 7, 30)
         },
@@ -76,14 +76,14 @@ internal static class Events2020
         {
             Title = "Podcast DotNet&More: .Net Summit",
             Link = "https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Podcast DotNet&More: .Net Summit",
                     new Dictionary<string, string>
                     {
                         ["https://anchor.fm/dotnetmore/episodes/35---DotNetMore--Net-Summit-eggr6b"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 7, 7)
         },
@@ -91,8 +91,8 @@ internal static class Events2020
         {
             Title = "Diagnostics, instrumenting .NET Core 3.x application",
             Link = "https://www.facebook.com/events/2971745402871621/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Diagnostics, instrumenting .NET Core 3.x application",
                     new Dictionary<string, string>
                     {
@@ -100,7 +100,7 @@ internal static class Events2020
                         ["https://github.com/Ky7m/DemoCode/tree/main/ApplicationDiagnosticsNetCore"] = CommonStrings.DemoCode,
                         ["https://www.facebook.com/149447525111721/videos/180335746489420/"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 5, 7)
         },
@@ -108,15 +108,15 @@ internal static class Events2020
         {
             Title = "Lifting Your Code Quality Higher",
             Link = "https://www.facebook.com/events/249165142884214/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Lifting Your C# Code Quality Higher",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/main/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.Online,
             Date = new DateTime(2020, 4, 23)
         },
@@ -124,8 +124,8 @@ internal static class Events2020
         {
             Title = ".NET fwdays'20",
             Link = "https://fwdays.com/event/dotnet-fwdays-2020",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("C# 8: Be Good, Get Good or Give Up",
                     new Dictionary<string, string>
                     {
@@ -133,7 +133,7 @@ internal static class Events2020
                         ["https://github.com/Ky7m/DemoCode/tree/main/CSharp8"] = CommonStrings.DemoCode,
                         ["https://www.youtube.com/watch?v=YB6Cl-UOYuQ"] = CommonStrings.Recording
                     })
-            },
+            ],
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2020, 4, 11)
         },
@@ -141,15 +141,15 @@ internal static class Events2020
         {
             Title = "Svitla Smart Talk: .NET. Lifting Your Code Quality Higher",
             Link = "https://www.facebook.com/events/191429968902776/",
-            Items = new[]
-            {
+            Items =
+            [
                 new EventModelItem("Lifting Your C# Code Quality Higher",
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUkMVbbthLSqDt6fih9w?e=8cNVFf"] = CommonStrings.Powerpoint,
                         ["https://github.com/Ky7m/DemoCode/tree/main/LiftingYourCodeQualityHigher"] = CommonStrings.DemoCode
                     })
-            },
+            ],
             Location = CommonStrings.Kyiv,
             Date = new DateTime(2020, 2, 27)
         }
