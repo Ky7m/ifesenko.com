@@ -46,6 +46,17 @@ internal static class Events2024
         },
         new()
         {
+            Title = ".NET Conference 2024: Watch, Discuss, Network",
+            Link = "https://share.hsforms.com/1L915qzXNQO-e0ANUEjX2WA3ir33",
+            Items =
+            [
+                new EventModelItem("Panel Discussion")
+            ],
+            Location = CommonStrings.Online,
+            Date = new DateTime(2024, 11, 12)
+        },
+        new()
+        {
             Title = "One Line Coding Contest",
             Link = "https://robotdreams.cc/uk/course/1645-konkurs-na-naykrashchiy-laynokod-ukrajini",
             Items =
