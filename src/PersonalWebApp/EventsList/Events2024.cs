@@ -11,6 +11,21 @@ internal static class Events2024
     [
         new()
         {
+            Title = "Svitla Smart Talk",
+            Link = "https://kommunity.com/svitla-systems/events/a-day-in-the-life-of-a-software-engineer-how-c-helps-them-succeed-61b35bfd",
+            Items =
+            [
+                new EventModelItem("A Day in the Life of a Software Engineer: How C# Helps Them Succeed",
+                    new Dictionary<string, string>
+                    {
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUoaQ-KUT32UVnbYZVSg?e=eEbQli"] = CommonStrings.Powerpoint
+                    })
+            ],
+            Location = CommonStrings.Online,
+            Date = new DateTime(2024, 12, 3)
+        },
+        new()
+        {
             Title = "Microsoft Ignite 2024",
             Link = "https://ignite.microsoft.com/en-US/home",
             Items =
@@ -18,12 +33,12 @@ internal static class Events2024
                 new EventModelItem("LAB: Integrate GenAI capabilities into your .NET apps with minimal code changes",
                     new Dictionary<string, string>
                     {
-                        // ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd?wt.mc_id=DT-MVP-5002442"] = CommonStrings.Online
+                        ["https://github.com/Azure-Samples/Ignite2024-Lab411/tree/main"] = CommonStrings.DemoCode
                     }),
                 new EventModelItem("LAB: Put the guardrail in 'self-serve with guardrails' with Microsoft Dev Box",
                     new Dictionary<string, string>
                     {
-                        // ["https://learn.microsoft.com/en-us/users/learn-live/collections/12odt3rkw1nqnd?wt.mc_id=DT-MVP-5002442"] = CommonStrings.Online
+                        ["https://devblogs.microsoft.com/develop-from-the-cloud/devboxignite2024/?wt.mc_id=DT-MVP-5002442"] = CommonStrings.DemoCode
                     })
             ],
             Location = CommonStrings.Chicago,
