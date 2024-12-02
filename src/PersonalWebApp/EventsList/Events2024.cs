@@ -18,7 +18,8 @@ internal static class Events2024
                 new EventModelItem("A Day in the Life of a Software Engineer: How C# Helps Them Succeed",
                     new Dictionary<string, string>
                     {
-                        ["https://1drv.ms/p/s!AmdJq1kgIxHUoaQ-KUT32UVnbYZVSg?e=eEbQli"] = CommonStrings.Powerpoint
+                        ["https://1drv.ms/p/s!AmdJq1kgIxHUoaQ-KUT32UVnbYZVSg?e=eEbQli"] = CommonStrings.Powerpoint,
+                        ["https://github.com/Ky7m/DemoCode/tree/main/SvitlaSmartTalk2024"] = CommonStrings.DemoCode
                     })
             ],
             Location = CommonStrings.Online,
