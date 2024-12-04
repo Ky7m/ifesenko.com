@@ -12,25 +12,23 @@
       "userUid": "automatic",
       "userGid": "automatic"
     },
+    "ghcr.io/devcontainers/features/python:1": {},
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
       "version": "latest",
       "nvmVersion": "latest"
     },
-    "ghcr.io/devcontainers/features/python:1": {
-      "version": "3.11"
-    },
     "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "none",
-      "dotnetRuntimeVersions": "7.0",
-      "aspNetCoreRuntimeVersions": "7.0"
+      "additionalVersions": [
+				"8.0.403"
+			]
     }
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-dotnettools.vscode-dotnet-runtime",
-        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscodeintellicode-csharp",
+        "EditorConfig.EditorConfig",
         "GitHub.copilot",
         "GitHub.copilot-chat",
         "redhat.vscode-yaml"
@@ -43,5 +41,6 @@
       "protocol": "https"
     }
   },
-  "postCreateCommand": "dotnet dev-certs https --trust"
+  "onCreateCommand": "dotnet restore",
+  "postStartCommand": "dotnet dev-certs https --trust"
 }
