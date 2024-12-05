@@ -60,7 +60,7 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az webapp deployment slot create --name app-ifesenko-centralus --resource-group ifesenko.com --configuration-source staging --slot pr-${{ github.event.number }}
-          az webapp config appsettings set --name app-ifesenko-centralus --resource-group ifesenko.com --settings AppSettings__CdnEndpoint=//app-ifesenko-centralus-pr-${{ github.event.number }}.azurewebsites.net
+          az webapp config appsettings set --name app-ifesenko-centralus --resource-group ifesenko.com --settings AppSettings__CdnEndpoint='//app-ifesenko-centralus-pr-${{ github.event.number }}.azurewebsites.net'
         
     - name: Deploy to Deployment Slot
       id: deploywebapp
