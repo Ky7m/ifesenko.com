@@ -59,8 +59,7 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          $SLOT_NAME="pr-${{ github.event.number }}"
-          az webapp deployment slot create --name app-ifesenko-centralus --resource-group ifesenko.com --configuration-source staging --slot $SLOT_NAME
+          az webapp deployment slot create --name app-ifesenko-centralus --resource-group ifesenko.com --configuration-source staging --slot pr-${{ github.event.number }}
         
     - name: Deploy to Deployment Slot
       id: deploywebapp
