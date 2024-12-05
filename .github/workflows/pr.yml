@@ -1,11 +1,13 @@
 name: PRs
 on:
   pull_request:
+    types: [opened, synchronize, reopened, closed]
     branches: [ "main" ]
 
 jobs:
   build:
     name: Build
+    if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     outputs:
       artifact-name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
@@ -24,3 +26,66 @@ jobs:
     - name: Build
       shell: pwsh
       run: .\build\build.ps1 --buildNumber=${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
+    
+    - name: Publish
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.current-time.outputs.formattedTime }}.${{ github.run_number }}
+        path: ${{ github.workspace }}/build/artifacts/Build.StagingDirectory/*.zip
+
+  deploy:
+    name: Deploy
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: pr
+      url: ${{ steps.deploywebapp.outputs.webapp-url }}
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: ${{ needs.build.outputs.artifact-name }}
+    
+    - name: OIDC Login via Azure CLI
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    
+    - name: Create New Deployment Slot
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          $SLOT_NAME="pr-${{ github.event.number }}"
+          az webapp deployment slot create --name app-ifesenko-centralus --resource-group ifesenko.com --configuration-source staging --slot $SLOT_NAME
+        
+    - name: Deploy to Deployment Slot
+      id: deploywebapp
+      uses: azure/webapps-deploy@v3
+      with:
+        app-name: app-ifesenko-centralus
+        slot-name: 'pr-${{ github.event.number }}'
+        package: ${{ needs.build.outputs.artifact-name }}.zip
+
+  cleanup:
+    name: Cleanup
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: OIDC Login via Azure CLI
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    
+    - name: Delete Deployment Slot
+      uses: azure/cli@v2
+      with:
+        azcliversion: latest
+        inlineScript: |
+          $SLOT_NAME="pr-${{ github.event.number }}"
+          az webapp deployment slot delete --name app-ifesenko-centralus --resource-group ifesenko.com --slot $SLOT_NAME
