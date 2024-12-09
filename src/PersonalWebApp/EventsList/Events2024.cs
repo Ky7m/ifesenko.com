@@ -19,7 +19,8 @@ internal static class Events2024
                     new Dictionary<string, string>
                     {
                         ["https://1drv.ms/p/s!AmdJq1kgIxHUoaQ-KUT32UVnbYZVSg?e=eEbQli"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/main/SvitlaSmartTalk2024"] = CommonStrings.DemoCode
+                        ["https://github.com/Ky7m/DemoCode/tree/main/SvitlaSmartTalk2024"] = CommonStrings.DemoCode,
+                        ["https://www.youtube.com/watch?v=tFh5VgWfZuU"] = CommonStrings.Recording
                     })
             ],
             Location = CommonStrings.Online,
