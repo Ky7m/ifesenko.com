@@ -6,6 +6,7 @@ on:
 
 permissions:
   id-token: write
+  pull-requests: write
 
 jobs:
   cleanup:
@@ -25,3 +26,9 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az webapp deployment slot delete --name app-ifesenko-centralus --resource-group ifesenko.com --slot pr-${{ github.event.number }}
+
+    - name: Delete PR Comment With Webapp Url
+      uses: thollander/actions-comment-pull-request@v3
+      with:
+        comment-tag: webapp-url
+        mode: delete
