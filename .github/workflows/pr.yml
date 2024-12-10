@@ -72,3 +72,10 @@ jobs:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         slot-name: pr-${{ github.event.number }}
         package: ${{ needs.build.outputs.artifact-name }}.zip
+    
+    - name: Comment PR With Webapp Url
+      uses: thollander/actions-comment-pull-request@v3
+      with:
+        message: |
+          ${{ steps.deploywebapp.outputs.webapp-url }}
+        comment-tag: webapp-url
