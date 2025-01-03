@@ -21,12 +21,15 @@ public sealed class InMemoryStorageService : IStorageService
         {
             return (events, false);
         }
-            
-        return (AllEvents[DateTime.UtcNow.Year], false);
+        
+        return AllEvents.TryGetValue(DateTime.UtcNow.Year, out var currentYearEvents) ? 
+            (currentYearEvents, false) : 
+            ([], false);
     }
 
     private readonly Dictionary<int, EventModel[]> AllEvents = new()
     {
+        [2025] = Events2025.List,
         [2024] = Events2024.List,
         [2023] = Events2023.List,
         [2022] = Events2022.List,

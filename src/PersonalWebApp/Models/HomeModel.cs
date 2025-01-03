@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PersonalWebApp.Models;
+﻿namespace PersonalWebApp.Models;
 
 public sealed class HomeModel
 {
