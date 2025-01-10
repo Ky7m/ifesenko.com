@@ -27,7 +27,7 @@
     "gulp-util": "3.0.8",
     "merge-stream": "2.0.0",
     "natives": "1.1.6",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "node-sass": "9.0.0",
     "sass": "1.83.1",
     "del": "8.0.0"
