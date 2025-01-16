@@ -64,7 +64,7 @@ jobs:
         azcliversion: latest
         inlineScript: |
           az webapp deployment slot create --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --configuration-source staging --slot pr-${{ github.event.number }}
-          az webapp config appsettings set --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --settings AppSettings__CdnEndpoint='//${{ env.AZURE_WEBAPP_NAME }}-pr-${{ github.event.number }}.azurewebsites.net'
+          az webapp config appsettings set --name ${{ env.AZURE_WEBAPP_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --slot pr-${{ github.event.number }} --settings AppSettings__CdnEndpoint='//${{ env.AZURE_WEBAPP_NAME }}-pr-${{ github.event.number }}.azurewebsites.net'
         
     - name: Deploy to PR Deployment Slot
       id: deploywebapp
