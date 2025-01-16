@@ -4,6 +4,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="**\*-lock.json" />
+    <Content Update="appsettings.Development.json">
+      <DependentUpon>appsettings.json</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
