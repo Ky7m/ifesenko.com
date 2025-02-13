@@ -4,9 +4,7 @@ import debug from 'gulp-debug';
 const { task, src, series, dest, watch } = gulp;
 import autoprefixer from 'gulp-autoprefixer';
 import concat from 'gulp-concat';
-import moreCSS from 'gulp-more-css';
 import gulpif from 'gulp-if';
-import imagemin from 'gulp-imagemin';
 import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
@@ -16,12 +14,11 @@ import util from 'gulp-util';
 const { log, colors } = util;
 import merge from 'merge-stream';
 import {deleteAsync} from 'del';
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 import ts from 'gulp-typescript';
 const { createProject } = ts;
-import shorthand from 'gulp-shorthand';
 
 const environment = {
     development: 'Development',
@@ -125,16 +122,10 @@ task('styles', series('clean-styles', function () {
         } else {
             return src(source.paths)
                 .pipe(plumber())
-                .pipe(gulpif('**/*.scss', sass()))
+                .pipe(gulpif('**/*.scss', sass().on('error', sass.logError)))
                 .pipe(autoprefixer())
                 .pipe(concat(source.name))
                 .pipe(sizeBefore(source.name))
-                .pipe(gulpif(
-                    !environment.isDevelopment(),
-                    shorthand()))
-                .pipe(gulpif(
-                    !environment.isDevelopment(),
-                    moreCSS()))
                 .pipe(sizeAfter(source.name))
                 .pipe(dest(paths.css))
                 .pipe(debug());
@@ -176,19 +167,6 @@ task('code', series('clean-code', function () {
     });
     return merge(tasks);
 }));
-
-task('images', function () {
-    return src(sources.img)
-        .pipe(plumber())
-        .pipe(sizeBefore())
-        .pipe(imagemin({
-            multipass: true,
-            optimizationLevel: 4
-        }))
-        .pipe(dest(paths.img))
-        .pipe(sizeAfter())
-        .pipe(debug());
-});
 
 task('watch-styles', function () {
     return watch(

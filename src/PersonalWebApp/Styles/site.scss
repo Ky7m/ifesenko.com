@@ -1,4 +1,6 @@
-﻿// Fix the Bootstrap font path so it points to wwwroot/fonts instead of wwwroot/fonts/bootstrap.
+﻿@use 'sass:math';
+
+// Fix the Bootstrap font path so it points to wwwroot/fonts instead of wwwroot/fonts/bootstrap.
 $icon-font-path: "../fonts/";
 
 /**
@@ -7,7 +9,7 @@ $icon-font-path: "../fonts/";
 /* ---------------------------------------------- */
 
 body {
-    font: 400 15px/1.6 'serif', sans-serif;
+    font: 400 15px/1.6 serif, sans-serif;
     color: #545454;
 }
 
@@ -29,7 +31,7 @@ a:hover {
 /* ---------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
-    font: 600 46px/1.2 'serif', sans-serif;
+    font: 600 46px/1.2 serif, sans-serif;
     margin: 5px 0 5px;
     color: #222;
 }
@@ -68,9 +70,6 @@ a,
 .btn,
 .navbar,
 .form-control {
-    -webkit-transition: all 0.125s ease-in-out 0s;
-    -moz-transition: all 0.125s ease-in-out 0s;
-    -o-transition: all 0.125s ease-in-out 0s;
     transition: all 0.125s ease-in-out 0s;
 }
 
@@ -85,10 +84,6 @@ a,
 .modal-content,
 .panel-group .panel,
 .widget-social li a {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    -ms-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -136,36 +131,8 @@ a,
 }
 
 .mouse-icon .wheel {
-    -webkit-animation-name: drop;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: linear;
-    -webkit-animation-delay: 0s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-play-state: running;
-    -moz-animation-name: drop;
-    -ms-animation-name: drop;
-    -o-animation-name: drop;
-    animation-name: drop;
-    -moz-animation-duration: 1s;
-    -ms-animation-duration: 1s;
-    -o-animation-duration: 1s;
-    animation-duration: 1s;
-    -moz-animation-timing-function: linear;
-    -ms-animation-timing-function: linear;
-    -o-animation-timing-function: linear;
-    animation-timing-function: linear;
-    -moz-animation-delay: 0s;
-    -ms-animation-delay: 0s;
-    -o-animation-delay: 0s;
-    animation-delay: 0s;
-    -moz-animation-iteration-count: infinite;
-    -ms-animation-iteration-count: infinite;
-    -o-animation-iteration-count: infinite;
-    animation-iteration-count: infinite;
-    -moz-animation-play-state: running;
-    -ms-animation-play-state: running;
-    -o-animation-play-state: running;
-    animation-play-state: running;
+    animation: 
+        drop 1s linear 0s infinite running;
     position: relative;
     -ms-border-radius: 10px;
     border-radius: 10px;
@@ -335,8 +302,6 @@ a,
 /* ---------------------------------------------- */
 
 #profile-contact {
-    -webkit-box-shadow: 0 0 4px #cbcbb2;
-    -ms-box-shadow: 0 0 4px #cbcbb2;
     box-shadow: 0 0 4px #cbcbb2;
     padding: 20px 0;
 }
@@ -461,7 +426,6 @@ a,
     background-image: url('../images/loader.gif');
     background-position: center;
     background-repeat: no-repeat;
-    -ms-background-size: 70px 70px;
     background-size: 70px 70px;
     width: 200px;
     height: 200px;
