@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using PersonalWebApp.Extensions;
-using PersonalWebApp.Middleware;
 using PersonalWebApp.Services;
 using PersonalWebApp.Settings;
 
@@ -69,11 +68,6 @@ public class Startup(IConfiguration configuration)
         );
 
         app.UseHttpsRedirection();
-
-        var rewriteOptions = new RewriteOptions()
-            .Add(new RedirectWwwRule());
-
-        app.UseRewriter(rewriteOptions);
 
         app.UseResponseCaching();
         app.UseResponseCompression();
