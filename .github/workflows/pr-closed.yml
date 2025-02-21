@@ -12,6 +12,8 @@ jobs:
   cleanup:
     name: Cleanup
     runs-on: ubuntu-latest
+    environment:
+      name: pr
     steps:
     - name: OIDC Login via Azure CLI
       uses: azure/login@v2
