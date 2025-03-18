@@ -72,7 +72,7 @@ jobs:
     needs: [ build, deploy-to-staging ]
     environment:
       name: prod
-      url: https://www.ifesenko.com
+      url: https://ifesenko.com
     steps:
     - uses: actions/download-artifact@v4
       with:
