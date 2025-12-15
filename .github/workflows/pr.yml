@@ -47,7 +47,7 @@ jobs:
       AZURE_WEBAPP_NAME: app-ifesenko-centralus
       AZURE_RESOURCE_GROUP: ifesenko.com
     steps:
-    - uses: actions/download-artifact@v6
+    - uses: actions/download-artifact@v7
       with:
         name: ${{ needs.build.outputs.artifact-name }}
     
