@@ -5,7 +5,7 @@
     "@types/bootstrap": "5.2.6",
     "@types/jquery": "3.5.33",
     "bootstrap": "3.4.1",
-    "jquery": "3.7.1",
+    "jquery": "4.0.0",
     "jquery-backstretch": "2.1.18"
   },
   "devDependencies": {
