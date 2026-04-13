@@ -36,7 +36,7 @@
             </div>
             @foreach (var eventModel in groupedByYear.OrderByDescending(x => x.Date).Select((value, i) => new { Index = i, Value = value }))
             {
-                var className = eventModel.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 col-md-offset-3 col-sm-8";
+                var className = eventModel.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 offset-md-3 col-sm-8";
                 var titleLayout = string.IsNullOrEmpty(eventModel.Value.Link) ?
                      eventModel.Value.Title :
                      $"<a href=\"{eventModel.Value.Link}\" rel=\"noopener\">{eventModel.Value.Title}</a>";
@@ -44,7 +44,7 @@
                 var isUpcoming = DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
                 if (isUpcoming)
                 {
-                    titleLayout += "&emsp;<span class=\"label label-info\">Upcoming</span>";
+                    titleLayout += "&emsp;<span class=\"badge bg-info\">Upcoming</span>";
                 }
                 <div class="@className">
                     <h4>@Html.Raw(titleLayout)</h4>
@@ -61,12 +61,12 @@
                             </ul>
                         }
                     }
-                    <hr class="hidden-xs">
+                    <hr class="d-none d-sm-block">
                 </div>
                 <div class="col-md-3 col-sm-4 event-place">
-                    <h4><i class="fa fa-location-arrow"></i>@eventModel.Value.Location</h4>
-                    <i class="fa fa-calendar"></i>@eventModel.Value.Date.ToString("MMM dd, yyyy")
-                    <hr class="visible-xs">
+                    <h4><i class="bi bi-geo-alt-fill"></i>@eventModel.Value.Location</h4>
+                    <i class="bi bi-calendar"></i>@eventModel.Value.Date.ToString("MMM dd, yyyy")
+                    <hr class="d-sm-none">
                 </div>
             }
         </div>

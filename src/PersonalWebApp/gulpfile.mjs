@@ -10,8 +10,6 @@ import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import size from 'gulp-size';
 import uglify from 'gulp-uglify';
-import util from 'gulp-util';
-const { log, colors } = util;
 import merge from 'merge-stream';
 import {deleteAsync} from 'del';
 import * as dartSass from 'sass';
@@ -44,6 +42,7 @@ const paths = {
     scripts: 'Scripts/',
     styles: 'Styles/',
     css: webroot + 'css/',
+    fonts: webroot + 'css/fonts/',
     img: webroot + 'images/',
     js: webroot + 'js/'
 };
@@ -54,6 +53,11 @@ const sources = {
             name: 'bootstrap.css',
             copy: true,
             paths: paths.npm + 'bootstrap/dist/css/bootstrap.css'
+        },
+        {
+            name: 'bootstrap-icons.css',
+            copy: true,
+            paths: paths.npm + 'bootstrap-icons/font/bootstrap-icons.css'
         },
         {
             name: 'app.css',
@@ -69,17 +73,7 @@ const sources = {
         {
             name: 'bootstrap.js',
             copy: true,
-            paths: paths.npm + 'bootstrap/dist/js/bootstrap.js'
-        },
-        {
-            name: 'jquery.js',
-            copy: true,
-            paths: paths.npm + 'jquery/dist/jquery.js'
-        },
-        {
-            name: 'backstretch.js',
-            copy: true,
-            paths: paths.npm + 'jquery-backstretch/jquery.backstretch.js'
+            paths: paths.npm + 'bootstrap/dist/js/bootstrap.bundle.js'
         },
         {
             name: 'app.js',
@@ -168,12 +162,17 @@ task('code', series('clean-code', function () {
     return merge(tasks);
 }));
 
+task('fonts', function () {
+    return src(paths.npm + 'bootstrap-icons/font/fonts/**/*')
+        .pipe(dest(paths.fonts));
+});
+
 task('watch-styles', function () {
     return watch(
             paths.styles + '**/*.{css,scss}',
             ['styles'])
         .on('change', function (event) {
-            log(colors.blue('File ' + event.path + ' was ' + event.type + ', styles task started.'));
+            console.log('File ' + event.path + ' was ' + event.type + ', styles task started.');
         });
 });
 
@@ -183,12 +182,12 @@ task('watch-code', function () {
             paths.scripts + '**/*.{js,ts}',
             ['code'])
         .on('change', function (event) {
-            log(colors.blue('File ' + event.path + ' was ' + event.type + ', code task started.'));
+            console.log('File ' + event.path + ' was ' + event.type + ', code task started.');
         });
 });
 
 task('watch', series('watch-styles', 'watch-code'));
 
-task('build', series('styles', 'code'));
+task('build', series('styles', 'fonts', 'code'));
 
 task('default', series('build'));

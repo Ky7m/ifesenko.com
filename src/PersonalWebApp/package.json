@@ -2,11 +2,9 @@
   "name": "ifesenko.com",
   "version": "1.0.0",
   "dependencies": {
-    "@types/bootstrap": "5.2.6",
-    "@types/jquery": "3.5.33",
-    "bootstrap": "3.4.1",
-    "jquery": "3.7.1",
-    "jquery-backstretch": "2.1.18"
+    "@types/bootstrap": "5.2.10",
+    "bootstrap": "5.3.6",
+    "bootstrap-icons": "1.11.3"
   },
   "devDependencies": {
     "del": "8.0.1",
@@ -23,7 +21,6 @@
     "gulp-size": "5.0.0",
     "gulp-typescript": "5.0.1",
     "gulp-uglify": "3.0.2",
-    "gulp-util": "3.0.8",
     "merge-stream": "2.0.0",
     "natives": "1.1.6",
     "sass": "1.99.0",

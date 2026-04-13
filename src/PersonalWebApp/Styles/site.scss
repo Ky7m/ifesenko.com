@@ -1,8 +1,5 @@
 ﻿@use 'sass:math';
 
-// Fix the Bootstrap font path so it points to wwwroot/fonts instead of wwwroot/fonts/bootstrap.
-$icon-font-path: "../fonts/";
-
 /**
 /* ---------------------------------------------- /*
  * General styles
@@ -78,11 +75,10 @@ a,
 /* ---------------------------------------------- */
 
 .btn,
-.label,
+.badge,
 .avatar,
 .form-control,
 .modal-content,
-.panel-group .panel,
 .widget-social li a {
     border-radius: 3px;
 }
@@ -201,7 +197,6 @@ a,
 
 .navbar {
     background: none;
-    -ms-border-radius: 0;
     border-radius: 0;
     border: 0;
     padding: 20px 0;
@@ -222,61 +217,63 @@ a,
     color: #FFF;
 }
 
-.navbar-custom .navbar-nav > li.active {
+.navbar-custom .navbar-nav > .nav-item.active {
     border-bottom: 3px solid #FFF;
 }
 
-.navbar-custom .navbar-toggle .icon-bar {
-    background: #FFF;
-}
-
-.navbar-custom .navbar-nav > li > a,
-.navbar-custom .navbar-nav .dropdown-menu > li > a {
+.navbar-custom .navbar-nav > .nav-item > .nav-link {
     color: #FFF;
     font-size: 12px;
 }
 
+.navbar-custom .navbar-nav > .nav-item > .nav-link:hover,
+.navbar-custom .navbar-nav > .nav-item > .nav-link:focus {
+    color: #EF4836;
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
 /* uncss:ignore */
-.navbar-color,
-/* uncss:ignore */
-.custom-collapse {
+.navbar-scrolled {
     background: #FFF;
-    -webkit-box-shadow: 0 0 4px #cbcbb2;
-    -ms-box-shadow: 0 0 4px #cbcbb2;
     box-shadow: 0 0 4px #cbcbb2;
     padding: 0;
 }
 /* uncss:ignore */
-.navbar-color .navbar-brand,
+.navbar-scrolled .navbar-brand,
 /* uncss:ignore */
-.custom-collapse .navbar-brand,
-/* uncss:ignore */
-.navbar-color .navbar-nav > li > a,
-/* uncss:ignore */
-.navbar-color .navbar-nav .dropdown-menu > li > a,
-/* uncss:ignore */
-.custom-collapse .navbar-nav > li > a,
-/* uncss:ignore */
-.custom-collapse .navbar-nav .dropdown-menu > li > a {
+.navbar-scrolled .navbar-nav > .nav-item > .nav-link {
     color: #222;
 }
 /* uncss:ignore */
-.navbar-color .navbar-nav > li.active {
+.navbar-scrolled .navbar-nav > .nav-item.active {
     border-bottom: 3px solid #222;
 }
 /* uncss:ignore */
-.custom-collapse .navbar-nav {
+.navbar-scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/* uncss:ignore */
+.navbar-mobile {
+    background: #FFF;
+    box-shadow: 0 0 4px #cbcbb2;
+    padding: 0;
+}
+/* uncss:ignore */
+.navbar-mobile .navbar-brand,
+/* uncss:ignore */
+.navbar-mobile .navbar-nav > .nav-item > .nav-link {
+    color: #222;
+}
+/* uncss:ignore */
+.navbar-mobile .navbar-nav {
     text-align: left;
-}
-/* uncss:ignore */
-.custom-collapse .navbar-nav > li.active {
-    border: 0;
-}
-/* uncss:ignore */
-.navbar-color .navbar-toggle .icon-bar,
-/* uncss:ignore */
-.custom-collapse .navbar-toggle .icon-bar {
-    background: #222;
 }
 
 /* ---------------------------------------------- /*
@@ -479,117 +476,4 @@ a,
     #stats .stat {
         margin: 0 0 20px;
     }
-}
-/* ---------------------------------------------- /*
- * Fontello
-/* ---------------------------------------------- */
-
-@font-face {
-    font-family: 'fontello';
-    src: url('../fonts/fontello.eot?15578692');
-    src: url('../fonts/fontello.eot?15578692#iefix') format('embedded-opentype'),
-    url('../fonts/fontello.woff2?15578692') format('woff2'),
-    url('../fonts/fontello.woff?15578692') format('woff'),
-    url('../fonts/fontello.ttf?15578692') format('truetype'),
-    url('../fonts/fontello.svg?15578692#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'fontello';
-    src: url('../font/fontello.svg?15578692#fontello') format('svg');
-  }
-}
-*/
-
-.fa {
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    speak: never;
-
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    /* opacity: .8; */
-
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
-
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
-
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: .2em;
-
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
-
-    /* Font smoothing. That was taken from TWBS */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    /* Uncomment for 3D effect */
-    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
-
-.fa-fw {
-    width: 1.28571429em;
-    text-align: center
-}
-
-.fa-map-marker:before {
-    content: "\e800"
-}
-
-.fa-calendar:before {
-    content: "\e801"
-}
-
-.fa-twitter:before {
-    content: "\f099"
-}
-
-.fa-linkedin:before {
-    content: "\f0e1"
-}
-
-.fa-github-alt:before {
-    content: "\f113"
-}
-
-.fa-location-arrow:before {
-    content: "\f124"
-}
-
-.fa-user-o:before {
-    content: "\f2c0"
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0
-}
-
-.sr-only-focusable:active, .sr-only-focusable:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto
 }
