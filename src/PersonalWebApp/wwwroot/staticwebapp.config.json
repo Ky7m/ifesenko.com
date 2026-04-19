@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/_framework/*",
+      "/css/*",
+      "/js/*",
+      "/images/*",
+      "/fonts/*",
+      "/*.{css,js,json,wasm,dat,blat,webcil,map,ico,png,jpg,jpeg,gif,svg,webp,woff,woff2,ttf,eot,txt,xml}"
+    ]
+  },
+  "mimeTypes": {
+    ".webcil": "application/octet-stream",
+    ".wasm": "application/wasm"
+  },
+  "globalHeaders": {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Content-Security-Policy": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'; img-src 'self' https: data:; font-src 'self' https://cdnjs.cloudflare.com data:; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; connect-src 'self' https:; media-src https:; upgrade-insecure-requests; block-all-mixed-content"
+  },
+  "routes": [
+    { "route": "/admin.php", "redirect": "https://www.youtube.com/watch?v=wbby9coDRCk", "statusCode": 302 },
+    { "route": "/admin/login.php", "redirect": "https://www.youtube.com/watch?v=nb2evY0kmpQ", "statusCode": 302 },
+    { "route": "/administrator/index.php", "redirect": "https://www.youtube.com/watch?v=eh7lp9umG2I", "statusCode": 302 },
+    { "route": "/ajaxproxy/proxy.php", "redirect": "https://www.youtube.com/watch?v=z9Uz1icjwrM", "statusCode": 302 },
+    { "route": "/bitrix/admin/index.php", "redirect": "https://www.youtube.com/watch?v=Sagg08DrO5U", "statusCode": 302 },
+    { "route": "/index.php", "redirect": "https://www.youtube.com/watch?v=A3YmHZ9HMPs", "statusCode": 302 },
+    { "route": "/magmi/web/magmi.php", "redirect": "https://www.youtube.com/watch?v=jI-kpVh6e1U", "statusCode": 302 },
+    { "route": "/wp-admin/admin-ajax.php", "redirect": "https://www.youtube.com/watch?v=jScuYd3_xdQ", "statusCode": 302 },
+    { "route": "/wp-admin/includes/themes.php", "redirect": "https://www.youtube.com/watch?v=S5PvBzDlZGs", "statusCode": 302 },
+    { "route": "/wp-admin/options-link.php", "redirect": "https://www.youtube.com/watch?v=9UZbGgXvCCA", "statusCode": 302 },
+    { "route": "/wp-admin/post-new.php", "redirect": "https://www.youtube.com/watch?v=O-dNDXUt1fg", "statusCode": 302 },
+    { "route": "/wp-login.php", "redirect": "https://www.youtube.com/watch?v=MJ5JEhDy8nE", "statusCode": 302 },
+    { "route": "/xmlrpc.php", "redirect": "https://www.youtube.com/watch?v=VnnWp_akOrE", "statusCode": 302 }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html" },
+    "500": { "rewrite": "/index.html" }
+  }
+}
