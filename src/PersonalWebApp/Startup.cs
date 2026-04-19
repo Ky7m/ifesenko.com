@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
 using PersonalWebApp.Extensions;
 using PersonalWebApp.Services;
 using PersonalWebApp.Settings;
@@ -49,8 +51,15 @@ public class Startup(IConfiguration configuration)
 
         services.AddSingleton<IStorageService, InMemoryStorageService>();
 
+        services.Configure<TelemetryConfiguration>(tc => tc.ConfigureOpenTelemetryBuilder(builder =>
+        {
+            builder.WithTracing(tracing =>
+            {
+                tracing.AddProcessor(new CustomActivityProcessor());
+            });
+        }));
+        
         services.AddApplicationInsightsTelemetry();
-        services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
