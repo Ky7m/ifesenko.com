@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using PersonalWebApp;
+using PersonalWebApp.Services;
 
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
 
-var builder = WebApplication.CreateBuilder(args);
-var startup = new Startup(builder.Configuration);
-startup.ConfigureServices(builder.Services);
+builder.Services.AddSingleton<IStorageService, InMemoryStorageService>();
 
-var app = builder.Build();
-startup.Configure(app, app.Environment);
-await app.RunAsync();
+await builder.Build().RunAsync();

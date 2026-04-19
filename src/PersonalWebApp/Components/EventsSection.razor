@@ -1,4 +1,4 @@
-﻿@model HomeModel
+@using System.Linq
 <div class="container">
     <div class="row">
         <div class="col-md-12 headline">
@@ -6,13 +6,14 @@
             <p>
                 Locked in. There are always others waiting to be announced.
             </p>
-            @if (!Model.IsItAllEvents)
+            @if (!IsItAllEvents)
             {
-                <p>Past years:
+                <p>
+                    Past years:
                     <span>
                         @for (var year = 2015; year <= DateTime.UtcNow.Year; year++)
                         {
-                            if (Model.Events.All(x => x.Date.Year != year))
+                            if (Events.All(x => x.Date.Year != year))
                             {
                                 <a href="/?period=@year#events" rel="noopener">@year</a>
                             }
@@ -28,30 +29,35 @@
         </div>
     </div>
 
-    @foreach (var groupedByYear in Model.Events.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
+    @foreach (var groupedByYear in Events.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
     {
         <div class="row events-per-year">
             <div class="col-md-3">
                 <h3>@groupedByYear.Key</h3>
             </div>
-            @foreach (var eventModel in groupedByYear.OrderByDescending(x => x.Date).Select((value, i) => new { Index = i, Value = value }))
+            @foreach (var entry in groupedByYear.OrderByDescending(x => x.Date).Select((value, i) => new { Index = i, Value = value }))
             {
-                var className = eventModel.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 offset-md-3 col-sm-8";
-                var titleLayout = string.IsNullOrEmpty(eventModel.Value.Link) ?
-                     eventModel.Value.Title :
-                     $"<a href=\"{eventModel.Value.Link}\" rel=\"noopener\">{eventModel.Value.Title}</a>";
-
-                var isUpcoming = DateTime.UtcNow < eventModel.Value.Date.ToUniversalTime();
-                if (isUpcoming)
-                {
-                    titleLayout += "&emsp;<span class=\"badge text-bg-info\">Upcoming</span>";
-                }
+                var className = entry.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 offset-md-3 col-sm-8";
+                var isUpcoming = DateTime.UtcNow < entry.Value.Date.ToUniversalTime();
                 <div class="@className">
-                    <h4>@Html.Raw(titleLayout)</h4>
-                    @foreach (var item in eventModel.Value.Items)
+                    <h4>
+                        @if (string.IsNullOrEmpty(entry.Value.Link))
+                        {
+                            @entry.Value.Title
+                        }
+                        else
+                        {
+                            <a href="@entry.Value.Link" rel="noopener">@entry.Value.Title</a>
+                        }
+                        @if (isUpcoming)
+                        {
+                            @((MarkupString)"&emsp;")<span class="badge text-bg-info">Upcoming</span>
+                        }
+                    </h4>
+                    @foreach (var item in entry.Value.Items)
                     {
                         <div>@item.Description</div>
-                        if(!isUpcoming && item.Collateral.Any())
+                        if (!isUpcoming && item.Collateral.Any())
                         {
                             <ul class="collateral">
                                 @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
@@ -64,11 +70,16 @@
                     <hr class="d-none d-sm-block">
                 </div>
                 <div class="col-md-3 col-sm-4 event-place">
-                    <h4><i class="fa fa-location-arrow"></i>@eventModel.Value.Location</h4>
-                    <i class="fa fa-calendar"></i>@eventModel.Value.Date.ToString("MMM dd, yyyy")
+                    <h4><i class="fa fa-location-arrow"></i>@entry.Value.Location</h4>
+                    <i class="fa fa-calendar"></i>@entry.Value.Date.ToString("MMM dd, yyyy")
                     <hr class="d-block d-sm-none">
                 </div>
             }
         </div>
     }
 </div>
+
+@code {
+    [Parameter, EditorRequired] public EventModel[] Events { get; set; } = [];
+    [Parameter] public bool IsItAllEvents { get; set; }
+}

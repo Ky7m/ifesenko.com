@@ -1,7 +1,3 @@
-﻿@using PersonalWebApp.Settings
-@using Microsoft.Extensions.Options
-@inject IOptions<AppSettings> AppSettings
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 headline">
@@ -9,7 +5,7 @@
             <p>Microsoft® Most Valuable Professional. Create simple solutions to complex problems.</p>
         </div>
         <div class="col-md-3 col-sm-6 d-none d-sm-block">
-            <img class="avatar" src="@AppSettings.Value.CdnEndpoint/images/profile.jpg" alt="Personal photo">
+            <img class="avatar" src="images/profile.jpg" alt="Personal photo">
             <div class="profile-widget">
                 <ul class="widget-social">
                     <li><a href="https://github.com/Ky7m" rel="noopener"><i class="fa fa-github-alt"></i></a></li>

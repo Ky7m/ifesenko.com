@@ -1,0 +1,8 @@
+@page "/error/{StatusCode:int}"
+@page "/error"
+
+<ErrorPage StatusCode="StatusCode" />
+
+@code {
+    [Parameter] public int StatusCode { get; set; } = 500;
+}

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using PersonalWebApp.EventsList;
 using PersonalWebApp.Models;
 
 namespace PersonalWebApp.Services;
 
-[UsedImplicitly]
 public sealed class InMemoryStorageService : IStorageService
 {
     public (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period)

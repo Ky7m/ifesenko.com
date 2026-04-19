@@ -1,17 +1,11 @@
-﻿@using PersonalWebApp.Settings
-@using Microsoft.Extensions.Options
-@model HomeModel
-@inject IOptions<AppSettings> AppSettings
-@{
-    ViewBag.Title = "Igor Fesenko - You're welcome!";
-}
+@page "/"
+@inject IStorageService StorageService
+@inject IJSRuntime JS
+@implements IDisposable
+
+<PageTitle>Igor Fesenko - You're welcome!</PageTitle>
+
 <div class="wrapper">
-    <div id="loader">
-        <div id="status">
-            <div class="status-mes">
-            </div>
-        </div>
-    </div>
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-custom fixed-top" role="navigation">
             <div class="container">
@@ -31,7 +25,7 @@
         </nav>
     </header>
     <main role="main">
-        <section id="home" class="section" data-image-source="@AppSettings.Value.CdnEndpoint/images/background.jpg">
+        <section id="home" class="section" data-image-source="images/background.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -51,16 +45,50 @@
             </div>
         </section>
         <section id="profile-contact">
-            @{await Html.RenderPartialAsync("Sections/QuickInformation");}
+            <QuickInformation />
         </section>
         <section id="profile" class="section">
-            @{await Html.RenderPartialAsync("Sections/Profile");}
+            <Profile />
         </section>
         <section id="events" class="section">
-            @{await Html.RenderPartialAsync("Sections/Events", Model);}
+            <EventsSection Events="_events" IsItAllEvents="_isItAllEvents" />
         </section>
         <section id="certifications" class="callout">
-            @{await Html.RenderPartialAsync("Sections/Certifications");}
+            <Certifications />
         </section>
     </main>
 </div>
+
+@code {
+    [SupplyParameterFromQuery] public string? Period { get; set; }
+
+    private EventModel[] _events = [];
+    private bool _isItAllEvents;
+    private string? _loadedPeriod;
+
+    protected override void OnParametersSet()
+    {
+        if (_loadedPeriod == Period)
+        {
+            return;
+        }
+
+        var (events, isAll) = StorageService.RetrieveEventsForPeriod(Period ?? string.Empty);
+        _events = events;
+        _isItAllEvents = isAll;
+        _loadedPeriod = Period;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("ifesenkoShell.init");
+        }
+    }
+
+    public void Dispose()
+    {
+        _ = JS.InvokeVoidAsync("ifesenkoShell.dispose");
+    }
+}
