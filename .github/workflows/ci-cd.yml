@@ -1,0 +1,57 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ "main" ]
+
+# PR-scoped concurrency shared with close-pr.yml so a late-arriving deploy
+# cannot recreate a preview environment that close-pr.yml just tore down.
+concurrency:
+  group: swa-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    # Skip the deployment job on PRs from forks (they have no access to the deployment token).
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    environment:
+      name: ${{ github.event_name == 'push' && 'prod' || format('pr-{0}', github.event.pull_request.number) }}
+      url: ${{ steps.deploy.outputs.static_web_app_url }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+          lfs: false
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.x
+
+      - name: Publish Blazor WASM
+        run: |
+          dotnet publish src/PersonalWebApp/PersonalWebApp.csproj \
+            -c Release \
+            -o ${{ github.workspace }}/publish \
+            --nologo
+
+      - name: Deploy to Azure Static Web Apps
+        id: deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          skip_app_build: true
+          skip_api_build: true
+          # The Blazor WASM publish output lives under wwwroot of the publish directory.
+          app_location: publish/wwwroot
+          output_location: ""
