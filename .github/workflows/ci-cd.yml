@@ -53,5 +53,7 @@ jobs:
           skip_app_build: true
           skip_api_build: true
           # The Blazor WASM publish output lives under wwwroot of the publish directory.
-          app_location: publish/wwwroot
-          output_location: ""
+          # With skip_app_build: true, the action concatenates app_location + output_location
+          # to locate the pre-built static content to upload.
+          app_location: publish
+          output_location: wwwroot
