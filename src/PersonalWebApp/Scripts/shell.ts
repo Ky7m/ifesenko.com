@@ -6,7 +6,7 @@
 declare var textrotator: JQueryStatic;
 declare var backstretch: JQueryStatic;
 
-module ifesenko.com.Shell {
+namespace ifesenko.com.Shell {
     $("#home").backstretch($("#home").data("image-source"));
 
     $(window).on('load', function() {

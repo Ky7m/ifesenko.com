@@ -1,9 +1,18 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "target": "es5",
+    "ignoreDeprecations": "6.0",
     "sourceMap": false,
-    "removeComments": true
+    "removeComments": true,
+    "types": ["jquery", "bootstrap"],
+    "strict": false,
+    "noImplicitAny": false,
+    "noImplicitThis": false
   },
+  "include": [
+    "Scripts/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
