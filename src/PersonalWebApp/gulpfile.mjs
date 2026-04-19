@@ -67,19 +67,9 @@ const sources = {
     ],
     js: [
         {
-            name: 'bootstrap.js',
+            name: 'bootstrap.bundle.js',
             copy: true,
-            paths: paths.npm + 'bootstrap/dist/js/bootstrap.js'
-        },
-        {
-            name: 'jquery.js',
-            copy: true,
-            paths: paths.npm + 'jquery/dist/jquery.js'
-        },
-        {
-            name: 'backstretch.js',
-            copy: true,
-            paths: paths.npm + 'jquery-backstretch/jquery.backstretch.js'
+            paths: paths.npm + 'bootstrap/dist/js/bootstrap.bundle.js'
         },
         {
             name: 'app.js',
