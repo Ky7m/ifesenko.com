@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace PersonalWebApp.Models;
+﻿namespace PersonalWebApp.Models;
 
 public sealed class EventModel
 {

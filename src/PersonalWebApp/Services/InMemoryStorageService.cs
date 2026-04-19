@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PersonalWebApp.EventsList;
+﻿using PersonalWebApp.EventsList;
 using PersonalWebApp.Models;
 
 namespace PersonalWebApp.Services;

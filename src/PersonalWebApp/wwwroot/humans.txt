@@ -1,4 +1,0 @@
-﻿# TEAM
-    Igor Fesenko -- https://twitter.com/ky7m
-# TECHNOLOGY COLOPHON
-    CSS, HTML5, ASP.NET Core, Azure

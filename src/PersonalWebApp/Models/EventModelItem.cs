@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace PersonalWebApp.Models;
 
 public sealed class EventModelItem
