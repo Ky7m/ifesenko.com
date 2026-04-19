@@ -10,6 +10,16 @@ param sku = 'Standard'
 // records (TXT validation + CNAME/ALIAS) are configured with the registrar.
 param customDomains = []
 
+param deployManagedIdentity = true
+param managedIdentityName = 'id-ifesenko-github'
+param githubRepository = 'Ky7m/ifesenko.com'
+param federatedCredentials = [
+  {
+    name: 'github-env-infra'
+    subject: 'environment:infra'
+  }
+]
+
 param tags = {
   app: 'ifesenko.com'
   managedBy: 'bicep'
