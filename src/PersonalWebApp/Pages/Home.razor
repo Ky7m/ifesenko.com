@@ -1,0 +1,94 @@
+@page "/"
+@inject IStorageService StorageService
+@inject IJSRuntime JS
+@implements IDisposable
+
+<PageTitle>Igor Fesenko - You're welcome!</PageTitle>
+
+<div class="wrapper">
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-custom fixed-top" role="navigation">
+            <div class="container">
+                <a class="navbar-brand" href="#home" rel="noopener">Igor Fesenko</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#bs-navbar-collapse" aria-controls="bs-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="bs-navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home" rel="noopener">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#profile" rel="noopener">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#events" rel="noopener">Events</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#certifications" rel="noopener">Certifications</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <section id="home" class="section" data-image-source="images/background.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hello">
+                            <h1>Hi, I'm Igor Fesenko</h1>
+                            <h3>
+                                <span id="textrotator" class="remove-shadow">Microsoft® Most Valuable Professional | Create simple solutions to complex problems</span>
+                            </h3>
+                        </div>
+                        <a href="#profile">
+                            <div class="mouse-icon">
+                                <div class="wheel"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="profile-contact">
+            <QuickInformation />
+        </section>
+        <section id="profile" class="section">
+            <Profile />
+        </section>
+        <section id="events" class="section">
+            <EventsSection Events="_events" IsItAllEvents="_isItAllEvents" />
+        </section>
+        <section id="certifications" class="callout">
+            <Certifications />
+        </section>
+    </main>
+</div>
+
+@code {
+    [SupplyParameterFromQuery] public string? Period { get; set; }
+
+    private EventModel[] _events = [];
+    private bool _isItAllEvents;
+    private string? _loadedPeriod;
+
+    protected override void OnParametersSet()
+    {
+        if (_loadedPeriod == Period)
+        {
+            return;
+        }
+
+        var (events, isAll) = StorageService.RetrieveEventsForPeriod(Period ?? string.Empty);
+        _events = events;
+        _isItAllEvents = isAll;
+        _loadedPeriod = Period;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("ifesenkoShell.init");
+        }
+    }
+
+    public void Dispose()
+    {
+        _ = JS.InvokeVoidAsync("ifesenkoShell.dispose");
+    }
+}

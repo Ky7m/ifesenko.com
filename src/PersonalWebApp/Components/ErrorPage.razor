@@ -1,0 +1,26 @@
+<PageTitle>@_title</PageTitle>
+
+<div class="errorPage">
+    <img class="error-image" src="images/robot.png" alt="An error occurred!" />
+    <h1>@_title</h1>
+    <h3>@_description</h3>
+</div>
+
+@code {
+    [Parameter] public int StatusCode { get; set; }
+
+    private string _title = "An error occurred!";
+    private string _description = "I am sorry, something bad has happened. Please wait a moment and try again.";
+
+    protected override void OnParametersSet()
+    {
+        (_title, _description) = StatusCode switch
+        {
+            400 => ("Bad Request", "I am sorry, but your browser sent a request that this server could not understand."),
+            401 => ("Unauthorized", "I am sorry, but the page requires authentication."),
+            403 => ("Forbidden", "I am sorry, but you don't have permission to access this page."),
+            404 => ("Page Not Found", "I am sorry, but the page you are looking for cannot be found."),
+            _ => ("An error occurred!", "I am sorry, something bad has happened. Please wait a moment and try again."),
+        };
+    }
+}

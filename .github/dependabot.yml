@@ -8,10 +8,6 @@ updates:
     directory: "build"
     schedule:
       interval: "daily"
-  - package-ecosystem: "npm"
-    directory: "src/PersonalWebApp"
-    schedule:
-      interval: "daily"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
