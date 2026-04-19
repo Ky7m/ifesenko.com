@@ -14,10 +14,7 @@ param deployManagedIdentity = true
 param managedIdentityName = 'id-ifesenko-github'
 param githubRepository = 'Ky7m/ifesenko.com'
 param federatedCredentials = [
-  {
-    name: 'github-env-infra'
-    subject: 'environment:infra'
-  }
+  { name: 'github-branch-main',  subject: 'ref:refs/heads/main' }
 ]
 
 param tags = {
