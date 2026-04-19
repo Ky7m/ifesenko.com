@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
-    "ignoreDeprecations": "6.0",
+    "target": "es2019",
     "sourceMap": false,
     "removeComments": true,
-    "types": ["jquery", "bootstrap"],
+    "types": [],
     "strict": false,
     "noImplicitAny": false,
     "noImplicitThis": false

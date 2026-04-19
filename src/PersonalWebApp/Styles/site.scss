@@ -1,8 +1,5 @@
 ﻿@use 'sass:math';
 
-// Fix the Bootstrap font path so it points to wwwroot/fonts instead of wwwroot/fonts/bootstrap.
-$icon-font-path: "../fonts/";
-
 /**
 /* ---------------------------------------------- /*
  * General styles
@@ -82,7 +79,6 @@ a,
 .avatar,
 .form-control,
 .modal-content,
-.panel-group .panel,
 .widget-social li a {
     border-radius: 3px;
 }
@@ -209,9 +205,10 @@ a,
     color: #FFF !important;
 }
 
-.navbar-custom .nav li a:hover,
-.navbar-custom .nav li a:focus,
-.navbar-custom .nav li.active {
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link:focus,
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-link.active {
     background: none;
     outline: 0;
     color: #EF4836;
@@ -222,18 +219,9 @@ a,
     color: #FFF;
 }
 
-.navbar-custom .navbar-nav > li.active {
+.navbar-custom .navbar-nav > .nav-item.active,
+.navbar-custom .navbar-nav > .nav-link.active {
     border-bottom: 3px solid #FFF;
-}
-
-.navbar-custom .navbar-toggle .icon-bar {
-    background: #FFF;
-}
-
-.navbar-custom .navbar-nav > li > a,
-.navbar-custom .navbar-nav .dropdown-menu > li > a {
-    color: #FFF;
-    font-size: 12px;
 }
 
 /* uncss:ignore */
@@ -251,17 +239,15 @@ a,
 /* uncss:ignore */
 .custom-collapse .navbar-brand,
 /* uncss:ignore */
-.navbar-color .navbar-nav > li > a,
+.navbar-color .navbar-nav .nav-link,
 /* uncss:ignore */
-.navbar-color .navbar-nav .dropdown-menu > li > a,
-/* uncss:ignore */
-.custom-collapse .navbar-nav > li > a,
-/* uncss:ignore */
-.custom-collapse .navbar-nav .dropdown-menu > li > a {
+.custom-collapse .navbar-nav .nav-link {
     color: #222;
 }
 /* uncss:ignore */
-.navbar-color .navbar-nav > li.active {
+.navbar-color .navbar-nav > .nav-item.active,
+/* uncss:ignore */
+.navbar-color .navbar-nav > .nav-link.active {
     border-bottom: 3px solid #222;
 }
 /* uncss:ignore */
@@ -269,14 +255,10 @@ a,
     text-align: left;
 }
 /* uncss:ignore */
-.custom-collapse .navbar-nav > li.active {
+.custom-collapse .navbar-nav > .nav-item.active,
+/* uncss:ignore */
+.custom-collapse .navbar-nav > .nav-link.active {
     border: 0;
-}
-/* uncss:ignore */
-.navbar-color .navbar-toggle .icon-bar,
-/* uncss:ignore */
-.custom-collapse .navbar-toggle .icon-bar {
-    background: #222;
 }
 
 /* ---------------------------------------------- /*
@@ -287,6 +269,9 @@ a,
     padding: 260px 0 160px 0;
     text-align: center;
     color: #FFF;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 #home h1, #home h2, #home h3, #home h4, #home h5, #home h6 {
@@ -592,4 +577,12 @@ a,
     margin: 0;
     overflow: visible;
     clip: auto
+}
+
+.text-rotator {
+    transition: opacity 300ms ease-in-out;
+}
+
+.text-rotator-fade-out {
+    opacity: 0;
 }
