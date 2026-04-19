@@ -4,12 +4,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
-using PersonalWebApp.Extensions;
 using PersonalWebApp.Services;
 using PersonalWebApp.Settings;
 
@@ -48,9 +46,6 @@ public class Startup(IConfiguration configuration)
         });
 
         services.AddSingleton<IStorageService, InMemoryStorageService>();
-
-        services.AddApplicationInsightsTelemetry();
-        services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
