@@ -71,15 +71,3 @@ The Blazor dev server starts on `https://localhost:5001` by default.
 
 Custom domains (`ifesenko.com`, `www.ifesenko.com`) are added via the Azure portal or `az staticwebapp hostname set` after DNS validation. They are intentionally not managed by Bicep to keep DNS ownership explicit.
 
-## Decommissioning the legacy App Service
-
-After the SWA is verified in production, delete the old App Service resources:
-
-```bash
-az webapp delete --name app-ifesenko-centralus --resource-group <old-rg>
-az appservice plan delete --name <plan-name> --resource-group <old-rg>
-# Optionally delete the resource group if it only contained these resources:
-# az group delete --name <old-rg> --yes
-```
-
-Also remove any orphaned Application Insights / CDN resources that referenced the old site.
