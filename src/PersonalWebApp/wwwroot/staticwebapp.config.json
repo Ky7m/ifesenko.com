@@ -38,7 +38,6 @@
     { "route": "/xmlrpc.php", "redirect": "https://www.youtube.com/watch?v=VnnWp_akOrE", "statusCode": 302 }
   ],
   "responseOverrides": {
-    "404": { "rewrite": "/index.html" },
-    "500": { "rewrite": "/index.html" }
+    "404": { "rewrite": "/index.html" }
   }
 }
