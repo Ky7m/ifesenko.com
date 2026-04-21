@@ -46,21 +46,6 @@ The Blazor dev server starts on `https://localhost:5001` by default.
 
 ## Deployment
 
-### One-time provisioning
-
-1. Deploy the SWA resource via Bicep — see [`infra/README.md`](infra/README.md).
-2. Retrieve the deployment token:
-
-   ```bash
-   az staticwebapp secrets list \
-     --name <swa-name> \
-     --resource-group <rg-name> \
-     --query properties.apiKey -o tsv
-   ```
-
-3. Store it as the repository secret **`AZURE_STATIC_WEB_APPS_API_TOKEN`**.
-4. (Optional) For `infra.yml` OIDC deploys, also configure `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` secrets and the matching federated credentials on the app registration.
-
 ### Automatic deploys
 
 - Every push to `main` → production deploy.
