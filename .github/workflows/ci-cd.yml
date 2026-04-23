@@ -54,3 +54,7 @@ jobs:
           skip_api_build: true
           app_location: publish/wwwroot
           output_location: ""
+          # Dependabot PRs don't have access to repository/environment secrets,
+          # so the deploy token is empty. Still run the build to validate the
+          # dependency bump, but skip the deploy step instead of failing.
+          skip_deploy_on_missing_secrets: true
