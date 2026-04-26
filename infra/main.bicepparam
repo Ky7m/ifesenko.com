@@ -11,6 +11,9 @@ param customDomains = [
   'www.ifesenko.com'
 ]
 
+param deployDnsZone = true
+param domainName = 'ifesenko.com'
+
 param deployManagedIdentity = true
 // The deploying principal (OIDC service principal) only has Contributor, which
 // cannot create role assignments. Set to true once the principal has Owner or

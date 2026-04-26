@@ -10,6 +10,7 @@ Bicep templates that provision the Azure Static Web App hosting [ifesenko.com](h
 | `main.bicepparam` | Default parameters for the deployment. |
 | `modules/staticWebApp.bicep` | `Microsoft.Web/staticSites` resource (Standard SKU, enterprise-grade CDN enabled) and optional custom domain bindings. |
 | `modules/identity.bicep` | User-assigned managed identity + federated identity credentials for GitHub Actions OIDC. |
+| `modules/dnsZone.bicep` | Azure DNS zone with apex alias A record (→ SWA) and `www` CNAME record. |
 
 The Static Web App is deployed **without** a repository binding (`provider: 'None'`). Deployments are pushed from GitHub Actions using the deployment token, which keeps per-PR preview environments working cleanly and avoids coupling the resource to a specific branch.
 
@@ -66,15 +67,34 @@ After the first deployment, subsequent runs of the `Infra` GitHub Actions workfl
 
 ## Custom domains
 
-1. At your DNS provider, add:
-   - `TXT _dnsauth.ifesenko.com` with the validation token shown in the Azure Portal (Static Web App → Custom domains).
-   - `ALIAS` / `A` record for `ifesenko.com` → the SWA default hostname.
-   - `CNAME www.ifesenko.com` → the SWA default hostname.
-2. Update `customDomains` in `main.bicepparam`:
-   ```bicep
-   param customDomains = [ 'ifesenko.com', 'www.ifesenko.com' ]
+Custom domain bindings on the SWA are defined in `customDomains` in `main.bicepparam`. DNS is hosted in Azure DNS (see below).
+
+## Azure DNS
+
+When `deployDnsZone = true`, the deployment creates an Azure DNS zone for the domain and configures:
+
+- **Apex** (`ifesenko.com`): alias A record pointing to the SWA resource (no static IP needed).
+- **www**: CNAME record pointing to the SWA default hostname.
+
+### Migrating from GoDaddy (one-time)
+
+After the first deployment with `deployDnsZone = true`:
+
+1. Get the Azure DNS nameservers from the deployment output:
+   ```bash
+   az deployment sub show --name ifesenko-swa \
+     --query properties.outputs.dnsNameServers.value -o tsv
    ```
-3. Re-run the deployment.
+   You'll see four nameservers like `ns1-03.azure-dns.com.`, `ns2-03.azure-dns.net.`, etc.
+
+2. Log into GoDaddy → **My Domains** → **ifesenko.com** → **DNS** → **Nameservers** → **Change Nameservers** → enter the four Azure DNS nameservers.
+
+3. Wait for propagation (usually minutes, up to 48 hours). Verify with:
+   ```bash
+   dig ifesenko.com NS +short
+   ```
+
+Once the nameservers point to Azure DNS, all DNS management happens through the Bicep templates. The GoDaddy account only needs to keep the domain registration active.
 
 ## Decommissioning the old App Service
 
