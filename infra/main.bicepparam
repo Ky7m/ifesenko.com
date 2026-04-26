@@ -6,9 +6,10 @@ param staticWebAppLocation = 'centralus'
 param staticWebAppName = 'swa-ifesenko'
 param sku = 'Standard'
 
-// Leave empty for the initial deployment. Add custom domains after DNS
-// records (TXT validation + CNAME/ALIAS) are configured with the registrar.
-param customDomains = []
+param customDomains = [
+  'ifesenko.com'
+  'www.ifesenko.com'
+]
 
 param deployManagedIdentity = true
 param managedIdentityName = 'id-ifesenko-github'
