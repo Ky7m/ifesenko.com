@@ -29,8 +29,11 @@ param sku string = 'Standard'
 @description('Custom domains to bind to the Static Web App (e.g. ifesenko.com, www.ifesenko.com). DNS records must be configured out-of-band.')
 param customDomains array = []
 
-@description('Whether to provision a user-assigned managed identity for GitHub Actions OIDC login and grant it Contributor on the subscription.')
+@description('Whether to provision a user-assigned managed identity for GitHub Actions OIDC login.')
 param deployManagedIdentity bool = true
+
+@description('Whether to create a subscription-scoped Contributor role assignment for the managed identity. Requires the deploying principal to have Owner or User Access Administrator role. Set to false when the deploying principal only has Contributor permissions and handle the role assignment out-of-band.')
+param deployRoleAssignment bool = true
 
 @description('Name of the user-assigned managed identity used by GitHub Actions.')
 param managedIdentityName string = 'id-ifesenko-github'
@@ -88,7 +91,8 @@ module identity 'modules/identity.bicep' = if (deployManagedIdentity) {
 
 // Subscription-scoped Contributor role assignment for the UAMI.
 // The assignment name is a deterministic GUID so repeat deployments are idempotent.
-resource identityContributor 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (deployManagedIdentity) {
+// Requires the deploying principal to have Owner or User Access Administrator role.
+resource identityContributor 'Microsoft.Authorization/roleAssignments@2022-04-01' = if (deployManagedIdentity && deployRoleAssignment) {
   name: guid(subscription().id, managedIdentityName, contributorRoleDefinitionId)
   properties: {
     principalId: identity!.outputs.principalId
