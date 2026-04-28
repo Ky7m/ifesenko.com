@@ -29,6 +29,12 @@ param sku string = 'Standard'
 @description('Custom domains to bind to the Static Web App (e.g. ifesenko.com, www.ifesenko.com). DNS records must be configured out-of-band.')
 param customDomains array = []
 
+@description('Whether to provision an Azure DNS zone for the domain. When true, domainName must be set.')
+param deployDnsZone bool = false
+
+@description('Domain name to host in Azure DNS (e.g. ifesenko.com). Only used when deployDnsZone is true.')
+param domainName string = ''
+
 @description('Whether to provision a user-assigned managed identity for GitHub Actions OIDC login.')
 param deployManagedIdentity bool = true
 
@@ -89,6 +95,17 @@ module identity 'modules/identity.bicep' = if (deployManagedIdentity) {
   }
 }
 
+module dns 'modules/dnsZone.bicep' = if (deployDnsZone) {
+  name: 'dnsZone'
+  scope: rg
+  params: {
+    domainName: domainName
+    staticWebAppResourceId: swa.outputs.id
+    staticWebAppDefaultHostname: swa.outputs.defaultHostname
+    tags: tags
+  }
+}
+
 // Subscription-scoped Contributor role assignment for the UAMI.
 // The assignment name is a deterministic GUID so repeat deployments are idempotent.
 // Requires the deploying principal to have Owner or User Access Administrator role.
@@ -107,3 +124,4 @@ output staticWebAppDefaultHostname string = swa.outputs.defaultHostname
 output managedIdentityClientId string = deployManagedIdentity ? identity!.outputs.clientId : ''
 output managedIdentityPrincipalId string = deployManagedIdentity ? identity!.outputs.principalId : ''
 output managedIdentityTenantId string = deployManagedIdentity ? identity!.outputs.tenantId : ''
+output dnsNameServers array = deployDnsZone ? dns!.outputs.nameServers : []

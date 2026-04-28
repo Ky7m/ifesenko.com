@@ -11,12 +11,10 @@ param customDomains = [
   'www.ifesenko.com'
 ]
 
-param deployManagedIdentity = true
-// The deploying principal (OIDC service principal) only has Contributor, which
-// cannot create role assignments. Set to true once the principal has Owner or
-// User Access Administrator, or create the role assignment manually via:
-//   az role assignment create --assignee <managed-identity-principal-id> \
-//     --role Contributor --scope /subscriptions/<subscription-id>
+param deployDnsZone = false
+param domainName = 'ifesenko.com'
+
+param deployManagedIdentity = false
 param deployRoleAssignment = false
 param managedIdentityName = 'id-ifesenko-github'
 param githubRepository = 'Ky7m/ifesenko.com'
