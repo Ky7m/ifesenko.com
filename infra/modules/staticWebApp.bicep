@@ -20,7 +20,7 @@ param tags object = {}
 // Deployments are driven from GitHub Actions using the deployment token,
 // so no repositoryUrl/branch/token is bound to the resource itself.
 // This also keeps preview environments per-PR working cleanly.
-resource staticSite 'Microsoft.Web/staticSites@2024-04-01' = {
+resource staticSite 'Microsoft.Web/staticSites@2024-11-01' = {
   name: name
   location: location
   tags: tags
@@ -31,12 +31,12 @@ resource staticSite 'Microsoft.Web/staticSites@2024-04-01' = {
   properties: {
     allowConfigFileUpdates: true
     stagingEnvironmentPolicy: 'Enabled'
-    enterpriseGradeCdnStatus: sku == 'Standard' ? 'Enabled' : 'Disabled'
+    enterpriseGradeCdnStatus: 'Disabled'
     provider: 'None'
   }
 }
 
-resource domains 'Microsoft.Web/staticSites/customDomains@2024-04-01' = [for domain in customDomains: {
+resource domains 'Microsoft.Web/staticSites/customDomains@2024-11-01' = [for domain in customDomains: {
   parent: staticSite
   name: domain
   properties: {}
