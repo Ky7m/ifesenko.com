@@ -7,12 +7,8 @@
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   
-  function setTheme(theme) {
-    const root = document.documentElement;
-    root.setAttribute('data-theme', theme);
-    localStorage.setItem(THEME_KEY, theme);
-  }
-  
-  // Apply theme immediately to avoid flash
-  setTheme(getTheme());
+  // Apply theme immediately to avoid a flash of the wrong theme.
+  // Do NOT persist here: writing localStorage on every load would pin the
+  // choice and stop the site from following later OS theme changes.
+  document.documentElement.setAttribute('data-theme', getTheme());
 })();

@@ -13,9 +13,12 @@
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
     function setTheme(theme) {
-        const root = document.documentElement;
-        root.setAttribute('data-theme', theme);
+        applyTheme(theme);
         localStorage.setItem(THEME_KEY, theme);
     }
 
@@ -83,6 +86,18 @@
 
         button.addEventListener('click', onClick);
         listeners.push(function () { button.removeEventListener('click', onClick); });
+    }
+
+    function wireSystemThemeSync() {
+        if (!window.matchMedia) { return; }
+        const mq = window.matchMedia('(prefers-color-scheme: dark)');
+        const onChange = function (e) {
+            // Follow the OS only while the user hasn't made an explicit choice.
+            if (localStorage.getItem(THEME_KEY)) { return; }
+            applyTheme(e.matches ? 'dark' : 'light');
+        };
+        mq.addEventListener('change', onChange);
+        listeners.push(function () { mq.removeEventListener('change', onChange); });
     }
 
     function wireSmoothScroll() {
@@ -200,6 +215,7 @@
         init: function () {
             wireNavbar();
             wireThemeToggle();
+            wireSystemThemeSync();
             wireSmoothScroll();
             wireScrollReveal();
             wireActiveLink();
