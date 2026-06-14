@@ -64,10 +64,11 @@
     private EventModel[] _events = [];
     private bool _isItAllEvents;
     private string? _loadedPeriod;
+    private bool _hasLoadedPeriod;
 
     protected override void OnParametersSet()
     {
-        if (_loadedPeriod == Period)
+        if (_hasLoadedPeriod && _loadedPeriod == Period)
         {
             return;
         }
@@ -76,6 +77,7 @@
         _events = events;
         _isItAllEvents = isAll;
         _loadedPeriod = Period;
+        _hasLoadedPeriod = true;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

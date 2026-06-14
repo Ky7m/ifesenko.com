@@ -91,7 +91,12 @@
             const handler = function (e) {
                 const href = anchor.getAttribute('href');
                 if (!href || href === '#' || href.indexOf('#') === -1) { return; }
-                const hash = href.substring(href.indexOf('#'));
+                const url = new URL(href, window.location.href);
+                const samePage = url.origin === window.location.origin &&
+                    url.pathname === window.location.pathname &&
+                    url.search === window.location.search;
+                if (!samePage) { return; }
+                const hash = url.hash;
                 if (hash.length < 2) { return; }
                 const target = document.querySelector(hash);
                 if (!target) { return; }
@@ -179,14 +184,14 @@
     function wireScrollCue() {
         const cue = document.querySelector('.scroll-cue');
         if (!cue) { return; }
-        
+
         const handler = function () {
             const target = document.getElementById('profile-contact') || document.getElementById('profile');
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         };
-        
+
         cue.addEventListener('click', handler);
         listeners.push(function () { cue.removeEventListener('click', handler); });
     }
