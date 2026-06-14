@@ -3,44 +3,43 @@
 @inject IJSRuntime Js
 @implements IDisposable
 
-<PageTitle>Igor Fesenko - You're welcome!</PageTitle>
+<PageTitle>Igor Fesenko — Software Architect & Microsoft MVP</PageTitle>
 
 <div class="wrapper">
     <header role="banner">
-        <nav class="navbar navbar-expand-lg navbar-custom fixed-top" role="navigation">
-            <div class="container">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
                 <a class="navbar-brand" href="#home" rel="noopener">Igor Fesenko</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#bs-navbar-collapse" aria-controls="bs-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button type="button" class="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbar-menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
                 </button>
-                <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#home" rel="noopener">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#profile" rel="noopener">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#events" rel="noopener">Events</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#certifications" rel="noopener">Certifications</a></li>
+                <div class="navbar-menu" id="navbar-menu">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link" href="#home" rel="noopener">Home</a></li>
+                        <li><a class="nav-link" href="#profile" rel="noopener">Profile</a></li>
+                        <li><a class="nav-link" href="#events" rel="noopener">Events</a></li>
+                        <li><a class="nav-link" href="#certifications" rel="noopener">Certifications</a></li>
+                        <li><button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button></li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main role="main">
-        <section id="home" class="section" data-image-source="images/background.jpg">
+        <section id="home" class="section">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="hello">
-                            <h1>Hi, I'm Igor Fesenko</h1>
-                            <h3>
-                                <span id="textrotator" class="remove-shadow">Microsoft® Most Valuable Professional | Create simple solutions to complex problems</span>
-                            </h3>
-                        </div>
-                        <a href="#profile">
-                            <div class="mouse-icon">
-                                <div class="wheel"></div>
-                            </div>
-                        </a>
-                    </div>
+                <div class="home-content">
+                    <h1>Hi, I'm Igor Fesenko</h1>
+                    <h3>
+                        <span id="textrotator">Microsoft® MVP | Create simple solutions to complex problems</span>
+                    </h3>
+                    <a href="#profile" class="scroll-cue">
+                        <div class="scroll-cue-icon"></div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -53,7 +52,7 @@
         <section id="events" class="section">
             <EventsSection Events="_events" IsItAllEvents="_isItAllEvents" />
         </section>
-        <section id="certifications" class="callout">
+        <section id="certifications" class="section section--alt">
             <Certifications />
         </section>
     </main>

@@ -1,82 +1,97 @@
 @using System.Linq
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 headline">
-            <h2>Events</h2>
-            <p>
-                Locked in. There are always others waiting to be announced.
-            </p>
-            @if (!IsItAllEvents)
-            {
-                <p>
-                    Past years:
-                    <span>
-                        @for (var year = 2015; year <= DateTime.UtcNow.Year; year++)
-                        {
-                            if (Events.All(x => x.Date.Year != year))
-                            {
-                                <a href="/?period=@year#events" rel="noopener">@year</a>
-                            }
-                        }
-                        <a href="/?period=all#events" rel="noopener">Show All</a>
-                    </span>
-                </p>
-            }
-            else
-            {
-                <p><a href="/#events" rel="noopener">Back to current year</a></p>
-            }
-        </div>
+    <div class="events-header">
+        <h2>Events</h2>
+        <p>Locked in. There are always others waiting to be announced.</p>
+        @if (!IsItAllEvents)
+        {
+            <div class="period-filter">
+                @for (var year = 2015; year <= DateTime.UtcNow.Year; year++)
+                {
+                    if (Events.All(x => x.Date.Year != year))
+                    {
+                        <a href="/?period=@year#events" class="period-link" rel="noopener">@year</a>
+                    }
+                }
+                <a href="/?period=all#events" class="period-link" rel="noopener">Show All</a>
+            </div>
+        }
+        else
+        {
+            <div style="margin-top: 1.5rem;">
+                <a href="/#events" class="period-link" rel="noopener">Back to current year</a>
+            </div>
+        }
     </div>
 
-    @foreach (var groupedByYear in Events.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
-    {
-        <div class="row events-per-year">
-            <div class="col-md-3">
-                <h3>@groupedByYear.Key</h3>
-            </div>
-            @foreach (var entry in groupedByYear.OrderByDescending(x => x.Date).Select((value, i) => new { Index = i, Value = value }))
-            {
-                var className = entry.Index == 0 ? "col-md-6 col-sm-8" : "col-md-6 offset-md-3 col-sm-8";
-                var isUpcoming = DateTime.UtcNow < entry.Value.Date.ToUniversalTime();
-                <div class="@className">
-                    <h4>
-                        @if (string.IsNullOrEmpty(entry.Value.Link))
-                        {
-                            @entry.Value.Title
-                        }
-                        else
-                        {
-                            <a href="@entry.Value.Link" rel="noopener">@entry.Value.Title</a>
-                        }
-                        @if (isUpcoming)
-                        {
-                            @((MarkupString)"&emsp;")<span class="badge text-bg-info">Upcoming</span>
-                        }
-                    </h4>
-                    @foreach (var item in entry.Value.Items)
-                    {
-                        <div>@item.Description</div>
-                        if (!isUpcoming && item.Collateral.Any())
-                        {
-                            <ul class="collateral">
-                                @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
+    <div class="events-timeline">
+        @foreach (var groupedByYear in Events.GroupBy(x => x.Date.Year).OrderByDescending(x => x.Key))
+        {
+            <div class="year-group">
+                <h3 class="year-label">@groupedByYear.Key</h3>
+                @foreach (var entry in groupedByYear.OrderByDescending(x => x.Date).Select((value, i) => new { Index = i, Value = value }))
+                {
+                    var isUpcoming = DateTime.UtcNow < entry.Value.Date.ToUniversalTime();
+                    <div class="event-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <h4 class="event-title">
+                                    @if (string.IsNullOrEmpty(entry.Value.Link))
+                                    {
+                                        @entry.Value.Title
+                                    }
+                                    else
+                                    {
+                                        <a href="@entry.Value.Link" rel="noopener">@entry.Value.Title</a>
+                                    }
+                                    @if (isUpcoming)
+                                    {
+                                        <span class="event-badge">Upcoming</span>
+                                    }
+                                </h4>
+                            </div>
+                        </div>
+                        
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                @entry.Value.Location
+                            </div>
+                            <div class="event-meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                @entry.Value.Date.ToString("MMM dd, yyyy")
+                            </div>
+                        </div>
+                        
+                        <div class="event-items">
+                            @foreach (var item in entry.Value.Items)
+                            {
+                                <div class="event-item">@item.Description</div>
+                                if (!isUpcoming && item.Collateral.Any())
                                 {
-                                    <li><a href="@collateralItem.Key" rel="noopener">@collateralItem.Value</a></li>
+                                    <div class="event-collateral">
+                                        @foreach (var collateralItem in item.Collateral.OrderByDescending(x => x.Value))
+                                        {
+                                            <a href="@collateralItem.Key" class="collateral-chip" rel="noopener">@collateralItem.Value</a>
+                                        }
+                                    </div>
                                 }
-                            </ul>
-                        }
-                    }
-                    <hr class="d-none d-sm-block">
-                </div>
-                <div class="col-md-3 col-sm-4 event-place">
-                    <h4><i class="fa fa-location-arrow"></i>@entry.Value.Location</h4>
-                    <i class="fa fa-calendar"></i>@entry.Value.Date.ToString("MMM dd, yyyy")
-                    <hr class="d-block d-sm-none">
-                </div>
-            }
-        </div>
-    }
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
 </div>
 
 @code {
