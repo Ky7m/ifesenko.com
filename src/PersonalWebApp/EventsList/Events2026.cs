@@ -3,7 +3,7 @@ using PersonalWebApp.Models;
 
 namespace PersonalWebApp.EventsList;
 
-internal static class Events2025
+internal static class Events2026
 {
     public static EventModel[] List { get; } =
     [
@@ -22,7 +22,7 @@ internal static class Events2025
                     })
             ],
             Location = CommonStrings.Online,
-            Date = new DateTime(2025, 12, 3)
+            Date = new DateTime(2026, 12, 3)
         }
     ];
 }

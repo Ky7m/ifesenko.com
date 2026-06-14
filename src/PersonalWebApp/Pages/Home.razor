@@ -1,6 +1,6 @@
 @page "/"
 @inject IStorageService StorageService
-@inject IJSRuntime JS
+@inject IJSRuntime Js
 @implements IDisposable
 
 <PageTitle>Igor Fesenko - You're welcome!</PageTitle>
@@ -83,12 +83,12 @@
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("ifesenkoShell.init");
+            await Js.InvokeVoidAsync("ifesenkoShell.init");
         }
     }
 
     public void Dispose()
     {
-        _ = JS.InvokeVoidAsync("ifesenkoShell.dispose");
+        _ = Js.InvokeVoidAsync("ifesenkoShell.dispose");
     }
 }
