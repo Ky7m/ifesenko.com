@@ -6,7 +6,7 @@
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://ifesenko.com/#events</loc>
+        <loc>https://ifesenko.com/?period=all</loc>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

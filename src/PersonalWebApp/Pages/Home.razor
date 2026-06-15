@@ -1,14 +1,14 @@
 @page "/"
 @inject IStorageService StorageService
 @inject IJSRuntime Js
-@implements IDisposable
+@implements IAsyncDisposable
 
 <PageTitle>Igor Fesenko — Software Architect & Microsoft MVP</PageTitle>
 
 <div class="wrapper">
     <header role="banner">
         <nav class="navbar" role="navigation" aria-label="Main navigation">
-            <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="container flex flex--between">
                 <a class="navbar-brand" href="#home" rel="noopener">Igor Fesenko</a>
                 <button type="button" class="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbar-menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -81,8 +81,8 @@
         }
     }
 
-    public void Dispose()
+    public async ValueTask DisposeAsync()
     {
-        _ = Js.InvokeVoidAsync("ifesenkoShell.dispose");
+        await Js.InvokeVoidAsync("ifesenkoShell.dispose");
     }
 }

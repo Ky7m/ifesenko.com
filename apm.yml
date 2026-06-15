@@ -3,10 +3,10 @@ version: 1.0.0
 description: APM project for PersonalWebApp
 author: Igor Fesenko
 targets:
-- copilot
+  - copilot
 dependencies:
   apm:
-  - dotnet/skills/plugins/dotnet-blazor
+    - dotnet/skills/plugins/dotnet-blazor
   mcp: []
 includes: auto
 scripts: {}

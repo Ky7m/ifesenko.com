@@ -2,8 +2,12 @@
   const THEME_KEY = 'theme-preference';
   
   function getTheme() {
-    const stored = localStorage.getItem(THEME_KEY);
-    if (stored) return stored;
+    try {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === 'dark' || stored === 'light') return stored;
+    } catch (e) {
+      // localStorage may be blocked (privacy mode, storage quota exceeded, etc.)
+    }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   

@@ -7,8 +7,12 @@
     let lastScrollY = 0;
 
     function getTheme() {
-        const stored = localStorage.getItem(THEME_KEY);
-        if (stored) return stored;
+        try {
+            const stored = localStorage.getItem(THEME_KEY);
+            if (stored === 'dark' || stored === 'light') return stored;
+        } catch (e) {
+            // localStorage may be blocked
+        }
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
@@ -18,7 +22,11 @@
 
     function setTheme(theme) {
         applyTheme(theme);
-        localStorage.setItem(THEME_KEY, theme);
+        try {
+            localStorage.setItem(THEME_KEY, theme);
+        } catch (e) {
+            // localStorage may be blocked; theme will still apply for this session
+        }
     }
 
     function toggleTheme() {
@@ -48,11 +56,13 @@
             const link = e.target && e.target.closest ? e.target.closest('.nav-link') : null;
             if (link) {
                 menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
             }
         };
 
         const onToggle = function () {
             menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', menu.classList.contains('open') ? 'true' : 'false');
         };
 
         const onScroll = function () {
@@ -92,7 +102,11 @@
         const mq = window.matchMedia('(prefers-color-scheme: dark)');
         const onChange = function (e) {
             // Follow the OS only while the user hasn't made an explicit choice.
-            if (localStorage.getItem(THEME_KEY)) { return; }
+            try {
+                if (localStorage.getItem(THEME_KEY)) { return; }
+            } catch (e) {
+                // localStorage may be blocked; proceed with OS sync
+            }
             applyTheme(e.matches ? 'dark' : 'light');
         };
         mq.addEventListener('change', onChange);
