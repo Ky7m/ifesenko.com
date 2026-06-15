@@ -9,20 +9,25 @@ internal static class Events2026
     [
         new()
         {
-            Title = "Svitla Smart Talk",
-            Link = "https://kommunity.com/svitla-systems/events/a-day-in-the-life-of-a-software-engineer-how-c-helps-them-succeed-61b35bfd",
+            Title = "Microsoft AI Tour - New York City 2026",
+            Link = "https://aitour.microsoft.com/flow/microsoft/nyc26/landingpage/page/cityhome",
             Items =
             [
-                new EventModelItem("A Day in the Life of a Software Engineer: How C# Helps Them Succeed",
-                    new Dictionary<string, string>
-                    {
-                        ["https://1drv.ms/p/s!AmdJq1kgIxHUoaQ-KUT32UVnbYZVSg?e=eEbQli"] = CommonStrings.Powerpoint,
-                        ["https://github.com/Ky7m/DemoCode/tree/main/SvitlaSmartTalk2024"] = CommonStrings.DemoCode,
-                        ["https://www.youtube.com/watch?v=tFh5VgWfZuU"] = CommonStrings.Recording
-                    })
+                new EventModelItem("Cloud and AI Platforms: Azure App Platform", new Dictionary<string, string>())
+            ],
+            Location = CommonStrings.NewYork,
+            Date = new DateTime(2026, 1, 21)
+        },
+        new()
+        {
+            Title = "2026 Imagine Cup",
+            Link = "https://imaginecup.microsoft.com/en-us",
+            Items =
+            [
+                new EventModelItem("Technical Judge", new Dictionary<string, string>())
             ],
             Location = CommonStrings.Online,
-            Date = new DateTime(2026, 12, 3)
+            Date = new DateTime(2026, 1, 12)
         }
     ];
 }

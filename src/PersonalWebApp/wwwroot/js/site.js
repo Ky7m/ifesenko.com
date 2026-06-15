@@ -3,7 +3,6 @@
 
     const THEME_KEY = 'theme-preference';
     let listeners = [];
-    let rotatorTimer = null;
     let scrollTimeout = null;
     let lastScrollY = 0;
 
@@ -146,69 +145,47 @@
     }
 
     function wireActiveLink() {
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        if (!window.IntersectionObserver || navLinks.length === 0) { return; }
+        const sections = Array.prototype.slice.call(document.querySelectorAll('.section'));
+        const navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+        if (sections.length === 0 || navLinks.length === 0) { return; }
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    navLinks.forEach(function(link) {
-                        link.classList.remove('active');
-                        const href = link.getAttribute('href');
-                        if (href === '#' + id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
+        let ticking = false;
+
+        function update() {
+            ticking = false;
+            const scrollY = window.scrollY || window.pageYOffset || 0;
+            const pos = scrollY + 120;
+
+            let currentId = sections[0].getAttribute('id');
+            sections.forEach(function (section) {
+                const top = section.getBoundingClientRect().top + scrollY;
+                if (top <= pos) { currentId = section.getAttribute('id'); }
             });
-        }, {
-            threshold: 0.3
-        });
 
-        sections.forEach(function(section) {
-            observer.observe(section);
-        });
-
-        listeners.push(function () { observer.disconnect(); });
-    }
-
-    function wireTextRotator() {
-        const el = document.getElementById('textrotator');
-        if (!el) { return; }
-        const raw = (el.textContent || '').trim();
-        const items = raw.split('|').map(function (s) { return s.trim(); }).filter(function (s) { return s.length > 0; });
-        if (items.length === 0) { return; }
-
-        el.classList.add('text-rotator');
-        el.textContent = items[0];
-        if (items.length === 1) { return; }
-
-        let index = 0;
-        rotatorTimer = window.setInterval(function () {
-            el.classList.add('text-rotator-fade-out');
-            window.setTimeout(function () {
-                index = (index + 1) % items.length;
-                el.textContent = items[index];
-                el.classList.remove('text-rotator-fade-out');
-            }, 300);
-        }, 3000);
-    }
-
-    function wireScrollCue() {
-        const cue = document.querySelector('.scroll-cue');
-        if (!cue) { return; }
-
-        const handler = function () {
-            const target = document.getElementById('profile-contact') || document.getElementById('profile');
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const docHeight = document.documentElement.scrollHeight;
+            const scrollable = docHeight > window.innerHeight + 4;
+            const atBottom = (window.innerHeight + scrollY) >= (docHeight - 2);
+            if (scrollable && atBottom) {
+                currentId = sections[sections.length - 1].getAttribute('id');
             }
-        };
 
-        cue.addEventListener('click', handler);
-        listeners.push(function () { cue.removeEventListener('click', handler); });
+            navLinks.forEach(function (link) {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+            });
+        }
+
+        function onScroll() {
+            if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        update();
+
+        listeners.push(function () {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+        });
     }
 
     window.ifesenkoShell = {
@@ -219,12 +196,9 @@
             wireSmoothScroll();
             wireScrollReveal();
             wireActiveLink();
-            wireTextRotator();
-            wireScrollCue();
             fadeOutLoader();
         },
         dispose: function () {
-            if (rotatorTimer) { window.clearInterval(rotatorTimer); rotatorTimer = null; }
             if (scrollTimeout) { window.clearTimeout(scrollTimeout); scrollTimeout = null; }
             listeners.forEach(function (off) { try { off(); } catch (_) { /* ignore */ } });
             listeners = [];
