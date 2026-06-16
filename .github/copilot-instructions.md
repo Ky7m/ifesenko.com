@@ -1,24 +1,22 @@
-# Copilot Instructions
+# Coding Agent Instructions
 
 ## Build & Run
 
 ```bash
-# Run locally (requires .NET 10 SDK)
+# Run locally
 dotnet run --project src/PersonalWebApp
 
 # Publish for deployment
 dotnet publish src/PersonalWebApp/PersonalWebApp.csproj -c Release -o publish --nologo
 ```
 
-There are no tests or linters in this repository.
-
 ## Architecture
 
-This is a **Blazor WebAssembly** standalone app (no server-side component) hosted on **Azure Static Web Apps**. The entire site is a single-page app with hash-based section navigation (`#home`, `#profile`, `#events`, `#certifications`).
+This is a **Blazor WebAssembly** standalone app (no server-side component) hosted on **Azure Static Web Apps**. The entire site is a single-page app with hash-based section navigation (`#home`, `#events`, `#certifications`). The `#home` section is a combined landing/profile hero (portrait avatar, static tagline, social links, and bio).
 
 **Data flow**: Event/speaking data is hardcoded in C# — there is no database or API. `InMemoryStorageService` aggregates yearly event lists and serves them filtered by a `?period=` query parameter (year number or `"all"`). It is registered as a singleton via DI.
 
-**JS interop**: Blazor calls into `window.ifesenkoShell.init()` / `.dispose()` (defined in `wwwroot/js/site.js`) for DOM work that Blazor doesn't handle — background images, navbar scroll behavior, smooth scrolling, and text rotation. The `Home.razor` page manages the interop lifecycle via `OnAfterRenderAsync` and `IDisposable`.
+**JS interop**: Blazor calls into `window.ifesenkoShell.init()` / `.dispose()` (defined in `wwwroot/js/site.js`) for DOM work that Blazor doesn't handle — navbar/menu behavior, smooth scrolling (same-page guarded), section reveal animation, theme toggle with OS-preference sync, and active-nav scrollspy behavior. The `Home.razor` page manages the interop lifecycle via `OnAfterRenderAsync` and `IDisposable`.
 
 **Infrastructure**: `infra/` contains Bicep templates deployed via the `infra.yml` workflow (manual trigger, OIDC auth). The SWA uses `provider: 'None'` — deployments are pushed from CI, not pulled by Azure.
 

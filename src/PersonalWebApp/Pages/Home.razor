@@ -1,59 +1,51 @@
 @page "/"
 @inject IStorageService StorageService
-@inject IJSRuntime JS
-@implements IDisposable
+@inject IJSRuntime Js
+@implements IAsyncDisposable
 
-<PageTitle>Igor Fesenko - You're welcome!</PageTitle>
+<PageTitle>Igor Fesenko — Software Architect & Microsoft MVP</PageTitle>
 
 <div class="wrapper">
     <header role="banner">
-        <nav class="navbar navbar-expand-lg navbar-custom fixed-top" role="navigation">
-            <div class="container">
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="container flex flex--between">
                 <a class="navbar-brand" href="#home" rel="noopener">Igor Fesenko</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#bs-navbar-collapse" aria-controls="bs-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button type="button" class="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation" aria-controls="navbar-menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
                 </button>
-                <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#home" rel="noopener">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#profile" rel="noopener">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#events" rel="noopener">Events</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#certifications" rel="noopener">Certifications</a></li>
+                <div class="navbar-menu" id="navbar-menu">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link" href="#home" rel="noopener">About</a></li>
+                        <li><a class="nav-link" href="#events" rel="noopener">Events</a></li>
+                        <li><a class="nav-link" href="#certifications" rel="noopener">Certifications</a></li>
+                        <li>
+                            <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                                <svg class="ico ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                                </svg>
+                                <svg class="ico ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                </svg>
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <main role="main">
-        <section id="home" class="section" data-image-source="images/background.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="hello">
-                            <h1>Hi, I'm Igor Fesenko</h1>
-                            <h3>
-                                <span id="textrotator" class="remove-shadow">Microsoft® Most Valuable Professional | Create simple solutions to complex problems</span>
-                            </h3>
-                        </div>
-                        <a href="#profile">
-                            <div class="mouse-icon">
-                                <div class="wheel"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="profile-contact">
-            <QuickInformation />
-        </section>
-        <section id="profile" class="section">
+        <section id="home" class="section">
             <Profile />
         </section>
         <section id="events" class="section">
             <EventsSection Events="_events" IsItAllEvents="_isItAllEvents" />
         </section>
-        <section id="certifications" class="callout">
+        <section id="certifications" class="section section--alt">
             <Certifications />
         </section>
     </main>
@@ -65,10 +57,11 @@
     private EventModel[] _events = [];
     private bool _isItAllEvents;
     private string? _loadedPeriod;
+    private bool _hasLoadedPeriod;
 
     protected override void OnParametersSet()
     {
-        if (_loadedPeriod == Period)
+        if (_hasLoadedPeriod && _loadedPeriod == Period)
         {
             return;
         }
@@ -77,18 +70,19 @@
         _events = events;
         _isItAllEvents = isAll;
         _loadedPeriod = Period;
+        _hasLoadedPeriod = true;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("ifesenkoShell.init");
+            await Js.InvokeVoidAsync("ifesenkoShell.init");
         }
     }
 
-    public void Dispose()
+    public async ValueTask DisposeAsync()
     {
-        _ = JS.InvokeVoidAsync("ifesenkoShell.dispose");
+        await Js.InvokeVoidAsync("ifesenkoShell.dispose");
     }
 }

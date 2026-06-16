@@ -3,39 +3,73 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Igor Fesenko - Personal Page. You can find details on the home page. Please feel free to contact me.">
-    <meta name="keywords" content="Web Applications,Sites,Web Services,SOA,Security,Identity,Data Access,Integration,Databases,Cloud Computing">
-    <title>Igor Fesenko</title>
+    <meta name="description" content="Igor Fesenko — Microsoft MVP, software architect. 15+ years building distributed cloud applications. Speaker, open source contributor.">
+    <meta name="keywords" content="software engineer,architect,Azure,C#,cloud,distributed systems">
+    <meta name="author" content="Igor Fesenko">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Igor Fesenko — Software Architect & MVP">
+    <meta property="og:description" content="Microsoft MVP, software architect. 15+ years building distributed cloud applications. Speaker, open source contributor.">
+    <meta property="og:url" content="https://ifesenko.com/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@Ky7m">
+    <meta name="twitter:title" content="Igor Fesenko — Software Architect & MVP">
+    <meta name="twitter:description" content="Microsoft MVP, software architect. 15+ years building distributed cloud applications.">
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://ifesenko.com/">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Igor Fesenko",
+      "url": "https://ifesenko.com",
+      "sameAs": [
+        "https://github.com/Ky7m",
+        "https://www.linkedin.com/in/ifesen",
+        "https://twitter.com/Ky7m"
+      ],
+      "jobTitle": "Software Architect, Microsoft MVP",
+      "image": "https://ifesenko.com/images/profile.jpg"
+    }
+    </script>
+    
+    <title>Igor Fesenko — Software Architect & Microsoft MVP</title>
     <base href="/" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    
+    <!-- Modern CSS system -->
     <link rel="stylesheet" href="css/app.css">
+    
+    <!-- Pre-paint theme to avoid flash -->
+    <script src="js/theme.js"></script>
 </head>
-<body data-bs-spy="scroll" data-bs-target=".navbar-custom" data-bs-offset="50">
+<body>
     <div id="loader">
-        <div id="status">
-            <div class="status-mes"></div>
-        </div>
+        <div class="loader-spinner"></div>
     </div>
     <div id="app"></div>
 
     <div id="blazor-error-ui" style="display:none;">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+        <div style="padding: 1rem; background: #f8d7da; color: #721c24; border-radius: 0.25rem;">
+            An unhandled error has occurred.
+            <a href="" class="reload" style="margin-left: 1rem; color: #721c24; font-weight: 600;">Reload</a>
+            <a class="dismiss" style="margin-left: 1rem; cursor: pointer; color: #721c24; font-weight: 600;">✕</a>
+        </div>
     </div>
 
     <footer id="footer" role="contentinfo">
-        <div class="container">
-            <div class="row">
-                <p class="copy text-center"></p>
-            </div>
-        </div>
+        <p class="copy">&copy; 2026 Igor Fesenko</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="js/site.js"></script>
 </body>

@@ -1,9 +1,12 @@
 <PageTitle>@_title</PageTitle>
 
-<div class="errorPage">
-    <img class="error-image" src="images/robot.png" alt="An error occurred!" />
-    <h1>@_title</h1>
-    <h3>@_description</h3>
+<div class="error-page">
+    <div class="error-content">
+        <img class="error-image" src="images/robot.png" alt="An error occurred" />
+        <h1>@_title</h1>
+        <h3>@_description</h3>
+        <a href="/" style="margin-top: 2rem; display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-accent); color: var(--color-bg-primary); border-radius: var(--radius-lg); text-decoration: none; font-weight: 600;">Go Home</a>
+    </div>
 </div>
 
 @code {
