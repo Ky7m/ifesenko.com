@@ -27,7 +27,7 @@ jobs:
       name: ${{ github.event_name == 'push' && 'prod' || format('pr-{0}', github.event.pull_request.number) }}
       url: ${{ steps.deploy.outputs.static_web_app_url }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           submodules: true
           lfs: false
