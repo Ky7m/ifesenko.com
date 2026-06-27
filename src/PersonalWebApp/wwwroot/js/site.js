@@ -2,6 +2,7 @@
     'use strict';
 
     const THEME_KEY = 'theme-preference';
+    const THEME_COLORS = { light: '#fafcfe', dark: '#0f1318' };
     let listeners = [];
     let scrollTimeout = null;
     let lastScrollY = 0;
@@ -18,6 +19,8 @@
 
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) { meta.setAttribute('content', THEME_COLORS[theme] || THEME_COLORS.light); }
     }
 
     function setTheme(theme) {
@@ -136,28 +139,6 @@
         });
     }
 
-    function wireScrollReveal() {
-        const sections = document.querySelectorAll('.section');
-        if (!window.IntersectionObserver) { return; }
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        });
-
-        sections.forEach(function(section) {
-            observer.observe(section);
-        });
-
-        listeners.push(function () { observer.disconnect(); });
-    }
-
     function wireActiveLink() {
         const sections = Array.prototype.slice.call(document.querySelectorAll('.section'));
         const navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
@@ -208,7 +189,6 @@
             wireThemeToggle();
             wireSystemThemeSync();
             wireSmoothScroll();
-            wireScrollReveal();
             wireActiveLink();
             fadeOutLoader();
         },
