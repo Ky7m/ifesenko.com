@@ -814,3 +814,6 @@ FodyWeavers.xsd
 
 # APM dependencies
 apm_modules/
+
+# impeccable design-skill artifacts (critique snapshots, hook config)
+.impeccable/
