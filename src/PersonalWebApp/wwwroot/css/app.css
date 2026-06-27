@@ -237,7 +237,7 @@ h2 {
 /* Blazor's FocusOnNavigate puts programmatic focus on the page <h1> for
    screen-reader announcement (it is tabindex="-1", never keyboard-tabbable),
    so the visual ring that framed the whole heading block is not wanted. */
-h1:focus {
+h1[tabindex="-1"]:focus {
   outline: none;
 }
 
