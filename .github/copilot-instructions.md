@@ -2,8 +2,13 @@
 
 ## Build & Run
 
+Requires the **.NET 10 SDK**. The solution (`PersonalWebApp.slnx`, the newer XML format) contains a single project; there is no separate test project, so there is no test suite to run.
+
 ```bash
-# Run locally
+# Compile-check (fastest way to validate a change)
+dotnet build
+
+# Run locally (dev server at https://localhost:5001)
 dotnet run --project src/PersonalWebApp
 
 # Publish for deployment
@@ -16,7 +21,9 @@ This is a **Blazor WebAssembly** standalone app (no server-side component) hoste
 
 **Data flow**: Event/speaking data is hardcoded in C# — there is no database or API. `InMemoryStorageService` aggregates yearly event lists and serves them filtered by a `?period=` query parameter (year number or `"all"`). It is registered as a singleton via DI.
 
-**JS interop**: Blazor calls into `window.ifesenkoShell.init()` / `.dispose()` (defined in `wwwroot/js/site.js`) for DOM work that Blazor doesn't handle — navbar/menu behavior, smooth scrolling (same-page guarded), section reveal animation, theme toggle with OS-preference sync, and active-nav scrollspy behavior. The `Home.razor` page manages the interop lifecycle via `OnAfterRenderAsync` and `IDisposable`.
+**JS interop**: Blazor calls into `window.ifesenkoShell.init()` / `.dispose()` (defined in `wwwroot/js/site.js`) for DOM work that Blazor doesn't handle — navbar/menu behavior, smooth scrolling (same-page guarded), section reveal animation, the interactive theme toggle (persists to `localStorage` under `theme-preference`, with OS-preference sync), and active-nav scrollspy behavior. The `Home.razor` page manages the interop lifecycle via `OnAfterRenderAsync` and `IDisposable`.
+
+**Theming (two files, don't confuse them)**: `wwwroot/js/theme.js` is a tiny script loaded in `<head>` *before* Blazor. It applies the stored/OS theme immediately (sets `data-theme` on `<html>` and the `theme-color` meta) purely to avoid a flash of the wrong theme — it deliberately does **not** persist. Persistence and the interactive toggle live in `site.js` (`ifesenkoShell`). Both share the `theme-preference` key and the `data-theme` attribute, so keep those names in sync if you touch either file.
 
 **Infrastructure**: `infra/` contains Bicep templates deployed via the `infra.yml` workflow (manual trigger, OIDC auth). The SWA uses `provider: 'None'` — deployments are pushed from CI, not pulled by Azure.
 
