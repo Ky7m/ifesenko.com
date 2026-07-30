@@ -4,5 +4,5 @@ namespace PersonalWebApp.Services;
 
 public interface IStorageService
 {
-    (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period);
+    (EventModel[] Events, bool IsItAllEvents, string ResolvedPeriod) RetrieveEventsForPeriod(string period);
 }

@@ -5,21 +5,22 @@ namespace PersonalWebApp.Services;
 
 public sealed class InMemoryStorageService : IStorageService
 {
-    public (EventModel[] Events, bool IsItAllEvents) RetrieveEventsForPeriod(string period)
+    public (EventModel[] Events, bool IsItAllEvents, string ResolvedPeriod) RetrieveEventsForPeriod(string period)
     {
         if (string.Equals(period, "all", StringComparison.OrdinalIgnoreCase))
         {
-            return (_allEvents.Values.SelectMany(x => x).ToArray(), true);
+            return (_allEvents.Values.SelectMany(x => x).ToArray(), true, "all");
         }
-        
+
         if (int.TryParse(period, out var year) && _allEvents.TryGetValue(year, out var events))
         {
-            return (events, false);
+            return (events, false, year.ToString());
         }
-        
-        return _allEvents.TryGetValue(DateTime.UtcNow.Year, out var currentYearEvents) ? 
-            (currentYearEvents, false) : 
-            ([], false);
+
+        var currentYear = DateTime.UtcNow.Year;
+        return _allEvents.TryGetValue(currentYear, out var currentYearEvents)
+            ? (currentYearEvents, false, currentYear.ToString())
+            : ([], false, currentYear.ToString());
     }
 
     private readonly Dictionary<int, EventModel[]> _allEvents = new()
