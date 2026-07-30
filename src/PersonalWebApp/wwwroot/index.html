@@ -16,12 +16,14 @@
     <meta property="og:title" content="Igor Fesenko — Software Architect & MVP">
     <meta property="og:description" content="Microsoft MVP, software architect. 15+ years building distributed cloud applications. Speaker, open source contributor.">
     <meta property="og:url" content="https://ifesenko.com/">
+    <meta property="og:image" content="https://ifesenko.com/images/profile_1200.jpg">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@Ky7m">
     <meta name="twitter:title" content="Igor Fesenko — Software Architect & MVP">
     <meta name="twitter:description" content="Microsoft MVP, software architect. 15+ years building distributed cloud applications.">
+    <meta name="twitter:image" content="https://ifesenko.com/images/profile_1200.jpg">
     
     <!-- Canonical -->
     <link rel="canonical" href="https://ifesenko.com/">
@@ -42,7 +44,7 @@
         "https://twitter.com/Ky7m"
       ],
       "jobTitle": "Software Architect, Microsoft MVP",
-      "image": "https://ifesenko.com/images/profile.jpg"
+      "image": "https://ifesenko.com/images/profile_1200.jpg"
     }
     </script>
     
@@ -56,21 +58,22 @@
     <script src="js/theme.js"></script>
 </head>
 <body>
-    <div id="loader">
-        <div class="loader-spinner"></div>
+    <div id="loader" role="status" aria-live="polite" aria-label="Loading page content">
+        <div class="loader-spinner" aria-hidden="true"></div>
+        <span class="sr-only">Loading page content</span>
     </div>
     <div id="app"></div>
 
-    <div id="blazor-error-ui" style="display:none;">
-        <div style="padding: 1rem; background: #f8d7da; color: #721c24; border-radius: 0.25rem;">
-            An unhandled error has occurred.
-            <a href="" class="reload" style="margin-left: 1rem; color: #721c24; font-weight: 600;">Reload</a>
-            <a class="dismiss" style="margin-left: 1rem; cursor: pointer; color: #721c24; font-weight: 600;">✕</a>
+    <div id="blazor-error-ui" role="alert">
+        <div class="blazor-error-content">
+            The app couldn't finish loading.
+            <a href="" class="reload blazor-error-action">Reload page</a>
+            <button type="button" class="dismiss blazor-error-action" aria-label="Dismiss message">Dismiss</button>
         </div>
     </div>
 
     <footer id="footer" role="contentinfo">
-        <p class="copy">&copy; 2026 Igor Fesenko</p>
+        <p class="copy">&copy; <span id="copyright-year">2026</span> Igor Fesenko</p>
     </footer>
 
     <script src="_framework/blazor.webassembly.js"></script>

@@ -1,0 +1,12 @@
+<a href="@Href" rel="noopener noreferrer" class="social-link" title="@ResolvedTitle" aria-label="@Label">
+    @ChildContent
+</a>
+
+@code {
+    [Parameter, EditorRequired] public string Href { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Label { get; set; } = string.Empty;
+    [Parameter] public string? Title { get; set; }
+    [Parameter, EditorRequired] public RenderFragment ChildContent { get; set; } = null!;
+
+    private string ResolvedTitle => string.IsNullOrWhiteSpace(Title) ? Label : Title!;
+}

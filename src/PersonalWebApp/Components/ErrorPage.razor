@@ -2,28 +2,28 @@
 
 <div class="error-page">
     <div class="error-content">
-        <img class="error-image" src="images/robot.png" alt="An error occurred" />
+        <img class="error-image" src="images/robot.png" alt="" width="200" height="200" />
         <h1>@_title</h1>
         <h3>@_description</h3>
-        <a href="/" style="margin-top: 2rem; display: inline-block; padding: 0.75rem 1.5rem; background: var(--color-accent); color: var(--color-on-accent); border-radius: var(--radius-md); text-decoration: none; font-weight: 600;">Go Home</a>
+        <a href="/" class="error-home-link">Back to home</a>
     </div>
 </div>
 
 @code {
     [Parameter] public int StatusCode { get; set; }
 
-    private string _title = "An error occurred!";
-    private string _description = "I am sorry, something bad has happened. Please wait a moment and try again.";
+    private string _title = "Something went wrong";
+    private string _description = "This page couldn't be loaded. Try again, or go back to the home page.";
 
     protected override void OnParametersSet()
     {
         (_title, _description) = StatusCode switch
         {
-            400 => ("Bad Request", "I am sorry, but your browser sent a request that this server could not understand."),
-            401 => ("Unauthorized", "I am sorry, but the page requires authentication."),
-            403 => ("Forbidden", "I am sorry, but you don't have permission to access this page."),
-            404 => ("Page Not Found", "I am sorry, but the page you are looking for cannot be found."),
-            _ => ("An error occurred!", "I am sorry, something bad has happened. Please wait a moment and try again."),
+            400 => ("Bad request", "The request could not be processed. Please refresh and try again."),
+            401 => ("Sign-in required", "You need to sign in before you can open this page."),
+            403 => ("Access denied", "You don't have permission to view this page."),
+            404 => ("Page not found", "The page may have moved or no longer exists."),
+            _ => ("Something went wrong", "This page couldn't be loaded. Try again, or go back to the home page."),
         };
     }
 }
