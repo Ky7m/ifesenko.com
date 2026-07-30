@@ -44,6 +44,14 @@ dotnet run --project src/PersonalWebApp
 
 The Blazor dev server starts on `https://localhost:5001` by default.
 
+## UI primitives (design system extraction)
+
+- **Reusable component**: `src/PersonalWebApp/Components/SocialIconLink.razor` centralizes social icon anchor semantics (`href`, label/title accessibility, shared `.social-link` styling).
+- **Shared CSS primitives** (`src/PersonalWebApp/wwwroot/css/app.css`):
+  - `--transition-chip` token standardizes interactive chip transitions.
+  - `:is(.period-link, .collateral-chip)` defines shared chip foundation styles.
+  - Combined section-header rules (`.events-header` + `.certifications-header`) keep section-title spacing consistent.
+
 ## Deployment
 
 ### Automatic deploys
@@ -55,4 +63,3 @@ The Blazor dev server starts on `https://localhost:5001` by default.
 ### Custom domains
 
 Custom domains (`ifesenko.com`, `www.ifesenko.com`) are added via the Azure portal or `az staticwebapp hostname set` after DNS validation. They are intentionally not managed by Bicep to keep DNS ownership explicit.
-

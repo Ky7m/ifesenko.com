@@ -1,6 +1,5 @@
 (function() {
   const THEME_KEY = 'theme-preference';
-  const THEME_COLORS = { light: '#fafcfe', dark: '#0f1318' };
 
   function getTheme() {
     try {
@@ -18,5 +17,6 @@
   const theme = getTheme();
   document.documentElement.setAttribute('data-theme', theme);
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) { meta.setAttribute('content', THEME_COLORS[theme]); }
+  const themeColor = window.getComputedStyle(document.documentElement).getPropertyValue('--theme-color-browser').trim();
+  if (meta && themeColor) { meta.setAttribute('content', themeColor); }
 })();
